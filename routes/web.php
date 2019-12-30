@@ -18,3 +18,30 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//-----------------------------------------DEPARTAMENTO DE BRENDA----------------------------------------------------
+/*Route::get('/name/{name}/lastname/{lastname?}', function($name,$lastname=null){
+    return 'Hola '.$name.' '.$lastname;
+});
+//ruta de prueba recibiendo un parametro opcional
+Route::get('prueba/{name?}','PruebaController@prueba');*/
+
+//Vista principal Trabajo Social
+Route::get('TS', function(){
+    return view('/trabajosocial.principal');
+});
+
+//BECAS
+Route::resource('becas','BecasController');
+
+
+
+
+
+
+//-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
+Route::get('T', function(){
+    return view('/tutorias.principal');
+});
+
