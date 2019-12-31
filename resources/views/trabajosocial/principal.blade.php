@@ -86,14 +86,24 @@
             <p class="subtitulos">Practicas Profesionales</p>
             <div id="cardInfoP" class="micardsm">
                <div class="contenedorPracticasServicio">
-                    <label for="nombre"><b>Nombre del alumno:</b></label>
-                    <input type="text" id="NombreAlumno" class="cbSinBordePS"/>
-                    <label for="dependencia"><b>Dependencia:</b></label>
-                    <input type="text" id="Dependencia" class="cbSinBordePS"/>
-                    <label for="fInicio"><b>Fecha de inicio:</b></label>
-                    <input type="text" id="FechaInicio" class="cbSinBordePS"/>
-                    <label for="fFin"><b>Fecha de finalización:</b></label>
-                    <input type="text" id="FechaFin" class="cbSinBordePS"/>
+                   <div>
+                        <label for="dependencia"><b>Dependencia:</b></label>
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->IdDependencias}}</p>
+                        @endforeach
+                    </div>
+                    <div>
+                        <label for="fInicio"><b>Fecha de inicio:</b></label> 
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->FechaInicio}}</p>
+                        @endforeach
+                    </div>
+                    <div>
+                        <label for="fFin"><b>Fecha de finalización:</b></label>
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->FechaFin}}</p>
+                        @endforeach
+                    </div>
                </div>
            </div>
        </div>
@@ -102,15 +112,25 @@
        <div class="contenedorCard">
             <p class="subtitulos">Servicio Social</p>
             <div id="cardInfoP" class="micardsm">
-            <div class="contenedorPracticasServicio">
-                    <label for="nombre"><b>Nombre del alumno:</b></label>
-                    <input type="text" id="NombreAlumno" class="cbSinBordePS"/>
-                    <label for="dependencia"><b>Dependencia:</b></label>
-                    <input type="text" id="Dependencia" class="cbSinBordePS"/>
-                    <label for="fInicio"><b>Fecha de inicio:</b></label>
-                    <input type="text" id="FechaInicio" class="cbSinBordePS"/>
-                    <label for="fFin"><b>Fecha de finalización:</b></label>
-                    <input type="text" id="FechaFin" class="cbSinBordePS"/>
+                <div class="contenedorPracticasServicio">
+                    <div>
+                        <label for="dependencia"><b>Dependencia:</b></label>
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->IdDependencias}}</p>
+                        @endforeach
+                    </div>
+                    <div>
+                        <label for="fInicio"><b>Fecha de inicio:</b></label> 
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->FechaInicio}}</p>
+                        @endforeach
+                    </div>
+                    <div>
+                        <label for="fFin"><b>Fecha de finalización:</b></label>
+                        @foreach ($servPrac as $SP)
+                            <p>{{$SP->FechaFin}}</p>
+                        @endforeach
+                    </div>
                </div>
            </div>
        </div>
