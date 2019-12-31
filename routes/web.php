@@ -32,6 +32,7 @@ Route::get('TS', function(){
     return view('/trabajosocial.principal');
 });
 
+
 //BECAS
 Route::resource('becas','BecasController');
 

@@ -2,6 +2,7 @@
 @section('title','Trabajo Social')
 
 @section('content')
+
    <!--ventana info personal alumno-->
    <div class="ventanaAlumno" id="windowAlumno">
         <div class="cerrarventanaAlumno">
@@ -63,7 +64,7 @@
                         <input type="text" id="Nombre" class="cbSinBordeB" />
                     </div>
                 </div>
-
+               
                 <div >
                     <div id="cardInfoP" class="micardBeca">
                         <label for="tipoBeca"><b>Externa:</b></label>
@@ -79,6 +80,8 @@
                 </div>
            </div>
        </div>
+       <modal-button></modal-button>
+       <create-form-becas></create-form-becas>
 
        <!--card praticas profesionales-->
        <div class="contenedorCard">
