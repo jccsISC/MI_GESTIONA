@@ -24,7 +24,7 @@ class BecasController extends Controller
      */
     public function create()
     {
-        return view('trabajosocial/becas.create');
+       
     }
 
     /**

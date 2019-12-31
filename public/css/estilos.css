@@ -41,7 +41,7 @@ body::-webkit-scrollbar-thumb{
 
 /*TODO DEL NAVBAR------------------------------------------------------------------------------------------------------------*/
 header{
-    background-color: #BF0B0B;
+    background-color: rgb(167, 11, 11);
     position: fixed;
     left: 0;
     right: 0;
@@ -73,7 +73,7 @@ header ul li a{
 
 header ul li a:hover{
     background-color: #EAEDED;
-    color: #BF0B0B;
+    color: rgb(167, 11, 11);
     text-decoration: none;
 }
 
@@ -125,7 +125,7 @@ header ul li a:hover{
 footer{
     width: 100%;
     height: 135px;
-    background-color: #BF0B0B;
+    background-color: rgb(167, 11, 11);
     padding: 1rem 0 ;
     padding-left: 20px;
     color: rgba(212, 207, 207, 0.74);
@@ -173,7 +173,8 @@ footer{
     }
 
     .micard:hover{
-        box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);
+        /*box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);*/
+        box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
     }
     /*FIN TODO SOBRE EL CARD-------------------------------------------------------------------------------------------------*/
 
@@ -189,7 +190,7 @@ footer{
         box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
         position: fixed;
         overflow: auto;/*para que haga scroll si tiene mas contenido */
-        margin-top: 8rem;
+        margin-top: 5rem;
         margin-left: 20%;
         display: none;/*para que la ventana no se vea*/
     }
@@ -306,24 +307,7 @@ footer{
 /*ESTILOS PARA LA PAGINA PRINCIPAL TRABAJO SOCIAL-----------------------------------------------------------------------*/
     
     /*TODO VENTANA BECAS--------------------------------------------------------------------------------*/
-        .micardBeca{
-            width: 95%;
-            height: 25px;
-            background-color: white;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
-            border-radius: 3px;
-            transition: 0.5s;
-            border: 1px solid rgb(211, 211, 211);
-            margin-top: 5px;
-            margin-left: 3%;
-            text-align: left;
-            text-indent: 5px ;  
-            font-size: .75em;       
-        }
-
-        .micardBeca:hover{
-            box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);
-        }
+   
 
         .cbSinBordeB{
             border: 0;
@@ -340,11 +324,6 @@ footer{
             transition: 0.5s;
             border: 1px solid rgb(211, 211, 211);
         }
-
-        .micardsm:hover{
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-
 
     /*TODO VENTANA PRACTICAS Y SERVICIO--------------------------------------------------------------------------------*/
         .contenedorPracticasServicio{
@@ -375,7 +354,7 @@ footer{
         }
 
         .micardNotificaciones:hover{
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
         }
 
     

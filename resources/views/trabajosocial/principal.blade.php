@@ -3,6 +3,8 @@
 
 @section('content')
 
+   <create-form-becas></create-form-becas>
+
    <!--ventana info personal alumno-->
    <div class="ventanaAlumno" id="windowAlumno">
         <div class="cerrarventanaAlumno">
@@ -58,21 +60,18 @@
         <div class="contenedorCard">
             <p class="subtitulos">Becas</p>
             <div id="cardInfoB" class="micardsm">
-                <div >
-                    <div id="cardInfoP" class="micardBeca">
-                        <label for="tipoBeca"><b>Interna:</b></label>
-                        <input type="text" id="Nombre" class="cbSinBordeB" />
-                    </div>
+                <div>
+                    <opendetails-beca></opendetails-beca>
                 </div>
                
-                <div >
+                <div>
                     <div id="cardInfoP" class="micardBeca">
                         <label for="tipoBeca"><b>Externa:</b></label>
                         <input type="text" id="Nombre" class="cbSinBordeB" />
                     </div>
                 </div>
                 
-                <div >
+                <div>
                     <div id="cardInfoP" class="micardBeca">
                         <label for="tipoBeca"><b>Otro:</b></label>
                         <input type="text" id="Nombre" class="cbSinBordeB" />
@@ -80,8 +79,7 @@
                 </div>
            </div>
        </div>
-       <modal-button></modal-button>
-       <create-form-becas></create-form-becas>
+   
 
        <!--card praticas profesionales-->
        <div class="contenedorCard">
