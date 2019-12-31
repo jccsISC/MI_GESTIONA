@@ -25,6 +25,10 @@ body::-webkit-scrollbar-thumb{
 
 
 
+.contenedor-principal{
+    width: 100%;
+    overflow: hidden;
+}
 
 
 .contenedor{
@@ -139,6 +143,7 @@ footer{
         margin-top: 5rem;
         padding-left: 60px;
         padding-bottom: 5rem;
+        float: left;
         /*background-color: rgb(236, 232, 232);*/
         /*border: 1px solid gray;*/
     }
@@ -185,8 +190,7 @@ footer{
         position: fixed;
         overflow: auto;/*para que haga scroll si tiene mas contenido */
         margin-top: 8rem;
-        margin-left: 30%;
-        margin-right: 30%;
+        margin-left: 20%;
         display: none;/*para que la ventana no se vea*/
     }
 
@@ -246,6 +250,7 @@ footer{
         margin-top: 5rem;
         padding-right: 1rem;
         padding-bottom: 5rem;
+        float: left;
         /*background-color: #EAEDED;*/
     }
 

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\tblbeca;
 
-class BecasController extends Controller
+class TrabajoSocialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class BecasController extends Controller
      */
     public function index()
     {
-      return 'aqui crearemos una beca';
+        //
     }
 
     /**
@@ -24,7 +23,7 @@ class BecasController extends Controller
      */
     public function create()
     {
-        return view('trabajosocial/becas.create');
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class BecasController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->input('nameBeca');
+        //
     }
 
     /**
@@ -46,7 +45,7 @@ class BecasController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

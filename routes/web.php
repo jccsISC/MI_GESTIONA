@@ -40,6 +40,10 @@ Route::resource('becas','BecasController');
 
 
 
+
+
+
+
 //-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
 Route::get('T', function(){
     return view('/tutorias.principal');
