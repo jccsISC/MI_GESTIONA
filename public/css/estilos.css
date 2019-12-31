@@ -353,9 +353,8 @@ footer{
             text-indent: 10px ;   
         }
 
-        .cbSinBordePS{
-            border: 0;
-            width: 60%;
+        .contenedorPracticasServicio p{
+            float: right;
         }
 
     /*TODO VENTANAS NOTIFICACIONES--------------------------------------------------------------------------------*/    

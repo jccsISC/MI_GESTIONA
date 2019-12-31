@@ -36,6 +36,10 @@ Route::get('TS', function(){
 //BECAS
 Route::resource('becas','BecasController');
 
+//ServicioPracticas
+Route::resource('servicioPracticas','ServicioPracticasController');
+Route::resource('TS','ServicioPracticasController');
+
 
 
 
