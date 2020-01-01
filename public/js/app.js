@@ -1869,47 +1869,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//importamos nuestro even-bus
-// import EventBus from '../../event-bus';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  //definimos los atributos que utilizaremos
+  created: function created() {
+    var _this = this;
+
+    this.$parent.$on('actualizarBeca', function (beca) {
+      _this.beca = Object.assign({}, beca);
+    });
+  },
   data: function data() {
     return {
-      name: null,
-      tipo: null,
-      programa: null
+      beca: {}
     };
+  },
+  methods: {
+    saveBeca: function saveBeca() {
+      var _this2 = this;
+
+      axios.put('becas/' + this.beca.IdBeca, this.beca).then(function (response) {
+        _this2.onSuccess();
+      })["catch"](function (error) {
+        console.log('kevin', error.code);
+      });
+    },
+    eliminarBeca: function eliminarBeca() {
+      var _this3 = this;
+
+      this.beca.Nombre = '';
+      this.beca.Tipo = '';
+      axios["delete"]('becas/' + this.beca.IdBeca).then(function (response) {
+        _this3.onSuccess();
+      });
+    },
+    onSuccess: function onSuccess() {
+      this.$emit('becaActualizada', this.beca);
+      $('#addBeca').modal('hide');
+    }
   }
   /*,
   methods:{ //especificamos la seccion de metodos dentro de vue
-   //definimos el metodo que le dimos al formulario
-   savePokemon: function(){
-     //creamos una variable para establecer la ruta actual en la que estamos
-     let currentRoute = window.location.pathname
-     //console.log(currentRoute)
-     //de esta manera enviamos la informacion cambiamos las comillas para hacer interpolaciond e cadenas
-    axios.post(`http://127.0.0.1:8000${currentRoute}/pokemons`,{
-       name: this.name,
-       picture: this.picture,
-       description: this.description
-     })
-     .then(function(res){
-       console.log(res)
-       //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
-       //le damos un hide a nuestro modal
-       $('#addPokemon').modal('hide')
-       //le especificamos que queremos emitir un evento
-       EventBus.$emit('pokemon-added',res.data.pokemon)//con esto generamos un evento con informacion
-     })
-     .catch(function(err){
-       console.log(err)
-     });
-   }
+    //definimos el metodo que le dimos al formulario
+    savePokemon: function(){
+      //creamos una variable para establecer la ruta actual en la que estamos
+      let currentRoute = window.location.pathname
+      //console.log(currentRoute)
+       //de esta manera enviamos la informacion cambiamos las comillas para hacer interpolaciond e cadenas
+      axios.post(`http://127.0.0.1:8000${currentRoute}/pokemons`,{
+        name: this.name,
+        picture: this.picture,
+        description: this.description
+      })
+      .then(function(res){
+        console.log(res)
+        //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
+        //le damos un hide a nuestro modal
+        $('#addPokemon').modal('hide')
+        //le especificamos que queremos emitir un evento
+        EventBus.$emit('pokemon-added',res.data.pokemon)//con esto generamos un evento con informacion
+      })
+      .catch(function(err){
+        console.log(err)
+      });
+    }
   }*/
 
 });
@@ -1932,7 +1953,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/becas').then(function (res) {
+      _this.becas = res.data;
+    });
+  },
+  data: function data() {
+    return {
+      becas: []
+    };
+  },
+  methods: {
+    actualizarBeca: function actualizarBeca(becaActualizada) {
+      var _this2 = this;
+
+      var temp = Object.assign({}, this.becas);
+      this.becas = [];
+      Object.keys(temp).forEach(function (key) {
+        if (temp[key].IdBeca === becaActualizada.IdBeca) {
+          _this2.becas[key] = becaActualizada;
+        } else {
+          _this2.becas[key] = temp[key];
+        }
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -38004,8 +38062,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
+                        value: _vm.beca.Nombre,
+                        expression: "beca.Nombre"
                       }
                     ],
                     staticClass: "form-control",
@@ -38013,13 +38071,13 @@ var render = function() {
                       type: "text",
                       placeholder: "Ingresa el nombre de la beca"
                     },
-                    domProps: { value: _vm.name },
+                    domProps: { value: _vm.beca.Nombre },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.name = $event.target.value
+                        _vm.$set(_vm.beca, "Nombre", $event.target.value)
                       }
                     }
                   })
@@ -38033,8 +38091,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.tipo,
-                        expression: "tipo"
+                        value: _vm.beca.Tipo,
+                        expression: "beca.Tipo"
                       }
                     ],
                     staticClass: "form-control",
@@ -38042,42 +38100,13 @@ var render = function() {
                       type: "text",
                       placeholder: "Ingresa el tipo de la beca"
                     },
-                    domProps: { value: _vm.tipo },
+                    domProps: { value: _vm.beca.Tipo },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.tipo = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Programa Perteneciente")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.programa,
-                        expression: "programa"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Ingresa el programa al que pertenece"
-                    },
-                    domProps: { value: _vm.programa },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.programa = $event.target.value
+                        _vm.$set(_vm.beca, "Tipo", $event.target.value)
                       }
                     }
                   })
@@ -38091,7 +38120,11 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: { click: _vm.eliminarBeca }
+                  },
                   [_vm._v("Eliminar")]
                 )
               ]
@@ -38150,29 +38183,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "micardBeca",
-        attrs: { "data-toggle": "modal", "data-target": "#addBeca" }
-      },
-      [
-        _c("label", { attrs: { for: "tipoBeca" } }, [
-          _c("b", [_vm._v("Interna:")])
-        ]),
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "contenedorCard" }, [
+        _c("p", { staticClass: "subtitulos" }, [_vm._v("Becas")]),
         _vm._v(" "),
-        _c("label", { attrs: { for: "tipoBeca" } }, [_vm._v("Manutención")])
-      ]
-    )
-  }
-]
+        _c(
+          "div",
+          { staticClass: "micardsm", attrs: { id: "cardInfoB" } },
+          _vm._l(_vm.becas, function(beca, key) {
+            return _c(
+              "div",
+              {
+                key: key,
+                staticClass: "micardBeca",
+                attrs: { "data-toggle": "modal", "data-target": "#addBeca" },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("actualizarBeca", beca)
+                  }
+                }
+              },
+              [
+                _c("label", [
+                  _c("b", [
+                    _vm._v(
+                      _vm._s(
+                        key === 0
+                          ? "Interna:"
+                          : key === 1
+                          ? "Externa:"
+                          : "Otro:"
+                      )
+                    )
+                  ]),
+                  _vm._v(" " + _vm._s(beca.Nombre))
+                ])
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("create-form-becas", {
+        on: {
+          becaActualizada: function($event) {
+            return _vm.actualizarBeca($event)
+          }
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

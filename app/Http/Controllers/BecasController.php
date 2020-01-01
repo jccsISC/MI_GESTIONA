@@ -12,19 +12,8 @@ class BecasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-      return 'aqui crearemos una beca';
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-       
+    public function index() {
+        return tblbeca::all();
     }
 
     /**
@@ -35,51 +24,58 @@ class BecasController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->input('nameBeca');
+        $atributos = $this->validate($request, [
+            'Nombre' => 'required',
+            'Tipo' => 'required'
+        ]);
+        
+        tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1]);
+        tblbeca::create($atributos);
+
+        return response('Actualizado', 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\tblbeca $tblbeca
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function show(tblbeca $tblbeca) {
+        return $tblbeca;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\tblbeca $tblbeca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, tblbeca $tblbeca) {
+        $atributos = $this->validate($request, [
+            'Nombre' => 'required',
+            'Tipo' => 'required'
+        ]);
+        
+        $tblbeca->update($atributos);
+
+        return response('Actualizado', 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\tblbeca $tblbeca
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(tblbeca $tblbeca) {
+        $tblbeca->update([
+            'Nombre' => '',
+            'Tipo' => '',
+            'Existe' => 0
+        ]);
+
+        return response('Eliminado');
     }
 }

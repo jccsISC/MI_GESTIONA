@@ -3,10 +3,10 @@
 
 @section('content')
 
-   <create-form-becas></create-form-becas>
+   
 
    <!--ventana info personal alumno-->
-   <div class="ventanaAlumno" id="windowAlumno">
+   <!-- <div class="ventanaAlumno" id="windowAlumno">
         <div class="cerrarventanaAlumno">
             <a href="javascript:cerrar()"><img src="/images/cancel.png" width="11" height="11"></a> 
         </div>
@@ -43,6 +43,9 @@
         </div>
     </div>
    
+   -->
+
+  
    <!--contenedores con información seccionada-->
    <section class="contenedor-secciones">
        <!--card info personal-->
@@ -57,29 +60,8 @@
        </div>
        
         <!--card becas-->
-        <div class="contenedorCard">
-            <p class="subtitulos">Becas</p>
-            <div id="cardInfoB" class="micardsm">
-                <div>
-                    <opendetails-beca></opendetails-beca>
-                </div>
-               
-                <div>
-                    <div id="cardInfoP" class="micardBeca">
-                        <label for="tipoBeca"><b>Externa:</b></label>
-                        <input type="text" id="Nombre" class="cbSinBordeB" />
-                    </div>
-                </div>
-                
-                <div>
-                    <div id="cardInfoP" class="micardBeca">
-                        <label for="tipoBeca"><b>Otro:</b></label>
-                        <input type="text" id="Nombre" class="cbSinBordeB" />
-                    </div>
-                </div>
-           </div>
-       </div>
-   
+        <opendetails-beca></opendetails-beca>
+  
 
        <!--card praticas profesionales-->
        <div class="contenedorCard">
@@ -207,7 +189,7 @@
    </section>
 
 
-   <script>
+   <!-- <script>
 
         Drag.init (document.getElementById("windowAlumno"));
 
@@ -221,5 +203,5 @@
             document.getElementById("cardInfoP").style.background = "white";
         }
 
-    </script>
+    </script> -->
 @endsection
