@@ -60,7 +60,7 @@
        </div>
        
         <!--card becas-->
-        <opendetails-beca></opendetails-beca>
+        <card-becas></card-becas>
   
 
        <!--card praticas profesionales-->

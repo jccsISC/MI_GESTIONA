@@ -2,7 +2,7 @@
 <div>
     <div class="contenedorCard">
         <p class="subtitulos">Becas</p>
-        <div id="cardInfoB" class="micardsm">
+        <div class="micardsm">
             <div v-for="(beca, key) in becas" :key="key" class="micardBeca" data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)">
                 <label><b>{{key === 0 ? 'Interna:' : key === 1 ? 'Externa:' : 'Otro:'}}</b> {{beca.Nombre}}</label>
             </div>
@@ -16,20 +16,20 @@
 
 <script>
     export default {
-        mounted() {
-            axios.get('/becas').then(res => {
-                this.becas = res.data;
-            });
-        },
         data() {
             return {
                 becas: []
             }
         },
+        mounted() {
+            axios.get('/becas').then(res => {
+                this.becas = res.data;
+            });
+        },
         methods: {
             actualizarBeca(becaActualizada) {
-                const temp = Object.assign({}, this.becas);
-                this.becas = []; 
+                const temp = Object.assign({}, this.becas);//clonamos el array becas
+                this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
                 Object.keys(temp).forEach(key => {
                     if (temp[key].IdBeca === becaActualizada.IdBeca) {
                         this.becas[key] = becaActualizada;
@@ -68,6 +68,4 @@
             /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);*/
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11)
         }
-   
-
 </style>
