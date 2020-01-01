@@ -1,13 +1,45 @@
 <template>
-    <div class="micardBeca" data-toggle="modal" data-target="#addBeca">
-        <label for="tipoBeca"><b>Interna:</b></label>
-        <label for="tipoBeca">Manutención</label>
+<div>
+    <div class="contenedorCard">
+        <p class="subtitulos">Becas</p>
+        <div id="cardInfoB" class="micardsm">
+            <div v-for="(beca, key) in becas" :key="key" class="micardBeca" data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)">
+                <label><b>{{key === 0 ? 'Interna:' : key === 1 ? 'Externa:' : 'Otro:'}}</b> {{beca.Nombre}}</label>
+            </div>
+        </div>
     </div>
+
+    <create-form-becas @becaActualizada="actualizarBeca($event)"></create-form-becas>
+</div>
+
 </template>
 
 <script>
     export default {
-    
+        mounted() {
+            axios.get('/becas').then(res => {
+                this.becas = res.data;
+            });
+        },
+        data() {
+            return {
+                becas: []
+            }
+        },
+        methods: {
+            actualizarBeca(becaActualizada) {
+                const temp = Object.assign({}, this.becas);
+                this.becas = []; 
+                Object.keys(temp).forEach(key => {
+                    if (temp[key].IdBeca === becaActualizada.IdBeca) {
+                        this.becas[key] = becaActualizada;
+                    }
+                    else {
+                        this.becas[key] = temp[key];
+                    }
+                });
+            }
+        }
     }
 </script>
 

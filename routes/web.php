@@ -34,9 +34,12 @@ Route::get('TS', function(){
 
 
 //BECAS
-Route::resource('becas','BecasController');
-
-
+Route::get('becas','BecasController@index');
+//Route::post('becas','BecasController@post');
+//Route::get('becas/{tblbeca}','BecasController@show');
+Route::put('becas/{tblbeca}','BecasController@update');
+Route::delete('becas/{tblbeca}','BecasController@destroy');
+// Route::post('trainers/{trainer}/pokemons','PokemonController@store')
 
 
 
