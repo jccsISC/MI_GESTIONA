@@ -43,6 +43,10 @@ Route::delete('becas/{tblbeca}','BecasController@destroy');
 
 
 
+//ServicioPracticas
+Route::resource('servicioPracticas','ServicioPracticasController');
+Route::resource('TS','ServicioPracticasController');
+
 
 
 
