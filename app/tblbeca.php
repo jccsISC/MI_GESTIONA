@@ -11,6 +11,4 @@ class tblbeca extends Model
     protected $fillable = ['IdBeca','Nombre','Tipo','Existe'];
     public $timestamps = false;
     public $incrementing = false;
-
-    
 }
