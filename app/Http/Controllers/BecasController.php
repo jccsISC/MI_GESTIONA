@@ -29,7 +29,7 @@ class BecasController extends Controller
             'Tipo' => 'required'
         ]);
         
-        tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1]);
+        tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1 ]);
         tblbeca::create($atributos);
 
         return response('Actualizado', 200);

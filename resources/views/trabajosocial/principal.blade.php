@@ -62,33 +62,10 @@
         <!--card becas-->
         <card-becas></card-becas>
   
-
        <!--card praticas profesionales-->
-       <div class="contenedorCard">
-            <p class="subtitulos">Practicas Profesionales</p>
-            <div id="cardInfoP" class="micardsm">
-               <div class="contenedorPracticasServicio">
-                   <div>
-                        <label for="dependencia"><b>Dependencia:</b></label>
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->IdDependencias}}</p>
-                        @endforeach
-                    </div>
-                    <div>
-                        <label for="fInicio"><b>Fecha de inicio:</b></label> 
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->FechaInicio}}</p>
-                        @endforeach
-                    </div>
-                    <div>
-                        <label for="fFin"><b>Fecha de finalización:</b></label>
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->FechaFin}}</p>
-                        @endforeach
-                    </div>
-               </div>
-           </div>
-       </div>
+       <card-practicas></card-practicas>
+       <crear-dependencia></crear-dependencia>
+       <modificar-dependencia></modificar-dependencia>
 
        <!--card servicio social-->
        <div class="contenedorCard">
@@ -129,63 +106,11 @@
    </section>
 
    <section class="contenedor-notify">
-       <!--card info personal-->
-       <div class="contenedorCard">
-            <p class="subtitulos-small">16-09-2019 a 20-09-2019</p>
-            <p class="subtitulos-small">Semana 3</p>
-            <p class="subtitulos">Notificación de justificantes</p>
-            <div id="cardInfoP" class="micardNotifications">
-                <div class="contenedorNotJustificantes">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotJustificantes">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotJustificantes">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotJustificantes">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                
-               
-           </div>
-       </div>
+       <!--card notificaciones de justificantes-->
+       <card-notify-justificantes></card-notify-justificantes>
        
-        <!--card reprobaciones-->
-        <div class="contenedorCardReprobados">
-            <p class="subtitulos">Notificación de Pases de Salida</p>
-            <div id="cardInfoP" class="micardNotifications">
-                <div class="contenedorNotReprobaciones">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotReprobaciones">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotReprobaciones">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-                <div class="contenedorNotReprobaciones">
-                    <div id="cardInfoP" class="micardNotificaciones">
-
-                    </div>
-                </div>
-           </div>
-       </div>
+       <!--card notificaciones de reprobdos-->
+       <card-notify-reprobados></card-notify-reprobados>
    </section>
 
 

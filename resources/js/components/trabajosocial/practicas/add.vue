@@ -1,15 +1,15 @@
-<template>
-  <div class="modal fade" id="addBeca" role="dialog" aria-hidden="true">
+<template >  
+  <div class="modal fade" id="addPracticas" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Becas</h5>
+          <h5 class="modal-title">Practicas Profesionales</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-      	  <form @submit.prevent="saveBeca">
+      	  <form @submit.prevent="savePractica">
 	          <div class="form-group">
 			        <label>Nombre</label>
 			        <input type="text" class="form-control" placeholder="Ingresa el nombre de la beca" v-model="beca.Nombre">
@@ -20,7 +20,8 @@
 		  	    </div>
 
 		  	    <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" @click="eliminarBeca" class="btn btn-danger">Eliminar</button>
+            <button type="button" @click="eliminarPracticas" class="btn btn-danger">Eliminar</button>
+
 	  	    </form>
         </div>
       </div>
@@ -31,7 +32,7 @@
 
 <script>
   export default {
-    created: function() {
+    /*created: function() {
       this.$parent.$on('actualizarBeca', beca => {
           this.beca = Object.assign({}, beca);
       });
@@ -65,33 +66,6 @@
       onSuccess: function() {
         this.$emit('becaActualizada', this.beca);
         $('#addBeca').modal('hide');
-      }
-    }
-    /*,
-    methods:{ //especificamos la seccion de metodos dentro de vue
-      //definimos el metodo que le dimos al formulario
-      savePokemon: function(){
-        //creamos una variable para establecer la ruta actual en la que estamos
-        let currentRoute = window.location.pathname
-        //console.log(currentRoute)
-
-        //de esta manera enviamos la informacion cambiamos las comillas para hacer interpolaciond e cadenas
-        axios.post(`http://127.0.0.1:8000${currentRoute}/pokemons`,{
-          name: this.name,
-          picture: this.picture,
-          description: this.description
-        })
-        .then(function(res){
-          console.log(res)
-          //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
-          //le damos un hide a nuestro modal
-          $('#addPokemon').modal('hide')
-          //le especificamos que queremos emitir un evento
-          EventBus.$emit('pokemon-added',res.data.pokemon)//con esto generamos un evento con informacion
-        })
-        .catch(function(err){
-          console.log(err)
-        });
       }
     }*/
   }

@@ -2,7 +2,7 @@
 <div>
     <div class="contenedorCard">
         <p class="subtitulos">Becas</p>
-        <div class="micardsm">
+        <div class="micardB">
             <div v-for="(beca, key) in becas" :key="key" class="micardBeca" data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)">
                 <label><b>{{key === 0 ? 'Interna:' : key === 1 ? 'Externa:' : 'Otro:'}}</b> {{beca.Nombre}}</label>
             </div>
@@ -44,9 +44,19 @@
 </script>
 
 <style>
-    .top-space{
-        margin-top: 20px;
-    }
+        .top-space{
+            margin-top: 20px;
+        }
+
+        .micardB{
+            width: 100%;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            transition: 0.5s;
+            border: 1px solid rgb(211, 211, 211);
+        }
 
         .micardBeca{
             width: 95%;
@@ -68,4 +78,5 @@
             /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);*/
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11)
         }
+
 </style>
