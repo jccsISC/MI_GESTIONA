@@ -3,14 +3,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Agregar Dependencia</h5>
+          <h5 class="modal-title">{{dependencia.IdDependencia ? 'Actualizar' : 'Agregar'}} Dependencia</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <form @submit.prevent="agregar">
+          <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label>Nombre</label>
 			          <input type="text" class="form-control" placeholder="Ingresa el nombre de la dependencia" v-model="dependencia.Nombre">
@@ -41,7 +41,7 @@
 			          <input type="text" class="form-control" placeholder="Ingresa el tipo de vinculación de la dependencia" v-model="dependencia.TipoVinculacion">
 		  	      </div>
           
-		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> Guardar</button>
+		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>
@@ -52,31 +52,50 @@
 
 <script>
   export default {
-    data(){
-      return{
-        dependencias:[],
-        dependencia: { Nombre:'', Direccion:'', Giro:'', Telefono:'', Responsable:'', TipoVinculacion:''}
+    created: function() {
+      this.$parent.$on('actualizarDependencia', dependencia => {
+        this.dependencia = JSON.parse(JSON.stringify(dependencia));
+      });
+    },  
+    data() {
+      return {
+        dependencia: {}
       }
     },
-    methods:{
-      agregar(){
-        
-        if(this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === ''){
+    methods: {
+      onSubmit() {
+        if (this.dependencia.IdDependencia) {
+          this.actualizarDependencia();
+        } else {
+          this.saveDependencia();
+        }
+      },
+       onSuccess(res) {
+        this.$emit('dependenciaActualizada', res.data);
+        $('#addDepencencia').modal('hide');
+      },
+      actualizarDependencia() {
+        if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');
           return;
         }
 
-        /*console.log(this.dependencia.Nombre, this.dependencia.Direccion);*/
-        const params = { 
-          Nombre:this.dependencia.Nombre, Direccion:this.dependencia.Direccion, Giro:this.dependencia.Giro,
-          Telefono:this.dependencia.Telefono, Responsable:this.dependencia.Responsable, TipoVinculacion:this.dependencia.TipoVinculacion
+        axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia)
+          .then(res => {
+            this.onSuccess(res);
+          });
+      },
+      saveDependencia() {
+        if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
+          alert('Debes de completar todos los campos antes de guardar');
+          return;
         }
 
-        axios.post('/dependencias', params)
-        .then(res => {
-          this.dependencias.push(res.data)
-          $('#addDepencencia').modal('hide');
-        })
+        axios.post('/dependencias', this.dependencia)
+          .then(res => {
+            res.data.esNuevo = true;
+            this.onSuccess(res);
+          });
       }
     }
   }

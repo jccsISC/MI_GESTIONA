@@ -64,8 +64,6 @@
   
        <!--card praticas profesionales-->
        <card-practicas></card-practicas>
-       <crear-dependencia></crear-dependencia>
-       <modificar-dependencia></modificar-dependencia>
 
        <!--card servicio social-->
        <div class="contenedorCard">

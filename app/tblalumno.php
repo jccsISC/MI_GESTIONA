@@ -14,4 +14,12 @@ class tblalumno extends Model
                            'Telefono2','Colonia','CodPostal','Municipio','Estado','MunicipioNac','EstadoNac'];
     public $timestamps = false;
     public $incrementing = false;
+    
+    public function justificantes() {
+        return $this->hasMany(tbljustificante::class, 'IdAlumno', 'IdAlumno');
+    }
+
+    public function becas(){
+        return $this->belongsToMany(tblbeca::class,'tbldetallebecas', 'IdAlumno', 'IdBeca');
+    }
 }

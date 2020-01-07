@@ -28,22 +28,11 @@ class BecasController extends Controller
             'Nombre' => 'required',
             'Tipo' => 'required'
         ]);
-        
-        tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1 ]);
-        tblbeca::create($atributos);
 
-        return response('Actualizado', 200);
+        return tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1 ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\tblbeca $tblbeca
-     * @return \Illuminate\Http\Response
-     */
-    public function show(tblbeca $tblbeca) {
-        return $tblbeca;
-    }
+  
 
     /**
      * Update the specified resource in storage.
@@ -59,8 +48,7 @@ class BecasController extends Controller
         ]);
         
         $tblbeca->update($atributos);
-
-        return response('Actualizado', 200);
+        return $tblbeca;
     }
 
     /**
@@ -70,11 +58,8 @@ class BecasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(tblbeca $tblbeca) {
-        $tblbeca->update([
-            'Nombre' => '',
-            'Tipo' => '',
-            'Existe' => 0
-        ]);
+        
+        $tblbeca->update();
 
         return response('Eliminado');
     }

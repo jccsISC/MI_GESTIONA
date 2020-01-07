@@ -16,9 +16,9 @@ class DependenciasController extends Controller
     {
         /*return tbldependencia::where('user_id', auth()->id())->get();*/
         
-        if($request->ajax()){
+        if ($request->ajax()) {
             return tbldependencia::all();
-        }else{
+        } else {
             return view('home');
         }
         
@@ -54,16 +54,6 @@ class DependenciasController extends Controller
             $dependencia->Existe = 1;
             $dependencia->save();
             /*$pokemon->trainer()->associate($trainer)->save();*/
-
-            
-
-            // //como es una respuesta satisfactoria le notificaremos al request
-            // return response()->json([
-            //     /*"dependencia"=>$dependencia,*/
-            //    // "message" => "La dependencia creado correctamente.",
-            //     //le tenemos que mandar el pokemon que estamos creando creamos la llave pokemon
-            //     "dependencia" => $dependencia
-            // ],200);
             
             return $dependencia;
         }else{
@@ -114,23 +104,21 @@ class DependenciasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\tbldependencia $tbldependencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tbldependencia $tbldependencia)
     {
          //validamos la peticion si es de tipo ajax
          if($request->ajax()){
-            $dependencia = tbldependencia::find($id);
-            $dependencia->Nombre = $request->input('Nombre');
-            $dependencia->Direccion = $request->input('Direccion');
-            $dependencia->Giro = $request->input('Giro');
-            $dependencia->Telefono = $request->input('Telefono');
-            $dependencia->Responsable = $request->input('Responsable');
-            $dependencia->TipoVinculacion = $request->input('TipoVinculacion');
-            $dependencia->save();
+
+            $atributos = $this->validate($request, [
+                'Nombre' => 'required',
+                'Direccion' => 'required'
+            ]);
             
-            return $dependencia;
+            $tbldependencia->update($atributos);
+            return $tbldependencia;
         }else{
             return view('home');
         }
@@ -139,12 +127,13 @@ class DependenciasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\tbldependencia $tbldependencia
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(tbldependencia $tbldependencia)
     {
-        $dependencia = tbldependencia::find($id);
-        $dependencia->delete();
+        $tbldependencia->delete();
+        
+        return response('Eliminado');
     }
 }

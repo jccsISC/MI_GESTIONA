@@ -4,29 +4,39 @@
         <p class="subtitulos">Becas</p>
         <div class="micardB">
             <div v-for="(beca, key) in becas" :key="key" class="micardBeca" data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)">
-                <label><b>{{key === 0 ? 'Interna:' : key === 1 ? 'Externa:' : 'Otro:'}}</b> {{beca.Nombre}}</label>
+                <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
             </div>
         </div>
     </div>
 
-    <create-form-becas @becaActualizada="actualizarBeca($event)"></create-form-becas>
+    
+    <modal-beca></modal-beca>
 </div>
 
 </template>
 
 <script>
+    import bus from '../../../event-bus';
     export default {
         data() {
             return {
-                becas: []
+                becas: [],
+                alumno: {}
             }
         },
-        mounted() {
-            axios.get('/becas').then(res => {
-                this.becas = res.data;
+        created() {
+            bus.$on('alumnoSeleccionado', alumno => {
+                this.alumno = alumno;
+                this.jalarBecas();
             });
         },
         methods: {
+            jalarBecas() {
+                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/becas').then(res => {
+                    this.becas = res.data;
+                    console.log(res);
+                });
+            },
             actualizarBeca(becaActualizada) {
                 const temp = Object.assign({}, this.becas);//clonamos el array becas
                 this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar

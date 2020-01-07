@@ -5,17 +5,16 @@
         <p class="subtitulos">Notificación de justificantes</p>
         <div class="micardNotifications">        
     
-            <div class="micardNotificaciones" >
+            <div  class="micardNotificaciones" v-for="(alumno, key) in alumnos" :key="key" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
-                    <p><b>Julio Cesar Camacho Silva</b></p>
-                    <p><b>6 Semestre</b></p>
-                    <p><b>Grupo: A</b></p>
+                    <p><b>{{ alumno.Nombre }}</b></p>
+                    <p><b>{{ alumno.Grado }}</b></p>
+                    <p><b>{{ alumno.Grupo }}</b></p>
                 </div>
 
                 <div class="minicontent">
-                    <label for=""><b>Justificantes 3</b></label>
-                    <p>Martes 2020-01-07</p>
-                    <p>Jueves 2020-01-23</p>
+                    <label for=""><b>Justificantes {{alumno.justificantes.length}}</b></label>
+                    <p  v-for="(justificante, key2) in alumno.justificantes" :key="key2">{{justificante.Fecha}}</p>
                 </div>
             </div>
 
@@ -24,8 +23,25 @@
 </template>
 
 <script>
+    import bus from '../../../../event-bus';
+
     export default {
-    
+         data() {
+            return {
+                alumnos: []
+            }
+        },
+        created() {
+            axios.get('/trabajosocial').then(res => {
+                this.alumnos = res.data;
+            });
+        },
+        methods: {
+            seleccionarAlumno(alumno) {
+                console.log('click');
+                bus.$emit('alumnoSeleccionado', alumno);
+            }
+        }
     }
 </script>
    

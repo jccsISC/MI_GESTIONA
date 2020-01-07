@@ -30,17 +30,21 @@ Route::get('TS', function(){
 
 //BECAS
 Route::get('becas','BecasController@index');
-//Route::post('becas','BecasController@store');
-//Route::get('becas/{tblbeca}','BecasController@show');
+Route::post('becas','BecasController@store');
 Route::put('becas/{tblbeca}','BecasController@update');
-/*Route::delete('becas/{tblbeca}','BecasController@destroy');*/
+Route::delete('becas/{tblbeca}','BecasController@destroy');
 
 
 //DEPENDENCIAS
 Route::get('dependencias','DependenciasController@index');
 Route::post('dependencias','DependenciasController@store');
+Route::put('dependencias/{tbldependencia}','DependenciasController@update');
 Route::delete('dependencias/{tbldependencia}','DependenciasController@destroy');
 
+//JUSTIFICANTES
+Route::get('trabajosocial', 'TrabajoSocialController@alumnos');
+Route::get('trabajosocial/{tblalumno}/becas', 'TrabajoSocialController@becas');
+Route::get('trabajosocial/{tblalumno}/becas/{tblbeca}', 'TrabajoSocialController@becas');
 
 //ServicioPracticas
 Route::resource('servicioPracticas','ServicioPracticasController');
@@ -48,6 +52,12 @@ Route::resource('TS','ServicioPracticasController');
 
 
 
+// index -> alumnos con mas de 4 justificantes.btn-primary
+// alumnosconcuatrojustificantes/
+
+
+// /alumnos -> todos los alumnos
+// vista de justificantes.´lalsdfjsdaljfdlskjklfdsajlsfdajjdasfjfdsajfasdjfdasjfadsjdfslaj´daslfkjlfsdak
 
 
 
