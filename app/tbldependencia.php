@@ -8,7 +8,11 @@ class tbldependencia extends Model
 {
     protected $table = 'tbldependencias';
     protected $primaryKey = 'IdDependencia';
-    protected $fillable = ['Nombre','Deireccion','Giro','Telefono','Responsable','TipoVinculacion','Existe'];
+    protected $fillable = ['Nombre','Direccion','Giro','Telefono','Responsable','TipoVinculacion','Existe'];
     public $timestamps = false;
-    public $incrementing = false;
+
+    public function practicas() {
+        return $this->hasMany(tblserviciopracticas::class, 'IdDependencias', 'IdDependencia');
+    }
+
 }

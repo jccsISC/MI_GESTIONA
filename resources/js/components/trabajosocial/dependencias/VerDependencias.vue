@@ -41,7 +41,6 @@
                                         @click="$emit('actualizarDependencia', dependencia)">
                                         <i class="far fa-edit"></i>
                                     </button>
-                                    <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
                                 </td>
                                 <td>
                                      <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, key)"><i class="far fa-trash-alt"></i></button>
@@ -84,7 +83,7 @@
                 if (dependencia.esNuevo) {
                     this.dependencias.push(dependencia);
                 } else {
-                    const temp = Object.assign({}, this.dependencias);//clonamos el array becas
+                    const temp = Object.assign({}, this.dependencias);//clonamos el array dependencas
                     this.dependencias = []; //reiniciamos el array beca para que actualice al momento de guardar
                     Object.keys(temp).forEach(key => {
                         if (temp[key].IdDependencia === dependencia.IdDependencia) {

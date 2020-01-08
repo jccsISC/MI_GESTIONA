@@ -43,20 +43,18 @@ class DependenciasController extends Controller
     public function store(Request $request)
     {
         //validamos la peticion si es de tipo ajax
-        if($request->ajax()){
-            $dependencia = new tbldependencia();
-            $dependencia->Nombre = $request->input('Nombre');
-            $dependencia->Direccion = $request->input('Direccion');
-            $dependencia->Giro = $request->input('Giro');
-            $dependencia->Telefono = $request->input('Telefono');
-            $dependencia->Responsable = $request->input('Responsable');
-            $dependencia->TipoVinculacion = $request->input('TipoVinculacion');
-            $dependencia->Existe = 1;
-            $dependencia->save();
+        if ($request->ajax()) {
+            return tbldependencia::create([
+                'Nombre' => $request->input('Nombre'),
+                'Direccion' => $request->input('Direccion'),
+                'Giro' => $request->input('Giro'),
+                'Telefono' => $request->input('Telefono'),
+                'Responsable' => $request->input('Responsable'),
+                'TipoVinculacion' => $request->input('TipoVinculacion'),
+                'Existe' => 1
+            ]);
             /*$pokemon->trainer()->associate($trainer)->save();*/
-            
-            return $dependencia;
-        }else{
+        } else {
             return view('home');
         }
 

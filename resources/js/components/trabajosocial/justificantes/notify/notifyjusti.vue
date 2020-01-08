@@ -5,7 +5,7 @@
         <p class="subtitulos">Notificación de justificantes</p>
         <div class="micardNotifications">        
     
-            <div  class="micardNotificaciones" v-for="(alumno, key) in alumnos" :key="key" @click="seleccionarAlumno(alumno)">
+            <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, key) in alumnos" :key="key" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p><b>{{ alumno.Nombre }}</b></p>
                     <p><b>{{ alumno.Grado }}</b></p>
@@ -14,7 +14,7 @@
 
                 <div class="minicontent">
                     <label for=""><b>Justificantes {{alumno.justificantes.length}}</b></label>
-                    <p  v-for="(justificante, key2) in alumno.justificantes" :key="key2">{{justificante.Fecha}}</p>
+                    <p class="mip" v-for="(justificante, key2) in alumno.justificantes" :key="key2">{{justificante.Fecha}}</p>
                 </div>
             </div>
 
@@ -37,9 +37,12 @@
             });
         },
         methods: {
+
             seleccionarAlumno(alumno) {
                 console.log('click');
                 bus.$emit('alumnoSeleccionado', alumno);
+
+               
             }
         }
     }
@@ -56,11 +59,16 @@
         margin: 0;
         overflow: hidden;
     }
-
     .minicontent{
         width: 50%;
         padding-left: 20px;
         float: left;
+    }
+
+    .mip{
+        width: 100px;
+        height: 20px;
+        overflow: auto;
     }
 
 </style>

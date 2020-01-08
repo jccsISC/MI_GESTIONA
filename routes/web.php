@@ -41,10 +41,11 @@ Route::post('dependencias','DependenciasController@store');
 Route::put('dependencias/{tbldependencia}','DependenciasController@update');
 Route::delete('dependencias/{tbldependencia}','DependenciasController@destroy');
 
-//JUSTIFICANTES
+//TRABAJO SOCIAL
 Route::get('trabajosocial', 'TrabajoSocialController@alumnos');
 Route::get('trabajosocial/{tblalumno}/becas', 'TrabajoSocialController@becas');
 Route::get('trabajosocial/{tblalumno}/becas/{tblbeca}', 'TrabajoSocialController@becas');
+Route::get('trabajosocial/{tblalumno}/practica', 'TrabajoSocialController@practica');
 
 //ServicioPracticas
 Route::resource('servicioPracticas','ServicioPracticasController');

@@ -13,9 +13,11 @@ Vue.component('modal-beca-alumno', require('./components/trabajosocial/becas/Btn
 //justificantes
 Vue.component('card-notify-justificantes', require('./components/trabajosocial/justificantes/notify/notifyjusti.vue').default);
 Vue.component('card-notify-reprobados', require('./components/trabajosocial/justificantes/notify/notifyrepro.vue').default);
+Vue.component('card-info-personal', require('./components/trabajosocial/CardInfoPersonal.vue').default);
+
 //practicas
 Vue.component('card-practicas', require('./components/trabajosocial/practicas/cardpracticas.vue').default);
-Vue.component('create-form-practicas', require('./components/trabajosocial/practicas/add.vue').default);
+Vue.component('create-form-practicas', require('./components/trabajosocial/practicas/AgregarPractica.vue').default);
 //dependencias
 Vue.component('modal-button', require('./components/trabajosocial/dependencias/Modal-button.vue').default);
 Vue.component('ver-dependencias', require('./components/trabajosocial/dependencias/VerDependencias.vue').default);

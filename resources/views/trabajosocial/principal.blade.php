@@ -48,50 +48,18 @@
   
    <!--contenedores con información seccionada-->
    <section class="contenedor-secciones">
-       <!--card info personal-->
-       <div class="contenedorCard">
-            <p class="subtitulos">Información Personal</p>
-            <div id="cardInfoPersonal" class="micard" onclick="abrir()">
-               <div>
-                   <label for=""><b>Matricula:</b></label>
-                   
-               </div>
-           </div>
-       </div>
-       
-        <!--card becas-->
-        <card-becas></card-becas>
-  
-       <!--card praticas profesionales-->
-       <card-practicas></card-practicas>
+      <!--card info personal-->
+      <card-info-personal></card-info-personal>
+      
+      <!--card becas-->
+      <card-becas></card-becas>
+      
+      <!--card praticas profesionales-->
+      <card-practicas tipo="pp"></card-practicas>
 
        <!--card servicio social-->
-       <div class="contenedorCard">
-            <p class="subtitulos">Servicio Social</p>
-            <div id="cardInfoP" class="micardsm">
-                <div class="contenedorPracticasServicio">
-                    <div>
-                        <label for="dependencia"><b>Dependencia:</b></label>
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->IdDependencias}}</p>
-                        @endforeach
-                    </div>
-                    <div>
-                        <label for="fInicio"><b>Fecha de inicio:</b></label> 
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->FechaInicio}}</p>
-                        @endforeach
-                    </div>
-                    <div>
-                        <label for="fFin"><b>Fecha de finalización:</b></label>
-                        @foreach ($servPrac as $SP)
-                            <p>{{$SP->FechaFin}}</p>
-                        @endforeach
-                    </div>
-               </div>
-           </div>
-       </div>
-
+       <card-practicas tipo="ss"></card-practicas>
+       
        <!--card justificantes y pases-->
        <div class="contenedorCard">
             <p class="subtitulos">Justificantes y Pases de salida</p>

@@ -55,6 +55,7 @@
     created: function() {
       this.$parent.$on('actualizarDependencia', dependencia => {
         this.dependencia = JSON.parse(JSON.stringify(dependencia));
+        this.dependencia.esNuevo = false;
       });
     },  
     data() {
@@ -90,10 +91,11 @@
           alert('Debes de completar todos los campos antes de guardar');
           return;
         }
-
+        
         axios.post('/dependencias', this.dependencia)
           .then(res => {
             res.data.esNuevo = true;
+            console.log(res.data);
             this.onSuccess(res);
           });
       }

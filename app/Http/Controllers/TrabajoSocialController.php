@@ -18,6 +18,30 @@ class TrabajoSocialController extends Controller
      * @param  \App\tblalumno
      * @return \Illuminate\Http\Response
      */
+    public function practica(tblalumno $tblalumno, Request $request) 
+    {   //ver los cambios que me pidió kevin en la ultima llamada hay una foto
+        if ($tblalumno->practicas) {
+            $tipo = $request->query('tipo') == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
+           
+            $practica = $tblalumno->practicas->firstWhere('Tipo', $tipo);
+            
+            if (!empty($practica)) {
+                $dependencia = $practica->dependencia;
+                $practica->dependencia = $dependencia;
+                return $practica;
+                //return $p->with('dependencia')->get();
+            }
+        }
+        
+        return response('No hay practicas', 400);
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\tblalumno
+     * @return \Illuminate\Http\Response
+     */
     public function becas(tblalumno $tblalumno) 
     {   //ver los cambios que me pidió kevin en la ultima llamada hay una foto
         return $tblalumno->becas;

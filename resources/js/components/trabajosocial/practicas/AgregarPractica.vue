@@ -32,42 +32,7 @@
 
 <script>
   export default {
-    /*created: function() {
-      this.$parent.$on('actualizarBeca', beca => {
-          this.beca = Object.assign({}, beca);
-      });
-    },    
-    data: function () {
-      return {
-        beca: {}
-      }
-    },
-    methods: {
-      saveBeca: function() {
-        axios.put('becas/' + this.beca.IdBeca, this.beca)
-          .then(response => {
-            this.onSuccess();
-          })
-          .catch(error => {
-            console.log('kevin', error.code);
-          });
-      },
-      eliminarBeca: function() {
-        this.beca.Nombre = '';
-        this.beca.Tipo = '';
-        axios.delete('becas/' + this.beca.IdBeca)
-          .then(response => {
-           this.onSuccess();
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      },
-      onSuccess: function() {
-        this.$emit('becaActualizada', this.beca);
-        $('#addBeca').modal('hide');
-      }
-    }*/
+   
   }
 </script>
 

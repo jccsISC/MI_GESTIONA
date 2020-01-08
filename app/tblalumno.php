@@ -22,4 +22,14 @@ class tblalumno extends Model
     public function becas(){
         return $this->belongsToMany(tblbeca::class,'tbldetallebecas', 'IdAlumno', 'IdBeca');
     }
+
+    public function practicas() {
+        return $this->hasMany(tblserviciopracticas::class, 'IdAlumno', 'IdAlumno');
+    }
+    
+
+    // alumnos -> practica -> dependecia
+
+
+    
 }
