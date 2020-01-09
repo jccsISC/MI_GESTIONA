@@ -13,5 +13,5 @@ class tblsalud extends Model
                            'PiePlano','ProbAuditivo','ProbLenguaje','Gravidez','DetGravidez',
                            'ProbBucal','Pediculosis','Transtornos','Otros','DetOtros','Existe'];
     public $timestamps = false;
-    public $incrementing = false;
+    
 }

@@ -3,13 +3,22 @@
     <div class="contenedorCard">
         <p class="subtitulos">Becas</p>
         <div class="micardB">
-            <div v-for="(beca, key) in becas" :key="key" class="micardBeca" data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)">
+            <div v-for="(beca, key) in becas" :key="key" class="micardBeca" @click="$emit('actualizarBeca', beca)">
                 <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
+                <button class="btn btn-danger btn-sm float-md-right" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
             </div>
         </div>
     </div>
 
-    
+    <div v-if="alumno.IdAlumno" class="col centrar">
+        <button type="button" class="top-space d-block mx-auto" data-toggle="modal" data-target="#DetalleBeca"
+            @click="$emit('agregarBecaAlumno', alumno)">
+            <i class="fas fa-plus-circle"></i>
+        </button>
+        
+        <detalleBeca @becaAlumnoAgregada="becas.push($event)"></detalleBeca>     
+    </div>
+
     <modal-beca></modal-beca>
 </div>
 
@@ -21,7 +30,8 @@
         data() {
             return {
                 becas: [],
-                alumno: {}
+                alumno: {},
+            
             }
         },
         created() {
@@ -48,6 +58,15 @@
                         this.becas[key] = temp[key];
                     }
                 });
+            },
+            eliminarBecaAlumno(beca, key) {
+                // Lo elimina en la base de datos.
+                axios.delete('/trabajosocial/'+this.alumno.IdAlumno+'/becas/' + beca.IdBeca)
+                .then(res => {
+                    // Lo elimina de manera visual.
+                    this.becas.splice(key,1);
+                   
+                })
             }
         }
     }
@@ -72,7 +91,7 @@
             width: 95%;
             height: 25px;
             background-color: white;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+           /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/
             border-radius: 3px;
             transition: 0.5s;
             border: 1px solid rgb(211, 211, 211);
@@ -84,9 +103,9 @@
         }
 
 
-        .micardBeca:hover{
-            /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);*/
+        /* .micardBeca:hover{
+            /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11)
-        }
+        } */
 
 </style>

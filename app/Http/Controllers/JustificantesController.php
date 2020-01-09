@@ -11,9 +11,13 @@ class JustificantesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            return tbljustificante::all();
+        } else {
+            return view('home');
+        }
     }
 
     /**
@@ -34,7 +38,18 @@ class JustificantesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            return tbljustificante::create([
+                'FechaInicio' => $request->input('FechaInicio'),
+                'FechaFin' => $request->input('FechaFin'),
+                'Motivo' => $request->input('Motivo'),
+                'Existe' => 1
+            ]);
+            /*$pokemon->trainer()->associate($trainer)->save();*/
+        } else {
+            return view('home');
+        }
+
     }
 
     /**
@@ -63,22 +78,37 @@ class JustificantesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\tbljustificante $tbljustificante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tbljustificante $tbljustificante)
     {
-        //
+        //validamos la peticion si es de tipo ajax
+        if($request->ajax()){
+
+            $atributos = $this->validate($request, [
+                'FechaInicio' => 'required',
+                'FechaFin' => 'required',
+                'Motivo' => 'required'
+            ]);
+            
+            $tbljustificante->update($atributos);
+            return $tbljustificante;
+        }else{
+            return view('home');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\tbljustificante $tbljustificante
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(tbljustificante $tbljustificante)
     {
-        //
+        $tbljustificante->delete();
+        
+        return response('Eliminado');
     }
 }

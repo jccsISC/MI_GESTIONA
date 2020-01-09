@@ -57,23 +57,6 @@ class DependenciasController extends Controller
         } else {
             return view('home');
         }
-
-
-      /*  $atributos = $this->validate($request, [
-            'Nombre' => 'required',
-            'Direccion' => 'required',
-            'Giro' => 'required',
-            'Telefono' => 'required',
-            'Responsable' => 'required',
-            'TipoVinculacion' => 'required',
-        ]);
-        
-        tblbeca::create(['Nombre' => $atributos['Nombre'], 'Direccion' => $atributos['Direccion'], 'Giro' => $atributos['Giro'],
-                         'Telefono' => $atributos['Telefono'], 'Responsable' => $atributos['Responsable'], 
-                         'TipoVinculacion' => $atributos['TipoVinculacion'],'Existe' => 1 ]);
-        tblbeca::create($atributos);
-
-        return response('Actualizado', 200);*/
     }
 
     /**

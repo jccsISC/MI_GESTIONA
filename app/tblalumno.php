@@ -27,6 +27,9 @@ class tblalumno extends Model
         return $this->hasMany(tblserviciopracticas::class, 'IdAlumno', 'IdAlumno');
     }
     
+    public function pases() {
+        return $this->hasMany(tblpasesalida::class, 'IdAlumno', 'IdAlumno');
+    }
 
     // alumnos -> practica -> dependecia
 

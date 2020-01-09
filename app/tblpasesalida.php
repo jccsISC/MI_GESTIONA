@@ -10,5 +10,13 @@ class tblpasesalida extends Model
     protected $primaryKey = 'IdPaseSal';
     protected $fillable = ['IdAlumno','Fecha','IdFamiliar','Motivo','Descripcion','Existo'];
     public $timestamps = false;
-    public $incrementing = false;
+    
+    public function alumno() {
+        return $this->belongsTo(tblalumno::class, 'IdAlumno');
+    }
+
+
+    public function familiar() {
+        return $this->belongsTo(tblfamiliare::class,'IdFamiliar');
+    }
 }

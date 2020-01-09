@@ -1983,15 +1983,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2005,7 +2006,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      becas: [],
+      alumno: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
+      _this.alumno = alumno;
+
+      _this.jalarBecas();
+    });
+  },
+  methods: {
+    jalarBecas: function jalarBecas() {
+      var _this2 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/becas').then(function (res) {
+        _this2.becas = res.data;
+        console.log(res);
+      });
+    },
+    actualizarBeca: function actualizarBeca(becaActualizada) {
+      var _this3 = this;
+
+      var temp = Object.assign({}, this.becas); //clonamos el array becas
+
+      this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
+
+      Object.keys(temp).forEach(function (key) {
+        if (temp[key].IdBeca === becaActualizada.IdBeca) {
+          _this3.becas[key] = becaActualizada;
+        } else {
+          _this3.becas[key] = temp[key];
+        }
+      });
+    },
+    eliminarBecaAlumno: function eliminarBecaAlumno(beca, key) {
+      var _this4 = this;
+
+      // Lo elimina en la base de datos.
+      axios["delete"]('/trabajosocial/' + this.alumno.IdAlumno + '/becas/' + beca.IdBeca).then(function (res) {
+        // Lo elimina de manera visual.
+        _this4.becas.splice(key, 1);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -2047,46 +2112,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      becas: [],
+      alumno: {},
+      becaSeleccionada: null
+    };
+  },
   created: function created() {
     var _this = this;
 
-    this.$parent.$on('actualizarBeca', function (beca) {
-      _this.beca = Object.assign({}, beca);
+    this.$parent.$on('agregarBecaAlumno', function (alumno) {
+      _this.alumno = alumno;
+      axios.get('/becas').then(function (res) {
+        _this.becas = res.data;
+      });
     });
-  },
-  data: function data() {
-    return {
-      beca: {}
-    };
   },
   methods: {
     saveBeca: function saveBeca() {
       var _this2 = this;
 
-      axios.put('becas/' + this.beca.IdBeca, this.beca).then(function (response) {
-        _this2.onSuccess();
-      })["catch"](function (error) {
-        console.log('kevin', error.code);
-      });
-    },
-    eliminarBeca: function eliminarBeca() {
-      var _this3 = this;
+      if (!this.becaSeleccionada) {
+        return '';
+      }
 
-      this.beca.Nombre = '';
-      this.beca.Tipo = '';
-      axios["delete"]('becas/' + this.beca.IdBeca).then(function (response) {
-        _this3.onSuccess();
+      axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/becas/' + this.becaSeleccionada).then(function (res) {
+        // cerrar modal
+        _this2.$emit('becaAlumnoAgregada', res.data);
+
+        $('#DetalleBeca').modal('hide');
       })["catch"](function (error) {
+        console.log('no es valido');
         console.log(error);
       });
-    },
-    onSuccess: function onSuccess() {
-      this.$emit('becaActualizada', this.beca);
-      $('#addBeca').modal('hide');
     }
   }
 });
@@ -2236,16 +2296,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2263,45 +2322,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['tipo'],
   data: function data() {
     return {
-      becas: [],
-      alumno: {}
+      alumno: {},
+      practica: {},
+      dependencias: []
     };
   },
   created: function created() {
     var _this = this;
 
-    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
+    this.$parent.$on('agregarPracticaAlumno', function (alumno) {
+      _this.practica = {};
       _this.alumno = alumno;
-
-      _this.jalarBecas();
+      axios.get('/dependencias').then(function (res) {
+        _this.dependencias = res.data;
+      });
     });
   },
   methods: {
-    jalarBecas: function jalarBecas() {
+    savePractica: function savePractica() {
       var _this2 = this;
 
-      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/becas').then(function (res) {
-        _this2.becas = res.data;
-        console.log(res);
-      });
-    },
-    actualizarBeca: function actualizarBeca(becaActualizada) {
-      var _this3 = this;
+      this.practica.Tipo = this.tipo == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
+      console.log(this.practica);
+      axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/practica', this.practica).then(function (res) {
+        // cerrar modal
+        _this2.$emit('practicaAlumnoAgregada', res.data);
 
-      var temp = Object.assign({}, this.becas); //clonamos el array becas
-
-      this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
-
-      Object.keys(temp).forEach(function (key) {
-        if (temp[key].IdBeca === becaActualizada.IdBeca) {
-          _this3.becas[key] = becaActualizada;
-        } else {
-          _this3.becas[key] = temp[key];
-        }
+        $('#addPractServenAlumn').modal('hide');
+      })["catch"](function (error) {
+        console.log('no es valido');
+        console.log(error);
       });
     }
   }
@@ -2577,6 +2654,175 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      justificante: {}
+    };
+  },
+  methods: {
+    saveBeca: function saveBeca() {
+      var _this = this;
+
+      if (this.justificante.FechaInici.trim() === '' || this.justificante.FechaFin.trim() === '') {
+        alert('Debes de completar todos los campos antes de guardar');
+        return;
+      }
+
+      axios.post('/justificantes', this.justificante).then(function (res) {
+        _this.$emit('guardarJustificante', res.data);
+
+        $('#addJustificante').modal('hide');
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      alumno: {},
+      justificantes: [],
+      pases: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
+      _this.alumno = alumno;
+
+      _this.jalarJustificantes();
+
+      _this.jalarPases();
+    });
+  },
+  methods: {
+    jalarPases: function jalarPases() {
+      var _this2 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(function (res) {
+        _this2.pases = res.data;
+        console.log(res.data);
+      });
+    },
+    jalarJustificantes: function jalarJustificantes() {
+      var _this3 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes').then(function (res) {
+        _this3.justificantes = res.data;
+        console.log(res.data);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=script&lang=js& ***!
@@ -2621,7 +2867,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/trabajosocial').then(function (res) {
+    axios.get('/trabajosocial?tipo=justificantes').then(function (res) {
       _this.alumnos = res.data;
     });
   },
@@ -2644,6 +2890,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2668,11 +2915,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      alumnos: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/trabajosocial?tipo=pases').then(function (res) {
+      _this.alumnos = res.data;
+    });
+  },
+  methods: {
+    seleccionarAlumno: function seleccionarAlumno(alumno) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('alumnoSeleccionado', alumno);
+    }
+  }
+});
 
 /***/ }),
 
@@ -2731,6 +2993,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7311,9 +7584,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7323,7 +7596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n.micardBeca:hover{\n    /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);*/\n    box-shadow: 0 2px 4px 0 rgb(167, 11, 11)\n}\n\n", ""]);
+exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n\n\n/* .micardBeca:hover{\n    /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);\n    box-shadow: 0 2px 4px 0 rgb(167, 11, 11)\n} */\n\n", ""]);
 
 // exports
 
@@ -7371,6 +7644,25 @@ exports.push([module.i, "\n.contentTable th, td{\n    font-size: 13px;\n}\n\n\n"
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=style&index=0&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 10px;\n}\n.micardNotificaciones p{\n    padding: 0;\n    margin: 0;\n    overflow: hidden;\n}\n.minicontent{\n    width: 50%;\n    padding-left: 20px;\n    float: left;\n}\n.mip{\n    width: 100px;\n    height: 20px;\n    overflow: auto;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -38245,15 +38537,15 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&":
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cardbecas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardBecas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -38344,6 +38636,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./notifyjusti.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./notifyrepro.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -39200,10 +39522,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39217,30 +39539,91 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col centrar" },
-    [_vm._m(0), _vm._v(" "), _c("detalleBeca")],
+    [
+      _c("div", { staticClass: "contenedorCard" }, [
+        _c("p", { staticClass: "subtitulos" }, [_vm._v("Becas")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "micardB" },
+          _vm._l(_vm.becas, function(beca, key) {
+            return _c(
+              "div",
+              {
+                key: key,
+                staticClass: "micardBeca",
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("actualizarBeca", beca)
+                  }
+                }
+              },
+              [
+                _c("label", [
+                  _c("b", [_vm._v(_vm._s(beca.Tipo))]),
+                  _vm._v(" " + _vm._s(beca.Nombre))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-sm float-md-right",
+                    on: {
+                      click: function($event) {
+                        return _vm.eliminarBecaAlumno(beca, key)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "far fa-trash-alt" })]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm.alumno.IdAlumno
+        ? _c(
+            "div",
+            { staticClass: "col centrar" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "top-space d-block mx-auto",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#DetalleBeca"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("agregarBecaAlumno", _vm.alumno)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle" })]
+              ),
+              _vm._v(" "),
+              _c("detalleBeca", {
+                on: {
+                  becaAlumnoAgregada: function($event) {
+                    return _vm.becas.push($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("modal-beca")
+    ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "top-space d-block mx-auto",
-        attrs: {
-          type: "button",
-          "data-toggle": "modal",
-          "data-target": "#DetalleBeca"
-        }
-      },
-      [_c("i", { staticClass: "fas fa-plus-circle" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39266,7 +39649,7 @@ var render = function() {
     "div",
     {
       staticClass: "modal fade",
-      attrs: { id: "addBeca", role: "dialog", "aria-hidden": "true" }
+      attrs: { id: "DetalleBeca", role: "dialog", "aria-hidden": "true" }
     },
     [
       _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
@@ -39288,76 +39671,49 @@ var render = function() {
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Nombre")]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.beca.Nombre,
-                        expression: "beca.Nombre"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Ingresa el nombre de la beca"
-                    },
-                    domProps: { value: _vm.beca.Nombre },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.becaSeleccionada,
+                          expression: "becaSeleccionada"
                         }
-                        _vm.$set(_vm.beca, "Nombre", $event.target.value)
+                      ],
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.becaSeleccionada = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
                       }
-                    }
-                  })
+                    },
+                    _vm._l(_vm.becas, function(beca, key) {
+                      return _c(
+                        "option",
+                        { key: key, domProps: { value: beca.IdBeca } },
+                        [
+                          _vm._v(
+                            _vm._s(beca.Nombre) + " - " + _vm._s(beca.Tipo)
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Tipo de beca")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.beca.Tipo,
-                        expression: "beca.Tipo"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      placeholder: "Ingresa el tipo de la beca"
-                    },
-                    domProps: { value: _vm.beca.Tipo },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.beca, "Tipo", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("Guardar")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: { click: _vm.eliminarBeca }
-                  },
-                  [_vm._v("Eliminar")]
-                )
+                _vm._m(1)
               ]
             )
           ])
@@ -39387,6 +39743,16 @@ var staticRenderFns = [
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "far fa-save" }), _vm._v(" Guardar")]
+    )
   }
 ]
 render._withStripped = true
@@ -39491,8 +39857,8 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.becas, function(beca, key) {
-                          return _c("tr", { key: key }, [
+                        _vm._l(_vm.becas, function(beca, keybeca) {
+                          return _c("tr", { key: keybeca }, [
                             _c("td", [_vm._v(" " + _vm._s(beca.Nombre) + " ")]),
                             _vm._v(" "),
                             _c("td", [_vm._v(" " + _vm._s(beca.Tipo) + " ")]),
@@ -39523,7 +39889,7 @@ var render = function() {
                                   staticClass: "btn btn-danger btn-sm",
                                   on: {
                                     click: function($event) {
-                                      return _vm.eliminarBeca(beca, key)
+                                      return _vm.eliminarBeca(beca, keybeca)
                                     }
                                   }
                                 },
@@ -39616,10 +39982,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39633,44 +39999,183 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "addPractServenAlumn",
+        role: "dialog",
+        "aria-hidden": "true"
+      }
+    },
     [
-      _c("div", { staticClass: "contenedorCard" }, [
-        _c("p", { staticClass: "subtitulos" }, [_vm._v("Becas")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "micardB" },
-          _vm._l(_vm.becas, function(beca, key) {
-            return _c(
-              "div",
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c(
+              "form",
               {
-                key: key,
-                staticClass: "micardBeca",
-                attrs: { "data-toggle": "modal", "data-target": "#addBeca" },
                 on: {
-                  click: function($event) {
-                    return _vm.$emit("actualizarBeca", beca)
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.savePractica($event)
                   }
                 }
               },
               [
-                _c("label", [
-                  _c("b", [_vm._v(_vm._s(beca.Tipo))]),
-                  _vm._v(" " + _vm._s(beca.Nombre))
-                ])
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Dependencia")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.practica.IdDependencias,
+                          expression: "practica.IdDependencias"
+                        }
+                      ],
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.practica,
+                            "IdDependencias",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.dependencias, function(dependencia, key) {
+                      return _c(
+                        "option",
+                        {
+                          key: key,
+                          domProps: { value: dependencia.IdDependencia }
+                        },
+                        [_vm._v(_vm._s(dependencia.Nombre))]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Fecha Inicio")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.practica.FechaInicio,
+                        expression: "practica.FechaInicio"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      placeholder: "Ingresa la fecha inicial"
+                    },
+                    domProps: { value: _vm.practica.FechaInicio },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.practica,
+                          "FechaInicio",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Fecha Final")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.practica.FechaFin,
+                        expression: "practica.FechaFin"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      placeholder: "Ingresa el nombre de la dependencia"
+                    },
+                    domProps: { value: _vm.practica.FechaFin },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.practica, "FechaFin", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
               ]
             )
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("modal-beca")
-    ],
-    1
+          ])
+        ])
+      ])
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Agregar")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "far fa-save" }), _vm._v(" Guardar")]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -40063,8 +40568,11 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.dependencias, function(dependencia, key) {
-                          return _c("tr", { key: key }, [
+                        _vm._l(_vm.dependencias, function(
+                          dependencia,
+                          keydependencia
+                        ) {
+                          return _c("tr", { key: keydependencia }, [
                             _c("td", [
                               _vm._v(" " + _vm._s(dependencia.Nombre) + " ")
                             ]),
@@ -40124,7 +40632,7 @@ var render = function() {
                                     click: function($event) {
                                       return _vm.eliminarDependencia(
                                         dependencia,
-                                        key
+                                        _vm.keydependencia2
                                       )
                                     }
                                   }
@@ -40226,6 +40734,331 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: { id: "addJustificantes", role: "dialog", "aria-hidden": "true" }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onSubmit($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Fecha Inicio")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.justificante.FechaInicio,
+                        expression: "justificante.FechaInicio"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      placeholder: "Ingresa la fecha inicial"
+                    },
+                    domProps: { value: _vm.justificante.FechaInicio },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.justificante,
+                          "FechaInicio",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Fecha Fin")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.justificante.FechaFin,
+                        expression: "justificante.FechaFin"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      placeholder: "Ingresa la fecha final"
+                    },
+                    domProps: { value: _vm.justificante.FechaFin },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.justificante,
+                          "FechaFin",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Motivo")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.justificante.Motivo,
+                        expression: "justificante.Motivo"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Ingresa el motivo del justificante"
+                    },
+                    domProps: { value: _vm.justificante.Motivo },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.justificante,
+                          "Motivo",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Crear Justificante")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary float-right", attrs: { type: "submit" } },
+      [_c("i", { staticClass: "far fa-save" }), _vm._v("Guardar")]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "contenedorCard" },
+    [
+      _c("p", { staticClass: "subtitulos" }, [
+        _vm._v("Justificantes y Pases de Salida")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "micardsm",
+          attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
+        },
+        [
+          _c("div", { staticClass: "contenedorPracticasServicio" }, [
+            _c(
+              "div",
+              [
+                _vm._m(0),
+                _c("br"),
+                _vm._v(" "),
+                _vm._l(_vm.justificantes, function(
+                  justificante,
+                  keyjustificantepase
+                ) {
+                  return _c("label", { key: keyjustificantepase }, [
+                    _c("b", [_vm._v("Días: ")]),
+                    _vm._v(_vm._s(justificante.FechaInicio))
+                  ])
+                }),
+                _c("br")
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _vm._m(1),
+                _c("br"),
+                _vm._v(" "),
+                _vm._l(_vm.pases, function(pase, keyjustificantepase2) {
+                  return _c("label", { key: keyjustificantepase2 }, [
+                    _c("b", [_vm._v("Días: ")]),
+                    _vm._v(_vm._s(pase.Fecha))
+                  ])
+                }),
+                _c("br")
+              ],
+              2
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("modal-justificante")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Justificantes")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Pases de Salida")])])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96&":
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col centrar" },
+    [
+      _c(
+        "button",
+        {
+          staticClass: "top-space d-block mx-auto",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#addJustificantes"
+          }
+        },
+        [_vm._v("\n    Justificantes\n    ")]
+      ),
+      _vm._v(" "),
+      _c("add-justificante")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=template&id=10d9d6de&":
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue?vue&type=template&id=10d9d6de& ***!
@@ -40255,11 +41088,11 @@ var render = function() {
     _c(
       "div",
       { staticClass: "micardNotifications" },
-      _vm._l(_vm.alumnos, function(alumno, key) {
+      _vm._l(_vm.alumnos, function(alumno, keyjustificante) {
         return _c(
           "div",
           {
-            key: key,
+            key: keyjustificante,
             staticClass: "micardNotificaciones",
             attrs: { id: "bgNotify" },
             on: {
@@ -40289,10 +41122,15 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._l(alumno.justificantes, function(justificante, key2) {
-                  return _c("p", { key: key2, staticClass: "mip" }, [
-                    _vm._v(_vm._s(justificante.Fecha))
-                  ])
+                _vm._l(alumno.justificantes, function(
+                  justificante,
+                  keyjustificante2
+                ) {
+                  return _c(
+                    "p",
+                    { key: keyjustificante2, staticClass: "mip" },
+                    [_vm._v(_vm._s(justificante.Fecha))]
+                  )
                 })
               ],
               2
@@ -40326,54 +41164,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "contenedorCard" }, [
+    _c("p", { staticClass: "subtitulos-small" }, [
+      _vm._v("16-09-2019 a 20-09-2019")
+    ]),
+    _vm._v(" "),
+    _c("p", { staticClass: "subtitulos-small" }, [_vm._v("Semana 3")]),
+    _vm._v(" "),
+    _c("p", { staticClass: "subtitulos" }, [
+      _vm._v("Notificación de pases de salida")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "micardNotifications" },
+      _vm._l(_vm.alumnos, function(alumno, keypases) {
+        return _c(
+          "div",
+          {
+            key: keypases,
+            staticClass: "micardNotificaciones",
+            attrs: { id: "bgNotify" },
+            on: {
+              click: function($event) {
+                return _vm.seleccionarAlumno(alumno)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "minicontent" }, [
+              _c("p", [_c("b", [_vm._v(_vm._s(alumno.Nombre))])]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v(_vm._s(alumno.Grado))])]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v(_vm._s(alumno.Grupo))])])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "minicontent" },
+              [
+                _c("label", { attrs: { for: "" } }, [
+                  _c("b", [_vm._v("Pases " + _vm._s(alumno.pases.length))])
+                ]),
+                _vm._v(" "),
+                _vm._l(alumno.pases, function(pase, keypases2) {
+                  return _c("p", { key: keypases2, staticClass: "mip" }, [
+                    _vm._v(_vm._s(pase.Fecha))
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      }),
+      0
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contenedorCardReprobados" }, [
-      _c("p", { staticClass: "subtitulos" }, [
-        _vm._v("Notificación de Pases de Salida")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "micardNotifications", attrs: { id: "cardInfoP" } },
-        [
-          _c("div", { staticClass: "contenedorNotReprobaciones" }, [
-            _c("div", {
-              staticClass: "micardNotificaciones",
-              attrs: { id: "cardInfoP" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedorNotReprobaciones" }, [
-            _c("div", {
-              staticClass: "micardNotificaciones",
-              attrs: { id: "cardInfoP" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedorNotReprobaciones" }, [
-            _c("div", {
-              staticClass: "micardNotificaciones",
-              attrs: { id: "cardInfoP" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contenedorNotReprobaciones" }, [
-            _c("div", {
-              staticClass: "micardNotificaciones",
-              attrs: { id: "cardInfoP" }
-            })
-          ])
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40592,6 +41442,44 @@ var render = function() {
           ])
         ]
       ),
+      _vm._v(" "),
+      _vm.alumno.IdAlumno
+        ? _c(
+            "div",
+            { staticClass: "col centrar" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "top-space d-block mx-auto",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#addPractServenAlumn"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("agregarPracticaAlumno", _vm.alumno)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle" })]
+              ),
+              _vm._v(" "),
+              _c("add-practservi-alumn", {
+                attrs: { tipo: _vm.tipo },
+                on: {
+                  practicaAlumnoAgregada: function($event) {
+                    _vm.practica = $event
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("crear-dependencia"),
       _vm._v(" "),
       _c("modal-button")
     ],
@@ -52775,14 +53663,16 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('modal-beca', __webpack_require__(/*! ./components/trabajosocial/becas/Modal-buttonBeca.vue */ "./resources/js/components/trabajosocial/becas/Modal-buttonBeca.vue")["default"]);
 Vue.component('ver-becas', __webpack_require__(/*! ./components/trabajosocial/becas/VerBecas.vue */ "./resources/js/components/trabajosocial/becas/VerBecas.vue")["default"]);
-Vue.component('create-form-becas', __webpack_require__(/*! ./components/trabajosocial/becas/AgregarBeca.vue */ "./resources/js/components/trabajosocial/becas/AgregarBeca.vue")["default"]);
-Vue.component('card-becas', __webpack_require__(/*! ./components/trabajosocial/becas/cardbecas.vue */ "./resources/js/components/trabajosocial/becas/cardbecas.vue")["default"]);
+Vue.component('card-becas', __webpack_require__(/*! ./components/trabajosocial/becas/CardBecas.vue */ "./resources/js/components/trabajosocial/becas/CardBecas.vue")["default"]);
 Vue.component('detalleBeca', __webpack_require__(/*! ./components/trabajosocial/becas/DetalleBeca.vue */ "./resources/js/components/trabajosocial/becas/DetalleBeca.vue")["default"]);
-Vue.component('modal-beca-alumno', __webpack_require__(/*! ./components/trabajosocial/becas/BtnBecaAlumno.vue */ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue")["default"]); //justificantes
+Vue.component('create-form-becas', __webpack_require__(/*! ./components/trabajosocial/becas/AgregarBeca.vue */ "./resources/js/components/trabajosocial/becas/AgregarBeca.vue")["default"]); //justificantes
 
 Vue.component('card-notify-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/notifyjusti.vue */ "./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue")["default"]);
 Vue.component('card-notify-reprobados', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/notifyrepro.vue */ "./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue")["default"]);
-Vue.component('card-info-personal', __webpack_require__(/*! ./components/trabajosocial/CardInfoPersonal.vue */ "./resources/js/components/trabajosocial/CardInfoPersonal.vue")["default"]); //practicas
+Vue.component('card-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/CardJustificantes.vue */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue")["default"]);
+Vue.component('card-info-personal', __webpack_require__(/*! ./components/trabajosocial/CardInfoPersonal.vue */ "./resources/js/components/trabajosocial/CardInfoPersonal.vue")["default"]);
+Vue.component('add-justificante', __webpack_require__(/*! ./components/trabajosocial/justificantes/AgregarJustificante.vue */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue")["default"]);
+Vue.component('modal-justificante', __webpack_require__(/*! ./components/trabajosocial/justificantes/Modal-buttonJustificante.vue */ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue")["default"]); //practicas
 
 Vue.component('card-practicas', __webpack_require__(/*! ./components/trabajosocial/practicas/cardpracticas.vue */ "./resources/js/components/trabajosocial/practicas/cardpracticas.vue")["default"]);
 Vue.component('create-form-practicas', __webpack_require__(/*! ./components/trabajosocial/practicas/AgregarPractica.vue */ "./resources/js/components/trabajosocial/practicas/AgregarPractica.vue")["default"]); //dependencias
@@ -52790,6 +53680,7 @@ Vue.component('create-form-practicas', __webpack_require__(/*! ./components/trab
 Vue.component('modal-button', __webpack_require__(/*! ./components/trabajosocial/dependencias/Modal-button.vue */ "./resources/js/components/trabajosocial/dependencias/Modal-button.vue")["default"]);
 Vue.component('ver-dependencias', __webpack_require__(/*! ./components/trabajosocial/dependencias/VerDependencias.vue */ "./resources/js/components/trabajosocial/dependencias/VerDependencias.vue")["default"]);
 Vue.component('crear-dependencia', __webpack_require__(/*! ./components/trabajosocial/dependencias/AgregarDependencias.vue */ "./resources/js/components/trabajosocial/dependencias/AgregarDependencias.vue")["default"]);
+Vue.component('add-practservi-alumn', __webpack_require__(/*! ./components/trabajosocial/dependencias/AddPracServAlumn.vue */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
@@ -52979,18 +53870,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue ***!
-  \***********************************************************************/
+/***/ "./resources/js/components/trabajosocial/becas/CardBecas.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/becas/CardBecas.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BtnBecaAlumno.vue?vue&type=template&id=236ae94e& */ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e&");
-/* harmony import */ var _BtnBecaAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BtnBecaAlumno.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardBecas.vue?vue&type=template&id=981e69e2& */ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2&");
+/* harmony import */ var _CardBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardBecas.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardBecas.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -52998,10 +53891,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _BtnBecaAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CardBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -53011,38 +53904,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue"
+component.options.__file = "resources/js/components/trabajosocial/becas/CardBecas.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnBecaAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnBecaAlumno.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnBecaAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardBecas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e& ***!
-  \******************************************************************************************************/
+/***/ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardBecas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2& ***!
+  \**************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./BtnBecaAlumno.vue?vue&type=template&id=236ae94e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/BtnBecaAlumno.vue?vue&type=template&id=236ae94e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardBecas.vue?vue&type=template&id=981e69e2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/CardBecas.vue?vue&type=template&id=981e69e2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BtnBecaAlumno_vue_vue_type_template_id_236ae94e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardBecas_vue_vue_type_template_id_981e69e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -53255,20 +54164,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/cardbecas.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/cardbecas.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue ***!
+  \*********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardbecas.vue?vue&type=template&id=0cdf7b4f& */ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f&");
-/* harmony import */ var _cardbecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cardbecas.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cardbecas.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
+/* harmony import */ var _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPracServAlumn.vue?vue&type=template&id=eb99f408& */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408&");
+/* harmony import */ var _AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPracServAlumn.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -53276,10 +54183,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _cardbecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -53289,54 +54196,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/trabajosocial/becas/cardbecas.vue"
+component.options.__file = "resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cardbecas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPracServAlumn.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cardbecas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408& ***!
+  \****************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./cardbecas.vue?vue&type=template&id=0cdf7b4f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/cardbecas.vue?vue&type=template&id=0cdf7b4f&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPracServAlumn.vue?vue&type=template&id=eb99f408& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_cardbecas_vue_vue_type_template_id_0cdf7b4f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -53585,6 +54476,213 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=template&id=747b0d2d& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&");
+/* harmony import */ var _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=template&id=747b0d2d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardJustificantes.vue?vue&type=template&id=7166c762& */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762&");
+/* harmony import */ var _CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardJustificantes.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/trabajosocial/justificantes/CardJustificantes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardJustificantes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardJustificantes.vue?vue&type=template&id=7166c762& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal-buttonJustificante.vue?vue&type=template&id=7366df96& */ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96&");
+/* harmony import */ var _Modal_buttonJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal-buttonJustificante.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Modal_buttonJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_buttonJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Modal-buttonJustificante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_buttonJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96&":
+/*!*************************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96& ***!
+  \*************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Modal-buttonJustificante.vue?vue&type=template&id=7366df96& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/Modal-buttonJustificante.vue?vue&type=template&id=7366df96&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_buttonJustificante_vue_vue_type_template_id_7366df96___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue ***!
@@ -53683,7 +54781,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notifyrepro_vue_vue_type_template_id_79dbe8ae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notifyrepro.vue?vue&type=template&id=79dbe8ae& */ "./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=template&id=79dbe8ae&");
 /* harmony import */ var _notifyrepro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notifyrepro.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notifyrepro.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -53691,7 +54791,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _notifyrepro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _notifyrepro_vue_vue_type_template_id_79dbe8ae___WEBPACK_IMPORTED_MODULE_0__["render"],
   _notifyrepro_vue_vue_type_template_id_79dbe8ae___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -53720,6 +54820,22 @@ component.options.__file = "resources/js/components/trabajosocial/justificantes/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./notifyrepro.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./notifyrepro.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/notifyrepro.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_notifyrepro_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

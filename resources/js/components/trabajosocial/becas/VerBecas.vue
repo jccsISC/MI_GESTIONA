@@ -25,7 +25,7 @@
                             </tr>
                         </tbody>-->
                         <tbody>
-                            <tr v-for="(beca,key) in becas" :key="key">
+                            <tr v-for="(beca, keybeca) in becas" :key="keybeca">
                                 <td> {{ beca.Nombre }} </td>
                                 <td> {{ beca.Tipo }} </td>
                                 
@@ -37,7 +37,7 @@
                                     <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
                                 </td>
                                 <td>
-                                     <button class="btn btn-danger btn-sm" @click="eliminarBeca(beca, key)"><i class="far fa-trash-alt"></i></button>
+                                     <button class="btn btn-danger btn-sm" @click="eliminarBeca(beca, keybeca)"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         </tbody>

@@ -29,7 +29,7 @@
                             </tr>
                         </tbody>-->
                         <tbody>
-                            <tr v-for="(dependencia,key) in dependencias" :key="key">
+                            <tr v-for="(dependencia,keydependencia) in dependencias" :key="keydependencia">
                                 <td> {{ dependencia.Nombre }} </td>
                                 <td> {{ dependencia.Direccion }} </td>
                                 <td> {{ dependencia.Giro }} </td>
@@ -43,7 +43,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                     <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, key)"><i class="far fa-trash-alt"></i></button>
+                                     <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, keydependencia2)"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         </tbody>

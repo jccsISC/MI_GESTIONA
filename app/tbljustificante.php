@@ -10,7 +10,6 @@ class tbljustificante extends Model
     protected $primaryKey = 'IdJustificante';
     protected $fillable = ['IdAlumno','Fecha','FechaInicio','FechaFin','Motivo','Existo'];
     public $timestamps = false;
-    public $incrementing = false;
 
     public function alumno() {
         return $this->belongsTo(tblalumno::class, 'IdAlumno');

@@ -48,6 +48,7 @@
   
    <!--contenedores con información seccionada-->
    <section class="contenedor-secciones">
+      
       <!--card info personal-->
       <card-info-personal></card-info-personal>
       
@@ -61,22 +62,18 @@
        <card-practicas tipo="ss"></card-practicas>
        
        <!--card justificantes y pases-->
-       <div class="contenedorCard">
-            <p class="subtitulos">Justificantes y Pases de salida</p>
-            <div id="cardInfoP" class="micardsm">
-               <div>
+       <card-justificantes></card-justificantes>
 
-               </div>
-           </div>
-       </div>
    </section>
 
    <section class="contenedor-notify">
+       
        <!--card notificaciones de justificantes-->
        <card-notify-justificantes></card-notify-justificantes>
        
        <!--card notificaciones de reprobdos-->
        <card-notify-reprobados></card-notify-reprobados>
+       
    </section>
 
 

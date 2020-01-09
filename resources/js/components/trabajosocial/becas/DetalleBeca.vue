@@ -1,5 +1,5 @@
 <template >  
-  <div class="modal fade" id="addBeca" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="DetalleBeca" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -12,15 +12,12 @@
       	  <form @submit.prevent="saveBeca">
 	          <div class="form-group">
 			        <label>Nombre</label>
-			        <input type="text" class="form-control" placeholder="Ingresa el nombre de la beca" v-model="beca.Nombre">
+			        <select v-model="becaSeleccionada">
+                <option  v-for="(beca, key) in becas" :key="key" :value="beca.IdBeca">{{beca.Nombre}} - {{beca.Tipo}}</option>
+              </select>
 		  	    </div>
-		  	    <div class="form-group">
-			        <label>Tipo de beca</label>
-			        <input type="text" class="form-control" placeholder="Ingresa el tipo de la beca" v-model="beca.Tipo">
-		  	    </div>
-
-		  	    <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" @click="eliminarBeca" class="btn btn-danger">Eliminar</button>
+		  	   
+		  	    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Guardar</button>
 
 	  	    </form>
         </div>
@@ -32,40 +29,36 @@
 
 <script>
   export default {
-    created: function() {
-      this.$parent.$on('actualizarBeca', beca => {
-          this.beca = Object.assign({}, beca);
-      });
-    },    
     data() {
       return {
-        beca: {}
+        becas: [],
+        alumno: {},
+        becaSeleccionada: null
       }
+    }, 
+    created() {
+      this.$parent.$on('agregarBecaAlumno', alumno => {
+        this.alumno = alumno;
+        axios.get('/becas').then(res => {
+          this.becas = res.data;
+        });
+      });
     },
     methods: {
       saveBeca() {
-        axios.put('becas/' + this.beca.IdBeca, this.beca)
-          .then(response => {
-            this.onSuccess();
-          })
-          .catch(error => {
-            console.log('kevin', error.code);
-          });
-      },
-      eliminarBeca() {
-        this.beca.Nombre = '';
-        this.beca.Tipo = '';
-        axios.delete('becas/' + this.beca.IdBeca)
-          .then(response => {
-           this.onSuccess();
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      },
-      onSuccess() {
-        this.$emit('becaActualizada', this.beca);
-        $('#addBeca').modal('hide');
+        if (!this.becaSeleccionada) {
+          return '';
+        }
+
+        axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/becas/' + this.becaSeleccionada).then(res => {
+          // cerrar modal
+          this.$emit('becaAlumnoAgregada', res.data);
+           $('#DetalleBeca').modal('hide');
+        })
+        .catch(error => {
+          console.log('no es valido');
+          console.log(error);
+        });
       }
     }
   }

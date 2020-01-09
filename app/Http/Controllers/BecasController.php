@@ -59,7 +59,7 @@ class BecasController extends Controller
      */
     public function destroy(tblbeca $tblbeca) {
         
-        $tblbeca->update();
+        $tblbeca->delete();
 
         return response('Eliminado');
     }

@@ -10,8 +10,19 @@
                 </div>
             </div>
         </div>
-        <!--btn agregar dependencia-->
-        <modal-button></modal-button>
+
+
+        <div v-if="alumno.IdAlumno" class="col centrar">
+            <button type="button" class="top-space d-block mx-auto" data-toggle="modal" data-target="#addPractServenAlumn"
+                @click="$emit('agregarPracticaAlumno', alumno)">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+
+              
+            <add-practservi-alumn :tipo="tipo" @practicaAlumnoAgregada="practica = $event"></add-practservi-alumn>     
+        </div>
+       <crear-dependencia></crear-dependencia>
+       <modal-button></modal-button>
     </div>
 </template>
 
