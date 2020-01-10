@@ -21,8 +21,9 @@
               
             <add-practservi-alumn :tipo="tipo" @practicaAlumnoAgregada="practica = $event"></add-practservi-alumn>     
         </div>
-       <crear-dependencia></crear-dependencia>
+    
        <modal-button></modal-button>
+       <crear-dependencia></crear-dependencia>
     </div>
 </template>
 

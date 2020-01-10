@@ -23,10 +23,17 @@
                     <input type="text" id="buscador" class="mibuscador" style="width:300px;" placeholder="Buscar por nombre o número de control">
                 </div>
 
-                <nav>
+                <nav id="menu">
                     <ul>
+                        <li><a href="#">Generales</a>
+                            <ul>
+                                <li><a href="#">Becas</a></li>
+                                <li><a href="#">Dependencias</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#">Reportes</a></li>
-                        <li><a href="#">Cerrar Sesión</a></li>
+                        <li><a href="#">Cerrar Sesion</a></li>
+
                     </ul>
                 </nav>
             </div>

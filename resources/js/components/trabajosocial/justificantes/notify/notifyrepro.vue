@@ -4,7 +4,7 @@
         <p class="subtitulos-small">Semana 3</p>
         <p class="subtitulos">Notificación de pases de salida</p>
         <div class="micardNotifications">        
-    
+            <spinner v-show="loading"></spinner>
             <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p><b>{{ alumno.Nombre }}</b></p>
@@ -28,12 +28,14 @@
     export default {
          data() {
             return {
-                alumnos: []
+                alumnos: [],
+                loading: true
             }
         },
         created() {
             axios.get('/trabajosocial?tipo=pases').then(res => {
                 this.alumnos = res.data;
+                this.loading = false;
             });
         },
         methods: {

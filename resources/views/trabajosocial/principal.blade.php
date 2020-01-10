@@ -2,6 +2,8 @@
 @section('title','Trabajo Social')
 
 @section('content')
+    
+    
 
    
 
@@ -48,7 +50,6 @@
   
    <!--contenedores con información seccionada-->
    <section class="contenedor-secciones">
-      
       <!--card info personal-->
       <card-info-personal></card-info-personal>
       
@@ -57,6 +58,7 @@
       
       <!--card praticas profesionales-->
       <card-practicas tipo="pp"></card-practicas>
+      
 
        <!--card servicio social-->
        <card-practicas tipo="ss"></card-practicas>

@@ -123,6 +123,7 @@ class TrabajoSocialController extends Controller
             'Tipo' => 'required',
             'IdDependencias' => 'required',
             'FechaInicio' => 'required',
+            //'FechaFin' => 'required|date|after:FechaInicio'
             'FechaFin' => 'required'
         ]);
 

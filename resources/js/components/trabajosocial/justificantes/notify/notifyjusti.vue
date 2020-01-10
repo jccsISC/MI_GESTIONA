@@ -4,7 +4,7 @@
         <p class="subtitulos-small">Semana 3</p>
         <p class="subtitulos">Notificación de justificantes</p>
         <div class="micardNotifications">        
-    
+            <spinner v-show="loading"></spinner>
             <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p><b>{{ alumno.Nombre }}</b></p>
@@ -12,9 +12,9 @@
                     <p><b>{{ alumno.Grupo }}</b></p>
                 </div>
 
-                <div class="minicontent">
+                <div class="float-left ">
                     <label for=""><b>Justificantes {{alumno.justificantes.length}}</b></label>
-                    <p class="mip" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2">{{justificante.Fecha}}</p>
+                    <p v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2">{{justificante.Fecha}}</p>
                 </div>
             </div>
 
@@ -28,12 +28,14 @@
     export default {
         data() {
             return {
-                alumnos: []
+                alumnos: [],
+                loading: true
             }
         },
         created() {
             axios.get('/trabajosocial?tipo=justificantes').then(res => {
                 this.alumnos = res.data;
+                this.loading = false;
             });
         },
         methods: {
