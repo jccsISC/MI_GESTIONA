@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.basetuto')
 @section('title','TUTORIAS')
 
 @section('content')
@@ -66,7 +66,7 @@
    </section>
 
 
-   <script>
+   <!--<script>
 
         Drag.init (document.getElementById("windowAlumno"));
 
@@ -80,5 +80,5 @@
             document.getElementById("cardInfoP").style.background = "white";
         }
 
-    </script>
+    </script>-->
 @endsection

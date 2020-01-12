@@ -8032,7 +8032,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 10px;\n}\n.minicontent{\n    width: 50%;\n    height: 55px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n.miCircle{\n    width: 10px;\n    padding: 0;\n    margin-left: 50%;\n    margin-right: 50%;\n    float:\n}\n\n", ""]);
+exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 10px;\n}\n.minicontent{\n    width: 50%;\n    height: 55px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n.miCircle{\n    width: 10px;\n    padding: 0;\n    margin-left: 50%;\n    margin-right: 50%;\n    float: right;\n}\n\n", ""]);
 
 // exports
 
@@ -54671,7 +54671,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('spinner', __webpack_require__(/*! ./components/Spinner.vue */ "./resources/js/components/Spinner.vue")["default"]); //Tota la info del alumno en este componente
 
 Vue.component('all-info-alumno', __webpack_require__(/*! ./components/AlumnoAll.vue */ "./resources/js/components/AlumnoAll.vue")["default"]);
-Vue.component('mi-buscador', __webpack_require__(/*! ./components/Buscador.vue */ "./resources/js/components/Buscador.vue")["default"]); //becas
+Vue.component('mi-buscador', __webpack_require__(/*! ./components/Buscador.vue */ "./resources/js/components/Buscador.vue")["default"]);
+Vue.component('card-info-personal', __webpack_require__(/*! ./components/CardInfoPersonal.vue */ "./resources/js/components/CardInfoPersonal.vue")["default"]); //becas
 
 Vue.component('ver-becas', __webpack_require__(/*! ./components/trabajosocial/becas/VerBecas.vue */ "./resources/js/components/trabajosocial/becas/VerBecas.vue")["default"]);
 Vue.component('card-becas', __webpack_require__(/*! ./components/trabajosocial/becas/CardBecas.vue */ "./resources/js/components/trabajosocial/becas/CardBecas.vue")["default"]);
@@ -54681,7 +54682,6 @@ Vue.component('create-form-becas', __webpack_require__(/*! ./components/trabajos
 Vue.component('card-notify-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/notifyjusti.vue */ "./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue")["default"]);
 Vue.component('card-notify-pases', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/NotifyPase.vue */ "./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue")["default"]);
 Vue.component('card-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/CardJustificantes.vue */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue")["default"]);
-Vue.component('card-info-personal', __webpack_require__(/*! ./components/CardInfoPersonal.vue */ "./resources/js/components/CardInfoPersonal.vue")["default"]);
 Vue.component('add-justificante', __webpack_require__(/*! ./components/trabajosocial/justificantes/AgregarJustificante.vue */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue")["default"]); //practicas
 
 Vue.component('card-practicas', __webpack_require__(/*! ./components/trabajosocial/practicas/cardpracticas.vue */ "./resources/js/components/trabajosocial/practicas/cardpracticas.vue")["default"]); //dependencias
@@ -56289,8 +56289,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
