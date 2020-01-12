@@ -22,15 +22,8 @@
 
                 <nav id="menu">
                     <ul>
-                        <li><a href="#">Generales</a>
-                            <ul>
-                                <li><a href="#" type="button" data-toggle="modal" data-target="#verBecas">Becas</a></li>
-                                <li><a href="#"type="button"  data-toggle="modal" data-target="#verDepencencias">Dependencias</a></li>
-                            </ul>
-                        </li>
                         <li><a href="#">Reportes</a></li>
                         <li><a href="#">Cerrar Sesion</a></li>
-
                     </ul>
                 </nav>
             </div>
@@ -58,6 +51,30 @@
     .dropdown-menu > li > a:hover {
         color:white;
         background-color: rgb(167, 11, 11);
+    }
+
+
+    .midivbuscador{
+        margin-left: 10%;
+    }
+
+    .mibuscador{
+        border-radius: 8px;
+        border: 1px solid rgb(231, 231, 231);
+        text-align: center;
+        font-size: 12px;
+        outline: none;/*eliminar el resplandor al foco del input*/
+    }
+
+    .mibuscador:focus{
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px 0 dodgerblue;
+    }
+    /*El icono queda pendiente es temporal de esta forma*/
+    .miicosearch{
+        position: absolute;
+        right: 40%;
+        top:37%;
     }
     
 </style>
