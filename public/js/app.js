@@ -8100,7 +8100,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 10px;\n}\n.minicontent{\n    width: 50%;\n    height: 55px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n.miCircle{\n    width: 10px;\n    padding: 0;\n    margin-left: 50%;\n    margin-right: 50%;\n    float: right;\n}\n\n", ""]);
+exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 3px;\n}\n.minicontent{\n    width: 50%;\n    height: 80px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n\n", ""]);
 
 // exports
 
@@ -8119,7 +8119,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 10px;\n}\n.mcontent{\n    width: 30%;\n    height: 55px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n.micircle{\n    width: 10px;\n    padding: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 3px;\n}\n.mcontent{\n    width: 30%;\n    height: 80px;\n    float: left;\n    overflow: hidden;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n.micircle{\n    width: 10px;\n    padding: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -42205,7 +42205,7 @@ var render = function() {
                 "div",
                 { staticClass: "minicontent" },
                 [
-                  _c("P", { staticClass: "sizeName m-0" }, [
+                  _c("P", { staticClass: "sizeName m-0 p-0" }, [
                     _c("b", [
                       _vm._v("Pases "),
                       _c("label", { staticClass: "textShadow" }, [
@@ -42215,7 +42215,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _vm._l(alumno.pases, function(pase, keypases2) {
-                    return _c("p", { key: keypases2, staticClass: "m-0 " }, [
+                    return _c("p", { key: keypases2, staticClass: "m-0 p-0" }, [
                       _c("img", {
                         staticClass: "micircle",
                         attrs: { src: "images/circleRojo.png", alt: "" }

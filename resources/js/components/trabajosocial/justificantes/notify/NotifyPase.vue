@@ -12,8 +12,8 @@
                 </div>
 
                 <div class="minicontent">
-                    <P class="sizeName m-0"><b>Pases <label class="textShadow">{{alumno.pases.length}}</label></b></P>
-                    <p class="m-0 " v-for="(pase, keypases2) in alumno.pases" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt="">  {{pase.Fecha}}</p>
+                    <P class="sizeName m-0 p-0"><b>Pases <label class="textShadow">{{alumno.pases.length}}</label></b></P>
+                    <p class="m-0 p-0" v-for="(pase, keypases2) in alumno.pases" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt="">  {{pase.Fecha}}</p>
                 </div>
             </div>
         </div>
@@ -51,14 +51,13 @@
 </script>
    
 <style>
-    
     .micardNotificaciones{
-        padding-top: 10px;
+        padding-top: 3px;
     }
 
     .minicontent{
         width: 50%;
-        height: 55px;
+        height: 80px;
         float: left;
         overflow: hidden;
     }
@@ -73,12 +72,4 @@
         text-shadow: 1px 1px 5px #2c2b2b86;
     }
     
-    .miCircle{
-        width: 10px;
-        padding: 0;
-        margin-left: 50%;
-        margin-right: 50%;
-        float: right;
-    }
-
 </style>
