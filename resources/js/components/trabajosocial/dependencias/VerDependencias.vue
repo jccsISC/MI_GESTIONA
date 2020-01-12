@@ -10,7 +10,7 @@
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body-g">
                     <table class="table table-striped table-hover contentTable table table-sm">
                         <thead>
                             <tr>
