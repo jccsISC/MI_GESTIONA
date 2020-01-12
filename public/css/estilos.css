@@ -25,6 +25,8 @@ body::-webkit-scrollbar-thumb{
 .modal-body-g{
     height: 400px;
     overflow-y: auto;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .modal-body-g::-webkit-scrollbar{
