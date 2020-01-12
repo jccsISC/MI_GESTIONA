@@ -25,6 +25,13 @@
 
                 <nav>
                     <ul>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Generales</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{asset('listaBecas')}}">Becas</a></li>
+                                <li><a href="">Dependencias</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#">Reportes</a></li>
                         <li><a href="#">Cerrar Sesión</a></li>
                     </ul>
@@ -49,4 +56,13 @@
 
     </div>
 </body>
+
+<style>
+    .dropdown-menu > li > a:hover {
+        color:white;
+        background-color: rgb(167, 11, 11);
+
+    
+</style>
+
 </html>

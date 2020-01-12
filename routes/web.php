@@ -26,6 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('TS', function(){
     return view('/trabajosocial.principal');
 });
+Route::get('listaBecas', function(){
+    return view('/trabajosocial.listaBecas');
+});
+
 
 
 //BECAS CRUD
@@ -60,12 +64,9 @@ Route::get('trabajosocial/{tblalumno}/pases', 'TrabajoSocialController@pases');
 Route::get('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@justificantes');
 
 
-
-
 //ServicioPracticas
 Route::resource('servicioPracticas','ServicioPracticasController');
 Route::resource('TS','ServicioPracticasController');
-
 
 
 // index -> alumnos con mas de 4 justificantes.btn-primary
