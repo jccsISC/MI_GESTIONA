@@ -92,3 +92,8 @@ Route::get('T', function(){
     return view('/tutorias.principal');
 });
 
+
+//CESAR-----------------------------------------------------------------------------------------------------------
+Route::get('OE', function(){
+    return view('/orientacion.principal');
+});
