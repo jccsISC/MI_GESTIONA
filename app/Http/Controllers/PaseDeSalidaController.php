@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tblpasesalida;
 
 class PaseDeSalidaController extends Controller
 {
@@ -77,8 +78,10 @@ class PaseDeSalidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(tblpasesalida $tblpasesalida)
     {
-        //
+        $tblpasesalida->delete();
+        
+        return response('Eliminado');
     }
 }

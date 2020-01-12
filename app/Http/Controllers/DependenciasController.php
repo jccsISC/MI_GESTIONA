@@ -44,6 +44,17 @@ class DependenciasController extends Controller
     {
         //validamos la peticion si es de tipo ajax
         if ($request->ajax()) {
+
+            
+            $atributos = $this->validate($request, [
+                'Nombre' => 'required',
+                'Direccion' => 'required',
+                'Giro' => 'required',
+                'Telefono' => 'required',
+                'Responsable' => 'required',
+                'TipoVinculacion' => 'required'
+            ]);
+
             return tbldependencia::create([
                 'Nombre' => $request->input('Nombre'),
                 'Direccion' => $request->input('Direccion'),
@@ -95,7 +106,11 @@ class DependenciasController extends Controller
 
             $atributos = $this->validate($request, [
                 'Nombre' => 'required',
-                'Direccion' => 'required'
+                'Direccion' => 'required',
+                'Giro' => 'required',
+                'Telefono' => 'required',
+                'Responsable' => 'required',
+                'TipoVinculacion' => 'required'
             ]);
             
             $tbldependencia->update($atributos);

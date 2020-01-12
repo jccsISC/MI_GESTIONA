@@ -1,10 +1,10 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos-small">16-09-2019 a 20-09-2019</p>
-        <p class="subtitulos-small">Semana 3</p>
+        <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
+        <p class="subtitulos-small">Semana {{semana}}</p>
         <p class="subtitulos">Notificación de pases de salida</p>
         <div class="micardNotifications">        
-    
+            <spinner v-show="loading"></spinner>
             <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p><b>{{ alumno.Nombre }}</b></p>
@@ -28,12 +28,20 @@
     export default {
          data() {
             return {
-                alumnos: []
+                alumnos: [],
+                loading: true,
+                fechaInicio: '',
+                fechaFinal: '',
+                semana:''
             }
         },
         created() {
             axios.get('/trabajosocial?tipo=pases').then(res => {
-                this.alumnos = res.data;
+                this.alumnos = res.data.data;
+                this.fechaInicio = res.data.fechas.Inicio;
+                this.fechaFinal = res.data.fechas.Fin;
+                this.semana = res.data.fechas.Semana;
+                this.loading = false;
             });
         },
         methods: {

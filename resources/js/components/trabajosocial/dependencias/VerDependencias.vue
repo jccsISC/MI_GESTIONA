@@ -43,7 +43,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                     <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, keydependencia2)"><i class="far fa-trash-alt"></i></button>
+                                     <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, keydependencia)"><i class="far fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         </tbody>

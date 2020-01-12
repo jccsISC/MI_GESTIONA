@@ -8,7 +8,7 @@ class tbljustificante extends Model
 {
     protected $table = 'tbljustificantes';
     protected $primaryKey = 'IdJustificante';
-    protected $fillable = ['IdAlumno','Fecha','FechaInicio','FechaFin','Motivo','Existo'];
+    protected $fillable = ['IdAlumno','Fecha','FechaInicio','FechaFin','Motivo','Existe'];
     public $timestamps = false;
 
     public function alumno() {

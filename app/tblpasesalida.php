@@ -8,7 +8,7 @@ class tblpasesalida extends Model
 {
     protected $table = 'tblpasesalidas';
     protected $primaryKey = 'IdPaseSal';
-    protected $fillable = ['IdAlumno','Fecha','IdFamiliar','Motivo','Descripcion','Existo'];
+    protected $fillable = ['IdAlumno','Fecha','IdFamiliar','Motivo','Descripcion','Existe'];
     public $timestamps = false;
     
     public function alumno() {

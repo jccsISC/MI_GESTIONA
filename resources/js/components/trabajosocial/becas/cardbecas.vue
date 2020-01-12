@@ -5,21 +5,19 @@
         <div class="micardB">
             <div v-for="(beca, key) in becas" :key="key" class="micardBeca" @click="$emit('actualizarBeca', beca)">
                 <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
-                <button class="btn btn-danger btn-sm float-md-right" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
+                <button class="btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
             </div>
         </div>
-    </div>
 
-    <div v-if="alumno.IdAlumno" class="col centrar">
-        <button type="button" class="top-space d-block mx-auto" data-toggle="modal" data-target="#DetalleBeca"
-            @click="$emit('agregarBecaAlumno', alumno)">
-            <i class="fas fa-plus-circle"></i>
-        </button>
+        <div v-if="alumno.IdAlumno" class="float-right mt-0">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#DetalleBeca"
+                @click="$emit('agregarBecaAlumno', alumno)">
+                <i class="fas fa-plus-circle"></i>
+            </button>
         
-        <detalleBeca @becaAlumnoAgregada="becas.push($event)"></detalleBeca>     
+            <detalleBeca @becaAlumnoAgregada="becas.push($event)"></detalleBeca>     
+        </div>
     </div>
-
-    <modal-beca></modal-beca>
 </div>
 
 </template>
@@ -36,8 +34,10 @@
         },
         created() {
             bus.$on('alumnoSeleccionado', alumno => {
-                this.alumno = alumno;
-                this.jalarBecas();
+                if(this.alumno.IdAlumno != alumno.IdAlumno){
+                    this.alumno = alumno;
+                    this.jalarBecas();
+                }
             });
         },
         methods: {

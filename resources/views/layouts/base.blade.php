@@ -18,29 +18,26 @@
         <header>
             <div class="contenedor minavbar">
                 <a href="principal"><img class="logoCecy" src="/images/logo.jpg" alt="logo"></a>
-                <div class="divbuscador">
-                    <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
-                    <input type="text" id="buscador" class="mibuscador" style="width:300px;" placeholder="Buscar por nombre o número de control">
-                </div>
+                <mi-buscador></mi-buscador>
 
-                <nav>
+                <nav id="menu">
                     <ul>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Generales</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{asset('listaBecas')}}">Becas</a></li>
-                                <li><a href="">Dependencias</a></li>
+                        <li><a href="#">Generales</a>
+                            <ul>
+                                <li><a href="#" type="button" data-toggle="modal" data-target="#verBecas">Becas</a></li>
+                                <li><a href="#"type="button"  data-toggle="modal" data-target="#verDepencencias">Dependencias</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Reportes</a></li>
-                        <li><a href="#">Cerrar Sesión</a></li>
+                        <li><a href="#">Cerrar Sesion</a></li>
+
                     </ul>
                 </nav>
             </div>
         </header>
-   
-
-
+       
+        <ver-becas></ver-becas>
+        <ver-dependencias></ver-dependencias>
         @yield('content')
 
      

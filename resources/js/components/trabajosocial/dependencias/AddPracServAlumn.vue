@@ -1,5 +1,5 @@
 <template >  
-  <div class="modal fade" id="addPractServenAlumn" role="dialog" aria-hidden="true">
+  <div class="modal fade" :id="'addPractServenAlumn'+tipo" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -50,6 +50,7 @@
     }, 
     created() {
       this.$parent.$on('agregarPracticaAlumno', alumno => {
+        console.log('wlkdjwlk');
         this.practica = {};
         this.alumno = alumno;
         axios.get('/dependencias').then(res => {
@@ -66,7 +67,7 @@
         axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/practica', this.practica).then(res => {
           // cerrar modal
           this.$emit('practicaAlumnoAgregada', res.data);
-           $('#addPractServenAlumn').modal('hide');
+           $('#addPractServenAlumn'+this.tipo).modal('hide');
         })
         .catch(error => {
           console.log('no es valido');

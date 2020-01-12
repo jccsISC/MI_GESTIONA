@@ -14,4 +14,8 @@ class tblfamiliare extends Model
     public function pases() {
         return $this->hasMany(tblpasesalida::class, 'IdFamiliar', 'IdFamiliar');
     }
+
+    public function alumno() {
+        return $this->belongsTo(tblalumno::class, 'IdAlumno');
+    }
 }

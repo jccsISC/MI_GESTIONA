@@ -1,20 +1,20 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos-small">16-09-2019 a 20-09-2019</p>
-        <p class="subtitulos-small">Semana 3</p>
+        <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
+        <p class="subtitulos-small">Semana {{semana}}</p>
         <p class="subtitulos">Notificación de justificantes</p>
         <div class="micardNotifications">        
-    
-            <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
+            <spinner v-show="loading"></spinner>
+            <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p><b>{{ alumno.Nombre }}</b></p>
-                    <p><b>{{ alumno.Grado }}</b></p>
-                    <p><b>{{ alumno.Grupo }}</b></p>
+                    <p><b>Grado: {{ alumno.Grado }}</b></p>
+                    <p><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 
                 <div class="minicontent">
-                    <label for=""><b>Justificantes {{alumno.justificantes.length}}</b></label>
-                    <p class="mip" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2">{{justificante.Fecha}}</p>
+                    <p><b>Justificantes  {{alumno.justificantes.length}}</b></p>
+                    <p v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2">{{justificante.Fecha}}</p>
                 </div>
             </div>
 
@@ -28,12 +28,20 @@
     export default {
         data() {
             return {
-                alumnos: []
+                alumnos: [],
+                loading: true,
+                fechaInicio: '',
+                fechaFinal: '',
+                semana:''
             }
         },
         created() {
             axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data;
+                this.alumnos = res.data.data;
+                this.fechaInicio = res.data.fechas.Inicio;
+                this.fechaFinal = res.data.fechas.Fin;
+                this.semana = res.data.fechas.Semana;
+                this.loading = false;
             });
         },
         methods: {
@@ -49,24 +57,15 @@
 <style>
     
     .micardNotificaciones{
-        padding-top: 10px;
+        margin-top: 5px;
     }
 
-    .micardNotificaciones p{
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-    }
     .minicontent{
         width: 50%;
-        padding-left: 20px;
+        height: 55px;
         float: left;
+        overflow: hidden;
     }
-
-    .mip{
-        width: 100px;
-        height: 20px;
-        overflow: auto;
-    }
+    
 
 </style>
