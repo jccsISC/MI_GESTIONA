@@ -26,6 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('TS', function(){
     return view('/trabajosocial.principal');
 });
+Route::get('listaBecas', function(){
+    return view('/trabajosocial.listaBecas');
+});
+
 
 
 //BECAS CRUD
@@ -64,8 +68,6 @@ Route::get('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@j
 Route::post('trabajosocial/{tblalumno}/pases', 'TrabajoSocialController@agregarPase');
 Route::post('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@agregarJustificante');
 Route::delete('/justificantes/{{tbljustificante}}', 'TrabajoSocialController@eliminarJustiPase');
-
-
 
 
 //ServicioPracticas
