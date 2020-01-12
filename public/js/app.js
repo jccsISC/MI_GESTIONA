@@ -1930,82 +1930,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      alumno: {}
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
-      _this.alumno = alumno;
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Spinner.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Spinner.vue?vue&type=script&lang=js& ***!
@@ -7940,25 +7864,6 @@ __webpack_require__.r(__webpack_exports__);
 
 })));
 //# sourceMappingURL=bootstrap.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.miImg{\n    width: 90px;\n    height: 90px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    margin-left: 5px;\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.miContent{\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr;\n}\n.miMaxLength{\n    width: 220px;\n    text-overflow: ellipsis;\n    white-space:nowrap;\n    overflow: hidden;\n}\n.miContent2{\n    display: grid;\n    grid-template-columns: 14fr 1fr 10fr;\n    /*grid-template-rows: 130px;*/\n}\n.miMaxLength2{\n    width: 245px;\n    text-overflow: ellipsis;\n    white-space:nowrap;\n    overflow: hidden;\n}\n.vl {\n    margin-top: 10px;\n    margin: auto;\n    border-left: 1px solid rgb(196, 199, 196);\n    height: 80px;\n}\n", ""]);
-
-// exports
 
 
 /***/ }),
@@ -38935,36 +38840,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonal.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Spinner.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Spinner.vue?vue&type=style&index=0&lang=css& ***!
@@ -39864,167 +39739,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contenedorCard" }, [
-    _c("p", { staticClass: "subtitulos" }, [_vm._v("Información Personal")]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "micard",
-        attrs: { id: "cardInfoPersonal", onclick: "abrir()" }
-      },
-      [
-        _vm.alumno.IdAlumno
-          ? _c(
-              "div",
-              { staticClass: "miContent", attrs: { id: "miContent" } },
-              [
-                _c("div", { staticClass: "miImg" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Matricula: ")]),
-                    _vm._v(_vm._s(_vm.alumno.IdAlumno))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0 miMaxLength" }, [
-                    _c("b", [_vm._v("Nombre: ")]),
-                    _vm._v(
-                      _vm._s(_vm.alumno.Nombre) +
-                        " " +
-                        _vm._s(_vm.alumno.ApePaterno) +
-                        "  " +
-                        _vm._s(_vm.alumno.ApeMaterno)
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Carrera: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Carrera))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Fecha Nacimiento: ")]),
-                    _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Género: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Sexo))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Grupo: " + _vm._s(_vm.alumno.Grupo))])
-                  ])
-                ])
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.alumno.IdAlumno
-          ? _c(
-              "div",
-              { staticClass: " mt-4 miContent2", attrs: { id: "miContent2" } },
-              [
-                _c(
-                  "div",
-                  [
-                    _c("p", { staticClass: "m-0" }, [
-                      _c("b", [_vm._v("Telefóno: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Telefono))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "m-0" }, [
-                      _c("b", [_vm._v("Correo: ")]),
-                      _vm._v(_vm._s(_vm.alumno.EMAIL))
-                    ]),
-                    _c("br"),
-                    _vm._v(" "),
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c("P", { staticClass: "m-0" }, [
-                      _c("b", [_vm._v("Colonia: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Colonia))
-                    ]),
-                    _vm._v(" "),
-                    _c("P", { staticClass: "m-0" }, [
-                      _c("b", [_vm._v("Calle: ")]),
-                      _vm._v(
-                        _vm._s(_vm.alumno.Calle) +
-                          " #" +
-                          _vm._s(_vm.alumno.NumExterior)
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "m-0 miMaxLength2" }, [
-                      _c("b", [_vm._v("Lugar De Nacimiento: ")]),
-                      _vm._v(
-                        _vm._s(_vm.alumno.MunicipioNac) +
-                          " " +
-                          _vm._s(_vm.alumno.EstadoNac)
-                      )
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "vl" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "m-0 pl-4" }, [
-                    _c("b", [_vm._v("Tipo de Sangre: ")]),
-                    _vm._v(_vm._s(_vm.alumno.TipoSangre))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0 pl-4" }, [
-                    _c("b", [_vm._v("Etnia: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Etnia))
-                  ])
-                ])
-              ]
-            )
-          : _vm._e()
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0 small " }, [
-      _c("b", [_vm._v("Domicilio")])
-    ])
-  }
-]
 render._withStripped = true
 
 
@@ -54682,6 +54396,10 @@ Vue.component('create-form-becas', __webpack_require__(/*! ./components/trabajos
 Vue.component('card-notify-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/notifyjusti.vue */ "./resources/js/components/trabajosocial/justificantes/notify/notifyjusti.vue")["default"]);
 Vue.component('card-notify-pases', __webpack_require__(/*! ./components/trabajosocial/justificantes/notify/NotifyPase.vue */ "./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue")["default"]);
 Vue.component('card-justificantes', __webpack_require__(/*! ./components/trabajosocial/justificantes/CardJustificantes.vue */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue")["default"]);
+<<<<<<< HEAD
+Vue.component('card-info-personal', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './components/CardInfoPersongital.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))["default"]);
+=======
+>>>>>>> 69a36a97d2f948e40a529018459ebdcd7ba21f1e
 Vue.component('add-justificante', __webpack_require__(/*! ./components/trabajosocial/justificantes/AgregarJustificante.vue */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue")["default"]); //practicas
 
 Vue.component('card-practicas', __webpack_require__(/*! ./components/trabajosocial/practicas/cardpracticas.vue */ "./resources/js/components/trabajosocial/practicas/cardpracticas.vue")["default"]); //dependencias
@@ -54881,93 +54599,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Buscador_vue_vue_type_template_id_137742d8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Buscador_vue_vue_type_template_id_137742d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/CardInfoPersonal.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/CardInfoPersonal.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardInfoPersonal.vue?vue&type=template&id=1ff95ba9& */ "./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9&");
-/* harmony import */ var _CardInfoPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardInfoPersonal.vue?vue&type=script&lang=js& */ "./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardInfoPersonal.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _CardInfoPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/CardInfoPersonal.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonal.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonal.vue?vue&type=template&id=1ff95ba9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardInfoPersonal.vue?vue&type=template&id=1ff95ba9&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonal_vue_vue_type_template_id_1ff95ba9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
