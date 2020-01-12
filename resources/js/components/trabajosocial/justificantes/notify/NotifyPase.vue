@@ -1,23 +1,21 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
-        <p class="subtitulos-small">Semana {{semana}}</p>
         <p class="subtitulos">Notificación de pases de salida</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
-            <div id="bgNotify" class="micardNotificaciones" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
+            <div class="micardNotificaciones" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
+                <!--<img class="miCircle" src="images/circleAmarillo.png" alt="">-->
                 <div class="minicontent">
-                    <p><b>{{ alumno.Nombre }}</b></p>
-                    <p><b>{{ alumno.Grado }}</b></p>
-                    <p><b>{{ alumno.Grupo }}</b></p>
+                    <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }}</b></p>
+                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }}</b></p>
+                    <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 
                 <div class="minicontent">
-                    <label for=""><b>Pases {{alumno.pases.length}}</b></label>
-                    <p class="mip" v-for="(pase, keypases2) in alumno.pases" :key="keypases2">{{pase.Fecha}}</p>
+                    <P class="sizeName m-0"><b>Pases <label class="textShadow">{{alumno.pases.length}}</label></b></P>
+                    <p class="m-0 " v-for="(pase, keypases2) in alumno.pases" :key="keypases2">{{pase.Fecha}}</p>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -58,21 +56,29 @@
         padding-top: 10px;
     }
 
-    .micardNotificaciones p{
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-    }
     .minicontent{
         width: 50%;
-        padding-left: 20px;
+        height: 55px;
         float: left;
+        overflow: hidden;
     }
 
-    .mip{
-        width: 100px;
-        height: 20px;
-        overflow: auto;
+    .sizeName{
+        font-size: 15px;
+    }
+
+    .textShadow{
+        margin: 0;
+        color: rgb(165, 0, 0);
+        text-shadow: 1px 1px 5px #2c2b2b86;
+    }
+    
+    .miCircle{
+        width: 10px;
+        padding: 0;
+        margin-left: 50%;
+        margin-right: 50%;
+        float: 
     }
 
 </style>

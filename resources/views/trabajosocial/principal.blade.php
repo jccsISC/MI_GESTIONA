@@ -29,7 +29,7 @@
        <card-notify-justificantes></card-notify-justificantes>
        
        <!--card notificaciones de reprobdos-->
-       <card-notify-reprobados></card-notify-reprobados>
+       <card-notify-pases></card-notify-pases>
        
    </section>
 

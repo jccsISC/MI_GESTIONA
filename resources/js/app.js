@@ -14,7 +14,7 @@ Vue.component('detalleBeca', require('./components/trabajosocial/becas/DetalleBe
 Vue.component('create-form-becas', require('./components/trabajosocial/becas/AgregarBeca.vue').default);
 //justificantes
 Vue.component('card-notify-justificantes', require('./components/trabajosocial/justificantes/notify/notifyjusti.vue').default);
-Vue.component('card-notify-reprobados', require('./components/trabajosocial/justificantes/notify/notifyrepro.vue').default);
+Vue.component('card-notify-pases', require('./components/trabajosocial/justificantes/notify/NotifyPase.vue').default);
 Vue.component('card-justificantes', require('./components/trabajosocial/justificantes/CardJustificantes.vue').default);
 Vue.component('card-info-personal', require('./components/CardInfoPersonal.vue').default);
 Vue.component('add-justificante', require('./components/trabajosocial/justificantes/AgregarJustificante.vue').default);
