@@ -18,7 +18,8 @@ body::-webkit-scrollbar{
 }
 
 body::-webkit-scrollbar-thumb{
-    width: 0px;
+    width: 3px;
+    background: #800000;
 }
 
 .modal-body-g{

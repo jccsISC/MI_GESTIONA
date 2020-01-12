@@ -58,24 +58,24 @@
         margin-left: 10%;
     }
 
-.mibuscador{
-    border-radius: 8px;
-    border: 1px solid rgb(231, 231, 231);
-    text-align: center;
-    font-size: 12px;
-    outline: none;/*eliminar el resplandor al foco del input*/
-}
+    .mibuscador{
+        border-radius: 8px;
+        border: 1px solid rgb(231, 231, 231);
+        text-align: center;
+        font-size: 12px;
+        outline: none;/*eliminar el resplandor al foco del input*/
+    }
 
-.mibuscador:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px 0 dodgerblue;
-}
-/*El icono queda pendiente es temporal de esta forma*/
-.miicosearch{
-    position: absolute;
-    right: 40%;
-    top:37%;
-}
+    .mibuscador:focus{
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px 0 dodgerblue;
+    }
+    /*El icono queda pendiente es temporal de esta forma*/
+    .miicosearch{
+        position: absolute;
+        right: 40%;
+        top:37%;
+    }
     
 </style>
 

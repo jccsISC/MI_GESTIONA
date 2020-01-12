@@ -16,7 +16,7 @@ Vue.component('detalleBeca', require('./components/trabajosocial/becas/DetalleBe
 Vue.component('create-form-becas', require('./components/trabajosocial/becas/AgregarBeca.vue').default);
 
 //justificantes
-Vue.component('card-notify-justificantes', require('./components/trabajosocial/justificantes/notify/notifyjusti.vue').default);
+Vue.component('card-notify-justificantes', require('./components/trabajosocial/justificantes/Notify/notifyjusti.vue').default);
 Vue.component('card-notify-pases', require('./components/trabajosocial/justificantes/notify/NotifyPase.vue').default);
 Vue.component('card-justificantes', require('./components/trabajosocial/justificantes/CardJustificantes.vue').default);
 Vue.component('add-justificante', require('./components/trabajosocial/justificantes/AgregarJustificante.vue').default);
@@ -31,16 +31,14 @@ Vue.component('add-practservi-alumn', require('./components/trabajosocial/depend
 
 
 
-//TUTORIAS--------------------------------------------------------------------------------
+//TUTORIAS------------------------------------------------------------------------------------------------------------------
 //Calificaciones
 Vue.component('card-calificaciones', require('./components/tutorias/CardCalificaciones.vue').default);
-
 //Faltas
 Vue.component('card-faltas', require('./components/tutorias/CardFaltas.vue').default);
-
-//notify
-Vue.component('card-notify-inacistencias', require('./components/tutorias/notify/notifyInacistencias.vue').default);
-Vue.component('card-notify-reprobados', require('./components/tutorias/notify/notifyReprobados.vue').default);
+//Notify
+Vue.component('card-notify-inacistencias', require('./components/tutorias/notify/NotifyInacistencias.vue').default);
+Vue.component('card-notify-reprobados', require('./components/tutorias/notify/NotifyReprobados.vue').default);
 
 
 

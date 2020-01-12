@@ -7,14 +7,14 @@
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
-                    <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }}</b></p>
+                    <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
                     <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }}</b></p>
                     <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 
                 <div class="minicontent">
                     <p class="sizeName m-0"><b>Justificantes  <label class="textShadow">{{alumno.justificantes.length}}</label></b></p>
-                    <p class="m-0" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2">{{justificante.Fecha}}</p>
+                    <p class="m-0" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2"><img class="micircle" src="images/circleRojo.png" alt="">  {{justificante.Fecha}}</p>
                 </div>
             </div>
 
