@@ -7,6 +7,7 @@ Vue.component('spinner', require('./components/Spinner.vue').default);
 //Tota la info del alumno en este componente
 Vue.component('all-info-alumno', require('./components/AlumnoAll.vue').default);
 Vue.component('mi-buscador', require('./components/Buscador.vue').default);
+Vue.component('card-info-personal', require('./components/CardInfoPersonal.vue').default);
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);
@@ -18,7 +19,6 @@ Vue.component('create-form-becas', require('./components/trabajosocial/becas/Agr
 Vue.component('card-notify-justificantes', require('./components/trabajosocial/justificantes/notify/notifyjusti.vue').default);
 Vue.component('card-notify-pases', require('./components/trabajosocial/justificantes/notify/NotifyPase.vue').default);
 Vue.component('card-justificantes', require('./components/trabajosocial/justificantes/CardJustificantes.vue').default);
-Vue.component('card-info-personal', require('./components/CardInfoPersongital.vue').default);
 Vue.component('add-justificante', require('./components/trabajosocial/justificantes/AgregarJustificante.vue').default);
 
 //practicas

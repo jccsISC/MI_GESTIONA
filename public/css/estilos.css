@@ -18,9 +18,20 @@ body::-webkit-scrollbar{
 }
 
 body::-webkit-scrollbar-thumb{
-    background-color: #800000;
-    border-radius: 7px;
+    width: 0px;
 }
+
+.modal-body-g{
+    height: 400px;
+    overflow-y: auto;
+  }
+
+  .modal-body-g::-webkit-scrollbar{
+    width: 0px;
+}
+
+
+
 /*FIN CLASES GENERALES-------------------------------------------------------------------------------------------------------*/
 
 
@@ -154,9 +165,6 @@ header ul ul li {
     top:37%;
 }
 /*FIN TODO DEL BUSCADOR------------------------------------------------------------------------------------------------------*/
-
-
-
 
 footer{
     width: 100%;
