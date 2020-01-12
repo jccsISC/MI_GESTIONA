@@ -177,7 +177,7 @@ footer{
     .contenedor-secciones{
         width: 40%;
         margin-top: 5rem;
-        padding-left: 60px;
+        padding-left: 55px;
         padding-bottom: 5rem;
         float: left;
         /*background-color: rgb(236, 232, 232);*/
@@ -186,7 +186,7 @@ footer{
 
     /*TODO SOBRE EL CARD---------------------------------------------------------------------------------------------------*/
     .contenedorCard{
-        width: 85%;
+        width: 90%;
         margin-bottom: 30px;
         /*background-color: #EAEDED;*/
     }
@@ -367,14 +367,13 @@ footer{
 
     /*TODO VENTANA PRACTICAS Y SERVICIO--------------------------------------------------------------------------------*/
         .contenedorPracticasServicio{
-            text-align: left;
             font-size: .75em;   
             text-indent: 10px ;   
         }
 
-        .contenedorPracticasServicio p{
+        /* .contenedorPracticasServicio p{
             float: right;
-        }
+        } */
 
     /*TODO VENTANAS NOTIFICACIONES--------------------------------------------------------------------------------*/    
         .micardNotificaciones{

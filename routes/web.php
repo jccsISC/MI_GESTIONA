@@ -34,13 +34,16 @@ Route::post('becas','BecasController@store');
 Route::put('becas/{tblbeca}','BecasController@update');
 Route::delete('becas/{tblbeca}','BecasController@destroy');
 
-Route::delete('practicas/{tblserviciopractica}','BecasController@destroy');
+//Route::delete('practicas/{tblserviciopractica}','BecasController@destroy');
 
 //JUSTIFICANTES CRUD
 Route::get('justificantes', 'JustificantesController@index');
-Route::get('justificantes', 'JustificantesController@store');
-Route::get('justificantes/{tbljustificante}', 'JustificantesController@update');
-Route::get('justificantes/{tbljustificante}', 'JustificantesController@destroy');
+Route::post('justificantes', 'JustificantesController@store');
+Route::delete('justificantes/{tbljustificante}', 'JustificantesController@destroy');
+//PASES
+Route::delete('pases/{tblpasesalida}', 'PaseDeSalidaController@destroy');
+//PRACTICAS
+Route::delete('practicas/{tblserviciopracticas}', 'ServicioPracticasController@destroy');
 
 
 //DEPENDENCIAS CRUD
@@ -58,6 +61,9 @@ Route::get('trabajosocial/{tblalumno}/practica', 'TrabajoSocialController@practi
 Route::post('trabajosocial/{tblalumno}/practica', 'TrabajoSocialController@agregarPractica');
 Route::get('trabajosocial/{tblalumno}/pases', 'TrabajoSocialController@pases');
 Route::get('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@justificantes');
+Route::post('trabajosocial/{tblalumno}/pases', 'TrabajoSocialController@agregarPase');
+Route::post('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@agregarJustificante');
+Route::delete('/justificantes/{{tbljustificante}}', 'TrabajoSocialController@eliminarJustiPase');
 
 
 
@@ -66,7 +72,9 @@ Route::get('trabajosocial/{tblalumno}/justificantes', 'TrabajoSocialController@j
 Route::resource('servicioPracticas','ServicioPracticasController');
 Route::resource('TS','ServicioPracticasController');
 
-
+//ALUMNOS
+Route::get('alumnos/buscar', 'AlumnoController@buscar');
+Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
 
 // index -> alumnos con mas de 4 justificantes.btn-primary
 // alumnosconcuatrojustificantes/

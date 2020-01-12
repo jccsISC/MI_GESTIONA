@@ -6,13 +6,46 @@ use Illuminate\Http\Request;
 use App\tblalumno;
 use App\tblbeca;
 use App\tblserviciopracticas;
+use App\tblpasesalida;
+use App\tbljustificante;
 
 class TrabajoSocialController extends Controller
 {
     
     public function alumnos(Request $request) {
+
+        $year=date('Y');
+        $month=date('m');;
+        $day=date('d');;
+         
+        # Obtenemos el numero de la semana
+        $semana=date("W",mktime(0,0,0,$month,$day,$year));
+         
+        # Obtenemos el día de la semana de la fecha dada
+        $diaSemana=date("w",mktime(0,0,0,$month,$day,$year));
+         
+        # el 0 equivale al domingo...
+        if($diaSemana==0)
+            $diaSemana=7;
+         
+        # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
+        $primerDia=date("d-m-Y", mktime(0,0,0,$month,$day-$diaSemana+1,$year));
+        $a=date("Y-m-d h:i:s",strtotime('first day of this month'));
+         
+        # A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
+        $ultimoDia=date("d-m-Y",mktime(0,0,0,$month,$day+(7-$diaSemana),$year));
+        $b=date("Y-m-d h:i:s", strtotime('last day of this month'));
         $tipo = $request->query('tipo');
-        return tblalumno::has($tipo, '>', 3)->with($tipo)->get();
+        $data = tblalumno::whereHas($tipo, function($q) use($a, $b)
+        {
+            $q->whereBetween('Fecha', [$a, $b])->havingRaw('count(*) > 3');
+        
+        })->with($tipo)->get();
+        
+        return [
+            'data' => $data,
+            'fechas' => ['Inicio'=>$a, 'Fin' => $b, 'Semana'=> $semana]
+        ];
     }
     
     /**
@@ -131,6 +164,34 @@ class TrabajoSocialController extends Controller
         $tblalumno->practicas()->save($practica);
 
         return $practica->load('dependencia');
+    }
+
+    public function agregarPase(tblalumno $tblalumno, Request $request) 
+    {   
+       $atributos = $this->validate($request, [
+            'Motivo' => 'required',
+            'Descripcion' => 'required',
+            'IdFamiliar' => 'required'
+        ]);
+
+        $pase = new tblpasesalida($atributos + ['Existe' => 1, 'Fecha' => date('Y-m-d')]);
+        $tblalumno->pases()->save($pase);
+
+        return $pase->load('familiar');
+    }
+
+    public function agregarJustificante(tblalumno $tblalumno, Request $request) 
+    {   
+        $atributos = $this->validate($request, [
+            'Motivo' => 'required',
+            'FechaInicio' => 'required',
+            'FechaFin' => 'required'
+        ]);
+
+        $justificante = new tbljustificante($atributos + ['Existe' => 1, 'Fecha' => date('Y-m-d')]);
+        $tblalumno->justificantes()->save($justificante);
+
+        return $justificante;
     }
 
 }

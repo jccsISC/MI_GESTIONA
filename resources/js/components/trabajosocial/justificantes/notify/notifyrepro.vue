@@ -1,7 +1,7 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos-small">16-09-2019 a 20-09-2019</p>
-        <p class="subtitulos-small">Semana 3</p>
+        <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
+        <p class="subtitulos-small">Semana {{semana}}</p>
         <p class="subtitulos">Notificación de pases de salida</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
@@ -29,12 +29,18 @@
          data() {
             return {
                 alumnos: [],
-                loading: true
+                loading: true,
+                fechaInicio: '',
+                fechaFinal: '',
+                semana:''
             }
         },
         created() {
             axios.get('/trabajosocial?tipo=pases').then(res => {
-                this.alumnos = res.data;
+                this.alumnos = res.data.data;
+                this.fechaInicio = res.data.fechas.Inicio;
+                this.fechaFinal = res.data.fechas.Fin;
+                this.semana = res.data.fechas.Semana;
                 this.loading = false;
             });
         },

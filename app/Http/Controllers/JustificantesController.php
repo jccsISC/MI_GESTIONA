@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tbljustificante;
 
 class JustificantesController extends Controller
 {
@@ -39,6 +40,13 @@ class JustificantesController extends Controller
     public function store(Request $request)
     {
         if ($request->ajax()) {
+
+            $atributos = $this->validate($request, [
+                'FechaInicio' => 'required',
+                'FechaFin' => 'required',
+                'Motivo' => 'required'
+            ]);
+
             return tbljustificante::create([
                 'FechaInicio' => $request->input('FechaInicio'),
                 'FechaFin' => $request->input('FechaFin'),

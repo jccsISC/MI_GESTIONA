@@ -4,8 +4,10 @@ window.Vue = require('vue');
 
 Vue.component('spinner', require('./components/Spinner.vue').default);
 
+//Tota la info del alumno en este componente
+Vue.component('all-info-alumno', require('./components/AlumnoAll.vue').default);
+Vue.component('mi-buscador', require('./components/Buscador.vue').default);
 //becas
-Vue.component('modal-beca', require('./components/trabajosocial/becas/Modal-buttonBeca.vue').default);
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);
 Vue.component('card-becas', require('./components/trabajosocial/becas/CardBecas.vue').default);
 Vue.component('detalleBeca', require('./components/trabajosocial/becas/DetalleBeca.vue').default);
@@ -16,12 +18,9 @@ Vue.component('card-notify-reprobados', require('./components/trabajosocial/just
 Vue.component('card-justificantes', require('./components/trabajosocial/justificantes/CardJustificantes.vue').default);
 Vue.component('card-info-personal', require('./components/CardInfoPersonal.vue').default);
 Vue.component('add-justificante', require('./components/trabajosocial/justificantes/AgregarJustificante.vue').default);
-Vue.component('modal-justificante', require('./components/trabajosocial/justificantes/Modal-buttonJustificante.vue').default);
-
 //practicas
 Vue.component('card-practicas', require('./components/trabajosocial/practicas/cardpracticas.vue').default);
 //dependencias
-Vue.component('modal-button', require('./components/trabajosocial/dependencias/Modal-button.vue').default);
 Vue.component('ver-dependencias', require('./components/trabajosocial/dependencias/VerDependencias.vue').default);
 Vue.component('crear-dependencia', require('./components/trabajosocial/dependencias/AgregarDependencias.vue').default);
 Vue.component('add-practservi-alumn', require('./components/trabajosocial/dependencias/AddPracServAlumn.vue').default);
