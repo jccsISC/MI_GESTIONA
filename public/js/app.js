@@ -8459,7 +8459,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n\n\n/* .micardBeca:hover{\n    /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);\n    box-shadow: 0 2px 4px 0 rgb(167, 11, 11)\n} */\n\n", ""]);
+exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n.miTransparent{\n    background: transparent;\n}\n\n/* .micardBeca:hover{\n    /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);\n    box-shadow: 0 2px 4px 0 rgb(167, 11, 11)\n} */\n\n", ""]);
 
 // exports
 
@@ -40734,7 +40734,7 @@ var staticRenderFns = [
         _c(
           "div",
           {
-            staticClass: "modal-dialog modal-1200px modal-dialog-scrollable",
+            staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
             attrs: { role: "document" }
           },
           [
@@ -40758,7 +40758,7 @@ var staticRenderFns = [
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body-all" }, [
+              _c("div", { staticClass: "modal-body" }, [
                 _c("p", { staticClass: "subtitulos" }, [
                   _vm._v("Información Personal")
                 ]),
@@ -41135,7 +41135,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary btn-sm",
+                  staticClass: "btn btn-sm  miTransparent",
                   attrs: {
                     type: "button",
                     "data-toggle": "modal",
@@ -41147,7 +41147,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("i", { staticClass: "fas fa-plus-circle" })]
+                [_c("i", { staticClass: "fas fa-plus" })]
               ),
               _vm._v(" "),
               _c("detalleBeca", {
@@ -58221,8 +58221,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
