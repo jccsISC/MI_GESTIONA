@@ -15,4 +15,8 @@ class AlumnoController extends Controller
     public function familiares(tblalumno $tblalumno) {
         return $tblalumno->familiares;
     }
+
+    public function calificaciones(tblalumno $tblalumno) {
+        return $tblalumno->calificaciones()->with('detalles')->get();
+    }
 }

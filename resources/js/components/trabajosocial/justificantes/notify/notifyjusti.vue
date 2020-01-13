@@ -8,7 +8,7 @@
             <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
                 <div class="minicontent">
                     <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
-                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }}</b></p>
+                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
                     <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 

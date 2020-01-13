@@ -2,7 +2,7 @@
     <div class="contenedorCard">
         <p class="subtitulos">Información Personal</p>
         <div id="cardInfoPersonal" class="micard" onclick="abrir()">
-            <div v-if="alumno.IdAlumno" id="miContent" class="miContent">
+            <div v-if="alumno.IdAlumno" class="miContent">
                 <div class="miImg">
                     <!--<img src="images/student.png" alt="Foto del Alumno">-->
                 </div>
