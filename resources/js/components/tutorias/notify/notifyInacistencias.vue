@@ -62,13 +62,14 @@
    
 <style>
     
-       .micardNotificaciones{
-        padding-top: 10px;
+    .micardNotificaciones{
+        padding-top: 3px;
     }
+
 
     .mcontent{
         width: 30%;
-        height: 55px;
+        height: 80px;
         float: left;
         overflow: hidden;
     }
