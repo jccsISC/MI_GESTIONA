@@ -10,6 +10,9 @@
        <!--card info personal-->
        <card-info-personal></card-info-personal>
 
+         <!--card info general-->
+      <allinfo></allinfo>
+
        <!--card Calificaciones-->
        <card-calificaciones></card-calificaciones>
       

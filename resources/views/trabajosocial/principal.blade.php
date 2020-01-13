@@ -7,6 +7,9 @@
    <section class="contenedor-secciones">
       <!--card info personal-->
       <card-info-personal></card-info-personal>
+
+      <!--card info general-->
+      <allinfo></allinfo>
       
       <!--card becas-->
       <card-becas></card-becas>

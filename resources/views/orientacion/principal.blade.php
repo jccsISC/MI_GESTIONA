@@ -8,6 +8,9 @@
        <!--card info personal-->
        <card-info-personal></card-info-personal>
 
+         <!--card info general-->
+      <allinfo></allinfo>
+
        <!--card Salud-->
        <card-salud></card-salud>
       

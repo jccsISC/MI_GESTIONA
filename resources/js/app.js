@@ -8,6 +8,7 @@ Vue.component('spinner', require('./components/Spinner.vue').default);
 Vue.component('all-info-alumno', require('./components/AlumnoAll.vue').default);
 Vue.component('mi-buscador', require('./components/Buscador.vue').default);
 Vue.component('card-info-personal', require('./components/CardInfoPersonal.vue').default);
+Vue.component('allinfo', require('./components/infoGeneralAlumno.vue').default);
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);

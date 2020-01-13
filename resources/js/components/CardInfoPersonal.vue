@@ -1,7 +1,7 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Información Personal</p>
-        <div id="cardInfoPersonal" class="micard" data-toggle="modal" data-target="#reporteTuto">
+        <div id="cardInfoPersonal" class="micard" data-toggle="modal" data-target="#allinfo">
             <div v-if="alumno.IdAlumno" class="miContent">
                 <div class="miImg">
                     <!--<img src="images/student.png" alt="Foto del Alumno">-->
