@@ -40426,7 +40426,11 @@ var render = function() {
       "div",
       {
         staticClass: "micard",
-        attrs: { id: "cardInfoPersonal", onclick: "abrir()" }
+        attrs: {
+          id: "cardInfoPersonal",
+          "data-toggle": "modal",
+          "data-target": "#reporteTuto"
+        }
       },
       [
         _vm.alumno.IdAlumno
