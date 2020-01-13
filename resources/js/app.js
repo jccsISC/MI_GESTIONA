@@ -36,6 +36,8 @@ Vue.component('add-practservi-alumn', require('./components/trabajosocial/depend
 Vue.component('card-calificaciones', require('./components/tutorias/CardCalificaciones.vue').default);
 //Faltas
 Vue.component('card-faltas', require('./components/tutorias/CardFaltas.vue').default);
+Vue.component('modal-generar-report', require('./components/tutorias/ModalGenerarReport.vue').default);
+Vue.component('generar-reporte', require('./components/tutorias/GenerarReporte.vue').default);
 //Notify
 Vue.component('card-notify-inacistencias', require('./components/tutorias/notify/NotifyInacistencias.vue').default);
 Vue.component('card-notify-reprobados', require('./components/tutorias/notify/NotifyReprobados.vue').default);

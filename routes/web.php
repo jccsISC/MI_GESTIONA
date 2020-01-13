@@ -77,6 +77,8 @@ Route::resource('TS','ServicioPracticasController');
 //ALUMNOS
 Route::get('alumnos/buscar', 'AlumnoController@buscar');
 Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
+Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificaciones');
+Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
 
 // index -> alumnos con mas de 4 justificantes.btn-primary
 // alumnosconcuatrojustificantes/
@@ -91,6 +93,11 @@ Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
 Route::get('T', function(){
     return view('/tutorias.principal');
 });
+
+
+
+
+
 
 
 //CESAR-----------------------------------------------------------------------------------------------------------
