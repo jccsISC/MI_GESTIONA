@@ -1,19 +1,18 @@
 <template>
    
 <div class="modal fade" id="allinfo" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-1200px modal-dialog-scrollable" role="document">
+	<div class="modal-dialog modal-centered modal-lg modal-dialog-scrollable"  role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Información General del Alumno</h5>
+                <div >
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span>&times;</span>
                     </button>
                 </div>
-			<div class="modal-body-all">
+			<div class="modal-body-g2">
 				<p class="subtitulos">Información Personal</p>
                 <hr class="barrasubtitulos">
                 <div class="contenedorVentana">
-                
+                    <card-info-personal-general></card-info-personal-general>
                 </div>
 
                 <p class="subtitulos">Información Académica</p>
@@ -52,10 +51,8 @@
 </script>
 
 <style>
- .contentTable th, td{
-       font-size: 13px;
+ .subtitulos{
+       text-align: center;
    }
- 
- 
 
 </style>
