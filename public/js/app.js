@@ -42716,103 +42716,107 @@ var render = function() {
           attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
         },
         [
-          _c("div", { staticClass: "contenedorPracticasServicio" }, [
-            _c(
-              "div",
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._l(_vm.justificantes.slice().reverse(), function(
-                  justificante,
-                  keyjustificantepase
-                ) {
-                  return _c(
-                    "button",
-                    {
-                      key: keyjustificantepase,
-                      staticClass: "btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#addJustificantes"
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.$emit("verJustificante", justificante)
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                \n                " +
-                          _vm._s(keyjustificantepase + 1) +
-                          "\n\n            "
+          _vm.alumno.IdAlumno
+            ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
+                _c(
+                  "div",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._l(_vm.justificantes.slice().reverse(), function(
+                      justificante,
+                      keyjustificantepase
+                    ) {
+                      return _c(
+                        "button",
+                        {
+                          key: keyjustificantepase,
+                          staticClass:
+                            "btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#addJustificantes"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.$emit("verJustificante", justificante)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                \n                " +
+                              _vm._s(keyjustificantepase + 1) +
+                              "\n\n            "
+                          )
+                        ]
                       )
-                    ]
-                  )
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              [
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._l(_vm.pases.slice().reverse(), function(
-                  pase,
-                  keyjustificantepase2
-                ) {
-                  return _c(
-                    "button",
-                    {
-                      key: keyjustificantepase2,
-                      staticClass: "btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1",
-                      attrs: {
-                        "data-toggle": "modal",
-                        "data-target": "#addJustificantes"
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.$emit("verPase", pase)
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n            \n                " +
-                          _vm._s(keyjustificantepase2 + 1) +
-                          "\n            \n            "
-                      )
-                    ]
-                  )
-                }),
+                    })
+                  ],
+                  2
+                ),
                 _vm._v(" "),
                 _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-sm float-right",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#addJustificantes"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("agregarJustificante", _vm.alumno)
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-plus-circle" })]
+                  "div",
+                  [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _vm._l(_vm.pases.slice().reverse(), function(
+                      pase,
+                      keyjustificantepase2
+                    ) {
+                      return _c(
+                        "button",
+                        {
+                          key: keyjustificantepase2,
+                          staticClass:
+                            "btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target": "#addJustificantes"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.$emit("verPase", pase)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n            \n                " +
+                              _vm._s(keyjustificantepase2 + 1) +
+                              "\n            \n            "
+                          )
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-sm float-right",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#addJustificantes"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit("agregarJustificante", _vm.alumno)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-plus-circle" })]
+                    )
+                  ],
+                  2
                 )
-              ],
-              2
-            )
-          ])
+              ])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),

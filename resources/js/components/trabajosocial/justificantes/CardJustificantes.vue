@@ -2,7 +2,7 @@
     <div class="contenedorCard">
         <p class="subtitulos">Justificantes y Pases de Salida</p>
         <div class="micardsm" data-toggle="modal" data-target="#addPracticas">
-            <div class="contenedorPracticasServicio">
+            <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                <div>
                 <p class="m-sm-1"><b>Justificantes</b></p>
                 <label><b>Días: </b></label>
