@@ -43365,34 +43365,38 @@ var render = function() {
     _c("p", { staticClass: "subtitulos" }, [_vm._v("Faltas por Asignatura")]),
     _vm._v(" "),
     _c("div", { staticClass: "micard", attrs: { onclick: "abrir()" } }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "table table-striped table-hover contentTable table table-sm"
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.materias, function(materia, key) {
-              return _c("tr", { key: key }, [
-                _c("td", [_vm._v(_vm._s(materia.materia))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  _vm._l(materia.data, function(fecha, keyfecha) {
-                    return _c("div", { key: keyfecha }, [_vm._v(_vm._s(fecha))])
-                  }),
-                  0
-                )
-              ])
-            }),
-            0
+      _vm.alumno.IdAlumno
+        ? _c(
+            "table",
+            {
+              staticClass:
+                "table table-striped table-hover contentTable table table-sm"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.materias, function(materia, key) {
+                  return _c("tr", { key: key }, [
+                    _c("td", [_vm._v(_vm._s(materia.materia))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      _vm._l(materia.data, function(fecha, keyfecha) {
+                        return _c("div", { key: keyfecha }, [
+                          _vm._v(_vm._s(fecha))
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                }),
+                0
+              )
+            ]
           )
-        ]
-      )
+        : _vm._e()
     ])
   ])
 }
