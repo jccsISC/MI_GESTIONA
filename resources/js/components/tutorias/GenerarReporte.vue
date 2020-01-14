@@ -9,7 +9,7 @@
                     </button>
                 </div>
 
-                <form @submit.prevent="guardarReporte" class="modal-body-g">
+                <form @submit.prevent="guardarReporte" class="modal-body-g pb-2">
                     <button  class="btn btn-success" @click="reporte.Status = 1">concluyó</button>
                     <button  class="btn btn-warning" @click="reporte.Status = 0">pendiente</button>
                     <p>Fecha: {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>

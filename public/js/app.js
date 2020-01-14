@@ -43456,7 +43456,7 @@ var render = function() {
             _c(
               "form",
               {
-                staticClass: "modal-body-g",
+                staticClass: "modal-body-g pb-2",
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
