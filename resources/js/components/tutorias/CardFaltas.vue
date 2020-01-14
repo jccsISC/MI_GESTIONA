@@ -2,7 +2,7 @@
     <div class="contenedorCard">
         <p class="subtitulos">Faltas por Asignatura</p>
         <div class="micard" onclick="abrir()">
-            <table class="table table-striped table-hover contentTable table table-sm">
+            <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
                         <thead>
                             <tr>
                                 <th>Asignaturas</th>
