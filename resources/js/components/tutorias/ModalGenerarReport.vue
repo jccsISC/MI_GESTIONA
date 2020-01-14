@@ -7,7 +7,7 @@
             </button>
         </div>
 
-        <generar-reporte @becaAlumnoAgregada="becas.push($event)"></generar-reporte>  
+        <generar-reporte></generar-reporte>  
     </div>     
 </template>
 
@@ -16,7 +16,6 @@
     export default {
         data() {
             return {
-                becas: [],
                 alumno: {},
             
             }
@@ -25,38 +24,8 @@
             bus.$on('alumnoSeleccionado', alumno => {
                 if(this.alumno.IdAlumno != alumno.IdAlumno){
                     this.alumno = alumno;
-                    this.jalarBecas();
                 }
             });
-        },
-        methods: {
-            jalarBecas() {
-                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/becas').then(res => {
-                    this.becas = res.data;
-                    console.log(res);
-                });
-            },
-            actualizarBeca(becaActualizada) {
-                const temp = Object.assign({}, this.becas);//clonamos el array becas
-                this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
-                Object.keys(temp).forEach(key => {
-                    if (temp[key].IdBeca === becaActualizada.IdBeca) {
-                        this.becas[key] = becaActualizada;
-                    }
-                    else {
-                        this.becas[key] = temp[key];
-                    }
-                });
-            },
-            eliminarBecaAlumno(beca, key) {
-                // Lo elimina en la base de datos.
-                axios.delete('/trabajosocial/'+this.alumno.IdAlumno+'/becas/' + beca.IdBeca)
-                .then(res => {
-                    // Lo elimina de manera visual.
-                    this.becas.splice(key,1);
-                   
-                })
-            }
         }
     }
 </script>

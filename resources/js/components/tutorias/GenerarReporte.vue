@@ -3,40 +3,59 @@
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Reporte de seguimiento</h2>
+                    <h3 class="modal-title">Reporte de seguimiento</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span>&times;</span>
                     </button>
                 </div>
 
-                <div class="modal-body-g">
-                    <button class="btn btn-success">concluyó</button>
-                    <button class="btn btn-warning">pendiente</button>
-                    <p>Fecha: 12-01-2020</p>
-                    <div>
-                        <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                        <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
-                        <p class="m-0"><b>Nombre de quien lo deriva: </b>PSIC. JOSÉ SALVADOR ALCAZAR MOLINA</p>
-                        <p class="m-0"><b>Padre o Tutor: </b>Rubí Silva Palominos</p>
-                        <p class="m-0"><b>Telefono: </b>4531260729</p>
-                        <p class="m-0"><b>Motivo: </b> Ha faltado 3 días en esta semana</p>
-                    </div>
-
-                    <div>
-                        <h3>Descripción de la derivación</h3>
-                        <div class="descrip">
-                            <p class="m-0">Contestó la mamá, acordó hablar con Julio Cesar comenta que dos días faltó por problemas con su pié y que esos dos dias seran justificados</p>
-                        </div>
+                <form @submit.prevent="guardarReporte" class="modal-body-g">
+                    <button  class="btn btn-success" @click="reporte.Status = 1">concluyó</button>
+                    <button  class="btn btn-warning" @click="reporte.Status = 0">pendiente</button>
+                    <p>Fecha: {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
+                    <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
+                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
+                    <select class="form-control" v-model="reporte.IdFamiliar">
+                        <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
+                    </select>
+                    <p class="m-0"><b>Telefono: </b>{{obtenerTelefono()}}</p>
                         
-                    </div>
+                    <div class="form-group">
+                        <p class="m-0">Motivo</p> 
+			            <textarea v-model="reporte.Motivo" name="" id="" class="form-control" placeholder="Escriba aquí los motivos"></textarea>
+		  	        </div>
 
-                </div>
-                
-                <div class="modal-footer">
-                    <button class="mibtn" @click="$emit('actualizarBeca', {})">
+                    <div class="form-group">
+			          <p class="m-0">Derivación</p>
+			          <input v-model="reporte.Derivacion" type="text" class="form-control" placeholder="Escriba aquí a donde lo deriva">
+		  	        </div>
+
+                    <div class="form-group">
+                        <p class="m-0">Descripción de la derivación</p> 
+			            <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control" placeholder="Escriba aquí la descripción de la deribación"></textarea>
+	  	            </div>
+                    
+                    <div class="form-group ">
+                        <p class="m-0">Observaciones</p>
+			            <input v-model="reporte.Observaciones" type="text" class="form-control" placeholder="Ingresa aquí las observaciones">
+		  	        </div>
+                    
+                    <div class="form-group ">
+                        <p class="m-0">Seguimiento</p>
+			            <input v-model="reporte.Seguimiento" type="text" class="form-control" placeholder="Ingresa aquí el seguimiento que se dará">
+		  	        </div>
+
+                    <p class="m-0">Responsable de seguimiento</p> 
+                    <select v-model="reporte.ResponsableSeguimiento" class="mdb-select md-form colorful-select dropdown-primary">
+                        <option value="Salvador Alcazar Molina">Salvador Alcazar Molina</option>
+                        <option value="Brenda Yaret">Brenda Yaret</option>
+                        <option value="Cesar Gonzalez">Cesar Gonzalez</option>
+                    </select>
+                     <button  type="submit" class="mibtn">
                         <i class="fas fa-plus-circle"> Guardar</i>
                     </button>
-                </div>
+                </form>
                 
             </div>
         </div>
@@ -48,15 +67,47 @@
     export default {
          data() {
             return {
-                alumno: {}
+                alumno: {},
+                reporte: {},
+                familiares: []
             }
         },
         created() {
-            this.$parent.$on('generarReporte', alumno => {
-                
-                this.alumno = alumno;
-               
+            this.$parent.$on('generarReporte', alumno => {              
+                this.alumno = alumno;   
+                this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
+                this.reporte.IdAlumno = alumno.IdAlumno; 
+                this.jalarFamiliares();      
             });
+        },
+        methods: {
+            jalarFamiliares() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
+                this.familiares = res.data;
+                });
+            },
+            obtenerTelefono() {
+                let telefono = '';
+                if (!this.reporte.IdFamiliar || !this.familiares) {
+                    return telefono;
+                }
+                this.familiares.forEach(familiar => {
+                    if (familiar.IdFamiliar === this.reporte.IdFamiliar) {
+                        telefono = familiar.Telefono;
+                    }
+                });
+                return telefono;
+            },
+            guardarReporte() {
+
+                if (this.reporte.Status = '') {
+                    alert('Seleccione el estatus');
+                }
+
+                axios.post('/yonoAbandono', this.reporte).then(res => {
+                    //window.location.href = '/T';
+                });
+            }
         }
     }
 </script>

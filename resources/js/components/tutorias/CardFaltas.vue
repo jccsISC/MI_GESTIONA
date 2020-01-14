@@ -15,10 +15,11 @@
                             </tr>
                         </tbody>-->
                         <tbody>
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>12-01-2020</td>
-                                <button type="date" class="btn btn-sm bg-danger"><i class="far fa-calendar-alt"></i></button>
+                            <tr v-for="(materia, key) in materias" :key="key">
+                                <td>{{materia.materia}}</td>
+                                <td>
+                                    <div v-for="(fecha, keyfecha) in materia.data" :key="keyfecha">{{fecha}}</div>
+                                </td>
                             </tr>
                         
                         </tbody>
@@ -33,11 +34,22 @@
     export default {
         data() {
             return {
-                alumno: {}
+                alumno: {},
+                materias: []
             }
         },
         created() {
-            
+            bus.$on('alumnoSeleccionado', alumno => {
+                this.alumno = alumno;
+                this.jalarInasistencias();
+            });
+        },
+        methods:{
+            jalarInasistencias() {
+                axios.get('/tutorias/'+this.alumno.IdAlumno+'/inasistencias').then(res => {
+                    this.materias = res.data;
+                });
+            }
         }
     
     }

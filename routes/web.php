@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('login', function () {
+    return view('login');
+});
+
 
 //-----------------------------------------DEPARTAMENTO DE BRENDA----------------------------------------------------
 
@@ -79,13 +83,12 @@ Route::get('alumnos/buscar', 'AlumnoController@buscar');
 Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
 Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificaciones');
 Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
+Route::get('tutorias/inasistencias', 'TutoriasController@inasistencias');
+Route::get('tutorias/{tblalumno}/inasistencias', 'TutoriasController@faltasSemana');
+//REPORTE YO NO ABANDONO
+Route::get('yonoAbandono', 'YonoAbandonoController@index');
+Route::post('yonoAbandono', 'YonoAbandonoController@store');
 
-// index -> alumnos con mas de 4 justificantes.btn-primary
-// alumnosconcuatrojustificantes/
-
-
-// /alumnos -> todos los alumnos
-// vista de justificantes.´lalsdfjsdaljfdlskjklfdsajlsfdajjdasfjfdsajfasdjfdasjfadsjdfslaj´daslfkjlfsdak
 
 
 

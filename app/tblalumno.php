@@ -41,5 +41,8 @@ class tblalumno extends Model
         return $this->hasMany(tblcalificacion::class, 'IdAlumno','IdAlumno');
     }
 
+    public function inasistencias() {
+        return $this->hasMany(tbldetalleinasistencias::class, 'IdAlumno','IdAlumno');
+    }
     
 }
