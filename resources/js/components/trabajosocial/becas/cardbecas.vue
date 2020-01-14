@@ -10,9 +10,9 @@
         </div>
 
         <div v-if="alumno.IdAlumno" class="float-right mt-0">
-            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#DetalleBeca"
+            <button type="button" class="btn btn-sm  miTransparent" data-toggle="modal" data-target="#DetalleBeca"
                 @click="$emit('agregarBecaAlumno', alumno)">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus"></i>
             </button>
         
             <detalleBeca @becaAlumnoAgregada="becas.push($event)"></detalleBeca>     
@@ -102,6 +102,9 @@
             font-size: .75em;       
         }
 
+        .miTransparent{
+            background: transparent;
+        }
 
         /* .micardBeca:hover{
             /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);

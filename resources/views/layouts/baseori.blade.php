@@ -22,12 +22,6 @@
 
                 <nav id="menu">
                     <ul>
-                        <li><a href="#">Generales</a>
-                            <ul>
-                                <li><a href="#" type="button" data-toggle="modal" data-target="#verBecas">Becas</a></li>
-                                <li><a href="#"type="button"  data-toggle="modal" data-target="#verDepencencias">Dependencias</a></li>
-                            </ul>
-                        </li>
                         <li><a href="#">Reportes</a></li>
                         <li><a href="#">Cerrar Sesion</a></li>
 
@@ -36,8 +30,6 @@
             </div>
         </header>
        
-        <ver-becas></ver-becas>
-        <ver-dependencias></ver-dependencias>
         @yield('content')
 
      

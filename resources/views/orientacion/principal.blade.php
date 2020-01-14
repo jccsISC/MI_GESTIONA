@@ -8,6 +8,9 @@
        <!--card info personal-->
        <card-info-personal></card-info-personal>
 
+         <!--card info general-->
+      <allinfo></allinfo>
+
        <!--card Salud-->
        <card-salud></card-salud>
       
@@ -30,21 +33,4 @@
        
        
    </section>
-
-
-   <!--<script>
-
-        Drag.init (document.getElementById("windowAlumno"));
-
-        function abrir(){
-            document.getElementById("windowAlumno").style.display ="block";
-            document.getElementById("cardInfoP").style.background = "rgb(211, 211, 211)";
-        }
-
-        function cerrar(){
-            document.getElementById("windowAlumno").style.display = "none";
-            document.getElementById("cardInfoP").style.background = "white";
-        }
-
-    </script>-->
 @endsection

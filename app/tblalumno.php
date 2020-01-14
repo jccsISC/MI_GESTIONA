@@ -37,6 +37,12 @@ class tblalumno extends Model
 
     // alumnos -> practica -> dependecia
 
+    public function calificaciones() {
+        return $this->hasMany(tblcalificacion::class, 'IdAlumno','IdAlumno');
+    }
 
+    public function inasistencias() {
+        return $this->hasMany(tbldetalleinasistencias::class, 'IdAlumno','IdAlumno');
+    }
     
 }
