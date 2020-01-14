@@ -29,10 +29,22 @@ body::-webkit-scrollbar-thumb{
     padding-right: 15px;
   }
 
-.modal-body-g::-webkit-scrollbar{
+  .modal-body-g2{
+    height: 550px;
+    overflow-y: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 18px;
+  }
+
+
+  .modal-body-g::-webkit-scrollbar{
     width: 0px;
 }
 
+.modal-body-g2::-webkit-scrollbar{
+    width: 0px;
+}
 
 
 

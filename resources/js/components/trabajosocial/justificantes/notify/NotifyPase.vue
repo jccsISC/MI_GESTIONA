@@ -55,11 +55,23 @@
         padding-top: 3px;
     }
 
+    .micardNotifications{
+        overflow-y: auto;
+    }
+
+    .micardNotifications::-webkit-scrollbar{
+    width: 0px;
+    }
+    
     .minicontent{
         width: 50%;
         height: 80px;
         float: left;
-        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .minicontent::-webkit-scrollbar{
+    width: 0px;
     }
 
     .sizeName{
