@@ -1,8 +1,5 @@
 <template>
     <div class="contenedorCard1">
-        <button type="button" class="close float-right m-0 mr-1" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                </button>
         <div id="cardInfoPersonalGeneral" class="micard1">
             <div v-if="alumno.IdAlumno" class="miContent1">
                 <div class="miImg1">
