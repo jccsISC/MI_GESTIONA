@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .modal-body-g{
-    height: 550px;
+    height: 450px;
     overflow-y: auto;
     padding-left: 15px;
     padding-right: 15px;
