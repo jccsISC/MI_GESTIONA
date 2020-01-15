@@ -71,7 +71,7 @@
     }
 
     .minicontent::-webkit-scrollbar{
-    width: 0px;
+        width: 0px;
     }
 
     .sizeName{

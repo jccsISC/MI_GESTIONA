@@ -4,33 +4,32 @@
         
         <div class="micard">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
-                        <thead>
-                            <tr>
-                                <th>Asignaturas</th>
-                                <th>P1</th>
-                                <th>P2</th>
-                                <th>P3</th>
-                                <th>P4</th>
-                                <th>P5</th>
-                                <th colspan="3">Promedio Final</th>
-                            </tr>
-                        </thead>
-                        <!--<tbody>
-                            <tr>
-                                <td colspan="7" class="text-center">Sin resultados...</td>
-                            </tr>
-                        </tbody>-->
-                        <tbody>
-                            <tr  v-for="(calificacion, key) in calificaciones" :key="key">
-                                <td>{{calificacion.Materia}}</td>
-                                <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                <td>{{calificacion.Calificacionfinal}}</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+                <thead>
+                    <tr>
+                        <th>Asignaturas</th>
+                        <th>P1</th>
+                        <th>P2</th>
+                        <th>P3</th>
+                        <th>P4</th>
+                        <th>P5</th>
+                        <th colspan="3">Promedio Final</th>
+                    </tr>
+                </thead>
+                <!--<tbody>
+                    <tr>
+                        <td colspan="7" class="text-center">Sin resultados...</td>
+                    </tr>
+                </tbody>-->
+                <tbody>
+                    <tr  v-for="(calificacion, key) in calificaciones" :key="key">
+                        <td>{{calificacion.Materia}}</td>
+                        <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
+                        <td>{{calificacion.Calificacionfinal}}</td>
+                    </tr>                            
+                </tbody>
+            </table>
 
-                    <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral">Promedio General: <label class="text-danger">{{promedioGeneral}}</label></p> 
+            <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral">Promedio General: <label class="text-danger">{{promedioGeneral}}</label></p> 
         </div>
     </div>
 </template>

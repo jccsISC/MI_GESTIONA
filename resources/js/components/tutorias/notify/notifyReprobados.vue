@@ -3,15 +3,15 @@
         <p class="subtitulos">Alumnos Reprobados por Unidad</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno)">
+            <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno)">
 
-                <div class="mcontent ml-5">
+                <div class="mcontent pl-5">
                     <p class="sizeName m-0"><b>{{ calificacion.Alumno.Nombre }} {{ calificacion.Alumno.ApePaterno }} {{ calificacion.Alumno.ApeMaterno }}</b></p>
                     <p class="m-0"><b>Grado: {{ calificacion.Alumno.Grado }} semestre</b></p>
                     <p class="m-0"><b>Grupo: {{ calificacion.Alumno.Grupo }}</b></p>
                 </div>
 
-                <div class="mcontent ml-3">
+                <div class="mcontent pl-3">
                     <P class="sizeName m-0"><b>Materias reprobadas <label class="textShadow">{{calificacion.Materias.length}}</label></b></P>
                     <p class="m-0 pl-4" v-for="(materia, keypases2) in calificacion.Materias" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt=""> {{materia}}</p>
                 </div>
@@ -58,10 +58,10 @@
 <style>
 
     .pLeft{
-        padding-left: 40px;
+        padding-left: 10%;
     }
 
     .mLeft{
-        margin-left: 34px;
+        margin-left: 10%;
     }
 </style>

@@ -5,8 +5,8 @@
         <p class="subtitulos">Notificación de Inasistencias</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(alumno, keyinasistencia) in alumnos" :key="keyinasistencia" @click="seleccionarAlumno(alumno)">
-                <div class="mcontent ml-5">
+            <div class="micardNotificaciones mb-3" v-for="(alumno, keyinasistencia) in alumnos" :key="keyinasistencia" @click="seleccionarAlumno(alumno)">
+                <div class="mcontent pl-5">
                     <p class="sizeName m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }} </b></p>
                     <p class=" m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
                     <p class=" m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
