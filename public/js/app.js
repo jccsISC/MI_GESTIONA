@@ -2077,12 +2077,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -8563,7 +8557,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\np{\n    margin: 0em;\n}\n.miImg1{\n    width: 100px;\n    height: 120px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    margin-left: 5px;\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.miContent1{\n    display: grid;\n    padding: 8px;\n    grid-template-columns:110px 1fr 1fr 2fr ;\n    grid-template-rows:3fr 1fr 2fr;\n    grid-gap: 10px;\n    height: 260px;\n}\n.uno{\n    background: #07A9B1;\n    font-size: .75em;\n}\n.dos{\n    background: #FF5733;\n    font-size: .75em;\n}\n.tres{\n    background: #07B134;\n    font-size: .75em;\n    text-align: center;\n}\n.padres{\n    display: grid;\n    grid-template-columns:1fr 1fr;\n    background: #07B134;\n    font-size: .75em;\n    grid-gap: 10px;\n}\n.mama{\n    background: rgb(177, 7, 7);\n    font-size: 1.2em;\n}\n.papa{\n    background: rgb(101, 99, 134);\n    font-size: 1.2em;\n}\n.cuatro{\n    grid-column: 1 / 4;\n    background: #A407B1;\n    font-size: .75em;\n}\n.cinco{\n    \n    background: #07A9B1;\n    font-size: .75em;\n}\n.seis{\n    background: rgb(112, 177, 7);\n    font-size: .75em;\n}\n\n", ""]);
+exports.push([module.i, "\np{\n    margin: 0em;\n}\n.miImg1{\n    width: 110px;\n    height: 140px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    margin-left: 5px;\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.miContent1{\n    display: grid;\n    padding: 8px;\n    grid-template-columns:120px 2fr 1fr 2fr ;\n    grid-template-rows:3fr 1fr 2fr;\n    grid-gap: 10px;\n    height: 270px;\n}\n.uno{\n    background: #07A9B1;\n    font-size: .75em;\n}\n.dos{\n    background: #FF5733;\n    font-size: .75em;\n}\n.tres{\n    background: #07B134;\n    font-size: .75em;\n    text-align: center;\n}\n.padres{\n    display: grid;\n    grid-template-columns:1fr 1fr;\n    background: #07B134;\n    font-size: .75em;\n    grid-gap: 10px;\n}\n.mama{\n    background: rgb(177, 7, 7);\n    font-size: 1.2em;\n}\n.papa{\n    background: rgb(101, 99, 134);\n    font-size: 1.2em;\n}\n.cuatro{\n    grid-column: 1 / 5;\n    background: #A407B1;\n    font-size: .75em;\n}\n\n", ""]);
 
 // exports
 
@@ -40880,6 +40874,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "contenedorCard1" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "micard1", attrs: { id: "cardInfoPersonalGeneral" } },
@@ -40906,13 +40902,28 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", [
+                  _c("b", [_vm._v("Sexo: ")]),
+                  _vm._v(_vm._s(_vm.alumno.Sexo))
+                ]),
+                _vm._v(" "),
+                _c("p", [
                   _c("b", [_vm._v("Fecha Nacimiento: ")]),
                   _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
                 ]),
                 _vm._v(" "),
                 _c("p", [
-                  _c("b", [_vm._v("Sexo: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Sexo))
+                  _c("b", [_vm._v("CURP: ")]),
+                  _vm._v(_vm._s(_vm.alumno.Curp))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("b", [_vm._v("Etnia: ")]),
+                  _vm._v(_vm._s(_vm.alumno.Etnia))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("b", [_vm._v("Sangre: ")]),
+                  _vm._v(_vm._s(_vm.alumno.TipoSangre))
                 ]),
                 _vm._v(" "),
                 _c("p", [
@@ -40948,13 +40959,49 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3)
+              _c("div", { staticClass: "cuatro" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "lugarN" }, [
+                  _c("p", [
+                    _c("b", [_vm._v("Municipio: ")]),
+                    _vm._v(_vm._s(_vm.alumno.MunicipioNac) + " "),
+                    _c("b", [_vm._v(" Estado: ")]),
+                    _vm._v(_vm._s(_vm.alumno.EstadoNac))
+                  ]),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "domicilio" }, [
+                  _c("p", [
+                    _c("b", [_vm._v("Calle: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Calle) + " "),
+                    _c("b", [_vm._v(" No.Ext: ")]),
+                    _vm._v(_vm._s(_vm.alumno.NumExterior) + " "),
+                    _c("b", [_vm._v(" No.Int: ")]),
+                    _vm._v(_vm._s(_vm.alumno.NumExterior) + " "),
+                    _c("b", [_vm._v(" CP: ")]),
+                    _vm._v(_vm._s(_vm.alumno.CodPostal))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Entre calle 1: ")]),
+                    _vm._v(_vm._s(_vm.alumno.EntreCalle) + " "),
+                    _c("b", [_vm._v(" Entre calle 2: ")]),
+                    _vm._v(_vm._s(_vm.alumno.EntreCalle2) + " "),
+                    _c("b", [_vm._v(" Colonia: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Colonia) + " "),
+                    _c("b", [_vm._v("Municipio: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Municipio) + " "),
+                    _c("b", [_vm._v(" Estado: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Estado))
+                  ])
+                ])
+              ])
             ])
           : _vm._e()
       ]
@@ -40962,6 +41009,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close float-right m-0 mr-1",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", [_vm._v("×")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40984,31 +41048,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cuatro" }, [
-      _c("p", {}, [_c("b", [_vm._v("LUGAR DE NACIMIENTO")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "lugarN" })
-    ])
+    return _c("p", {}, [_c("b", [_vm._v("LUGAR DE NACIMIENTO")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cinco" }, [
-      _c("p", {}, [_c("b", [_vm._v("GENERALES")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "generales" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "seis" }, [
-      _c("p", {}, [_c("b", [_vm._v("DOMICILIO")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "domicilio" })
-    ])
+    return _c("p", {}, [_c("b", [_vm._v("DOMICILIO")])])
   }
 ]
 render._withStripped = true
@@ -41093,7 +41139,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("p", { staticClass: "subtitulos" }, [
+              _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Información Académica")
               ]),
               _vm._v(" "),
@@ -41101,13 +41147,15 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "contenedorVentana2" }),
               _vm._v(" "),
-              _c("p", { staticClass: "subtitulos" }, [_vm._v("Inacistencias")]),
+              _c("p", { staticClass: "subtitulos text-center" }, [
+                _vm._v("Inacistencias")
+              ]),
               _vm._v(" "),
               _c("hr", { staticClass: "barrasubtitulos" }),
               _vm._v(" "),
               _c("div", { staticClass: "contenedorVentana" }),
               _vm._v(" "),
-              _c("p", { staticClass: "subtitulos" }, [
+              _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Salud - Incidencias")
               ]),
               _vm._v(" "),
@@ -41115,7 +41163,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "contenedorVentana2" }),
               _vm._v(" "),
-              _c("p", { staticClass: "subtitulos" }, [
+              _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Trabajo Social")
               ]),
               _vm._v(" "),
@@ -58876,8 +58924,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,5 +1,8 @@
 <template>
     <div class="contenedorCard1">
+        <button type="button" class="close float-right m-0 mr-1" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                </button>
         <div id="cardInfoPersonalGeneral" class="micard1">
             <div v-if="alumno.IdAlumno" class="miContent1">
                 <div class="miImg1">
@@ -9,9 +12,13 @@
                 <div class="uno">
                     <p><b>Matricula: </b>{{alumno.IdAlumno}}</p>
                     <p><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                    <p><b>Fecha Nacimiento: </b>{{alumno.FechaNacimiento}}</p>
                     <p><b>Sexo: </b>{{alumno.Sexo}}</p>
+                    <p><b>Fecha Nacimiento: </b>{{alumno.FechaNacimiento}}</p>
+                    <p><b>CURP: </b>{{alumno.Curp}}</p>
+                    <p><b>Etnia: </b>{{alumno.Etnia}}</p>
+                    <p><b>Sangre: </b>{{alumno.TipoSangre}}</p>
                     <p><b>Telefóno: </b>{{alumno.Telefono}}</p>
+                    
                 </div>
 
                 <div class="dos">
@@ -38,26 +45,13 @@
                 <div class="cuatro">
                     <p class=""><b>LUGAR DE NACIMIENTO</b></p>
                         <div class="lugarN">
-                        
-      
+                            <p><b>Municipio: </b>{{alumno.MunicipioNac}} <b> Estado: </b>{{alumno.EstadoNac}}</p><br>
                         </div>
-                </div>
-
-                <div class="cinco">
-                    <p class=""><b>GENERALES</b></p>
-                        <div class="generales">
-                        
-      
-                        </div>
-                               
-                </div>
-
-                <div class="seis">
                     <p class=""><b>DOMICILIO</b></p>
                         <div class="domicilio">
-                        
-      
-                        </div>     
+                            <p><b>Calle: </b>{{alumno.Calle}} <b> No.Ext: </b>{{alumno.NumExterior}} <b> No.Int: </b>{{alumno.NumExterior}} <b> CP: </b>{{alumno.CodPostal}}</p>
+                            <p><b>Entre calle 1: </b>{{alumno.EntreCalle}} <b> Entre calle 2: </b>{{alumno.EntreCalle2}} <b> Colonia: </b>{{alumno.Colonia}} <b>Municipio: </b>{{alumno.Municipio}} <b> Estado: </b>{{alumno.Estado}}</p>
+                        </div>
                 </div>
             </div>
 
@@ -92,8 +86,8 @@
     }
 
     .miImg1{
-        width: 100px;
-        height: 120px;
+        width: 110px;
+        height: 140px;
         border-radius: 8px;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
         margin-left: 5px;
@@ -106,10 +100,10 @@
     .miContent1{
         display: grid;
         padding: 8px;
-        grid-template-columns:110px 1fr 1fr 2fr ;
+        grid-template-columns:120px 2fr 1fr 2fr ;
         grid-template-rows:3fr 1fr 2fr;
         grid-gap: 10px;
-        height: 260px;
+        height: 270px;
     }
 
     .uno{
@@ -150,19 +144,8 @@
     }
 
     .cuatro{
-        grid-column: 1 / 4;
+        grid-column: 1 / 5;
         background: #A407B1;
-        font-size: .75em;
-    }
-
-    .cinco{
-        
-        background: #07A9B1;
-        font-size: .75em;
-    }
-    
-     .seis{
-        background: rgb(112, 177, 7);
         font-size: .75em;
     }
     
