@@ -1,10 +1,10 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Información Personal</p>
-        <div id="cardInfoPersonal" class="micard" data-toggle="modal" data-target="#allinfo">
+        <div id="cardInfoPersonal" class="micardP" data-toggle="modal" :data-target="dataTarget">
             <div v-if="alumno.IdAlumno" class="miContent">
                 <div class="miImg">
-                    <!--<img src="images/student.png" alt="Foto del Alumno">-->
+                    <img src="images/student.png" alt="Foto del Alumno">
                 </div>
 
                 <div>
@@ -62,6 +62,11 @@
                 this.alumno = alumno;
                
             });
+        },
+        computed:{
+            dataTarget(){
+                return this.alumno.IdAlumno ? '#allinfo' : '';
+            }
         }
     
     }
@@ -111,5 +116,25 @@
         margin: auto;
         border-left: 1px solid rgb(196, 199, 196);
         height: 80px;
+    }
+
+
+
+    .micardP{
+        padding: 5px;
+        width: 100%;
+        height: 260px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        transition: 0.5s;
+        border: 1px solid rgb(211, 211, 211);
+        font-size: .75em; 
+        text-indent: 5px ;  
+    }
+
+    .micardP:hover{
+        /*box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);*/
+        box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
     }
 </style>

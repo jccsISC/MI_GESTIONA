@@ -19,4 +19,5 @@ class AlumnoController extends Controller
     public function calificaciones(tblalumno $tblalumno) {
         return $tblalumno->calificaciones()->with('detalles')->get();
     }
+    
 }

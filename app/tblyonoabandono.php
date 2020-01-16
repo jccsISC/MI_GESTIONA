@@ -12,4 +12,9 @@ class tblyonoabandono extends Model
     ,'Derivacion','DescripcionDer','Status','Seguimiento','Observaciones','ResponsableSeguimiento','Existe'];
     public $timestamps = false;
 
+    public function alumno() {
+        return $this->belongsTo(tblalumno::class, 'IdAlumno');
+    }
+    
+    
 }

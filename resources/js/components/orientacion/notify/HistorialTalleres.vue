@@ -1,23 +1,67 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Notificación de justificantes</p>
-        <div class="micardNotifications">        
-            <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
-                <div class="minicontent">
-                    <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
-                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
-                    <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
-                </div>
+        <p class="subtitulos">Historial de talleres tomados</p>
+            <div class="micardTalleres">
+                <spinner v-show="loading"></spinner>
+                <table class="table table-striped table-hover contentTable table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Grupos</th>
+                            <th colspan="2">Taller</th>
+                            <th>Beneficiarios</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        <tr>
+                            <td style="background: #800000; color:white; text-align: center;">3 A</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                          <tr>
+                            <td style="background: #800000; color:white; text-align: center;">3 A</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                          <tr>
+                            <td style="background: #800000; color:white; text-align: center;">1 C</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                          <tr>
+                            <td style="background: #800000; color:white; text-align: center;">6 F</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                          <tr>
+                            <td style="background: #800000; color:white; text-align: center;">5 A</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                          <tr>
+                            <td style="background: #800000; color:white; text-align: center;">4 B</td>
+                            <td colspan="2">Pediculosis</td>
+                            <td>24</td>
+                            <td>14-01-2020</td>
+                            <td>10:00:00</td>
+                        </tr>
+                    </tbody>
+                 </table>
+            </div>            
+</div>
 
-                <div class="minicontent">
-                    <p class="sizeName m-0"><b>Justificantes  <label class="textShadow">{{alumno.justificantes.length}}</label></b></p>
-                    <p class="m-0" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2"><img class="micircle" src="images/circleRojo.png" alt="">  {{justificante.Fecha}}</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </template>
 
 <script>

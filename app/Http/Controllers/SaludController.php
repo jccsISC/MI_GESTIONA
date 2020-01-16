@@ -3,28 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tblsalud;
+use App\tblalumno;
 
 class SaludController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    
+    public function salud(tblalumno $tblalumno){
+        return $tblalumno->salud;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +22,30 @@ class SaludController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $atributos = $this->validate($request, [
+            'Estatura' => 'required',
+            'IdAlumno' =>'required',
+            'Peso' => 'required',
+            'Anteojos' => 'required',
+            'Alergias' => 'required',
+            'ProbPosturales' => 'required',
+            'PiePlano' => 'required',
+            'ProbAuditivo' => 'required',
+            'ProbLenguaje' => 'required',
+            'Gravidez' => 'required',
+            'ProbBucal' => 'required',
+            'Pediculosis' => 'required',
+            'Transtornos' => 'required',
+            'Otros' => 'required',
+        ]);
+
+        $imc = 0; // @todo: calcular imc
+        
+        $imc = $request->input('Peso') / ($request->input('Estatura')^2);
+
+        return tblsalud::create(
+            $atributos +['Existe'=>1, 'IMC' => $imc]
+        );
     }
 
     /**

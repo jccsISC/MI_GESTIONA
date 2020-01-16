@@ -48,15 +48,16 @@ Vue.component('card-notify-reprobados', require('./components/tutorias/notify/No
 
 //ORIENTACION----------------------------------------------------------------------------------------------------
 //Salud
-Vue.component('card-salud', require('./components/orientacion/CardSalud.vue').default);
+Vue.component('card-salud', require('./components/orientacion/salud/CardSalud.vue').default);
+Vue.component('add-salud', require('./components/orientacion/salud/AgregarSalud.vue').default);
 //Incidencias
-Vue.component('card-incidencias', require('./components/orientacion/CardIncidencias.vue').default);
+Vue.component('card-incidencias', require('./components/orientacion/incidencias/CardIncidencias.vue').default);
 //Notify
 Vue.component('card-notify-seguimiento', require('./components/orientacion/notify/notifySeguimiento.vue').default);
 Vue.component('card-notify-talleres', require('./components/orientacion/notify/notifyTalleres.vue').default);
 Vue.component('historial-talleres', require('./components/orientacion/notify/HistorialTalleres.vue').default);
 Vue.component('generar-report-oe', require('./components/orientacion/ModalReportOE.vue').default);
-Vue.component('add-salud', require('./components/orientacion/AgregarSalud.vue').default);
+Vue.component('detalle-taller', require('./components/orientacion/talleres/DetalleTaller.vue').default);
 
 
 

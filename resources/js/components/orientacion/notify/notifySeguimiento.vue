@@ -1,6 +1,6 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Notificación de justificantes</p>
+        <p class="subtitulos">Notificación de seguimiento</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
@@ -11,8 +11,7 @@
                 </div>
 
                 <div class="minicontent">
-                    <p class="sizeName m-0"><b>Justificantes  <label class="textShadow">{{alumno.justificantes.length}}</label></b></p>
-                    <p class="m-0" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2"><img class="micircle" src="images/circleRojo.png" alt="">  {{justificante.Fecha}}</p>
+                    <p class="sizeName m-0"><b>Seguimiento <label class="textShadow">{{alumno.reportes.length}}</label></b></p>
                 </div>
             </div>
 
@@ -27,25 +26,18 @@
         data() {
             return {
                 alumnos: [],
-                loading: true,
-                fechaInicio: '',
-                fechaFinal: '',
-                semana:''
+                loading: true
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
+            axios.get('/orientacion').then(res => {
                 this.loading = false;
+                this.alumnos = res.data;
+                
             });
         },
         methods: {
-
             seleccionarAlumno(alumno) {
-                console.log('click');
                 bus.$emit('alumnoSeleccionado', alumno);               
             }
         }

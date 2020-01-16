@@ -1,22 +1,25 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Notificación de justificantes</p>
-        <div class="micardNotifications">        
-            <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
-                <div class="minicontent">
-                    <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
-                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
-                    <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
-                </div>
-
-                <div class="minicontent">
-                    <p class="sizeName m-0"><b>Justificantes  <label class="textShadow">{{alumno.justificantes.length}}</label></b></p>
-                    <p class="m-0" v-for="(justificante, keyjustificante2) in alumno.justificantes" :key="keyjustificante2"><img class="micircle" src="images/circleRojo.png" alt="">  {{justificante.Fecha}}</p>
-                </div>
+        <p class="subtitulos">Talleres</p>
+        <div class="micardTalleres p-3 mr-3">        
+            <div class="cardTaller izeTaller text-center" data-toggle="modal" data-target="#detalleTaller">
+                <spinner v-show="loading"></spinner>
+                <p class="pt-2 m-0"><b>Pediculosis</b></p>
+                <p class="m-0">25-01-2020</p>
             </div>
-
+            <div class="cardTaller izeTaller text-center ml-3" data-toggle="modal" data-target="#detalleTaller">
+                <spinner v-show="loading"></spinner>
+                <p class="pt-2 m-0"><b>Delitos</b></p>
+                <p class="m-0">23-01-2020</p>
+            </div>
+            <div class="cardTaller izeTaller text-center ml-3" data-toggle="modal" data-target="#detalleTaller">
+                <spinner v-show="loading"></spinner>
+                <p class="pt-2 m-0"><b>Suicidios</b></p>
+                <p class="m-0">23-01-2020</p>
+            </div>
+            <button class="btnaddTaller ml-3" data-toggle="modal" data-target="#detalleTaller">+</button>
         </div>
+        <detalle-taller></detalle-taller>
     </div>
 </template>
 
@@ -53,5 +56,49 @@
 </script>
    
 <style>
+
+    .cardTaller{
+        width: 140px;
+        height: 100px;
+        padding: 5px;
+        float: left;
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 3px;
+    }
+
+    .cardTaller:hover{
+        /*box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);*/
+        box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
+    }
+
+    .micardTalleres{
+        width: 100%;
+        height: 280px;
+        background-color: white;
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        transition: 0.5s;
+        border: 1px solid rgb(211, 211, 211);
+    }
+
+    .btnaddTaller{
+        width: 140px;
+        height: 100px;
+        background: white;
+        float: left;
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 3px;
+        outline: none;
+        border: 1px solid white;
+    }
+
+    .btnaddTaller:hover{
+        /*box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);*/
+        box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
+    }
+
+    .izeTaller{
+        font-size: 12px;
+    }
 
 </style>

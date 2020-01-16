@@ -14,4 +14,8 @@ class tblsalud extends Model
                            'ProbBucal','Pediculosis','Transtornos','Otros','DetOtros','Existe'];
     public $timestamps = false;
     
+
+    public function alumno(){
+        return $this->belongsTo(tblalumno::class, 'IdAlumno');
+    }
 }

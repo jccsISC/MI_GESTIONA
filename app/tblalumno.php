@@ -44,5 +44,13 @@ class tblalumno extends Model
     public function inasistencias() {
         return $this->hasMany(tbldetalleinasistencias::class, 'IdAlumno','IdAlumno');
     }
+
+    public function reportes() {
+        return $this->hasMany(tblyonoabandono::class, 'IdAlumno','IdAlumno');
+    }
+    
+    public function salud() {
+        return $this->hasOne(tblsalud::class, 'IdAlumno','IdAlumno');
+    }
     
 }

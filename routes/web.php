@@ -90,8 +90,10 @@ Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');
 
 
-
-
+//ORIENTACION E
+Route::get('orientacion','OrientacionEController@reportes');
+Route::post('salud','SaludController@store');
+Route::get('salud/{tblalumno}', 'SaludController@salud');
 //-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
 Route::get('T', function(){
     return view('/tutorias.principal');

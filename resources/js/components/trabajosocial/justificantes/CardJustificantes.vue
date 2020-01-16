@@ -6,7 +6,7 @@
                <div>
                 <p class="m-sm-1"><b>Justificantes</b></p>
                 <label><b>Días: </b></label>
-                <button class="btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1" 
+                <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                     v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
                     data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
                     
@@ -18,7 +18,7 @@
               <div>
                 <p class="m-0"><b>Pases de Salida</b></p>
                 <label><b>Días: </b></label>
-                <button class="btn btn-danger btn-sm mr-1 p-0 pr-1 pl-1" 
+                <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                     @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                     :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
                 
