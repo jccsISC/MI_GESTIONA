@@ -8,18 +8,18 @@
     <title>Login | Gestiona</title>
 </head>
 <body>
-    
-<div class="body"></div>
-		<div class="grad"></div>
-		<div class="header">
-			<div>Site<span>Random</span></div>
+	
+	<form action="" class="contenedor">
+		<div class="container">
+			<h1>GESTIONA</h1>
+			<hr>
+			<div class="divInputs">
+				<input type="text" placeholder="Ingresa tu usuario" name="user" required>
+				<input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
+			</div>
+		
+			<button type="submit" class="registerbtn">Iniciar Sesión</button>
 		</div>
-		<br>
-		<div class="login">
-				<input type="text" placeholder="username" name="user"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<input type="button" value="Login">
-		</div>
-
+	</form>
 </body>
 </html>

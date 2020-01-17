@@ -2,14 +2,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.component('spinner', require('./components/Spinner.vue').default);
+Vue.component('spinner', require('./components/generales/Spinner.vue').default);
 
 //Tota la info del alumno en este componente
-Vue.component('all-info-alumno', require('./components/AlumnoAll.vue').default);
-Vue.component('mi-buscador', require('./components/Buscador.vue').default);
-Vue.component('card-info-personal', require('./components/CardInfoPersonal.vue').default);
-Vue.component('card-info-personal-general', require('./components/CardInfoPersonalGeneral.vue').default);
-Vue.component('allinfo', require('./components/infoGeneralAlumno.vue').default);
+Vue.component('mi-buscador', require('./components/generales/Buscador.vue').default);
+Vue.component('card-info-personal', require('./components/generales/CardInfoPersonal.vue').default);
+Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
+Vue.component('allinfo', require('./components/generales/infoGeneralAlumno.vue').default);
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);
@@ -52,13 +51,18 @@ Vue.component('card-salud', require('./components/orientacion/salud/CardSalud.vu
 Vue.component('add-salud', require('./components/orientacion/salud/AgregarSalud.vue').default);
 //Incidencias
 Vue.component('card-incidencias', require('./components/orientacion/incidencias/CardIncidencias.vue').default);
+Vue.component('genera-mala-conducta', require('./components/orientacion/incidencias/GenerarReporteConducta.vue').default);
+Vue.component('genera-incidencia', require('./components/orientacion/incidencias/GenerarReporte.vue').default);
 //Notify
 Vue.component('card-notify-seguimiento', require('./components/orientacion/notify/notifySeguimiento.vue').default);
 Vue.component('card-notify-talleres', require('./components/orientacion/notify/notifyTalleres.vue').default);
 Vue.component('historial-talleres', require('./components/orientacion/notify/HistorialTalleres.vue').default);
 Vue.component('generar-report-oe', require('./components/orientacion/ModalReportOE.vue').default);
 Vue.component('detalle-taller', require('./components/orientacion/talleres/DetalleTaller.vue').default);
-
+//Inasistencias
+Vue.component('inasistencias', require('./components/inasistencias/AgregarInasistencias.vue').default);
+//Reportes
+Vue.component('reportes', require('./components/reportes/ReportesALL.vue').default);
 
 
 

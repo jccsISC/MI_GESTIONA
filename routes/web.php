@@ -94,6 +94,17 @@ Route::post('yonoAbandono', 'YonoAbandonoController@store');
 Route::get('orientacion','OrientacionEController@reportes');
 Route::post('salud','SaludController@store');
 Route::get('salud/{tblalumno}', 'SaludController@salud');
+
+
+//INASISTENCIAS
+Route::get('M', function(){
+    return view('/inasistencias');
+});
+
+//REPORTES GENERALES
+Route::get('R', function(){
+    return view('/reportes');
+});
 //-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
 Route::get('T', function(){
     return view('/tutorias.principal');

@@ -28,7 +28,7 @@
                                 <li><a href="#"type="button"  data-toggle="modal" data-target="#verDepencencias">Dependencias</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Reportes</a></li>
+                        <li><a href="/R">Reportes</a></li>
                         <li><a href="#">Cerrar Sesion</a></li>
 
                     </ul>

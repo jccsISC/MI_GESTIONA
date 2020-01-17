@@ -22,7 +22,7 @@
 
                 <nav id="menu">
                     <ul>
-                        <li><a href="#">Reportes</a></li>
+                        <li><a href="/R">Reportes</a></li>
                         <li><a href="#">Cerrar Sesion</a></li>
 
                     </ul>

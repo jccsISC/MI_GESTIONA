@@ -58,7 +58,7 @@
 
 <script>
    
-    import bus from '../event-bus';
+    import bus from '../../event-bus';
     
     export default {
         data() {

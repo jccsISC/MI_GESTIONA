@@ -1,13 +1,25 @@
 <template>
     <div>
-        <div v-if="alumno.IdAlumno" class="posicionBtn">
-            <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
-                @click="$emit('generarReporte', alumno)">
+        <div v-if="alumno.IdAlumno">
+            <!-- <select class="miBtn" id="change">
                 Generar Reporte
+                <option  value="malaConducta">Mala conducta</option>
+                <option  value="incidencias">Incidencia</option>
+            </select> -->
+
+    
+
+            <button type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                Incidencia
             </button>
+
+            <button type="button" class="miBtn posicionbt" data-toggle="modal" data-target="#reporteConducta">
+                Mala Conducta
+            </button>
+
         </div>
 
-        <generar-reporte></generar-reporte>  
+        <genera-mala-conducta></genera-mala-conducta>  
     </div>     
 </template>
 
@@ -26,33 +38,47 @@
                     this.alumno = alumno;
                 }
             });
+
+            $('#change option').on('click', function(){
+            $('reporteTuto').dialog();
+                // data-toggle="modal" data-target="#reporteTuto" @click="$emit('generarReporte', alumno)"    
+            });
+        },
+        methods:{
+             
         }
+
     }
 </script>
 
 <style>
 
-    .posicionBtn{
+    .posicionbt{
         position: fixed;
         top: 110px;
-        right: 2%;
-        width: 180px;
+        right: 5%;
     }
+    
     .miBtn{
         background: #800000;
         border-radius: 4px;
         color: white;
         outline: none;
-        padding-left:5px;
-        padding-right: 5px; 
-        border: 1px solid #800000;
+        border: 1px solid #880000;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
     }
 
     .miBtn:hover{
-        background-color: rgb(255, 255, 255);
-        color: rgb(167, 11, 11);
+        background-color: white;
+        color: #800000;
         border: 1px solid #800000;
+    }
+
+
+    .posicionbtn{
+        position: fixed;
+        top: 140px;
+        right: 5%;
     }
 
 </style>

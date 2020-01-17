@@ -11,40 +11,44 @@
 	    		<label>Nombre del Taller:</label>
 		    	<input type="text" class="form-control p-0" placeholder="Ingresa el nombre del taller">
 		  	</div>
-            <div class="form-group">
+            <div class="form-group p-0">
 	    		<label>Institución:</label>
 		    	<input type="text" class="form-control p-0" placeholder="Ingresa el nombre del taller">
 		  	</div>
             
-            <div class="form-group">
-	    		<label>Dirigido a:</label>
-		    	<select class="form-control">
-              <option value="">A</option>
-              <option value="">B</option>
-              <option value="">C</option>
-              <option value="">D</option>
-              <option value="">F</option>
-              <option value="">G</option>
-              <option value="">H</option>
-              <option value="">I</option>
-              <option value="">J</option>
-          </select>
+          <div>
+	    		  <label>Dirigido a:</label>
+		    	  <select class="form-control m-0 p-0 w-25">
+                <option value="">A</option>
+                <option value="">B</option>
+                <option value="">C</option>
+                <option value="">D</option>
+                <option value="">F</option>
+                <option value="">G</option>
+                <option value="">H</option>
+                <option value="">I</option>
+                <option value="">J</option>
+            </select>
+            <label>Semestre:</label>
+		    	  <select class="form-control m-0 p-0 w-25">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="">4</option>
+                <option value="">5</option>
+                <option value="">6</option>
+            </select>
 		  	</div>
             
-            <div class="form-group">
+        <div class="form-group p-0">
 	    		<label>Número de Beneficiados:</label>
-                <input type="number" class="form-control w-50 p-0" placeholder="Cantidad">
-		  	</div>
+          <input type="number" class="form-control w-50 p-0" placeholder="Cantidad">
+          <label>Nombre del responsable:</label>
+          <input type="text" class="form-control p-0" placeholder="Nombre del que imparte el curso">
 
-            <div class="form-group">
-	    		<label>Nombre del responsable:</label>
-                <input type="text" class="form-control p-0" placeholder="Nombre del que imparte el curso">
 		  	</div>
-            
-            <div>
-                <button type="button" class="miBtn float-right mb-2">Guardar</button>
-            </div>
-
+        <button type="button" class="miBtn float-right mb-2">Guardar</button>
+      
         </div>
       </div>
     </div>
@@ -65,7 +69,7 @@
 }
 
 .modal-body-xl{
-    height: 300px;
+    height: 400px;
     overflow-y: auto;
     padding-left: 10px;
     padding-right: 10px;
