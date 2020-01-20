@@ -15,47 +15,12 @@
                     </thead>
                 
                     <tbody>
-                        <tr>
-                            <td style="background: #800000; color:white; text-align: center;">3 A</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
-                        </tr>
-                          <tr>
-                            <td style="background: #800000; color:white; text-align: center;">3 A</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
-                        </tr>
-                          <tr>
-                            <td style="background: #800000; color:white; text-align: center;">1 C</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
-                        </tr>
-                          <tr>
-                            <td style="background: #800000; color:white; text-align: center;">6 F</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
-                        </tr>
-                          <tr>
-                            <td style="background: #800000; color:white; text-align: center;">5 A</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
-                        </tr>
-                          <tr>
-                            <td style="background: #800000; color:white; text-align: center;">4 B</td>
-                            <td colspan="2">Pediculosis</td>
-                            <td>24</td>
-                            <td>14-01-2020</td>
-                            <td>10:00:00</td>
+                        <tr v-for="(grupo, key) in grupos" :key="key">
+                            <td style="background: #800000; color:white; text-align: center;">{{grupo.Semestre}} {{grupo.Grupo}}</td>
+                            <td colspan="2">{{grupo.taller.Nombre}}</td>
+                            <td>{{grupo.Cantidad}}</td>
+                            <td>{{grupo.taller.Fecha}}</td>
+                            <td>{{grupo.taller.Hora}}</td>
                         </tr>
                     </tbody>
                  </table>
@@ -70,27 +35,22 @@
     export default {
         data() {
             return {
-                alumnos: [],
-                loading: true,
-                fechaInicio: '',
-                fechaFinal: '',
-                semana:''
+                grupos: [],
+                loading: true
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
-                this.loading = false;
+            bus.$on('actulizarListaGrupos', () => {
+                this.actualizarLista();
             });
+           this.actualizarLista();
         },
         methods: {
-
-            seleccionarAlumno(alumno) {
-                console.log('click');
-                bus.$emit('alumnoSeleccionado', alumno);               
+            actualizarLista() {
+                axios.get('/talleres/grupos').then(res => {
+                this.grupos = res.data;
+                this.loading = false;
+            }); 
             }
         }
     }

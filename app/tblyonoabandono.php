@@ -16,5 +16,7 @@ class tblyonoabandono extends Model
         return $this->belongsTo(tblalumno::class, 'IdAlumno');
     }
     
-    
+    public function familiar() {
+        return $this->belongsTo(tblfamiliare::class, 'IdFamiliar');
+    }
 }

@@ -93,7 +93,19 @@ Route::post('yonoAbandono', 'YonoAbandonoController@store');
 //ORIENTACION E
 Route::get('orientacion','OrientacionEController@reportes');
 Route::post('salud','SaludController@store');
+Route::put('salud/{tblsalud}','SaludController@update');
 Route::get('salud/{tblalumno}', 'SaludController@salud');
+//TALLERES
+Route::get('talleres', 'TalleresController@index');
+Route::get('talleres/grupos', 'TalleresController@grupos');
+Route::post('talleres', 'TalleresController@store');
+Route::delete('talleres/{tbltalleres}', 'TalleresController@destroy');
+Route::put('talleres/{tbltalleres}', 'TalleresController@update');
+//INCIDENCIAS
+Route::get('incidencias', 'IncidenciasController@index');
+Route::get('incidencias/{tblalumno}', 'IncidenciasController@incidencias');
+Route::post('incidencias', 'IncidenciasController@store');
+
 
 
 //INASISTENCIAS

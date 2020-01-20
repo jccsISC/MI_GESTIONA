@@ -18,12 +18,12 @@
                             <input type="number" step="0.0" min="0" class="form-control m-0 w-25 p-0" placeholder="0.0" v-model="salud.Estatura">
                             
                             <label>Anteojos:</label>
-                            <input type="radio" name="anteojos" value="si" id="si" @click="salud.Anteojos = 1"><label>Si</label>
-                            <input type="radio" name="anteojos" value="no" id="no" @click="salud.Anteojos = 0"><label>No</label><br>
+                            <input type="radio" name="anteojos" value="1" v-model="salud.Anteojos"><label>Si</label>
+                            <input type="radio" name="anteojos" value="0" v-model="salud.Anteojos"><label>No</label><br>
                             
                             <label>Transtornos:</label>
-                            <input type="radio" name="transtornos" value="si" id="si" @click="salud.Transtornos = 1"><label>Si</label>
-                            <input type="radio" name="transtornos" value="no" id="no" @click="salud.Transtornos = 0"><label>No</label><br>
+                            <input type="radio" name="transtornos" value="1" v-model="salud.Transtornos"><label>Si</label>
+                            <input type="radio" name="transtornos" value="0" v-model="salud.Transtornos"><label>No</label><br>
                             
                         </div>
                         
@@ -32,27 +32,27 @@
                             <input type="number" step="0.0" min="0" class="form-control m-0 w-25 p-0" placeholder="0.0" v-model="salud.Peso">
                            
                             <label>Salud Bucal:</label>
-                            <input type="radio" name="saludbucal" value="si" id="si" @click="salud.ProbBucal = 1"><label>Si</label>
-                            <input type="radio" name="saludbucal" value="no" id="no" @click="salud.ProbBucal = 0"><label>No</label><br>
+                            <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal"><label>Si</label>
+                            <input type="radio" name="saludbucal" value="0" v-model="salud.ProbBucal"><label>No</label><br>
                             
                             <label>Pie Plano:</label>
-                            <input type="radio" name="pieplano" value="si" id="si" @click="salud.PiePlano = 1"><label>Si</label>
-                            <input type="radio" name="pieplano" value="no" id="no" @click="salud.PiePlano = 0"><label>No</label><br>
+                            <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano"><label>Si</label>
+                            <input type="radio" name="pieplano" value="0" v-model="salud.PiePlano"><label>No</label><br>
                             
                         </div>
 
                         <div>
                             <label>Pediculosis:</label>
-                            <input type="radio" name="pediculosis" value="si" id="si" @click="salud.Pediculosis = 1"><label>Si</label>
-                            <input type="radio" name="pediculosis" value="no" id="no" @click="salud.Pediculosis = 0"><label>No</label><br>
+                            <input type="radio" name="pediculosis" value="1" v-model="salud.Pediculosis"><label>Si</label>
+                            <input type="radio" name="pediculosis" value="0" v-model="salud.Pediculosis"><label>No</label><br>
                             
                             <label>Problemas de Lenguaje:</label>
-                            <input type="radio" name="problemaL" value="si" id="si" @click="salud.ProbLenguaje = 1"><label>Si</label>
-                            <input type="radio" name="problemaL" value="no" id="no" @click="salud.ProbLenguaje = 0"><label>No</label><br>
+                            <input type="radio" name="problemaL" value="1" v-model="salud.ProbLenguaje"><label>Si</label>
+                            <input type="radio" name="problemaL" value="0" v-model="salud.ProbLenguaje"><label>No</label><br>
 
                             <label>Problemas Auditivos:</label>
-                            <input type="radio" name="problemaA" value="si" id="si" @click="salud.ProbAuditivo = 1"><label>Si</label>
-                            <input type="radio" name="problemaA" value="no" id="no" @click="salud.ProbAuditivo = 0"><label>No</label><br>
+                            <input type="radio" name="problemaA" value="1" v-model="salud.ProbAuditivo"><label>Si</label>
+                            <input type="radio" name="problemaA" value="0" v-model="salud.ProbAuditivo"><label>No</label><br>
                             
                         </div>
 
@@ -64,13 +64,13 @@
                       
                         <div class="pr-3">
                             <label>Alergias:</label>
-                            <input type="radio" name="alergias" value="si" id="si" @click="salud.Alergias = 1"><Label>Si</Label>
-                            <input type="radio" name="alergias" value="no" id="no" @click="salud.Alergias = 0"><Label>No</Label>
+                            <input type="radio" name="alergias" value="1" v-model="salud.Alergias"><Label>Si</Label>
+                            <input type="radio" name="alergias" value="0" v-model="salud.Alergias"><Label>No</Label>
                             <textarea type="text" class="form-control mt-1" placeholder="Ingresa la descripción de la alergia" v-model="salud.DetAlergias"></textarea>
                             
                             <label>Problemas Posturales:</label>
-                            <input type="radio" name="problemasPosturales" value="si" id="si" @click="salud.ProbPosturales = 1"><label>Si</label>
-                            <input type="radio" name="problemasPosturales" value="no" id="no" @click="salud.ProbPosturales = 0"><label>No</label>
+                            <input type="radio" name="problemasPosturales" value="1" v-model="salud.ProbPosturales"><label>Si</label>
+                            <input type="radio" name="problemasPosturales" value="0" v-model="salud.ProbPosturales"><label>No</label>
                             <textarea type="text" class="form-control mt-1" placeholder="Detalle el problema postural" v-model="salud.DetProbPosturales"></textarea>
                         </div>
                         
@@ -78,13 +78,13 @@
                         <div>
                            
                             <label>Gravidez</label>
-                            <input type="radio" name="gravidez" value="si" id="si" @click="salud.Gravidez = 1"><Label>Si</Label>
-                            <input type="radio" name="gravidez" value="no" id="no" @click="salud.Gravidez = 0"><Label>No</Label>
+                            <input type="radio" name="gravidez" value="1" v-model="salud.Gravidez"><Label>Si</Label>
+                            <input type="radio" name="gravidez" value="0" v-model="salud.Gravidez"><Label>No</Label>
                             <textarea type="text" class="form-control mt-1" placeholder="Detalle de la gravidez" v-model="salud.DetGravidez"></textarea>
                 
                             <label>Otros:</label>
-                            <input type="radio" name="otros" value="si" @click="salud.Otros = 1"><label>Si</label>
-                            <input type="radio" name="otros" value="no" @click="salud.Otros = 0"><label>No</label>
+                            <input type="radio" name="otros" value="1" v-model="salud.Otros"><label>Si</label>
+                            <input type="radio" name="otros" value="0" v-model="salud.Otros"><label>No</label>
                             <textarea type="text" class="form-control mt-1" placeholder="Detalle..." v-model="salud.DetOtros"></textarea>
 
                         </div>
@@ -107,23 +107,40 @@
          data() {
             return {
                 alumno: {},
-                salud: {}
+                salud: {},
+                tipo: ''
             }
         },
         created() {
             this.$parent.$on('agregarSalud', alumno => {              
                 this.alumno = alumno;
-                this.salud.IdAlumno = alumno.IdAlumno; 
-                console.log('salud', this.salud);
+                this.salud = {};
+                this.salud.IdAlumno = alumno.IdAlumno;
+                this.tipo = 'agregar';
+            });
+
+            this.$parent.$on('editarSalud', salud => {
+                this.salud = Object.assign({}, salud);
+                this.tipo = 'editar';
             });
         },
         methods: {
             guardarSalud() {
-                axios.post('/salud', this.salud).then(res => {
-                    this.$emit('saludAgregada',res.data);
-                    $('#addSalud').modal('hide');
-                    console.log('saved');
-                });
+                if (this.tipo == 'agregar') {
+                    axios.post('/salud', this.salud).then(res => {
+                        this.$emit('saludAgregada', res.data);
+                        $('#addSalud').modal('hide');
+                        console.log('saved');
+                    });
+                } else {
+                    console.log(this.salud);
+                    axios.put('/salud/'+ this.salud.IdSalud, this.salud).then(res => {
+                        this.$emit('saludAgregada', res.data);
+                        $('#addSalud').modal('hide');
+                        console.log('saved');
+                    });
+                }
+                
             }
         }
     }

@@ -39,6 +39,7 @@ Vue.component('card-calificaciones', require('./components/tutorias/CardCalifica
 Vue.component('card-faltas', require('./components/tutorias/CardFaltas.vue').default);
 Vue.component('modal-generar-report', require('./components/tutorias/ModalGenerarReport.vue').default);
 Vue.component('generar-reporte', require('./components/tutorias/GenerarReporte.vue').default);
+Vue.component('ver-yonoAbandono', require('./components/tutorias/VerReporteTuto.vue').default);
 //Notify
 Vue.component('card-notify-inacistencias', require('./components/tutorias/notify/NotifyInacistencias.vue').default);
 Vue.component('card-notify-reprobados', require('./components/tutorias/notify/NotifyReprobados.vue').default);
@@ -53,6 +54,7 @@ Vue.component('add-salud', require('./components/orientacion/salud/AgregarSalud.
 Vue.component('card-incidencias', require('./components/orientacion/incidencias/CardIncidencias.vue').default);
 Vue.component('genera-mala-conducta', require('./components/orientacion/incidencias/GenerarReporteConducta.vue').default);
 Vue.component('genera-incidencia', require('./components/orientacion/incidencias/GenerarReporte.vue').default);
+Vue.component('ver-incidencias', require('./components/orientacion/incidencias/VerIncidencia.vue').default);
 //Notify
 Vue.component('card-notify-seguimiento', require('./components/orientacion/notify/notifySeguimiento.vue').default);
 Vue.component('card-notify-talleres', require('./components/orientacion/notify/notifyTalleres.vue').default);

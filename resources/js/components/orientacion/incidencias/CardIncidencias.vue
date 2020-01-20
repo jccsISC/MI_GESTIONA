@@ -5,34 +5,32 @@
             <div v-if="alumno.IdAlumno">
                 <div class="pt-1 interlineado">
                     <p><b>Cantidad de incidencias</b></p>
-                    <button class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                        data-toggle="modal" data-target="#addJustificantes">
-                        1
-                    </button>
+                    <button 
+                        v-for="(incidencia, key) in incidencias" :key="key"  
+                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
+                        data-toggle="modal" data-target="#verIncidencias" @click="$emit('verIncidencia', incidencia, alumno)">
                     
-                    <button class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                        data-toggle="modal" data-target="#addJustificantes">
-                        2
+                        {{key + 1}}
+
                     </button>
                 </div>
 
                 <div class="mcontenidoL pt-1 interlineado">
                     <p><b>Detalles</b></p>
-                    <p><b>Tipo de Falta: </b>Leve</p>
-                    <p><b>Seguimiento: </b>Concluido</p>
-                    <p><b>Observaciones: </b>Comprará pintura por las bu...</p>
-                    <p><b>Problemas Auditivos: </b>Lic. Cesar Rodriguez Garcia</p>
+                    <p><b>Tipo de Falta: </b>{{inconveniente.TipoFalta}}</p>
+                    <p><b>Seguimiento: </b>{{inconveniente.Status ? 'Concluido' : 'Pendiente'}}</p>
+                    <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
+                    <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
                 </div>
 
                 <div class="pt-1">
-                    <p class="p-0 m-0 fecha"><b>Fecha</b>16-01-2020</p>
-                     <button class="btn btn-transparent btn-sm float-right p-0 mr-2"
-                        data-toggle="modal" data-target="#addJustificantes">
-                        <img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;">
-                    </button>
+                    <p class="p-0 m-0 fecha"><b>Fecha</b>{{inconveniente.FechaInicio}}</p>
+                    <a href="/R"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
                 </div>
             </div>
         </div>
+
+        <ver-incidencias></ver-incidencias>
     </div>
 </template>
 
@@ -40,22 +38,34 @@
    
     import bus from '../../../event-bus';
     export default {
+        computed: {
+            inconveniente() {
+                return this.incidencias[0] ? this.incidencias[0] : {};
+            }
+        },
         data() {
             return {
                 alumno: {},
-                salud:{}
+                incidencias: []
             }
         },
         created() {
-            bus.$on('alumnoSeleccionado',alumno => {
+            bus.$on('alumnoSeleccionado', alumno => {
                 this.alumno = alumno;
-                this.jalarSalud();
+                this.jalarIncidencias();
+            });
+
+            bus.$on('incidenciaAgregada', incidencia => {
+                this.incidencias.unshift(incidencia);
             });
         },
         methods:{
-            jalarSalud(){
-                axios.get('/salud/'+this.alumno.IdAlumno).then(res =>{
-                    this.salud = res.data;
+            jalarIncidencias(){
+                axios.get('/incidencias/'+this.alumno.IdAlumno).then(res => {
+                    this.incidencias = [];
+                    res.data.forEach(i => {
+                        this.incidencias.unshift(i);
+                    });
                 });
             }
         }

@@ -9,17 +9,18 @@
 
     
 
-            <button type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+            <button type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
                 Incidencia
             </button>
 
-            <button type="button" class="miBtn posicionbt" data-toggle="modal" data-target="#reporteConducta">
+            <button @click="$emit('generarMalaConducta', alumno)" type="button" class="miBtn posicionbt" data-toggle="modal" data-target="#reporteConducta">
                 Mala Conducta
             </button>
 
         </div>
 
-        <genera-mala-conducta></genera-mala-conducta>  
+        <genera-mala-conducta ></genera-mala-conducta>
+        <genera-incidencia></genera-incidencia>  
     </div>     
 </template>
 
@@ -38,14 +39,6 @@
                     this.alumno = alumno;
                 }
             });
-
-            $('#change option').on('click', function(){
-            $('reporteTuto').dialog();
-                // data-toggle="modal" data-target="#reporteTuto" @click="$emit('generarReporte', alumno)"    
-            });
-        },
-        methods:{
-             
         }
 
     }

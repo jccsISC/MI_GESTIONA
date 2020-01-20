@@ -3,6 +3,8 @@
 
 @section('content')
     
+   
+    
     <generar-report-oe></generar-report-oe>
 
     <!--Seccion lateral-->

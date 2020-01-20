@@ -52,5 +52,10 @@ class tblalumno extends Model
     public function salud() {
         return $this->hasOne(tblsalud::class, 'IdAlumno','IdAlumno');
     }
+
+    public function incidencias() {
+        return $this->hasMany(tblincidencias::class, 'IdAlumno','IdAlumno');
+    }
+
     
 }

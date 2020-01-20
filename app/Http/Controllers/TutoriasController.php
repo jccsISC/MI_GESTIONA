@@ -33,17 +33,6 @@ class TutoriasController extends Controller
             }            
 
             return array_values($return);
-
-            // return tblcalificacion::whereHas('detalles', function ($q) {
-            //     $q->where('Calificacion', '<', 6);
-            // })->with('detalles', 'alumno')->get()->groupBy('IdAlumno');
-        
-        // calificacion
-        // - calificacion final
-
-        // detalle
-        // - unidad
-        // - unidad
     }
 
     public function inasistencias()

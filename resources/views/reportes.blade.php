@@ -1,5 +1,5 @@
 @extends('layouts.baseori')
-@section('title','Inasistencias')
+@section('title','Reportes')
 
 @section('content')
     <reportes></reportes>

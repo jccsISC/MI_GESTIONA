@@ -1,25 +1,20 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Talleres</p>
-        <div class="micardTalleres p-3 mr-3">        
-            <div class="cardTaller izeTaller text-center" data-toggle="modal" data-target="#detalleTaller">
+        <div class="micardTalleres p-3 mr-5">        
+            <div v-for="(taller, key) in talleres" :key="key" class="cardTaller izeTaller text-center mr-3 mb-3" data-toggle="modal" data-target="#detalleTaller" @click="$emit('editarTaller', taller, key)">
                 <spinner v-show="loading"></spinner>
-                <p class="pt-2 m-0"><b>Pediculosis</b></p>
-                <p class="m-0">25-01-2020</p>
+                <p class="pt-2 m-0"><b>{{taller.Nombre}}</b></p>
+                <p class="m-0">{{taller.Fecha}}</p>
             </div>
-            <div class="cardTaller izeTaller text-center ml-3" data-toggle="modal" data-target="#detalleTaller">
-                <spinner v-show="loading"></spinner>
-                <p class="pt-2 m-0"><b>Delitos</b></p>
-                <p class="m-0">23-01-2020</p>
-            </div>
-            <div class="cardTaller izeTaller text-center ml-3" data-toggle="modal" data-target="#detalleTaller">
-                <spinner v-show="loading"></spinner>
-                <p class="pt-2 m-0"><b>Suicidios</b></p>
-                <p class="m-0">23-01-2020</p>
-            </div>
-            <button class="btnaddTaller ml-3" data-toggle="modal" data-target="#detalleTaller">+</button>
+            <button class="btnaddTaller" data-toggle="modal" data-target="#detalleTaller" @click="$emit('agregarTaller')">+</button>
         </div>
-        <detalle-taller></detalle-taller>
+        <detalle-taller 
+            @tallerAgregado="tallerAgregado($event)" 
+            @tallerEliminado="tallerEliminado($event)" 
+            @tallerActualizado="tallerActualizado($event)">
+            
+        </detalle-taller>
     </div>
 </template>
 
@@ -29,27 +24,37 @@
     export default {
         data() {
             return {
-                alumnos: [],
-                loading: true,
-                fechaInicio: '',
-                fechaFinal: '',
-                semana:''
+                talleres: [],
+                loading: true
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
+            axios.get('/talleres').then(res => {
+                this.talleres = res.data;
                 this.loading = false;
             });
         },
         methods: {
-
-            seleccionarAlumno(alumno) {
-                console.log('click');
-                bus.$emit('alumnoSeleccionado', alumno);               
+            tallerActualizado(taller) {
+                bus.$emit('actulizarListaGrupos');
+                const t = Object.assign({}, taller);
+                const temp = [...this.talleres];
+                this.talleres = [];
+                temp.forEach((registro, index) => {
+                    if (index == t.key) {
+                        this.talleres[index] = t;
+                    } else {
+                        this.talleres[index] = registro;
+                    }
+                });
+            },
+            tallerAgregado(taller) {
+                this.talleres.push(taller);
+                bus.$emit('actulizarListaGrupos');
+            },
+            tallerEliminado(taller) {
+                bus.$emit('actulizarListaGrupos');
+                this.talleres.splice(taller, 1);
             }
         }
     }
