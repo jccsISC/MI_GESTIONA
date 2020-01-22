@@ -9,12 +9,14 @@
 </head>
 <body>
 	
-	<form action="" class="contenedor">
+	<form method="POST" action="{{route('login')}}" class="contenedor">
+		@csrf
 		<div class="container">
 			<h1>GESTIONA</h1>
 			<hr>
 			<div class="divInputs">
 				<input type="text" placeholder="Ingresa tu usuario" name="user" required>
+				
 				<input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
 			</div>
 		

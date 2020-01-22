@@ -1,7 +1,7 @@
 <template>
 
   <div class="modal fade" id="detalleTaller" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         
         <div class="modal-body-xl">
@@ -11,7 +11,7 @@
 	    		<label>Nombre del Taller:</label>
 		    	<input type="text" class="form-control p-0" placeholder="Ingresa el nombre del taller" v-model="taller.Nombre">
 		  	</div>
-            <div class="form-group p-0">
+        <div class="form-group p-0">
 	    		<label>Institución:</label>
 		    	<input type="text" class="form-control p-0" placeholder="Ingresa el nombre del taller"  v-model="taller.Institucion">
 		  	</div>

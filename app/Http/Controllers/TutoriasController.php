@@ -7,9 +7,36 @@ use App\tbldetcalificacion;
 use App\tblcalificacion;
 use App\tbldetalleinasistencias;
 use App\tblalumno;
+use App\tblyonoabandono;
 
 class TutoriasController extends Controller
 {
+
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
+      /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+      
+        $request->user()->authorizeRoles(['admin']);
+
+        //jalamos los datos del modelo Trainer con all() consultamos todos los registros del modelo
+        $alumnos = tblalumno::all();
+        
+
+
+        return view('tutorias.index', compact('alumnos'));//compact genera una array con la info que le mandamos
+    }
+
+
     /**
      * Display a listing of the resource.
      *

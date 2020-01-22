@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use App\tblusuarios;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -25,3 +26,12 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+
+// $factory->define(tblusuarios::class, function (Faker $faker) {
+//     return [
+//         'Nombre' => $faker->name,
+//         'Usuario' => $faker->name,
+//         'Contra' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+//     ];
+// });

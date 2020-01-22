@@ -2331,11 +2331,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.alumno = alumno;
       }
     });
-    $('#change option').on('click', function () {
-      $('reporteTuto').dialog(); // data-toggle="modal" data-target="#reporteTuto" @click="$emit('generarReporte', alumno)"    
-    });
-  },
-  methods: {}
+  }
 });
 
 /***/ }),
@@ -45791,7 +45787,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "modal-dialog modal-lg modal-dialog-centered",
+          staticClass: "modal-dialog modal-dialog-centered",
           attrs: { role: "document" }
         },
         [
