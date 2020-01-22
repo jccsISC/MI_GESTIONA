@@ -8,37 +8,21 @@
             <div class="encabezado">
                 <label>Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco</label><br>
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
-                <label>Folio:</label>
+                <label>Folio:</label><i>{{$folio}}</i>
             </div>
-            <hr width=350>
+            <hr width=300>
             <p><h1>PASE DE SALIDA</h1><p>
             <p><h3>ESTIMADO COMPAÑERO(A):</h3><p>   
             <p class="c3">Favor de permitir la salida del plantel a el (la) alumno(a), es importante que se registre su salida en bitácora.</p>
-
-            <p><label>Fecha:</label>
-            <input type="date" style="width:345px"></p>
-
-            <p><label>Alumno(a):</label>
-            <input type="text" style="width:313px"></p>
-
-            <p><label>Grado:</label>
-            <input type="text" style="width:80px">
-            
-            <label>Grupo:</label>
-            <input type="text" style="width:80px">
-
-            <label>Turno:</label>
-            <input type="text" style="width:80px"></p>
-
-            <p><label>Padre o Tutor:</label>
-            <input type="text" style="width:296px"></p>
-
-            <p><label>Tel/Cel:</label>
-            <input type="number" style="width:337px"></p>
-
-            <p id="motivo"><label>Motivo:</label></p>
-            <input id="inpMot" type="textarea" style="width:200px ; height:135px">
-
+            <p><label><b>Fecha:</label><i>{{$fecha}}</i>
+            <p><label><b>Alumno(a):</label><i>{{$nombre}}</i> 
+            <p><label><b>Grado:</label><i>{{$grado}}</i>            
+            <label><b>Grupo:</label><i>{{$grupo}}</i> 
+            <label><b>Turno:</label><i>{{$turno}}</i> 
+            <p><label><b>Padre o Tutor:</label><i>{{$familiar}}</i> 
+            <p><label><b>Tel/Cel:</label><i>{{$tel}}</i> 
+            <p id="motivo"><label><b>Motivo:</label></p><i>{{$motivo}}</i>.
+      
             <hr id="linea"  width=180>  
             <p id="autoriza"><label >Autorizó salida</label></p>
             <p id="firma"><label >Nombre y Firma</label></p>
@@ -49,11 +33,11 @@
 
 <style>
     .todo{
-        width: 350;
+        width: 300;
         height: 500;
     }
     img{
-        width: 130px; height: 40px;
+        width: 80px; height: 30px;
      }
 
      .encabezado{
@@ -73,33 +57,22 @@
     }
 
     #autoriza{
-        text-align: right;
-        padding-right: 73;
-        margin: -35;
-     
+        text-align: center;     
     }
 
     #firma{
-        text-align: right;
-        margin: 35;
+        text-align: center;
+        margin:-10;
     }
-
     #linea{
-        float: right;
-        margin-top: 90;
-        
+        margin-top: 50;  
     }
 
     #motivo{
         margin: 0;
     }
-    
-    #inpMot{
-        border-radius: 5px;
-        border:1px solid black;
-    }
 
-    input {
+    i{
         border:none;
         border-bottom:1px solid black;
     }

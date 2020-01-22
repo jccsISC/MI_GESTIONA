@@ -24,6 +24,9 @@
        <!--card justificantes y pases-->
        <card-justificantes></card-justificantes>
 
+       <a href="{{route('imprimirJ')}}">Imprimir Justificante</a>
+       <a href="{{route('imprimirP')}}">Imprimir Pase</a>
+
    </section>
 
    <section class="contenedor-notify">
