@@ -119,4 +119,14 @@ class JustificantesController extends Controller
         
         return response('Eliminado');
     }
+
+    public function imprimirJ(){
+        $pdf = \PDF::loadView('/trabajosocial.justificante');
+        return $pdf->download('justificante.pdf');
+   }
+
+   public function imprimirP(){
+    $pdf = \PDF::loadView('/trabajosocial.pase');
+    return $pdf->download('pase.pdf');
+}
 }

@@ -4233,6 +4233,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -10032,6 +10049,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n.contentTable th, td{\n    font-size: 13px;\n}\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#cecy{\r\n        width: 130px; height: 40px;\n}\n.encabezado{\r\n        font-size: .70em; \r\n        float: right; \r\n        text-align: right;\n}\nh4{\r\n        text-align: right;\n}\nhr.linea {\r\n        border-top: 2px solid black;\n}\n.quien{\r\n        font-size: .9em; \r\n        margin:0;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -41520,6 +41556,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue?vue&type=style&index=0&lang=css& ***!
@@ -46982,411 +47048,449 @@ var render = function() {
       attrs: { id: "addJustificantes", role: "dialog", "aria-hidden": "true" }
     },
     [
-      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c("h5", { staticClass: "modal-title" }, [
-              _vm._v(
-                _vm._s(_vm.ver ? "Ver" : "Crear") +
-                  " " +
-                  _vm._s(
-                    _vm.tipo === "pase" ? "Pase de salida" : "justificante"
-                  ) +
-                  " "
-              )
+      _c(
+        "div",
+        { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h5", { staticClass: "modal-title" }, [
+                _vm._v(
+                  _vm._s(_vm.ver ? "Ver" : "Crear") +
+                    " " +
+                    _vm._s(
+                      _vm.tipo === "pase" ? "Pase de salida" : "justificante"
+                    ) +
+                    " "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
             ]),
             _vm._v(" "),
-            _vm._m(0)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.onSubmit($event)
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.onSubmit($event)
+                    }
                   }
-                }
-              },
-              [
-                !_vm.ver
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "select",
+                },
+                [
+                  !_vm.ver
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.tipo,
+                                expression: "tipo"
+                              }
+                            ],
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.tipo = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "justificante" } }, [
+                              _vm._v("Justificante")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "pase" } }, [
+                              _vm._v("Pase de Salida")
+                            ])
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.ver
+                    ? _c(
+                        "button",
                         {
+                          staticClass:
+                            "btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1",
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarJustiPase()
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "far fa-trash-alt" })]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "justificante"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("img", {
+                          attrs: {
+                            id: "cecy",
+                            src: "images/logoCecy.png",
+                            alt: "Logo cecy"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("hr", {
+                          staticClass: "linea",
+                          attrs: { width: "670px" }
+                        }),
+                        _vm._v(" "),
+                        _c("h4", [_vm._v("JUSTIFICANTE DE FALTAS")]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("label", [_vm._v("Fecha Inicio")]),
+                        _vm._v(" "),
+                        _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.tipo,
-                              expression: "tipo"
+                              value: _vm.justificante.FechaInicio,
+                              expression: "justificante.FechaInicio"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.ver,
+                            type: "date",
+                            placeholder: "Ingresa la fecha inicial"
+                          },
+                          domProps: { value: _vm.justificante.FechaInicio },
                           on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.tipo = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.justificante,
+                                "FechaInicio",
+                                $event.target.value
+                              )
                             }
                           }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "justificante"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Fecha Fin")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.justificante.FechaFin,
+                              expression: "justificante.FechaFin"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.ver,
+                            type: "date",
+                            placeholder: "Ingresa la fecha final"
+                          },
+                          domProps: { value: _vm.justificante.FechaFin },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.justificante,
+                                "FechaFin",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "justificante"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Motivo")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.justificante.Motivo,
+                              expression: "justificante.Motivo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.ver,
+                            type: "text",
+                            placeholder: "Ingresa el motivo del justificante"
+                          },
+                          domProps: { value: _vm.justificante.Motivo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.justificante,
+                                "Motivo",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.ver
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary float-right",
+                          attrs: { type: "submit" }
                         },
                         [
-                          _c("option", { attrs: { value: "justificante" } }, [
-                            _vm._v("Justificante")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "pase" } }, [
-                            _vm._v("Pase de Salida")
-                          ])
+                          _c("i", { staticClass: "far fa-save" }),
+                          _vm._v("Imprimir")
                         ]
                       )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.ver
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1",
-                        on: {
-                          click: function($event) {
-                            return _vm.eliminarJustiPase()
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "far fa-trash-alt" })]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "justificante"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Fecha Inicio")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.justificante.FechaInicio,
-                            expression: "justificante.FechaInicio"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          disabled: _vm.ver,
-                          type: "date",
-                          placeholder: "Ingresa la fecha inicial"
-                        },
-                        domProps: { value: _vm.justificante.FechaInicio },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.justificante,
-                              "FechaInicio",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "justificante"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Fecha Fin")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.justificante.FechaFin,
-                            expression: "justificante.FechaFin"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          disabled: _vm.ver,
-                          type: "date",
-                          placeholder: "Ingresa la fecha final"
-                        },
-                        domProps: { value: _vm.justificante.FechaFin },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.justificante,
-                              "FechaFin",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "justificante"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Motivo")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.justificante.Motivo,
-                            expression: "justificante.Motivo"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          disabled: _vm.ver,
-                          type: "text",
-                          placeholder: "Ingresa el motivo del justificante"
-                        },
-                        domProps: { value: _vm.justificante.Motivo },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.justificante,
-                              "Motivo",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "pase"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Familiar")]),
-                      _vm._v(" "),
-                      !_vm.ver
-                        ? _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.pase.IdFamiliar,
-                                  expression: "pase.IdFamiliar"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "text" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.pase,
-                                    "IdFamiliar",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            _vm._l(_vm.familiares, function(familiar, key) {
-                              return _c(
-                                "option",
-                                {
-                                  key: key,
-                                  domProps: { value: familiar.IdFamiliar }
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      familiar.Nombre +
-                                        " " +
-                                        familiar.ApePaterno +
-                                        " " +
-                                        familiar.ApeMaterno
-                                    )
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.ver
-                        ? _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.pase.familiar.IdFamiliar,
-                                  expression: "pase.familiar.IdFamiliar"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { disabled: _vm.ver, type: "text" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.pase.familiar,
-                                    "IdFamiliar",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  domProps: {
-                                    value: _vm.pase.familiar.IdFamiliar
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "pase"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Familiar")]),
+                        _vm._v(" "),
+                        !_vm.ver
+                          ? _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pase.IdFamiliar,
+                                    expression: "pase.IdFamiliar"
                                   }
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.pase.familiar.Nombre +
-                                        " " +
-                                        _vm.pase.familiar.ApePaterno +
-                                        " " +
-                                        _vm.pase.familiar.ApeMaterno
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.pase,
+                                      "IdFamiliar",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
                                     )
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        : _vm._e()
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "pase"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Motivo")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.pase.Motivo,
-                            expression: "pase.Motivo"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          disabled: _vm.ver,
-                          type: "text",
-                          placeholder: "Ingresa el motivo del justificante"
-                        },
-                        domProps: { value: _vm.pase.Motivo },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.pase, "Motivo", $event.target.value)
-                          }
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "pase"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Descripción")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.pase.Descripcion,
-                            expression: "pase.Descripcion"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          disabled: _vm.ver,
-                          type: "text",
-                          placeholder: "Ingresa la descripcion"
-                        },
-                        domProps: { value: _vm.pase.Descripcion },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.pase,
-                              "Descripcion",
-                              $event.target.value
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.familiares, function(familiar, key) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: key,
+                                    domProps: { value: familiar.IdFamiliar }
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        familiar.Nombre +
+                                          " " +
+                                          familiar.ApePaterno +
+                                          " " +
+                                          familiar.ApeMaterno
+                                      )
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
                             )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.ver
+                          ? _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pase.familiar.IdFamiliar,
+                                    expression: "pase.familiar.IdFamiliar"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { disabled: _vm.ver, type: "text" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.pase.familiar,
+                                      "IdFamiliar",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    domProps: {
+                                      value: _vm.pase.familiar.IdFamiliar
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.pase.familiar.Nombre +
+                                          " " +
+                                          _vm.pase.familiar.ApePaterno +
+                                          " " +
+                                          _vm.pase.familiar.ApeMaterno
+                                      )
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "pase"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Motivo")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.pase.Motivo,
+                              expression: "pase.Motivo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.ver,
+                            type: "text",
+                            placeholder: "Ingresa el motivo del justificante"
+                          },
+                          domProps: { value: _vm.pase.Motivo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.pase, "Motivo", $event.target.value)
+                            }
                           }
-                        }
-                      })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.ver
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary float-right",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _c("i", { staticClass: "far fa-save" }),
-                        _vm._v("Guardar")
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.tipo === "pase"
+                    ? _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Descripción")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.pase.Descripcion,
+                              expression: "pase.Descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.ver,
+                            type: "text",
+                            placeholder: "Ingresa la descripcion"
+                          },
+                          domProps: { value: _vm.pase.Descripcion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.pase,
+                                "Descripcion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.ver
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary float-right",
+                          attrs: { type: "submit" }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-save" }),
+                          _vm._v("Guardar")
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            ])
           ])
-        ])
-      ])
+        ]
+      )
     ]
   )
 }
@@ -47407,6 +47511,36 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "encabezado" }, [
+      _c("label", [
+        _vm._v(
+          "Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco"
+        )
+      ]),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [_vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")]),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [_vm._v("Folio:")]),
+      _c("br")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "quien" }, [
+      _c("label", [_vm._v("DE: DEPARTAMENTO DE TRABAJO SOCIAL")]),
+      _c("br"),
+      _vm._v(" "),
+      _c("label", [_vm._v("A: PREFECTURA Y DOCENTE")])
+    ])
   }
 ]
 render._withStripped = true
@@ -63215,7 +63349,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=template&id=747b0d2d& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&");
 /* harmony import */ var _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -63223,7 +63359,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -63252,6 +63388,22 @@ component.options.__file = "resources/js/components/trabajosocial/justificantes/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
