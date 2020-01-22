@@ -119,4 +119,35 @@ class JustificantesController extends Controller
         
         return response('Eliminado');
     }
+
+    public function imprimirJ(){
+        $folio="1";
+        $fecha="hoy";
+        $nombre= "Karina Pola Pereyra";
+        $grado= "9";
+        $grupo= "A";
+        $turno= "M";
+        $carrera= "ISC";
+        $fechaInicial= "20/01/2020";
+        $fechaFinal= "22/01/2020";
+        $motivo= "No se encontraba bien de salud, tenia dengue y la mandaron a reposar";
+        $pdf = \PDF::loadView('/trabajosocial.justificante', compact('folio','fecha','nombre','grado','grupo','turno',
+        'carrera','fechaInicial', 'fechaFinal','motivo'));
+        return $pdf->download('justificante.pdf');
+   }
+
+   public function imprimirP(){
+    $folio="1";
+    $fecha="hoy";
+    $nombre= "Karina Pola Pereyra";
+    $grado= "9";
+    $grupo= "A";
+    $turno= "M";
+    $familiar= "Karen Pola";
+    $tel= "3221801251";
+    $motivo= "No se encontraba bien de salud, tenia dengue y la mandaron a reposar";
+    $pdf = \PDF::loadView('/trabajosocial.pase', compact('folio','fecha','nombre','grado','grupo','turno',
+    'familiar','tel','motivo'));
+    return $pdf->download('pase.pdf');
+}
 }

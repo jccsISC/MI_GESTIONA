@@ -53,6 +53,8 @@ Route::delete('becas/{tblbeca}','BecasController@destroy');
 Route::get('justificantes', 'JustificantesController@index');
 Route::post('justificantes', 'JustificantesController@store');
 Route::delete('justificantes/{tbljustificante}', 'JustificantesController@destroy');
+Route::name('imprimirJ')->get('imprimirJust','JustificantesController@imprimirJ');
+Route::name('imprimirP')->get('imprimirPase','JustificantesController@imprimirP');
 //PASES
 Route::delete('pases/{tblpasesalida}', 'PaseDeSalidaController@destroy');
 //PRACTICAS

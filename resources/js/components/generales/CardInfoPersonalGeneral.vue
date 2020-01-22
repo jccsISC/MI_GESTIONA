@@ -3,7 +3,7 @@
         <div id="cardInfoPersonalGeneral" class="micard1">
             <div v-if="alumno.IdAlumno" class="miContent1">
                 <div class="miImg1">
-                    <!--<img src="images/student.png" alt="Foto del Alumno">-->
+                      <img src="images/student.png" alt="Foto del Alumno">
                 </div>
 
                 <div class="uno">
@@ -16,14 +16,6 @@
                     <p><b>Sangre: </b>{{alumno.TipoSangre}}</p>
                     <p><b>Telefóno: </b>{{alumno.Telefono}}</p>
                     
-                </div>
-
-                <div class="dos">
-                    <p><b>Correo: </b>{{alumno.EMAIL}}</p>
-                    <p><b>Carrera: </b>{{alumno.Carrera}}</p>
-                    <p><b>Grado: </b>{{alumno.Grado}}</p>
-                    <p><b>Grupo: </b>{{alumno.Grupo}}</p>
-                    <p><b>Turno: </b>{{alumno.Turno}}</p>
                 </div>
 
                 <div class="tres">
@@ -39,16 +31,26 @@
                     
                 </div>
 
-                <div class="cuatro">
-                    <p class=""><b>LUGAR DE NACIMIENTO</b></p>
-                        <div class="lugarN">
-                            <p><b>Municipio: </b>{{alumno.MunicipioNac}} <b> Estado: </b>{{alumno.EstadoNac}}</p><br>
-                        </div>
-                    <p class=""><b>DOMICILIO</b></p>
-                        <div class="domicilio">
-                            <p><b>Calle: </b>{{alumno.Calle}} <b> No.Ext: </b>{{alumno.NumExterior}} <b> No.Int: </b>{{alumno.NumExterior}} <b> CP: </b>{{alumno.CodPostal}}</p>
-                            <p><b>Entre calle 1: </b>{{alumno.EntreCalle}} <b> Entre calle 2: </b>{{alumno.EntreCalle2}} <b> Colonia: </b>{{alumno.Colonia}} <b>Municipio: </b>{{alumno.Municipio}} <b> Estado: </b>{{alumno.Estado}}</p>
-                        </div>
+                <div class ="miContentdos">
+                    <div class="dos">
+                        <p><b>Correo: </b>{{alumno.EMAIL}}</p>
+                        <p><b>Carrera: </b>{{alumno.Carrera}}</p>
+                        <p><b>Grado: </b>{{alumno.Grado}}</p>
+                        <p><b>Grupo: </b>{{alumno.Grupo}}</p>
+                        <p><b>Turno: </b>{{alumno.Turno}}</p>
+                    </div>
+
+                    <div class="cuatro">
+                        <p class=""><b>LUGAR DE NACIMIENTO</b></p>
+                            <div class="lugarN">
+                                <p><b>Municipio: </b>{{alumno.MunicipioNac}} <b> Estado: </b>{{alumno.EstadoNac}}</p><br>
+                            </div>
+                        <p class=""><b>DOMICILIO</b></p>
+                            <div class="domicilio">
+                                <p><b>Calle: </b>{{alumno.Calle}} <b> No.Ext: </b>{{alumno.NumExterior}} <b> No.Int: </b>{{alumno.NumExterior}} <b> CP: </b>{{alumno.CodPostal}}</p>
+                                <p><b>Entre calle 1: </b>{{alumno.EntreCalle}} <b> Entre calle 2: </b>{{alumno.EntreCalle2}} <b> Colonia: </b>{{alumno.Colonia}} <b>Municipio: </b>{{alumno.Municipio}} <b> Estado: </b>{{alumno.Estado}}</p>
+                            </div>
+                    </div>
                 </div>
             </div>
 
@@ -89,6 +91,7 @@
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
         margin-left: 5px;
         float: left;
+        padding-top: 15px;
     }
     img{
         width: 100%;
@@ -97,10 +100,16 @@
     .miContent1{
         display: grid;
         padding: 8px;
-        grid-template-columns:120px 2fr 1fr 2fr ;
-        grid-template-rows:3fr 1fr 2fr;
+        grid-template-columns:120px 2fr 3fr;
         grid-gap: 10px;
-        height: 270px;
+     
+    }
+
+    .miContentdos{
+        display: grid;
+        padding: 2px;
+        grid-template-columns:240px 490px;
+        grid-gap: 10px;
     }
 
     .uno{
@@ -108,7 +117,7 @@
         font-size: .75em;
     }
 
-    .dos{
+    .dos{ 
         background: #FF5733;
         font-size: .75em;
     }
@@ -141,7 +150,6 @@
     }
 
     .cuatro{
-        grid-column: 1 / 5;
         background: #A407B1;
         font-size: .75em;
     }

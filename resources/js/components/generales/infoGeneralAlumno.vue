@@ -18,7 +18,7 @@
                 <p class="subtitulos text-center">Información Académica</p>
                 <hr class="barrasubtitulos">
                 <div class="contenedorVentana2">
-                
+                    <cal-general></cal-general>
                 </div>
 
                 <p class="subtitulos text-center">Inacistencias</p>
