@@ -10,7 +10,7 @@ class tblincidencias extends Model
     protected $primaryKey = 'IdIncidencia';
     protected $fillable = ['IdAlumno','FechaInicio','FechaFin','IdFamiliar',
     'DescripcionReporte','Comentarios','TipoFalta','Status','ComentariosPa',
-    'Observaciones', 'Derivacion', 'ResponsableSeguimiento', 'Existe'];
+    'Observaciones', 'Derivacion', 'ResponsableSeguimiento', 'Existe', 'TipoReporte'];
     public $timestamps = false;
 
     public function alumno() {

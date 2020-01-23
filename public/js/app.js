@@ -2521,6 +2521,17 @@ __webpack_require__.r(__webpack_exports__);
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaAgregada', function (incidencia) {
       _this.incidencias.unshift(incidencia);
     });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaEditada', function (incidencia) {
+      var temp = Object.assign({}, _this.incidencias);
+      _this.incidencias = [];
+      Object.keys(temp).forEach(function (key) {
+        if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
+          _this.incidencias[key] = incidencia;
+        } else {
+          _this.incidencias[key] = temp[key];
+        }
+      });
+    });
   },
   methods: {
     jalarIncidencias: function jalarIncidencias() {
@@ -2547,6 +2558,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2610,21 +2622,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       alumno: {},
       reporte: {},
-      familiares: []
+      familiares: [],
+      tipo: ''
     };
   },
   created: function created() {
     var _this = this;
 
-    this.$parent.$on('generarReporte', function (alumno) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('EditarIncidencia', function (incidencia, alumno) {
+      _this.alumno = Object.assign({}, alumno);
+      _this.reporte = Object.assign({}, incidencia);
+
+      _this.jalarFamiliares();
+
+      _this.tipo = 'Editar';
+    });
+    this.$parent.$on('generarIncidencia', function (alumno) {
       _this.alumno = alumno;
       _this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
       _this.reporte.IdAlumno = alumno.IdAlumno;
+      _this.reporte.ResponsableSeguimiento = 'Cesar Gonzales';
+      _this.tipo = 'Guardar';
 
       _this.jalarFamiliares();
     });
@@ -2654,12 +2679,19 @@ __webpack_require__.r(__webpack_exports__);
       return telefono;
     },
     guardarReporte: function guardarReporte() {
-      if (this.reporte.Status = '') {
-        alert('Seleccione el estatus');
+      if (this.tipo == 'Guardar') {
+        this.reporte.TipoReporte = 'Incidencia';
+        axios.post('/incidenciareal', this.reporte).then(function (res) {
+          //window.location.href = '/T';
+          $('#reporteOrientacion').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaAgregada', res.data);
+        });
+      } else {
+        axios.put('/incidenciareal/' + this.reporte.IdIncidencia, this.reporte).then(function (res) {
+          $('#reporteOrientacion').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaEditada', res.data);
+        });
       }
-
-      axios.post('/yonoAbandono', this.reporte).then(function (res) {//window.location.href = '/T';
-      });
     }
   }
 });
@@ -2753,7 +2785,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       alumno: {},
       incidencia: {},
-      familiares: []
+      familiares: [],
+      tipo: ''
     };
   },
   created: function created() {
@@ -2766,10 +2799,17 @@ __webpack_require__.r(__webpack_exports__);
       _this.incidencia.ResponsableSeguimiento = 'CESAR';
 
       _this.jalarFamiliares();
+
+      _this.tipo = 'Guardar';
     });
-    this.$parent.$on('verIncidencia', function (incidencia) {
-      _this.incidencia = incidencia;
-      _this.incidencia = {};
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('EditarMalaConducta', function (incidencia, alumno) {
+      console.log('consolelog');
+      _this.alumno = Object.assign({}, alumno);
+      _this.incidencia = Object.assign({}, incidencia);
+
+      _this.jalarFamiliares();
+
+      _this.tipo = 'Editar';
     });
   },
   methods: {
@@ -2802,11 +2842,18 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      axios.post('/incidencias', this.incidencia).then(function (res) {
-        //window.location.href = '/T';
-        $('#reporteConducta').modal('hide');
-        _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaAgregada', res.data);
-      });
+      if (this.tipo == 'Guardar') {
+        this.incidencia.TipoReporte = 'Mala Conducta';
+        axios.post('/incidencias', this.incidencia).then(function (res) {
+          $('#reporteConducta').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaAgregada', res.data);
+        });
+      } else {
+        axios.put('/incidencias/' + this.incidencia.IdIncidencia, this.incidencia).then(function (res) {
+          $('#reporteConducta').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaEditada', res.data);
+        });
+      }
     }
   }
 });
@@ -2864,6 +2911,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2877,10 +2928,107 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.$parent.$on('verIncidencia', function (incidencia, alumno) {
-      _this.incidencia = incidencia;
-      _this.alumno = alumno;
-      _this.familiar = incidencia.familiar;
+      _this.incidencia = Object.assign({}, incidencia);
+      ;
+      _this.alumno = Object.assign({}, alumno);
+      ;
+      _this.familiar = _this.incidencia.familiar;
     });
+  },
+  methods: {
+    metodo: function metodo() {
+      $('#verIncidencias').modal('hide');
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('EditarIncidencia', this.incidencia, this.alumno);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      alumno: {},
+      incidencia: {},
+      familiar: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.$parent.$on('verIncidencia', function (incidencia, alumno) {
+      _this.incidencia = Object.assign({}, incidencia);
+      ;
+      _this.alumno = Object.assign({}, alumno);
+      ;
+      _this.familiar = _this.incidencia.familiar;
+    });
+  },
+  methods: {
+    metodo: function metodo() {
+      $('#verMalaConducta').modal('hide');
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('EditarMalaConducta', this.incidencia, this.alumno);
+    }
   }
 });
 
@@ -3590,17 +3738,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       alumnos: [],
-      loading: true
+      loading: true,
+      idalumno: ''
     };
   },
   created: function created() {
     var _this = this;
 
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
+      _this.idalumno = alumno.IdAlumno;
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaEditada', function (incidencia) {
+      _this.alumnos.forEach(function (alumno, index) {
+        var temp = Object.assign({}, alumno.incidencias);
+        _this.alumnos[index].incidencias = [];
+        Object.keys(temp).forEach(function (key) {
+          if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
+            _this.alumnos[index].incidencias[key] = incidencia;
+          } else {
+            _this.alumnos[index].incidencias[key] = temp[key];
+          }
+        });
+      });
+    });
+    this.idalumno = new URLSearchParams(window.location.search).get('show');
+    console.log(this.idalumno);
     axios.get('/incidencias').then(function (res) {
       _this.alumnos = res.data;
       _this.loading = false;
@@ -10178,6 +10346,25 @@ exports.push([module.i, "\n.mibtn{\r\n        background: #800000;\r\n        bo
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.mibtn{\r\n        background: #800000;\r\n        border-radius: 4px;\r\n        color: white;\r\n        outline: none;\r\n        padding-left:5px;\r\n        padding-right: 5px; \r\n        border: 1px solid #800000;\r\n        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\r\n        background-color: rgb(255, 255, 255);\r\n        color: rgb(167, 11, 11);\r\n        border: 1px solid #800000;\n}\n.descrip{\r\n        min-width: 40%;\r\n        min-height: 150px;\r\n        border: 1px solid rgb(31, 30, 30);\r\n        border-radius: 6px;\r\n        padding: 5px;\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css& ***!
@@ -10266,7 +10453,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.midiv p{\n    font-size: 15px;\n}\n.divPrin{\n    width: 100%; \n    height: 650px;\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n}\n.pbtn{\n    float:right;\n}\n.posibuscador{\n    margin-left: 28%;\n}\n.buscadorR{\n    border-radius: 4px;\n    border: 1px solid rgb(146, 140, 140);\n    text-align: center;\n    padding: 1px;\n    font-size: 12px;\n    outline: none;/*eliminar el resplandor al foco del input*/\n}\n.buscadorR:focus{\n    border-color: dodgerblue;\n    box-shadow: 0 0 8px 0 dodgerblue;\n}\n.concluido{\n    border-radius: 3px;\n    background: rgb(27, 192, 27);\n    padding: 4px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n\n.midiv p{\n    font-size: 15px;\n}\n\n.divPrin{\n    width: 80%; \n    height: 650px;\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n}\n\n.pbtn{\n    float:right;\n}\n\n.posibuscador{\n    margin-left: 28%;\n}\n\n    \n.buscadorR{\n    border-radius: 4px;\n    border: 1px solid rgb(146, 140, 140);\n    text-align: center;\n    padding: 1px;\n    font-size: 12px;\n    outline: none;/*eliminar el resplandor al foco del input*/\n/* }\n\n.buscadorR:focus{\n    border-color: dodgerblue;\n    box-shadow: 0 0 8px 0 dodgerblue;\n}\n\n.concluido{\n    border-radius: 3px;\n    background: rgb(27, 192, 27);\n    padding: 4px;\n}  */\n", ""]);
 
 // exports
 
@@ -41632,6 +41819,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerMalaConducta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css& ***!
@@ -43616,6 +43833,11 @@ var render = function() {
                   type: "button",
                   "data-toggle": "modal",
                   "data-target": "#reporteOrientacion"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("generarIncidencia", _vm.alumno)
+                  }
                 }
               },
               [_vm._v("\n            Incidencia\n        ")]
@@ -43693,7 +43915,10 @@ var render = function() {
                         staticClass: "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
                         attrs: {
                           "data-toggle": "modal",
-                          "data-target": "#verIncidencias"
+                          "data-target":
+                            incidencia.TipoReporte == "Incidencia"
+                              ? "#verIncidencias"
+                              : "#verMalaConducta"
                         },
                         on: {
                           click: function($event) {
@@ -43722,18 +43947,6 @@ var render = function() {
                 _vm._m(1),
                 _vm._v(" "),
                 _c("p", [
-                  _c("b", [_vm._v("Tipo de Falta: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.TipoFalta))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Seguimiento: ")]),
-                  _vm._v(
-                    _vm._s(_vm.inconveniente.Status ? "Concluido" : "Pendiente")
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
                   _c("b", [_vm._v("Observaciones: ")]),
                   _vm._v(_vm._s(_vm.inconveniente.Observaciones))
                 ]),
@@ -43750,11 +43963,21 @@ var render = function() {
                   _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _c("a", { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } }, [
+                  _c("img", {
+                    staticStyle: { width: "20px", height: "20px" },
+                    attrs: {
+                      src: "images/historial.png",
+                      alt: "ver el historial"
+                    }
+                  })
+                ])
               ])
             ])
           : _vm._e()
       ]),
+      _vm._v(" "),
+      _c("ver-mala-conducta"),
       _vm._v(" "),
       _c("ver-incidencias")
     ],
@@ -43773,17 +43996,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Detalles")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/R" } }, [
-      _c("img", {
-        staticStyle: { width: "20px", height: "20px" },
-        attrs: { src: "images/historial.png", alt: "ver el historial" }
-      })
-    ])
   }
 ]
 render._withStripped = true
@@ -43934,8 +44146,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.reporte.Motivo,
-                        expression: "reporte.Motivo"
+                        value: _vm.reporte.ComentariosPa,
+                        expression: "reporte.ComentariosPa"
                       }
                     ],
                     staticClass: "form-control",
@@ -43944,13 +44156,17 @@ var render = function() {
                       id: "",
                       placeholder: "Escriba aquí los motivos"
                     },
-                    domProps: { value: _vm.reporte.Motivo },
+                    domProps: { value: _vm.reporte.ComentariosPa },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.reporte, "Motivo", $event.target.value)
+                        _vm.$set(
+                          _vm.reporte,
+                          "ComentariosPa",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -43995,8 +44211,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.reporte.DescripcionDer,
-                        expression: "reporte.DescripcionDer"
+                        value: _vm.reporte.DescripcionReporte,
+                        expression: "reporte.DescripcionReporte"
                       }
                     ],
                     staticClass: "form-control",
@@ -44006,7 +44222,7 @@ var render = function() {
                       placeholder:
                         "Escriba aquí la descripción de la deribación"
                     },
-                    domProps: { value: _vm.reporte.DescripcionDer },
+                    domProps: { value: _vm.reporte.DescripcionReporte },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
@@ -44014,7 +44230,7 @@ var render = function() {
                         }
                         _vm.$set(
                           _vm.reporte,
-                          "DescripcionDer",
+                          "DescripcionReporte",
                           $event.target.value
                         )
                       }
@@ -44063,8 +44279,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.reporte.Seguimiento,
-                        expression: "reporte.Seguimiento"
+                        value: _vm.reporte.Comentarios,
+                        expression: "reporte.Comentarios"
                       }
                     ],
                     staticClass: "form-control",
@@ -44072,7 +44288,7 @@ var render = function() {
                       type: "text",
                       placeholder: "Ingresa aquí el seguimiento que se dará"
                     },
-                    domProps: { value: _vm.reporte.Seguimiento },
+                    domProps: { value: _vm.reporte.Comentarios },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
@@ -44080,67 +44296,13 @@ var render = function() {
                         }
                         _vm.$set(
                           _vm.reporte,
-                          "Seguimiento",
+                          "Comentarios",
                           $event.target.value
                         )
                       }
                     }
                   })
                 ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _vm._v("Responsable de seguimiento")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.reporte.ResponsableSeguimiento,
-                        expression: "reporte.ResponsableSeguimiento"
-                      }
-                    ],
-                    staticClass:
-                      "mdb-select md-form colorful-select dropdown-primary",
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.reporte,
-                          "ResponsableSeguimiento",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "option",
-                      { attrs: { value: "Salvador Alcazar Molina" } },
-                      [_vm._v("Salvador Alcazar Molina")]
-                    ),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Brenda Yaret" } }, [
-                      _vm._v("Brenda Yaret")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Cesar Gonzalez" } }, [
-                      _vm._v("Cesar Gonzalez")
-                    ])
-                  ]
-                ),
                 _vm._v(" "),
                 _vm._m(1)
               ]
@@ -44633,116 +44795,319 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "modal fade",
-      staticStyle: { "z-index": "100000" },
-      attrs: { role: "dialog", id: "verIncidencias", "aria-hidden": "true" }
-    },
     [
       _c(
         "div",
         {
-          staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
-          attrs: { role: "document" }
+          staticClass: "modal fade",
+          staticStyle: { "z-index": "100000" },
+          attrs: { role: "dialog", id: "verIncidencias", "aria-hidden": "true" }
         },
         [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body-g" }, [
-              _c("p", [
-                _c("b", [_vm._v("Fecha: ")]),
-                _vm._v(_vm._s(_vm.incidencia.FechaInicio))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Alumno: ")]),
-                _vm._v(
-                  _vm._s(_vm.alumno.Nombre) +
-                    " " +
-                    _vm._s(_vm.alumno.ApePaterno) +
-                    "  " +
-                    _vm._s(_vm.alumno.ApeMaterno)
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Carrera: ")]),
-                _vm._v(_vm._s(_vm.alumno.Carrera))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Grupo: ")]),
-                _vm._v(_vm._s(_vm.alumno.Grupo))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Telefono: ")]),
-                _vm._v(_vm._s(_vm.alumno.Telefono))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                _vm._v(_vm._s(_vm.incidencia.ResponsableSeguimiento))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Fammiliar: ")]),
-                _vm._v(
-                  _vm._s(
-                    _vm.familiar.Nombre +
-                      " " +
-                      _vm.familiar.ApePaterno +
-                      " " +
-                      _vm.familiar.ApeMaterno
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body-g" }, [
+                  _c("p", [
+                    _c("b", [_vm._v("Fecha: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.FechaInicio))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Alumno: ")]),
+                    _vm._v(
+                      _vm._s(_vm.alumno.Nombre) +
+                        " " +
+                        _vm._s(_vm.alumno.ApePaterno) +
+                        "  " +
+                        _vm._s(_vm.alumno.ApeMaterno)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Carrera: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Carrera))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Grupo: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Grupo))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefono: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Telefono))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.ResponsableSeguimiento))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Fammiliar: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.familiar.Nombre +
+                          " " +
+                          _vm.familiar.ApePaterno +
+                          " " +
+                          _vm.familiar.ApeMaterno
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefono: ")]),
+                    _vm._v(_vm._s(_vm.familiar.Telefono))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Motivo: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.DescripcionReporte))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Derivacion: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.Comentarios))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Descripcion de la derivacion")]),
+                    _vm._v(_vm._s(_vm.incidencia.Observaciones))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Derivación")]),
+                    _vm._v(_vm._s(_vm.incidencia.Derivacion))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "miBtn posicionbtn",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#reporteOrientacion"
+                      },
+                      on: { click: _vm.metodo }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Editar\n                    "
+                      )
+                    ]
                   )
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "m-0" }, [
-                _c("b", [_vm._v("Telefono: ")]),
-                _vm._v(_vm._s(_vm.familiar.Telefono))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Descripció del reporte: ")]),
-                _vm._v(_vm._s(_vm.incidencia.DescripcionReporte))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Comentario de quien le da seguimiento: ")]),
-                _vm._v(_vm._s(_vm.incidencia.Comentarios))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Tipo de Reporte")]),
-                _vm._v(_vm._s(_vm.incidencia.TipoFalta))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Comentario del Padre o Tutor")]),
-                _vm._v(_vm._s(_vm.incidencia.ComentariosPa))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Observaciones")]),
-                _vm._v(_vm._s(_vm.incidencia.Observaciones))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Derivación")]),
-                _vm._v(_vm._s(_vm.incidencia.Derivacion))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("b", [_vm._v("Seguimiento")]),
-                _vm._v(_vm._s(_vm.incidencia.Status))
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ]
+      ),
+      _vm._v(" "),
+      _c("genera-incidencia")
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h3", { staticClass: "modal-title" }, [
+        _vm._v("Reporte de Incidencia")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", [_vm._v("×")])]
       )
-    ]
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          staticStyle: { "z-index": "100000" },
+          attrs: {
+            role: "dialog",
+            id: "verMalaConducta",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body-g" }, [
+                  _c("p", [
+                    _c("b", [_vm._v("Fecha: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.FechaInicio))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Alumno: ")]),
+                    _vm._v(
+                      _vm._s(_vm.alumno.Nombre) +
+                        " " +
+                        _vm._s(_vm.alumno.ApePaterno) +
+                        "  " +
+                        _vm._s(_vm.alumno.ApeMaterno)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Carrera: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Carrera))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Grupo: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Grupo))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefono: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Telefono))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.ResponsableSeguimiento))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Fammiliar: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.familiar.Nombre +
+                          " " +
+                          _vm.familiar.ApePaterno +
+                          " " +
+                          _vm.familiar.ApeMaterno
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefono: ")]),
+                    _vm._v(_vm._s(_vm.familiar.Telefono))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Descripció del reporte: ")]),
+                    _vm._v(_vm._s(_vm.incidencia.DescripcionReporte))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [
+                      _vm._v("Comentario de quien le da seguimiento: ")
+                    ]),
+                    _vm._v(_vm._s(_vm.incidencia.Comentarios))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Tipo de Reporte")]),
+                    _vm._v(_vm._s(_vm.incidencia.TipoFalta))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Comentario del Padre o Tutor")]),
+                    _vm._v(_vm._s(_vm.incidencia.ComentariosPa))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Observaciones")]),
+                    _vm._v(_vm._s(_vm.incidencia.Observaciones))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Derivación")]),
+                    _vm._v(_vm._s(_vm.incidencia.Derivacion))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Seguimiento")]),
+                    _vm._v(_vm._s(_vm.incidencia.Status))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "miBtn posicionbtn",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#reporteConducta"
+                      },
+                      on: { click: _vm.metodo }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Editar\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("genera-mala-conducta")
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -46546,7 +46911,10 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "collapse",
+                class: [
+                  "collapse",
+                  alumno.IdAlumno == _vm.idalumno ? "show" : ""
+                ],
                 attrs: {
                   id: "collapse" + key,
                   "aria-labelledby": "heading" + key,
@@ -46572,7 +46940,10 @@ var render = function() {
                             key: key2,
                             attrs: {
                               "data-toggle": "modal",
-                              "data-target": "#verIncidencias"
+                              "data-target":
+                                incidencia.TipoReporte == "Incidencia"
+                                  ? "#verIncidencias"
+                                  : "#verMalaConducta"
                             },
                             on: {
                               click: function($event) {
@@ -46587,12 +46958,14 @@ var render = function() {
                           [
                             _c("td", { attrs: { colspan: "3" } }, [
                               _vm._v(
-                                "\r\n                                Incidencia\r\n                            "
+                                "\r\n                                " +
+                                  _vm._s(incidencia.TipoReporte) +
+                                  "\r\n                            "
                               )
                             ]),
                             _vm._v(" "),
                             _c("td", { attrs: { colspan: "4" } }, [
-                              _vm._v(_vm._s(incidencia.TipoFalta))
+                              _vm._v(_vm._s(incidencia.ResponsableSeguimiento))
                             ]),
                             _vm._v(" "),
                             _c("td", { attrs: { colspan: "3" } }, [
@@ -46601,7 +46974,9 @@ var render = function() {
                                   _vm._s(
                                     incidencia.Status
                                       ? "Concluido"
-                                      : "Pendiente"
+                                      : incidencia.Status === 0
+                                      ? "Pendiente"
+                                      : ""
                                   )
                                 )
                               ])
@@ -46680,6 +47055,8 @@ var render = function() {
       _vm._v(" "),
       _c("ver-incidencias"),
       _vm._v(" "),
+      _c("ver-mala-conducta"),
+      _vm._v(" "),
       _c("ver-yonoAbandono")
     ],
     1
@@ -46694,7 +47071,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { colspan: "3" } }, [_vm._v("Tipo")]),
         _vm._v(" "),
-        _c("th", { attrs: { colspan: "4" } }, [_vm._v("Falta")]),
+        _c("th", { attrs: { colspan: "4" } }, [_vm._v("Responsable")]),
         _vm._v(" "),
         _c("th", { attrs: { colspan: "3" } }, [_vm._v("Status")])
       ])
@@ -62318,7 +62695,8 @@ Vue.component('add-salud', __webpack_require__(/*! ./components/orientacion/salu
 Vue.component('card-incidencias', __webpack_require__(/*! ./components/orientacion/incidencias/CardIncidencias.vue */ "./resources/js/components/orientacion/incidencias/CardIncidencias.vue")["default"]);
 Vue.component('genera-mala-conducta', __webpack_require__(/*! ./components/orientacion/incidencias/GenerarReporteConducta.vue */ "./resources/js/components/orientacion/incidencias/GenerarReporteConducta.vue")["default"]);
 Vue.component('genera-incidencia', __webpack_require__(/*! ./components/orientacion/incidencias/GenerarReporte.vue */ "./resources/js/components/orientacion/incidencias/GenerarReporte.vue")["default"]);
-Vue.component('ver-incidencias', __webpack_require__(/*! ./components/orientacion/incidencias/VerIncidencia.vue */ "./resources/js/components/orientacion/incidencias/VerIncidencia.vue")["default"]); //Notify
+Vue.component('ver-incidencias', __webpack_require__(/*! ./components/orientacion/incidencias/VerIncidencia.vue */ "./resources/js/components/orientacion/incidencias/VerIncidencia.vue")["default"]);
+Vue.component('ver-mala-conducta', __webpack_require__(/*! ./components/orientacion/incidencias/VerMalaConducta.vue */ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue")["default"]); //Notify
 
 Vue.component('card-notify-seguimiento', __webpack_require__(/*! ./components/orientacion/notify/notifySeguimiento.vue */ "./resources/js/components/orientacion/notify/notifySeguimiento.vue")["default"]);
 Vue.component('card-notify-talleres', __webpack_require__(/*! ./components/orientacion/notify/notifyTalleres.vue */ "./resources/js/components/orientacion/notify/notifyTalleres.vue")["default"]);
@@ -63405,6 +63783,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerIncidencia_vue_vue_type_template_id_35760544___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerIncidencia_vue_vue_type_template_id_35760544___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/orientacion/incidencias/VerMalaConducta.vue ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerMalaConducta.vue?vue&type=template&id=40a512cb& */ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb&");
+/* harmony import */ var _VerMalaConducta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerMalaConducta.vue?vue&type=script&lang=js& */ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./VerMalaConducta.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _VerMalaConducta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/orientacion/incidencias/VerMalaConducta.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerMalaConducta.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerMalaConducta.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb& ***!
+  \************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerMalaConducta.vue?vue&type=template&id=40a512cb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/incidencias/VerMalaConducta.vue?vue&type=template&id=40a512cb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerMalaConducta_vue_vue_type_template_id_40a512cb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -65491,8 +65956,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

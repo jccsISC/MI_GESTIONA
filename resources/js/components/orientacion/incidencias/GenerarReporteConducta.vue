@@ -76,7 +76,8 @@
             return {
                 alumno: {},
                 incidencia: {},
-                familiares: []
+                familiares: [],
+                 tipo: ''
             }
         },
         created() {
@@ -85,11 +86,15 @@
                 this.incidencia = {};
                 this.incidencia.IdAlumno = alumno.IdAlumno; 
                 this.incidencia.ResponsableSeguimiento = 'CESAR';
-                this.jalarFamiliares();      
+                this.jalarFamiliares();
+                this.tipo = 'Guardar';      
             });
-             this.$parent.$on('verIncidencia', incidencia => {
-                this.incidencia = incidencia;
-                this.incidencia={};
+            bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
+                console.log('consolelog'); 
+                this.alumno = Object.assign({}, alumno);   
+                this.incidencia = Object.assign({}, incidencia);
+                this.jalarFamiliares();   
+                this.tipo = 'Editar';
             });
         },
         methods: {
@@ -115,12 +120,21 @@
                     alert('Seleccione el estatus');
                     return;
                 }
+                if (this.tipo == 'Guardar') {
+                    this.incidencia.TipoReporte = 'Mala Conducta';
+                    axios.post('/incidencias', this.incidencia).then(res => {
+                        $('#reporteConducta').modal('hide');
+                        bus.$emit('incidenciaAgregada', res.data);
+                    });
+                } else {
+                    axios.put('/incidencias/'+this.incidencia.IdIncidencia, this.incidencia).then(res => {
+                        $('#reporteConducta').modal('hide');
+                        bus.$emit('incidenciaEditada', res.data);
+                    });
+                }
+                
 
-                axios.post('/incidencias', this.incidencia).then(res => {
-                    //window.location.href = '/T';
-                    $('#reporteConducta').modal('hide');
-                    bus.$emit('incidenciaAgregada', res.data);
-                });
+                
             }
         }
     }

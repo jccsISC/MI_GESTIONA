@@ -56,6 +56,7 @@ Vue.component('card-incidencias', require('./components/orientacion/incidencias/
 Vue.component('genera-mala-conducta', require('./components/orientacion/incidencias/GenerarReporteConducta.vue').default);
 Vue.component('genera-incidencia', require('./components/orientacion/incidencias/GenerarReporte.vue').default);
 Vue.component('ver-incidencias', require('./components/orientacion/incidencias/VerIncidencia.vue').default);
+Vue.component('ver-mala-conducta', require('./components/orientacion/incidencias/VerMalaConducta.vue').default);
 //Notify
 Vue.component('card-notify-seguimiento', require('./components/orientacion/notify/notifySeguimiento.vue').default);
 Vue.component('card-notify-talleres', require('./components/orientacion/notify/notifyTalleres.vue').default);

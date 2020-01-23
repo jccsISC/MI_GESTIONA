@@ -24,7 +24,19 @@
                 <nav id="menu">
                     <ul>
                         <li><a href="/R">Reportes</a></li>
-                        <li><a href="#">Cerrar Sesion</a></li>
+                        <li><div class="cerrar" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <!-- {{ __('Logout') }} -->
+                                    Cerrar Sesión
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -56,6 +68,12 @@
     .midivbuscadorT{
         margin-left: 5%;
     }
+
+    
+    .cerrar a{
+        color: white;
+    }
+
 /*
     .mibuscador{
         border-radius: 8px;

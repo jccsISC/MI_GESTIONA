@@ -8,7 +8,7 @@
                     <button 
                         v-for="(incidencia, key) in incidencias" :key="key"  
                         class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                        data-toggle="modal" data-target="#verIncidencias" @click="$emit('verIncidencia', incidencia, alumno)">
+                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
                     
                         {{key + 1}}
 
@@ -17,19 +17,19 @@
 
                 <div class="mcontenidoL pt-1 interlineado">
                     <p><b>Detalles</b></p>
-                    <p><b>Tipo de Falta: </b>{{inconveniente.TipoFalta}}</p>
-                    <p><b>Seguimiento: </b>{{inconveniente.Status ? 'Concluido' : 'Pendiente'}}</p>
+                    
                     <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
                     <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
                 </div>
 
                 <div class="pt-1">
                     <p class="p-0 m-0 fecha"><b>Fecha</b>{{inconveniente.FechaInicio}}</p>
-                    <a href="/R"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
                 </div>
             </div>
         </div>
 
+        <ver-mala-conducta></ver-mala-conducta>
         <ver-incidencias></ver-incidencias>
     </div>
 </template>
@@ -58,9 +58,22 @@
             bus.$on('incidenciaAgregada', incidencia => {
                 this.incidencias.unshift(incidencia);
             });
+            bus.$on('incidenciaEditada', incidencia => {
+                const temp = Object.assign({}, this.incidencias);
+                this.incidencias = [];
+                Object.keys(temp).forEach(key => {
+                    if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
+                        this.incidencias[key] = incidencia;
+                    }
+                    else {
+                        this.incidencias[key] = temp[key];
+                    }
+                });
+            });
+            
         },
         methods:{
-            jalarIncidencias(){
+            jalarIncidencias() {
                 axios.get('/incidencias/'+this.alumno.IdAlumno).then(res => {
                     this.incidencias = [];
                     res.data.forEach(i => {

@@ -9,7 +9,7 @@
 
     
 
-            <button type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+            <button @click="$emit('generarIncidencia', alumno)" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
                 Incidencia
             </button>
 

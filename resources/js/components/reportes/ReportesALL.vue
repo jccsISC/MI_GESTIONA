@@ -10,23 +10,23 @@
                     </button>
                 </h5>
             </div>
-            <div :id="'collapse'+ key" class="collapse" :aria-labelledby="'heading'+ key" data-parent="#accordion">
+            <div :id="'collapse'+ key" :class="['collapse', alumno.IdAlumno == idalumno ? 'show' : '' ]" :aria-labelledby="'heading'+ key" data-parent="#accordion">
                 <table class="table table-striped table-hover contentTable table table-sm">
                     <thead>
                         <tr>
                             <th colspan="3">Tipo</th>
-                            <th colspan="4">Falta</th>
+                            <th colspan="4">Responsable</th>
                             <th colspan="3">Status</th>
                         </tr>
                     </thead>
                 
                     <tbody>
-                        <tr data-toggle="modal" data-target="#verIncidencias" v-for="(incidencia, key2) in alumno.incidencias" :key="key2" @click="$emit('verIncidencia', incidencia, alumno)">
+                        <tr data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" v-for="(incidencia, key2) in alumno.incidencias" :key="key2" @click="$emit('verIncidencia', incidencia, alumno)">
                             <td colspan="3">
-                                Incidencia
+                                {{incidencia.TipoReporte}}
                             </td>
-                            <td colspan="4">{{incidencia.TipoFalta}}</td>
-                            <td colspan="3"><label class="concluido">{{incidencia.Status ? 'Concluido' : 'Pendiente'}}</label></td>
+                            <td colspan="4">{{incidencia.ResponsableSeguimiento}}</td>
+                            <td colspan="3"><label class="concluido">{{incidencia.Status ? 'Concluido' : incidencia.Status === 0 ? 'Pendiente' : ''}}</label></td>
                         </tr>
                     </tbody>
                  </table>
@@ -56,6 +56,7 @@
         </div>
     </div>
     <ver-incidencias></ver-incidencias>
+    <ver-mala-conducta></ver-mala-conducta>
     <ver-yonoAbandono></ver-yonoAbandono>
 </div>
 </template>
@@ -68,9 +69,33 @@
             return {
                 alumnos: [],
                 loading: true,
+                idalumno : ''
             }
         },
         created() {
+
+            bus.$on('alumnoSeleccionado', alumno => {
+                this.idalumno = alumno.IdAlumno;
+            });
+            
+            bus.$on('incidenciaEditada', incidencia => {
+                this.alumnos.forEach((alumno, index) => {
+                    const temp = Object.assign({}, alumno.incidencias);
+                    this.alumnos[index].incidencias = [];
+                    Object.keys(temp).forEach(key => {
+                        if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
+                            this.alumnos[index].incidencias[key] = incidencia;
+                        }
+                        else {
+                            this.alumnos[index].incidencias[key] = temp[key];
+                        }
+                    });
+                });
+            });
+
+            this.idalumno = new URLSearchParams(window.location.search).get('show');
+            console.log(this.idalumno);
+
             axios.get('/incidencias').then(res => {
                 this.alumnos = res.data;
 
@@ -82,7 +107,7 @@
    
 <style>
 
-    .midiv{
+    /* .midiv{
         width: 50%;
         margin-right: auto;
         margin-left: auto;
@@ -97,7 +122,7 @@
     }
 
     .divPrin{
-        width: 100%; 
+        width: 80%; 
         height: 650px;
         border: 2px solid rgb(223, 223, 223);
         border-radius: 3px;
@@ -122,7 +147,7 @@
         padding: 1px;
         font-size: 12px;
         outline: none;/*eliminar el resplandor al foco del input*/
-    }
+    /* }
 
     .buscadorR:focus{
         border-color: dodgerblue;
@@ -133,5 +158,5 @@
         border-radius: 3px;
         background: rgb(27, 192, 27);
         padding: 4px;
-    }
+    }  */
 </style>

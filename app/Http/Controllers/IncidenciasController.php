@@ -52,7 +52,8 @@ class IncidenciasController extends Controller
             'Observaciones' => 'required',
             'Derivacion' => 'required',
             'DescripcionReporte' => 'required',
-            'ResponsableSeguimiento' => 'required'
+            'ResponsableSeguimiento' => 'required',
+            'TipoReporte' => 'required'
         ]);
 
         $incidencia = tblincidencias::create(
@@ -65,6 +66,61 @@ class IncidenciasController extends Controller
         return $incidencia->load('familiar');
 
     }
+
+
+
+    public function reporteIncidencia(Request $request)
+    {
+        $atributos = $this->validate($request, [
+            'IdAlumno' => 'required',
+            'IdFamiliar' => 'required',
+            'Motivo' => 'required',
+            'Derivacion' => 'required',
+            'DescripcionReporte' => 'required',
+            'Observaciones' => 'required',
+            'Comentarios' => 'required',
+            'ResponsableSeguimiento' => 'required',
+            'TipoReporte' => 'required'
+        ]);
+
+        $incidencia = tblincidencias::create(
+            $atributos + [
+                'Existe' => 1, 
+                'FechaInicio' => date('Y-m-d')
+            ]
+        );
+        return $incidencia->load('familiar');
+
+    }
+
+    
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\tblincidencias $tblincidencias
+     * @return \Illuminate\Http\Response
+     */
+    public function editarIncidencia(Request $request, tblincidencias $tblincidencias)
+    {
+        $atributos = $this->validate($request, [
+            'IdAlumno' => 'required',
+            'IdFamiliar' => 'required',
+            'ComentariosPa' => 'required',
+            'Derivacion' => 'required',
+            'DescripcionReporte' => 'required',
+            'Observaciones' => 'required',
+            'Comentarios' => 'required',
+            'ResponsableSeguimiento' => 'required',
+            'TipoReporte' => 'required'
+        ]);
+        
+        $tblincidencias->update($atributos);
+        return $tblincidencias->load('familiar');
+    }
+
+    
+
 
     /**
      * Display the specified resource.
@@ -92,12 +148,28 @@ class IncidenciasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  tblincidencias $tblincidencias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tblincidencias $tblincidencias)
     {
-        //
+        $atributos = $this->validate($request, [
+            'IdAlumno' => 'required',
+            'IdFamiliar' => 'required',
+            'Comentarios' => 'required',
+            'TipoFalta' => 'required',
+            'Status' => 'required',
+            'ComentariosPa' => 'required',
+            'Observaciones' => 'required',
+            'Derivacion' => 'required',
+            'DescripcionReporte' => 'required',
+            'ResponsableSeguimiento' => 'required',
+            'TipoReporte' => 'required'
+        ]);
+
+        $tblincidencias->update($atributos);
+        return $tblincidencias->load('familiar');
+
     }
 
     /**

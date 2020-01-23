@@ -29,8 +29,19 @@
                             </ul>
                         </li>
                         <li><a href="/R">Reportes</a></li>
-                        <li><a href="#">Cerrar Sesion</a></li>
+                        <li><div class="cerrar" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <!-- {{ __('Logout') }} -->
+                                    Cerrar Sesión
+                                </a>
 
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -59,6 +70,11 @@
         color:white;
         background-color: rgb(167, 11, 11);
     }
+
+    .cerrar a{
+        color: white;
+    }
+
     
 </style>
 

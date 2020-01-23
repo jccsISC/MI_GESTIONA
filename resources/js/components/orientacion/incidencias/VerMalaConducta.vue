@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="modal fade" role="dialog" id="verIncidencias" style="z-index: 100000" aria-hidden="true">
+        <div class="modal fade" role="dialog" id="verMalaConducta" style="z-index: 100000" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title">Reporte de Incidencia</h3>
+                    <h3 class="modal-title">Reporte de Mala conducta</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span>&times;</span>
                     </button>
@@ -20,18 +20,21 @@
                         <p><b>Fammiliar: </b>{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</p>
                         
                         <p class="m-0"><b>Telefono: </b>{{familiar.Telefono}}</p>
-                        <p><b>Motivo: </b>{{incidencia.DescripcionReporte}}</p>  
+                        <p><b>Descripció del reporte: </b>{{incidencia.DescripcionReporte}}</p>  
 
-                        <p><b>Derivacion: </b>{{incidencia.Comentarios}}</p>
+                        <p><b>Comentario de quien le da seguimiento: </b>{{incidencia.Comentarios}}</p>
 
+                        <p><b>Tipo de Reporte</b>{{incidencia.TipoFalta}}</p>
                         
+                        <p><b>Comentario del Padre o Tutor</b>{{incidencia.ComentariosPa}}</p>
 
-                        <p><b>Descripcion de la derivacion</b>{{incidencia.Observaciones}}</p>
+                        <p><b>Observaciones</b>{{incidencia.Observaciones}}</p>
                        
                         <p><b>Derivación</b>{{incidencia.Derivacion}}</p>
 
+                        <p><b>Seguimiento</b>{{incidencia.Status}}</p>
                         
-                         <button @click="metodo" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+                         <button @click="metodo" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteConducta">
                             Editar
                         </button>
                     </div>
@@ -39,8 +42,9 @@
         </div>
         
     </div>
-    <genera-incidencia></genera-incidencia>
+    <genera-mala-conducta></genera-mala-conducta>
     </div>
+    
 </template>
 
 <script>
@@ -54,7 +58,7 @@
             }
         },
         created() {
-             this.$parent.$on('verIncidencia', (incidencia, alumno) => {
+              this.$parent.$on('verIncidencia', (incidencia, alumno) => {
                 this.incidencia = Object.assign({}, incidencia); ;
                 this.alumno = Object.assign({}, alumno);   ;
                 this.familiar = this.incidencia.familiar;
@@ -63,8 +67,8 @@
         },
         methods: {
             metodo () {
-                $('#verIncidencias').modal('hide');
-                bus.$emit('EditarIncidencia', this.incidencia, this.alumno);
+                $('#verMalaConducta').modal('hide');
+                bus.$emit('EditarMalaConducta', this.incidencia, this.alumno);
             }
         }
     }

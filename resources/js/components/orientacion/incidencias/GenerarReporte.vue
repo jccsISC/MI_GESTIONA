@@ -21,7 +21,7 @@
                         
                     <div class="form-group">
                         <p class="m-0">Motivo</p> 
-			            <textarea v-model="reporte.Motivo" name="" id="" class="form-control" placeholder="Escriba aquí los motivos"></textarea>
+			            <textarea v-model="reporte.ComentariosPa" name="" id="" class="form-control" placeholder="Escriba aquí los motivos"></textarea>
 		  	        </div>
 
                     <div class="form-group">
@@ -31,7 +31,7 @@
 
                     <div class="form-group">
                         <p class="m-0">Descripción de la derivación</p> 
-			            <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control" placeholder="Escriba aquí la descripción de la deribación"></textarea>
+			            <textarea v-model="reporte.DescripcionReporte" name="" id="" class="form-control" placeholder="Escriba aquí la descripción de la deribación"></textarea>
 	  	            </div>
                     
                     <div class="form-group ">
@@ -41,15 +41,16 @@
                     
                     <div class="form-group ">
                         <p class="m-0">Seguimiento</p>
-			            <input v-model="reporte.Seguimiento" type="text" class="form-control" placeholder="Ingresa aquí el seguimiento que se dará">
+			            <input v-model="reporte.Comentarios" type="text" class="form-control" placeholder="Ingresa aquí el seguimiento que se dará">
 		  	        </div>
 
-                    <p class="m-0">Responsable de seguimiento</p> 
+                    <!-- <p class="m-0">Responsable de seguimiento</p> 
                     <select v-model="reporte.ResponsableSeguimiento" class="mdb-select md-form colorful-select dropdown-primary">
                         <option value="Salvador Alcazar Molina">Salvador Alcazar Molina</option>
                         <option value="Brenda Yaret">Brenda Yaret</option>
                         <option value="Cesar Gonzalez">Cesar Gonzalez</option>
-                    </select>
+                    </select> -->
+
                      <button  type="submit" class="mibtn">
                         <i class="fas fa-plus-circle"> Guardar</i>
                     </button>
@@ -62,19 +63,32 @@
 </template>
 
 <script>
+    import bus from '../../../event-bus';
     export default {
          data() {
             return {
                 alumno: {},
                 reporte: {},
-                familiares: []
+                familiares: [],
+                tipo: ''
             }
         },
         created() {
-            this.$parent.$on('generarReporte', alumno => {              
+
+            bus.$on('EditarIncidencia', (incidencia, alumno) => {
+                this.alumno = Object.assign({}, alumno);   
+                this.reporte = Object.assign({}, incidencia);
+                this.jalarFamiliares();   
+                this.tipo = 'Editar';
+            });
+
+
+            this.$parent.$on('generarIncidencia', alumno => {              
                 this.alumno = alumno;   
                 this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
                 this.reporte.IdAlumno = alumno.IdAlumno; 
+                this.reporte.ResponsableSeguimiento = 'Cesar Gonzales';
+                this.tipo = 'Guardar';
                 this.jalarFamiliares();      
             });
         },
@@ -97,14 +111,21 @@
                 return telefono;
             },
             guardarReporte() {
-
-                if (this.reporte.Status = '') {
-                    alert('Seleccione el estatus');
+                if (this.tipo == 'Guardar') {
+                    this.reporte.TipoReporte = 'Incidencia';
+                    axios.post('/incidenciareal', this.reporte).then(res => {
+                        //window.location.href = '/T';
+                        $('#reporteOrientacion').modal('hide');
+                        bus.$emit('incidenciaAgregada', res.data);
+                    });
+                } else {
+                    axios.put('/incidenciareal/'+this.reporte.IdIncidencia, this.reporte).then(res => {
+                        $('#reporteOrientacion').modal('hide');
+                        bus.$emit('incidenciaEditada', res.data);
+                    });
                 }
+                
 
-                axios.post('/yonoAbandono', this.reporte).then(res => {
-                    //window.location.href = '/T';
-                });
             }
         }
     }

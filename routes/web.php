@@ -28,13 +28,23 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Rote::get('/T-admin', function() {
+//     return view('/tutorias.principal');
+// })->neme('admin.T');
+
+
+// Rote::get('/home', function() {
+//     return view('/home');
+// })->neme('user.home');
 
 //-----------------------------------------DEPARTAMENTO DE BRENDA----------------------------------------------------
 
 //Vista principal Trabajo Social
-Route::get('TS', function(){
+Route::get('TS', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['tsocial']);
     return view('/trabajosocial.principal');
 });
+
 Route::get('listaBecas', function(){
     return view('/trabajosocial.listaBecas');
 });
@@ -112,11 +122,15 @@ Route::put('talleres/{tbltalleres}', 'TalleresController@update');
 Route::get('incidencias', 'IncidenciasController@index');
 Route::get('incidencias/{tblalumno}', 'IncidenciasController@incidencias');
 Route::post('incidencias', 'IncidenciasController@store');
+Route::put('incidencias/{tblincidencias}', 'IncidenciasController@update');
+Route::post('incidenciareal', 'IncidenciasController@reporteIncidencia');
+Route::put('incidenciareal/{tblincidencias}', 'IncidenciasController@editarIncidencia');
 
 
 
-//INASISTENCIAS
-Route::get('M', function(){
+//INASISTENCIAS MAESTROS
+Route::get('M', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['maestro']);
     return view('/inasistencias');
 });
 
@@ -125,17 +139,15 @@ Route::get('R', function(){
     return view('/reportes');
 });
 //-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
-Route::get('T', function(){
+Route::get('T', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['tutor']);
     return view('/tutorias.principal');
 });
 
 
 
-
-
-
-
 //CESAR-----------------------------------------------------------------------------------------------------------
-Route::get('OE', function(){
+Route::get('OE', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['orientador']);
     return view('/orientacion.principal');
 });
