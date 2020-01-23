@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
 
         $user = new User();
         $user->name = "User";
-        $user->email = "user@hotmail.com";
+        $user->email = "User";
         $user->password = bcrypt('query');
         $user->save();
         $user->roles()->attach($role_user);
@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder
 
         $user = new User();
         $user->name = "Admin";
-        $user->email = "admin@hotmail.com";
+        $user->email = "admin";
         $user->password = bcrypt('query');
         $user->save();
         $user->roles()->attach($role_admin);
@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
 
         $user = new User();
         $user->name = "Julio Cesar Camacho";
-        $user->email = "silva.jc@hotmail.com";
+        $user->email = "jccs";
         $user->password = bcrypt('jccsisc');
         $user->save();
         //mediante el usuario acede a su metodo roles que es la relacion entre el user y el rol
@@ -48,29 +48,29 @@ class UserTableSeeder extends Seeder
 
         $user = new User();
         $user->name = "Salvador Alcazar Molina";
-        $user->email = "salvador@hotmail.com";
-        $user->password = bcrypt('12345678');
+        $user->email = "salvador";
+        $user->password = bcrypt('salvador');
         $user->save();
         $user->roles()->attach($role_tutor);
 
         $user = new User();
         $user->name = "Brenda Shalala";
-        $user->email = "brenda@hotmail.com";
-        $user->password = bcrypt('12345678');
+        $user->email = "brenda";
+        $user->password = bcrypt('brenda');
         $user->save();
         $user->roles()->attach($role_tsocial);
 
         $user = new User();
         $user->name = "Cesar Rodriguez";
-        $user->email = "cesarrdz@hotmail.com";
-        $user->password = bcrypt('12345678');
+        $user->email = "cesar";
+        $user->password = bcrypt('cesar');
         $user->save();
         $user->roles()->attach($role_orientador);
 
         $user = new User();
         $user->name = "Juan Francisco Ramirez";
-        $user->email = "juanfra@hotmail.com";
-        $user->password = bcrypt('12345678');
+        $user->email = "JuanFra";
+        $user->password = bcrypt('maestro');
         $user->save();
         $user->roles()->attach($role_maestro);
     }

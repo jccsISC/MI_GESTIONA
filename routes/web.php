@@ -28,14 +28,6 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Rote::get('/T-admin', function() {
-//     return view('/tutorias.principal');
-// })->neme('admin.T');
-
-
-// Rote::get('/home', function() {
-//     return view('/home');
-// })->neme('user.home');
 
 //-----------------------------------------DEPARTAMENTO DE BRENDA----------------------------------------------------
 
@@ -150,4 +142,11 @@ Route::get('T', function(Illuminate\Http\Request $request) {
 Route::get('OE', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['orientador']);
     return view('/orientacion.principal');
+});
+
+
+//ADMINISTRADOR-----------------------------------------------------------------------------------------------------------
+Route::get('A', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['admin']);
+    return view('/admin');
 });

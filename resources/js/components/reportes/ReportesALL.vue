@@ -107,7 +107,7 @@
    
 <style>
 
-    /* .midiv{
+    .midiv{
         width: 50%;
         margin-right: auto;
         margin-left: auto;
@@ -147,7 +147,7 @@
         padding: 1px;
         font-size: 12px;
         outline: none;/*eliminar el resplandor al foco del input*/
-    /* }
+    }
 
     .buscadorR:focus{
         border-color: dodgerblue;
@@ -158,5 +158,5 @@
         border-radius: 3px;
         background: rgb(27, 192, 27);
         padding: 4px;
-    }  */
+    } 
 </style>

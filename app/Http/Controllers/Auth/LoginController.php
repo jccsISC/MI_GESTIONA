@@ -35,6 +35,9 @@ class LoginController extends Controller
 
     public function redirectTo () {
         switch (Auth::user()->roles->first()->name) {
+            case 'admin':
+                return 'A';
+            break;
             case 'tutor':
                 return 'T';
             break;
