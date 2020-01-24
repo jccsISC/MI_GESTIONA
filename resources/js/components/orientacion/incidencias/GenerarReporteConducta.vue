@@ -77,7 +77,7 @@
                 alumno: {},
                 incidencia: {},
                 familiares: [],
-                 tipo: ''
+                tipo: ''
             }
         },
         created() {
@@ -131,10 +131,7 @@
                         $('#reporteConducta').modal('hide');
                         bus.$emit('incidenciaEditada', res.data);
                     });
-                }
-                
-
-                
+                }                
             }
         }
     }

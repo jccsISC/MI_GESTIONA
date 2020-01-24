@@ -1885,11 +1885,315 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      alumno: {}
+      alumno: {},
+      salud: {},
+      practica: {},
+      familiares: [],
+      calificaciones: [],
+      becas: [],
+      incidencias: [],
+      justificantes: [],
+      pases: [],
+      contador: 0
     };
   },
   created: function created() {
@@ -1897,13 +2201,158 @@ __webpack_require__.r(__webpack_exports__);
 
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
       _this.alumno = alumno;
+
+      _this.jalarCalificaciones();
+
+      _this.jalarFamiliares();
+
+      _this.jalarSalud();
+
+      _this.jalarIncidencias();
+
+      _this.jalarJustificantes();
+
+      _this.jalarPases();
+
+      _this.jalarPractica();
+
+      _this.jalarBecas();
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaAgregada', function (incidencia) {
+      _this.incidencias.unshift(incidencia);
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaEditada', function (incidencia) {
+      var temp = Object.assign({}, _this.incidencias);
+      _this.incidencias = [];
+      Object.keys(temp).forEach(function (key) {
+        if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
+          _this.incidencias[key] = incidencia;
+        } else {
+          _this.incidencias[key] = temp[key];
+        }
+      });
     });
   },
   computed: {
-    dataTarget: function dataTarget() {
-      return this.alumno.IdAlumno ? '#allinfo' : '';
+    promedioGeneral: function promedioGeneral() {
+      var promedio = 0;
+      var counter = 0;
+      var general = 0;
+
+      if (!this.calificaciones.length) {
+        return '';
+      }
+
+      this.calificaciones.forEach(function (calificacion) {
+        promedio += calificacion.Calificacionfinal ? parseInt(calificacion.Calificacionfinal) : 0;
+        counter++;
+      });
+      general = promedio / counter;
+      return general.toFixed(1);
+    },
+    inconveniente: function inconveniente() {
+      return this.incidencias[0] ? this.incidencias[0] : {};
     }
-  }
+  },
+  methods: {
+    jalarCalificaciones: function jalarCalificaciones() {
+      var _this2 = this;
+
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/calificaciones').then(function (res) {
+        console.log(res.data);
+        _this2.calificaciones = res.data;
+      });
+    },
+    unidad: function unidad(detalles, _unidad) {
+      var calificacion = '';
+
+      if (!detalles) {
+        return calificacion;
+      }
+
+      detalles.forEach(function (detalle) {
+        if (detalle.Unidad == _unidad) {
+          calificacion = detalle.Calificacion;
+          return;
+        }
+      });
+      return calificacion;
+    },
+    jalarFamiliares: function jalarFamiliares() {
+      var _this3 = this;
+
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
+        _this3.familiares = res.data;
+        console.log(res);
+      });
+    },
+    obtenerTelefono: function obtenerTelefono() {
+      var _this4 = this;
+
+      var telefono = '';
+
+      if (!this.alumno.IdFamiliar || !this.familiares) {
+        return telefono;
+      }
+
+      this.familiares.forEach(function (familiar) {
+        if (familiar.IdFamiliar === _this4.alumno.IdFamiliar) {
+          telefono = familiar.Telefono;
+        }
+      });
+      return telefono;
+    },
+    jalarSalud: function jalarSalud() {
+      var _this5 = this;
+
+      axios.get('/salud/' + this.alumno.IdAlumno).then(function (res) {
+        _this5.salud = res.data;
+      });
+    },
+    jalarIncidencias: function jalarIncidencias() {
+      var _this6 = this;
+
+      axios.get('/incidencias/' + this.alumno.IdAlumno).then(function (res) {
+        _this6.incidencias = [];
+        res.data.forEach(function (i) {
+          _this6.incidencias.unshift(i);
+        });
+      });
+    },
+    jalarPases: function jalarPases() {
+      var _this7 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(function (res) {
+        _this7.pases = res.data;
+        console.log(res.data);
+      });
+    },
+    jalarJustificantes: function jalarJustificantes() {
+      var _this8 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes').then(function (res) {
+        _this8.justificantes = res.data;
+        console.log(res.data);
+      });
+    },
+    jalarPractica: function jalarPractica() {
+      var _this9 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/practica?tipo=' + this.tipo).then(function (res) {
+        _this9.practica = res.data;
+        console.log(res);
+      })["catch"]();
+    },
+    jalarBecas: function jalarBecas() {
+      var _this10 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/becas').then(function (res) {
+        _this10.becas = res.data;
+        console.log(res);
+      });
+    }
+  },
+  props: ['tipo']
 });
 
 /***/ }),
@@ -3010,7 +3459,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.incidencia = Object.assign({}, incidencia);
       ;
       _this.alumno = Object.assign({}, alumno);
-      ;
       _this.familiar = _this.incidencia.familiar;
     });
   },
@@ -4777,9 +5225,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
 //
 //
 //
@@ -10228,7 +10673,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n", ""]);
+exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentDetSalud{\n    height: 225px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 0px;\n}\n\n/* .contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n} */\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n\n/* .scrollH::-webkit-scrollbar{\n    width: 1px;\n}\n\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n} */\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    height: 235px;\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n.bordeJustificante{\n}\n", ""]);
 
 // exports
 
@@ -43007,65 +43452,805 @@ var render = function() {
           ? _c("div", { staticClass: "inforP" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c("div", [
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Matricula: ")]),
-                  _vm._v(_vm._s(_vm.alumno.IdAlumno))
+              _c("div", { staticClass: "subGrid" }, [
+                _c("div", [
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Matricula: ")]),
+                    _vm._v(_vm._s(_vm.alumno.IdAlumno))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Nombre: ")]),
+                    _vm._v(
+                      _vm._s(_vm.alumno.Nombre) +
+                        " " +
+                        _vm._s(_vm.alumno.ApePaterno) +
+                        "  " +
+                        _vm._s(_vm.alumno.ApeMaterno)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                    _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Género: ")]),
+                    _vm._v(
+                      _vm._s(_vm.alumno.Sexo == "M" ? "Masculino" : "Femenino")
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefóno: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Telefono))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefóno2: ")]),
+                    _vm._v(
+                      _vm._s(_vm.alumno.Telefono2 ? _vm.alumno.Telefono2 : "")
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "m-0 miMaxLength" }, [
-                  _c("b", [_vm._v("Nombre: ")]),
-                  _vm._v(
-                    _vm._s(_vm.alumno.Nombre) +
-                      " " +
-                      _vm._s(_vm.alumno.ApePaterno) +
-                      "  " +
-                      _vm._s(_vm.alumno.ApeMaterno)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Carrera: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Carrera))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Fecha Nacimiento: ")]),
-                  _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Género: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Sexo))
+                _c("div", {}, [
+                  _c("div", { staticClass: "linea" }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("CURP: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Curp))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Correo: ")]),
+                    _vm._v(_vm._s(_vm.alumno.EMAIL))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Carrera: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Carrera))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Grado: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Grupo: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Grupo))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Turno: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.alumno.Turno == "M" ? "Matutino" : "Vespertino"
+                      )
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")])
-                ]),
+                _c("div", { staticClass: "linea" }),
                 _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Grupo: " + _vm._s(_vm.alumno.Grupo))])
+                _c("div", [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "subGrid" }, [
+                    _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiares.Nombre) +
+                            " " +
+                            _vm._s(_vm.familiares.ApePaterno) +
+                            "  " +
+                            _vm._s(_vm.familiares.ApeMaterno)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Telefono))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", {}, [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.alumno.Nombre) +
+                            " " +
+                            _vm._s(_vm.alumno.ApePaterno) +
+                            "  " +
+                            _vm._s(_vm.alumno.ApeMaterno)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Telefono))
+                      ])
+                    ])
+                  ])
                 ])
               ])
             ])
-          : _vm._e()
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "labelS" }, [
+          _vm.alumno.IdAlumno
+            ? _c("div", { staticClass: "float" }, [_vm._m(5)])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.alumno.IdAlumno
+            ? _c("div", { staticClass: "inforP2" }, [
+                _c("div", [
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Estado: ")]),
+                    _vm._v(_vm._s(_vm.alumno.EstadoNac))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", [
+                    _c("b", [_vm._v("Municipio: ")]),
+                    _vm._v(_vm._s(_vm.alumno.MunicipioNac))
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Calle: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Calle))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("No. Exterior: ")]),
+                    _vm._v(_vm._s(_vm.alumno.NumExterior))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-3" }, [
+                    _c("b", [_vm._v("No. Interior: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.alumno.NumInterior == ""
+                          ? ""
+                          : _vm.alumno.NumInterior
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("label", [
+                    _c("b", [_vm._v("CP: ")]),
+                    _vm._v(_vm._s(_vm.alumno.CodPostal))
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Colonia: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Colonia))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-4" }, [
+                    _c("b", [_vm._v("Municipio: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Municipio))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-3" }, [
+                    _c("b", [_vm._v("Estado: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Estado))
+                  ]),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-2" }, [
+                    _c("b", [_vm._v("Entre Calle: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.alumno.EntreCalle
+                          ? _vm.alumno.EntreCalle
+                          : "No Capturada"
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("label", [
+                    _c("b", [_vm._v("Entre Calle: ")]),
+                    _vm._v(
+                      _vm._s(
+                        _vm.alumno.EntreCalle2
+                          ? _vm.alumno.EntreCalle2
+                          : "No Capturada"
+                      )
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("div", { staticClass: "linea" }),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Tipo de Sangre: ")]),
+                    _vm._v(_vm._s(_vm.alumno.TipoSangre))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Etnia: ")]),
+                    _vm._v(_vm._s(_vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"))
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm._m(7),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _c("br")
+                ])
+              ])
+            : _vm._e()
+        ])
       ]),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(9),
       _vm._v(" "),
-      _c("div", { staticClass: "contentInf" }),
+      _c("div", { staticClass: "contentInf" }, [
+        _c("div", { staticClass: "gridM2" }, [
+          _vm.alumno.IdAlumno
+            ? _c("div", { staticClass: "container contentCalif" }, [
+                _c("div", [
+                  _vm._m(10),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Promedio General: ")]),
+                    _vm._v(" " + _vm._s(_vm.promedioGeneral))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "tableCalf" }, [
+                  _vm.alumno.IdAlumno
+                    ? _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-striped table-hover contentTable table table-sm"
+                        },
+                        [
+                          _vm._m(11),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.calificaciones, function(
+                              calificacion,
+                              key
+                            ) {
+                              return _c(
+                                "tr",
+                                { key: key },
+                                [
+                                  _c("td", [
+                                    _vm._v(_vm._s(calificacion.Materia))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(5, function(i) {
+                                    return _c("td", { key: i }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.unidad(calificacion.detalles, i)
+                                        )
+                                      )
+                                    ])
+                                  }),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(calificacion.Calificacionfinal)
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        calificacion.Extra
+                                          ? calificacion.Extra
+                                          : "NC"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        calificacion.Inter
+                                          ? calificacion.Inter
+                                          : "NC"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        calificacion.Ordinario
+                                          ? calificacion.Ordinario
+                                          : "NC"
+                                      )
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.alumno.IdAlumno
+            ? _c("div", { staticClass: "container contentCalif pl-5" }, [
+                _vm._m(12),
+                _vm._v(" "),
+                _c("div", { staticClass: "tableCalf" }, [
+                  _vm.alumno.IdAlumno
+                    ? _c(
+                        "table",
+                        {
+                          staticClass:
+                            "table table-striped table-hover contentTable table table-sm"
+                        },
+                        [
+                          _vm._m(13),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.calificaciones, function(
+                              calificacion,
+                              key
+                            ) {
+                              return _c(
+                                "tr",
+                                { key: key },
+                                [
+                                  _c("td", [
+                                    _vm._v(_vm._s(calificacion.Materia))
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(5, function(i) {
+                                    return _c("td", { key: i }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.unidad(
+                                            calificacion.Inacistencias,
+                                            i
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  })
+                                ],
+                                2
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            : _vm._e()
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _vm._m(14),
       _vm._v(" "),
-      _c("div", { staticClass: "contentInf" }),
+      _c("div", { staticClass: "contentInf" }, [
+        _c("div", { staticClass: "gridM2" }, [
+          _vm.alumno.IdAlumno
+            ? _c("div", [
+                _vm._m(15),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("Estatura: ")]),
+                    _vm._v(_vm._s(_vm.salud.Estatura))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5 ml-3" }, [
+                    _c("b", [_vm._v("Peso: ")]),
+                    _vm._v(_vm._s(_vm.salud.Peso))
+                  ]),
+                  _vm._v(" "),
+                  _c("label", { staticClass: "mr-5" }, [
+                    _c("b", [_vm._v("IMC: ")]),
+                    _vm._v(_vm._s(_vm.salud.IMC))
+                  ]),
+                  _c("br")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "gridM2" }, [
+                  _c("div", { staticClass: "contentDetSalud" }, [
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Anteojos: ")]),
+                      _vm._v(_vm._s(_vm.salud.Anteojos == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Pie Plano: ")]),
+                      _vm._v(_vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("ProbBucal: ")]),
+                      _vm._v(_vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Pediculosis: ")]),
+                      _vm._v(_vm._s(_vm.salud.Pediculosis == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("ProbAuditivo: ")]),
+                      _vm._v(_vm._s(_vm.salud.ProbAuditivo == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("ProbLenguaje: ")]),
+                      _vm._v(_vm._s(_vm.salud.ProbLenguaje == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Transtornos: ")]),
+                      _vm._v(
+                        _vm._s(
+                          _vm.salud.Transtornos
+                            ? _vm.salud.Transtornos
+                            : "No padece de transtornos..."
+                        )
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "contentDetSalud" }, [
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Alergias: ")]),
+                      _vm._v(_vm._s(_vm.salud.Alergias == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Descripción: ")]),
+                      _vm._v(
+                        _vm._s(
+                          _vm.salud.DetAlergias
+                            ? _vm.salud.DetAlergias
+                            : "No tiene alergias..."
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Gravidez: ")]),
+                      _vm._v(_vm._s(_vm.salud.Gravidez == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Descripción: ")]),
+                      _vm._v(
+                        _vm._s(
+                          _vm.salud.Gravidez
+                            ? _vm.salud.DetGravidez
+                            : "No tiene gravidez..."
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Problemas Posturales: ")]),
+                      _vm._v(
+                        _vm._s(_vm.salud.ProbPosturales == 1 ? "Si" : "No")
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Descripción: ")]),
+                      _vm._v(
+                        _vm._s(
+                          _vm.salud.DetProbPosturales
+                            ? _vm.salud.DetProbPosturales
+                            : "No tiene problemas posturales..."
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Otros: ")]),
+                      _vm._v(_vm._s(_vm.salud.Otros == 1 ? "Si" : "No"))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Descripción: ")]),
+                      _vm._v(
+                        _vm._s(
+                          _vm.salud.DetOtros
+                            ? _vm.salud.DetOtros
+                            : "No tiene otros..."
+                        )
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.alumno.IdAlumno
+            ? _c(
+                "div",
+                [
+                  _c("div", { staticClass: "linea2" }),
+                  _vm._v(" "),
+                  _vm._m(16),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm.alumno.IdAlumno
+                      ? _c("div", [
+                          _c("div", { staticClass: "pt-1 interlineado" }, [
+                            _vm._m(17),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "scrollH" },
+                              _vm._l(_vm.incidencias, function(
+                                incidencia,
+                                key
+                              ) {
+                                return _c(
+                                  "button",
+                                  {
+                                    key: key,
+                                    staticClass:
+                                      "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target":
+                                        incidencia.TipoReporte == "Incidencia"
+                                          ? "#verIncidencias"
+                                          : "#verMalaConducta"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.$emit(
+                                          "verIncidencia",
+                                          incidencia,
+                                          _vm.alumno
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                \n                                    " +
+                                        _vm._s(key + 1) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mcontenidoL pt-1 interlineado" },
+                            [
+                              _vm._m(18),
+                              _vm._v(" "),
+                              _c("p", [
+                                _c("b", [_vm._v("Observaciones: ")]),
+                                _vm._v(_vm._s(_vm.inconveniente.Observaciones))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", [
+                                _c("b", [_vm._v("Descripción del Reporte: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.inconveniente.DescripcionReporte)
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "pt-1" }, [
+                            _c("p", { staticClass: "p-0 m-0 fecha" }, [
+                              _c("b", [_vm._v("Fecha")]),
+                              _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: "/R?show=" + _vm.alumno.IdAlumno
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  staticStyle: {
+                                    width: "20px",
+                                    height: "20px"
+                                  },
+                                  attrs: {
+                                    src: "images/historial.png",
+                                    alt: "ver el historial"
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("ver-mala-conducta"),
+                  _vm._v(" "),
+                  _c("ver-incidencias")
+                ],
+                1
+              )
+            : _vm._e()
+        ])
+      ]),
       _vm._v(" "),
-      _c("ver-incidencias"),
+      _vm._m(19),
       _vm._v(" "),
-      _c("ver-mala-conducta"),
+      _c("div", { staticClass: "contentInf" }, [
+        _c("div", { staticClass: "gridTS" }, [
+          _c("div", [
+            _vm.alumno.IdAlumno
+              ? _c("div", [
+                  _c("div", [
+                    _vm._m(20),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "scrollJ" },
+                      _vm._l(_vm.justificantes.slice().reverse(), function(
+                        justificante,
+                        keyjustificantepase
+                      ) {
+                        return _c(
+                          "button",
+                          {
+                            key: keyjustificantepase,
+                            staticClass:
+                              "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#addJustificantes"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.$emit(
+                                  "verJustificante",
+                                  justificante
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                \n                                " +
+                                _vm._s(keyjustificantepase + 1) +
+                                "\n\n                            "
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._m(21),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "scrollJ" },
+                      _vm._l(_vm.pases.slice().reverse(), function(
+                        pase,
+                        keyjustificantepase2
+                      ) {
+                        return _c(
+                          "button",
+                          {
+                            key: keyjustificantepase2,
+                            staticClass:
+                              "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#addJustificantes"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.$emit("verPase", pase)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        \n                                " +
+                                _vm._s(keyjustificantepase2 + 1) +
+                                "\n                        \n                            "
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-4" }, [
+            _c("div", { staticClass: "liena2" }),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", [
+                _vm.alumno.IdAlumno
+                  ? _c("div", [_vm._m(22), _vm._v(" "), _vm._m(23)])
+                  : _vm._e()
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("div", { staticClass: "liena2" }),
+            _vm._v(" "),
+            _vm.alumno.IdAlumno
+              ? _c("div", [_vm._m(24), _vm._v(" "), _vm._m(25)])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.alumno.IdAlumno
+            ? _c(
+                "div",
+                { staticClass: "ml-5" },
+                [
+                  _vm._m(26),
+                  _vm._v(" "),
+                  _vm._l(_vm.becas, function(beca, key) {
+                    return _c("div", { key: key }, [
+                      _c("p", { staticClass: "mb-1" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(_vm._s(beca.Nombre) + " ")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "mb-3" }, [
+                        _c("b", [_vm._v("Tipo: ")]),
+                        _vm._v(_vm._s(beca.Tipo))
+                      ])
+                    ])
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ])
+      ]),
       _vm._v(" "),
-      _c("ver-yonoAbandono")
+      _c("add-justificante")
     ],
     1
   )
@@ -43076,17 +44261,147 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "borderTitle" }, [
-      _c("h4", [_vm._v("INFORMACIÓN PERSONAL")])
+      _c("h5", [_vm._v("INFORMACIÓN PERSONAL")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "miImg" }, [
+    return _c("div", { staticClass: "mifoto" }, [
       _c("img", {
         attrs: { src: "images/student.png", alt: "Foto del Alumno" }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticClass: "text-center",
+          staticStyle: { "text-shadow": "1px 1px 5px #2c2b2b86" }
+        },
+        [_vm._v("Regular")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center float" }, [
+      _c("b", [_c("p", [_vm._v("INFORMACIÓN DE LOS PADRES O TUTOR")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Mamá")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Papá")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("p", [_vm._v("LUGRAR DE NACIMIENTO")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Domicilio")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "mr-3" }, [
+      _c("b", [_vm._v("Tipo de Afiliación: ")]),
+      _vm._v("No Capturado")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("NSS: ")]), _vm._v(" No Capturado")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "borderTitle" }, [
+      _c("h5", [_vm._v("INFORMACIÓN ACADÉMICA - INASISTENCIAS")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("b", [_vm._v("INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Asignaturas")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P2")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P3")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P4")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P5")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Promedio Final")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ordinario")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Inter")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Extra")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", [_c("b", [_vm._v("INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL")])]),
+      _vm._v(" "),
+      _c("p", [_c("b", [_vm._v("POR MATERIA")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Asignaturas")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P2")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P3")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P4")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P5")])
+      ])
     ])
   },
   function() {
@@ -43094,16 +44409,176 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "borderTitle" }, [
-      _c("h4", [_vm._v("INFORMACIÓN PERSONAL")])
+      _c("h5", [_vm._v("SALUD - INCIDENCIAS")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "borderTitle" }, [
-      _c("h4", [_vm._v("INFORMACIÓN PERSONAL")])
+    return _c("div", [
+      _c("p", { staticClass: "text-center" }, [_c("b", [_vm._v("SALUD")])])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "text-center" }, [
+        _c("b", [_vm._v("INCIDENCIAS")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Cantidad de incidencias")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Detalles")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "borderTitle" }, [
+      _c("h5", [_vm._v("TRABAJO SOCIAL")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-sm-1" }, [
+      _c("b", [_vm._v("Justificantes")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mt-4" }, [
+      _c("b", [_vm._v("Pases de Salida")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Servicio Social")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Inicio: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Final: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Nombre: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Giro: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Dirección: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Telefóno: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Responsable: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Tipo de Vinculación: ")]),
+        _vm._v(" N/C ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Practicas Profesionales")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Inicio: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Final: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Nombre: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Giro: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Dirección: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Telefóno: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Responsable: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Tipo de Vinculación: ")]),
+        _vm._v(" N/C ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Becas")])])
   }
 ]
 render._withStripped = true

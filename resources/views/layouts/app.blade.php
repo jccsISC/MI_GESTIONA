@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app"><!--este id lo ocupamos en todas las vistas para poder usar vue-->
-        <nav class="navbar navbar-expand-md navbar-dark  shadow-sm" style="background:#BF0B0B;">
+        <nav class="navbar navbar-expand-md navbar-dark  shadow-sm" style="background:#800000;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

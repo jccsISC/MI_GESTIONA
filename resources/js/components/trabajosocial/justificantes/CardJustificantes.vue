@@ -26,14 +26,11 @@
                 
                 </button>
 
-
                 <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#addJustificantes" @click="$emit('agregarJustificante', alumno)">
                     <i class="fas fa-plus-circle"></i>
                 </button>
 
               </div>
-              
-
             </div>
 
         </div>
