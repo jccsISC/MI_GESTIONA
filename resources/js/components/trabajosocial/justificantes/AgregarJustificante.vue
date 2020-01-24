@@ -22,38 +22,38 @@
 
             <div v-if="tipo === 'justificante' " class="form-group">
 			          <label>Fecha Inicio</label>
-			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha inicial" v-model="justificante.FechaInicio">
+			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha inicial" required v-model="justificante.FechaInicio">
 		  	    </div>
 		  	  
             <div v-if="tipo === 'justificante' " class="form-group">
 			          <label>Fecha Fin</label>
-			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha final" v-model="justificante.FechaFin">
+			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha final" required v-model="justificante.FechaFin">
 		  	    </div>
 		  	  
             <div v-if="tipo === 'justificante' " class="form-group">
 			          <label>Motivo</label>
-			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
+			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" required v-model="justificante.Motivo">
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label>Familiar</label>
-			          <select v-if="!ver" type="text" class="form-control" v-model="pase.IdFamiliar">
+			          <select v-if="!ver" type="text" class="form-control" required v-model="pase.IdFamiliar">
                   <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                 </select>
 
-                <select :disabled="ver" v-if="ver" type="text" class="form-control" v-model="pase.familiar.IdFamiliar">
+                <select :disabled="ver" v-if="ver" type="text" class="form-control" required v-model="pase.familiar.IdFamiliar">
                   <option :value="pase.familiar.IdFamiliar">{{pase.familiar.Nombre + ' '+pase.familiar.ApePaterno+ ' '+ pase.familiar.ApeMaterno}}</option>
                 </select>
 		  	    </div>
 		  	  
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label>Motivo</label>
-			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="pase.Motivo">
+			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" required v-model="pase.Motivo">
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label>Descripción</label>
-			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa la descripcion" v-model="pase.Descripcion">
+			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa la descripcion" required v-model="pase.Descripcion">
 		  	    </div>
 		  	  
 		  	    <button v-if="!ver" type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i>Guardar</button>
