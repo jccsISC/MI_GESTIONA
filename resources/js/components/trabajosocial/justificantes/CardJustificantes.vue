@@ -4,6 +4,7 @@
         <div class="micardsm" data-toggle="modal" data-target="#addPracticas">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                <div>
+                   <div class="justi">
                 <p class="m-sm-1"><b>Justificantes</b></p>
                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                    
@@ -13,16 +14,18 @@
                     {{keyjustificantepase + 1}}
                     
                 </button>
+                   </div>
                </div>
                
-              <div>
+              <div class="pase">
                 <p class="m-0"><b>Pases de Salida</b></p>
+                
                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                     @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                     :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
                 
                     {{keyjustificantepase2+1}}
-                
+                   
                 </button>
 
                 <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#addJustificantes" @click="$emit('agregarJustificante', alumno)">
@@ -110,8 +113,11 @@
 </script>
 
 <style>
-.contenedorCard{
- overflow-x: auto;
- overflow-y: auto;
+.justi{
+    overflow-x: scroll;
 }
+.pase{
+    overflow-x: scroll;
+}
+
 </style>
