@@ -26,7 +26,7 @@
                                 {{incidencia.TipoReporte}}
                             </td>
                             <td colspan="4">{{incidencia.ResponsableSeguimiento}}</td>
-                            <td colspan="3"><label class="concluido">{{incidencia.Status ? 'Concluido' : incidencia.Status === 0 ? 'Pendiente' : ''}}</label></td>
+                            <td colspan="3"><label class="">{{incidencia.Status ? 'Concluido' : incidencia.Status === 0 ? 'Pendiente' : ''}}</label></td>
                         </tr>
                     </tbody>
                  </table>
@@ -47,7 +47,7 @@
                                 Yo no Abandono
                             </td>
                             <td colspan="4">{{reporte.Motivo}}</td>
-                            <td colspan="3"><label class="concluido">{{reporte.Status ? 'Concluido' : 'Pendiente'}}</label></td>
+                            <td colspan="3"><label class="">{{reporte.Status ? 'Concluido' : 'Pendiente'}}</label></td>
                             <td colspan="4">{{reporte.Seguimiento}}</td>
                         </tr>
                     </tbody>

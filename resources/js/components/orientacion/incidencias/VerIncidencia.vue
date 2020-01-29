@@ -71,10 +71,7 @@
 </script>
 
 <style>
-
-
-
-.mibtn{
+    /* .mibtn{
         background: #800000;
         border-radius: 4px;
         color: white;
@@ -97,6 +94,6 @@
         border: 1px solid rgb(31, 30, 30);
         border-radius: 6px;
         padding: 5px;
-    }
+    } */
 
 </style>

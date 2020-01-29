@@ -2,65 +2,88 @@
     <div class="modal fade" role="dialog" id="reporteTuto" style="z-index: 100000" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Reporte de seguimiento</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
+                <div>
+                    <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
+                        <p class="subtitulos text-center">Reporte de seguimiento</p>
+                    </div>
+                    
+                    <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                        <span style="color: #800000">&times;</span>
                     </button>
                 </div>
 
-                <form @submit.prevent="guardarReporte" class="modal-body-g pb-2">
-                    <button  class="btn btn-success" @click="reporte.Status = 1">concluyó</button>
-                    <button  class="btn btn-warning" @click="reporte.Status = 0">pendiente</button>
-                    <p>Fecha: {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
-                    <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                    <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
+                <div class="modal-body-g p-3 bordeReport colorText">
+                    <div class="imageLogo">
+                        <img src="images/logo.jpg" alt="">
+                    </div>
+
+                    <div class="float-right mt-5">
+                        <button  class="btn btn-success m-0 p-0 pr-2 pl-2" @click="reporte.Status = 1"><i class="fas fa-check"></i></button>
+                        <button  class="btn btn-warning m-0 p-0 pr-2 pl-2" @click="reporte.Status = 0"><i class="fas fa-exclamation-triangle"></i></button>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                        <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                        <p class="m-0" style="text-decoration: underline; padding-left:80px;">FORMATO YO NO ABANDONO</p>
+                        <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
+                    </div>
+
+                    <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
+                    <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
-                    <select class="form-control" v-model="reporte.IdFamiliar">
-                        <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
-                    </select>
-                    <p class="m-0"><b>Telefono: </b>{{obtenerTelefono()}}</p>
+                    
+                    <div class="miGrid2 mt-1">
                         
-                    <div class="form-group">
-                        <p class="m-0">Motivo</p> 
-			            <textarea v-model="reporte.Motivo" name="" id="" class="form-control" placeholder="Escriba aquí los motivos"></textarea>
-		  	        </div>
+                        <div>
+                            <label class="m-0"><b>Padre o Tutor: </b></label>
+                            <select  v-model="reporte.IdFamiliar">
+                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
+                            </select>
+                            <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
+                                
+                            <p><b>Motivo</b></p> 
+                            <textarea v-model="reporte.Motivo" name="motivo" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span>
 
-                    <div class="form-group">
-			          <p class="m-0">Derivación</p>
-			          <input v-model="reporte.Derivacion" type="text" class="form-control" placeholder="Escriba aquí a donde lo deriva">
-		  	        </div>
+                            <p><b>Derivación</b></p>
+                            <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+                        </div>
 
-                    <div class="form-group">
-                        <p class="m-0">Descripción de la derivación</p> 
-			            <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control" placeholder="Escriba aquí la descripción de la deribación"></textarea>
-	  	            </div>
+                        <div>
+                            <p><b>Descripción de la derivación</b></p> 
+                            <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la deribación"></textarea>
+                        
+                            <p><b>Observaciones</b></p>
+                            <input v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
                     
-                    <div class="form-group ">
-                        <p class="m-0">Observaciones</p>
-			            <input v-model="reporte.Observaciones" type="text" class="form-control" placeholder="Ingresa aquí las observaciones">
-		  	        </div>
-                    
-                    <div class="form-group ">
-                        <p class="m-0">Seguimiento</p>
-			            <input v-model="reporte.Seguimiento" type="text" class="form-control" placeholder="Ingresa aquí el seguimiento que se dará">
-		  	        </div>
+                            <p><b>Seguimiento</b></p>
+                            <input v-model="reporte.Seguimiento" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+                        </div>
+                    </div>
 
-                    <p class="m-0">Responsable de seguimiento</p> 
-                    <select v-model="reporte.ResponsableSeguimiento" class="mdb-select md-form colorful-select dropdown-primary">
-                        <option value="Salvador Alcazar Molina">Salvador Alcazar Molina</option>
-                        <option value="Brenda Yaret">Brenda Yaret</option>
-                        <option value="Cesar Gonzalez">Cesar Gonzalez</option>
-                    </select>
-                     <button  type="submit" class="mibtn">
-                        <i class="fas fa-plus-circle"> Guardar</i>
-                    </button>
-                </form>
-                
+                   
+                   <div class="miGrid2 mt-2">
+                       <div>
+                            <p class="m-0"><b>Responsable de seguimiento</b></p> 
+                            <select v-model="reporte.ResponsableSeguimiento" class="mdb-select md-form colorful-select dropdown-primary">
+                                <option value="Salvador Alcazar Molina">Salvador Alcazar Molina</option>
+                                <option value="Brenda Yaret">Brenda Yaret</option>
+                                <option value="Cesar Gonzalez">Cesar Gonzalez</option>
+                            </select>
+                       </div>
+
+                       <div>
+                            <button @click="guardarReporte"  type="submit" class="btnGuardar float-lg-right mt-3">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                       </div>
+                   </div>                   
+                </div>  
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -69,7 +92,8 @@
             return {
                 alumno: {},
                 reporte: {},
-                familiares: []
+                familiares: [],
+                errors: {}
             }
         },
         created() {
@@ -100,12 +124,27 @@
             },
             guardarReporte() {
 
-                if (this.reporte.Status = '') {
-                    alert('Seleccione el estatus');
+               if (this.reporte.Status == undefined) {
+                    alert('Seleccione el estatus de este reporte');
+                    return;
+                }
+
+                
+               if (this.reporte.Motivo == undefined || this.reporte.IdFamiliar == undefined 
+                    || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
+                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
+                    alert('Verifique y llene todos los campos');
+                    return;
                 }
 
                 axios.post('/yonoAbandono', this.reporte).then(res => {
-                    //window.location.href = '/T';
+                    this.reporte = res.data;
+                    $('#reporteTuto').modal('hide');
+                    // bus.$emit('incidenciaAgregada', res.data);
+                }).catch(error => {
+                    if (error.res.status == 422) {
+                        this.errors = error.res.data.errors;
+                    }
                 });
             }
         }
@@ -113,10 +152,26 @@
 </script>
 
 <style>
+    .bordeReport{
+        border: 1px solid #a5a5a5;
+        border-radius: 4px;
+        margin: 10px;
+        padding: 5px;
+    }
 
+    .imageLogo{
+        float: left;
+        width: 120px;
+        height: 40px;
+        background: #a5a5a5;
+    }
 
+    .imageLogo img {
+        width: 120px;
+        height: 40px;
+    }
 
-.mibtn{
+    .btnGuardar{
         background: #800000;
         border-radius: 4px;
         color: white;
@@ -127,18 +182,20 @@
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
     }
 
-    .miBtn:hover{
+    .btnGuardar:hover{
         background-color: rgb(255, 255, 255);
         color: rgb(167, 11, 11);
         border: 1px solid #800000;
     }
 
-    .descrip{
-        min-width: 40%;
-        min-height: 150px;
-        border: 1px solid rgb(31, 30, 30);
-        border-radius: 6px;
-        padding: 5px;
+    .miGrid2{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .colorText {
+        /* color: #414141; */
+        color: #3d3d3d;
     }
 
 </style>

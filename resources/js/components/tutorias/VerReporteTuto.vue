@@ -2,36 +2,82 @@
     <div class="modal fade" role="dialog" id="verReporte" style="z-index: 100000" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Reporte Yo no Abandono</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
+                <div>
+                    <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
+                        <p class="subtitulos text-center">Reporte de seguimiento</p>
+                    </div>
+                    
+                    <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                        <span style="color: #800000">&times;</span>
                     </button>
                 </div>
 
-                    <div class="modal-body-g">
-                        <p><b>Fecha: </b>{{reporte.FechaInicio}}</p>
-                        <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                        <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
-                        <p class="m-0"><b>Nombre de quien deriva: </b>{{reporte.Nombrequienderiva}}</p>
-                        <p class="m-0"><b>Telefono: </b>{{alumno.Telefono}}</p>
-                        <p class="m-0"><b>ResponsableSeguimiento: </b>{{reporte.ResponsableSeguimiento}}</p>
+                <div class="modal-body-g p-3 colorText">
+                    <div class="imgLogo">
+                        <img src="images/logo.jpg" alt="">
+                    </div>
+
+                    <button @click="metodo" type="button" class="miBtn positionImprimir">
+                            Imprimir
+                    </button>
+
+                    <div class="text-center mt-5">
+                        <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                        <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                        <p class="m-0" style="text-decoration: underline;">FORMATO YO NO ABANDONO</p>
+                        <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
+                    </div>
+
+                    <p class="text-right mt-3"><b>Fecha: </b>{{reporte.FechaInicio}}</p>
+                    
+                    <div class="contenedorRT mt-4">
+                        <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
+                        <label class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</label>
+                        <label class="m-0 ml-2"><b>Semestre: </b>{{alumno.Grado}}</label>
+                        <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                        <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
+                        
+                        <p><b>Nombre de quien deriva: </b>{{reporte.Nombrequienderiva}}</p>
+                        <p><b>ResponsableSeguimiento: </b>{{reporte.ResponsableSeguimiento}}</p>
                         <p><b>Fammiliar: </b>{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</p>
                         
-                        <p class="m-0"><b>Telefono: </b>{{familiar.Telefono}}</p>
-                        <p><b>Motivo: </b>{{reporte.Motivo}}</p>  
-
-                        <p><b>Derivacion: </b>{{reporte.Derivacion}}</p>
-
-                        <p><b>Descripcion del reporte</b>{{reporte.DescripcionDer}}</p>
-                        
-                        <p><b>Status</b>{{reporte.Status}}</p>
-
-                        <p><b>Seguimiento </b>{{reporte.Seguimiento}}</p>
-                       
-                        <p><b>Observaciones</b>{{reporte.Observaciones}}</p>
-
+                        <p><b>Telefono: </b>{{familiar.Telefono}}</p>
                     </div>
+                    
+                    <div class="contenedorRT mt-4">
+                        <p class="minicontenedor"><b>Motivo: </b>{{reporte.Motivo}}</p>  
+                        <p class="minicontenedor"><b>Derivacion: </b>{{reporte.Derivacion}}</p>
+                        <p class="minicontenedor"><b>Descripcion del reporte: </b>{{reporte.DescripcionDer}}</p>
+                        <p class="minicontenedor"><b>Seguimiento: </b>{{reporte.Seguimiento}}</p>
+                        <p class="minicontenedor"><b>Observaciones:</b>{{reporte.Observaciones}}</p>
+                    </div>
+                    
+                    <div class="contenedorRT mt-4 txtP">
+                        <p class="m-0">ACADEMICO</p>
+                        <p class="m-0">PISC. JOSE SALVADOR ALCAZAR MOLINA</p>
+                        <p class="m-0">TUTOR</p>
+                        <p class="m-0">ASESORIAS ACADEMICAS</p>
+                        <p class="m-0">TUTORIAS GRUPALES/INDIVIDUALES</p>
+                        <p class="m-0">REPROBACION Y DESERCION ESCOLAR</p>
+                    </div>
+
+                    <div class="gridFirmar mb-5">
+                        <div>
+                            <hr class="miHr">
+                            <p class="miI">Nombre y Firma quien deriva</p>
+                        </div>
+
+                        <div>
+                            <hr class="miHr">
+                            <p class="miM">Nombre y Firma del encargado Yo No Abandono Seguimiento</p>
+                        </div>
+
+                        <div>
+                            <hr class="miHr">
+                            <p class="miD">Nombre y Firma de quien da</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -61,31 +107,64 @@
 
 <style>
 
-
-
-.mibtn{
-        background: #800000;
-        border-radius: 4px;
-        color: white;
-        outline: none;
-        padding-left:5px;
-        padding-right: 5px; 
-        border: 1px solid #800000;
-        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    .imgLogo{
+        width: 120px;
+        height: 40px;
+        background: #a5a5a5;
     }
-
-    .miBtn:hover{
-        background-color: rgb(255, 255, 255);
-        color: rgb(167, 11, 11);
-        border: 1px solid #800000;
-    }
-
-    .descrip{
-        min-width: 40%;
-        min-height: 150px;
-        border: 1px solid rgb(31, 30, 30);
-        border-radius: 6px;
+    .contenedorRT {
+        border: 1px solid #a5a5a5;
+        border-radius: 3px;
         padding: 5px;
     }
 
+    .minicontenedor {
+        border: 1px solid #a5a5a5;
+        border-radius: 3px;
+        padding: 5px;
+        margin: 3px;
+    }
+
+    .txtP {
+        text-align: center;
+        line-height: 15px;
+        font-size: 11px;
+    }
+
+    .gridFirmar {
+        margin-top: 70px;
+        font-size: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .miHr {
+        width: 125px;
+        margin: 0;
+        margin-right: 25%;
+        margin-left: 25%;
+        padding: 0;
+        background: #4b4b4b;
+    }
+
+    .miI {
+        margin-right: 24%;
+        margin-left: 24%;
+    }
+
+    .miM {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
+
+    .miD {
+        margin-right: 25%;
+        margin-left: 25%;
+    }
+
+    .positionImprimir{
+        float: right;
+        top: 110px;
+        right: 5%;
+    }
 </style>

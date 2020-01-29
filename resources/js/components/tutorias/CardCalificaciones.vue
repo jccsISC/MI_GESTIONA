@@ -1,8 +1,7 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Calificaciones</p>
-        
-        <div class="micard">
+        <div class="micard scrollTCalif colorText">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
                 <thead>
                     <tr>
@@ -12,7 +11,7 @@
                         <th>P3</th>
                         <th>P4</th>
                         <th>P5</th>
-                        <th colspan="3">Promedio Final</th>
+                        <th colspan="2">Promedio Final</th>
                     </tr>
                 </thead>
                 <!--<tbody>
@@ -21,11 +20,11 @@
                     </tr>
                 </tbody>-->
                 <tbody>
-                    <tr  v-for="(calificacion, key) in calificaciones" :key="key">
+                    <tr v-for="(calificacion, key) in calificaciones" :key="key">
                         <td>{{calificacion.Materia}}</td>
-                        <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
+                        <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i) ? unidad(calificacion.detalles, i) : 'NC' }}</td>
                         <td>{{calificacion.Calificacionfinal}}</td>
-                    </tr>                            
+                    </tr>          
                 </tbody>
             </table>
 
@@ -35,10 +34,8 @@
 </template>
 
 <script>
-   
     import bus from '../../event-bus';
     export default {
-
         computed:{
             promedioGeneral() {
                 let promedio = 0;
@@ -90,13 +87,29 @@
                 return calificacion;
             }
         }
-    
     }
 </script>
 
 <style>
-
     .sizeCalGeneral{
         font-size: 14px;
     }
+
+
+    .scrollTCalif{
+        height: 260px;
+        /* background: #f7b6b6; */
+        overflow: scroll;
+        overflow: auto;
+    }
+
+    .scrollTCalif::-webkit-scrollbar{
+        width: 1px;
+    }
+
+    .scrollTCalif::-webkit-scrollbar-thumb{
+        background: #800000;
+        width: 1px;
+    }
+
 </style>

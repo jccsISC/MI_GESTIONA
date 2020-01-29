@@ -1,7 +1,7 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Información Personal</p>
-        <div id="cardInfoPersonal" class="micardP" data-toggle="modal" :data-target="dataTarget">
+        <div id="cardInfoPersonal" class="micardP colorText" data-toggle="modal" :data-target="dataTarget">
             <div v-if="alumno.IdAlumno" class="miContent">
                 <div class="miImg">
                     <img src="images/student.png" alt="Foto del Alumno">
@@ -47,9 +47,7 @@
 </template>
 
 <script>
-   
     import bus from '../../event-bus';
-    
     export default {
         data() {
             return {
@@ -74,7 +72,7 @@
 
 <style>
 
-    .miImg{
+    .miImg {
         width: 90px;
         height: 90px;
         border-radius: 8px;
@@ -82,29 +80,30 @@
         margin-left: 5px;
         float: left;
     }
-    img{
+
+    img {
         width: 100%;
     }
 
-    .miContent{
+    .miContent {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
     }
 
-    .miMaxLength{
+    .miMaxLength {
         width: 220px;
         text-overflow: ellipsis;
         white-space:nowrap;
         overflow: hidden;
     }
 
-    .miContent2{
+    .miContent2 {
         display: grid;
         grid-template-columns: 14fr 1fr 10fr;
         /*grid-template-rows: 130px;*/
     }
 
-    .miMaxLength2{
+    .miMaxLength2 {
         width: 245px;
         text-overflow: ellipsis;
         white-space:nowrap;
@@ -120,7 +119,7 @@
 
 
 
-    .micardP{
+    .micardP {
         padding: 5px;
         width: 100%;
         height: 260px;
@@ -133,8 +132,9 @@
         text-indent: 5px ;  
     }
 
-    .micardP:hover{
+    .micardP:hover {
         /*box-shadow: 0 5px 12px 0 rgba(0,0,0,0.2);*/
         box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
     }
+
 </style>

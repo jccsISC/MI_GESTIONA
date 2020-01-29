@@ -12,8 +12,13 @@ class BecasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return tblbeca::all();
+    public function index(Request $request) {
+
+        if ($request->ajax()) {
+            return tblbeca::all();
+        } else {
+            return view('home');
+        }
     }
 
     /**
@@ -24,12 +29,18 @@ class BecasController extends Controller
      */
     public function store(Request $request)
     {
-        $atributos = $this->validate($request, [
-            'Nombre' => 'required',
-            'Tipo' => 'required'
-        ]);
 
-        return tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1 ]);
+        if ($request->ajax()) {
+            
+            $atributos = $this->validate($request, [
+                'Nombre' => 'required',
+                'Tipo' => 'required'
+            ]);
+    
+            return tblbeca::create(['Nombre' => $atributos['Nombre'], 'Tipo' => $atributos['Tipo'], 'Existe' => 1 ]);
+        } else {
+            return view('home');
+        }
     }
 
   

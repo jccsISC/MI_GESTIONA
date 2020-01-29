@@ -1,5 +1,5 @@
 <template>
-    <div class="container contentGeneral">
+    <div class="container contentGeneral colorText">
         <div class="borderTitle">
             <h5>INFORMACIÓN PERSONAL</h5>
         </div>
@@ -40,16 +40,10 @@
                         </div>
                         
                         <div class="subGrid">
-                            <div>
-                                <p class="m-0"><b>Mamá</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiares.Nombre}} {{familiares.ApePaterno}}  {{familiares.ApeMaterno}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{alumno.Telefono}}</p>
-                            </div>
-
-                            <div class="">
-                                <p class="m-0"><b>Papá</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{alumno.Telefono}}</p>
+                            <div v-for="(familiar, key) in familiares" :key="key">
+                                <p class="m-0"><b>{{familiar.Tipo}}</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.Nombre}} {{familiar.ApePaterno}}  {{familiar.ApeMaterno}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.Telefono}}</p>
                             </div>
                         </div>
                     </div>
@@ -94,7 +88,7 @@
         <div class="contentInf">
             <div class="gridM2">
                  
-                <div v-if="alumno.IdAlumno" class="container contentCalif">
+                <div v-if="alumno.IdAlumno" class="container contentCalif scrollTCalif">
                     <div>
                         <p><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
                         <p><b>Promedio General: </b> {{promedioGeneral}}</p>
@@ -135,7 +129,7 @@
                     </div>
                 </div>
                
-                <div v-if="alumno.IdAlumno" class="container contentCalif pl-5">
+                <div v-if="alumno.IdAlumno" class="container contentCalif pl-5 scrollTCalif">
                     <div>
                         <p><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
                         <p><b>POR MATERIA</b></p>
@@ -292,7 +286,7 @@
                             <div v-if="alumno.IdAlumno">
                                  <p><b>Servicio Social</b></p>
                                 <div>
-                                    <p class="mb-1"><b>Fecha Inicio: </b> N/C </p>
+                                    <p class="mb-1"><b>Fecha Inicio: </b>N/C</p>
                                     <p class="mb-1"><b>Fecha Final: </b> N/C </p>
                                     <p class="mb-1"><b>Dependencia: </b></p>
                                     <p class="mb-1"><b>Nombre: </b> N/C </p>
@@ -369,22 +363,6 @@
                 this.jalarPractica();
                 this.jalarBecas();
             });
-
-            bus.$on('incidenciaAgregada', incidencia => {
-                this.incidencias.unshift(incidencia);
-            });
-            bus.$on('incidenciaEditada', incidencia => {
-                const temp = Object.assign({}, this.incidencias);
-                this.incidencias = [];
-                Object.keys(temp).forEach(key => {
-                    if (temp[key].IdIncidencia === incidencia.IdIncidencia) {
-                        this.incidencias[key] = incidencia;
-                    }
-                    else {
-                        this.incidencias[key] = temp[key];
-                    }
-                });
-            });
         },
         computed:{
             promedioGeneral() {
@@ -432,18 +410,6 @@
                     this.familiares = res.data;
                     console.log(res);
                 });
-            },
-             obtenerTelefono() {
-                let telefono = '';
-                if (!this.alumno.IdFamiliar || !this.familiares) {
-                    return telefono;
-                }
-                this.familiares.forEach(familiar => {
-                    if (familiar.IdFamiliar === this.alumno.IdFamiliar) {
-                        telefono = familiar.Telefono;
-                    }
-                });
-                return telefono;
             },
             jalarSalud() {
                 axios.get('/salud/'+this.alumno.IdAlumno).then(res => {
@@ -520,13 +486,13 @@
     }
 
     .contentDetSalud::-webkit-scrollbar{
-        width: 0px;
+        width: 1px;
     }
 
-    /* .contentDetSalud::-webkit-scrollbar-thumb{
+    .contentDetSalud::-webkit-scrollbar-thumb{
         width: 1px;
         background: #800000;
-    } */
+    }
 
     .scrollH{
         width: 525px;
@@ -538,14 +504,14 @@
         white-space: nowrap;
     }
 
-    /* .scrollH::-webkit-scrollbar{
+    .scrollH::-webkit-scrollbar{
         width: 1px;
     }
 
     .scrollH::-webkit-scrollbar-thumb{
         width: 1px;
         background: #800000;
-    } */
+    }
 
     .scrollJ{
         width: 260px;
@@ -656,7 +622,6 @@
     }
 
     .tableCalf{
-        height: 235px;
         border: 1px solid rgb(202, 201, 201);
         border-radius: 4px;
     }
@@ -667,7 +632,5 @@
         grid-template-rows: 280px;
     }
 
-    .bordeJustificante{
-
-    }
+    
 </style>

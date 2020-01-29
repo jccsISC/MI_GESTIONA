@@ -17,7 +17,7 @@
     <div id="app" class="contenedor-principal" >
         <header>
             <div class="contenedor minavbar">
-                <a href="principal"><img class="logoCecy" src="/images/logo.jpg" alt="logo"></a>
+                <a href="http://127.0.0.1:8000/T"><img class="logoCecy" src="/images/logo.jpg" alt="logo"></a>
                
                 <mi-buscador></mi-buscador>
 

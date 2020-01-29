@@ -18,10 +18,14 @@ class IncidenciasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return tblalumno::has('incidencias')->orHas('reportes')->with(['incidencias.familiar', 'reportes.familiar'])->get();
-
+           
+        if ($request->ajax()) {
+            return tblalumno::has('incidencias')->orHas('reportes')->with(['incidencias.familiar', 'reportes.familiar'])->get();
+        } else {
+            return view('home');
+        }
     }
 
     /**

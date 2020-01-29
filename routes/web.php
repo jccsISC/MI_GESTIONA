@@ -37,11 +37,9 @@ Route::get('TS', function(Illuminate\Http\Request $request) {
     return view('/trabajosocial.principal');
 });
 
-Route::get('listaBecas', function(){
-    return view('/trabajosocial.listaBecas');
-});
-
-
+// Route::get('listaBecas', function(){
+//     return view('/trabajosocial.listaBecas');
+// });
 
 //BECAS CRUD
 Route::get('becas','BecasController@index');
