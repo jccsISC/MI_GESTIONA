@@ -16,12 +16,11 @@ Route::get('/', function () {
 });
 
 //LOGIN
-// Route::post('login', 'Auth\LoginController@login')->name('login');
-// Route::get('tutor', 'TutorController@index');
-// Route::get('login', 'LoginController@showLoginForm')->name('login');
-// Route::get('login', function () {
-//     return view('login');
-// });
+Route::post('lg', 'Auth\LoginController@login')->name('login');
+Route::get('lg', 'LoginController@showLoginForm')->name('login');
+Route::get('lg', function () {
+    return view('login');
+});
 
 
 Auth::routes(['register' => false]);
