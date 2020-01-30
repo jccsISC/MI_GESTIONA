@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title">{{beca.IdBeca ? 'Actualizar' : 'Agregar'}} Beca</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
         </div>
 
@@ -75,9 +75,9 @@
           });
       },
       saveBeca() {
-        if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
+        if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
+            alert('Verifique y llene todos los campos');
+            return;
         }
 
         axios.post('/becas', this.beca)

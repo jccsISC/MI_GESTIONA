@@ -128,7 +128,6 @@
                     alert('Seleccione el estatus de este reporte');
                     return;
                 }
-
                 
                if (this.reporte.Motivo == undefined || this.reporte.IdFamiliar == undefined 
                     || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
@@ -157,6 +156,7 @@
         border-radius: 4px;
         margin: 10px;
         padding: 5px;
+        font-size: 14px;
     }
 
     .imageLogo{

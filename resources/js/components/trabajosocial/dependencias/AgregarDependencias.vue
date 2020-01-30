@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title">{{dependencia.IdDependencia ? 'Actualizar' : 'Agregar'}} Dependencia</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
         </div>
 
@@ -87,9 +87,11 @@
           });
       },
       saveDependencia() {
-        if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
+        if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined 
+            || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined
+            || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
+            alert('Verifique y llene todos los campos');
+            return;
         }
         
         axios.post('/dependencias', this.dependencia)

@@ -5,7 +5,7 @@
         <div class="modal-header">
           <h5 class="modal-title">{{ver ? 'Ver':'Crear'}} {{tipo === 'pase' ? 'Pase de salida':'justificante'}} </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
         </div>
 
@@ -18,25 +18,40 @@
                 </select>
             </div>
 
-            <button  v-if="ver" class="btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1" @click="eliminarJustiPase()"><i class="far fa-trash-alt"></i></button>
+            <button  v-if="ver" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
+              <i class="far fa-trash-alt"></i>
+            </button>
+            
 
-            <div v-if="tipo === 'justificante' " class="form-group">
-			          <label>Fecha Inicio</label>
+            <!-- <a href="{{route('imprimirJ')}}">Imprimir Justificante</a> -->
+              
+
+            <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
+              <i class="fas fa-print"></i>
+              <!-- <a href="{{route('imprimirP')}}">Imprimir Pase</a> -->
+            </button>
+
+            <div v-if="tipo === 'justificante'" class="form-group">
+			          <label><b>Fecha Inicio</b></label>
 			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha inicial" v-model="justificante.FechaInicio">
 		  	    </div>
 		  	  
             <div v-if="tipo === 'justificante' " class="form-group">
-			          <label>Fecha Fin</label>
+			          <label><b>Fecha Fin</b></label>
 			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha final" v-model="justificante.FechaFin">
 		  	    </div>
-		  	  
+
             <div v-if="tipo === 'justificante' " class="form-group">
-			          <label>Motivo</label>
+			          <label><b>Motivo</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label>Familiar</label>
+			          <label :disabled="ver"><b>Fecha: </b> 2020-01-29</label>
+		  	    </div>
+
+            <div v-if="tipo === 'pase' " class="form-group">
+			          <label><b>Familiar</b></label>
 			          <select v-if="!ver" type="text" class="form-control" v-model="pase.IdFamiliar">
                   <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                 </select>
@@ -47,16 +62,16 @@
 		  	    </div>
 		  	  
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label>Motivo</label>
+			          <label><b>Motivo</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="pase.Motivo">
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label>Descripción</label>
+			          <label><b>Descripción</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa la descripcion" v-model="pase.Descripcion">
 		  	    </div>
 		  	  
-		  	    <button v-if="!ver" type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i>Guardar</button>
+		  	    <button v-if="!ver" type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> Guardar</button>
 	  	    </form>
         </div>
       </div>
@@ -96,7 +111,8 @@
         pase: {},
         tipo: 'justificante',
         familiares: [],
-        ver: false
+        ver: false,
+        fecha: ''
       }
     },
     methods: {
@@ -115,10 +131,11 @@
           this.saveJustificante();
         }
       },
-      saveJustificante() {
-        if (this.justificante.FechaInicio.trim() === '' || this.justificante.FechaFin.trim() === '' || this.justificante.Motivo.trim() === '' ) {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
+      saveJustificante() {      
+        if (this.justificante.FechaInicio == undefined || this.justificante.FechaFin == undefined 
+            || this.justificante.Motivo == undefined) {
+            alert('Verifique y llene todos los campos');
+            return;
         }
 
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/justificantes', this.justificante)
@@ -128,9 +145,10 @@
         });
       },
       savePase() {
-        if (this.pase.Motivo.trim() === '' || this.pase.IdFamiliar == '' || this.pase.Descripcion.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
+        if (this.pase.IdFamiliar == undefined || this.pase.Motivo == undefined 
+            || this.justificante.Motivo == undefined || this.pase.Descripcion == undefined) {
+            alert('Verifique y llene todos los campos');
+            return;
         }
 
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/pases', this.pase)
@@ -157,5 +175,43 @@
 </script>
 
 <style>
-    
+    .btnImprimirPase{
+        float: right;
+        top: 110px;
+        margin-right: 10px;
+    }
+
+    .mibtnE{
+        background: #c40404;
+        border-radius: 4px;
+        color: white;
+        outline: none;
+        padding-left:5px;
+        padding-right: 5px; 
+        border: 1px solid #c40404;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .mibtnE:hover{
+        background-color: rgb(255, 255, 255);
+        color: rgb(167, 11, 11);
+        border: 1px solid #800000;
+    }
+
+    .mibtnI{
+        background: #416de7;
+        border-radius: 4px;
+        color: white;
+        outline: none;
+        padding-left:5px;
+        padding-right: 5px; 
+        border: 1px solid #416de7;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .mibtnI:hover{
+        background-color: rgb(255, 255, 255);
+        color: #416de7;
+        border: 1px solid #416de7;
+    }
 </style>

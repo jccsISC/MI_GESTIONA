@@ -1,21 +1,21 @@
 <template>
 <div>
     <div class="contenedorCard">
-        <p class="subtitulos">Becas</p>
-        <div class="micardB">
-            <div v-for="(beca, key) in becas" :key="key" class="micardBeca" @click="$emit('actualizarBeca', beca)">
-                <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
-                <button class="btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
-            </div>
-        </div>
-
-        <div v-if="alumno.IdAlumno" class="float-right mt-0">
-            <button type="button" class="btn btn-sm  miTransparent" data-toggle="modal" data-target="#DetalleBeca"
+        <div v-if="alumno.IdAlumno" class="float-right">
+            <button type="button" class="btn btn-sm bg-primary p-0 pl-2 pr-2" data-toggle="modal" data-target="#DetalleBeca"
                 @click="$emit('agregarBecaAlumno', alumno)">
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-plus-circle"></i>
             </button>
         
             <detalleBeca @becaAlumnoAgregada="becas.push($event)"></detalleBeca>     
+        </div>
+        
+        <p class="subtitulos">Becas</p>
+        <div class="micardB colorText p-1">
+            <div v-for="(beca, key) in becas" :key="key" class="micardBeca mt-1" @click="$emit('actualizarBeca', beca)">
+                <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
+                <button class="btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
+            </div>
         </div>
     </div>
 </div>
@@ -73,42 +73,36 @@
 </script>
 
 <style>
-        .top-space{
-            margin-top: 20px;
-        }
+    .top-space{
+        margin-top: 20px;
+    }
 
-        .micardB{
-            width: 100%;
-            height: 100px;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            transition: 0.5s;
-            border: 1px solid rgb(211, 211, 211);
-        }
+    .micardB{
+        width: 100%;
+        height: 100px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        transition: 0.5s;
+        border: 1px solid rgb(211, 211, 211);
+    }
 
-        .micardBeca{
-            width: 95%;
-            height: 25px;
-            background-color: white;
-           /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/
-            border-radius: 3px;
-            transition: 0.5s;
-            border: 1px solid rgb(211, 211, 211);
-            margin-top: 5px;
-            margin-left: 3%;
-            text-align: left;
-            text-indent: 5px ;  
-            font-size: .75em;       
-        }
+    .micardBeca{
+        width: 95%;
+        height: 25px;
+        background-color: white;
+        /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/
+        border-radius: 3px;
+        transition: 0.5s;
+        border: 1px solid rgb(211, 211, 211);
+        margin-top: 5px;
+        margin-left: 3%;
+        text-align: left;
+        text-indent: 5px ;  
+        font-size: .75em;       
+    }
 
-        .miTransparent{
-            background: transparent;
-        }
-
-        /* .micardBeca:hover{
-            /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);
-            box-shadow: 0 2px 4px 0 rgb(167, 11, 11)
-        } */
-
+    .miTransparent{
+        background: transparent;
+    }
 </style>

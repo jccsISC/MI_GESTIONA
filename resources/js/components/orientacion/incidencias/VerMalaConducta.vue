@@ -34,8 +34,8 @@
 
                         <p><b>Seguimiento</b>{{incidencia.Status}}</p>
                         
-                         <button @click="metodo" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteConducta">
-                            Editar
+                         <button @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                           <i class="fas fa-edit"></i>
                         </button>
                     </div>
             </div>
@@ -91,6 +91,24 @@
         color: rgb(167, 11, 11);
         border: 1px solid #800000;
     }
+
+    .mibtnEdit{
+        background: #008080;
+        border-radius: 4px;
+        color: white;
+        outline: none;
+        padding-left:5px;
+        padding-right: 5px; 
+        border: 1px solid #008080;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .mibtnEdit:hover{
+        background-color: rgb(255, 255, 255);
+        color: #008080;
+        border: 1px solid #008080;
+    }
+
 
     .descrip{
         min-width: 40%;

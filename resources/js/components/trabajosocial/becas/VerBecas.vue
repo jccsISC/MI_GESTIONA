@@ -1,63 +1,61 @@
 <template>
-<div>
-<div class="modal fade" tabindex="-1" role="dialog" id="verBecas" aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Becas</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
+    <div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="verBecas" aria-hidden="true">
+            <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Becas</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span style="color: #800000">&times;</span>
+                        </button>
+                    </div>
 
-                <div class="modal-body-g">
-                    <table class="table table-striped table-hover contentTable table table-sm">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
-                                <th colspan="2">Acciones</th>
-                            </tr>
-                        </thead>
-                        <!--<tbody>
-                            <tr>
-                                <td colspan="7" class="text-center">Sin resultados...</td>
-                            </tr>
-                        </tbody>-->
-                        <tbody>
-                            <tr v-for="(beca, keybeca) in becas" :key="keybeca">
-                                <td> {{ beca.Nombre }} </td>
-                                <td> {{ beca.Tipo }} </td>
-                                
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addBeca" 
-                                        @click="$emit('actualizarBeca', beca)">
-                                        <i class="far fa-edit"></i>
-                                    </button>
-                                    <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
-                                </td>
-                                <td>
-                                     <button class="btn btn-danger btn-sm" @click="eliminarBeca(beca, keybeca)"><i class="far fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="modal-body-g">
+                        <table class="table table-striped table-hover contentTable table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th colspan="2">Acciones</th>
+                                </tr>
+                            </thead>
+                            <!--<tbody>
+                                <tr>
+                                    <td colspan="7" class="text-center">Sin resultados...</td>
+                                </tr>
+                            </tbody>-->
+                            <tbody>
+                                <tr v-for="(beca, keybeca) in becas" :key="keybeca">
+                                    <td> {{ beca.Nombre }} </td>
+                                    <td> {{ beca.Tipo }} </td>
+                                    
+                                    <td>
+                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addBeca" 
+                                            @click="$emit('actualizarBeca', beca)">
+                                            <i class="far fa-edit"></i>
+                                        </button>
+                                        <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm" @click="eliminarBeca(beca, keybeca)"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addBeca"
+                            @click="$emit('actualizarBeca', {})">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>     
                 </div>
-                
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#addBeca"
-                        @click="$emit('actualizarBeca', {})">
-                        <i class="fas fa-plus-circle"></i>
-                    </button>
-                </div>
-                
             </div>
         </div>
+
+        <create-form-becas @becaActualizada="actualizarBeca($event)"></create-form-becas>
     </div>
-
-    <create-form-becas @becaActualizada="actualizarBeca($event)"></create-form-becas>
-</div>
-
 </template>
 
 <script>
@@ -86,8 +84,7 @@
                             this.becas[key] = temp[key];
                         }
                     });
-                }
-                
+                }   
             },
             eliminarBeca(beca, key) {
                 // Lo elimina en la base de datos.

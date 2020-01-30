@@ -31,8 +31,8 @@
                         <p><b>Derivación</b>{{incidencia.Derivacion}}</p>
 
                         
-                         <button @click="metodo" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
-                            Editar
+                         <button @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+                            <i class="fas fa-edit"></i>
                         </button>
                     </div>
             </div>

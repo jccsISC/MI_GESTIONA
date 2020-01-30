@@ -17,7 +17,7 @@
     <div id="app" class="contenedor-principal" >
         <header>
             <div class="contenedor minavbar">
-                <a href="#"><img class="logoCecy" src="/images/logo.jpg" alt="logo"></a>
+                <a href="#"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
                 <mi-buscador></mi-buscador>
 
                 <nav id="menu">

@@ -506,6 +506,7 @@
 
     .scrollH::-webkit-scrollbar{
         width: 1px;
+        height: 1px;
     }
 
     .scrollH::-webkit-scrollbar-thumb{

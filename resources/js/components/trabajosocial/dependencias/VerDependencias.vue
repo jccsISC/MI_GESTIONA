@@ -6,7 +6,7 @@
                 <div class="modal-header">
                     <h2 class="modal-title">Dependencias</h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
+                        <span style="color: #800000">&times;</span>
                     </button>
                 </div>
 

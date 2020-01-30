@@ -4358,8 +4358,8 @@ __webpack_require__.r(__webpack_exports__);
     saveBeca: function saveBeca() {
       var _this3 = this;
 
-      if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
+      if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
+        alert('Verifique y llene todos los campos');
         return;
       }
 
@@ -4613,8 +4613,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4736,6 +4734,11 @@ __webpack_require__.r(__webpack_exports__);
     savePractica: function savePractica() {
       var _this2 = this;
 
+      if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined || this.practica.FechaFin == undefined) {
+        alert('Verifique y llene todos los campos');
+        return;
+      }
+
       this.practica.Tipo = this.tipo == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
       console.log(this.practica);
       axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/practica', this.practica).then(function (res) {
@@ -4855,8 +4858,8 @@ __webpack_require__.r(__webpack_exports__);
     saveDependencia: function saveDependencia() {
       var _this3 = this;
 
-      if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
+      if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
+        alert('Verifique y llene todos los campos');
         return;
       }
 
@@ -5072,6 +5075,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -5105,7 +5123,8 @@ __webpack_require__.r(__webpack_exports__);
       pase: {},
       tipo: 'justificante',
       familiares: [],
-      ver: false
+      ver: false,
+      fecha: ''
     };
   },
   methods: {
@@ -5130,8 +5149,8 @@ __webpack_require__.r(__webpack_exports__);
     saveJustificante: function saveJustificante() {
       var _this3 = this;
 
-      if (this.justificante.FechaInicio.trim() === '' || this.justificante.FechaFin.trim() === '' || this.justificante.Motivo.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
+      if (this.justificante.FechaInicio == undefined || this.justificante.FechaFin == undefined || this.justificante.Motivo == undefined) {
+        alert('Verifique y llene todos los campos');
         return;
       }
 
@@ -5144,8 +5163,8 @@ __webpack_require__.r(__webpack_exports__);
     savePase: function savePase() {
       var _this4 = this;
 
-      if (this.pase.Motivo.trim() === '' || this.pase.IdFamiliar == '' || this.pase.Descripcion.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
+      if (this.pase.IdFamiliar == undefined || this.pase.Motivo == undefined || this.justificante.Motivo == undefined || this.pase.Descripcion == undefined) {
+        alert('Verifique y llene todos los campos');
         return;
       }
 
@@ -5340,6 +5359,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5404,6 +5425,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5445,9 +5469,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
 //
 //
 //
@@ -10719,7 +10740,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentDetSalud{\n    height: 225px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentDetSalud{\n    height: 225px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -10890,7 +10911,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.mibtn{\r\n        background: #800000;\r\n        border-radius: 4px;\r\n        color: white;\r\n        outline: none;\r\n        padding-left:5px;\r\n        padding-right: 5px; \r\n        border: 1px solid #800000;\r\n        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\r\n        background-color: rgb(255, 255, 255);\r\n        color: rgb(167, 11, 11);\r\n        border: 1px solid #800000;\n}\n.descrip{\r\n        min-width: 40%;\r\n        min-height: 150px;\r\n        border: 1px solid rgb(31, 30, 30);\r\n        border-radius: 6px;\r\n        padding: 5px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n}\n\n", ""]);
 
 // exports
 
@@ -10947,7 +10968,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n}\n\n", ""]);
+exports.push([module.i, "\n.mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.mibtnEdit{\n    background: #008080;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #008080;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnEdit:hover{\n    background-color: rgb(255, 255, 255);\n    color: #008080;\n    border: 1px solid #008080;\n}\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n}\n\n", ""]);
 
 // exports
 
@@ -11061,7 +11082,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n.miTransparent{\n    background: transparent;\n}\n\n/* .micardBeca:hover{\n    /*box-shadow: 1px 5px 10px  rgba(0,0,0,0.2);\n    box-shadow: 0 2px 4px 0 rgb(167, 11, 11)\n} */\n\n", ""]);
+exports.push([module.i, "\n.top-space{\n    margin-top: 20px;\n}\n.micardB{\n    width: 100%;\n    height: 100px;\n    background-color: rgb(255, 255, 255);\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.micardBeca{\n    width: 95%;\n    height: 25px;\n    background-color: white;\n    /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);*/\n    border-radius: 3px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n    margin-top: 5px;\n    margin-left: 3%;\n    text-align: left;\n    text-indent: 5px ;  \n    font-size: .75em;\n}\n.miTransparent{\n    background: transparent;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.mLabel {\n  font-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -11087,6 +11127,44 @@ exports.push([module.i, "\n.contentTable th, td{\n    font-size: 13px;\n}\n\n\n"
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.btnImprimirPase{\n    float: right;\n    top: 110px;\n    margin-right: 10px;\n}\n.mibtnE{\n    background: #c40404;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #c40404;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnE:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.mibtnI{\n    background: #416de7;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #416de7;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnI:hover{\n    background-color: rgb(255, 255, 255);\n    color: #416de7;\n    border: 1px solid #416de7;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.scrollHTS{\n    width: 450px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    /* border-radius: 3px; */\n    margin-left: 10px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n    margin: 0;\n    padding: 0;\n}\n.scrollHTS::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollHTS::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/notify/NotifyPase.vue?vue&type=style&index=0&lang=css& ***!
@@ -11099,7 +11177,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 3px;\n}\n.micardNotifications{\n    overflow-y: auto;\n}\n.micardNotifications::-webkit-scrollbar{\nwidth: 0px;\n}\n.minicontent{\n    width: 50%;\n    height: 80px;\n    float: left;\n    overflow-y: auto;\n}\n.minicontent::-webkit-scrollbar{\n    width: 0px;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n\n", ""]);
+exports.push([module.i, "\n.micardNotificaciones{\n    padding-top: 3px;\n}\n.micardNotifications{\n    overflow-y: auto;\n}\n.micardNotifications::-webkit-scrollbar{\n    width: 0px;\n}\n.minicontent{\n    width: 50%;\n    float: left;\n}\n.scrolPase {\n    width: 105px;\n    height: 55px;\n    overflow: auto;\n}\n.scrolPase::-webkit-scrollbar{\n    width: 1px;\n}\n.scrolPase::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.sizeName{\n    font-size: 15px;\n}\n.textShadow{\n    margin: 0;\n    color: rgb(165, 0, 0);\n    text-shadow: 1px 1px 5px #2c2b2b86;\n}\n\n", ""]);
 
 // exports
 
@@ -11137,7 +11215,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.bordeReport{\n    border: 1px solid #a5a5a5;\n    border-radius: 4px;\n    margin: 10px;\n    padding: 5px;\n}\n.imageLogo{\n    float: left;\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.imageLogo img {\n    width: 120px;\n    height: 40px;\n}\n.btnGuardar{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.btnGuardar:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.miGrid2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.colorText {\n    /* color: #414141; */\n    color: #3d3d3d;\n}\n\n", ""]);
+exports.push([module.i, "\n.bordeReport{\n    border: 1px solid #a5a5a5;\n    border-radius: 4px;\n    margin: 10px;\n    padding: 5px;\n    font-size: 14px;\n}\n.imageLogo{\n    float: left;\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.imageLogo img {\n    width: 120px;\n    height: 40px;\n}\n.btnGuardar{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.btnGuardar:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.miGrid2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.colorText {\n    /* color: #414141; */\n    color: #3d3d3d;\n}\n\n", ""]);
 
 // exports
 
@@ -42629,6 +42707,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPracServAlumn.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/VerDependencias.vue?vue&type=style&index=0&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/dependencias/VerDependencias.vue?vue&type=style&index=0&lang=css& ***!
@@ -42638,6 +42746,66 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerDependencias.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/VerDependencias.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardJustificantes.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -45346,7 +45514,11 @@ var staticRenderFns = [
                 _vm._v("Julio Cesar Camacho Silva")
               ]),
               _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "number" } })]),
+              _c("td", [
+                _c("input", {
+                  attrs: { type: "number", step: "0.0", min: "0" }
+                })
+              ]),
               _vm._v(" "),
               _c("td", [_c("input", { attrs: { type: "date" } })])
             ]),
@@ -45384,7 +45556,11 @@ var staticRenderFns = [
                 _vm._v("Julio Cesar Camacho Silva")
               ]),
               _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "number" } })]),
+              _c("td", [
+                _c("input", {
+                  attrs: { type: "number", step: "0.0", min: "0" }
+                })
+              ]),
               _vm._v(" "),
               _c("td", [_c("input", { attrs: { type: "date" } })])
             ]),
@@ -45422,7 +45598,11 @@ var staticRenderFns = [
                 _vm._v("Julio Cesar Camacho Silva")
               ]),
               _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "number" } })]),
+              _c("td", [
+                _c("input", {
+                  attrs: { type: "number", step: "0.0", min: "0" }
+                })
+              ]),
               _vm._v(" "),
               _c("td", [_c("input", { attrs: { type: "date" } })])
             ]),
@@ -45460,7 +45640,11 @@ var staticRenderFns = [
                 _vm._v("Julio Cesar Camacho Silva")
               ]),
               _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "number" } })]),
+              _c("td", [
+                _c("input", {
+                  attrs: { type: "number", step: "0.0", min: "0" }
+                })
+              ]),
               _vm._v(" "),
               _c("td", [_c("input", { attrs: { type: "date" } })])
             ]),
@@ -45498,7 +45682,11 @@ var staticRenderFns = [
                 _vm._v("Julio Cesar Camacho Silva")
               ]),
               _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "number" } })]),
+              _c("td", [
+                _c("input", {
+                  attrs: { type: "number", step: "0.0", min: "0" }
+                })
+              ]),
               _vm._v(" "),
               _c("td", [_c("input", { attrs: { type: "date" } })])
             ])
@@ -45507,8 +45695,8 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("button", { staticClass: "miBtn pbtn", attrs: { type: "button" } }, [
-        _vm._v("\r\n            Guardar "),
-        _c("i", { staticClass: "far fa-save" })
+        _c("i", { staticClass: "far fa-save" }),
+        _vm._v(" Guardar\n    ")
       ])
     ])
   }
@@ -46606,7 +46794,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "miBtn posicionbtn",
+                      staticClass: "mibtnEdit posicionbtn",
                       attrs: {
                         type: "button",
                         "data-toggle": "modal",
@@ -46614,11 +46802,7 @@ var render = function() {
                       },
                       on: { click: _vm.metodo }
                     },
-                    [
-                      _vm._v(
-                        "\n                        Editar\n                    "
-                      )
-                    ]
+                    [_c("i", { staticClass: "fas fa-edit" })]
                   )
                 ])
               ])
@@ -46798,7 +46982,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "miBtn posicionbtn",
+                      staticClass: "mibtnEdit posicionbtn",
                       attrs: {
                         type: "button",
                         "data-toggle": "modal",
@@ -46806,11 +46990,7 @@ var render = function() {
                       },
                       on: { click: _vm.metodo }
                     },
-                    [
-                      _vm._v(
-                        "\n                        Editar\n                    "
-                      )
-                    ]
+                    [_c("i", { staticClass: "fas fa-edit" })]
                   )
                 ])
               ])
@@ -48976,7 +49156,16 @@ var staticRenderFns = [
           "aria-label": "Close"
         }
       },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      [
+        _c(
+          "span",
+          {
+            staticStyle: { color: "#800000" },
+            attrs: { "aria-hidden": "true" }
+          },
+          [_vm._v("×")]
+        )
+      ]
     )
   }
 ]
@@ -49003,17 +49192,52 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "contenedorCard" }, [
+      _vm.alumno.IdAlumno
+        ? _c(
+            "div",
+            { staticClass: "float-right" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm bg-primary p-0 pl-2 pr-2",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#DetalleBeca"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("agregarBecaAlumno", _vm.alumno)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle" })]
+              ),
+              _vm._v(" "),
+              _c("detalleBeca", {
+                on: {
+                  becaAlumnoAgregada: function($event) {
+                    return _vm.becas.push($event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c("p", { staticClass: "subtitulos" }, [_vm._v("Becas")]),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "micardB" },
+        { staticClass: "micardB colorText p-1" },
         _vm._l(_vm.becas, function(beca, key) {
           return _c(
             "div",
             {
               key: key,
-              staticClass: "micardBeca",
+              staticClass: "micardBeca mt-1",
               on: {
                 click: function($event) {
                   return _vm.$emit("actualizarBeca", beca)
@@ -49043,42 +49267,7 @@ var render = function() {
           )
         }),
         0
-      ),
-      _vm._v(" "),
-      _vm.alumno.IdAlumno
-        ? _c(
-            "div",
-            { staticClass: "float-right mt-0" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm  miTransparent",
-                  attrs: {
-                    type: "button",
-                    "data-toggle": "modal",
-                    "data-target": "#DetalleBeca"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.$emit("agregarBecaAlumno", _vm.alumno)
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-plus" })]
-              ),
-              _vm._v(" "),
-              _c("detalleBeca", {
-                on: {
-                  becaAlumnoAgregada: function($event) {
-                    return _vm.becas.push($event)
-                  }
-                }
-              })
-            ],
-            1
-          )
-        : _vm._e()
+      )
     ])
   ])
 }
@@ -49199,7 +49388,16 @@ var staticRenderFns = [
             "aria-label": "Close"
           }
         },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        [
+          _c(
+            "span",
+            {
+              staticStyle: { color: "#800000" },
+              attrs: { "aria-hidden": "true" }
+            },
+            [_vm._v("×")]
+          )
+        ]
       )
     ])
   },
@@ -49372,7 +49570,7 @@ var staticRenderFns = [
             "aria-label": "Close"
           }
         },
-        [_c("span", [_vm._v("×")])]
+        [_c("span", { staticStyle: { color: "#800000" } }, [_vm._v("×")])]
       )
     ])
   },
@@ -49439,8 +49637,8 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Dependencia")]),
+                _c("div", { staticClass: "form-group ml-0" }, [
+                  _vm._m(1),
                   _vm._v(" "),
                   _c(
                     "select",
@@ -49487,8 +49685,8 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Fecha Inicio")]),
+                _c("div", { staticClass: "form-group ml-0" }, [
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -49520,8 +49718,8 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Fecha Final")]),
+                _c("div", { staticClass: "form-group ml-0" }, [
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -49549,7 +49747,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _vm._m(4)
               ]
             )
           ])
@@ -49576,8 +49774,41 @@ var staticRenderFns = [
             "aria-label": "Close"
           }
         },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        [
+          _c(
+            "span",
+            {
+              staticStyle: { color: "#800000" },
+              attrs: { "aria-hidden": "true" }
+            },
+            [_vm._v("×")]
+          )
+        ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mLabel" }, [
+      _c("b", [_vm._v("Dependencia")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "mLabel" }, [
+      _c("b", [_vm._v("Fecha Inicio")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "mLabel" }, [
+      _c("b", [_vm._v("Fecha Final")])
     ])
   },
   function() {
@@ -49586,7 +49817,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "button",
-      { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+      { staticClass: "btn btn-primary float-right", attrs: { type: "submit" } },
       [_c("i", { staticClass: "far fa-save" }), _vm._v(" Guardar")]
     )
   }
@@ -49877,7 +50108,16 @@ var staticRenderFns = [
           "aria-label": "Close"
         }
       },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      [
+        _c(
+          "span",
+          {
+            staticStyle: { color: "#800000" },
+            attrs: { "aria-hidden": "true" }
+          },
+          [_vm._v("×")]
+        )
+      ]
     )
   }
 ]
@@ -50072,7 +50312,7 @@ var staticRenderFns = [
             "aria-label": "Close"
           }
         },
-        [_c("span", [_vm._v("×")])]
+        [_c("span", { staticStyle: { color: "#800000" } }, [_vm._v("×")])]
       )
     ])
   },
@@ -50203,7 +50443,7 @@ var render = function() {
                       "button",
                       {
                         staticClass:
-                          "btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1",
+                          "btn mibtnE btn-sm float-right p-0 pl-1 pr-1",
                         on: {
                           click: function($event) {
                             return _vm.eliminarJustiPase()
@@ -50214,9 +50454,20 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
+                _vm.ver
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "mibtnI btnImprimirPase ",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "fas fa-print" })]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _vm.tipo === "justificante"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Fecha Inicio")]),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -50252,7 +50503,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.tipo === "justificante"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Fecha Fin")]),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -50288,7 +50539,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.tipo === "justificante"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Motivo")]),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -50324,7 +50575,16 @@ var render = function() {
                 _vm._v(" "),
                 _vm.tipo === "pase"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Familiar")]),
+                      _c("label", { attrs: { disabled: _vm.ver } }, [
+                        _c("b", [_vm._v("Fecha: ")]),
+                        _vm._v(" 2020-01-29")
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.tipo === "pase"
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _vm._m(4),
                       _vm._v(" "),
                       !_vm.ver
                         ? _c(
@@ -50448,7 +50708,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.tipo === "pase"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Motivo")]),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -50480,7 +50740,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm.tipo === "pase"
                   ? _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Descripción")]),
+                      _vm._m(6),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -50523,7 +50783,7 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "far fa-save" }),
-                        _vm._v("Guardar")
+                        _vm._v(" Guardar")
                       ]
                     )
                   : _vm._e()
@@ -50550,8 +50810,53 @@ var staticRenderFns = [
           "aria-label": "Close"
         }
       },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      [
+        _c(
+          "span",
+          {
+            staticStyle: { color: "#800000" },
+            attrs: { "aria-hidden": "true" }
+          },
+          [_vm._v("×")]
+        )
+      ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Fecha Inicio")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Fecha Fin")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Motivo")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Familiar")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Motivo")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("b", [_vm._v("Descripción")])])
   }
 ]
 render._withStripped = true
@@ -50586,19 +50891,36 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "micardsm",
+          staticClass: "micardsm colorText",
           attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
         },
         [
           _vm.alumno.IdAlumno
             ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
                 _c(
-                  "div",
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _vm._m(1),
-                    _vm._v(" "),
+                  "button",
+                  {
+                    staticClass: "btn btn-primary btn-sm mr-2 mt-2 float-right",
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "modal",
+                      "data-target": "#addJustificantes"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.$emit("agregarJustificante", _vm.alumno)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-plus-circle" })]
+                ),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "scrollHTS" },
                     _vm._l(_vm.justificantes.slice().reverse(), function(
                       justificante,
                       keyjustificantepase
@@ -50608,7 +50930,7 @@ var render = function() {
                         {
                           key: keyjustificantepase,
                           staticClass:
-                            "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
+                            "btn btn-danger btn-sm mt-1 mr-1 p-0 pr-2 pl-2",
                           attrs: {
                             "data-toggle": "modal",
                             "data-target": "#addJustificantes"
@@ -50621,24 +50943,23 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                \n                " +
+                            "\n                        \n                        " +
                               _vm._s(keyjustificantepase + 1) +
-                              "\n\n            "
+                              "\n\n                    "
                           )
                         ]
                       )
-                    })
-                  ],
-                  2
-                ),
+                    }),
+                    0
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
+                _c("div", [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "scrollHTS" },
                     _vm._l(_vm.pases.slice().reverse(), function(
                       pase,
                       keyjustificantepase2
@@ -50648,7 +50969,7 @@ var render = function() {
                         {
                           key: keyjustificantepase2,
                           staticClass:
-                            "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
+                            "btn btn-danger btn-sm mt-1 mr-1 p-0 pr-2 pl-2",
                           attrs: {
                             "data-toggle": "modal",
                             "data-target": "#addJustificantes"
@@ -50661,34 +50982,16 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n            \n                " +
+                            "\n                \n                    " +
                               _vm._s(keyjustificantepase2 + 1) +
-                              "\n            \n            "
+                              "\n                \n                "
                           )
                         ]
                       )
                     }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary btn-sm float-right",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#addJustificantes"
-                        },
-                        on: {
-                          click: function($event) {
-                            return _vm.$emit("agregarJustificante", _vm.alumno)
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fas fa-plus-circle" })]
-                    )
-                  ],
-                  2
-                )
+                    0
+                  )
+                ])
               ])
             : _vm._e()
         ]
@@ -50719,15 +51022,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-sm-1" }, [
+    return _c("p", { staticClass: "m-0 mt-1" }, [
       _c("b", [_vm._v("Justificantes")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v("Días: ")])])
   },
   function() {
     var _vm = this
@@ -50736,12 +51033,6 @@ var staticRenderFns = [
     return _c("p", { staticClass: "m-0" }, [
       _c("b", [_vm._v("Pases de Salida")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v("Días: ")])])
   }
 ]
 render._withStripped = true
@@ -50780,7 +51071,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "micardNotifications" },
+      { staticClass: "micardNotifications colorText" },
       [
         _c("spinner", {
           directives: [
@@ -50819,37 +51110,37 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "pl-5 m-0" }, [
+                _c("p", { staticClass: "pl-5 m-0 mt-1" }, [
                   _c("b", [
                     _vm._v("Grado: " + _vm._s(alumno.Grado) + " semestre")
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "pl-5 m-0" }, [
+                _c("p", { staticClass: "pl-5 m-0 mt-1" }, [
                   _c("b", [_vm._v("Grupo: " + _vm._s(alumno.Grupo))])
                 ])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "minicontent" },
-                [
-                  _c("p", { staticClass: "sizeName m-0" }, [
-                    _c("b", [
-                      _vm._v("Justificantes  "),
-                      _c("label", { staticClass: "textShadow" }, [
-                        _vm._v(_vm._s(alumno.justificantes.length))
-                      ])
+              _c("div", { staticClass: "minicontent" }, [
+                _c("p", { staticClass: "sizeName m-0" }, [
+                  _c("b", [
+                    _vm._v("Justificantes  "),
+                    _c("label", { staticClass: "textShadow" }, [
+                      _vm._v(_vm._s(alumno.justificantes.length))
                     ])
-                  ]),
-                  _vm._v(" "),
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "scrolPase" },
                   _vm._l(alumno.justificantes, function(
                     justificante,
                     keyjustificante2
                   ) {
                     return _c(
                       "p",
-                      { key: keyjustificante2, staticClass: "m-0" },
+                      { key: keyjustificante2, staticClass: "m-0 p-0" },
                       [
                         _c("img", {
                           staticClass: "micircle",
@@ -50858,10 +51149,10 @@ var render = function() {
                         _vm._v("  " + _vm._s(justificante.Fecha))
                       ]
                     )
-                  })
-                ],
-                2
-              )
+                  }),
+                  0
+                )
+              ])
             ]
           )
         })
@@ -50917,7 +51208,7 @@ var render = function() {
             "div",
             {
               key: keypases,
-              staticClass: "micardNotificaciones",
+              staticClass: "micardNotificaciones colorText",
               on: {
                 click: function($event) {
                   return _vm.seleccionarAlumno(alumno)
@@ -50938,13 +51229,13 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "pl-5 m-0" }, [
+                _c("p", { staticClass: "pl-5 m-0 mt-1" }, [
                   _c("b", [
                     _vm._v("Grado: " + _vm._s(alumno.Grado) + " semestre")
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "pl-5 m-0" }, [
+                _c("p", { staticClass: "pl-5 m-0 mt-1" }, [
                   _c("b", [_vm._v("Grupo: " + _vm._s(alumno.Grupo))])
                 ])
               ]),
@@ -50955,24 +51246,33 @@ var render = function() {
                 [
                   _c("P", { staticClass: "sizeName m-0 p-0" }, [
                     _c("b", [
-                      _vm._v("Pases "),
+                      _vm._v("Pases de salida "),
                       _c("label", { staticClass: "textShadow" }, [
                         _vm._v(_vm._s(alumno.pases.length))
                       ])
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._l(alumno.pases, function(pase, keypases2) {
-                    return _c("p", { key: keypases2, staticClass: "m-0 p-0" }, [
-                      _c("img", {
-                        staticClass: "micircle",
-                        attrs: { src: "images/circleRojo.png", alt: "" }
-                      }),
-                      _vm._v("  " + _vm._s(pase.Fecha))
-                    ])
-                  })
+                  _c(
+                    "div",
+                    { staticClass: "scrolPase" },
+                    _vm._l(alumno.pases, function(pase, keypases2) {
+                      return _c(
+                        "p",
+                        { key: keypases2, staticClass: "m-0 p-0" },
+                        [
+                          _c("img", {
+                            staticClass: "micircle",
+                            attrs: { src: "images/circleRojo.png", alt: "" }
+                          }),
+                          _vm._v("  " + _vm._s(pase.Fecha))
+                        ]
+                      )
+                    }),
+                    0
+                  )
                 ],
-                2
+                1
               )
             ]
           )
@@ -51019,14 +51319,72 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "micardsm",
+          staticClass: "micardsm colorText",
           attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
         },
         [
           _vm.alumno.IdAlumno
             ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
                 _c("div", [
-                  _c("p", { staticClass: "mt-sm-1" }, [
+                  _vm.alumno.IdAlumno
+                    ? _c(
+                        "div",
+                        { staticClass: "float-right m-0 mr-2" },
+                        [
+                          !_vm.practica
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary btn-sm",
+                                  attrs: {
+                                    type: "button",
+                                    "data-toggle": "modal",
+                                    "data-target":
+                                      "#addPractServenAlumn" + _vm.tipo
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$emit(
+                                        "agregarPracticaAlumno",
+                                        _vm.alumno
+                                      )
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-plus-circle" })]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.practica
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarPractica()
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "far fa-trash-alt" })]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("add-practservi-alumn", {
+                            attrs: { tipo: _vm.tipo },
+                            on: {
+                              practicaAlumnoAgregada: function($event) {
+                                _vm.practica = $event
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "mt-3" }, [
                     _c("b", [_vm._v("Dependencia: ")]),
                     _vm._v(
                       " " +
@@ -51039,74 +51397,16 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("p", [
+                  _c("p", { staticClass: "mt-2" }, [
                     _c("b", [_vm._v("Fecha Inicio: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaInicio))
                   ]),
                   _vm._v(" "),
-                  _c("p", [
+                  _c("p", { staticClass: "mt-2" }, [
                     _c("b", [_vm._v("Fecha Fin: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaFin) + " ")
                   ])
-                ]),
-                _vm._v(" "),
-                _vm.alumno.IdAlumno
-                  ? _c(
-                      "div",
-                      { staticClass: "float-right m-0" },
-                      [
-                        !_vm.practica
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary btn-sm",
-                                attrs: {
-                                  type: "button",
-                                  "data-toggle": "modal",
-                                  "data-target":
-                                    "#addPractServenAlumn" + _vm.tipo
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.$emit(
-                                      "agregarPracticaAlumno",
-                                      _vm.alumno
-                                    )
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-plus-circle" })]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.practica
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger btn-sm",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.eliminarPractica()
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "far fa-trash-alt" })]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("add-practservi-alumn", {
-                          attrs: { tipo: _vm.tipo },
-                          on: {
-                            practicaAlumnoAgregada: function($event) {
-                              _vm.practica = $event
-                            }
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  : _vm._e()
+                ])
               ])
             : _vm._e()
         ]
@@ -51923,17 +52223,9 @@ var render = function() {
             _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "miBtn positionImprimir",
-                  attrs: { type: "button" },
-                  on: { click: _vm.metodo }
-                },
-                [_vm._v("\n                        Imprimir\n                ")]
-              ),
-              _vm._v(" "),
               _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
               _vm._v(" "),
               _c("p", { staticClass: "text-right mt-3" }, [
                 _c("b", [_vm._v("Fecha: ")]),
@@ -52029,9 +52321,9 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(5)
             ])
           ])
         ]
@@ -52079,6 +52371,16 @@ var staticRenderFns = [
     return _c("div", { staticClass: "imgLogo" }, [
       _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "mibtnI positionImprimir", attrs: { type: "button" } },
+      [_c("i", { staticClass: "fas fa-print" })]
+    )
   },
   function() {
     var _vm = this
@@ -64610,7 +64912,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.component('spinner', __webpack_require__(/*! ./components/generales/Spinner.vue */ "./resources/js/components/generales/Spinner.vue")["default"]); //Tota la info del alumno en este componente
+Vue.component('spinner', __webpack_require__(/*! ./components/generales/Spinner.vue */ "./resources/js/components/generales/Spinner.vue")["default"]); //VISTAS GENERALES
 
 Vue.component('mi-buscador', __webpack_require__(/*! ./components/generales/Buscador.vue */ "./resources/js/components/generales/Buscador.vue")["default"]);
 Vue.component('card-info-personal', __webpack_require__(/*! ./components/generales/CardInfoPersonal.vue */ "./resources/js/components/generales/CardInfoPersonal.vue")["default"]);
@@ -66798,7 +67100,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPracServAlumn.vue?vue&type=template&id=eb99f408& */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=template&id=eb99f408&");
 /* harmony import */ var _AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPracServAlumn.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddPracServAlumn.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -66806,7 +67110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AddPracServAlumn_vue_vue_type_template_id_eb99f408___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -66835,6 +67139,22 @@ component.options.__file = "resources/js/components/trabajosocial/dependencias/A
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPracServAlumn.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddPracServAlumn.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/dependencias/AddPracServAlumn.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AddPracServAlumn_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -67023,7 +67343,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=template&id=747b0d2d& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=template&id=747b0d2d&");
 /* harmony import */ var _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -67031,7 +67353,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AgregarJustificante_vue_vue_type_template_id_747b0d2d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -67060,6 +67382,22 @@ component.options.__file = "resources/js/components/trabajosocial/justificantes/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AgregarJustificante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/AgregarJustificante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AgregarJustificante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -67092,7 +67430,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardJustificantes.vue?vue&type=template&id=7166c762& */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=template&id=7166c762&");
 /* harmony import */ var _CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardJustificantes.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardJustificantes.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -67100,7 +67440,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["render"],
   _CardJustificantes_vue_vue_type_template_id_7166c762___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -67129,6 +67469,22 @@ component.options.__file = "resources/js/components/trabajosocial/justificantes/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardJustificantes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardJustificantes.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/justificantes/CardJustificantes.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardJustificantes_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

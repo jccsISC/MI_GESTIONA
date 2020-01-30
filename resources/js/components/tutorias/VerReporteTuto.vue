@@ -17,8 +17,8 @@
                         <img src="images/logo.jpg" alt="">
                     </div>
 
-                    <button @click="metodo" type="button" class="miBtn positionImprimir">
-                            Imprimir
+                    <button type="button" class="mibtnI positionImprimir">
+                        <i class="fas fa-print"></i>
                     </button>
 
                     <div class="text-center mt-5">
