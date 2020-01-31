@@ -2,18 +2,23 @@
   <div class="modal fade" id="addBeca" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{beca.IdBeca ? 'Actualizar' : 'Agregar'}} Beca</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" style="color: #800000">&times;</span>
-          </button>
+        <div>
+            <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
+                <p class="subtitulos text-center">{{beca.IdBeca ? 'Actualizar' : 'Agregar'}} Beca</p>
+            </div>
+            
+            <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                <span style="color: #800000">&times;</span>
+            </button>
         </div>
+
+        <hr class="mt-1">
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label>Nombre</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el nombre de la beca" v-model="beca.Nombre">
+			          <input type="text" class="form-control  p-0 pl-1" placeholder="Ingresa el nombre de la beca" v-model="beca.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
@@ -25,9 +30,7 @@
                 </select>
 		  	      </div>
 
-          
-          
-		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{beca.IdBeca ? 'Actualizar' : 'Guardar'}}</button>
+		  	      <button type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> {{beca.IdBeca ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>

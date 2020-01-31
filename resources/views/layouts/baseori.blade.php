@@ -17,7 +17,7 @@
     <div id="app" class="contenedor-principal" >
         <header>
             <div class="contenedor minavbar">
-                <a href="#"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
+                <a href="http://127.0.0.1:8000/OE"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
                 <mi-buscador></mi-buscador>
 
                 <nav id="menu">

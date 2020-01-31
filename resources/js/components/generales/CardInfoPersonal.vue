@@ -39,9 +39,7 @@
                     <p class="m-0 pl-4"><b>Tipo de Sangre: </b>{{alumno.TipoSangre}}</p>
                     <p class="m-0 pl-4"><b>Etnia: </b>{{alumno.Etnia}}</p>
                 </div>
-
             </div>
-
         </div>
     </div>
 </template>

@@ -12,6 +12,8 @@
                     </button>
                 </div>
 
+                <hr class="mt-1">
+
                 <div class="modal-body-g p-3 colorText">
                     <div class="imgLogo">
                         <img src="images/logo.jpg" alt="">

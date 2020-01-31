@@ -10,7 +10,7 @@
                <div>
                    <p class="m-0 mt-1"><b>Justificantes</b></p>
                    <div class="scrollHTS">
-                       <button class="btn btn-danger btn-sm mt-1 mr-1 p-0 pr-2 pl-2" 
+                       <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                             v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
                             data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
                             
@@ -23,7 +23,7 @@
               <div>
                 <p class="m-0"><b>Pases de Salida</b></p>
                 <div class="scrollHTS">
-                    <button class="btn btn-danger btn-sm mt-1 mr-1 p-0 pr-2 pl-2" 
+                    <button class="btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2" 
                         @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                         :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
                     
@@ -111,7 +111,7 @@
 
 <style>
     .scrollHTS{
-        width: 450px;
+        width: 80%;
         background: rgba(247, 247, 247, 0.418);
         /* border: 2px solid rgb(202, 201, 201); */
         /* border-radius: 3px; */
@@ -125,11 +125,11 @@
 
     .scrollHTS::-webkit-scrollbar{
         width: 1px;
-        height: 1px;
+        height: 3px;
     }
 
     .scrollHTS::-webkit-scrollbar-thumb{
-        width: 1px;
+        width: 3px;
         background: #800000;
     }
 </style>

@@ -1,14 +1,16 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Talleres</p>
-        <div class="micardTalleres p-3 mr-5">        
-            <div v-for="(taller, key) in talleres" :key="key" class="cardTaller izeTaller text-center mr-3 mb-3" data-toggle="modal" data-target="#detalleTaller" @click="$emit('editarTaller', taller, key)">
+        <div class="micardTalleres p-3 colorText">        
+            <div v-for="(taller, key) in talleres" :key="key" class="cardTaller izeTaller text-center ml-4 mb-3" data-toggle="modal" data-target="#detalleTaller" @click="$emit('editarTaller', taller, key)">
                 <spinner v-show="loading"></spinner>
                 <p class="pt-2 m-0"><b>{{taller.Nombre}}</b></p>
                 <p class="m-0">{{taller.Fecha}}</p>
             </div>
-            <button class="btnaddTaller" data-toggle="modal" data-target="#detalleTaller" @click="$emit('agregarTaller')">+</button>
+
+            <button class="btnaddTaller ml-4" data-toggle="modal" data-target="#detalleTaller" @click="$emit('agregarTaller')">+</button>
         </div>
+
         <detalle-taller 
             @tallerAgregado="tallerAgregado($event)" 
             @tallerEliminado="tallerEliminado($event)" 
@@ -63,6 +65,7 @@
 <style>
 
     .cardTaller{
+        background-color: white;
         width: 140px;
         height: 100px;
         padding: 5px;
@@ -86,6 +89,21 @@
         border: 1px solid rgb(211, 211, 211);
     }
 
+
+    .micardTalleres{
+        overflow: scroll;
+        overflow: auto;
+    }
+
+    .micardTalleres::-webkit-scrollbar{
+        width: 1px;
+    }
+/* 
+    .scrollT::-webkit-scrollbar-thumb{
+        background: #800000;
+        width: 1px;
+    } */
+
     .btnaddTaller{
         width: 140px;
         height: 100px;
@@ -105,5 +123,7 @@
     .izeTaller{
         font-size: 12px;
     }
+
+
 
 </style>

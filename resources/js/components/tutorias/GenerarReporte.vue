@@ -75,7 +75,7 @@
                        </div>
 
                        <div>
-                            <button @click="guardarReporte"  type="submit" class="btnGuardar float-lg-right mt-3">
+                            <button @click="guardarReporte"  type="submit" class="btnGuardar positionSave">
                                 <i class="fas fa-save"></i> Guardar
                             </button>
                        </div>

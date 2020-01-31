@@ -1,14 +1,6 @@
 <template>
     <div>
         <div v-if="alumno.IdAlumno">
-            <!-- <select class="miBtn" id="change">
-                Generar Reporte
-                <option  value="malaConducta">Mala conducta</option>
-                <option  value="incidencias">Incidencia</option>
-            </select> -->
-
-    
-
             <button @click="$emit('generarIncidencia', alumno)" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
                 Incidencia
             </button>
@@ -16,7 +8,6 @@
             <button @click="$emit('generarMalaConducta', alumno)" type="button" class="miBtn posicionbt" data-toggle="modal" data-target="#reporteConducta">
                 Mala Conducta
             </button>
-
         </div>
 
         <genera-mala-conducta ></genera-mala-conducta>

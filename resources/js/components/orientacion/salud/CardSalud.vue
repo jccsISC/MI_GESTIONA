@@ -1,8 +1,25 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Salud</p>
-        <div class="micard">
+        <div class="micard colorText">
             <div v-if="alumno.IdAlumno">
+                <div v-if="alumno.IdAlumno" class="float-right">
+                    
+                    <button v-if="!salud.IdSalud" type="button" class="btn btn-sm btn-primary  p-0 pl-1 pr-1" 
+                    data-toggle="modal" data-target="#addSalud"
+                    @click="abrirModal()">
+                        <i  class="fas fa-plus"></i>
+                    </button>
+
+                    <button v-if="salud.IdSalud"  type="button" class="btn btn-sm mibtnEdit p-0 pl-1 pr-1"
+                    data-toggle="modal" data-target="#addSalud"
+                    @click="abrirModal()">
+                        <i class="fas fa-edit"></i>
+                    </button>      
+                    
+                    <add-salud @saludAgregada="salud = $event"></add-salud>     
+                </div>
+
                 <div class="mcontenido  pt-1 interlineado">
                     <p><b>Estatura: </b>{{salud.Estatura}}</p>
                     <p><b>Peso: </b>{{salud.Peso}}</p>
@@ -11,7 +28,7 @@
                     <p><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
                     <p><b>Graviez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
                     <p><b>Problemas Posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Transtornos: </b>{{salud.Transtornos == 1 ? 'Si' : 'No'}}</p>
+                    <p class="miMaxLength2"><b>Trastornos: </b>{{salud.Transtornos}}</p>
                 </div>
 
                 <div class="mcontenido pt-1 interlineado">
@@ -24,15 +41,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="alumno.IdAlumno" class="float-right">
-            <button type="button" class="btn btn-sm bg-primary" data-toggle="modal" data-target="#addSalud"
-                @click="abrirModal()">
-                <i v-if="!salud.IdSalud" class="fas fa-plus"></i>
-                <i v-if="salud.IdSalud" class="fas fa-edit"></i>
-            </button>        
-            
-            <add-salud @saludAgregada="salud = $event"></add-salud>     
-        </div>
+      
     </div>
 </template>
 
