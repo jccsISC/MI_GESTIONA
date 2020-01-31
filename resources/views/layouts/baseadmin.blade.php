@@ -17,13 +17,12 @@
     <div id="app" class="contenedor-principal" >
         <header>
             <div class="contenedor minavbar">
-                <a href="http://127.0.0.1:8000/T"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
-               
+                <a href="#"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
                 <mi-buscador></mi-buscador>
 
                 <nav id="menu">
                     <ul>
-                        <li><a href="/R">Reportes</a></li>
+                        <li><a href="">Usuarios</a></li>
                         <li><div class="cerrar" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -41,54 +40,30 @@
                 </nav>
             </div>
         </header>
-     
+       
         @yield('content')
 
-          
+     
      
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
             <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
         </footer>
-
+      
     </div>
 </body>
 
 <style>
-    /*.dropdown-menu > li > a:hover {
+    .dropdown-menu > li > a:hover {
         color:white;
         background-color: rgb(167, 11, 11);
     }
-*/
-
-    .midivbuscadorT{
-        margin-left: 5%;
-    }
-
     
     .cerrar a{
         color: white;
     }
 
-/*
-    .mibuscador{
-        border-radius: 8px;
-        border: 1px solid rgb(231, 231, 231);
-        text-align: center;
-        font-size: 12px;
-        outline: none; eliminar el resplandor al foco del input
-    }
-
-    .mibuscador:focus{
-        border-color: dodgerblue;
-        box-shadow: 0 0 8px 0 dodgerblue;
-    }
-    /*El icono queda pendiente es temporal de esta forma
-    .miicosearch{
-        position: absolute;
-        right: 40%;
-        top:37%;
-    }*/
     
+
 </style>
 
 </html>
