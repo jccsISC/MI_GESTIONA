@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class tblusuarios extends Model
 {
-    protected $table = 'tblusuarios';
-    protected $primaryKey = 'IdUsuario';
-    protected $fillable = ['Nombre','Usuario','Contra','Tipo','Existe'];
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    protected $fillable = [ 'name','email','password'];
     public $timestamps = false;
+  
 }

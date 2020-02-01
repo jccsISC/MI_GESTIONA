@@ -22,7 +22,7 @@
 
                 <nav id="menu">
                     <ul>
-                        <li><a href="">Usuarios</a></li>
+                        <li><a href="#" type="button" data-toggle="modal" data-target="#verUsuarios">Usuarios</a></li>
                         <li><div class="cerrar" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -40,7 +40,7 @@
                 </nav>
             </div>
         </header>
-       
+        <ver-usuarios></ver-usuarios>
         @yield('content')
 
      

@@ -14,7 +14,9 @@ Vue.component('admin', require('./components/generales/Admin.vue').default);
 
 
 
-
+//Usuarios
+Vue.component('ver-usuarios', require('./components/usuarios/VerUsuarios.vue').default);
+Vue.component('create-form-usuarios', require('./components/usuarios/AgregarUsuarios.vue').default);
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);

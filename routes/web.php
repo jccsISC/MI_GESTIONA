@@ -60,6 +60,8 @@ Route::delete('pases/{tblpasesalida}', 'PaseDeSalidaController@destroy');
 //PRACTICAS
 Route::delete('practicas/{tblserviciopracticas}', 'ServicioPracticasController@destroy');
 
+//USUARIOS CRUD
+Route::get('usuarios','UsersController@index');
 
 //DEPENDENCIAS CRUD
 Route::get('dependencias','DependenciasController@index');
