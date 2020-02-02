@@ -3,12 +3,17 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="verDepencencias" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Dependencias</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
+              <div>
+                    <div class="float-left pl-2" style="margin-left: 26%; margin-right: 20%;">
+                        <p class="subtitulos  text-center">Lista de todas las dependencias disponibles</p>
+                    </div>
+                    
+                    <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                        <span style="color: #800000">&times;</span>
                     </button>
                 </div>
+
+                <hr class="mt-1">
 
                 <div class="modal-body-g">
                     <table class="table table-striped table-hover contentTable table table-sm">
@@ -50,13 +55,10 @@
                     </table>
                 </div>
                 
-                <div class="modal-footer">
-                    <button class="btn btn-primary " data-toggle="modal" data-target="#addDepencencia"
-                        @click="$emit('actualizarDependencia', {})">
-                        <i class="fas fa-plus-circle"></i>
-                    </button>
-                </div>
-                
+                <button class="btn btn-primary positionSave" data-toggle="modal" data-target="#addDepencencia"
+                    @click="$emit('actualizarDependencia', {})">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
             </div>
         </div>
     </div>

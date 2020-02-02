@@ -18,9 +18,13 @@ class TalleresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return tbltalleres::with('grupos')->get();
+        if ($request->ajax()) {
+            return tbltalleres::with('grupos')->get();
+        } else {
+            return view('home');
+        }
     }
 
 

@@ -3,18 +3,17 @@
         <p class="subtitulos">Notificación de seguimiento</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
-                <div class="minicontent">
+            <div class="micardNotificaciones colorText" v-for="(alumno, keyjustificante) in alumnos" :key="keyjustificante" @click="seleccionarAlumno(alumno)">
+                <div class="minicontent mt-1">
                     <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
-                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
-                    <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
+                    <p class="pl-5"><b>Grado: {{ alumno.Grado }} semestre</b></p>
+                    <p class="pl-5"><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 
-                <div class="minicontent">
+                <div class="minicontent mt-1">
                     <p class="sizeName m-0"><b>Seguimiento <label class="textShadow">{{alumno.reportes.length}}</label></b></p>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -43,7 +42,3 @@
         }
     }
 </script>
-   
-<style>
-
-</style>

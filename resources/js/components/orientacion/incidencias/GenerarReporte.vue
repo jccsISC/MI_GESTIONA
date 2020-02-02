@@ -132,10 +132,7 @@
 </script>
 
 <style>
-
-
-
-.mibtn{
+    .mibtn{
         background: #800000;
         border-radius: 4px;
         color: white;

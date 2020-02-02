@@ -4,13 +4,17 @@ window.Vue = require('vue');
 
 Vue.component('spinner', require('./components/generales/Spinner.vue').default);
 
-//Tota la info del alumno en este componente
+//VISTAS GENERALES
 Vue.component('mi-buscador', require('./components/generales/Buscador.vue').default);
 Vue.component('card-info-personal', require('./components/generales/CardInfoPersonal.vue').default);
 Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
 Vue.component('allinfo', require('./components/generales/infoGeneralAlumno.vue').default);
 Vue.component('cal-general', require('./components/generales/calGeneral.vue').default);
 Vue.component('admin', require('./components/generales/Admin.vue').default);
+
+
+
+
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);

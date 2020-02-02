@@ -3,17 +3,20 @@
         <p class="subtitulos">Notificación de pases de salida</p>
         <div class="micardNotifications">        
             <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
+            <div class="micardNotificaciones colorText" v-for="(alumno, keypases) in alumnos" :key="keypases" @click="seleccionarAlumno(alumno)">
                
                 <div class="minicontent">
                     <p class="sizeName pl-5 m-0"><b>{{ alumno.Nombre }} {{ alumno.ApePaterno }} {{ alumno.ApeMaterno }}</b></p>
-                    <p class="pl-5 m-0"><b>Grado: {{ alumno.Grado }} semestre</b></p>
-                    <p class="pl-5 m-0"><b>Grupo: {{ alumno.Grupo }}</b></p>
+                    <p class="pl-5 m-0 mt-1"><b>Grado: {{ alumno.Grado }} semestre</b></p>
+                    <p class="pl-5 m-0 mt-1"><b>Grupo: {{ alumno.Grupo }}</b></p>
                 </div>
 
                 <div class="minicontent">
-                    <P class="sizeName m-0 p-0"><b>Pases <label class="textShadow">{{alumno.pases.length}}</label></b></P>
-                    <p class="m-0 p-0" v-for="(pase, keypases2) in alumno.pases" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt="">  {{pase.Fecha}}</p>
+                    <P class="sizeName m-0 p-0"><b>Pases de salida <label class="textShadow">{{alumno.pases.length}}</label></b></P>
+                    
+                    <div class="scrolPase">
+                        <p class="m-0 p-0" v-for="(pase, keypases2) in alumno.pases" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt="">  {{pase.Fecha}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,18 +63,28 @@
     }
 
     .micardNotifications::-webkit-scrollbar{
-    width: 0px;
+        width: 0px;
     }
     
     .minicontent{
         width: 50%;
-        height: 80px;
         float: left;
-        overflow-y: auto;
     }
 
-    .minicontent::-webkit-scrollbar{
-        width: 0px;
+    .scrolPase {
+        width: 105px;
+        height: 55px;
+        overflow: auto;
+    }
+ 
+    .scrolPase::-webkit-scrollbar{
+        width: 1px;
+    }
+
+    
+    .scrolPase::-webkit-scrollbar-thumb{
+        width: 1px;
+        background: #800000;
     }
 
     .sizeName{

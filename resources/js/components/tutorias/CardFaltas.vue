@@ -1,35 +1,33 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Faltas por Asignatura</p>
-        <div class="micard" onclick="abrir()">
+        <div class="micard scrollTCalif colorText">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
-                        <thead>
-                            <tr>
-                                <th>Asignaturas</th>
-                                <th colspan="3"></th>
-                            </tr>
-                        </thead>
-                        <!--<tbody>
-                            <tr>
-                                <td colspan="7" class="text-center">Sin resultados...</td>
-                            </tr>
-                        </tbody>-->
-                        <tbody>
-                            <tr v-for="(materia, key) in materias" :key="key">
-                                <td>{{materia.materia}}</td>
-                                <td>
-                                    <div v-for="(fecha, keyfecha) in materia.data" :key="keyfecha">{{fecha}}</div>
-                                </td>
-                            </tr>
-                        
-                        </tbody>
-                    </table>
+                <thead>
+                    <tr>
+                        <th>Asignaturas</th>
+                        <th colspan="3">Días</th>
+                    </tr>
+                </thead>
+                <!--<tbody>
+                    <tr>
+                        <td colspan="7" class="text-center">Sin resultados...</td>
+                    </tr>
+                </tbody>-->
+                <tbody>
+                    <tr v-for="(materia, key) in materias" :key="key">
+                        <td>{{materia.materia}}</td>
+                        <td>
+                            <div v-for="(fecha, keyfecha) in materia.data" :key="keyfecha">{{fecha}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
 
 <script>
-   
     import bus from '../../event-bus';
     export default {
         data() {
@@ -44,7 +42,7 @@
                 this.jalarInasistencias();
             });
         },
-        methods:{
+        methods: {
             jalarInasistencias() {
                 axios.get('/tutorias/'+this.alumno.IdAlumno+'/inasistencias').then(res => {
                     this.materias = res.data;
@@ -54,7 +52,3 @@
     
     }
 </script>
-
-<style>
-
-</style>

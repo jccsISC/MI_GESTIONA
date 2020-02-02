@@ -1,11 +1,11 @@
 <template>
       <div class="contenedorCard">
         <p class="subtitulos">Alumnos Reprobados por Unidad</p>
-        <div class="micardNotifications">        
+        <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno)">
 
-                <div class="mcontent pl-5">
+                <div class="mcontent pl-2">
                     <p class="sizeName m-0"><b>{{ calificacion.Alumno.Nombre }} {{ calificacion.Alumno.ApePaterno }} {{ calificacion.Alumno.ApeMaterno }}</b></p>
                     <p class="m-0"><b>Grado: {{ calificacion.Alumno.Grado }} semestre</b></p>
                     <p class="m-0"><b>Grupo: {{ calificacion.Alumno.Grupo }}</b></p>
@@ -13,14 +13,16 @@
 
                 <div class="mcontent pl-3">
                     <P class="sizeName m-0"><b>Materias reprobadas <label class="textShadow">{{calificacion.Materias.length}}</label></b></P>
-                    <p class="m-0 pl-4" v-for="(materia, keypases2) in calificacion.Materias" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt=""> {{materia}}</p>
+                    <div class="scrollFM">
+                        <p class="m-0 pl-2" v-for="(materia, keypases2) in calificacion.Materias" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt=""> {{materia}}</p>
+                    </div>
                 </div>
 
-                 <div class="mcontent">
+                <div class="mcontent">
                     <P class="sizeName m-0"><b>Unidad Reprobada <label class="textShadow">{{calificacion.Unidad}}</label></b></P>
-                   <!--  <p class="m-0 p-0">Motivo:</p>
-                    <p class="m-0 pLeft">Faltas<img class="micircle mLeft " src="images/circleRojo.png" alt=""></p>
-                    <p class="m-0 pLeft">Calificación<img class="micircle ml-1" src="images/circulo.png" alt=""></p> -->
+                    <!--  <p class="m-0 p-0">Motivo:</p>
+                    <p class="m-0 pl-2">Faltas<img class="micircle mLeft " src="images/circleRojo.png" alt=""></p>
+                    <p class="m-0 pl-2">Calificación<img class="micircle ml-1" src="images/circulo.png" alt=""></p> -->
                 </div>
             </div>
         </div>
@@ -55,13 +57,3 @@
     }
 </script>
    
-<style>
-
-    .pLeft{
-        padding-left: 10%;
-    }
-
-    .mLeft{
-        margin-left: 10%;
-    }
-</style>

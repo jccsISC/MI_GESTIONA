@@ -2,12 +2,18 @@
   <div class="modal fade" id="DetalleBeca" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Becas</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div>
+            <div class="float-left pl-3">
+                <p class="subtitulos">Agregar beca al alumno</p>
+            </div>
+            
+            <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                <span style="color: #800000">&times;</span>
+            </button>
         </div>
+
+        <hr class="mt-1">
+        
         <div class="modal-body">
       	  <form @submit.prevent="saveBeca">
 	          <div class="form-group">
@@ -17,8 +23,7 @@
               </select>
 		  	    </div>
 		  	   
-		  	    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Guardar</button>
-
+		  	    <button type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> Guardar</button>
 	  	    </form>
         </div>
       </div>

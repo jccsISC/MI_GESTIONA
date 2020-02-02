@@ -16,12 +16,11 @@ Route::get('/', function () {
 });
 
 //LOGIN
-// Route::post('login', 'Auth\LoginController@login')->name('login');
-// Route::get('tutor', 'TutorController@index');
-// Route::get('login', 'LoginController@showLoginForm')->name('login');
-// Route::get('login', function () {
-//     return view('login');
-// });
+Route::post('lg', 'Auth\LoginController@login')->name('login');
+Route::get('lg', 'LoginController@showLoginForm')->name('login');
+Route::get('lg', function () {
+    return view('login');
+});
 
 
 Auth::routes(['register' => false]);
@@ -37,11 +36,9 @@ Route::get('TS', function(Illuminate\Http\Request $request) {
     return view('/trabajosocial.principal');
 });
 
-Route::get('listaBecas', function(){
-    return view('/trabajosocial.listaBecas');
-});
-
-
+// Route::get('listaBecas', function(){
+//     return view('/trabajosocial.listaBecas');
+// });
 
 //BECAS CRUD
 Route::get('becas','BecasController@index');

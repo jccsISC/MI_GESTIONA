@@ -56,6 +56,4 @@ class tblalumno extends Model
     public function incidencias() {
         return $this->hasMany(tblincidencias::class, 'IdAlumno','IdAlumno');
     }
-
-    
 }

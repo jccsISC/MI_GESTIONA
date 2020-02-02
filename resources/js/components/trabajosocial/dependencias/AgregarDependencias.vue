@@ -2,46 +2,58 @@
   <div class="modal fade" id="addDepencencia" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div>
+            <div class="float-left pl-2" style="margin-left: 28%; margin-right: 20%;">
+                <p class="subtitulos text-center">{{dependencia.IdDependencia ? 'Actualizar' : 'Agregar'}} Dependencia</p>
+            </div>
+            
+            <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                <span style="color: #800000">&times;</span>
+            </button>
+        </div>
+
+        <hr class="mt-1">
+        
+        <!-- <div class="modal-header">
           <h5 class="modal-title">{{dependencia.IdDependencia ? 'Actualizar' : 'Agregar'}} Dependencia</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
-        </div>
+        </div> -->
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
               <div class="form-group">
-			          <label>Nombre</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el nombre de la dependencia" v-model="dependencia.Nombre">
+			          <label><b>Nombre</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el nombre de la dependencia" v-model="dependencia.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
-			          <label>Dirección</label>
-			          <input type="text" class="form-control" placeholder="Ingresa la dirección de la dependencia" v-model="dependencia.Direccion">
+			          <label><b>Dirección</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa la dirección de la dependencia" v-model="dependencia.Direccion">
 		  	      </div>
 
               <div class="form-group">
-			          <label>Giro</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el giro de la dependencia" v-model="dependencia.Giro">
+			          <label><b>Giro</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el giro de la dependencia" v-model="dependencia.Giro">
 		  	      </div>
                 
               <div class="form-group">
-			          <label>Telefono</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el telefono de la dependencia" v-model="dependencia.Telefono">
+			          <label><b>Telefono</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el telefono de la dependencia" v-model="dependencia.Telefono">
 		  	      </div>
 
               <div class="form-group">
-			          <label>Responsable</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el responsable de la dependencia" v-model="dependencia.Responsable">
+			          <label><b>Responsable</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el responsable de la dependencia" v-model="dependencia.Responsable">
 		  	      </div>
 
               <div class="form-group">
-			          <label>Tipo de Vinculación</label>
-			          <input type="text" class="form-control" placeholder="Ingresa el tipo de vinculación de la dependencia" v-model="dependencia.TipoVinculacion">
+			          <label><b>Tipo de Vinculación</b></label>
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el tipo de vinculación de la dependencia" v-model="dependencia.TipoVinculacion">
 		  	      </div>
           
-		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
+		  	      <button type="submit" class="btn miBtn positionSave p-0 pl-1 pr-1"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>
@@ -87,9 +99,11 @@
           });
       },
       saveDependencia() {
-        if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
+        if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined 
+            || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined
+            || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
+            alert('Verifique y llene todos los campos');
+            return;
         }
         
         axios.post('/dependencias', this.dependencia)

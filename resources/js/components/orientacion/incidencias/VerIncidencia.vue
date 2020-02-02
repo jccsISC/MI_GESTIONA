@@ -31,8 +31,8 @@
                         <p><b>Derivación</b>{{incidencia.Derivacion}}</p>
 
                         
-                         <button @click="metodo" type="button" class="miBtn posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
-                            Editar
+                         <button @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+                            <i class="fas fa-edit"></i>
                         </button>
                     </div>
             </div>
@@ -71,10 +71,7 @@
 </script>
 
 <style>
-
-
-
-.mibtn{
+    /* .mibtn{
         background: #800000;
         border-radius: 4px;
         color: white;
@@ -97,6 +94,6 @@
         border: 1px solid rgb(31, 30, 30);
         border-radius: 6px;
         padding: 5px;
-    }
+    } */
 
 </style>

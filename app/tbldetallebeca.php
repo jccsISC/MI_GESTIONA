@@ -8,7 +8,7 @@ class tbldetallebeca extends Model
 {
     protected $table = 'tbldetallebecas';
     protected $primaryKey = 'IdDetalleBeca';
-    protected $fillable = ['IdBeca','IdAlumno','Existo'];
+    protected $fillable = ['IdBeca','IdAlumno','Existe'];
     public $timestamps = false;
     
 }

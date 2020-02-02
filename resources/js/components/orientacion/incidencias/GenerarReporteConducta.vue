@@ -9,60 +9,58 @@
                     </button>
                 </div>
 
-                    <div class="modal-body-g">
-                        <p>Fecha: {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
-                        <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                        <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
-                        <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
-                        <p class="m-0"><b>Telefono: </b>{{alumno.Telefono}}</p>
-                        <p class="m-0"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
-                        <select class="form-control" v-model="incidencia.IdFamiliar">
-                            <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
-                        </select>
-                        <p class="m-0"><b>Telefono: </b>{{obtenerTelefono()}}</p>
-                            
-                        <div class="form-group">
-                            <p class="m-0">Descripció del reporte</p> 
-                            <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control" placeholder="Escriba aquí una descripcón del reporte"></textarea>
-                        </div>
-
-
-                        <div class="form-group">
-                            <p class="m-0">Comentario de quien le da seguimiento</p> 
-                            <textarea v-model="incidencia.Comentarios" name="" id="" class="form-control" placeholder="Escriba aquí los comentarios"></textarea>
-                        </div>
+                <div class="modal-body-g">
+                    <p>Fecha: {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
+                    <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
+                    <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
+                    <p class="m-0"><b>Telefono: </b>{{alumno.Telefono}}</p>
+                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
+                    <select class="form-control" v-model="incidencia.IdFamiliar">
+                        <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
+                    </select>
+                    <p class="m-0"><b>Telefono: </b>{{obtenerTelefono()}}</p>
                         
-                        <select v-model="incidencia.TipoFalta">Tipo de reporte
-                            <option value="Leve">Leve</option>
-                            <option value="Grave">Grave</option>
-                            <option value="Muy Grave">Muy Grave</option>
-                        </select>
-
-                        <div class="form-group">
-                            <p class="m-0">Comentario del Padre o Tutor</p>
-                            <textarea v-model="incidencia.ComentariosPa" type="text" class="form-control" placeholder="Escriba aquí los comentariso del padre"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <p class="m-0">Observaciones</p>
-                            <input v-model="incidencia.Observaciones" type="text" class="form-control" placeholder="Escriba aquí las Observaciones">
-                        </div>
-
-                        <div class="form-group">
-                            <p class="m-0">Derivación</p>
-                            <input v-model="incidencia.Derivacion" type="text" class="form-control" placeholder="Escriba aquí la derivación">
-                        </div>
-
-                        <button  class="btn btn-success" @click="incidencia.Status = 1">concluyó</button>
-                        <button  class="btn btn-warning" @click="incidencia.Status = 0">pendiente</button>
-                        
-                
+                    <div class="form-group">
+                        <p class="m-0">Descripció del reporte</p> 
+                        <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control" placeholder="Escriba aquí una descripcón del reporte"></textarea>
                     </div>
-                    <div class="modal-footer">
-                        <button @click="guardarReporte" class="mibtn">
-                            <i class="fas fa-plus-circle"> Guardar</i>
-                        </button>
+
+
+                    <div class="form-group">
+                        <p class="m-0">Comentario de quien le da seguimiento</p> 
+                        <textarea v-model="incidencia.Comentarios" name="" id="" class="form-control" placeholder="Escriba aquí los comentarios"></textarea>
                     </div>
+                    
+                    <select v-model="incidencia.TipoFalta">Tipo de reporte
+                        <option value="Leve">Leve</option>
+                        <option value="Grave">Grave</option>
+                        <option value="Muy Grave">Muy Grave</option>
+                    </select>
+
+                    <div class="form-group">
+                        <p class="m-0">Comentario del Padre o Tutor</p>
+                        <textarea v-model="incidencia.ComentariosPa" type="text" class="form-control" placeholder="Escriba aquí los comentariso del padre"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="m-0">Observaciones</p>
+                        <input v-model="incidencia.Observaciones" type="text" class="form-control" placeholder="Escriba aquí las Observaciones">
+                    </div>
+
+                    <div class="form-group">
+                        <p class="m-0">Derivación</p>
+                        <input v-model="incidencia.Derivacion" type="text" class="form-control" placeholder="Escriba aquí la derivación">
+                    </div>
+
+                    <button  class="btn btn-success" @click="incidencia.Status = 1">concluyó</button>
+                    <button  class="btn btn-warning" @click="incidencia.Status = 0">pendiente</button>
+                </div>
+                <div class="modal-footer">
+                    <button @click="guardarReporte" class="mibtn">
+                        <i class="fas fa-plus-circle"> Guardar</i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -34,8 +34,8 @@
 
     .posicionBtn{
         position: fixed;
-        top: 110px;
-        right: 3%;
+        top: 120px;
+        right: 1%;
         width: 180px;
     }
     .miBtn{
