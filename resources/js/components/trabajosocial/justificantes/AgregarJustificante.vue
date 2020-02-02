@@ -25,16 +25,7 @@
 
             <button  v-if="ver" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
               <i class="far fa-trash-alt"></i>
-            </button>
-            
-
-            <!-- <a href="{{route('imprimirJ')}}">Imprimir Justificante</a> -->
-              
-
-            <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
-              <i class="fas fa-print"></i>
-              <!-- <a href="{{route('imprimirP')}}">Imprimir Pase</a> -->
-            </button>
+            </button>            
 
             <div v-if="tipo === 'justificante'" class="form-group">
 			          <label><b>Fecha Inicio</b></label>
@@ -50,6 +41,11 @@
 			          <label><b>Motivo</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
 		  	    </div>
+
+            <div v-if="tipo === 'justificante' " class="form-group">
+            <i class="fas fa-print"></i>
+              <a href="imprimirJust">Imprimir</a>
+            </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label :disabled="ver"><b>Fecha: </b> 2020-01-29</label>
@@ -74,6 +70,11 @@
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label><b>Descripción</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa la descripcion" v-model="pase.Descripcion">
+		  	    </div>
+
+            <div v-if="tipo === 'pase' " class="form-group">
+			         <i class="fas fa-print"></i>
+              <a href="imprimirPase">Imprimir</a>
 		  	    </div>
 		  	  
 		  	    <button v-if="!ver" type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> Guardar</button>

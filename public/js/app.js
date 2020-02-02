@@ -5189,6 +5189,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -49668,6 +49669,7 @@ var render = function() {
                           expression: "becaSeleccionada"
                         }
                       ],
+                      attrs: { required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -50848,17 +50850,6 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "mibtnI btnImprimirPase ",
-                        attrs: { type: "button" }
-                      },
-                      [_c("i", { staticClass: "fas fa-print" })]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
                 _vm.tipo === "justificante"
                   ? _c("div", { staticClass: "form-group" }, [
                       _vm._m(1),
@@ -50967,6 +50958,16 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _vm.tipo === "justificante"
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c("i", { staticClass: "fas fa-print" }),
+                      _vm._v(" "),
+                      _c("a", { attrs: { href: "imprimirJust" } }, [
+                        _vm._v("Imprimir")
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
                 _vm.tipo === "pase"
                   ? _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { disabled: _vm.ver } }, [
@@ -51052,7 +51053,11 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: { disabled: _vm.ver, type: "text" },
+                              attrs: {
+                                disabled: _vm.ver,
+                                type: "text",
+                                required: ""
+                              },
                               on: {
                                 change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
@@ -51165,6 +51170,16 @@ var render = function() {
                           }
                         }
                       })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.tipo === "pase"
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c("i", { staticClass: "fas fa-print" }),
+                      _vm._v(" "),
+                      _c("a", { attrs: { href: "imprimirPase" } }, [
+                        _vm._v("Imprimir")
+                      ])
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -51347,7 +51362,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", [
+                _c("div", { staticClass: "pase" }, [
                   _vm._m(1),
                   _vm._v(" "),
                   _c(
@@ -68734,8 +68749,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
