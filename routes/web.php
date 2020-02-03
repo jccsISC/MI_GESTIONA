@@ -34,9 +34,6 @@ Route::get('TS', function(Illuminate\Http\Request $request) {
     return view('/trabajosocial.principal');
 });
 
-// Route::get('listaBecas', function(){
-//     return view('/trabajosocial.listaBecas');
-// });
 
 //BECAS CRUD
 Route::get('becas','BecasController@index');
@@ -44,7 +41,6 @@ Route::post('becas','BecasController@store');
 Route::put('becas/{tblbeca}','BecasController@update');
 Route::delete('becas/{tblbeca}','BecasController@destroy');
 
-//Route::delete('practicas/{tblserviciopractica}','BecasController@destroy');
 
 //JUSTIFICANTES CRUD
 Route::get('justificantes', 'JustificantesController@index');

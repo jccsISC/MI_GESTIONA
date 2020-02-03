@@ -10,5 +10,4 @@ class tbldetallebeca extends Model
     protected $primaryKey = 'IdDetalleBeca';
     protected $fillable = ['IdBeca','IdAlumno','Existe'];
     public $timestamps = false;
-    
 }

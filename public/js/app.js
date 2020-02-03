@@ -51699,11 +51699,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "float-left pl-2" }, [
-        _c("p", { staticClass: "subtitulos" }, [
-          _vm._v("Crear Justificante/Pase de salida")
-        ])
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "float-left pl-2",
+          staticStyle: { "margin-left": "22%" }
+        },
+        [
+          _c("p", { staticClass: "subtitulos text-center" }, [
+            _vm._v("Crear Justificante/Pase de salida")
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "button",

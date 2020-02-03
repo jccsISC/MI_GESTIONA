@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div>
-            <div class="float-left pl-2">
-                <p class="subtitulos">Crear Justificante/Pase de salida</p>
+            <div class="float-left pl-2"  style="margin-left: 22%;">
+                <p class="subtitulos text-center">Crear Justificante/Pase de salida</p>
             </div>
             
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">

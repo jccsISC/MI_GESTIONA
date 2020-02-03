@@ -15,7 +15,7 @@ class tblhorariomaestros extends Model
         return $this->hasOne(tblinasistencias::class, 'IdHoraMa');
     }
 
-    public function detalles(){
+    public function detalles() {
         return $this->hasManyThrough(tbldetalleinasistencias::class, tblinasistencias::class);
     }
 }
