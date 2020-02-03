@@ -1,50 +1,96 @@
 <template>
     <div>
         <div class="modal fade" role="dialog" id="verMalaConducta" style="z-index: 100000" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Reporte de Mala conducta</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                </div>
-
-                    <div class="modal-body-g">
-                        <p><b>Fecha: </b>{{incidencia.FechaInicio}}</p>
-                        <p class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                        <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
-                        <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
-                        <p class="m-0"><b>Telefono: </b>{{alumno.Telefono}}</p>
-                        <p class="m-0"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
-                        <p><b>Fammiliar: </b>{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</p>
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div>
+                        <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
+                            <p class="subtitulos text-center">Reporte de Mala Conducta</p>
+                        </div>
                         
-                        <p class="m-0"><b>Telefono: </b>{{familiar.Telefono}}</p>
-                        <p><b>Descripció del reporte: </b>{{incidencia.DescripcionReporte}}</p>  
-
-                        <p><b>Comentario de quien le da seguimiento: </b>{{incidencia.Comentarios}}</p>
-
-                        <p><b>Tipo de Reporte</b>{{incidencia.TipoFalta}}</p>
-                        
-                        <p><b>Comentario del Padre o Tutor</b>{{incidencia.ComentariosPa}}</p>
-
-                        <p><b>Observaciones</b>{{incidencia.Observaciones}}</p>
-                       
-                        <p><b>Derivación</b>{{incidencia.Derivacion}}</p>
-
-                        <p><b>Seguimiento</b>{{incidencia.Status}}</p>
-                        
-                         <button @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
-                           <i class="fas fa-edit"></i>
+                        <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                            <span style="color: #800000">&times;</span>
                         </button>
                     </div>
+
+                    <hr class="mt-1">
+
+                    <div class="modal-body-g p-3 colorText">
+                        
+                        <div class="imgLogo">
+                            <img src="images/logo.jpg" alt="">
+                        </div>
+
+                        <button @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <!-- <button type="button" class="mibtnI positionImprimir">
+                            <i class="fas fa-print"></i>
+                        </button> -->
+                        
+                        <div class="text-center mt-5">
+                            <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                            <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                            <p class="m-0" style="text-decoration: underline;">FORMATO YO NO ABANDONO</p>
+                            <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
+                        </div>
+
+
+                        <p class="text-right mt-3"><b>Fecha: </b>{{incidencia.FechaInicio}}</p>
+
+                        <div class="contenedorRT mt-4">
+                            <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
+                            <label class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</label>
+                            <label class="m-0 ml-2"><b>Semestre: </b>{{alumno.Grado}}</label>
+                            <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                            <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
+                            
+                            <p><b>Nombre de quien deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
+                            <p><b>Fammiliar: </b>{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</p>
+                            <p><b>Telefono: </b>{{familiar.Telefono}}</p>
+                        </div>
+                        
+                        <div class="contenedorRT mt-4">
+                            <p class="minicontenedor"><b>Descripció del reporte: </b>{{incidencia.DescripcionReporte}}</p>  
+                            <p class="minicontenedor"><b>Comentario de quien le da seguimiento: </b>{{incidencia.Comentarios}}</p>
+                            <p class="minicontenedor"><b>Gravedad de la falta: </b>{{incidencia.TipoFalta}}</p>
+                            <p class="minicontenedor"><b>Comentario del Padre o Tutor: </b>{{incidencia.ComentariosPa}}</p>
+                            <p class="minicontenedor"><b>Observaciones: </b>{{incidencia.Observaciones}}</p>
+                            <p class="minicontenedor"><b>Derivación: </b>{{incidencia.Derivacion}}</p>
+                        </div>
+
+                        <div class="contenedorRT mt-4 txtP">
+                            <p class="m-0">PSICOSOCIAL</p>
+                            <p class="m-0">PISC. CESAR RODRIGUEZ GARCIA</p>
+                            <p class="m-0">ORIENTACION EDUCATIVA</p>
+                            <p class="m-0">HABITOS DE ESTUDIO</p>
+                            <p class="m-0">TEMAS DE SALUD MENTAL Y FISICA</p>
+                            <p class="m-0">TEMAS FAMILIARES</p>
+                        </div>
+
+                        <div class="gridFirmar mb-5">
+                            <div>
+                                <hr class="miHr">
+                                <p class="miI">Nombre y Firma quien deriva</p>
+                            </div>
+
+                            <div>
+                                <hr class="miHr">
+                                <p class="miM">Nombre y Firma del encargado Yo No Abandono Seguimiento</p>
+                            </div>
+
+                            <div>
+                                <hr class="miHr">
+                                <p class="miD">Nombre y Firma de quien da</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
+        <genera-mala-conducta></genera-mala-conducta>
     </div>
-    <genera-mala-conducta></genera-mala-conducta>
-    </div>
-    
 </template>
 
 <script>

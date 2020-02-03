@@ -20,7 +20,7 @@
                         <p class="m-0"><b>Telefóno2: </b>{{alumno.Telefono2 ? alumno.Telefono2 : ''}}</p>
                     </div>
 
-                    <div class="">
+                    <div>
                         <div class="linea"></div>
                         <p class="m-0"><b>CURP: </b>{{alumno.Curp}}</p>
                         <p class="m-0"><b>Correo: </b>{{alumno.EMAIL}}</p>
@@ -175,7 +175,7 @@
                         <p class="text-center"><b>SALUD</b></p>
                     </div>
 
-                    <div class="">
+                    <div>
                         <label class="mr-5"><b>Estatura: </b>{{salud.Estatura}}</label>
                         <label class="mr-5 ml-3"><b>Peso: </b>{{salud.Peso}}</label>
                         <label class="mr-5"><b>IMC: </b>{{salud.IMC}}</label><br>
@@ -348,7 +348,8 @@
                 incidencias: [],
                 justificantes: [],
                 pases: [],
-                contador:0
+                contador:0,
+                faltas: ''
             }
         },
         created() {
@@ -362,6 +363,7 @@
                 this.jalarPases();
                 this.jalarPractica();
                 this.jalarBecas();
+                this.jalarFaltas();
             });
         },
         computed:{
@@ -385,6 +387,13 @@
             }
          },
         methods:{
+
+            jalarFaltas(){
+                axios.get('faltas/'+this.alumno.IdAlumno+'/faltas').then(res =>{
+                    console.log(res.data);
+                    // this.faltas = res.data;
+                });
+            },
             jalarCalificaciones(){
                 axios.get('alumnos/'+this.alumno.IdAlumno+'/calificaciones').then(res =>{
                     console.log(res.data);

@@ -19,9 +19,30 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect($this->redirectTo());
         }
 
         return $next($request);
+    }
+
+    public function redirectTo () {
+        switch (Auth::user()->roles->first()->name) {
+            case 'admin':
+                return 'A';
+            break;
+            case 'tutor':
+                return 'T';
+            break;
+            case 'orientador':
+                return 'OE';
+            break;
+            case 'tsocial':
+                return 'TS';
+            break;
+            case 'maestro':
+                return 'M';
+            break;
+        }
+        
     }
 }

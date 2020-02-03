@@ -5,26 +5,28 @@
             <div v-if="alumno.IdAlumno">
                 <div class="pt-1 interlineado">
                     <p><b>Cantidad de incidencias</b></p>
-                    <button 
-                        v-for="(incidencia, key) in incidencias" :key="key"  
-                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
                     
-                        {{key + 1}}
+                    <div class="borde">
+                        <button 
+                            v-for="(incidencia, key) in incidencias" :key="key"  
+                            class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
+                            data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+                        
+                            {{key + 1}}
 
-                    </button>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="mcontenidoL pt-1 interlineado">
                     <p><b>Detalles</b></p>
-                    
                     <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
                     <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
                 </div>
 
                 <div class="pt-1">
-                    <p class="p-0 m-0 fecha"><b>Fecha</b>{{inconveniente.FechaInicio}}</p>
-                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                    <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
+                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" class="float-right mr-3" alt="ver el historial" style="width: 20px; height: 20px;"></a>
                 </div>
             </div>
         </div>
@@ -97,6 +99,26 @@
 
     .fecha{
         font-size: 11px;
+    }
+
+
+    .borde {
+        width: 250px;
+        height: 80px;
+        border:1px solid #a5a5a5;
+        border-radius: 4px;
+        overflow: auto;
+        padding: 5;
+        margin: 0;
+    }
+
+    .borde::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    .borde::-webkit-scrollbar-thumb {
+        width: 1px;
+        background: #800000;
     }
 
 </style>

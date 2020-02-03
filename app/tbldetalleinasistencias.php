@@ -8,7 +8,7 @@ class tbldetalleinasistencias extends Model
 {
     protected $table = 'tbldetalleinasistencias';
     protected $primaryKey = 'IdDetInasistencia';
-    protected $fillable = ['IdInasistencia','IdAlumno','Fecha','Existe'];
+    protected $fillable = ['IdInasistencia','IdAlumno','Fecha','Existe','parcial'];
     public $timestamps = false;
 
     public function inasistencia() {
