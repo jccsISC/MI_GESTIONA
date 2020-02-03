@@ -11,7 +11,7 @@
             <div class="container">
                 <hr style="margin-top:70px;">
                 <div class="divInputs">
-                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Ingresa tu usuario" name="email" value="{{ old('email') }}"  autofocus>
+                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Ingresa tu usuario" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">

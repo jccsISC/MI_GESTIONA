@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
 
 //LOGIN
-Route::post('lg', 'Auth\LoginController@login')->name('login');
-Route::get('lg', 'LoginController@showLoginForm')->name('login');
-Route::get('lg', function () {
-    return view('login');
-});
+// Route::post('lg', 'Auth\LoginController@login')->name('login');
+// Route::get('lg', 'LoginController@showLoginForm')->name('login');
+// Route::get('lg', function () {
+//     return view('login');
+// });
 
 
 Auth::routes(['register' => false]);
@@ -122,6 +120,8 @@ Route::get('M', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['maestro']);
     return view('/inasistencias');
 });
+
+Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
 
 //REPORTES GENERALES
 Route::get('R', function(){

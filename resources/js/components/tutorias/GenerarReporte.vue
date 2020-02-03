@@ -38,7 +38,7 @@
                         
                         <div>
                             <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="reporte.IdFamiliar">
+                            <select  v-model="reporte.IdFamiliar" required>
                                 <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                             </select>
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
@@ -75,7 +75,7 @@
                        </div>
 
                        <div>
-                            <button @click="guardarReporte"  type="submit" class="btnGuardar positionSave">
+                            <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
                                 <i class="fas fa-save"></i> Guardar
                             </button>
                        </div>
