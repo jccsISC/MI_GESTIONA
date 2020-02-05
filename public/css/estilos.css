@@ -32,8 +32,8 @@ body::-webkit-scrollbar-thumb{
   .modal-body-g2{
     height: 550px;
     overflow-y: auto;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
     padding-bottom: 12px;
   }
 
@@ -289,8 +289,9 @@ footer{
         min-height: 245px;
         border-radius: 4px;
         border: 2px solid rgb(223, 219, 219);
-        margin-left: 1%;
-        margin-right: 1%;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 10px;
     }
 
     .contenedorVentana2{
@@ -299,6 +300,7 @@ footer{
         border: 2px solid rgb(223, 219, 219);
         margin-left: 1%;
         margin-right: 1%;
+        padding: 10px;
     }
     /*FIN TODO VENTANA ALUMNO-----------------------------------------------------------------------------------------------*/
 

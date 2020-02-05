@@ -76,7 +76,7 @@ Route::delete('/justificantes/{{tbljustificante}}', 'TrabajoSocialController@eli
 
 //ServicioPracticas
 Route::resource('servicioPracticas','ServicioPracticasController');
-Route::resource('TS','ServicioPracticasController');
+// Route::resource('TS','ServicioPracticasController');
 
 //ALUMNOS
 Route::get('alumnos/buscar', 'AlumnoController@buscar');

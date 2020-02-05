@@ -86,8 +86,7 @@
             <h5>INFORMACIÓN ACADÉMICA - INASISTENCIAS</h5>
         </div>
         <div class="contentInf">
-            <div class="gridM2">
-                 
+            <div class="gridM2"> 
                 <div v-if="alumno.IdAlumno" class="container contentCalif scrollTCalif">
                     <div>
                         <p><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
@@ -169,7 +168,6 @@
         </div>
          <div class="contentInf">
             <div class="gridM2">
-                 
                 <div v-if="alumno.IdAlumno">
                     <div>
                         <p class="text-center"><b>SALUD</b></p>

@@ -2172,8 +2172,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2455,94 +2453,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      alumno: {}
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
-      _this.alumno = alumno;
-    });
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/Spinner.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/Spinner.vue?vue&type=script&lang=js& ***!
@@ -2679,9 +2589,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2730,6 +2643,456 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      alumno: {},
+      salud: {},
+      practica: {},
+      familiares: [],
+      calificaciones: [],
+      becas: [],
+      incidencias: [],
+      justificantes: [],
+      pases: [],
+      contador: 0,
+      faltas: ''
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
+      _this.alumno = alumno;
+
+      _this.jalarCalificaciones();
+
+      _this.jalarFamiliares();
+
+      _this.jalarSalud();
+
+      _this.jalarIncidencias();
+
+      _this.jalarJustificantes();
+
+      _this.jalarPases();
+
+      _this.jalarPractica();
+
+      _this.jalarBecas();
+
+      _this.jalarFaltas();
+    });
+  },
+  computed: {
+    promedioGeneral: function promedioGeneral() {
+      var promedio = 0;
+      var counter = 0;
+      var general = 0;
+
+      if (!this.calificaciones.length) {
+        return '';
+      }
+
+      this.calificaciones.forEach(function (calificacion) {
+        promedio += calificacion.Calificacionfinal ? parseInt(calificacion.Calificacionfinal) : 0;
+        counter++;
+      });
+      general = promedio / counter;
+      return general.toFixed(1);
+    },
+    inconveniente: function inconveniente() {
+      return this.incidencias[0] ? this.incidencias[0] : {};
+    }
+  },
+  methods: {
+    jalarFaltas: function jalarFaltas() {
+      axios.get('faltas/' + this.alumno.IdAlumno + '/faltas').then(function (res) {
+        console.log(res.data); // this.faltas = res.data;
+      });
+    },
+    jalarCalificaciones: function jalarCalificaciones() {
+      var _this2 = this;
+
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/calificaciones').then(function (res) {
+        console.log(res.data);
+        _this2.calificaciones = res.data;
+      });
+    },
+    unidad: function unidad(detalles, _unidad) {
+      var calificacion = '';
+
+      if (!detalles) {
+        return calificacion;
+      }
+
+      detalles.forEach(function (detalle) {
+        if (detalle.Unidad == _unidad) {
+          calificacion = detalle.Calificacion;
+          return;
+        }
+      });
+      return calificacion;
+    },
+    jalarFamiliares: function jalarFamiliares() {
+      var _this3 = this;
+
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
+        _this3.familiares = res.data;
+        console.log(res);
+      });
+    },
+    jalarSalud: function jalarSalud() {
+      var _this4 = this;
+
+      axios.get('/salud/' + this.alumno.IdAlumno).then(function (res) {
+        _this4.salud = res.data;
+      });
+    },
+    jalarIncidencias: function jalarIncidencias() {
+      var _this5 = this;
+
+      axios.get('/incidencias/' + this.alumno.IdAlumno).then(function (res) {
+        _this5.incidencias = [];
+        res.data.forEach(function (i) {
+          _this5.incidencias.unshift(i);
+        });
+      });
+    },
+    jalarPases: function jalarPases() {
+      var _this6 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(function (res) {
+        _this6.pases = res.data;
+        console.log(res.data);
+      });
+    },
+    jalarJustificantes: function jalarJustificantes() {
+      var _this7 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes').then(function (res) {
+        _this7.justificantes = res.data;
+        console.log(res.data);
+      });
+    },
+    jalarPractica: function jalarPractica() {
+      var _this8 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/practica?tipo=' + this.tipo).then(function (res) {
+        _this8.practica = res.data;
+        console.log(res);
+      })["catch"]();
+    },
+    jalarBecas: function jalarBecas() {
+      var _this9 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/becas').then(function (res) {
+        _this9.becas = res.data;
+        console.log(res);
+      });
+    }
+  },
+  props: ['tipo']
+});
 
 /***/ }),
 
@@ -11016,25 +11379,6 @@ exports.push([module.i, "\n.miImg {\n    width: 90px;\n    height: 90px;\n    bo
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\np{\n    margin: 0em;\n}\n.miImg1{\n    width: 110px;\n    height: 140px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    margin-left: 5px;\n    float: left;\n    padding-top: 15px;\n}\nimg{\n    width: 100%;\n}\n.miContent1{\n    display: grid;\n    padding: 8px;\n    grid-template-columns:120px 2fr 3fr;\n    grid-gap: 10px;\n}\n.miContentdos{\n    display: grid;\n    padding: 2px;\n    grid-template-columns:240px 490px;\n    grid-gap: 10px;\n}\n.uno{\n    background: #07A9B1;\n    font-size: .75em;\n}\n.dos{ \n    background: #FF5733;\n    font-size: .75em;\n}\n.tres{\n    background: #07B134;\n    font-size: .75em;\n    text-align: center;\n}\n.padres{\n    display: grid;\n    grid-template-columns:1fr 1fr;\n    background: #07B134;\n    font-size: .75em;\n    grid-gap: 10px;\n}\n.mama{\n    background: rgb(177, 7, 7);\n    font-size: 1.2em;\n}\n.papa{\n    background: rgb(101, 99, 134);\n    font-size: 1.2em;\n}\n.cuatro{\n    background: #A407B1;\n    font-size: .75em;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/Spinner.vue?vue&type=style&index=0&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/Spinner.vue?vue&type=style&index=0&lang=css& ***!
@@ -11073,9 +11417,9 @@ exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 14px;\n}\n.contenedo
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11085,7 +11429,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.subtitulos{\n      text-align: center;\n}\n\n", ""]);
+exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\ntable.scrollT {\n    border-spacing: 0;\n    /* border: 2px solid black; */\n}\n.scrollT tbody,\n.scrollT thead { display: block;\n}\n.scrollT thead tr th { \n    height: 30px;\n    line-height: 30px;\n    /* text-align: left; */\n}\n.scrollT tbody {\n    height: 115px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n/* tbody { border-top: 2px solid black; } */\n.scrollT tbody td {\n    /* width: 20%; */ /* Optional */\n    border-right: 1px solid rgb(156, 156, 156);\n    /* white-space: nowrap; */\n}\n.scrollT tbody td:last-child, thead th:last-child {\n    border-right: none;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -42428,36 +42772,6 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/Spinner.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/Spinner.vue?vue&type=style&index=0&lang=css& ***!
@@ -42518,15 +42832,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -45171,204 +45485,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6& ***!
-  \************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contenedorCard1" }, [
-    _c(
-      "div",
-      { staticClass: "micard1", attrs: { id: "cardInfoPersonalGeneral" } },
-      [
-        _vm.alumno.IdAlumno
-          ? _c("div", { staticClass: "miContent1" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "uno" }, [
-                _c("p", [
-                  _c("b", [_vm._v("Matricula: ")]),
-                  _vm._v(_vm._s(_vm.alumno.IdAlumno))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Nombre: ")]),
-                  _vm._v(
-                    _vm._s(_vm.alumno.Nombre) +
-                      " " +
-                      _vm._s(_vm.alumno.ApePaterno) +
-                      "  " +
-                      _vm._s(_vm.alumno.ApeMaterno)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Sexo: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Sexo))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Fecha Nacimiento: ")]),
-                  _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("CURP: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Curp))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Etnia: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Etnia))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Sangre: ")]),
-                  _vm._v(_vm._s(_vm.alumno.TipoSangre))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Telefóno: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Telefono))
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "miContentdos" }, [
-                _c("div", { staticClass: "dos" }, [
-                  _c("p", [
-                    _c("b", [_vm._v("Correo: ")]),
-                    _vm._v(_vm._s(_vm.alumno.EMAIL))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Carrera: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Carrera))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Grado: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Grado))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Grupo: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Grupo))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Turno: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Turno))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "cuatro" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "lugarN" }, [
-                    _c("p", [
-                      _c("b", [_vm._v("Municipio: ")]),
-                      _vm._v(_vm._s(_vm.alumno.MunicipioNac) + " "),
-                      _c("b", [_vm._v(" Estado: ")]),
-                      _vm._v(_vm._s(_vm.alumno.EstadoNac))
-                    ]),
-                    _c("br")
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "domicilio" }, [
-                    _c("p", [
-                      _c("b", [_vm._v("Calle: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Calle) + " "),
-                      _c("b", [_vm._v(" No.Ext: ")]),
-                      _vm._v(_vm._s(_vm.alumno.NumExterior) + " "),
-                      _c("b", [_vm._v(" No.Int: ")]),
-                      _vm._v(_vm._s(_vm.alumno.NumExterior) + " "),
-                      _c("b", [_vm._v(" CP: ")]),
-                      _vm._v(_vm._s(_vm.alumno.CodPostal))
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Entre calle 1: ")]),
-                      _vm._v(_vm._s(_vm.alumno.EntreCalle) + " "),
-                      _c("b", [_vm._v(" Entre calle 2: ")]),
-                      _vm._v(_vm._s(_vm.alumno.EntreCalle2) + " "),
-                      _c("b", [_vm._v(" Colonia: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Colonia) + " "),
-                      _c("b", [_vm._v("Municipio: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Municipio) + " "),
-                      _c("b", [_vm._v(" Estado: ")]),
-                      _vm._v(_vm._s(_vm.alumno.Estado))
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          : _vm._e()
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "miImg1" }, [
-      _c("img", {
-        attrs: { src: "images/student.png", alt: "Foto del Alumno" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tres" }, [
-      _c("p", {}, [_c("b", [_vm._v("INFORMACIÓN DE PADRES O TUTOR")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "padres" }, [
-        _c("div", { staticClass: "mama" }, [
-          _c("p", [_c("b", [_vm._v("MAMÁ")])])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "papa" }, [
-          _c("p", [_c("b", [_vm._v("PAPÁ")])])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", {}, [_c("b", [_vm._v("LUGAR DE NACIMIENTO")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", {}, [_c("b", [_vm._v("DOMICILIO")])])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/Spinner.vue?vue&type=template&id=53df6c76&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/Spinner.vue?vue&type=template&id=53df6c76& ***!
@@ -45535,19 +45651,265 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "modal-body-g2" }, [
+            _c("hr", { staticClass: "mt-1 m-0 p-0" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body-g2 sizeGeneral" }, [
               _c("p", { staticClass: "subtitulos" }, [
                 _vm._v("Información Personal")
               ]),
               _vm._v(" "),
               _c("hr", { staticClass: "barrasubtitulos" }),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "contenedorVentana" },
-                [_c("card-info-personal-general")],
-                1
-              ),
+              _c("div", { staticClass: "contenedorVentana colorText" }, [
+                _vm.alumno.IdAlumno
+                  ? _c("div", { staticClass: "inforPG" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "subGrid" }, [
+                        _c("div", { staticClass: "pl-2" }, [
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Matricula: ")]),
+                            _vm._v(_vm._s(_vm.alumno.IdAlumno))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Nombre: ")]),
+                            _vm._v(
+                              _vm._s(_vm.alumno.Nombre) +
+                                " " +
+                                _vm._s(_vm.alumno.ApePaterno) +
+                                "  " +
+                                _vm._s(_vm.alumno.ApeMaterno)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                            _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Género: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Sexo == "M"
+                                  ? "Masculino"
+                                  : "Femenino"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Telefono))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno2: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Telefono2 ? _vm.alumno.Telefono2 : ""
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "lineaG" }),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("CURP: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Curp))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Correo: ")]),
+                            _vm._v(_vm._s(_vm.alumno.EMAIL))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Carrera: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Carrera))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Grado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Grupo: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Grupo))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Turno: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Turno == "M"
+                                  ? "Matutino"
+                                  : "Vespertino"
+                              )
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("div", { staticClass: "lineaG" }),
+                        _vm._v(" "),
+                        _c("div", [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "subGrid" },
+                            _vm._l(_vm.familiares, function(familiar, key) {
+                              return _c("div", { key: key }, [
+                                _c("p", { staticClass: "m-0" }, [
+                                  _c("b", [_vm._v(_vm._s(familiar.Tipo))])
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "m-0" }, [
+                                  _c("b", [_vm._v("Nombre: ")]),
+                                  _vm._v(
+                                    _vm._s(familiar.Nombre) +
+                                      " " +
+                                      _vm._s(familiar.ApePaterno) +
+                                      "  " +
+                                      _vm._s(familiar.ApeMaterno)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "m-0" }, [
+                                  _c("b", [_vm._v("Telefóno: ")]),
+                                  _vm._v(_vm._s(familiar.Telefono))
+                                ])
+                              ])
+                            }),
+                            0
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "sizeGeneral" }, [
+                  _vm.alumno.IdAlumno
+                    ? _c("div", { staticClass: "float" }, [_vm._m(3)])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.alumno.IdAlumno
+                    ? _c("div", { staticClass: "inforP2G sizeGeneral" }, [
+                        _c("div", [
+                          _c("label", { staticClass: "m-0 mr-5" }, [
+                            _c("b", [_vm._v("Estado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.EstadoNac))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("b", [_vm._v("Municipio: ")]),
+                            _vm._v(_vm._s(_vm.alumno.MunicipioNac))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("Calle: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Calle))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("No. Exterior: ")]),
+                            _vm._v(_vm._s(_vm.alumno.NumExterior))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("No. Interior: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.NumInterior == ""
+                                  ? ""
+                                  : _vm.alumno.NumInterior
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("CP: ")]),
+                            _vm._v(_vm._s(_vm.alumno.CodPostal))
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-3" }, [
+                            _c("b", [_vm._v("Colonia: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Colonia))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-3" }, [
+                            _c("b", [_vm._v("Municipio: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Municipio))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("Estado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Estado))
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-1" }, [
+                            _c("b", [_vm._v("Entre Calle: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.EntreCalle
+                                  ? _vm.alumno.EntreCalle
+                                  : "No Capturada"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Entre Calle: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.EntreCalle2
+                                  ? _vm.alumno.EntreCalle2
+                                  : "No Capturada"
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "linea" }),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-5" }, [
+                            _c("b", [_vm._v("Tipo de Sangre: ")]),
+                            _vm._v(_vm._s(_vm.alumno.TipoSangre))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", {}, [
+                            _c("b", [_vm._v("Etnia: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm._m(5),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm._m(6),
+                          _c("br")
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Información Académica")
@@ -45557,18 +45919,176 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "contenedorVentana2" },
-                [_c("cal-general")],
-                1
+                { staticClass: "contenedorVentana2 colorText sizeGeneral" },
+                [
+                  _c("div", { staticClass: "gridM2G" }, [
+                    _vm.alumno.IdAlumno
+                      ? _c("div", [
+                          _c("div", [
+                            _vm._m(7),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0 p-0" }, [
+                              _c("b", [_vm._v("Promedio General: ")]),
+                              _vm._v(" " + _vm._s(_vm.promedioGeneral))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "contentCalifG" }, [
+                            _vm.alumno.IdAlumno
+                              ? _c(
+                                  "table",
+                                  {
+                                    staticClass:
+                                      "table table-striped table-hover contentTable table table-sm scrollT"
+                                  },
+                                  [
+                                    _vm._m(8),
+                                    _vm._v(" "),
+                                    _c(
+                                      "tbody",
+                                      _vm._l(_vm.calificaciones, function(
+                                        calificacion,
+                                        key
+                                      ) {
+                                        return _c(
+                                          "tr",
+                                          { key: key },
+                                          [
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(calificacion.Materia)
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(5, function(i) {
+                                              return _c("td", { key: i }, [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.unidad(
+                                                      calificacion.detalles,
+                                                      i
+                                                    )
+                                                  )
+                                                )
+                                              ])
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { attrs: { colspan: "2" } },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    calificacion.Calificacionfinal
+                                                  )
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  calificacion.Extra
+                                                    ? calificacion.Extra
+                                                    : "NC"
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  calificacion.Inter
+                                                    ? calificacion.Inter
+                                                    : "NC"
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  calificacion.Ordinario
+                                                    ? calificacion.Ordinario
+                                                    : "NC"
+                                                )
+                                              )
+                                            ])
+                                          ],
+                                          2
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ]
+                                )
+                              : _vm._e()
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.alumno.IdAlumno
+                      ? _c("div", { staticClass: "pl-3" }, [
+                          _vm._m(9),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "contentCalifG" }, [
+                            _vm.alumno.IdAlumno
+                              ? _c(
+                                  "table",
+                                  {
+                                    staticClass:
+                                      "table table-striped table-hover contentTable table table-sm scrollT"
+                                  },
+                                  [
+                                    _vm._m(10),
+                                    _vm._v(" "),
+                                    _c(
+                                      "tbody",
+                                      _vm._l(_vm.calificaciones, function(
+                                        calificacion,
+                                        key
+                                      ) {
+                                        return _c(
+                                          "tr",
+                                          { key: key },
+                                          [
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(calificacion.Materia)
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _vm._l(5, function(i) {
+                                              return _c("td", { key: i }, [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.unidad(
+                                                      calificacion.Inacistencias,
+                                                      i
+                                                    )
+                                                  )
+                                                )
+                                              ])
+                                            })
+                                          ],
+                                          2
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ]
+                                )
+                              : _vm._e()
+                          ])
+                        ])
+                      : _vm._e()
+                  ])
+                ]
               ),
-              _vm._v(" "),
-              _c("p", { staticClass: "subtitulos text-center" }, [
-                _vm._v("Inacistencias")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "barrasubtitulos" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "contenedorVentana" }),
               _vm._v(" "),
               _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Salud - Incidencias")
@@ -45576,7 +46096,295 @@ var render = function() {
               _vm._v(" "),
               _c("hr", { staticClass: "barrasubtitulos" }),
               _vm._v(" "),
-              _c("div", { staticClass: "contenedorVentana2" }),
+              _c(
+                "div",
+                { staticClass: "contenedorVentana2 colorText sizeGeneral" },
+                [
+                  _c("div", { staticClass: "gridM2G" }, [
+                    _vm.alumno.IdAlumno
+                      ? _c("div", [
+                          _vm._m(11),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("label", { staticClass: "mr-5 m-0" }, [
+                              _c("b", [_vm._v("Estatura: ")]),
+                              _vm._v(_vm._s(_vm.salud.Estatura))
+                            ]),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "mr-4 m-0" }, [
+                              _c("b", [_vm._v("Peso: ")]),
+                              _vm._v(_vm._s(_vm.salud.Peso))
+                            ]),
+                            _vm._v(" "),
+                            _c("label", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("IMC: ")]),
+                              _vm._v(_vm._s(_vm.salud.IMC))
+                            ]),
+                            _c("br")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "gridM2G" }, [
+                            _c("div", { staticClass: "contentDetSaludG" }, [
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("Anteojos: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.Anteojos == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("Pie Plano: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("ProbBucal: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("Pediculosis: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.Pediculosis == 1 ? "Si" : "No"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("ProbAuditivo: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.ProbAuditivo == 1 ? "Si" : "No"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("ProbLenguaje: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.ProbLenguaje == 1 ? "Si" : "No"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _c("b", [_vm._v("Transtornos: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.Transtornos
+                                      ? _vm.salud.Transtornos
+                                      : "No padece de transtornos..."
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "contentDetSaludG" }, [
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Alergias: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.Alergias == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Descripción: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.DetAlergias
+                                      ? _vm.salud.DetAlergias
+                                      : "No tiene alergias..."
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Gravidez: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.Gravidez == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Descripción: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.Gravidez
+                                      ? _vm.salud.DetGravidez
+                                      : "No tiene gravidez..."
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Problemas Posturales: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.ProbPosturales == 1 ? "Si" : "No"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Descripción: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.DetProbPosturales
+                                      ? _vm.salud.DetProbPosturales
+                                      : "No tiene problemas posturales..."
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Otros: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.salud.Otros == 1 ? "Si" : "No")
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Descripción: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.salud.DetOtros
+                                      ? _vm.salud.DetOtros
+                                      : "No tiene otros..."
+                                  )
+                                )
+                              ])
+                            ])
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.alumno.IdAlumno
+                      ? _c("div", [
+                          _c("div", { staticClass: "linea2G" }),
+                          _vm._v(" "),
+                          _vm._m(12),
+                          _vm._v(" "),
+                          _c("div", [
+                            _vm.alumno.IdAlumno
+                              ? _c("div", [
+                                  _c("div", { staticClass: "pt-1" }, [
+                                    _vm._m(13),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "scrollHG" },
+                                      _vm._l(_vm.incidencias, function(
+                                        incidencia,
+                                        key
+                                      ) {
+                                        return _c(
+                                          "button",
+                                          {
+                                            key: key,
+                                            staticClass:
+                                              "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                incidencia.TipoReporte ==
+                                                "Incidencia"
+                                                  ? "#verIncidencias"
+                                                  : "#verMalaConducta"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.$emit(
+                                                  "verIncidencia",
+                                                  incidencia,
+                                                  _vm.alumno
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                            \n                                                " +
+                                                _vm._s(key + 1) +
+                                                "\n                                            "
+                                            )
+                                          ]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "mcontenidoL pt-1" },
+                                    [
+                                      _vm._m(14),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [_vm._v("Observaciones: ")]),
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.inconveniente.Observaciones
+                                          )
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _c("b", [
+                                          _vm._v("Descripción del Reporte: ")
+                                        ]),
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.inconveniente.DescripcionReporte
+                                          )
+                                        )
+                                      ])
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "pt-1 mr-4" }, [
+                                    _c("p", { staticClass: "p-0 m-0 fecha" }, [
+                                      _c("b", [_vm._v("Fecha: ")]),
+                                      _vm._v(
+                                        _vm._s(_vm.inconveniente.FechaInicio)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href: "/R?show=" + _vm.alumno.IdAlumno
+                                        }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticStyle: {
+                                            width: "20px",
+                                            height: "20px"
+                                          },
+                                          attrs: {
+                                            src: "images/historial.png",
+                                            alt: "ver el historial"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              : _vm._e()
+                          ])
+                        ])
+                      : _vm._e()
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c("p", { staticClass: "subtitulos text-center" }, [
                 _vm._v("Trabajo Social")
@@ -45584,12 +46392,155 @@ var render = function() {
               _vm._v(" "),
               _c("hr", { staticClass: "barrasubtitulos" }),
               _vm._v(" "),
-              _c("div", { staticClass: "contenedorVentana" })
+              _c(
+                "div",
+                { staticClass: "contenedorVentana colorText sizeGeneral" },
+                [
+                  _c("div", { staticClass: "gridTS" }, [
+                    _c("div", [
+                      _vm.alumno.IdAlumno
+                        ? _c("div", [
+                            _c("div", [
+                              _vm._m(15),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "scrollJ" },
+                                _vm._l(
+                                  _vm.justificantes.slice().reverse(),
+                                  function(justificante, keyjustificantepase) {
+                                    return _c(
+                                      "button",
+                                      {
+                                        key: keyjustificantepase,
+                                        staticClass:
+                                          "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#addJustificantes"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.$emit(
+                                              "verJustificante",
+                                              justificante
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            \n                                            " +
+                                            _vm._s(keyjustificantepase + 1) +
+                                            "\n\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  }
+                                ),
+                                0
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._m(16),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "scrollJ" },
+                                _vm._l(_vm.pases.slice().reverse(), function(
+                                  pase,
+                                  keyjustificantepase2
+                                ) {
+                                  return _c(
+                                    "button",
+                                    {
+                                      key: keyjustificantepase2,
+                                      staticClass:
+                                        "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
+                                      attrs: {
+                                        "data-toggle": "modal",
+                                        "data-target": "#addJustificantes"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.$emit("verPase", pase)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    \n                                            " +
+                                          _vm._s(keyjustificantepase2 + 1) +
+                                          "\n                                    \n                                        "
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ])
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "ml-4" }, [
+                      _c("div", { staticClass: "liena2" }),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("div", [
+                          _vm.alumno.IdAlumno
+                            ? _c("div", [_vm._m(17), _vm._v(" "), _vm._m(18)])
+                            : _vm._e()
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("div", { staticClass: "liena2" }),
+                      _vm._v(" "),
+                      _vm.alumno.IdAlumno
+                        ? _c("div", [_vm._m(19), _vm._v(" "), _vm._m(20)])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm.alumno.IdAlumno
+                      ? _c(
+                          "div",
+                          { staticClass: "ml-5" },
+                          [
+                            _vm._m(21),
+                            _vm._v(" "),
+                            _vm._l(_vm.becas, function(beca, key) {
+                              return _c("div", { key: key }, [
+                                _c("p", { staticClass: "mb-1" }, [
+                                  _c("b", [_vm._v("Nombre: ")]),
+                                  _vm._v(_vm._s(beca.Nombre) + " ")
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "mb-3" }, [
+                                  _c("b", [_vm._v("Tipo: ")]),
+                                  _vm._v(_vm._s(beca.Tipo))
+                                ])
+                              ])
+                            })
+                          ],
+                          2
+                        )
+                      : _vm._e()
+                  ])
+                ]
+              )
             ])
           ])
         ]
-      )
-    ]
+      ),
+      _vm._v(" "),
+      _c("ver-mala-conducta"),
+      _vm._v(" "),
+      _c("ver-incidencias")
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -45599,18 +46550,319 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c(
+        "div",
+        { staticClass: "float-left", staticStyle: { "margin-left": "35%" } },
+        [
+          _c("p", { staticClass: "subtitulos text-center" }, [
+            _vm._v("Información general del alumno")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
         "button",
         {
-          staticClass: "close",
+          staticClass: "close mr-1",
           attrs: {
             type: "button",
             "data-dismiss": "modal",
             "aria-label": "Close"
           }
         },
-        [_c("span", [_vm._v("×")])]
+        [_c("span", { staticStyle: { color: "#800000" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mifotoG" }, [
+      _c("img", {
+        attrs: { src: "images/student.png", alt: "Foto del Alumno" }
+      }),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticClass: "text-center",
+          staticStyle: { "text-shadow": "1px 1px 5px #2c2b2b86" }
+        },
+        [_vm._v("Regular")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center float" }, [
+      _c("b", [_c("p", [_vm._v("INFORMACIÓN DE LOS PADRES O TUTOR")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("p", { staticClass: "m-0 p-0" }, [_vm._v("Lugar de nacimiento")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0 p-0" }, [_c("b", [_vm._v("Domicilio")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("Tipo de Afiliación: ")]),
+      _vm._v("No Capturado")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("NSS: ")]),
+      _vm._v(" No Capturado")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0 p-0" }, [
+      _c("b", [_vm._v("INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Asignaturas")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P2")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P3")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P4")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P5")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("P/Final")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ordinario")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Inter")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Extra")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "m-0 p-0" }, [
+        _c("b", [_vm._v("INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL")])
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "m-0 p-0" }, [_c("b", [_vm._v("POR MATERIA")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Asignaturas")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P1")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P2")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P3")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P4")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("P5")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "text-center p-0 m-0" }, [
+        _c("b", [_vm._v("SALUD")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "text-center p-0 m-0" }, [
+        _c("b", [_vm._v("INCIDENCIAS")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "p-0 m-0" }, [
+      _c("b", [_vm._v("Cantidad de incidencias")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Detalles")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-sm-1" }, [
+      _c("b", [_vm._v("Justificantes")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "mt-4" }, [
+      _c("b", [_vm._v("Pases de Salida")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("SERVICIO SOCIAL")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Inicio: ")]),
+        _vm._v("N/C")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Final: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Nombre: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Giro: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Dirección: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Telefóno: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Responsable: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Tipo de Vinculación: ")]),
+        _vm._v(" N/C ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("PRACTICAS PROFESIONALES")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Inicio: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Fecha Final: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Nombre: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Giro: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Dirección: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Telefóno: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Responsable: ")]),
+        _vm._v(" N/C ")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "mb-1" }, [
+        _c("b", [_vm._v("Tipo de Vinculación: ")]),
+        _vm._v(" N/C ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("BECAS")])])
   }
 ]
 render._withStripped = true
@@ -65916,8 +67168,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('spinner', __webpack_require__(/*! ./components/generales/Spinner.vue */ "./resources/js/components/generales/Spinner.vue")["default"]); //VISTAS GENERALES
 
 Vue.component('mi-buscador', __webpack_require__(/*! ./components/generales/Buscador.vue */ "./resources/js/components/generales/Buscador.vue")["default"]);
-Vue.component('card-info-personal', __webpack_require__(/*! ./components/generales/CardInfoPersonal.vue */ "./resources/js/components/generales/CardInfoPersonal.vue")["default"]);
-Vue.component('card-info-personal-general', __webpack_require__(/*! ./components/generales/CardInfoPersonalGeneral.vue */ "./resources/js/components/generales/CardInfoPersonalGeneral.vue")["default"]);
+Vue.component('card-info-personal', __webpack_require__(/*! ./components/generales/CardInfoPersonal.vue */ "./resources/js/components/generales/CardInfoPersonal.vue")["default"]); // Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
+
 Vue.component('allinfo', __webpack_require__(/*! ./components/generales/infoGeneralAlumno.vue */ "./resources/js/components/generales/infoGeneralAlumno.vue")["default"]);
 Vue.component('cal-general', __webpack_require__(/*! ./components/generales/calGeneral.vue */ "./resources/js/components/generales/calGeneral.vue")["default"]);
 Vue.component('admin', __webpack_require__(/*! ./components/generales/Admin.vue */ "./resources/js/components/generales/Admin.vue")["default"]); //becas
@@ -66263,93 +67515,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/CardInfoPersonalGeneral.vue":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/generales/CardInfoPersonalGeneral.vue ***!
-  \***********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6& */ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6&");
-/* harmony import */ var _CardInfoPersonalGeneral_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardInfoPersonalGeneral.vue?vue&type=script&lang=js& */ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _CardInfoPersonalGeneral_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/generales/CardInfoPersonalGeneral.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonalGeneral.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6& ***!
-  \******************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/CardInfoPersonalGeneral.vue?vue&type=template&id=66e095f6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardInfoPersonalGeneral_vue_vue_type_template_id_66e095f6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/generales/Spinner.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/generales/Spinner.vue ***!
@@ -66528,15 +67693,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************!*\
   !*** ./resources/js/components/generales/infoGeneralAlumno.vue ***!
   \*****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _infoGeneralAlumno_vue_vue_type_template_id_50f8936c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=template&id=50f8936c& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=template&id=50f8936c&");
 /* harmony import */ var _infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=script&lang=js& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -66568,31 +67732,29 @@ component.options.__file = "resources/js/components/generales/infoGeneralAlumno.
 /*!******************************************************************************************!*\
   !*** ./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
+/***/ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
 /*!**************************************************************************************************!*\
-  !*** ./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
+  !*** ./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
