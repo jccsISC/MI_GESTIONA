@@ -69,7 +69,7 @@ Vue.component('historial-talleres', require('./components/orientacion/notify/His
 Vue.component('generar-report-oe', require('./components/orientacion/ModalReportOE.vue').default);
 Vue.component('detalle-taller', require('./components/orientacion/talleres/DetalleTaller.vue').default);
 //Inasistencias
-Vue.component('inasistencias', require('./components/inasistencias/AgregarInasistencias.vue').default);
+Vue.component('inasistencias', require('./components/maestros/AgregarInasistencias.vue').default);
 //Reportes
 Vue.component('reportes', require('./components/reportes/ReportesALL.vue').default);
 

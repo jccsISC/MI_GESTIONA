@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use Notifiable;
    
+    public function horarioMaestro() {
+        return $this->hasOne('App\tblhorariomaestros', 'IdUsuario', 'id');
+    }
+
 
     /*creamos la relacion*/
     public function roles() {

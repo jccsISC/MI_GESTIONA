@@ -10,6 +10,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" src="js/dom-drag.js"></script>
     <script src="https://kit.fontawesome.com/fe19f07cc0.js" crossorigin="anonymous"></script>
+    <link rel="shorcut icon" href="images/iconG.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>

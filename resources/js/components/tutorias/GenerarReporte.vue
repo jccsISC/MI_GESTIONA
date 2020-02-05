@@ -35,17 +35,23 @@
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
                     
                     <div class="miGrid2 mt-1">
-                        
+                        <p v-if="errors.length">
+                            <b>Por favor, corrija el(los) siguiente(s) error(es): </b>
+                            <ul>
+                                <li v-for="(error, key) in errors" :key="key">{{error}}</li>
+                            </ul>
+                        </p>
+
                         <div>
                             <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="reporte.IdFamiliar" required>
+                            <select  v-model="reporte.IdFamiliar" id="numero" name="numero">
                                 <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                             </select>
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.Motivo" name="motivo" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
-                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span>
+                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
 
                             <p><b>Derivación</b></p>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
@@ -93,7 +99,7 @@
                 alumno: {},
                 reporte: {},
                 familiares: [],
-                errors: {}
+                errors: []
             }
         },
         created() {
@@ -129,7 +135,7 @@
                     return;
                 }
                 
-               if (this.reporte.Motivo == undefined || this.reporte.IdFamiliar == undefined 
+               if ( this.reporte.IdFamiliar == undefined 
                     || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
                     || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
                     alert('Verifique y llene todos los campos');

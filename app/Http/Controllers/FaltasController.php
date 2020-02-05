@@ -9,7 +9,7 @@ class FaltasController extends Controller
 {
 
     public function faltas(tblalumno $tblalumno) {
-        return $tblalumno->
+        // return $tblalumno->
     }
 
 
