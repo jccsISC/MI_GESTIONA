@@ -50,7 +50,7 @@
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos" v-validate="'required'"></textarea>
                             <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
 
                             <p><b>Derivación</b></p>
@@ -93,6 +93,8 @@
 </template>
 
 <script>
+ 
+
     export default {
          data() {
             return {

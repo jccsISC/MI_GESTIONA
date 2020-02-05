@@ -1,6 +1,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// import Vue from 'vue';
+// import VeeValidate from 'vee-validate';
+// Vue.use(VeeValidate);
 
 Vue.component('spinner', require('./components/generales/Spinner.vue').default);
 

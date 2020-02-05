@@ -6057,13 +6057,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       alumno: {},
       reporte: {},
       familiares: [],
-      errors: {}
+      errors: []
     };
   },
   created: function created() {
@@ -52666,6 +52672,26 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
+                  _vm.errors.length
+                    ? _c("p", [
+                        _c("b", [
+                          _vm._v(
+                            "Por favor, corrija el(los) siguiente(s) error(es): "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "ul",
+                          _vm._l(_vm.errors, function(error, key) {
+                            return _c("li", { key: key }, [
+                              _vm._v(_vm._s(error))
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("div", [
                     _vm._m(3),
                     _vm._v(" "),
@@ -52680,7 +52706,7 @@ var render = function() {
                             expression: "reporte.IdFamiliar"
                           }
                         ],
-                        attrs: { required: "" },
+                        attrs: { id: "numero", name: "numero" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
@@ -52738,12 +52764,18 @@ var render = function() {
                           rawName: "v-model",
                           value: _vm.reporte.Motivo,
                           expression: "reporte.Motivo"
+                        },
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required",
+                          expression: "'required'"
                         }
                       ],
                       staticClass: "form-control w-75 p-1 mb-1",
                       attrs: {
                         name: "motivo",
-                        id: "",
+                        id: "motivo",
                         placeholder: "Escriba aquí los motivos"
                       },
                       domProps: { value: _vm.reporte.Motivo },
@@ -65877,7 +65909,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // import Vue from 'vue';
+// import VeeValidate from 'vee-validate';
+// Vue.use(VeeValidate);
+
 Vue.component('spinner', __webpack_require__(/*! ./components/generales/Spinner.vue */ "./resources/js/components/generales/Spinner.vue")["default"]); //VISTAS GENERALES
 
 Vue.component('mi-buscador', __webpack_require__(/*! ./components/generales/Buscador.vue */ "./resources/js/components/generales/Buscador.vue")["default"]);
