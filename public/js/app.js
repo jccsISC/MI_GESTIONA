@@ -2174,11 +2174,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
       salud: {},
       practica: {},
+      servicio: {},
       familiares: [],
       calificaciones: [],
       becas: [],
@@ -2186,12 +2188,13 @@ __webpack_require__.r(__webpack_exports__);
       justificantes: [],
       pases: [],
       contador: 0,
-      faltas: ''
+      faltas: []
     };
   },
   created: function created() {
     var _this = this;
 
+    console.log(this.role);
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
       _this.alumno = alumno;
 
@@ -2212,6 +2215,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.jalarBecas();
 
       _this.jalarFaltas();
+
+      _this.jalarServicio();
     });
   },
   computed: {
@@ -2237,92 +2242,102 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     jalarFaltas: function jalarFaltas() {
-      axios.get('faltas/' + this.alumno.IdAlumno + '/faltas').then(function (res) {
-        console.log(res.data); // this.faltas = res.data;
+      var _this2 = this;
+
+      axios.get('faltas/' + this.alumno.IdAlumno).then(function (res) {
+        _this2.faltas = res.data;
       });
     },
     jalarCalificaciones: function jalarCalificaciones() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('alumnos/' + this.alumno.IdAlumno + '/calificaciones').then(function (res) {
         console.log(res.data);
-        _this2.calificaciones = res.data;
+        _this3.calificaciones = res.data;
       });
     },
-    unidad: function unidad(detalles, _unidad) {
-      var calificacion = '';
+    unidad: function unidad(parciales, parcial) {
+      var cantidad = '';
 
-      if (!detalles) {
-        return calificacion;
+      if (!parciales) {
+        return cantidad;
       }
 
-      detalles.forEach(function (detalle) {
-        if (detalle.Unidad == _unidad) {
-          calificacion = detalle.Calificacion;
+      var unidades = Object.keys(parciales);
+      unidades.forEach(function (unidad) {
+        if (parcial == unidad) {
+          cantidad = parciales[unidad].length;
           return;
         }
       });
-      return calificacion;
+      return cantidad;
     },
     jalarFamiliares: function jalarFamiliares() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
-        _this3.familiares = res.data;
+        _this4.familiares = res.data;
         console.log(res);
       });
     },
     jalarSalud: function jalarSalud() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/salud/' + this.alumno.IdAlumno).then(function (res) {
-        _this4.salud = res.data;
+        _this5.salud = res.data;
       });
     },
     jalarIncidencias: function jalarIncidencias() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('/incidencias/' + this.alumno.IdAlumno).then(function (res) {
-        _this5.incidencias = [];
+        _this6.incidencias = [];
         res.data.forEach(function (i) {
-          _this5.incidencias.unshift(i);
+          _this6.incidencias.unshift(i);
         });
       });
     },
     jalarPases: function jalarPases() {
-      var _this6 = this;
+      var _this7 = this;
 
       axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(function (res) {
-        _this6.pases = res.data;
+        _this7.pases = res.data;
         console.log(res.data);
       });
     },
     jalarJustificantes: function jalarJustificantes() {
-      var _this7 = this;
+      var _this8 = this;
 
       axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes').then(function (res) {
-        _this7.justificantes = res.data;
+        _this8.justificantes = res.data;
         console.log(res.data);
       });
     },
     jalarPractica: function jalarPractica() {
-      var _this8 = this;
+      var _this9 = this;
 
-      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/practica?tipo=' + this.tipo).then(function (res) {
-        _this8.practica = res.data;
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/practica?tipo=pp').then(function (res) {
+        _this9.practica = res.data;
+        console.log(res);
+      })["catch"]();
+    },
+    jalarServicio: function jalarServicio() {
+      var _this10 = this;
+
+      axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/practica?tipo=ss').then(function (res) {
+        _this10.servicio = res.data;
         console.log(res);
       })["catch"]();
     },
     jalarBecas: function jalarBecas() {
-      var _this9 = this;
+      var _this11 = this;
 
       axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/becas').then(function (res) {
-        _this9.becas = res.data;
+        _this11.becas = res.data;
         console.log(res);
       });
     }
-  },
-  props: ['tipo']
+  }
 });
 
 /***/ }),
@@ -2941,6 +2956,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3006,7 +3022,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     jalarFaltas: function jalarFaltas() {
-      axios.get('faltas/' + this.alumno.IdAlumno + '/faltas').then(function (res) {
+      axios.get('faltas/' + this.alumno.IdAlumno).then(function (res) {
         console.log(res.data); // this.faltas = res.data;
       });
     },
@@ -3351,6 +3367,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -3505,9 +3522,11 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.$parent.$on('generarIncidencia', function (alumno) {
       _this.alumno = alumno;
-      _this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
+      _this.reporte.Nombrequienderiva = _this.auth.name;
+      ;
       _this.reporte.IdAlumno = alumno.IdAlumno;
-      _this.reporte.ResponsableSeguimiento = 'Cesar Gonzales';
+      _this.reporte.ResponsableSeguimiento = _this.auth.name;
+      ;
       _this.tipo = 'Guardar';
 
       _this.jalarFamiliares();
@@ -3668,7 +3687,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = alumno;
       _this.incidencia = {};
       _this.incidencia.IdAlumno = alumno.IdAlumno;
-      _this.incidencia.ResponsableSeguimiento = 'CESAR';
+      _this.incidencia.ResponsableSeguimiento = _this.auth.name;
+      ;
 
       _this.jalarFamiliares();
 
@@ -3840,6 +3860,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -3972,8 +3993,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -3984,6 +4007,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    console.log(this.role, 'julio se la come riendo ');
     this.$parent.$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
       ;
@@ -4719,8 +4743,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
-//
-//
 //
 //
 //
@@ -5696,6 +5718,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   created: function created() {
     var _this = this;
 
@@ -6424,15 +6447,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+// import bus from '../../event-bus';
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
       reporte: {},
       familiares: [],
-      errors: []
+      tipo: '',
+      errors: [],
+      users: [],
+      auth: {}
     };
   },
   created: function created() {
@@ -6440,11 +6466,20 @@ __webpack_require__.r(__webpack_exports__);
 
     this.$parent.$on('generarReporte', function (alumno) {
       _this.alumno = alumno;
-      _this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
+      _this.auth = JSON.parse(_this.userlogeado);
+      _this.reporte.Nombrequienderiva = _this.auth.name;
       _this.reporte.IdAlumno = alumno.IdAlumno;
 
       _this.jalarFamiliares();
-    });
+
+      _this.jalarUsers();
+    }); // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
+    //     console.log('consolelog'); 
+    //     this.alumno = Object.assign({}, alumno);   
+    //     this.incidencia = Object.assign({}, incidencia);
+    //     this.jalarFamiliares();   
+    //     this.tipo = 'Editar';
+    // });
   },
   methods: {
     jalarFamiliares: function jalarFamiliares() {
@@ -6483,6 +6518,12 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
+      this.users.forEach(function (element) {
+        if (element.id == _this4.reporte.user_id) {
+          _this4.reporte.ResponsableSeguimiento = element.name;
+          return;
+        }
+      });
       axios.post('/yonoAbandono', this.reporte).then(function (res) {
         _this4.reporte = res.data;
         $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
@@ -6490,6 +6531,14 @@ __webpack_require__.r(__webpack_exports__);
         if (error.res.status == 422) {
           _this4.errors = error.res.data.errors;
         }
+      });
+    },
+    jalarUsers: function jalarUsers() {
+      var _this5 = this;
+
+      axios.get('/users').then(function (res) {
+        _this5.users = res.data;
+        console.log(res);
       });
     }
   }
@@ -6522,6 +6571,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {}
@@ -6550,6 +6600,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11353,7 +11408,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentDetSalud{\n    height: 225px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentDetSalud{\n    height: 225px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -11417,9 +11472,9 @@ exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 14px;\n}\n.contenedo
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -11524,7 +11579,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
 
 // exports
 
@@ -11638,7 +11693,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.midiv p{\n    font-size: 15px;\n}\n.divPrin{\n    width: 80%; \n    height: 650px;\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n}\n.pbtn{\n    float:right;\n}\n.posibuscador{\n    margin-left: 28%;\n}\n.buscadorR{\n    border-radius: 4px;\n    border: 1px solid rgb(146, 140, 140);\n    text-align: center;\n    padding: 1px;\n    font-size: 12px;\n    outline: none;/*eliminar el resplandor al foco del input*/\n}\n.buscadorR:focus{\n    border-color: dodgerblue;\n    box-shadow: 0 0 8px 0 dodgerblue;\n}\n.concluido{\n    border-radius: 3px;\n    background: rgb(27, 192, 27);\n    padding: 4px;\n} \n", ""]);
+exports.push([module.i, "\n.divPrin {\n        width: 80%; \n        height: 620px;\n        border: 2px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 15px;\n        margin-top: 80px;\n        overflow: auto;\n}\n.divPrin::-webkit-scrollbar {\n        width: 3px;\n}\n.divPrin::-webkit-scrollbar-thumb {\n        width: 3px;\n        background: #800000;\n}\n.btnSelectAlumn{\n        width: 100%;\n        background: #ececec;\n        outline: none;\n        border: 1px solid #cecece;\n        padding: 5px;\n        margin: 0;\n        /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.btnSelectAlumn:hover{\n        background: #d4d4d4;\n        border: 1px solid #cecece;\n        /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\ntable.scrollIncidencias {\n        border-spacing: 0;\n}\n.scrollIncidencias tbody,\n    .scrollIncidencias thead { display: block;\n}\n.scrollIncidencias thead tr th { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n        background: #800000;\n        color: white;\n}\n.scrollIncidencias tbody tr td { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n}\n.scrollIncidencias tbody {\n        max-height: 250px;\n        overflow-y: auto;\n        overflow-x: hidden;\n}\n.scrollIncidencias tbody::-webkit-scrollbar {\n        width: 1px;\n}\n.scrollIncidencias tbody::-webkit-scrollbar-thumb{\n        width: 1px;\n        background: #800000;\n}\n.midiv{\n        width: 50%;\n        margin-right: auto;\n        margin-left: auto;\n        border: 1px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 10px;\n}\n.midiv p{\n        font-size: 15px;\n}\n.pbtn{\n        float:right;\n}\n\n    /* .posibuscador{\n        margin-left: 28%;\n    } */\n\n/*         \n    .buscadorR{\n        border-radius: 4px;\n        border: 1px solid rgb(146, 140, 140);\n        text-align: center;\n        padding: 1px;\n        font-size: 12px;\n        outline: none;/eliminar el resplandor al foco del input\n    } */\n\n    /* .buscadorR:focus{\n        border-color: dodgerblue;\n        box-shadow: 0 0 8px 0 dodgerblue;\n    } */\n.concluido{\n        border-radius: 3px;\n        background: rgb(27, 192, 27);\n        padding: 4px;\n} \n", ""]);
 
 // exports
 
@@ -11828,7 +11883,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.imgLogo{\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.contenedorRT {\n    border: 1px solid #a5a5a5;\n    border-radius: 3px;\n    padding: 5px;\n}\n.minicontenedor {\n    border: 1px solid #a5a5a5;\n    border-radius: 3px;\n    padding: 5px;\n    margin: 3px;\n}\n.txtP {\n    text-align: center;\n    line-height: 15px;\n    font-size: 11px;\n}\n.gridFirmar {\n    margin-top: 70px;\n    font-size: 10px;\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n}\n.miHr {\n    width: 125px;\n    margin: 0;\n    margin-right: 25%;\n    margin-left: 25%;\n    padding: 0;\n    background: #4b4b4b;\n}\n.miI {\n    margin-right: 24%;\n    margin-left: 24%;\n}\n.miM {\n    margin-right: 20%;\n    margin-left: 20%;\n}\n.miD {\n    margin-right: 25%;\n    margin-left: 25%;\n}\n.positionImprimir{\n    float: right;\n    top: 110px;\n    right: 5%;\n}\n", ""]);
+exports.push([module.i, "\n.imgLogo{\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.contenedorRT {\n    border: 1px solid #a5a5a5;\n    border-radius: 3px;\n    padding: 5px;\n}\n.minicontenedor {\n    border: 1px solid #a5a5a5;\n    border-radius: 3px;\n    padding: 5px;\n    margin: 3px;\n}\n.txtP {\n    text-align: center;\n    line-height: 15px;\n    font-size: 11px;\n}\n.gridFirmar {\n    margin-top: 70px;\n    font-size: 10px;\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n}\n.miHr {\n    width: 125px;\n    margin: 0;\n    margin-right: 25%;\n    margin-left: 25%;\n    padding: 0;\n    background: #4b4b4b;\n}\n.miI {\n    margin-right: 24%;\n    margin-left: 24%;\n}\n.miM {\n    margin-right: 20%;\n    margin-left: 20%;\n}\n.miD {\n    margin-right: 25%;\n    margin-left: 25%;\n}\n.positionImprimir{\n    position: fixed;\n    top: 140px;\n    right: 1%;\n}\n", ""]);
 
 // exports
 
@@ -42832,15 +42887,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -44488,27 +44543,21 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(_vm.calificaciones, function(
-                                calificacion,
-                                key
-                              ) {
+                              _vm._l(_vm.faltas, function(falta, key) {
                                 return _c(
                                   "tr",
                                   { key: key },
                                   [
                                     _c("td", [
-                                      _vm._v(_vm._s(calificacion.Materia))
+                                      _vm._v(
+                                        _vm._s(falta.horario_maestro.Materia)
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _vm._l(5, function(i) {
                                       return _c("td", { key: i }, [
                                         _vm._v(
-                                          _vm._s(
-                                            _vm.unidad(
-                                              calificacion.Inacistencias,
-                                              i
-                                            )
-                                          )
+                                          _vm._s(_vm.unidad(falta.parciales, i))
                                         )
                                       ])
                                     })
@@ -44777,9 +44826,9 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("ver-mala-conducta"),
+                  _c("ver-mala-conducta", { attrs: { role: _vm.role } }),
                   _vm._v(" "),
-                  _c("ver-incidencias")
+                  _c("ver-incidencias", { attrs: { role: _vm.role } })
                 ],
                 1
               )
@@ -44884,7 +44933,53 @@ var render = function() {
             _c("div", [
               _c("div", [
                 _vm.alumno.IdAlumno
-                  ? _c("div", [_vm._m(20), _vm._v(" "), _vm._m(21)])
+                  ? _c("div", [
+                      _vm._m(20),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Fecha Inicio: ")]),
+                          _vm._v(_vm._s(_vm.servicio.FechaInicio))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Fecha Final: ")]),
+                          _vm._v(_vm._s(_vm.servicio.FechaFin))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Dependencia: ")]),
+                          _vm._v(_vm._s(_vm.servicio.dependencia.Nombre))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Giro: ")]),
+                          _vm._v(_vm._s(_vm.servicio.dependencia.Giro))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Dirección: ")]),
+                          _vm._v(_vm._s(_vm.servicio.dependencia.Direccion))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Telefóno: ")]),
+                          _vm._v(_vm._s(_vm.servicio.dependencia.Telefono))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Responsable: ")]),
+                          _vm._v(_vm._s(_vm.servicio.dependencia.Responsable))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-1" }, [
+                          _c("b", [_vm._v("Tipo de Vinculación: ")]),
+                          _vm._v(
+                            _vm._s(_vm.servicio.dependencia.TipoVinculacion)
+                          )
+                        ])
+                      ])
+                    ])
                   : _vm._e()
               ])
             ])
@@ -44894,7 +44989,51 @@ var render = function() {
             _c("div", { staticClass: "liena2" }),
             _vm._v(" "),
             _vm.alumno.IdAlumno
-              ? _c("div", [_vm._m(22), _vm._v(" "), _vm._m(23)])
+              ? _c("div", [
+                  _vm._m(21),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Fecha Inicio: ")]),
+                      _vm._v(_vm._s(_vm.practica.FechaInicio))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Fecha Final: ")]),
+                      _vm._v(_vm._s(_vm.practica.FechaFin))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Dependencia: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.Nombre))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Giro: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.Giro))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Dirección: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.Direccion))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Telefóno: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.Telefono))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Responsable: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.Responsable))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-1" }, [
+                      _c("b", [_vm._v("Tipo de Vinculación: ")]),
+                      _vm._v(_vm._s(_vm.practica.dependencia.TipoVinculacion))
+                    ])
+                  ])
+                ])
               : _vm._e()
           ]),
           _vm._v(" "),
@@ -44903,7 +45042,7 @@ var render = function() {
                 "div",
                 { staticClass: "ml-5" },
                 [
-                  _vm._m(24),
+                  _vm._m(22),
                   _vm._v(" "),
                   _vm._l(_vm.becas, function(beca, key) {
                     return _c("div", { key: key }, [
@@ -44925,7 +45064,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("add-justificante")
+      _c("add-justificante", { attrs: { role: _vm.role } })
     ],
     1
   )
@@ -45139,103 +45278,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Fecha Inicio: ")]),
-        _vm._v("N/C")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Fecha Final: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Nombre: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Giro: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Dirección: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Telefóno: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Responsable: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Tipo de Vinculación: ")]),
-        _vm._v(" N/C ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Practicas Profesionales")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Fecha Inicio: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Fecha Final: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [_c("b", [_vm._v("Dependencia: ")])]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Nombre: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Giro: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Dirección: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Telefóno: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Responsable: ")]),
-        _vm._v(" N/C ")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "mb-1" }, [
-        _c("b", [_vm._v("Tipo de Vinculación: ")]),
-        _vm._v(" N/C ")
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -46536,9 +46579,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("ver-mala-conducta"),
-      _vm._v(" "),
-      _c("ver-incidencias")
+      _c("add-justificante")
     ],
     1
   )
@@ -47218,9 +47259,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("genera-mala-conducta"),
+      _c("genera-mala-conducta", { attrs: { userlogeado: _vm.userlogeado } }),
       _vm._v(" "),
-      _c("genera-incidencia")
+      _c("genera-incidencia", { attrs: { userlogeado: _vm.userlogeado } })
     ],
     1
   )
@@ -47249,89 +47290,94 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "contenedorCard" },
     [
-      _c("p", { staticClass: "subtitulos" }, [_vm._v("Incidencias")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "micard" }, [
-        _vm.alumno.IdAlumno
-          ? _c("div", [
-              _c("div", { staticClass: "pt-1 interlineado" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "borde" },
-                  _vm._l(_vm.incidencias, function(incidencia, key) {
-                    return _c(
-                      "button",
-                      {
-                        key: key,
-                        staticClass:
-                          "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
-                        attrs: {
-                          "data-toggle": "modal",
-                          "data-target":
-                            incidencia.TipoReporte == "Incidencia"
-                              ? "#verIncidencias"
-                              : "#verMalaConducta"
-                        },
-                        on: {
-                          click: function($event) {
-                            return _vm.$emit(
-                              "verIncidencia",
-                              incidencia,
-                              _vm.alumno
-                            )
+      _c("div", { staticClass: "contenedorCard" }, [
+        _c("p", { staticClass: "subtitulos" }, [_vm._v("Incidencias")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "micard" }, [
+          _vm.alumno.IdAlumno
+            ? _c("div", [
+                _c("div", { staticClass: "pt-1 interlineado" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "borde" },
+                    _vm._l(_vm.incidencias, function(incidencia, key) {
+                      return _c(
+                        "button",
+                        {
+                          key: key,
+                          staticClass:
+                            "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
+                          attrs: {
+                            "data-toggle": "modal",
+                            "data-target":
+                              incidencia.TipoReporte == "Incidencia"
+                                ? "#verIncidencias"
+                                : "#verMalaConducta"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.$emit(
+                                "verIncidencia",
+                                incidencia,
+                                _vm.alumno
+                              )
+                            }
                           }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        \n                            " +
+                              _vm._s(key + 1) +
+                              "\n\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mcontenidoL pt-1 interlineado" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Observaciones: ")]),
+                    _vm._v(_vm._s(_vm.inconveniente.Observaciones))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _c("b", [_vm._v("Descripción del Reporte: ")]),
+                    _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "pt-1" }, [
+                  _c("p", { staticClass: "p-0 m-0 fecha" }, [
+                    _c("b", [_vm._v("Fecha: ")]),
+                    _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } },
+                    [
+                      _c("img", {
+                        staticClass: "float-right mr-3",
+                        staticStyle: { width: "20px", height: "20px" },
+                        attrs: {
+                          src: "images/historial.png",
+                          alt: "ver el historial"
                         }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    \n                        " +
-                            _vm._s(key + 1) +
-                            "\n\n                    "
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mcontenidoL pt-1 interlineado" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Observaciones: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.Observaciones))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Descripción del Reporte: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pt-1" }, [
-                _c("p", { staticClass: "p-0 m-0 fecha" }, [
-                  _c("b", [_vm._v("Fecha: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } }, [
-                  _c("img", {
-                    staticClass: "float-right mr-3",
-                    staticStyle: { width: "20px", height: "20px" },
-                    attrs: {
-                      src: "images/historial.png",
-                      alt: "ver el historial"
-                    }
-                  })
+                      })
+                    ]
+                  )
                 ])
               ])
-            ])
-          : _vm._e()
+            : _vm._e()
+        ])
       ]),
       _vm._v(" "),
       _c("ver-mala-conducta"),
@@ -48382,19 +48428,32 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "mibtnEdit posicionbtn",
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#reporteOrientacion"
-                      },
-                      on: { click: _vm.metodo }
-                    },
-                    [_c("i", { staticClass: "fas fa-edit" })]
-                  ),
+                  _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnEdit posicionbtn",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#reporteOrientacion"
+                          },
+                          on: { click: _vm.metodo }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnI positionImprimir",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fas fa-print" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
@@ -48667,19 +48726,32 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "mibtnEdit posicionbtn",
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#reporteConducta"
-                      },
-                      on: { click: _vm.metodo }
-                    },
-                    [_c("i", { staticClass: "fas fa-edit" })]
-                  ),
+                  !_vm.incidencia.Status && _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnEdit posicionbtn",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#reporteConducta"
+                          },
+                          on: { click: _vm.metodo }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.incidencia.Status && _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnI positionImprimir",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fas fa-print" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
@@ -50884,33 +50956,34 @@ var render = function() {
           return _c("div", { key: key }, [
             _c(
               "div",
-              { staticClass: "card-header", attrs: { id: "heading" + key } },
+              {
+                staticClass: "card-header p-0",
+                attrs: { id: "heading" + key }
+              },
               [
-                _c("h5", { staticClass: "mb-0" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-link",
-                      attrs: {
-                        "data-toggle": "collapse",
-                        "data-target": "#collapse" + key,
-                        "aria-expanded": "false",
-                        "aria-controls": "collapse" + key
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\r\n                        " +
-                          _vm._s(alumno.Nombre) +
-                          " " +
-                          _vm._s(alumno.ApePaterno) +
-                          " " +
-                          _vm._s(alumno.ApeMaterno) +
-                          "\r\n                    "
-                      )
-                    ]
-                  )
-                ])
+                _c(
+                  "button",
+                  {
+                    staticClass: "btnSelectAlumn",
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-target": "#collapse" + key,
+                      "aria-expanded": "false",
+                      "aria-controls": "collapse" + key
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\r\n                    " +
+                        _vm._s(alumno.Nombre) +
+                        " " +
+                        _vm._s(alumno.ApePaterno) +
+                        " " +
+                        _vm._s(alumno.ApeMaterno) +
+                        "\r\n                "
+                    )
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -50932,7 +51005,7 @@ var render = function() {
                   "table",
                   {
                     staticClass:
-                      "table table-striped table-hover contentTable table table-sm"
+                      "table table-striped table-hover contentTable table table-sm scrollIncidencias"
                   },
                   [
                     _vm._m(0, true),
@@ -50975,7 +51048,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { attrs: { colspan: "3" } }, [
-                              _c("label", {}, [
+                              _c("label", [
                                 _vm._v(
                                   _vm._s(
                                     incidencia.Status
@@ -50999,7 +51072,7 @@ var render = function() {
                   "table",
                   {
                     staticClass:
-                      "table table-striped table-hover contentTable table table-sm"
+                      "table table-striped table-hover contentTable table table-sm scrollIncidencias"
                   },
                   [
                     _vm._m(1, true),
@@ -51033,7 +51106,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { attrs: { colspan: "3" } }, [
-                              _c("label", {}, [
+                              _c("label", [
                                 _vm._v(
                                   _vm._s(
                                     reporte.Status ? "Concluido" : "Pendiente"
@@ -52653,7 +52726,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver
+                _vm.ver && _vm.role != "admin"
                   ? _c(
                       "button",
                       {
@@ -52669,7 +52742,7 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver
+                _vm.ver && _vm.role != "admin"
                   ? _c(
                       "button",
                       {
@@ -54016,12 +54089,6 @@ var render = function() {
                           rawName: "v-model",
                           value: _vm.reporte.Motivo,
                           expression: "reporte.Motivo"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required",
-                          expression: "'required'"
                         }
                       ],
                       staticClass: "form-control w-75 p-1 mb-1",
@@ -54188,8 +54255,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.reporte.ResponsableSeguimiento,
-                            expression: "reporte.ResponsableSeguimiento"
+                            value: _vm.reporte.user_id,
+                            expression: "reporte.user_id"
                           }
                         ],
                         staticClass:
@@ -54206,7 +54273,7 @@ var render = function() {
                               })
                             _vm.$set(
                               _vm.reporte,
-                              "ResponsableSeguimiento",
+                              "user_id",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -54214,21 +54281,14 @@ var render = function() {
                           }
                         }
                       },
-                      [
-                        _c(
+                      _vm._l(_vm.users, function(user, key) {
+                        return _c(
                           "option",
-                          { attrs: { value: "Salvador Alcazar Molina" } },
-                          [_vm._v("Salvador Alcazar Molina")]
-                        ),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Brenda Yaret" } }, [
-                          _vm._v("Brenda Yaret")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Cesar Gonzalez" } }, [
-                          _vm._v("Cesar Gonzalez")
-                        ])
-                      ]
+                          { key: key, domProps: { value: user.id } },
+                          [_vm._v(_vm._s(user.name))]
+                        )
+                      }),
+                      0
                     )
                   ]),
                   _vm._v(" "),
@@ -54423,7 +54483,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("generar-reporte")
+      _c("generar-reporte", { attrs: { userlogeado: _vm.userlogeado } })
     ],
     1
   )
@@ -54473,9 +54533,33 @@ var render = function() {
             _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2),
+              _vm.reporte.Status
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "mibtnI positionImprimir",
+                      attrs: { type: "button" }
+                    },
+                    [_c("i", { staticClass: "fas fa-print" })]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _vm._m(3),
+              !_vm.reporte.Status
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "mibtnEdit posicionbtn",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#reporteTuto"
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-edit" })]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._m(2),
               _vm._v(" "),
               _c("p", { staticClass: "text-right mt-3" }, [
                 _c("b", [_vm._v("Fecha: ")]),
@@ -54571,14 +54655,17 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
-              _vm._m(5)
+              _vm._m(4)
             ])
           ])
         ]
-      )
-    ]
+      ),
+      _vm._v(" "),
+      _c("generar-reporte")
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -54621,16 +54708,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "imgLogo" }, [
       _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "mibtnI positionImprimir", attrs: { type: "button" } },
-      [_c("i", { staticClass: "fas fa-print" })]
-    )
   },
   function() {
     var _vm = this
@@ -67700,7 +67777,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _infoGeneralAlumno_vue_vue_type_template_id_50f8936c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=template&id=50f8936c& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=template&id=50f8936c&");
 /* harmony import */ var _infoGeneralAlumno_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=script&lang=js& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -67742,19 +67819,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&":
+/***/ "./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************!*\
-  !*** ./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& ***!
+  !*** ./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=1&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=1&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./infoGeneralAlumno.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/generales/infoGeneralAlumno.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infoGeneralAlumno_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

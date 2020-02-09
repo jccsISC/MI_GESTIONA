@@ -12,14 +12,10 @@ class tblhorariomaestros extends Model
     public $timestamps = false;
 
     public function usuarioMaestro() {
-        return $this->belongsTo('App\User', 'IdUsuario','id');
+        return $this->belongsTo('App\User', 'IdUsuario');
     }
 
     public function inasistencia() {
         return $this->hasOne(tblinasistencias::class, 'IdHoraMa');
-    }
-
-    public function detalles() {
-        return $this->hasManyThrough(tbldetalleinasistencias::class, tblinasistencias::class);
     }
 }

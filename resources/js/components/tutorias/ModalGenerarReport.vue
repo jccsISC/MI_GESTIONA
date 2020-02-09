@@ -7,13 +7,14 @@
             </button>
         </div>
 
-        <generar-reporte></generar-reporte>  
+        <generar-reporte :userlogeado="userlogeado"></generar-reporte>  
     </div>     
 </template>
 
 <script>
   import bus from '../../event-bus';
     export default {
+        props: ['userlogeado'],
         data() {
             return {
                 alumno: {},

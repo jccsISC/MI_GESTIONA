@@ -339,8 +339,9 @@
                 </div>
             </div>
         </div>
-        <ver-mala-conducta></ver-mala-conducta>
-        <ver-incidencias></ver-incidencias>
+        <!-- <ver-mala-conducta></ver-mala-conducta>
+        <ver-incidencias></ver-incidencias> -->
+         <add-justificante ></add-justificante>
     </div>
 </template>
 
@@ -400,7 +401,7 @@
         methods:{
 
             jalarFaltas(){
-                axios.get('faltas/'+this.alumno.IdAlumno+'/faltas').then(res =>{
+                axios.get('faltas/'+this.alumno.IdAlumno).then(res =>{
                     console.log(res.data);
                     // this.faltas = res.data;
                 });

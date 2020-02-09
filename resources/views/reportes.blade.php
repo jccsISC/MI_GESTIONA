@@ -2,5 +2,5 @@
 @section('title','Reportes')
 
 @section('content')
-    <reportes></reportes>
+    <reportes userlogeado="{{auth()->user()}}"></reportes>
 @endsection

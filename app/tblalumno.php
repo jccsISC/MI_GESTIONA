@@ -19,7 +19,7 @@ class tblalumno extends Model
         return $this->hasMany(tbljustificante::class, 'IdAlumno', 'IdAlumno');
     }
 
-    public function becas(){
+    public function becas() {
         return $this->belongsToMany(tblbeca::class,'tbldetallebecas', 'IdAlumno', 'IdBeca');
     }
 

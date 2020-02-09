@@ -13,7 +13,7 @@
        <card-info-personal></card-info-personal>
 
          <!--toda la info del alumno-->
-      <allinfo></allinfo>
+        <allinfo></allinfo>
 
        <!--card Salud-->
        <card-salud></card-salud>

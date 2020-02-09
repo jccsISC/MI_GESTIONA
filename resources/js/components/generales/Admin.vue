@@ -152,9 +152,9 @@
                                 </tr>
                             </tbody>-->
                             <tbody>
-                                <tr  v-for="(calificacion, key) in calificaciones" :key="key">
-                                    <td>{{calificacion.Materia}}</td>
-                                    <td v-for="i in 5" :key="i">{{unidad(calificacion.Inacistencias, i)}}</td>
+                                <tr  v-for="(falta, key) in faltas" :key="key">
+                                    <td>{{falta.horario_maestro.Materia}}</td>
+                                    <td v-for="i in 5" :key="i">{{unidad(falta.parciales, i)}}</td>
                                 </tr>                            
                             </tbody>
                         </table>
@@ -236,8 +236,8 @@
                             </div>
                         </div>
                     </div>
-                    <ver-mala-conducta></ver-mala-conducta>
-                    <ver-incidencias></ver-incidencias>
+                    <ver-mala-conducta :role="role"></ver-mala-conducta>
+                    <ver-incidencias :role="role"></ver-incidencias>
                 </div>
             </div>
         </div>
@@ -284,15 +284,15 @@
                             <div v-if="alumno.IdAlumno">
                                  <p><b>Servicio Social</b></p>
                                 <div>
-                                    <p class="mb-1"><b>Fecha Inicio: </b>N/C</p>
-                                    <p class="mb-1"><b>Fecha Final: </b> N/C </p>
-                                    <p class="mb-1"><b>Dependencia: </b></p>
-                                    <p class="mb-1"><b>Nombre: </b> N/C </p>
-                                    <p class="mb-1"><b>Giro: </b> N/C </p>
-                                    <p class="mb-1"><b>Dirección: </b> N/C </p>
-                                    <p class="mb-1"><b>Telefóno: </b> N/C </p>
-                                    <p class="mb-1"><b>Responsable: </b> N/C </p>
-                                    <p class="mb-1"><b>Tipo de Vinculación: </b> N/C </p>
+                                    <p class="mb-1"><b>Fecha Inicio: </b>{{servicio.FechaInicio}}</p>
+                                    <p class="mb-1"><b>Fecha Final: </b>{{servicio.FechaFin}}</p>
+                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.dependencia.Nombre}}</p>
+                                    <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
+                                    <p class="mb-1"><b>Giro: </b>{{servicio.dependencia.Giro}}</p>
+                                    <p class="mb-1"><b>Dirección: </b>{{servicio.dependencia.Direccion}}</p>
+                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.dependencia.Telefono}}</p>
+                                    <p class="mb-1"><b>Responsable: </b>{{servicio.dependencia.Responsable}}</p>
+                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.dependencia.TipoVinculacion}}</p>
                                 </div>
                             </div>
                         </div>
@@ -304,15 +304,15 @@
                     <div v-if="alumno.IdAlumno">
                         <p><b>Practicas Profesionales</b></p>
                         <div>
-                            <p class="mb-1"><b>Fecha Inicio: </b> N/C </p>
-                            <p class="mb-1"><b>Fecha Final: </b> N/C </p>
-                            <p class="mb-1"><b>Dependencia: </b></p>
-                            <p class="mb-1"><b>Nombre: </b> N/C </p>
-                            <p class="mb-1"><b>Giro: </b> N/C </p>
-                            <p class="mb-1"><b>Dirección: </b> N/C </p>
-                            <p class="mb-1"><b>Telefóno: </b> N/C </p>
-                            <p class="mb-1"><b>Responsable: </b> N/C </p>
-                            <p class="mb-1"><b>Tipo de Vinculación: </b> N/C </p>
+                            <p class="mb-1"><b>Fecha Inicio: </b>{{practica.FechaInicio}}</p>
+                            <p class="mb-1"><b>Fecha Final: </b>{{practica.FechaFin}}</p>
+                            <p class="mb-1"><b>Dependencia: </b>{{practica.dependencia.Nombre}}</p>
+                            <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
+                            <p class="mb-1"><b>Giro: </b>{{practica.dependencia.Giro}}</p>
+                            <p class="mb-1"><b>Dirección: </b>{{practica.dependencia.Direccion}}</p>
+                            <p class="mb-1"><b>Telefóno: </b>{{practica.dependencia.Telefono}}</p>
+                            <p class="mb-1"><b>Responsable: </b>{{practica.dependencia.Responsable}}</p>
+                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.dependencia.TipoVinculacion}}</p>
                         </div>
                     </div>
                 </div>
@@ -327,7 +327,7 @@
             </div>
         </div>
         
-        <add-justificante></add-justificante>
+        <add-justificante :role="role"></add-justificante>
     </div>
 </template>
 
@@ -335,11 +335,13 @@
     import bus from '../../event-bus';
 
     export default {
+        props:['role'],
         data() {
             return {
                 alumno: {},
                 salud: {},
                 practica: {},
+                servicio: {},
                 familiares: [],
                 calificaciones: [],
                 becas: [],
@@ -347,7 +349,7 @@
                 justificantes: [],
                 pases: [],
                 contador:0,
-                faltas: ''
+                faltas: []
             }
         },
         created() {
@@ -362,6 +364,7 @@
                 this.jalarPractica();
                 this.jalarBecas();
                 this.jalarFaltas();
+                this.jalarServicio();
             });
         },
         computed:{
@@ -387,9 +390,8 @@
         methods:{
 
             jalarFaltas(){
-                axios.get('faltas/'+this.alumno.IdAlumno+'/faltas').then(res =>{
-                    console.log(res.data);
-                    // this.faltas = res.data;
+                axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
+                    this.faltas = res.data;
                 });
             },
             jalarCalificaciones(){
@@ -398,19 +400,20 @@
                     this.calificaciones = res.data;
                 });
             },
-            unidad(detalles, unidad) {
-                let calificacion = '';
-                if (!detalles) {
-                    return calificacion;
+            unidad(parciales, parcial) {
+                let cantidad = '';
+                if (!parciales) {
+                    return cantidad;
                 }
-                detalles.forEach(detalle => {
-                    if (detalle.Unidad == unidad) {
-                        calificacion = detalle.Calificacion;
+                const unidades = Object.keys(parciales);
+                unidades.forEach(unidad => {
+                    if (parcial == unidad) {
+                        cantidad = parciales[unidad].length;
                         return;
                     }
                 });
 
-                return calificacion;
+                return cantidad;
             },
             jalarFamiliares() {
                 axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
@@ -444,8 +447,15 @@
                 });
             },
             jalarPractica() {
-                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo='+this.tipo).then(res => {
+                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=pp').then(res => {
                     this.practica = res.data;
+                    console.log(res);
+                })
+                .catch();
+            },
+            jalarServicio() {
+                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=ss').then(res => {
+                    this.servicio = res.data;
                     console.log(res);
                 })
                 .catch();
@@ -456,8 +466,7 @@
                     console.log(res);
                 });
             }
-        },
-        props: ['tipo']
+        }
     }
 </script>
    
@@ -482,6 +491,10 @@
     .contentGeneral::-webkit-scrollbar-thumb{
         width: 3px;
         background: #800000;
+    }
+
+    .contentGeneral p{
+        font-size: 14px;
     }
 
     .contentDetSalud{
@@ -540,11 +553,6 @@
         width: 1px;
         background: #800000;
     }
-
-    .contentGeneral p{
-        font-size: 14px;
-    }
-    
 
     .contentInf{
         width: 100%;

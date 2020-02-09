@@ -19,8 +19,12 @@
                         <img src="images/logo.jpg" alt="">
                     </div>
 
-                    <button type="button" class="mibtnI positionImprimir">
+                    <button v-if="reporte.Status" type="button" class="mibtnI positionImprimir">
                         <i class="fas fa-print"></i>
+                    </button>
+
+                     <button v-if="!reporte.Status" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteTuto">
+                            <i class="fas fa-edit"></i>
                     </button>
 
                     <div class="text-center mt-5">
@@ -82,8 +86,9 @@
                 </div>
             </div>
         </div>
+        
+        <generar-reporte></generar-reporte>
     </div>
-
 </template>
 
 <script>
@@ -165,8 +170,8 @@
     }
 
     .positionImprimir{
-        float: right;
-        top: 110px;
-        right: 5%;
+        position: fixed;
+        top: 140px;
+        right: 1%;
     }
 </style>

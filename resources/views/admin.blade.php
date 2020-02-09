@@ -2,5 +2,5 @@
 @section('title','Administrador')
 
 @section('content')
-    <admin></admin>
+    <admin role="{{auth()->user()->roles->first()->name}}"></admin>
 @endsection

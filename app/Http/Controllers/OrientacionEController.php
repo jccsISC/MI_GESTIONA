@@ -8,6 +8,10 @@ use App\tblalumno;
 class OrientacionEController extends Controller
 {
     public function reportes(){
-        return tblalumno::has('reportes')->with('reportes')->get();
+        return tblalumno::whereHas('reportes', function($q) {
+            $q->where('user_id', auth()->id());
+        })->with(['reportes' => function($query) {
+            $query->where('user_id', auth()->id());
+        }])->get();
     }
 }

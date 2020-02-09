@@ -12,9 +12,12 @@ class User extends Authenticatable
     use Notifiable;
    
     public function horarioMaestro() {
-        return $this->hasOne('App\tblhorariomaestros', 'IdUsuario', 'id');
+        return $this->hasMany('App\tblhorariomaestros', 'IdUsuario', 'id');
     }
 
+    public function reporteYonoAbandono() {
+        return $this->hasMany(tblyonoabandono::class);
+    }
 
     /*creamos la relacion*/
     public function roles() {

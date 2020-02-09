@@ -3,31 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\tblalumno;
-use App\tblhorariomaestros;
-use App\tblinasistencias;
+use App\User;
 
-class FaltasController extends Controller
+class UserController extends Controller
 {
-
-    public function faltas(tblalumno $tblalumno) {
-        $data = tblinasistencias::whereHas('detalles',function($q) use ($tblalumno)
-        {
-            $q->where('IdAlumno', $tblalumno->IdAlumno);
-        
-        })->with(['detalles' => function($query) use ($tblalumno) {
-            $query->where('IdAlumno', $tblalumno->IdAlumno);
-        }, 'horarioMaestro'])->get()->toArray();
-
-        foreach ($data as $key => $falta) {
-            foreach ($falta['detalles'] as $detalle) {
-                $data[$key]['parciales'][$detalle['parcial']][] = $detalle;
-            }
-        }
-        return $data;
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +14,11 @@ class FaltasController extends Controller
      */
     public function index()
     {
-        //
+        return User::whereHas('roles', function($q)
+        {
+            $q->whereIn('name', ['orientador', 'tutor']);
+        
+        })->get();
     }
 
     /**
@@ -56,21 +39,7 @@ class FaltasController extends Controller
      */
     public function store(Request $request)
     {
-        $atributos = $this->validate($request, [
-            'Materia' => 'required',
-            'Carrera' => 'required',
-            'Grado' => 'required',
-            'Grupo' => 'required'
-        ]);
-
-        return tblhorariomaestros::create([
-            'Nombre' => $atributos['Nombre'], 
-            'Tipo' => $atributos['Tipo'], 'Existe' => 1 
-        ]);
-    }
-
-    public function grupos () {
-        return auth()->user()->horarioMaestro;
+        //
     }
 
     /**

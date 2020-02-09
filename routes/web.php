@@ -88,6 +88,8 @@ Route::get('tutorias/{tblalumno}/inasistencias', 'TutoriasController@faltasSeman
 //REPORTE YO NO ABANDONO
 Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');
+Route::put('yonoAbandono/{tblyonoabandono}', 'YonoAbandonoController@update');
+Route::get('users', 'UserController@index');
 
 
 //ORIENTACION E
@@ -116,7 +118,7 @@ Route::get('M', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['maestro']);
     return view('/inasistencias');
 });
-
+//INASISTENCIAS MAESTROS
 Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
 
 //REPORTES GENERALES
