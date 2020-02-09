@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\tblhorariomaestros;
+use App\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class DocenteImport implements ToModel
+class UserDocenteImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,9 +14,11 @@ class DocenteImport implements ToModel
     */
     public function model(array $row)
     {
-        return new tblhorariomaestros([
-            'IdUsuario'  => $row[0],
-            'Nombre'  => $row[1],
+        return new User([
+            'id'  => $row[0],
+            'name'  => $row[1],
+            'password'  =>bcrypt(12345678),
+            
         ]);
     }
 }

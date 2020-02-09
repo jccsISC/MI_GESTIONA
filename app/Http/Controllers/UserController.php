@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UserDocenteImport;
+
 
 class UserController extends Controller
 {
@@ -86,4 +89,13 @@ class UserController extends Controller
     {
         //
     }
+
+    public function importExcelDocente(Request $request){
+        $file3= $request->file('filedocente');
+        Excel::import(new UserDocenteImport, $file3);
+
+        return back()->with('message','Importación de docentes completada');
+
+    }
+
 }
