@@ -11,11 +11,11 @@ class tblhorariomaestros extends Model
     protected $fillable = ['IdUsuario','Materia','Horas','Carrera','Grupo','Grado','Existe'];
     public $timestamps = false;
 
-    public function inasistencia() {
-        return $this->hasOne(tblinasistencias::class, 'IdHoraMa');
+    public function usuarioMaestro() {
+        return $this->belongsTo('App\User', 'IdUsuario');
     }
 
-    public function detalles(){
-        return $this->hasManyThrough(tbldetalleinasistencias::class, tblinasistencias::class);
+    public function inasistencia() {
+        return $this->hasOne(tblinasistencias::class, 'IdHoraMa');
     }
 }

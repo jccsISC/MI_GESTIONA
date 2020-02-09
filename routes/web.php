@@ -34,9 +34,6 @@ Route::get('TS', function(Illuminate\Http\Request $request) {
     return view('/trabajosocial.principal');
 });
 
-// Route::get('listaBecas', function(){
-//     return view('/trabajosocial.listaBecas');
-// });
 
 //BECAS CRUD
 Route::get('becas','BecasController@index');
@@ -44,7 +41,6 @@ Route::post('becas','BecasController@store');
 Route::put('becas/{tblbeca}','BecasController@update');
 Route::delete('becas/{tblbeca}','BecasController@destroy');
 
-//Route::delete('practicas/{tblserviciopractica}','BecasController@destroy');
 
 //JUSTIFICANTES CRUD
 Route::get('justificantes', 'JustificantesController@index');
@@ -80,7 +76,7 @@ Route::delete('/justificantes/{{tbljustificante}}', 'TrabajoSocialController@eli
 
 //ServicioPracticas
 Route::resource('servicioPracticas','ServicioPracticasController');
-Route::resource('TS','ServicioPracticasController');
+// Route::resource('TS','ServicioPracticasController');
 
 //ALUMNOS
 Route::get('alumnos/buscar', 'AlumnoController@buscar');
@@ -93,6 +89,8 @@ Route::get('tutorias/{tblalumno}/inasistencias', 'TutoriasController@faltasSeman
 //REPORTE YO NO ABANDONO
 Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');
+Route::put('yonoAbandono/{tblyonoabandono}', 'YonoAbandonoController@update');
+Route::get('users', 'UserController@index');
 
 
 //ORIENTACION E
@@ -121,7 +119,7 @@ Route::get('M', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['maestro']);
     return view('/inasistencias');
 });
-
+//INASISTENCIAS MAESTROS
 Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
 
 //REPORTES GENERALES

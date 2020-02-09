@@ -1,36 +1,37 @@
 <template>
-    <div class="contenedorCard">
-        <p class="subtitulos">Incidencias</p>
-        <div class="micard">
-            <div v-if="alumno.IdAlumno">
-                <div class="pt-1 interlineado">
-                    <p><b>Cantidad de incidencias</b></p>
-                    
-                    <div class="borde">
-                        <button 
-                            v-for="(incidencia, key) in incidencias" :key="key"  
-                            class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
-                            data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+    <div>
+        <div class="contenedorCard">
+            <p class="subtitulos">Incidencias</p>
+            <div class="micard">
+                <div v-if="alumno.IdAlumno">
+                    <div class="pt-1 interlineado">
+                        <p><b>Cantidad de incidencias</b></p>
                         
-                            {{key + 1}}
+                        <div class="borde">
+                            <button 
+                                v-for="(incidencia, key) in incidencias" :key="key"  
+                                class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
+                                data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+                            
+                                {{key + 1}}
 
-                        </button>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mcontenidoL pt-1 interlineado">
-                    <p><b>Detalles</b></p>
-                    <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                    <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
-                </div>
+                    <div class="mcontenidoL pt-1 interlineado">
+                        <p><b>Detalles</b></p>
+                        <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
+                        <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                    </div>
 
-                <div class="pt-1">
-                    <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
-                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" class="float-right mr-3" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                    <div class="pt-1">
+                        <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
+                        <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" class="float-right mr-3" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                    </div>
                 </div>
             </div>
         </div>
-
         <ver-mala-conducta></ver-mala-conducta>
         <ver-incidencias></ver-incidencias>
     </div>

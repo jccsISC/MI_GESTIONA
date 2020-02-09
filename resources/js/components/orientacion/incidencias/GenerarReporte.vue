@@ -90,9 +90,9 @@
 
             this.$parent.$on('generarIncidencia', alumno => {              
                 this.alumno = alumno;   
-                this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
+                this.reporte.Nombrequienderiva = this.auth.name;;
                 this.reporte.IdAlumno = alumno.IdAlumno; 
-                this.reporte.ResponsableSeguimiento = 'Cesar Gonzales';
+                this.reporte.ResponsableSeguimiento = this.auth.name;;
                 this.tipo = 'Guardar';
                 this.jalarFamiliares();      
             });

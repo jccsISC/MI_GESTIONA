@@ -9,7 +9,7 @@ class tblyonoabandono extends Model
     protected $table = 'tblyonoabandono';
     protected $primaryKey = 'IdYonoabandono';
     protected $fillable = ['IdAlumno','FechaInicio','FechaFin','Nombrequienderiva','IdFamiliar','Motivo'
-    ,'Derivacion','DescripcionDer','Status','Seguimiento','Observaciones','ResponsableSeguimiento','Existe'];
+    ,'Derivacion','DescripcionDer','Status','Seguimiento','Observaciones','ResponsableSeguimiento','Existe', 'user_id'];
     public $timestamps = false;
 
     public function alumno() {
@@ -19,4 +19,10 @@ class tblyonoabandono extends Model
     public function familiar() {
         return $this->belongsTo(tblfamiliare::class, 'IdFamiliar');
     }
+
+    
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    
 }

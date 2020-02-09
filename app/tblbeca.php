@@ -11,7 +11,7 @@ class tblbeca extends Model
     protected $fillable = ['Nombre','Tipo','Existe'];
     public $timestamps = false;
     
-    public function alumnos(){
+    public function alumnos() {
         return $this->belongsToMany(tblalumno::class,'tbldetallebecas', 'IdBeca', 'IdAlumno');
     }
 }

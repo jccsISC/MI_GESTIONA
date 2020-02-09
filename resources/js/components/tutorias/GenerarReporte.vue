@@ -35,17 +35,23 @@
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
                     
                     <div class="miGrid2 mt-1">
-                        
+                        <p v-if="errors.length">
+                            <b>Por favor, corrija el(los) siguiente(s) error(es): </b>
+                            <ul>
+                                <li v-for="(error, key) in errors" :key="key">{{error}}</li>
+                            </ul>
+                        </p>
+
                         <div>
                             <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="reporte.IdFamiliar" required>
+                            <select  v-model="reporte.IdFamiliar" id="numero" name="numero">
                                 <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                             </select>
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.Motivo" name="motivo" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
-                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span>
+                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
 
                             <p><b>Derivación</b></p>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
@@ -67,10 +73,8 @@
                    <div class="miGrid2 mt-2">
                        <div>
                             <p class="m-0"><b>Responsable de seguimiento</b></p> 
-                            <select v-model="reporte.ResponsableSeguimiento" class="mdb-select md-form colorful-select dropdown-primary">
-                                <option value="Salvador Alcazar Molina">Salvador Alcazar Molina</option>
-                                <option value="Brenda Yaret">Brenda Yaret</option>
-                                <option value="Cesar Gonzalez">Cesar Gonzalez</option>
+                            <select v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
+                                <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
                             </select>
                        </div>
 
@@ -87,22 +91,37 @@
 </template>
 
 <script>
+    // import bus from '../../event-bus';
     export default {
+        props: ['userlogeado'],
          data() {
             return {
                 alumno: {},
                 reporte: {},
                 familiares: [],
-                errors: {}
+                tipo: '',
+                errors: [],
+                users: [],
+                auth: {}
             }
         },
         created() {
             this.$parent.$on('generarReporte', alumno => {              
                 this.alumno = alumno;   
-                this.reporte.Nombrequienderiva = 'PSIC. JOSÉ SALVADOR ALCAZAR MOLINA';
+                this.auth = JSON.parse(this.userlogeado);
+                this.reporte.Nombrequienderiva = this.auth.name;
                 this.reporte.IdAlumno = alumno.IdAlumno; 
-                this.jalarFamiliares();      
+                this.jalarFamiliares();   
+                this.jalarUsers();   
             });
+
+            // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
+            //     console.log('consolelog'); 
+            //     this.alumno = Object.assign({}, alumno);   
+            //     this.incidencia = Object.assign({}, incidencia);
+            //     this.jalarFamiliares();   
+            //     this.tipo = 'Editar';
+            // });
         },
         methods: {
             jalarFamiliares() {
@@ -123,19 +142,24 @@
                 return telefono;
             },
             guardarReporte() {
-
                if (this.reporte.Status == undefined) {
                     alert('Seleccione el estatus de este reporte');
                     return;
                 }
                 
-               if (this.reporte.Motivo == undefined || this.reporte.IdFamiliar == undefined 
+               if ( this.reporte.IdFamiliar == undefined 
                     || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
                     || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
                     alert('Verifique y llene todos los campos');
                     return;
                 }
 
+                this.users.forEach(element => {
+                    if (element.id == this.reporte.user_id) {
+                        this.reporte.ResponsableSeguimiento = element.name;
+                        return;
+                    }
+                });
                 axios.post('/yonoAbandono', this.reporte).then(res => {
                     this.reporte = res.data;
                     $('#reporteTuto').modal('hide');
@@ -144,6 +168,12 @@
                     if (error.res.status == 422) {
                         this.errors = error.res.data.errors;
                     }
+                });
+            },
+            jalarUsers() {
+                axios.get('/users').then(res => {
+                    this.users = res.data;
+                    console.log(res);
                 });
             }
         }

@@ -1,13 +1,16 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// import Vue from 'vue';
+// import VeeValidate from 'vee-validate';
+// Vue.use(VeeValidate);
 
 Vue.component('spinner', require('./components/generales/Spinner.vue').default);
 
 //VISTAS GENERALES
 Vue.component('mi-buscador', require('./components/generales/Buscador.vue').default);
 Vue.component('card-info-personal', require('./components/generales/CardInfoPersonal.vue').default);
-Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
+// Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
 Vue.component('allinfo', require('./components/generales/infoGeneralAlumno.vue').default);
 Vue.component('cal-general', require('./components/generales/calGeneral.vue').default);
 Vue.component('admin', require('./components/generales/Admin.vue').default);
@@ -69,7 +72,7 @@ Vue.component('historial-talleres', require('./components/orientacion/notify/His
 Vue.component('generar-report-oe', require('./components/orientacion/ModalReportOE.vue').default);
 Vue.component('detalle-taller', require('./components/orientacion/talleres/DetalleTaller.vue').default);
 //Inasistencias
-Vue.component('inasistencias', require('./components/inasistencias/AgregarInasistencias.vue').default);
+Vue.component('inasistencias', require('./components/maestros/AgregarInasistencias.vue').default);
 //Reportes
 Vue.component('reportes', require('./components/reportes/ReportesALL.vue').default);
 

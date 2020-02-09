@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div>
-            <div class="float-left pl-2">
-                <p class="subtitulos">Crear Justificante/Pase de salida</p>
+            <div class="float-left pl-2"  style="margin-left: 22%;">
+                <p class="subtitulos text-center">Crear Justificante/Pase de salida</p>
             </div>
             
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -23,9 +23,18 @@
                 </select>
             </div>
 
-            <button  v-if="ver" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
+            <button v-if="ver && role!='admin'" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
               <i class="far fa-trash-alt"></i>
-            </button>            
+            </button>
+            
+
+            <!-- <a href="{{route('imprimirJ')}}">Imprimir Justificante</a> -->
+              
+
+            <button v-if="ver && role!='admin'" type="button" class="mibtnI btnImprimirPase ">
+              <i class="fas fa-print"></i>
+              <!-- <a href="{{route('imprimirP')}}">Imprimir Pase</a> -->
+            </button>
 
             <div v-if="tipo === 'justificante'" class="form-group">
 			          <label><b>Fecha Inicio</b></label>
@@ -88,6 +97,7 @@
 
 <script>
   export default {
+     props: ['role'],
     created: function() {
       this.$parent.$on('agregarJustificante', alumno => {
         this.alumno = alumno;

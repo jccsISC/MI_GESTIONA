@@ -38,7 +38,8 @@ class YonoAbandonoController extends Controller
             'Status' => 'required',
             'Seguimiento' => 'required',
             'Observaciones' => 'required',
-            'ResponsableSeguimiento' => 'required'
+            'ResponsableSeguimiento' => 'required',
+            'user_id' => 'required'
         ]);
 
         return tblyonoabandono::create(
@@ -52,37 +53,36 @@ class YonoAbandonoController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tblyonoabandono $tblyonoabandono)
     {
-        //
+        $atributos = $this->validate($request, [
+            'IdAlumno' => 'required',
+            'Nombrequienderiva' => 'required',
+            'IdFamiliar' => 'required',
+            'Motivo' => 'required',
+            'Derivacion' => 'required',
+            'DescripcionDer' => 'required',
+            'Status' => 'required',
+            'Seguimiento' => 'required',
+            'Observaciones' => 'required',
+            'ResponsableSeguimiento' => 'required',
+            'user_id' => 'required'
+        ]);
+        
+        $tblyonoabandono->update(
+            $atributos + [
+                'Existe' => 1,
+                'FechaInicio' => date('Y-m-d'),
+                'FechaFin' => $atributos['Status'] ? date('Y-m-d') : NULL
+            ]
+        );
+        return $tblyonoabandono;
     }
 
     /**

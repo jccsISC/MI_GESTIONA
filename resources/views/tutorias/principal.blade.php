@@ -3,7 +3,8 @@
 
 @section('content')
 
-    <modal-generar-report></modal-generar-report>
+    <modal-generar-report userlogeado="{{auth()->user()}}"></modal-generar-report>
+    
 
     <!--Seccion lateral-->
    <section class="contenedor-secciones">

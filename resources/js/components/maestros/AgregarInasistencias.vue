@@ -126,7 +126,8 @@
                 loading: true,
                 fechaInicio: '',
                 fechaFinal: '',
-                semana:''
+                semana:'',
+                
             }
         },
         created() {

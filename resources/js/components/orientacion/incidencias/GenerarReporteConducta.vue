@@ -98,7 +98,7 @@
                 this.alumno = alumno;   
                 this.incidencia = {};
                 this.incidencia.IdAlumno = alumno.IdAlumno; 
-                this.incidencia.ResponsableSeguimiento = 'CESAR';
+                this.incidencia.ResponsableSeguimiento = this.auth.name;;
                 this.jalarFamiliares();
                 this.tipo = 'Guardar';      
             });

@@ -11,6 +11,13 @@ class User extends Authenticatable
 {
     use Notifiable;
    
+    public function horarioMaestro() {
+        return $this->hasMany('App\tblhorariomaestros', 'IdUsuario', 'id');
+    }
+
+    public function reporteYonoAbandono() {
+        return $this->hasMany(tblyonoabandono::class);
+    }
 
     /*creamos la relacion*/
     public function roles() {
@@ -19,42 +26,42 @@ class User extends Authenticatable
 
 
     //validamos si el usuario contiene ese role
-    public function hasRole($role){
+    public function hasRole($role) {
         //aqui validamos si nuestro usuario dentro de la relacion role existe y que mande el primero q encuentre
-    if($this->roles()->where('name',$role)->first()){
-        return true;
-    }
-    return false;
+        if ($this->roles()->where('name',$role)->first()) {
+            return true;
+        }
+        return false;
     }
     //como el usuario puede tener varios roles aremos esta funcion por si tiene mas de un role
-    public function hasAnyRole($roles){
-    //validando si es un array de roles 
-    if(is_array($roles)){
-        foreach($roles as $role){
-            if($this->hasRole($role)){
+    public function hasAnyRole($roles) {
+        //validando si es un array de roles 
+        if (is_array($roles)){
+            foreach($roles as $role){
+                if($this->hasRole($role)){
+                    return true;
+                }
+            }
+
+        }else{
+            //validando si es solo un role
+            if ($this->hasRole($roles)) {
                 return true;
             }
         }
 
-    }else{
-        //validando si es solo un role
-        if($this->hasRole($roles)){
-            return true;
-        }
-    }
-
-    return false;
+        return false;
     }
 
     //quien va a desencadenar todo el proceso
-    public function authorizeRoles($roles){
-    //si de esos roles tenemos uno pues true
-    if($this->hasAnyRole($roles)){
-        return true;
-    }
+    public function authorizeRoles($roles) {
+        //si de esos roles tenemos uno pues true
+        if ($this->hasAnyRole($roles)) {
+            return true;
+        }
 
-    //si mi usuario no tiene roles entonces le retornamos lo siguiente:
-    abort(401,"This action is unauthorized");//401 = no estas autorizado para llevar esa peticion
+        //si mi usuario no tiene roles entonces le retornamos lo siguiente:
+        abort(401,"This action is unauthorized");//401 = no estas autorizado para llevar esa peticion
     }
 
     
