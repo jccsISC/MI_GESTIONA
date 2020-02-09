@@ -8,7 +8,7 @@ class tblfamiliare extends Model
 {
     protected $table = 'tblfamiliares';
     protected $primaryKey = 'IdFamiliar';
-    protected $fillable = ['IdAlumno','Nombre','ApePaterno','ApeMaterno','Tipo','Telefono'];
+    protected $fillable = ['IdAlumno','NombrePadre','ApePaternoPadre','ApeMaternoPadre','TelefonoPadre','NombreMadre','ApePaternoMadre','ApeMaternoMadre','TelefonoMadre'];
     public $timestamps = false;
 
     public function pases() {

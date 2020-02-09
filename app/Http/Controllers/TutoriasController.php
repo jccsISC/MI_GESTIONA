@@ -10,6 +10,7 @@ use App\tblalumno;
 use App\tblyonoabandono;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AlumnosImport;
+use App\Imports\FamiliarImport;
 
 class TutoriasController extends Controller
 {
@@ -130,11 +131,19 @@ class TutoriasController extends Controller
         return $return;
     }
 
-    public function importExcel(Request $request){
+    public function importExcelAlumno(Request $request){
         $file= $request->file('file');
         Excel::import(new AlumnosImport, $file);
 
-        return back()->with('message','Importacion de alumnos completada');
+        return back()->with('message','Importación de alumnos completada');
+
+    }
+
+    public function importExcelFamiliar(Request $request){
+        $file2= $request->file('filefamiliar');
+        Excel::import(new FamiliarImport, $file2);
+
+        return back()->with('message','Importación de familiares completada');
 
     }
 

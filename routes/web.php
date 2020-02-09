@@ -89,7 +89,7 @@ Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificacione
 Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
 Route::get('tutorias/inasistencias', 'TutoriasController@inasistencias');
 Route::get('tutorias/{tblalumno}/inasistencias', 'TutoriasController@faltasSemana');
-Route::post('import-list-excel', 'TutoriasController@importExcel')->name('alumnos.import.excel');
+
 //REPORTE YO NO ABANDONO
 Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');
@@ -133,6 +133,12 @@ Route::get('T', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['tutor']);
     return view('/tutorias.principal');
 });
+Route::get('import', function(){
+    return view('/tutorias.import');
+});
+Route::post('importAlumnos', 'TutoriasController@importExcelAlumno')->name('alumnos.import.excel');
+Route::post('importFamiliar', 'TutoriasController@importExcelFamiliar')->name('familiar.import.excel');
+//Route::post('importdocente', 'TutoriasController@importExcelDocente')->name('docente.import.excel');
 
 
 
