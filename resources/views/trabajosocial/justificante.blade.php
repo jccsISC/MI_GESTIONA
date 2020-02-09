@@ -1,8 +1,10 @@
 <HTML>
     <HEAD>
-       <TITLE>JUSTIFICANTE</TITLE>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <TITLE>JUSTIFICANTE</TITLE>
     </HEAD>
-    <meta charset="UTF-8">
     <BODY>
         <div class="todo" >
             <img src="images/logoCecy.png" alt="Logo cecy">
@@ -10,7 +12,9 @@
             <div class="encabezado">
                 <label>Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco</label><br>
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
-                <label>Folio:</label><i>{{$folio}}</i>
+                
+                <label>Folio:</label>
+                @foreach ($justi as $j) <i>{{ $j->IdJustificante }}</i> @endforeach 
             </div>
 
             <hr class="linea" width=670px>
@@ -19,21 +23,21 @@
             <div class="quien">
                 <label>DE: DEPARTAMENTO DE TRABAJO SOCIAL</label><br>
                 <div class="fecha">
-                    <label>FECHA:<i>{{$fecha}}</i>
+                    <label>FECHA:@foreach ($justi as $j) <i>{{ $j->Fecha }}</i> @endforeach 
                 </div>
                 <label>A: PREFECTURA Y DOCENTE</label>   
             </div>   
             
             <div class="texto">
-                <p>Por medio de la presente comunico a usted que el (la) alumno(a) <i>{{$nombre}}</i> 
-                del grado: <i>{{$grado}}</i>  
-                grupo: <i>{{$grupo}}</i>  
-                turno: <i>{{$turno}}</i>  
-                carrera: <i>{{$carrera}}</i> . 
+                <p>Por medio de la presente comunico a usted que el (la) alumno(a) @foreach ($alumno as $a) <i>{{ $a->Nombre }}</i> @endforeach  
+                del grado: @foreach ($alumno as $a) <i>{{ $a->Grado }}</i> @endforeach   
+                grupo: @foreach ($alumno as $a) <i>{{ $a->Grupo }}</i> @endforeach   
+                turno: @foreach ($alumno as $a) <i>{{ $a->Turno }}</i> @endforeach   
+                carrera: @foreach ($alumno as $a) <i>{{ $a->Carrera }}</i> @endforeach  . 
                 Justifico sus inasistencias a clases ante éste departamento el (los) días:
-                <i>{{$fechaInicial}}</i> -  <i>{{$fechaFinal}}</i> 
+                @foreach ($justi as $j) <i>{{ $j->FechaInicio }}</i> @endforeach  - @foreach ($justi as $j) <i>{{ $j->FechaFin }}</i> @endforeach </i> 
                 Por lo que solicito justificarle las inasistencias de los días proporcionados debido a:
-                <i>{{$motivo}}</i>.
+                    @foreach ($justi as $j) <i>{{ $j->Motivo }}</i> @endforeach .
                 <p><label><b><i>(No justifica trabajos).</i></b></label><p></p>
             </div>
 

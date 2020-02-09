@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\tbljustificante;
+use Barryvdh\DomPDF as PDF;
+use App\tblalumno;
+use App\tblpasesalida;
+use App\tblfamiliare;
 
 class JustificantesController extends Controller
 {
@@ -120,34 +124,18 @@ class JustificantesController extends Controller
         return response('Eliminado');
     }
 
-    public function imprimirJ(){
-        $folio="1";
-        $fecha="hoy";
-        $nombre= "Karina Pola Pereyra";
-        $grado= "9";
-        $grupo= "A";
-        $turno= "M";
-        $carrera= "ISC";
-        $fechaInicial= "20/01/2020";
-        $fechaFinal= "22/01/2020";
-        $motivo= "No se encontraba bien de salud, tenia dengue y la mandaron a reposar";
-        $pdf = \PDF::loadView('/trabajosocial.justificante', compact('folio','fecha','nombre','grado','grupo','turno',
-        'carrera','fechaInicial', 'fechaFinal','motivo'));
+    public function imprimirJ($IdAlumno,$IdJustificante){
+        $justi = tbljustificante::get();
+        $alumno = tblalumno::get();
+        $pdf = \PDF::loadView('/trabajosocial.justificante', compact('justi','alumno'));
         return $pdf->download('justificante.pdf');
    }
 
    public function imprimirP(){
-    $folio="1";
-    $fecha="hoy";
-    $nombre= "Karina Pola Pereyra";
-    $grado= "9";
-    $grupo= "A";
-    $turno= "M";
-    $familiar= "Karen Pola";
-    $tel= "3221801251";
-    $motivo= "No se encontraba bien de salud, tenia dengue y la mandaron a reposar";
-    $pdf = \PDF::loadView('/trabajosocial.pase', compact('folio','fecha','nombre','grado','grupo','turno',
-    'familiar','tel','motivo'));
+    $pase = tblpasesalida::get();
+    $alumno = tblalumno::get();    
+    $familiar = tblfamiliare::get();  
+    $pdf = \PDF::loadView('/trabajosocial.pase', compact('pase','alumno','familiar'));
     return $pdf->download('pase.pdf');
 }
 }
