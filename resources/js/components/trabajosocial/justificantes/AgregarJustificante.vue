@@ -51,11 +51,6 @@
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
 		  	    </div>
 
-            <div v-if="tipo === 'justificante' " class="form-group">
-            <i class="fas fa-print"></i>
-              <a href="imprimirJust">Imprimir</a>
-            </div>
-
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label :disabled="ver"><b>Fecha: </b> 2020-01-29</label>
 		  	    </div>
@@ -66,7 +61,7 @@
                   <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                 </select>
 
-                <select :disabled="ver" v-if="ver" type="text" class="form-control" required v-model="pase.familiar.IdFamiliar">
+                <select :disabled="ver" v-if="ver" type="text" class="form-control" v-model="pase.familiar.IdFamiliar">
                   <option :value="pase.familiar.IdFamiliar">{{pase.familiar.Nombre + ' '+pase.familiar.ApePaterno+ ' '+ pase.familiar.ApeMaterno}}</option>
                 </select>
 		  	    </div>
@@ -79,11 +74,6 @@
             <div v-if="tipo === 'pase' " class="form-group">
 			          <label><b>Descripción</b></label>
 			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa la descripcion" v-model="pase.Descripcion">
-		  	    </div>
-
-            <div v-if="tipo === 'pase' " class="form-group">
-			         <i class="fas fa-print"></i>
-              <a href="imprimirPase">Imprimir</a>
 		  	    </div>
 		  	  
 		  	    <button v-if="!ver" type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> Guardar</button>
@@ -153,7 +143,6 @@
             alert('Verifique y llene todos los campos');
             return;
         }
-
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/justificantes', this.justificante)
         .then(res => {
             this.$emit('justificanteGuardado', res.data);
@@ -166,7 +155,6 @@
             alert('Verifique y llene todos los campos');
             return;
         }
-
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/pases', this.pase)
         .then(res => {
             this.$emit('paseGuardado', res.data);
@@ -196,7 +184,6 @@
         top: 110px;
         margin-right: 10px;
     }
-
     .mibtnE{
         background: #c40404;
         border-radius: 4px;
@@ -207,13 +194,11 @@
         border: 1px solid #c40404;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
     }
-
     .mibtnE:hover{
         background-color: rgb(255, 255, 255);
         color: rgb(167, 11, 11);
         border: 1px solid #800000;
     }
-
     .mibtnI{
         background: #416de7;
         border-radius: 4px;
@@ -224,7 +209,6 @@
         border: 1px solid #416de7;
         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
     }
-
     .mibtnI:hover{
         background-color: rgb(255, 255, 255);
         color: #416de7;

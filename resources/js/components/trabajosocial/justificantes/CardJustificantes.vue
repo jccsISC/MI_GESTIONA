@@ -20,7 +20,7 @@
                    </div>
                </div>
                
-              <div class="pase">
+              <div>
                 <p class="m-0"><b>Pases de Salida</b></p>
                 <div class="scrollHTS">
                     <button class="btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2" 
@@ -122,12 +122,10 @@
         margin: 0;
         padding: 0;
     }
-
     .scrollHTS::-webkit-scrollbar{
         width: 1px;
         height: 3px;
     }
-
     .scrollHTS::-webkit-scrollbar-thumb{
         width: 3px;
         background: #800000;
