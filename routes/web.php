@@ -89,6 +89,7 @@ Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificacione
 Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
 Route::get('tutorias/inasistencias', 'TutoriasController@inasistencias');
 Route::get('tutorias/{tblalumno}/inasistencias', 'TutoriasController@faltasSemana');
+Route::post('import-list-excel', 'TutoriasController@importExcel')->name('alumnos.import.excel');
 //REPORTE YO NO ABANDONO
 Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');

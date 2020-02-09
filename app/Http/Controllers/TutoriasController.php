@@ -8,6 +8,8 @@ use App\tblcalificacion;
 use App\tbldetalleinasistencias;
 use App\tblalumno;
 use App\tblyonoabandono;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\AlumnosImport;
 
 class TutoriasController extends Controller
 {
@@ -126,6 +128,14 @@ class TutoriasController extends Controller
         }
 
         return $return;
+    }
+
+    public function importExcel(Request $request){
+        $file= $request->file('file');
+        Excel::import(new AlumnosImport, $file);
+
+        return back()->with('message','Importacion de alumnos completada');
+
     }
 
 }
