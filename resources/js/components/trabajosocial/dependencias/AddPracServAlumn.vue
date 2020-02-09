@@ -19,19 +19,19 @@
           
             <div class="form-group ml-0">
               <p class="mLabel"><b>Dependencia</b></p>
-              <select v-model="practica.IdDependencias">
+              <select required v-model="practica.IdDependencias">
                   <option  v-for="(dependencia, key) in dependencias" :key="key" :value="dependencia.IdDependencia">{{dependencia.Nombre}}</option>
               </select>
             </div>
           
             <div class="form-group ml-0">
                 <label class="mLabel"><b>Fecha Inicio</b></label>
-                <input type="date" class="form-control" placeholder="Ingresa la fecha inicial" v-model="practica.FechaInicio">
+                <input type="date" class="form-control" placeholder="Ingresa la fecha inicial" required v-model="practica.FechaInicio">
             </div>
             
             <div class="form-group ml-0">
                 <label class="mLabel"><b>Fecha Final</b></label>
-                <input type="date" class="form-control" placeholder="Ingresa el nombre de la dependencia" v-model="practica.FechaFin">
+                <input type="date" class="form-control" placeholder="Ingresa el nombre de la dependencia" required v-model="practica.FechaFin">
             </div>
             
             <button type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> Guardar</button>
@@ -65,11 +65,11 @@
     },
     methods: {
       savePractica() {
-        if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined 
+       /* if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined 
             || this.practica.FechaFin == undefined) {
             alert('Verifique y llene todos los campos');
             return;
-        }
+        }*/
 
         this.practica.Tipo = this.tipo == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
 

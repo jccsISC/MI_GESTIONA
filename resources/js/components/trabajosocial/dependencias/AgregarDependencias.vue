@@ -25,32 +25,32 @@
           <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label><b>Nombre</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el nombre de la dependencia" v-model="dependencia.Nombre">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el nombre de la dependencia" required v-model="dependencia.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
 			          <label><b>Dirección</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa la dirección de la dependencia" v-model="dependencia.Direccion">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa la dirección de la dependencia" required v-model="dependencia.Direccion">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Giro</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el giro de la dependencia" v-model="dependencia.Giro">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el giro de la dependencia" required v-model="dependencia.Giro">
 		  	      </div>
                 
               <div class="form-group">
 			          <label><b>Telefono</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el telefono de la dependencia" v-model="dependencia.Telefono">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el telefono de la dependencia" required v-model="dependencia.Telefono">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Responsable</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el responsable de la dependencia" v-model="dependencia.Responsable">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el responsable de la dependencia" required v-model="dependencia.Responsable">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Tipo de Vinculación</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el tipo de vinculación de la dependencia" v-model="dependencia.TipoVinculacion">
+			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el tipo de vinculación de la dependencia" required v-model="dependencia.TipoVinculacion">
 		  	      </div>
           
 		  	      <button type="submit" class="btn miBtn positionSave p-0 pl-1 pr-1"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
@@ -87,7 +87,7 @@
         this.$emit('dependenciaActualizada', res.data);
         $('#addDepencencia').modal('hide');
       },
-      actualizarDependencia() {
+      /*actualizarDependencia() {
         if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');
           return;
@@ -97,7 +97,7 @@
           .then(res => {
             this.onSuccess(res);
           });
-      },
+      },*/
       saveDependencia() {
         if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined 
             || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined

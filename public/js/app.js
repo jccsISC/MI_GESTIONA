@@ -2194,7 +2194,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log(this.role);
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
       _this.alumno = alumno;
 
@@ -4007,7 +4006,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log(this.role, 'julio se la come riendo ');
     this.$parent.$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
       ;
@@ -4938,20 +4936,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('becaActualizada', res.data);
       $('#addBeca').modal('hide');
     },
-    actualizarBeca: function actualizarBeca() {
-      var _this2 = this;
 
+    /*actualizarBeca() {
       if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
         return;
-      }
-
-      axios.put('/becas/' + this.beca.IdBeca, this.beca).then(function (res) {
-        _this2.onSuccess(res);
-      });
-    },
+      
+       axios.put('/becas/' + this.beca.IdBeca, this.beca)
+        .then(res => {
+          this.onSuccess(res);
+        });
+    },*/
     saveBeca: function saveBeca() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
         alert('Verifique y llene todos los campos');
@@ -4961,7 +4958,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/becas', this.beca).then(function (res) {
         res.data.esNueva = true;
 
-        _this3.onSuccess(res);
+        _this2.onSuccess(res);
       });
     }
   }
@@ -5342,11 +5339,11 @@ __webpack_require__.r(__webpack_exports__);
     savePractica: function savePractica() {
       var _this2 = this;
 
-      if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined || this.practica.FechaFin == undefined) {
-        alert('Verifique y llene todos los campos');
-        return;
-      }
-
+      /* if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined 
+           || this.practica.FechaFin == undefined) {
+           alert('Verifique y llene todos los campos');
+           return;
+       }*/
       this.practica.Tipo = this.tipo == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
       console.log(this.practica);
       axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/practica', this.practica).then(function (res) {
@@ -5463,20 +5460,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('dependenciaActualizada', res.data);
       $('#addDepencencia').modal('hide');
     },
-    actualizarDependencia: function actualizarDependencia() {
-      var _this2 = this;
 
+    /*actualizarDependencia() {
       if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
         return;
       }
-
-      axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia).then(function (res) {
-        _this2.onSuccess(res);
-      });
-    },
+       axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia)
+        .then(res => {
+          this.onSuccess(res);
+        });
+    },*/
     saveDependencia: function saveDependencia() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
         alert('Verifique y llene todos los campos');
@@ -5487,7 +5483,7 @@ __webpack_require__.r(__webpack_exports__);
         res.data.esNuevo = true;
         console.log(res.data);
 
-        _this3.onSuccess(res);
+        _this2.onSuccess(res);
       });
     }
   }
@@ -5630,6 +5626,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51295,7 +51300,8 @@ var render = function() {
                     staticClass: "form-control  p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa el nombre de la beca"
+                      placeholder: "Ingresa el nombre de la beca",
+                      required: ""
                     },
                     domProps: { value: _vm.beca.Nombre },
                     on: {
@@ -51324,6 +51330,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
+                      attrs: { required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -51905,6 +51912,7 @@ var render = function() {
                           expression: "practica.IdDependencias"
                         }
                       ],
+                      attrs: { required: "" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -51954,7 +51962,8 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "date",
-                      placeholder: "Ingresa la fecha inicial"
+                      placeholder: "Ingresa la fecha inicial",
+                      required: ""
                     },
                     domProps: { value: _vm.practica.FechaInicio },
                     on: {
@@ -51987,7 +51996,8 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "date",
-                      placeholder: "Ingresa el nombre de la dependencia"
+                      placeholder: "Ingresa el nombre de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.practica.FechaFin },
                     on: {
@@ -52154,7 +52164,8 @@ var render = function() {
                     staticClass: "form-control p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa el nombre de la dependencia"
+                      placeholder: "Ingresa el nombre de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.Nombre },
                     on: {
@@ -52183,7 +52194,8 @@ var render = function() {
                     staticClass: "form-control p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa la dirección de la dependencia"
+                      placeholder: "Ingresa la dirección de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.Direccion },
                     on: {
@@ -52216,7 +52228,8 @@ var render = function() {
                     staticClass: "form-control p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa el giro de la dependencia"
+                      placeholder: "Ingresa el giro de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.Giro },
                     on: {
@@ -52245,7 +52258,8 @@ var render = function() {
                     staticClass: "form-control p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa el telefono de la dependencia"
+                      placeholder: "Ingresa el telefono de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.Telefono },
                     on: {
@@ -52278,7 +52292,8 @@ var render = function() {
                     staticClass: "form-control p-0 pl-1",
                     attrs: {
                       type: "text",
-                      placeholder: "Ingresa el responsable de la dependencia"
+                      placeholder: "Ingresa el responsable de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.Responsable },
                     on: {
@@ -52312,7 +52327,8 @@ var render = function() {
                     attrs: {
                       type: "text",
                       placeholder:
-                        "Ingresa el tipo de vinculación de la dependencia"
+                        "Ingresa el tipo de vinculación de la dependencia",
+                      required: ""
                     },
                     domProps: { value: _vm.dependencia.TipoVinculacion },
                     on: {

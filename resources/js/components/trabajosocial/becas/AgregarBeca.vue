@@ -7,7 +7,7 @@
                 <p class="subtitulos text-center">{{beca.IdBeca ? 'Actualizar' : 'Agregar'}} Beca</p>
             </div>
             
-            <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close mr-1" data-dismiss="modal"  aria-label="Close">
                 <span style="color: #800000">&times;</span>
             </button>
         </div>
@@ -18,12 +18,12 @@
           <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label>Nombre</label>
-			          <input type="text" class="form-control  p-0 pl-1" placeholder="Ingresa el nombre de la beca" v-model="beca.Nombre">
+			          <input type="text" class="form-control  p-0 pl-1" placeholder="Ingresa el nombre de la beca" required v-model="beca.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
 			          <label>Tipo</label>
-			          <select class="form-control" v-model="beca.Tipo">
+			          <select class="form-control" required v-model="beca.Tipo">
                   <option value="Interno">Interno</option>
                   <option value="Externo">Externo</option>
                   <option value="Otro">Otro</option>
@@ -66,17 +66,17 @@
         this.$emit('becaActualizada', res.data);
         $('#addBeca').modal('hide');
       },
-      actualizarBeca() {
+      /*actualizarBeca() {
         if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');
           return;
-        }
+        
 
         axios.put('/becas/' + this.beca.IdBeca, this.beca)
           .then(res => {
             this.onSuccess(res);
           });
-      },
+      },*/
       saveBeca() {
         if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
             alert('Verifique y llene todos los campos');
