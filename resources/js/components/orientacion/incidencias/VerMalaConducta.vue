@@ -47,8 +47,8 @@
                             <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
                             
                             <p><b>Nombre de quien deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
-                            <p><b>Fammiliar: </b>{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</p>
-                            <p><b>Telefono: </b>{{familiar.Telefono}}</p>
+                            <p><b>Fammiliar: </b>{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</p>
+                            <p><b>Telefono: </b>{{familiar.TelefonoPadre}}</p>
                         </div>
                         
                         <div class="contenedorRT mt-4">

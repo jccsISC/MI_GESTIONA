@@ -43,7 +43,7 @@
                         <div>
                             <label class="m-0"><b>Padre o Tutor: </b></label>
                             <select  v-model="incidencia.IdFamiliar">
-                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
+                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</option>
                             </select>
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
 

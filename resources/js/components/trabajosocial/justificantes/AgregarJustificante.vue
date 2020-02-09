@@ -62,7 +62,7 @@
                 </select>
 
                 <select :disabled="ver" v-if="ver" type="text" class="form-control" v-model="pase.familiar.IdFamiliar">
-                  <option :value="pase.familiar.IdFamiliar">{{pase.familiar.Nombre + ' '+pase.familiar.ApePaterno+ ' '+ pase.familiar.ApeMaterno}}</option>
+                  <option :value="pase.familiar.IdFamiliar">{{pase.familiar.NombrePadre + ' '+pase.familiar.ApePaternoPadre+ ' '+ pase.familiar.ApeMaternoPadre}}</option>
                 </select>
 		  	    </div>
 		  	  

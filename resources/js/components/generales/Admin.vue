@@ -42,8 +42,8 @@
                         <div class="subGrid">
                             <div v-for="(familiar, key) in familiares" :key="key">
                                 <p class="m-0"><b>{{familiar.Tipo}}</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiar.Nombre}} {{familiar.ApePaterno}}  {{familiar.ApeMaterno}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.Telefono}}</p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             </div>
                         </div>
                     </div>

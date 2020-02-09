@@ -3550,7 +3550,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.familiares.forEach(function (familiar) {
         if (familiar.IdFamiliar === _this3.reporte.IdFamiliar) {
-          telefono = familiar.Telefono;
+          telefono = familiar.TelefonoPadre;
         }
       });
       return telefono;
@@ -5713,16 +5713,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['role'],
   created: function created() {
@@ -6506,7 +6496,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.familiares.forEach(function (familiar) {
         if (familiar.IdFamiliar === _this3.reporte.IdFamiliar) {
-          telefono = familiar.Telefono;
+          telefono = familiar.TelefonoPadre;
         }
       });
       return telefono;
@@ -44293,17 +44283,17 @@ var render = function() {
                         _c("p", { staticClass: "m-0" }, [
                           _c("b", [_vm._v("Nombre: ")]),
                           _vm._v(
-                            _vm._s(familiar.Nombre) +
+                            _vm._s(familiar.NombrePadre) +
                               " " +
-                              _vm._s(familiar.ApePaterno) +
+                              _vm._s(familiar.ApePaternoPadre) +
                               "  " +
-                              _vm._s(familiar.ApeMaterno)
+                              _vm._s(familiar.ApeMaternoPadre)
                           )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "m-0" }, [
                           _c("b", [_vm._v("Telefóno: ")]),
-                          _vm._v(_vm._s(familiar.Telefono))
+                          _vm._v(_vm._s(familiar.TelefonoPadre))
                         ])
                       ])
                     }),
@@ -45822,17 +45812,17 @@ var render = function() {
                                 _c("p", { staticClass: "m-0" }, [
                                   _c("b", [_vm._v("Nombre: ")]),
                                   _vm._v(
-                                    _vm._s(familiar.Nombre) +
+                                    _vm._s(familiar.NombrePadre) +
                                       " " +
-                                      _vm._s(familiar.ApePaterno) +
+                                      _vm._s(familiar.ApePaternoPadre) +
                                       "  " +
-                                      _vm._s(familiar.ApeMaterno)
+                                      _vm._s(familiar.ApeMaternoPadre)
                                   )
                                 ]),
                                 _vm._v(" "),
                                 _c("p", { staticClass: "m-0" }, [
                                   _c("b", [_vm._v("Telefóno: ")]),
-                                  _vm._v(_vm._s(familiar.Telefono))
+                                  _vm._v(_vm._s(familiar.TelefonoPadre))
                                 ])
                               ])
                             }),
@@ -47540,11 +47530,11 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(
-                                familiar.Nombre +
+                                familiar.NombrePadre +
                                   " " +
-                                  familiar.ApePaterno +
+                                  familiar.ApePaternoPadre +
                                   " " +
-                                  familiar.ApeMaterno
+                                  familiar.ApeMaternoPadre
                               )
                             )
                           ]
@@ -48019,11 +48009,11 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(
-                                familiar.Nombre +
+                                familiar.NombrePadre +
                                   " " +
-                                  familiar.ApePaterno +
+                                  familiar.ApePaternoPadre +
                                   " " +
-                                  familiar.ApeMaterno
+                                  familiar.ApeMaternoPadre
                               )
                             )
                           ]
@@ -48510,18 +48500,18 @@ var render = function() {
                       _c("b", [_vm._v("Fammiliar: ")]),
                       _vm._v(
                         _vm._s(
-                          _vm.familiar.Nombre +
+                          _vm.familiar.NombrePadre +
                             " " +
-                            _vm.familiar.ApePaterno +
+                            _vm.familiar.ApePaternoPadre +
                             " " +
-                            _vm.familiar.ApeMaterno
+                            _vm.familiar.ApeMaternoPadre
                         )
                       )
                     ]),
                     _vm._v(" "),
                     _c("p", [
                       _c("b", [_vm._v("Telefono: ")]),
-                      _vm._v(_vm._s(_vm.familiar.Telefono))
+                      _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                     ])
                   ]),
                   _vm._v(" "),
@@ -48808,18 +48798,18 @@ var render = function() {
                       _c("b", [_vm._v("Fammiliar: ")]),
                       _vm._v(
                         _vm._s(
-                          _vm.familiar.Nombre +
+                          _vm.familiar.NombrePadre +
                             " " +
-                            _vm.familiar.ApePaterno +
+                            _vm.familiar.ApePaternoPadre +
                             " " +
-                            _vm.familiar.ApeMaterno
+                            _vm.familiar.ApeMaternoPadre
                         )
                       )
                     ]),
                     _vm._v(" "),
                     _c("p", [
                       _c("b", [_vm._v("Telefono: ")]),
-                      _vm._v(_vm._s(_vm.familiar.Telefono))
+                      _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                     ])
                   ]),
                   _vm._v(" "),
@@ -52879,16 +52869,6 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.tipo === "justificante"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("i", { staticClass: "fas fa-print" }),
-                      _vm._v(" "),
-                      _c("a", { attrs: { href: "imprimirJust" } }, [
-                        _vm._v("Imprimir")
-                      ])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
                 _vm.tipo === "pase"
                   ? _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { disabled: _vm.ver } }, [
@@ -52974,11 +52954,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
-                              attrs: {
-                                disabled: _vm.ver,
-                                type: "text",
-                                required: ""
-                              },
+                              attrs: { disabled: _vm.ver, type: "text" },
                               on: {
                                 change: function($event) {
                                   var $$selectedVal = Array.prototype.filter
@@ -53011,11 +52987,11 @@ var render = function() {
                                 [
                                   _vm._v(
                                     _vm._s(
-                                      _vm.pase.familiar.Nombre +
+                                      _vm.pase.familiar.NombrePadre +
                                         " " +
-                                        _vm.pase.familiar.ApePaterno +
+                                        _vm.pase.familiar.ApePaternoPadre +
                                         " " +
-                                        _vm.pase.familiar.ApeMaterno
+                                        _vm.pase.familiar.ApeMaternoPadre
                                     )
                                   )
                                 ]
@@ -53091,16 +53067,6 @@ var render = function() {
                           }
                         }
                       })
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.tipo === "pase"
-                  ? _c("div", { staticClass: "form-group" }, [
-                      _c("i", { staticClass: "fas fa-print" }),
-                      _vm._v(" "),
-                      _c("a", { attrs: { href: "imprimirPase" } }, [
-                        _vm._v("Imprimir")
-                      ])
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -53290,7 +53256,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "pase" }, [
+                _c("div", [
                   _vm._m(1),
                   _vm._v(" "),
                   _c(
@@ -54104,11 +54070,11 @@ var render = function() {
                           [
                             _vm._v(
                               _vm._s(
-                                familiar.Nombre +
+                                familiar.NombrePadre +
                                   " " +
-                                  familiar.ApePaterno +
+                                  familiar.ApePaternoPadre +
                                   " " +
-                                  familiar.ApeMaterno
+                                  familiar.ApeMaternoPadre
                               )
                             )
                           ]
@@ -54655,18 +54621,18 @@ var render = function() {
                   _c("b", [_vm._v("Fammiliar: ")]),
                   _vm._v(
                     _vm._s(
-                      _vm.familiar.Nombre +
+                      _vm.familiar.NombrePadre +
                         " " +
-                        _vm.familiar.ApePaterno +
+                        _vm.familiar.ApePaternoPadre +
                         " " +
-                        _vm.familiar.ApeMaterno
+                        _vm.familiar.ApeMaternoPadre
                     )
                   )
                 ]),
                 _vm._v(" "),
                 _c("p", [
                   _c("b", [_vm._v("Telefono: ")]),
-                  _vm._v(_vm._s(_vm.familiar.Telefono))
+                  _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                 ])
               ]),
               _vm._v(" "),
