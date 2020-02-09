@@ -136,7 +136,8 @@ Route::get('import', function(){
 });
 Route::post('importAlumnos', 'TutoriasController@importExcelAlumno')->name('alumnos.import.excel');
 Route::post('importFamiliar', 'TutoriasController@importExcelFamiliar')->name('familiar.import.excel');
-//Route::post('importdocente', 'TutoriasController@importExcelDocente')->name('docente.import.excel');
+Route::post('importInfoDocente', 'TutoriasController@importExcelInfoDocente')->name('infoDocente.import.excel');
+
 
 
 
@@ -152,3 +153,4 @@ Route::get('A', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['admin']);
     return view('/admin');
 });
+Route::post('importdocente', 'UserController@importExcelDocente')->name('docente.import.excel');
