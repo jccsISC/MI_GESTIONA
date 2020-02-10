@@ -18,8 +18,8 @@ class UserDocenteImport implements ToModel
             'id'  => $row[0],
             'name'  => $row[1],
             'email'  =>$row[0],
-            'password'  =>bcrypt(12345678),
-            
-        ]);
+            'password'  =>bcrypt(12345678),  
+            'description'  => 'Maestro',
+        ]); 
     }
 }
