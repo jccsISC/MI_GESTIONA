@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Roles;
 class tblusuarios extends Model
 {
     protected $table = 'users';
@@ -11,4 +11,8 @@ class tblusuarios extends Model
     protected $fillable = [ 'name','email','password'];
     public $timestamps = false;
   
+    public function roles() {
+        return $this->belongsToMany('App\Roles');
+    }
+
 }

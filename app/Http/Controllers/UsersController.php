@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\tblusuarios;
+use App\Roles;
 
 class UsersController extends Controller
 {
@@ -15,26 +16,52 @@ class UsersController extends Controller
     public function index(Request $request) {
 
         if ($request->ajax()) {
-            return User::all();
+        
+    
+        $users= tblusuarios::all();
+        return $users;
+        } else {
+            return view('admin');
+        }
+    }
+    public function store(Request $request)
+    {
+
+        if ($request->ajax()) {
+            
+            $atributos = $this->validate($request, [
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required'
+            ]);
+    
+            return tblusuarios::create(['name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
         } else {
             return view('admin');
         }
     }
 
-    /*if ($request->ajax()) {
 
-            $usuarios = tblusuarios::join('role_user', 'role_user.user_id', '=', 'users.id')
-                ->join('role_user' , 'role_user.role_id','=','roles.id')
-                ->select(
-                    
-                    'roles.tipo as TipoUs',
-                    'users.id',
-                    'users.name',
-                    'users.email'
+    public function update(Request $request, tblusuarios $tblusuarios) {
+        $atributos = $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
 
-                );
-           return[ 'usuario'=>$usuarios];
-        } else {
-            return view('home');
-        } */
+        ]);
+        
+        $tblusuarios->update($atributos);
+        return $tblusuarios;
+    }
+        public function destroy(tblusuarios $tblusuarios) {
+        
+            $tblusuarios->delete();
+    
+            return response('Usuario Eliminado');
+        }
+    
+
+    
+
+    
 }

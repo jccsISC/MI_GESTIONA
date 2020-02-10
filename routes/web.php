@@ -62,6 +62,9 @@ Route::delete('practicas/{tblserviciopracticas}', 'ServicioPracticasController@d
 
 //USUARIOS CRUD
 Route::get('usuarios','UsersController@index');
+Route::post('usuarios','UsersController@store');
+Route::put('usuarios/{tblusuarios}','UsersController@update');
+Route::delete('usuarios/{tblusuarios}','UsersController@destroy');
 
 //DEPENDENCIAS CRUD
 Route::get('dependencias','DependenciasController@index');
