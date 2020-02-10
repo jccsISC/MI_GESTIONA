@@ -33,27 +33,27 @@
                         
                         <div>
                             <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="reporte.IdFamiliar">
+                            <select v-model="reporte.IdFamiliar">
                                 <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</option>
                             </select>
                             <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <textarea required v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
        
                             <p><b>Derivación</b></p>
-                            <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+                            <input required v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
                         </div>
 
                         <div>
                             <p><b>Descripción de la derivación</b></p> 
-                            <textarea v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
+                            <textarea required v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
 
                             <p><b>Observaciones</b></p>
-                            <input v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
+                            <input required v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
 
                             <p><b>Seguimiento</b></p>
-                            <input v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+                            <input required v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
                         </div>
                     </div>
 

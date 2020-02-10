@@ -47561,6 +47561,7 @@ var render = function() {
                       ],
                       staticClass: "form-control w-75 p-1 mb-1",
                       attrs: {
+                        required: "",
                         name: "",
                         id: "",
                         placeholder: "Escriba aquí los motivos"
@@ -47593,6 +47594,7 @@ var render = function() {
                       ],
                       staticClass: "form-control w-75 p-1 mb-1",
                       attrs: {
+                        required: "",
                         type: "text",
                         placeholder: "Escriba aquí a donde lo deriva"
                       },
@@ -47626,6 +47628,7 @@ var render = function() {
                       ],
                       staticClass: "form-control p-1 mb-1",
                       attrs: {
+                        required: "",
                         name: "",
                         id: "",
                         placeholder:
@@ -47659,6 +47662,7 @@ var render = function() {
                       ],
                       staticClass: "form-control p-1 mb-1",
                       attrs: {
+                        required: "",
                         type: "text",
                         placeholder: "Ingresa aquí las observaciones"
                       },
@@ -47690,6 +47694,7 @@ var render = function() {
                       ],
                       staticClass: "form-control p-1 mb-1",
                       attrs: {
+                        required: "",
                         type: "text",
                         placeholder: "Ingresa aquí el seguimiento que se dará"
                       },
