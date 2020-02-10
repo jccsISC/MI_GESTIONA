@@ -154,3 +154,4 @@ Route::get('A', function(Illuminate\Http\Request $request) {
     return view('/admin');
 });
 Route::post('importdocente', 'UserController@importExcelDocente')->name('docente.import.excel');
+Route::post('import-rol-docente', 'UserController@importExcelRolDocente')->name('rolDocente.import.excel');

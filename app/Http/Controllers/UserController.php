@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UserDocenteImport;
+use App\Imports\RoleDocenteImport;
 
 
 class UserController extends Controller
@@ -95,6 +97,14 @@ class UserController extends Controller
         Excel::import(new UserDocenteImport, $file3);
 
         return back()->with('message','Importación de docentes completada');
+
+    }
+
+    public function importExcelRolDocente(Request $request){
+        $file4= $request->file('fileRolDocente');
+        Excel::import(new RoleDocenteImport, $file4);
+
+        return back()->with('message','Importación de rol docentes completada');
 
     }
 

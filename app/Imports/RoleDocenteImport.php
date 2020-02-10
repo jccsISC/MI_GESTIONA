@@ -2,10 +2,10 @@
 
 namespace App\Imports;
 
-use App\User;
+use App\Role;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class UserDocenteImport implements ToModel
+class RoleDocenteImport implements ToModel
 {
     /**
     * @param array $row
@@ -14,12 +14,9 @@ class UserDocenteImport implements ToModel
     */
     public function model(array $row)
     {
-        return new User([
-            'id'  => $row[0],
-            'name'  => $row[1],
-            'email'  =>$row[0],
-            'password'  =>bcrypt(12345678),
-            
+        return new Role([
+            'name'  => $row[0],
+            'description'  =>'Docente',
         ]);
     }
 }
