@@ -5227,13 +5227,32 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    eliminarBeca: function eliminarBeca(beca, key) {
+    actualizarBeca: function actualizarBeca(beca) {
       var _this2 = this;
+
+      if (beca.esNueva) {
+        this.becas.push(beca);
+      } else {
+        var temp = Object.assign({}, this.becas); //clonamos el array becas
+
+        this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
+
+        Object.keys(temp).forEach(function (key) {
+          if (temp[key].IdBeca === beca.IdBeca) {
+            _this2.becas[key] = beca;
+          } else {
+            _this2.becas[key] = temp[key];
+          }
+        });
+      }
+    },
+    eliminarBeca: function eliminarBeca(beca, key) {
+      var _this3 = this;
 
       // Lo elimina en la base de datos.
       axios["delete"]("/becas/".concat(beca.IdBeca)).then(function (res) {
         // Lo elimina de manera visual.
-        _this2.becas.splice(key, 1);
+        _this3.becas.splice(key, 1);
       });
     }
   }
@@ -6896,6 +6915,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -6912,9 +6936,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onSubmit: function onSubmit() {
       if (this.usuario.id) {
-        this.actualizarUsuario();
-      } else {
         this.saveUsuario();
+        this.actualizarUsuario();
       }
     },
     onSuccess: function onSuccess(res) {
@@ -55343,6 +55366,35 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Identificador")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.usuario.id,
+                        expression: "usuario.id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      placeholder: "Ingresa el numero de nomina"
+                    },
+                    domProps: { value: _vm.usuario.id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.usuario, "id", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Nombre")]),
                   _vm._v(" "),
                   _c("input", {
@@ -55429,40 +55481,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Tipo de Usuario")]),
-                  _vm._v(" "),
-                  _c("select", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.usuario.Tipo,
-                        expression: "usuario.Tipo"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.usuario,
-                          "Tipo",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  })
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -55472,9 +55491,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "far fa-save" }),
-                    _vm._v(
-                      " " + _vm._s(_vm.usuario.id ? "Actualizar" : "Guardar")
-                    )
+                    _vm._v(" " + _vm._s(_vm.usuario.id ? "Guardar" : "Guardar"))
                   ]
                 )
               ]
@@ -55511,6 +55528,30 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Tipo de Usuario")]),
+      _vm._v(" "),
+      _c("select", { attrs: { name: "role", required: "" } }, [
+        _c("option", { attrs: { value: "admin" } }, [_vm._v("Administrador")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "tutor" } }, [_vm._v("Tutor")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "orientador" } }, [
+          _vm._v("Orientador")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "tsocial" } }, [
+          _vm._v("Trabajador social")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "maestro" } }, [_vm._v("Maestros")])
+      ])
+    ])
   }
 ]
 render._withStripped = true

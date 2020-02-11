@@ -30,12 +30,13 @@ class UsersController extends Controller
         if ($request->ajax()) {
             
             $atributos = $this->validate($request, [
+                'id' => 'required',
                 'name' => 'required',
                 'email' => 'required',
                 'password' => 'required'
             ]);
     
-            return tblusuarios::create(['name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
+            return tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
         } else {
             return view('admin');
         }

@@ -11,6 +11,10 @@
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
+            <div class="form-group">
+			          <label>Identificador</label>
+			          <input type="number" class="form-control" placeholder="Ingresa el numero de nomina" v-model="usuario.id">
+		  	    </div>
               <div class="form-group">
 			          <label>Nombre</label>
 			          <input type="text" class="form-control" placeholder="Ingresa el nombre completo" v-model="usuario.name">
@@ -26,15 +30,16 @@
 		  	    
               <div class="form-group">
 			          <label>Tipo de Usuario</label>
-			          <select class="form-control" v-model="usuario.Tipo">
-                  
-                 
-                </select>
+			          <select name="role" required>
+                <option value="admin">Administrador</option> 
+                <option value="tutor">Tutor</option> 
+                <option value="orientador">Orientador</option> 
+                <option value="tsocial">Trabajador social</option> 
+                <option value="maestro">Maestros</option> 
+              </select>
 		  	      </div>
 
-          
-          
-		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{usuario.id ? 'Actualizar' : 'Guardar'}}</button>
+		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{usuario.id ? 'Guardar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>
@@ -59,9 +64,8 @@
     methods: {
       onSubmit() {
         if (this.usuario.id) {
-          this.actualizarUsuario();
-        } else {
           this.saveUsuario();
+          this.actualizarUsuario();
         }
       },
        onSuccess(res) {
