@@ -134,16 +134,9 @@ class TutoriasController extends Controller
     public function importExcelAlumno(Request $request){
         $file= $request->file('file');
         Excel::import(new AlumnosImport, $file);
+        Excel::import(new FamiliarImport, $file);
 
         return back()->with('message','Importación de alumnos completada');
-
-    }
-
-    public function importExcelFamiliar(Request $request){
-        $file2= $request->file('filefamiliar');
-        Excel::import(new FamiliarImport, $file2);
-
-        return back()->with('message','Importación de familiares completada');
 
     }
 

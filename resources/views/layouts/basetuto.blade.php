@@ -28,7 +28,6 @@
 
                 <nav id="menu">
                     <ul>
-                    ||||<li><a href="/import">Importar</a></li>
                         <li><a href="/R">Reportes</a></li>
                         <li><div class="cerrar" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"

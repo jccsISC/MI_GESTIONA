@@ -131,12 +131,8 @@ Route::get('T', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['tutor']);
     return view('/tutorias.principal');
 });
-Route::get('import', function(){
-    return view('/tutorias.import');
-});
 Route::post('importAlumnos', 'TutoriasController@importExcelAlumno')->name('alumnos.import.excel');
-Route::post('importFamiliar', 'TutoriasController@importExcelFamiliar')->name('familiar.import.excel');
-Route::post('importInfoDocente', 'TutoriasController@importExcelInfoDocente')->name('infoDocente.import.excel');
+//Route::post('importInfoDocente', 'TutoriasController@importExcelInfoDocente')->name('infoDocente.import.excel');
 
 
 
