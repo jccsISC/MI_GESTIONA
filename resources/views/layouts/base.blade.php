@@ -56,15 +56,10 @@
         <ver-dependencias></ver-dependencias>
         @yield('content')
 
+          
      
-        <footer>
-            <p>
-                GESTIONA <br>
-                Contactanos: 123 4567890 <br>
-                gestiona@gmail.com
-            </p>
-
-            <p>Breve descripción de lo que va a llevar el pie de página</p>
+        <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
+            <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
         </footer>
 
     </div>
