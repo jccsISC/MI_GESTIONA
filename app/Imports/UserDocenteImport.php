@@ -19,7 +19,6 @@ class UserDocenteImport implements ToModel
             'name'  => $row[1],
             'email'  =>$row[0],
             'password'  =>bcrypt(12345678),  
-            'description'  => 'Maestro',
         ]); 
     }
 }

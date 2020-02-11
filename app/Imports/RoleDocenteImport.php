@@ -16,8 +16,7 @@ class RoleDocenteImport implements ToModel
     {
         return new roleUser([
                 'user_id'  => $row[0],
-                'description'  => 'Maestro',
-                'role_id'  => 6,           
+                'role_id'  => 5,           
         ]);
     }
 }
