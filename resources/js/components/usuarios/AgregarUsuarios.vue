@@ -30,7 +30,7 @@
 		  	    
               <div class="form-group">
 			          <label>Tipo de Usuario</label>
-			          <select name="role" required>
+			          <select name="role" required v-model="usuario.role">
                 <option value="admin">Administrador</option> 
                 <option value="tutor">Tutor</option> 
                 <option value="orientador">Orientador</option> 

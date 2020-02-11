@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\tblusuarios;
 use App\Roles;
+use App\roleUser;
 
 class UsersController extends Controller
 {
@@ -33,7 +34,8 @@ class UsersController extends Controller
                 'id' => 'required',
                 'name' => 'required',
                 'email' => 'required',
-                'password' => 'required'
+                'password' => 'required',
+                'role' => 'requited' ==tutor
             ]);
     
             return tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);

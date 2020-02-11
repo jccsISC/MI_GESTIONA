@@ -55481,7 +55481,64 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(1),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Tipo de Usuario")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.usuario.role,
+                          expression: "usuario.role"
+                        }
+                      ],
+                      attrs: { name: "role", required: "" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.usuario,
+                            "role",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "admin" } }, [
+                        _vm._v("Administrador")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tutor" } }, [
+                        _vm._v("Tutor")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "orientador" } }, [
+                        _vm._v("Orientador")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tsocial" } }, [
+                        _vm._v("Trabajador social")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "maestro" } }, [
+                        _vm._v("Maestros")
+                      ])
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -55528,30 +55585,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Tipo de Usuario")]),
-      _vm._v(" "),
-      _c("select", { attrs: { name: "role", required: "" } }, [
-        _c("option", { attrs: { value: "admin" } }, [_vm._v("Administrador")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "tutor" } }, [_vm._v("Tutor")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "orientador" } }, [
-          _vm._v("Orientador")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "tsocial" } }, [
-          _vm._v("Trabajador social")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "maestro" } }, [_vm._v("Maestros")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
