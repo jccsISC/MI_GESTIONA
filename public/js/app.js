@@ -55517,23 +55517,23 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "admin" } }, [
+                      _c("option", { attrs: { value: "1" } }, [
                         _vm._v("Administrador")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "tutor" } }, [
+                      _c("option", { attrs: { value: "2" } }, [
                         _vm._v("Tutor")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "orientador" } }, [
+                      _c("option", { attrs: { value: "3" } }, [
                         _vm._v("Orientador")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "tsocial" } }, [
+                      _c("option", { attrs: { value: "4" } }, [
                         _vm._v("Trabajador social")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "maestro" } }, [
+                      _c("option", { attrs: { value: "5" } }, [
                         _vm._v("Maestros")
                       ])
                     ]

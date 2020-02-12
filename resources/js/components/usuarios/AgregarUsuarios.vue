@@ -31,11 +31,11 @@
               <div class="form-group">
 			          <label>Tipo de Usuario</label>
 			          <select name="role" required v-model="usuario.role">
-                <option value="admin">Administrador</option> 
-                <option value="tutor">Tutor</option> 
-                <option value="orientador">Orientador</option> 
-                <option value="tsocial">Trabajador social</option> 
-                <option value="maestro">Maestros</option> 
+                <option value="1">Administrador</option> 
+                <option value="2">Tutor</option> 
+                <option value="3">Orientador</option> 
+                <option value="4">Trabajador social</option> 
+                <option value="5">Maestros</option> 
               </select>
 		  	      </div>
 

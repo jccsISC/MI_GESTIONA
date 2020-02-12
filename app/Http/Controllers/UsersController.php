@@ -35,14 +35,15 @@ class UsersController extends Controller
                 'name' => 'required',
                 'email' => 'required',
                 'password' => 'required',
-                'role' => 'requited' ==tutor
+                'role' => 'required'
             ]);
     
-            return tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
-        } else {
-            return view('admin');
-        }
-    }
+            return roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]) &&
+            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
+            } else {
+     return view('admin');
+ }
+}
 
 
     public function update(Request $request, tblusuarios $tblusuarios) {
