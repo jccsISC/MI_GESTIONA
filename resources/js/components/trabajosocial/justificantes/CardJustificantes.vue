@@ -1,7 +1,7 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Justificantes y Pases de Salida</p>
-        <div class="micardsm colorText" data-toggle="modal" data-target="#addPracticas">
+        <div class="micardsm colorText">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                 <button type="button" class="btn btn-primary btn-sm mr-2 mt-2 float-right" data-toggle="modal" data-target="#addJustificantes" @click="$emit('agregarJustificante', alumno)">
                     <i class="fas fa-plus-circle"></i>
@@ -122,10 +122,12 @@
         margin: 0;
         padding: 0;
     }
+
     .scrollHTS::-webkit-scrollbar{
         width: 1px;
         height: 3px;
     }
+
     .scrollHTS::-webkit-scrollbar-thumb{
         width: 3px;
         background: #800000;

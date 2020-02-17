@@ -21,11 +21,11 @@
                             <img src="images/logo.jpg" alt="">
                         </div>
 
-                        <button v-if="!incidencia.Status && role!='admin'" @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                        <button v-if="!incidencia.Status " @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
                             <i class="fas fa-edit"></i>
                         </button>
 
-                        <button  v-if="incidencia.Status && role!='admin'" type="button" class="mibtnI positionImprimir">
+                        <button  v-if="incidencia.Status " type="button" class="mibtnI positionImprimir">
                             <i class="fas fa-print"></i>
                         </button>
                         
@@ -97,7 +97,7 @@
 <script>
     import bus from '../../../event-bus';
     export default {
-          props: ['role'],
+        //   props: ['role'],
          data() {
             return {
                 alumno: {},
