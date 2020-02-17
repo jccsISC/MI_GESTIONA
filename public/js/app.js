@@ -2194,7 +2194,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log(this.role);
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
       _this.alumno = alumno;
 
@@ -2957,8 +2956,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['tipo', 'role'],
   data: function data() {
     return {
       alumno: {},
@@ -2977,6 +2980,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    console.log(this.role);
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('alumnoSeleccionado', function (alumno) {
       _this.alumno = alumno;
 
@@ -3106,8 +3110,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res);
       });
     }
-  },
-  props: ['tipo']
+  }
 });
 
 /***/ }),
@@ -3122,6 +3125,532 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4007,7 +4536,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log(this.role, 'julio se la come riendo ');
     this.$parent.$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
       ;
@@ -4822,6 +5350,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumnos: [],
@@ -4849,7 +5378,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
     this.idalumno = new URLSearchParams(window.location.search).get('show');
-    console.log(this.idalumno);
+    console.log(this.idalumno + ' idalumno');
     axios.get('/incidencias').then(function (res) {
       _this.alumnos = res.data;
       _this.loading = false;
@@ -5722,6 +6251,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    console.log(this.role);
     this.$parent.$on('agregarJustificante', function (alumno) {
       _this.alumno = alumno;
       _this.justificante = {};
@@ -6355,6 +6885,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -6447,9 +6978,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import bus from '../../event-bus';
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
@@ -6695,6 +7225,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -11503,7 +12034,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.divPrin{\n    width: 100%; \n    height: 650px;\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n}\n.pbtn{\n    float:right;\n}\n", ""]);
+exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -45673,913 +46204,968 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "modal fade",
-      attrs: {
-        id: "allinfo",
-        tabindex: "-1",
-        role: "dialog",
-        "aria-hidden": "true"
-      }
-    },
     [
       _c(
         "div",
         {
-          staticClass:
-            "modal-dialog modal-centered modal-lg modal-dialog-scrollable",
-          attrs: { role: "document" }
+          staticClass: "modal fade",
+          attrs: {
+            id: "allinfo",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-hidden": "true"
+          }
         },
         [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("hr", { staticClass: "mt-1 m-0 p-0" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body-g2 sizeGeneral" }, [
-              _c("p", { staticClass: "subtitulos" }, [
-                _vm._v("Información Personal")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "barrasubtitulos" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "contenedorVentana colorText" }, [
-                _vm.alumno.IdAlumno
-                  ? _c("div", { staticClass: "inforPG" }, [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "subGrid" }, [
-                        _c("div", { staticClass: "pl-2" }, [
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Matricula: ")]),
-                            _vm._v(_vm._s(_vm.alumno.IdAlumno))
+          _c(
+            "div",
+            {
+              staticClass:
+                "modal-dialog modal-centered modal-lg modal-dialog-scrollable",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("hr", { staticClass: "mt-1 m-0 p-0" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body-g2 sizeGeneral" }, [
+                  _c("p", { staticClass: "subtitulos" }, [
+                    _vm._v("Información Personal")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr", { staticClass: "barrasubtitulos" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "contenedorVentana colorText" }, [
+                    _vm.alumno.IdAlumno
+                      ? _c("div", { staticClass: "inforPG" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "subGrid" }, [
+                            _c("div", { staticClass: "pl-2" }, [
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Matricula: ")]),
+                                _vm._v(_vm._s(_vm.alumno.IdAlumno))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Nombre: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.alumno.Nombre) +
+                                    " " +
+                                    _vm._s(_vm.alumno.ApePaterno) +
+                                    "  " +
+                                    _vm._s(_vm.alumno.ApeMaterno)
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                                _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Género: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.Sexo == "M"
+                                      ? "Masculino"
+                                      : "Femenino"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Telefóno: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Telefono))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Telefóno2: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.Telefono2
+                                      ? _vm.alumno.Telefono2
+                                      : ""
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c("div", { staticClass: "lineaG" }),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("CURP: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Curp))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Correo: ")]),
+                                _vm._v(_vm._s(_vm.alumno.EMAIL))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Carrera: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Carrera))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Grado: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Grupo: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Grupo))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Turno: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.Turno == "M"
+                                      ? "Matutino"
+                                      : "Vespertino"
+                                  )
+                                )
+                              ])
+                            ])
                           ]),
                           _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Nombre: ")]),
-                            _vm._v(
-                              _vm._s(_vm.alumno.Nombre) +
-                                " " +
-                                _vm._s(_vm.alumno.ApePaterno) +
-                                "  " +
-                                _vm._s(_vm.alumno.ApeMaterno)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Fecha Nacimiento: ")]),
-                            _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Género: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.Sexo == "M"
-                                  ? "Masculino"
-                                  : "Femenino"
+                          _c("div", [
+                            _c("div", { staticClass: "lineaG" }),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._m(2),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "subGrid" },
+                                _vm._l(_vm.familiares, function(familiar, key) {
+                                  return _c("div", { key: key }, [
+                                    _c("p", { staticClass: "m-0" }, [
+                                      _c("b", [_vm._v(_vm._s(familiar.Tipo))])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "m-0" }, [
+                                      _c("b", [_vm._v("Nombre: ")]),
+                                      _vm._v(
+                                        _vm._s(familiar.Nombre) +
+                                          " " +
+                                          _vm._s(familiar.ApePaterno) +
+                                          "  " +
+                                          _vm._s(familiar.ApeMaterno)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "m-0" }, [
+                                      _c("b", [_vm._v("Telefóno: ")]),
+                                      _vm._v(_vm._s(familiar.Telefono))
+                                    ])
+                                  ])
+                                }),
+                                0
                               )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Telefóno: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Telefono))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Telefóno2: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.Telefono2 ? _vm.alumno.Telefono2 : ""
-                              )
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c("div", { staticClass: "lineaG" }),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("CURP: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Curp))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Correo: ")]),
-                            _vm._v(_vm._s(_vm.alumno.EMAIL))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Carrera: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Carrera))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Grado: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Grupo: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Grupo))
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Turno: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.Turno == "M"
-                                  ? "Matutino"
-                                  : "Vespertino"
-                              )
-                            )
+                            ])
                           ])
                         ])
-                      ]),
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sizeGeneral" }, [
+                      _vm.alumno.IdAlumno
+                        ? _c("div", { staticClass: "float" }, [_vm._m(3)])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("div", [
-                        _c("div", { staticClass: "lineaG" }),
-                        _vm._v(" "),
-                        _c("div", [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "subGrid" },
-                            _vm._l(_vm.familiares, function(familiar, key) {
-                              return _c("div", { key: key }, [
-                                _c("p", { staticClass: "m-0" }, [
-                                  _c("b", [_vm._v(_vm._s(familiar.Tipo))])
-                                ]),
-                                _vm._v(" "),
-                                _c("p", { staticClass: "m-0" }, [
-                                  _c("b", [_vm._v("Nombre: ")]),
-                                  _vm._v(
-                                    _vm._s(familiar.Nombre) +
-                                      " " +
-                                      _vm._s(familiar.ApePaterno) +
-                                      "  " +
-                                      _vm._s(familiar.ApeMaterno)
+                      _vm.alumno.IdAlumno
+                        ? _c("div", { staticClass: "inforP2G sizeGeneral" }, [
+                            _c("div", [
+                              _c("label", { staticClass: "m-0 mr-5" }, [
+                                _c("b", [_vm._v("Estado: ")]),
+                                _vm._v(_vm._s(_vm.alumno.EstadoNac))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", [
+                                _c("b", [_vm._v("Municipio: ")]),
+                                _vm._v(_vm._s(_vm.alumno.MunicipioNac))
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-2" }, [
+                                _c("b", [_vm._v("Calle: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Calle))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-2" }, [
+                                _c("b", [_vm._v("No. Exterior: ")]),
+                                _vm._v(_vm._s(_vm.alumno.NumExterior))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-2" }, [
+                                _c("b", [_vm._v("No. Interior: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.NumInterior == ""
+                                      ? ""
+                                      : _vm.alumno.NumInterior
                                   )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("CP: ")]),
+                                _vm._v(_vm._s(_vm.alumno.CodPostal))
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-3" }, [
+                                _c("b", [_vm._v("Colonia: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Colonia))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-3" }, [
+                                _c("b", [_vm._v("Municipio: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Municipio))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-2" }, [
+                                _c("b", [_vm._v("Estado: ")]),
+                                _vm._v(_vm._s(_vm.alumno.Estado))
+                              ]),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-1" }, [
+                                _c("b", [_vm._v("Entre Calle: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.EntreCalle
+                                      ? _vm.alumno.EntreCalle
+                                      : "No Capturada"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Entre Calle: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.EntreCalle2
+                                      ? _vm.alumno.EntreCalle2
+                                      : "No Capturada"
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c("div", { staticClass: "linea" }),
+                              _vm._v(" "),
+                              _c("label", { staticClass: "m-0 mr-5" }, [
+                                _c("b", [_vm._v("Tipo de Sangre: ")]),
+                                _vm._v(_vm._s(_vm.alumno.TipoSangre))
+                              ]),
+                              _vm._v(" "),
+                              _c("label", {}, [
+                                _c("b", [_vm._v("Etnia: ")]),
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _vm._m(5),
+                              _c("br"),
+                              _vm._v(" "),
+                              _vm._m(6),
+                              _c("br")
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "subtitulos text-center" }, [
+                    _vm._v("Información Académica")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr", { staticClass: "barrasubtitulos" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "contenedorVentana2 colorText sizeGeneral" },
+                    [
+                      _c("div", { staticClass: "gridM2G" }, [
+                        _vm.alumno.IdAlumno
+                          ? _c("div", [
+                              _c("div", [
+                                _vm._m(7),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "m-0 p-0" }, [
+                                  _c("b", [_vm._v("Promedio General: ")]),
+                                  _vm._v(" " + _vm._s(_vm.promedioGeneral))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "contentCalifG" }, [
+                                _vm.alumno.IdAlumno
+                                  ? _c(
+                                      "table",
+                                      {
+                                        staticClass:
+                                          "table table-striped table-hover contentTable table table-sm scrollT"
+                                      },
+                                      [
+                                        _vm._m(8),
+                                        _vm._v(" "),
+                                        _c(
+                                          "tbody",
+                                          _vm._l(_vm.calificaciones, function(
+                                            calificacion,
+                                            key
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: key },
+                                              [
+                                                _c(
+                                                  "td",
+                                                  { attrs: { colspan: "2" } },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        calificacion.Materia
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(5, function(i) {
+                                                  return _c("td", { key: i }, [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.unidad(
+                                                          calificacion.detalles,
+                                                          i
+                                                        )
+                                                      )
+                                                    )
+                                                  ])
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { attrs: { colspan: "2" } },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        calificacion.Calificacionfinal
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      calificacion.Extra
+                                                        ? calificacion.Extra
+                                                        : "NC"
+                                                    )
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      calificacion.Inter
+                                                        ? calificacion.Inter
+                                                        : "NC"
+                                                    )
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      calificacion.Ordinario
+                                                        ? calificacion.Ordinario
+                                                        : "NC"
+                                                    )
+                                                  )
+                                                ])
+                                              ],
+                                              2
+                                            )
+                                          }),
+                                          0
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.alumno.IdAlumno
+                          ? _c("div", { staticClass: "pl-3" }, [
+                              _vm._m(9),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "contentCalifG" }, [
+                                _vm.alumno.IdAlumno
+                                  ? _c(
+                                      "table",
+                                      {
+                                        staticClass:
+                                          "table table-striped table-hover contentTable table table-sm scrollT"
+                                      },
+                                      [
+                                        _vm._m(10),
+                                        _vm._v(" "),
+                                        _c(
+                                          "tbody",
+                                          _vm._l(_vm.calificaciones, function(
+                                            calificacion,
+                                            key
+                                          ) {
+                                            return _c(
+                                              "tr",
+                                              { key: key },
+                                              [
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(calificacion.Materia)
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _vm._l(5, function(i) {
+                                                  return _c("td", { key: i }, [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.unidad(
+                                                          calificacion.Inacistencias,
+                                                          i
+                                                        )
+                                                      )
+                                                    )
+                                                  ])
+                                                })
+                                              ],
+                                              2
+                                            )
+                                          }),
+                                          0
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "subtitulos text-center" }, [
+                    _vm._v("Salud - Incidencias")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr", { staticClass: "barrasubtitulos" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "contenedorVentana2 colorText sizeGeneral" },
+                    [
+                      _c("div", { staticClass: "gridM2G" }, [
+                        _vm.alumno.IdAlumno
+                          ? _c("div", [
+                              _vm._m(11),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c("label", { staticClass: "mr-5 m-0" }, [
+                                  _c("b", [_vm._v("Estatura: ")]),
+                                  _vm._v(_vm._s(_vm.salud.Estatura))
                                 ]),
                                 _vm._v(" "),
-                                _c("p", { staticClass: "m-0" }, [
-                                  _c("b", [_vm._v("Telefóno: ")]),
-                                  _vm._v(_vm._s(familiar.Telefono))
+                                _c("label", { staticClass: "mr-4 m-0" }, [
+                                  _c("b", [_vm._v("Peso: ")]),
+                                  _vm._v(_vm._s(_vm.salud.Peso))
+                                ]),
+                                _vm._v(" "),
+                                _c("label", { staticClass: "m-0" }, [
+                                  _c("b", [_vm._v("IMC: ")]),
+                                  _vm._v(_vm._s(_vm.salud.IMC))
+                                ]),
+                                _c("br")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "gridM2G" }, [
+                                _c("div", { staticClass: "contentDetSaludG" }, [
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("Anteojos: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Anteojos == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("Pie Plano: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.PiePlano == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("ProbBucal: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.ProbBucal == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("Pediculosis: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Pediculosis == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("ProbAuditivo: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.ProbAuditivo == 1
+                                          ? "Si"
+                                          : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("ProbLenguaje: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.ProbLenguaje == 1
+                                          ? "Si"
+                                          : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "mb-1" }, [
+                                    _c("b", [_vm._v("Transtornos: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Transtornos
+                                          ? _vm.salud.Transtornos
+                                          : "No padece de transtornos..."
+                                      )
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "contentDetSaludG" }, [
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Alergias: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Alergias == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Descripción: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.DetAlergias
+                                          ? _vm.salud.DetAlergias
+                                          : "No tiene alergias..."
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Gravidez: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Gravidez == 1 ? "Si" : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Descripción: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.Gravidez
+                                          ? _vm.salud.DetGravidez
+                                          : "No tiene gravidez..."
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Problemas Posturales: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.ProbPosturales == 1
+                                          ? "Si"
+                                          : "No"
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Descripción: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.DetProbPosturales
+                                          ? _vm.salud.DetProbPosturales
+                                          : "No tiene problemas posturales..."
+                                      )
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Otros: ")]),
+                                    _vm._v(
+                                      _vm._s(_vm.salud.Otros == 1 ? "Si" : "No")
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _c("b", [_vm._v("Descripción: ")]),
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.salud.DetOtros
+                                          ? _vm.salud.DetOtros
+                                          : "No tiene otros..."
+                                      )
+                                    )
+                                  ])
                                 ])
                               ])
-                            }),
-                            0
-                          )
-                        ])
-                      ])
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "sizeGeneral" }, [
-                  _vm.alumno.IdAlumno
-                    ? _c("div", { staticClass: "float" }, [_vm._m(3)])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.alumno.IdAlumno
-                    ? _c("div", { staticClass: "inforP2G sizeGeneral" }, [
-                        _c("div", [
-                          _c("label", { staticClass: "m-0 mr-5" }, [
-                            _c("b", [_vm._v("Estado: ")]),
-                            _vm._v(_vm._s(_vm.alumno.EstadoNac))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", [
-                            _c("b", [_vm._v("Municipio: ")]),
-                            _vm._v(_vm._s(_vm.alumno.MunicipioNac))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(4),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-2" }, [
-                            _c("b", [_vm._v("Calle: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Calle))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-2" }, [
-                            _c("b", [_vm._v("No. Exterior: ")]),
-                            _vm._v(_vm._s(_vm.alumno.NumExterior))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-2" }, [
-                            _c("b", [_vm._v("No. Interior: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.NumInterior == ""
-                                  ? ""
-                                  : _vm.alumno.NumInterior
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("CP: ")]),
-                            _vm._v(_vm._s(_vm.alumno.CodPostal))
-                          ]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-3" }, [
-                            _c("b", [_vm._v("Colonia: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Colonia))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-3" }, [
-                            _c("b", [_vm._v("Municipio: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Municipio))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-2" }, [
-                            _c("b", [_vm._v("Estado: ")]),
-                            _vm._v(_vm._s(_vm.alumno.Estado))
-                          ]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-1" }, [
-                            _c("b", [_vm._v("Entre Calle: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.EntreCalle
-                                  ? _vm.alumno.EntreCalle
-                                  : "No Capturada"
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0" }, [
-                            _c("b", [_vm._v("Entre Calle: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.EntreCalle2
-                                  ? _vm.alumno.EntreCalle2
-                                  : "No Capturada"
-                              )
-                            )
-                          ])
-                        ]),
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
-                        _c("div", [
-                          _c("div", { staticClass: "linea" }),
-                          _vm._v(" "),
-                          _c("label", { staticClass: "m-0 mr-5" }, [
-                            _c("b", [_vm._v("Tipo de Sangre: ")]),
-                            _vm._v(_vm._s(_vm.alumno.TipoSangre))
-                          ]),
-                          _vm._v(" "),
-                          _c("label", {}, [
-                            _c("b", [_vm._v("Etnia: ")]),
-                            _vm._v(
-                              _vm._s(
-                                _vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"
-                              )
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _vm._m(5),
-                          _c("br"),
-                          _vm._v(" "),
-                          _vm._m(6),
-                          _c("br")
-                        ])
-                      ])
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "subtitulos text-center" }, [
-                _vm._v("Información Académica")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "barrasubtitulos" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "contenedorVentana2 colorText sizeGeneral" },
-                [
-                  _c("div", { staticClass: "gridM2G" }, [
-                    _vm.alumno.IdAlumno
-                      ? _c("div", [
-                          _c("div", [
-                            _vm._m(7),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "m-0 p-0" }, [
-                              _c("b", [_vm._v("Promedio General: ")]),
-                              _vm._v(" " + _vm._s(_vm.promedioGeneral))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "contentCalifG" }, [
-                            _vm.alumno.IdAlumno
-                              ? _c(
-                                  "table",
-                                  {
-                                    staticClass:
-                                      "table table-striped table-hover contentTable table table-sm scrollT"
-                                  },
-                                  [
-                                    _vm._m(8),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.calificaciones, function(
-                                        calificacion,
-                                        key
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: key },
-                                          [
-                                            _c(
-                                              "td",
-                                              { attrs: { colspan: "2" } },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(calificacion.Materia)
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _vm._l(5, function(i) {
-                                              return _c("td", { key: i }, [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm.unidad(
-                                                      calificacion.detalles,
-                                                      i
+                        _vm.alumno.IdAlumno
+                          ? _c("div", [
+                              _c("div", { staticClass: "linea2G" }),
+                              _vm._v(" "),
+                              _vm._m(12),
+                              _vm._v(" "),
+                              _c("div", [
+                                _vm.alumno.IdAlumno
+                                  ? _c("div", [
+                                      _c("div", { staticClass: "pt-1" }, [
+                                        _vm._m(13),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "scrollHG" },
+                                          _vm._l(_vm.incidencias, function(
+                                            incidencia,
+                                            key
+                                          ) {
+                                            return _c(
+                                              "button",
+                                              {
+                                                key: key,
+                                                staticClass:
+                                                  "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
+                                                attrs: {
+                                                  "data-toggle": "modal",
+                                                  "data-target":
+                                                    incidencia.TipoReporte ==
+                                                    "Incidencia"
+                                                      ? "#verIncidencias"
+                                                      : "#verMalaConducta"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.$emit(
+                                                      "verIncidencia",
+                                                      incidencia,
+                                                      _vm.alumno
                                                     )
-                                                  )
-                                                )
-                                              ])
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "td",
-                                              { attrs: { colspan: "2" } },
+                                                  }
+                                                }
+                                              },
                                               [
                                                 _vm._v(
-                                                  _vm._s(
-                                                    calificacion.Calificacionfinal
-                                                  )
+                                                  "\n                                                \n                                                    " +
+                                                    _vm._s(key + 1) +
+                                                    "\n                                                "
                                                 )
                                               ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  calificacion.Extra
-                                                    ? calificacion.Extra
-                                                    : "NC"
-                                                )
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  calificacion.Inter
-                                                    ? calificacion.Inter
-                                                    : "NC"
-                                                )
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  calificacion.Ordinario
-                                                    ? calificacion.Ordinario
-                                                    : "NC"
-                                                )
-                                              )
-                                            ])
-                                          ],
-                                          2
+                                            )
+                                          }),
+                                          0
                                         )
-                                      }),
-                                      0
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.alumno.IdAlumno
-                      ? _c("div", { staticClass: "pl-3" }, [
-                          _vm._m(9),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "contentCalifG" }, [
-                            _vm.alumno.IdAlumno
-                              ? _c(
-                                  "table",
-                                  {
-                                    staticClass:
-                                      "table table-striped table-hover contentTable table table-sm scrollT"
-                                  },
-                                  [
-                                    _vm._m(10),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.calificaciones, function(
-                                        calificacion,
-                                        key
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          { key: key },
-                                          [
-                                            _c("td", [
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "mcontenidoL pt-1" },
+                                        [
+                                          _vm._m(14),
+                                          _vm._v(" "),
+                                          _c("p", [
+                                            _c("b", [
+                                              _vm._v("Observaciones: ")
+                                            ]),
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.inconveniente.Observaciones
+                                              )
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("p", [
+                                            _c("b", [
                                               _vm._v(
-                                                _vm._s(calificacion.Materia)
+                                                "Descripción del Reporte: "
                                               )
                                             ]),
-                                            _vm._v(" "),
-                                            _vm._l(5, function(i) {
-                                              return _c("td", { key: i }, [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm.unidad(
-                                                      calificacion.Inacistencias,
-                                                      i
-                                                    )
-                                                  )
-                                                )
-                                              ])
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.inconveniente
+                                                  .DescripcionReporte
+                                              )
+                                            )
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "pt-1 mr-4" }, [
+                                        _c(
+                                          "p",
+                                          { staticClass: "p-0 m-0 fecha" },
+                                          [
+                                            _c("b", [_vm._v("Fecha: ")]),
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.inconveniente.FechaInicio
+                                              )
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "/R?show=" + _vm.alumno.IdAlumno
+                                            }
+                                          },
+                                          [
+                                            _c("img", {
+                                              staticStyle: {
+                                                width: "20px",
+                                                height: "20px"
+                                              },
+                                              attrs: {
+                                                src: "images/historial.png",
+                                                alt: "ver el historial"
+                                              }
                                             })
-                                          ],
-                                          2
+                                          ]
                                         )
-                                      }),
-                                      0
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          ])
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "subtitulos text-center" }, [
-                _vm._v("Salud - Incidencias")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "barrasubtitulos" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "contenedorVentana2 colorText sizeGeneral" },
-                [
-                  _c("div", { staticClass: "gridM2G" }, [
-                    _vm.alumno.IdAlumno
-                      ? _c("div", [
-                          _vm._m(11),
-                          _vm._v(" "),
-                          _c("div", [
-                            _c("label", { staticClass: "mr-5 m-0" }, [
-                              _c("b", [_vm._v("Estatura: ")]),
-                              _vm._v(_vm._s(_vm.salud.Estatura))
-                            ]),
-                            _vm._v(" "),
-                            _c("label", { staticClass: "mr-4 m-0" }, [
-                              _c("b", [_vm._v("Peso: ")]),
-                              _vm._v(_vm._s(_vm.salud.Peso))
-                            ]),
-                            _vm._v(" "),
-                            _c("label", { staticClass: "m-0" }, [
-                              _c("b", [_vm._v("IMC: ")]),
-                              _vm._v(_vm._s(_vm.salud.IMC))
-                            ]),
-                            _c("br")
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "gridM2G" }, [
-                            _c("div", { staticClass: "contentDetSaludG" }, [
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("Anteojos: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.Anteojos == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("Pie Plano: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("ProbBucal: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("Pediculosis: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.Pediculosis == 1 ? "Si" : "No"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("ProbAuditivo: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.ProbAuditivo == 1 ? "Si" : "No"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("ProbLenguaje: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.ProbLenguaje == 1 ? "Si" : "No"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _c("b", [_vm._v("Transtornos: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.Transtornos
-                                      ? _vm.salud.Transtornos
-                                      : "No padece de transtornos..."
-                                  )
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "contentDetSaludG" }, [
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Alergias: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.Alergias == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Descripción: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.DetAlergias
-                                      ? _vm.salud.DetAlergias
-                                      : "No tiene alergias..."
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Gravidez: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.Gravidez == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Descripción: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.Gravidez
-                                      ? _vm.salud.DetGravidez
-                                      : "No tiene gravidez..."
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Problemas Posturales: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.ProbPosturales == 1 ? "Si" : "No"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Descripción: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.DetProbPosturales
-                                      ? _vm.salud.DetProbPosturales
-                                      : "No tiene problemas posturales..."
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Otros: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.salud.Otros == 1 ? "Si" : "No")
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Descripción: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.salud.DetOtros
-                                      ? _vm.salud.DetOtros
-                                      : "No tiene otros..."
-                                  )
-                                )
+                                      ])
+                                    ])
+                                  : _vm._e()
                               ])
                             ])
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.alumno.IdAlumno
-                      ? _c("div", [
-                          _c("div", { staticClass: "linea2G" }),
-                          _vm._v(" "),
-                          _vm._m(12),
-                          _vm._v(" "),
-                          _c("div", [
-                            _vm.alumno.IdAlumno
-                              ? _c("div", [
-                                  _c("div", { staticClass: "pt-1" }, [
-                                    _vm._m(13),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "scrollHG" },
-                                      _vm._l(_vm.incidencias, function(
-                                        incidencia,
-                                        key
+                          : _vm._e()
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "subtitulos text-center" }, [
+                    _vm._v("Trabajo Social")
+                  ]),
+                  _vm._v(" "),
+                  _c("hr", { staticClass: "barrasubtitulos" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "contenedorVentana colorText sizeGeneral" },
+                    [
+                      _c("div", { staticClass: "gridTS" }, [
+                        _c("div", [
+                          _vm.alumno.IdAlumno
+                            ? _c("div", [
+                                _c("div", [
+                                  _vm._m(15),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "scrollJ" },
+                                    _vm._l(
+                                      _vm.justificantes.slice().reverse(),
+                                      function(
+                                        justificante,
+                                        keyjustificantepase
                                       ) {
                                         return _c(
                                           "button",
                                           {
-                                            key: key,
+                                            key: keyjustificantepase,
                                             staticClass:
-                                              "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
+                                              "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
                                             attrs: {
                                               "data-toggle": "modal",
-                                              "data-target":
-                                                incidencia.TipoReporte ==
-                                                "Incidencia"
-                                                  ? "#verIncidencias"
-                                                  : "#verMalaConducta"
+                                              "data-target": "#addJustificantes"
                                             },
                                             on: {
                                               click: function($event) {
                                                 return _vm.$emit(
-                                                  "verIncidencia",
-                                                  incidencia,
-                                                  _vm.alumno
+                                                  "verJustificante",
+                                                  justificante
                                                 )
                                               }
                                             }
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                            \n                                                " +
-                                                _vm._s(key + 1) +
-                                                "\n                                            "
+                                              "\n                                                \n                                                " +
+                                                _vm._s(
+                                                  keyjustificantepase + 1
+                                                ) +
+                                                "\n\n                                            "
                                             )
                                           ]
                                         )
-                                      }),
-                                      0
-                                    )
-                                  ]),
+                                      }
+                                    ),
+                                    0
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._m(16),
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "mcontenidoL pt-1" },
-                                    [
-                                      _vm._m(14),
-                                      _vm._v(" "),
-                                      _c("p", [
-                                        _c("b", [_vm._v("Observaciones: ")]),
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm.inconveniente.Observaciones
-                                          )
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("p", [
-                                        _c("b", [
-                                          _vm._v("Descripción del Reporte: ")
-                                        ]),
-                                        _vm._v(
-                                          _vm._s(
-                                            _vm.inconveniente.DescripcionReporte
-                                          )
-                                        )
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "pt-1 mr-4" }, [
-                                    _c("p", { staticClass: "p-0 m-0 fecha" }, [
-                                      _c("b", [_vm._v("Fecha: ")]),
-                                      _vm._v(
-                                        _vm._s(_vm.inconveniente.FechaInicio)
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          href: "/R?show=" + _vm.alumno.IdAlumno
-                                        }
-                                      },
-                                      [
-                                        _c("img", {
-                                          staticStyle: {
-                                            width: "20px",
-                                            height: "20px"
+                                    { staticClass: "scrollJ" },
+                                    _vm._l(
+                                      _vm.pases.slice().reverse(),
+                                      function(pase, keyjustificantepase2) {
+                                        return _c(
+                                          "button",
+                                          {
+                                            key: keyjustificantepase2,
+                                            staticClass:
+                                              "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target": "#addJustificantes"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.$emit(
+                                                  "verPase",
+                                                  pase
+                                                )
+                                              }
+                                            }
                                           },
-                                          attrs: {
-                                            src: "images/historial.png",
-                                            alt: "ver el historial"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              : _vm._e()
-                          ])
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "subtitulos text-center" }, [
-                _vm._v("Trabajo Social")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "barrasubtitulos" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "contenedorVentana colorText sizeGeneral" },
-                [
-                  _c("div", { staticClass: "gridTS" }, [
-                    _c("div", [
-                      _vm.alumno.IdAlumno
-                        ? _c("div", [
-                            _c("div", [
-                              _vm._m(15),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "scrollJ" },
-                                _vm._l(
-                                  _vm.justificantes.slice().reverse(),
-                                  function(justificante, keyjustificantepase) {
-                                    return _c(
-                                      "button",
-                                      {
-                                        key: keyjustificantepase,
-                                        staticClass:
-                                          "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#addJustificantes"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.$emit(
-                                              "verJustificante",
-                                              justificante
+                                          [
+                                            _vm._v(
+                                              "\n                                        \n                                                " +
+                                                _vm._s(
+                                                  keyjustificantepase2 + 1
+                                                ) +
+                                                "\n                                        \n                                            "
                                             )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                            \n                                            " +
-                                            _vm._s(keyjustificantepase + 1) +
-                                            "\n\n                                        "
+                                          ]
                                         )
-                                      ]
-                                    )
-                                  }
-                                ),
-                                0
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _vm._m(16),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "scrollJ" },
-                                _vm._l(_vm.pases.slice().reverse(), function(
-                                  pase,
-                                  keyjustificantepase2
-                                ) {
-                                  return _c(
-                                    "button",
-                                    {
-                                      key: keyjustificantepase2,
-                                      staticClass:
-                                        "btn btn-danger btn-sm m-1 p-0 pr-2 pl-2",
-                                      attrs: {
-                                        "data-toggle": "modal",
-                                        "data-target": "#addJustificantes"
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.$emit("verPase", pase)
-                                        }
                                       }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    \n                                            " +
-                                          _vm._s(keyjustificantepase2 + 1) +
-                                          "\n                                    \n                                        "
-                                      )
-                                    ]
+                                    ),
+                                    0
                                   )
-                                }),
-                                0
-                              )
-                            ])
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ml-4" }, [
-                      _c("div", { staticClass: "liena2" }),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("div", [
-                          _vm.alumno.IdAlumno
-                            ? _c("div", [_vm._m(17), _vm._v(" "), _vm._m(18)])
-                            : _vm._e()
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("div", { staticClass: "liena2" }),
-                      _vm._v(" "),
-                      _vm.alumno.IdAlumno
-                        ? _c("div", [_vm._m(19), _vm._v(" "), _vm._m(20)])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _vm.alumno.IdAlumno
-                      ? _c(
-                          "div",
-                          { staticClass: "ml-5" },
-                          [
-                            _vm._m(21),
-                            _vm._v(" "),
-                            _vm._l(_vm.becas, function(beca, key) {
-                              return _c("div", { key: key }, [
-                                _c("p", { staticClass: "mb-1" }, [
-                                  _c("b", [_vm._v("Nombre: ")]),
-                                  _vm._v(_vm._s(beca.Nombre) + " ")
-                                ]),
-                                _vm._v(" "),
-                                _c("p", { staticClass: "mb-3" }, [
-                                  _c("b", [_vm._v("Tipo: ")]),
-                                  _vm._v(_vm._s(beca.Tipo))
                                 ])
                               ])
-                            })
-                          ],
-                          2
-                        )
-                      : _vm._e()
-                  ])
-                ]
-              )
-            ])
-          ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "ml-4" }, [
+                          _c("div", { staticClass: "liena2" }),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("div", [
+                              _vm.alumno.IdAlumno
+                                ? _c("div", [
+                                    _vm._m(17),
+                                    _vm._v(" "),
+                                    _vm._m(18)
+                                  ])
+                                : _vm._e()
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c("div", { staticClass: "liena2" }),
+                          _vm._v(" "),
+                          _vm.alumno.IdAlumno
+                            ? _c("div", [_vm._m(19), _vm._v(" "), _vm._m(20)])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _vm.alumno.IdAlumno
+                          ? _c(
+                              "div",
+                              { staticClass: "ml-5" },
+                              [
+                                _vm._m(21),
+                                _vm._v(" "),
+                                _vm._l(_vm.becas, function(beca, key) {
+                                  return _c("div", { key: key }, [
+                                    _c("p", { staticClass: "mb-1" }, [
+                                      _c("b", [_vm._v("Nombre: ")]),
+                                      _vm._v(_vm._s(beca.Nombre) + " ")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "mb-3" }, [
+                                      _c("b", [_vm._v("Tipo: ")]),
+                                      _vm._v(_vm._s(beca.Tipo))
+                                    ])
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          : _vm._e()
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
         ]
       ),
       _vm._v(" "),
-      _c("add-justificante")
+      _c("ver-mala-conducta"),
+      _vm._v(" "),
+      _c("ver-incidencias"),
+      _vm._v(" "),
+      _c("add-justificante", { attrs: { role: _vm.role } })
     ],
     1
   )
@@ -46935,8 +47521,37 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container divPrin" }, [
-      _c("div", { staticClass: "midiv" }, [
-        _c("label", [_vm._v("Seleccione la materia")]),
+      _c("h4", { staticClass: "text-center" }, [
+        _vm._v("Maestro: Juan Francisco Beltran")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "midiv text-center" }, [
+        _c("label", [_vm._v("Ciclo escolar")]),
+        _vm._v(" "),
+        _c("select", { attrs: { name: "", id: "" } }, [
+          _c("option", { attrs: { value: "" } }, [_vm._v("FEB - JUL")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("AGO - ENE")])
+        ]),
+        _vm._v(" "),
+        _c("label", { staticClass: "ml-5" }, [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "date" } }),
+        _c("br"),
+        _vm._v(" "),
+        _c("label", [_vm._v("Parcial")]),
+        _vm._v(" "),
+        _c("select", { attrs: { name: "", id: "" } }, [
+          _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("4")])
+        ]),
+        _vm._v(" "),
+        _c("label", [_vm._v("Materia")]),
         _vm._v(" "),
         _c("select", { attrs: { name: "", id: "" } }, [
           _c("option", { attrs: { value: "" } }, [_vm._v("Matemáticas")]),
@@ -46952,245 +47567,795 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c(
-        "table",
+        "div",
         {
-          staticClass:
-            "table table-striped table-hover contentTable table table-sm"
+          staticClass: "panel-group p-0 m-0",
+          attrs: {
+            id: "accordion",
+            role: "tablist",
+            "aria-multiselectable": "true"
+          }
         },
         [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("Grupos")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Unidad")]),
-              _vm._v(" "),
-              _c("th", { attrs: { colspan: "2" } }, [
-                _vm._v("Nombre del ALumno")
-              ]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Inasistencias")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Día")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("3 A")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
+          _c("div", { staticClass: "panel panel-default m-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "panel-heading m-0",
+                attrs: { role: "tab", id: "headingOne" }
+              },
+              [
+                _c("h4", { staticClass: "panel-title" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "carreraSelect p-2",
+                      attrs: {
+                        role: "button",
+                        "data-toggle": "collapse",
+                        "data-parent": "#accordion",
+                        href: "#collapseOne",
+                        "aria-expanded": "true",
+                        "aria-controls": "collapseOne"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        INFORMÁTICA\n                    "
+                      )
+                    ]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("3 C")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse in",
+                attrs: {
+                  id: "collapseOne",
+                  role: "tabpanel",
+                  "aria-labelledby": "headingOne"
+                }
+              },
+              [
+                _c("div", { staticClass: "panel-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-group",
+                      attrs: {
+                        id: "sub-accordion",
+                        role: "tablist",
+                        "aria-multiselectable": "true"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "panel panel-default" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            attrs: { role: "tab", id: "subHeadingOne" }
+                          },
+                          [
+                            _c("h4", { staticClass: "panel-title" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "w-100",
+                                  attrs: {
+                                    role: "button",
+                                    "data-toggle": "collapse",
+                                    "data-parent": "#sub-accordion",
+                                    href: "#collapseSubOne",
+                                    "aria-expanded": "true",
+                                    "aria-controls": "collapseSubOne"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Grupo 3 A\n                                "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse in",
+                            attrs: {
+                              id: "collapseSubOne",
+                              role: "tabpanel",
+                              "aria-labelledby": "subHeadingOne"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
+                              _c(
+                                "table",
+                                {
+                                  staticClass:
+                                    "table table-striped table-hover contentTable table table-sm"
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Nombre del ALumno")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Faltas")
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tbody", [
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel panel-default" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            attrs: { role: "tab", id: "subHeadingTwo" }
+                          },
+                          [
+                            _c("h4", { staticClass: "panel-title" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "collapsed w-100",
+                                  attrs: {
+                                    role: "button",
+                                    "data-toggle": "collapse",
+                                    "data-parent": "#sub-accordion",
+                                    href: "#collapseSubTwo",
+                                    "aria-expanded": "false",
+                                    "aria-controls": "collapseSubTwo"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Grupo 3 B\n                                "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseSubTwo",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingSubTwo"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
+                              _c(
+                                "table",
+                                {
+                                  staticClass:
+                                    "table table-striped table-hover contentTable table table-sm"
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", [_vm._v("Grupos")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Unidad")]),
+                                      _vm._v(" "),
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Nombre del ALumno")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Inasistencias")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Día")])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tbody", [
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("3 A")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("3 C")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("2 K")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("1 K")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("6 B")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("2 K")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("1 K")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("6 B")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ])
+              ]
+            )
           ])
         ]
       ),
       _vm._v(" "),
-      _c("button", { staticClass: "miBtn pbtn", attrs: { type: "button" } }, [
-        _c("i", { staticClass: "far fa-save" }),
-        _vm._v(" Guardar\n    ")
+      _c("div", { staticClass: "pbtn" }, [
+        _c("button", { staticClass: "miBtn", attrs: { type: "button" } }, [
+          _c("i", { staticClass: "far fa-save" }),
+          _vm._v(" Guardar\n        ")
+        ])
       ])
     ])
   }
@@ -47259,9 +48424,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("genera-mala-conducta", { attrs: { userlogeado: _vm.userlogeado } }),
+      _c("genera-mala-conducta"),
       _vm._v(" "),
-      _c("genera-incidencia", { attrs: { userlogeado: _vm.userlogeado } })
+      _c("genera-incidencia")
     ],
     1
   )
@@ -48428,7 +49593,7 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _vm.role != "admin"
+                  _vm.role != "admin" && _vm.role != "maestro"
                     ? _c(
                         "button",
                         {
@@ -48444,7 +49609,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.role != "admin"
+                  _vm.role != "admin" && _vm.role != "maestro"
                     ? _c(
                         "button",
                         {
@@ -48726,7 +49891,9 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  !_vm.incidencia.Status && _vm.role != "admin"
+                  !_vm.incidencia.Status &&
+                  _vm.role != "admin" &&
+                  _vm.role != "maestro"
                     ? _c(
                         "button",
                         {
@@ -48742,7 +49909,9 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.incidencia.Status && _vm.role != "admin"
+                  _vm.incidencia.Status &&
+                  _vm.role != "admin" &&
+                  _vm.role != "maestro"
                     ? _c(
                         "button",
                         {
@@ -51134,11 +52303,11 @@ var render = function() {
       _vm._v(" "),
       _vm._m(2),
       _vm._v(" "),
-      _c("ver-incidencias"),
+      _c("ver-incidencias", { attrs: { role: _vm.role } }),
       _vm._v(" "),
-      _c("ver-mala-conducta"),
+      _c("ver-mala-conducta", { attrs: { role: _vm.role } }),
       _vm._v(" "),
-      _c("ver-yonoAbandono")
+      _c("ver-yonoAbandono", { attrs: { role: _vm.role } })
     ],
     1
   )
@@ -52726,7 +53895,10 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver && _vm.role != "admin"
+                _vm.ver &&
+                _vm.role != "admin" &&
+                _vm.role != "tutor" &&
+                _vm.role != "orientador"
                   ? _c(
                       "button",
                       {
@@ -52742,7 +53914,10 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver && _vm.role != "admin"
+                _vm.ver &&
+                _vm.role != "admin" &&
+                _vm.role != "tutor" &&
+                _vm.role != "orientador"
                   ? _c(
                       "button",
                       {
@@ -54533,7 +55708,7 @@ var render = function() {
             _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
               _vm._m(1),
               _vm._v(" "),
-              _vm.reporte.Status
+              _vm.reporte.Status && _vm.role != "admin" && _vm.role != "maestro"
                 ? _c(
                     "button",
                     {
@@ -54544,7 +55719,9 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              !_vm.reporte.Status
+              !_vm.reporte.Status &&
+              _vm.role != "admin" &&
+              _vm.role != "maestro"
                 ? _c(
                     "button",
                     {

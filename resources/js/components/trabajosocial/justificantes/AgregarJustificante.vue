@@ -23,7 +23,7 @@
                 </select>
             </div>
 
-            <button v-if="ver && role!='admin'" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
+            <button v-if="ver && role!='admin' && role!='tutor' && role!='orientador'" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
               <i class="far fa-trash-alt"></i>
             </button>
             
@@ -31,7 +31,7 @@
             <!-- <a href="{{route('imprimirJ')}}">Imprimir Justificante</a> -->
               
 
-            <button v-if="ver && role!='admin'" type="button" class="mibtnI btnImprimirPase ">
+            <button v-if="ver && role!='admin' && role!='tutor' && role!='orientador'" type="button" class="mibtnI btnImprimirPase ">
               <i class="fas fa-print"></i>
               <!-- <a href="{{route('imprimirP')}}">Imprimir Pase</a> -->
             </button>
@@ -89,6 +89,7 @@
   export default {
      props: ['role'],
     created: function() {
+      console.log(this.role);
       this.$parent.$on('agregarJustificante', alumno => {
         this.alumno = alumno;
         this.justificante={};

@@ -21,11 +21,11 @@
                             <img src="images/logo.jpg" alt="">
                         </div>
 
-                        <button v-if="!incidencia.Status && role!='admin'" @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                        <button v-if="!incidencia.Status && role!='admin' && role!='maestro'" @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
                             <i class="fas fa-edit"></i>
                         </button>
 
-                        <button  v-if="incidencia.Status && role!='admin'" type="button" class="mibtnI positionImprimir">
+                        <button  v-if="incidencia.Status && role!='admin' && role!='maestro'" type="button" class="mibtnI positionImprimir">
                             <i class="fas fa-print"></i>
                         </button>
                         
