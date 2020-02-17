@@ -236,8 +236,8 @@
                             </div>
                         </div>
                     </div>
-                    <ver-mala-conducta :role="role"></ver-mala-conducta>
-                    <ver-incidencias :role="role"></ver-incidencias>
+                    <ver-mala-conducta ></ver-mala-conducta>
+                    <ver-incidencias ></ver-incidencias>
                 </div>
             </div>
         </div>
@@ -327,7 +327,7 @@
             </div>
         </div>
         
-        <add-justificante :role="role"></add-justificante>
+        <add-justificante ></add-justificante>
     </div>
 </template>
 
@@ -335,7 +335,7 @@
     import bus from '../../event-bus';
 
     export default {
-        props:['role'],
+        // props:['role'],
         data() {
             return {
                 alumno: {},

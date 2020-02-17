@@ -2174,7 +2174,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
+  // props:['role'],
   data: function data() {
     return {
       alumno: {},
@@ -4080,7 +4080,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.familiares.forEach(function (familiar) {
         if (familiar.IdFamiliar === _this3.reporte.IdFamiliar) {
-          telefono = familiar.Telefono;
+          telefono = familiar.TelefonoPadre;
         }
       });
       return telefono;
@@ -4389,7 +4389,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
+  //   props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -4525,7 +4525,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
+  //   props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -5350,7 +5350,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
   data: function data() {
     return {
       alumnos: [],
@@ -5378,7 +5377,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
     this.idalumno = new URLSearchParams(window.location.search).get('show');
-    console.log(this.idalumno + ' idalumno');
+    console.log(this.idalumno);
     axios.get('/incidencias').then(function (res) {
       _this.alumnos = res.data;
       _this.loading = false;
@@ -5467,20 +5466,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('becaActualizada', res.data);
       $('#addBeca').modal('hide');
     },
-    actualizarBeca: function actualizarBeca() {
-      var _this2 = this;
 
+    /*actualizarBeca() {
       if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
         return;
-      }
-
-      axios.put('/becas/' + this.beca.IdBeca, this.beca).then(function (res) {
-        _this2.onSuccess(res);
-      });
-    },
+      
+       axios.put('/becas/' + this.beca.IdBeca, this.beca)
+        .then(res => {
+          this.onSuccess(res);
+        });
+    },*/
     saveBeca: function saveBeca() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
         alert('Verifique y llene todos los campos');
@@ -5490,7 +5488,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/becas', this.beca).then(function (res) {
         res.data.esNueva = true;
 
-        _this3.onSuccess(res);
+        _this2.onSuccess(res);
       });
     }
   }
@@ -5801,6 +5799,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -5871,11 +5870,11 @@ __webpack_require__.r(__webpack_exports__);
     savePractica: function savePractica() {
       var _this2 = this;
 
-      if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined || this.practica.FechaFin == undefined) {
-        alert('Verifique y llene todos los campos');
-        return;
-      }
-
+      /* if (this.dependencias.IdDependencia == undefined || this.practica.FechaInicio == undefined 
+           || this.practica.FechaFin == undefined) {
+           alert('Verifique y llene todos los campos');
+           return;
+       }*/
       this.practica.Tipo = this.tipo == 'ss' ? 'Servicio Social' : 'Practicas Profesionales';
       console.log(this.practica);
       axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/practica', this.practica).then(function (res) {
@@ -5992,20 +5991,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('dependenciaActualizada', res.data);
       $('#addDepencencia').modal('hide');
     },
-    actualizarDependencia: function actualizarDependencia() {
-      var _this2 = this;
 
+    /*actualizarDependencia() {
       if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
         return;
       }
-
-      axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia).then(function (res) {
-        _this2.onSuccess(res);
-      });
-    },
+       axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia)
+        .then(res => {
+          this.onSuccess(res);
+        });
+    },*/
     saveDependencia: function saveDependencia() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
         alert('Verifique y llene todos los campos');
@@ -6016,7 +6014,7 @@ __webpack_require__.r(__webpack_exports__);
         res.data.esNuevo = true;
         console.log(res.data);
 
-        _this3.onSuccess(res);
+        _this2.onSuccess(res);
       });
     }
   }
@@ -6246,12 +6244,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
   created: function created() {
     var _this = this;
 
-    console.log(this.role);
     this.$parent.$on('agregarJustificante', function (alumno) {
       _this.alumno = alumno;
       _this.justificante = {};
@@ -6885,7 +6883,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -6978,8 +6975,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+// import bus from '../../event-bus';
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
@@ -7225,7 +7223,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -12268,7 +12265,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n", ""]);
 
 // exports
 
@@ -45591,9 +45588,9 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("ver-mala-conducta", { attrs: { role: _vm.role } }),
+                  _c("ver-mala-conducta"),
                   _vm._v(" "),
-                  _c("ver-incidencias", { attrs: { role: _vm.role } })
+                  _c("ver-incidencias")
                 ],
                 1
               )
@@ -45829,7 +45826,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("add-justificante", { attrs: { role: _vm.role } })
+      _c("add-justificante")
     ],
     1
   )
@@ -49832,34 +49829,23 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _vm.role != "admin" && _vm.role != "maestro"
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "mibtnEdit posicionbtn",
-                          attrs: {
-                            type: "button",
-                            "data-toggle": "modal",
-                            "data-target": "#reporteOrientacion"
-                          },
-                          on: { click: _vm.metodo }
-                        },
-                        [_c("i", { staticClass: "fas fa-edit" })]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.role != "admin" && _vm.role != "maestro"
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "mibtnI positionImprimir",
-                          attrs: { type: "button" }
-                        },
-                        [_c("i", { staticClass: "fas fa-print" })]
-                      )
-                    : _vm._e(),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "mibtnEdit posicionbtn",
+                      attrs: {
+                        type: "button",
+                        "data-toggle": "modal",
+                        "data-target": "#reporteOrientacion"
+                      },
+                      on: { click: _vm.metodo }
+                    },
+                    [_c("i", { staticClass: "fas fa-edit" })]
+                  ),
                   _vm._v(" "),
                   _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-right mt-3" }, [
                     _c("b", [_vm._v("Fecha: ")]),
@@ -49950,9 +49936,9 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _vm._m(4),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(5)
                 ])
               ])
             ]
@@ -50005,6 +49991,16 @@ var staticRenderFns = [
     return _c("div", { staticClass: "imgLogo" }, [
       _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "mibtnI positionImprimir", attrs: { type: "button" } },
+      [_c("i", { staticClass: "fas fa-print" })]
+    )
   },
   function() {
     var _vm = this
@@ -50130,9 +50126,7 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  !_vm.incidencia.Status &&
-                  _vm.role != "admin" &&
-                  _vm.role != "maestro"
+                  !_vm.incidencia.Status
                     ? _c(
                         "button",
                         {
@@ -50148,9 +50142,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.incidencia.Status &&
-                  _vm.role != "admin" &&
-                  _vm.role != "maestro"
+                  _vm.incidencia.Status
                     ? _c(
                         "button",
                         {
@@ -54146,10 +54138,7 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver &&
-                _vm.role != "admin" &&
-                _vm.role != "tutor" &&
-                _vm.role != "orientador"
+                _vm.ver
                   ? _c(
                       "button",
                       {
@@ -54165,17 +54154,37 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver &&
-                _vm.role != "admin" &&
-                _vm.role != "tutor" &&
-                _vm.role != "orientador"
+                _vm.ver
                   ? _c(
                       "button",
                       {
                         staticClass: "mibtnI btnImprimirPase ",
                         attrs: { type: "button" }
                       },
-                      [_c("i", { staticClass: "fas fa-print" })]
+                      [
+                        _c("i", { staticClass: "fas fa-print" }),
+                        _vm._v(" "),
+                        _c("a", { attrs: { href: "imprimirJust" } }, [
+                          _vm._v("Justificante")
+                        ])
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.ver
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "mibtnI btnImprimirPase ",
+                        attrs: { type: "button" }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-print" }),
+                        _vm._v(" "),
+                        _c("a", { attrs: { href: "imprimirPase" } }, [
+                          _vm._v("Pase")
+                        ])
+                      ]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -54405,11 +54414,11 @@ var render = function() {
                                 [
                                   _vm._v(
                                     _vm._s(
-                                      _vm.pase.familiar.NombrePadre +
+                                      _vm.pase.familiar.Nombre +
                                         " " +
-                                        _vm.pase.familiar.ApePaternoPadre +
+                                        _vm.pase.familiar.ApePaterno +
                                         " " +
-                                        _vm.pase.familiar.ApeMaternoPadre
+                                        _vm.pase.familiar.ApeMaterno
                                     )
                                   )
                                 ]
@@ -54608,114 +54617,106 @@ var render = function() {
         _vm._v("Justificantes y Pases de Salida")
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "micardsm colorText",
-          attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
-        },
-        [
-          _vm.alumno.IdAlumno
-            ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-sm mr-2 mt-2 float-right",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#addJustificantes"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("agregarJustificante", _vm.alumno)
-                      }
-                    }
+      _c("div", { staticClass: "micardsm colorText" }, [
+        _vm.alumno.IdAlumno
+          ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-sm mr-2 mt-2 float-right",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#addJustificantes"
                   },
-                  [_c("i", { staticClass: "fas fa-plus-circle" })]
-                ),
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("agregarJustificante", _vm.alumno)
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fas fa-plus-circle" })]
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "scrollHTS" },
-                    _vm._l(_vm.justificantes.slice().reverse(), function(
-                      justificante,
-                      keyjustificantepase
-                    ) {
-                      return _c(
-                        "button",
-                        {
-                          key: keyjustificantepase,
-                          staticClass:
-                            "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
-                          attrs: {
-                            "data-toggle": "modal",
-                            "data-target": "#addJustificantes"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.$emit("verJustificante", justificante)
-                            }
-                          }
+                _c(
+                  "div",
+                  { staticClass: "scrollHTS" },
+                  _vm._l(_vm.justificantes.slice().reverse(), function(
+                    justificante,
+                    keyjustificantepase
+                  ) {
+                    return _c(
+                      "button",
+                      {
+                        key: keyjustificantepase,
+                        staticClass: "btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": "#addJustificantes"
                         },
-                        [
-                          _vm._v(
-                            "\n                        \n                        " +
-                              _vm._s(keyjustificantepase + 1) +
-                              "\n\n                    "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]),
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit("verJustificante", justificante)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        \n                        " +
+                            _vm._s(keyjustificantepase + 1) +
+                            "\n\n                    "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._m(1),
                 _vm._v(" "),
-                _c("div", [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "scrollHTS" },
-                    _vm._l(_vm.pases.slice().reverse(), function(
-                      pase,
-                      keyjustificantepase2
-                    ) {
-                      return _c(
-                        "button",
-                        {
-                          key: keyjustificantepase2,
-                          staticClass:
-                            "btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2",
-                          attrs: {
-                            "data-toggle": "modal",
-                            "data-target": "#addJustificantes"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.$emit("verPase", pase)
-                            }
-                          }
+                _c(
+                  "div",
+                  { staticClass: "scrollHTS" },
+                  _vm._l(_vm.pases.slice().reverse(), function(
+                    pase,
+                    keyjustificantepase2
+                  ) {
+                    return _c(
+                      "button",
+                      {
+                        key: keyjustificantepase2,
+                        staticClass:
+                          "btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": "#addJustificantes"
                         },
-                        [
-                          _vm._v(
-                            "\n                \n                    " +
-                              _vm._s(keyjustificantepase2 + 1) +
-                              "\n                \n                "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ])
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit("verPase", pase)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                \n                    " +
+                            _vm._s(keyjustificantepase2 + 1) +
+                            "\n                \n                "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
               ])
-            : _vm._e()
-        ]
-      ),
+            ])
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("add-justificante", {
         on: {
