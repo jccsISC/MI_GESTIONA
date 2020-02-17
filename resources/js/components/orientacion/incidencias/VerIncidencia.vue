@@ -19,10 +19,10 @@
                             <img src="images/logo.jpg" alt="">
                         </div>
 
-                        <button v-if="role!='admin'"  @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+                        <button v-if="role!='admin' && role!='maestro'"  @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button v-if="role!='admin'" type="button" class="mibtnI positionImprimir">
+                        <button v-if="role!='admin' && role!='maestro'" type="button" class="mibtnI positionImprimir">
                             <i class="fas fa-print"></i>
                         </button>
 
