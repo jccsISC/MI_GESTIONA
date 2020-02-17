@@ -69,9 +69,9 @@
         </ul>
     </nav>
 
-    <ver-incidencias></ver-incidencias>
-    <ver-mala-conducta></ver-mala-conducta>
-    <ver-yonoAbandono></ver-yonoAbandono>
+    <ver-incidencias :role="role"></ver-incidencias>
+    <ver-mala-conducta :role="role"></ver-mala-conducta>
+    <ver-yonoAbandono :role="role"></ver-yonoAbandono>
 </div>
 </template>
 
@@ -79,7 +79,7 @@
     import bus from '../../event-bus';
     
     export default {
-       
+       props:['role'],
         data() {
             return {
                 alumnos: [],
@@ -108,7 +108,7 @@
             });
 
             this.idalumno = new URLSearchParams(window.location.search).get('show');
-            console.log(this.idalumno);
+            console.log(this.idalumno +' idalumno');
 
             axios.get('/incidencias').then(res => {
                 this.alumnos = res.data;

@@ -10,15 +10,14 @@
             </button>
         </div>
 
-        <genera-mala-conducta :userlogeado="userlogeado"></genera-mala-conducta>
-        <genera-incidencia :userlogeado="userlogeado"></genera-incidencia>  
+        <genera-mala-conducta></genera-mala-conducta>
+        <genera-incidencia></genera-incidencia>  
     </div>     
 </template>
 
 <script>
   import bus from '../../event-bus';
     export default {
-        
         data() {
             return {
                 alumno: {},

@@ -13,14 +13,6 @@
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
-//LOGIN
-// Route::post('lg', 'Auth\LoginController@login')->name('login');
-// Route::get('lg', 'LoginController@showLoginForm')->name('login');
-// Route::get('lg', function () {
-//     return view('login');
-// });
-
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

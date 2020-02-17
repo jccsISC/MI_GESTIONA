@@ -91,9 +91,8 @@
 </template>
 
 <script>
-    // import bus from '../../event-bus';
+    import bus from '../../event-bus';
     export default {
-        props: ['userlogeado'],
          data() {
             return {
                 alumno: {},
