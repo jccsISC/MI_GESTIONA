@@ -114,7 +114,7 @@ class JustificantesController extends Controller
         return response('Eliminado');
     }
 
-    public function imprimirJ($IdAlumno,$IdJustificante){
+    public function imprimirJ(){
         $justi = tbljustificante::get();
         $alumno = tblalumno::get();
         $pdf = \PDF::loadView('/trabajosocial.justificante', compact('justi','alumno'));

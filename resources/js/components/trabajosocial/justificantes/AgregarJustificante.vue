@@ -30,12 +30,12 @@
 
             <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
               <i class="fas fa-print"></i>
-               <a href="imprimirJust">Imprimir Justificante</a>
+               <a href="imprimirJust">Justificante</a>
             </button>
             
             <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
               <i class="fas fa-print"></i>
-               <a href="imprimirPase">Imprimir PAse</a>
+               <a href="imprimirPase">Pase</a>
             </button>
 
             <div v-if="tipo === 'justificante'" class="form-group">

@@ -8,7 +8,7 @@
             <div class="encabezado">
                 <label>Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco</label><br>
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
-                <label>Folio:</label>@foreach ($pase as $p) <i>{{ $p->.IdPaseSal }}</i> @endforeach 
+                <label>Folio:</label>@foreach ($pase as $p) <i>{{ $p->IdPaseSal }}</i> @endforeach 
             </div>
             <hr width=300>
             <p><h1>PASE DE SALIDA</h1><p>

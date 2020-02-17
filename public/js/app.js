@@ -3239,6 +3239,532 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -11734,7 +12260,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.divPrin{\n    width: 100%; \n    height: 650px;\n    border: 2px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n}\n.pbtn{\n    float:right;\n}\n", ""]);
+exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n", ""]);
 
 // exports
 
@@ -47166,8 +47692,37 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container divPrin" }, [
-      _c("div", { staticClass: "midiv" }, [
-        _c("label", [_vm._v("Seleccione la materia")]),
+      _c("h4", { staticClass: "text-center" }, [
+        _vm._v("Maestro: Juan Francisco Beltran")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "midiv text-center" }, [
+        _c("label", [_vm._v("Ciclo escolar")]),
+        _vm._v(" "),
+        _c("select", { attrs: { name: "", id: "" } }, [
+          _c("option", { attrs: { value: "" } }, [_vm._v("FEB - JUL")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("AGO - ENE")])
+        ]),
+        _vm._v(" "),
+        _c("label", { staticClass: "ml-5" }, [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("input", { attrs: { type: "date" } }),
+        _c("br"),
+        _vm._v(" "),
+        _c("label", [_vm._v("Parcial")]),
+        _vm._v(" "),
+        _c("select", { attrs: { name: "", id: "" } }, [
+          _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("4")])
+        ]),
+        _vm._v(" "),
+        _c("label", [_vm._v("Materia")]),
         _vm._v(" "),
         _c("select", { attrs: { name: "", id: "" } }, [
           _c("option", { attrs: { value: "" } }, [_vm._v("Matemáticas")]),
@@ -47183,245 +47738,795 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c(
-        "table",
+        "div",
         {
-          staticClass:
-            "table table-striped table-hover contentTable table table-sm"
+          staticClass: "panel-group p-0 m-0",
+          attrs: {
+            id: "accordion",
+            role: "tablist",
+            "aria-multiselectable": "true"
+          }
         },
         [
-          _c("thead", [
-            _c("tr", [
-              _c("th", [_vm._v("Grupos")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Unidad")]),
-              _vm._v(" "),
-              _c("th", { attrs: { colspan: "2" } }, [
-                _vm._v("Nombre del ALumno")
-              ]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Inasistencias")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Día")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("3 A")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
+          _c("div", { staticClass: "panel panel-default m-0" }, [
+            _c(
+              "div",
+              {
+                staticClass: "panel-heading m-0",
+                attrs: { role: "tab", id: "headingOne" }
+              },
+              [
+                _c("h4", { staticClass: "panel-title" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "carreraSelect p-2",
+                      attrs: {
+                        role: "button",
+                        "data-toggle": "collapse",
+                        "data-parent": "#accordion",
+                        href: "#collapseOne",
+                        "aria-expanded": "true",
+                        "aria-controls": "collapseOne"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        INFORMÁTICA\n                    "
+                      )
+                    ]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("3 C")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse in",
+                attrs: {
+                  id: "collapseOne",
+                  role: "tabpanel",
+                  "aria-labelledby": "headingOne"
+                }
+              },
+              [
+                _c("div", { staticClass: "panel-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-group",
+                      attrs: {
+                        id: "sub-accordion",
+                        role: "tablist",
+                        "aria-multiselectable": "true"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "panel panel-default" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            attrs: { role: "tab", id: "subHeadingOne" }
+                          },
+                          [
+                            _c("h4", { staticClass: "panel-title" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "w-100",
+                                  attrs: {
+                                    role: "button",
+                                    "data-toggle": "collapse",
+                                    "data-parent": "#sub-accordion",
+                                    href: "#collapseSubOne",
+                                    "aria-expanded": "true",
+                                    "aria-controls": "collapseSubOne"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Grupo 3 A\n                                "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse in",
+                            attrs: {
+                              id: "collapseSubOne",
+                              role: "tabpanel",
+                              "aria-labelledby": "subHeadingOne"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
+                              _c(
+                                "table",
+                                {
+                                  staticClass:
+                                    "table table-striped table-hover contentTable table table-sm"
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Nombre del ALumno")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Faltas")
+                                      ])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tbody", [
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-plus"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("label", [_vm._v("1")]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn bg-danger btn-sm",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fas fa-minus"
+                                            })
+                                          ]
+                                        )
+                                      ])
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel panel-default" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            attrs: { role: "tab", id: "subHeadingTwo" }
+                          },
+                          [
+                            _c("h4", { staticClass: "panel-title" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "collapsed w-100",
+                                  attrs: {
+                                    role: "button",
+                                    "data-toggle": "collapse",
+                                    "data-parent": "#sub-accordion",
+                                    href: "#collapseSubTwo",
+                                    "aria-expanded": "false",
+                                    "aria-controls": "collapseSubTwo"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Grupo 3 B\n                                "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseSubTwo",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingSubTwo"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
+                              _c(
+                                "table",
+                                {
+                                  staticClass:
+                                    "table table-striped table-hover contentTable table table-sm"
+                                },
+                                [
+                                  _c("thead", [
+                                    _c("tr", [
+                                      _c("th", [_vm._v("Grupos")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Unidad")]),
+                                      _vm._v(" "),
+                                      _c("th", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Nombre del ALumno")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Inasistencias")]),
+                                      _vm._v(" "),
+                                      _c("th", [_vm._v("Día")])
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("tbody", [
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("3 A")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("3 C")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("2 K")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("1 K")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        {
+                                          staticStyle: {
+                                            background: "#800000",
+                                            color: "white",
+                                            "text-align": "center"
+                                          }
+                                        },
+                                        [_vm._v("6 B")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "select",
+                                          { attrs: { name: "", id: "" } },
+                                          [
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("5")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
+                                              { attrs: { value: "" } },
+                                              [_vm._v("6")]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", { attrs: { colspan: "2" } }, [
+                                        _vm._v("Julio Cesar Camacho Silva")
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "number",
+                                            step: "0.0",
+                                            min: "0"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c("input", { attrs: { type: "date" } })
+                                      ])
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("2 K")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("1 K")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c(
-                "td",
-                {
-                  staticStyle: {
-                    background: "#800000",
-                    color: "white",
-                    "text-align": "center"
-                  }
-                },
-                [_vm._v("6 B")]
-              ),
-              _vm._v(" "),
-              _c("td", [
-                _c("select", { attrs: { name: "", id: "" } }, [
-                  _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "" } }, [_vm._v("6")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { attrs: { colspan: "2" } }, [
-                _vm._v("Julio Cesar Camacho Silva")
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("input", {
-                  attrs: { type: "number", step: "0.0", min: "0" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("input", { attrs: { type: "date" } })])
-            ])
+              ]
+            )
           ])
         ]
       ),
       _vm._v(" "),
-      _c("button", { staticClass: "miBtn pbtn", attrs: { type: "button" } }, [
-        _c("i", { staticClass: "far fa-save" }),
-        _vm._v(" Guardar\n    ")
+      _c("div", { staticClass: "pbtn" }, [
+        _c("button", { staticClass: "miBtn", attrs: { type: "button" } }, [
+          _c("i", { staticClass: "far fa-save" }),
+          _vm._v(" Guardar\n        ")
+        ])
       ])
     ])
   }
@@ -53000,7 +54105,7 @@ var render = function() {
                         _c("i", { staticClass: "fas fa-print" }),
                         _vm._v(" "),
                         _c("a", { attrs: { href: "imprimirJust" } }, [
-                          _vm._v("Imprimir Justificante")
+                          _vm._v("Justificante")
                         ])
                       ]
                     )
@@ -53017,7 +54122,7 @@ var render = function() {
                         _c("i", { staticClass: "fas fa-print" }),
                         _vm._v(" "),
                         _c("a", { attrs: { href: "imprimirPase" } }, [
-                          _vm._v("Imprimir PAse")
+                          _vm._v("Pase")
                         ])
                       ]
                     )
