@@ -5,7 +5,7 @@
     
    
     
-    <generar-report-oe></generar-report-oe>
+    <generar-report-oe userlogeado = "{{auth()->user()}}"></generar-report-oe>
 
     <!--Seccion lateral-->
    <section class="contenedor-secciones">

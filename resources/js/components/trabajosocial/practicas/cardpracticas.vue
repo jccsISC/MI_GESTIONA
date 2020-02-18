@@ -5,12 +5,12 @@
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                 <div>
                     <div v-if="alumno.IdAlumno" class="float-right m-0 mr-2">
-                        <button v-if="!practica" type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#addPractServenAlumn'+tipo"
+                        <button v-if="!practica.IdServPrac" type="button" class="btn btn-primary btn-sm" data-toggle="modal" :data-target="'#addPractServenAlumn'+tipo"
                             @click="$emit('agregarPracticaAlumno', alumno)">
                             <i class="fas fa-plus-circle"></i>
                         </button>
 
-                        <button v-if="practica" type="button" class="btn btn-danger btn-sm"
+                        <button v-if="practica.IdServPrac" type="button" class="btn btn-danger btn-sm"
                             @click="eliminarPractica()">
                             <i class="far fa-trash-alt"></i>
                         </button>

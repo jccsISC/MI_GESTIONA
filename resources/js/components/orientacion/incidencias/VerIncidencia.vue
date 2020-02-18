@@ -101,11 +101,10 @@
             }
         },
         created() {
-             this.$parent.$on('verIncidencia', (incidencia, alumno) => {
-                this.incidencia = Object.assign({}, incidencia); ;
+             bus.$on('verIncidencia', (incidencia, alumno) => {
+                this.incidencia = Object.assign({}, incidencia);
                 this.alumno = Object.assign({}, alumno);
                 this.familiar = this.incidencia.familiar;
-
             });
         },
         methods: {

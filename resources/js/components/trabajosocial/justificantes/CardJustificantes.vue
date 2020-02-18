@@ -12,7 +12,7 @@
                    <div class="scrollHTS">
                        <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                             v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
-                            data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
+                            data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
                             
                             {{keyjustificantepase + 1}}
 
@@ -67,6 +67,9 @@
             });
         },
         methods: {
+            mostrarJustificante(justificante) {
+                bus.$emit('verJustificante', justificante);
+            },
             justificanteEliminado(id){
                 let posicion = -1;
                 this.justificantes.forEach((justificante,key) => {

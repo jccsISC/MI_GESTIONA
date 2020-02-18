@@ -40,9 +40,14 @@
                         </div>
                         
                         <div class="subGrid">
-                            <div v-for="(familiar, key) in familiares" :key="key">
-                                <p class="m-0"><b>{{familiar.Tipo}}</b></p>
+                            <div>
+                                <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
+                            <div>
+                                <p class="m-0"><b>Madre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             </div>
                         </div>
@@ -254,7 +259,7 @@
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                                 v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
-                                data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
+                                data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
                                     
                                     {{keyjustificantepase + 1}}
 
@@ -286,13 +291,12 @@
                                 <div>
                                     <p class="mb-1"><b>Fecha Inicio: </b>{{servicio.FechaInicio}}</p>
                                     <p class="mb-1"><b>Fecha Final: </b>{{servicio.FechaFin}}</p>
-                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.dependencia.Nombre}}</p>
-                                    <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
-                                    <p class="mb-1"><b>Giro: </b>{{servicio.dependencia.Giro}}</p>
-                                    <p class="mb-1"><b>Dirección: </b>{{servicio.dependencia.Direccion}}</p>
-                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.dependencia.Telefono}}</p>
-                                    <p class="mb-1"><b>Responsable: </b>{{servicio.dependencia.Responsable}}</p>
-                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.dependencia.TipoVinculacion}}</p>
+                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.IdServPrac ? servicio.dependencia.Nombre : ''}}</p>
+                                    <p class="mb-1"><b>Giro: </b>{{servicio.IdServPrac ? servicio.dependencia.Giro : ''}}</p>
+                                    <p class="mb-1"><b>Dirección: </b>{{servicio.IdServPrac ? servicio.dependencia.Direccion : ''}}</p>
+                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.IdServPrac ? servicio.dependencia.Telefono : ''}}</p>
+                                    <p class="mb-1"><b>Responsable: </b>{{servicio.IdServPrac ? servicio.dependencia.Responsable : ''}}</p>
+                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : ''}}</p>
                                 </div>
                             </div>
                         </div>
@@ -306,13 +310,12 @@
                         <div>
                             <p class="mb-1"><b>Fecha Inicio: </b>{{practica.FechaInicio}}</p>
                             <p class="mb-1"><b>Fecha Final: </b>{{practica.FechaFin}}</p>
-                            <p class="mb-1"><b>Dependencia: </b>{{practica.dependencia.Nombre}}</p>
-                            <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
-                            <p class="mb-1"><b>Giro: </b>{{practica.dependencia.Giro}}</p>
-                            <p class="mb-1"><b>Dirección: </b>{{practica.dependencia.Direccion}}</p>
-                            <p class="mb-1"><b>Telefóno: </b>{{practica.dependencia.Telefono}}</p>
-                            <p class="mb-1"><b>Responsable: </b>{{practica.dependencia.Responsable}}</p>
-                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.dependencia.TipoVinculacion}}</p>
+                            <p class="mb-1"><b>Dependencia: </b>{{practica.IdServPrac ? practica.dependencia.Nombre : ''}}</p>
+                            <p class="mb-1"><b>Giro: </b>{{practica.IdServPrac ? practica.dependencia.Giro : ''}}</p>
+                            <p class="mb-1"><b>Dirección: </b>{{practica.IdServPrac ? practica.dependencia.Direccion : ''}}</p>
+                            <p class="mb-1"><b>Telefóno: </b>{{practica.IdServPrac ? practica.dependencia.Telefono : ''}}</p>
+                            <p class="mb-1"><b>Responsable: </b>{{practica.IdServPrac ? practica.dependencia.Responsable : ''}}</p>
+                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.IdServPrac ? practica.dependencia.TipoVinculacion : ''}}</p>
                         </div>
                     </div>
                 </div>
@@ -342,7 +345,7 @@
                 salud: {},
                 practica: {},
                 servicio: {},
-                familiares: [],
+                familiar: {},
                 calificaciones: [],
                 becas: [],
                 incidencias: [],
@@ -356,7 +359,7 @@
             bus.$on('alumnoSeleccionado', alumno => {
                 this.alumno = alumno;
                 this.jalarCalificaciones();
-                this.jalarFamiliares();
+                this.jalarFamiliar();
                 this.jalarSalud();
                 this.jalarIncidencias();
                 this.jalarJustificantes();
@@ -388,7 +391,9 @@
             }
          },
         methods:{
-
+            mostrarJustificante(justificante) {
+                bus.$emit('verJustificante', justificante);
+            },
             jalarFaltas(){
                 axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
                     this.faltas = res.data;
@@ -415,10 +420,9 @@
 
                 return cantidad;
             },
-            jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
-                    this.familiares = res.data;
-                    console.log(res);
+            jalarFamiliar() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                    this.familiar = res.data;
                 });
             },
             jalarSalud() {

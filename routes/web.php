@@ -77,7 +77,7 @@ Route::resource('servicioPracticas','ServicioPracticasController');
 
 //ALUMNOS
 Route::get('alumnos/buscar', 'AlumnoController@buscar');
-Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
+Route::get('alumnos/{tblalumno}/familiar', 'AlumnoController@familiar');
 Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificaciones');
 Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
 Route::get('tutorias/inasistencias', 'TutoriasController@inasistencias');

@@ -230,7 +230,7 @@
                                                     <button 
                                                         v-for="(incidencia, key) in incidencias" :key="key"  
                                                         class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+                                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
                                                     
                                                         {{key + 1}}
                                                     </button>
@@ -264,7 +264,7 @@
                                             <div class="scrollJ">
                                                 <button class="btn btn-danger btn-sm m-1 p-0 pr-2 pl-2" 
                                                 v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
-                                                data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
+                                                data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
                                                     
                                                     {{keyjustificantepase + 1}}
 
@@ -343,7 +343,7 @@
 
         <ver-mala-conducta></ver-mala-conducta>
         <ver-incidencias></ver-incidencias>
-        <add-justificante :role="role"></add-justificante>
+        <!-- <add-justificante :role="role"></add-justificante> -->
     </div>
  
 </template>
@@ -404,7 +404,12 @@
             }
          },
         methods:{
-
+             mostrarJustificante(justificante) {
+                bus.$emit('verJustificante', justificante);
+            },
+            mostrarIncidencia(incidencia, alumno) {
+                bus.$emit('verIncidencia', incidencia, alumno);
+            },
             jalarFaltas(){
                 axios.get('faltas/'+this.alumno.IdAlumno).then(res =>{
                     console.log(res.data);
@@ -432,7 +437,7 @@
                 return calificacion;
             },
             jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
                     this.familiares = res.data;
                     console.log(res);
                 });

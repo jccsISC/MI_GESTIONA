@@ -12,8 +12,8 @@ class AlumnoController extends Controller
         return tblalumno::where('IdAlumno', $buscar)->orWhere('Nombre', $buscar)->first();
     }
 
-    public function familiares(tblalumno $tblalumno) {
-        return $tblalumno->familiares;
+    public function familiar(tblalumno $tblalumno) {
+        return $tblalumno->familiar;
     }
 
     public function calificaciones(tblalumno $tblalumno) {

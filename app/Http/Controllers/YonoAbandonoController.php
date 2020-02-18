@@ -31,7 +31,6 @@ class YonoAbandonoController extends Controller
         $atributos = $this->validate($request, [
             'IdAlumno' => 'required',
             'Nombrequienderiva' => 'required',
-            'IdFamiliar' => 'required',
             'Motivo' => 'required',
             'Derivacion' => 'required',
             'DescripcionDer' => 'required',
@@ -46,6 +45,7 @@ class YonoAbandonoController extends Controller
             $atributos + [
                 'Existe' => 1,
                 'FechaInicio' => date('Y-m-d'),
+                'IdFamiliar' => $request->input('IdFamiliar'),
                 'FechaFin' => $atributos['Status'] ? date('Y-m-d') : NULL
             ]
         );

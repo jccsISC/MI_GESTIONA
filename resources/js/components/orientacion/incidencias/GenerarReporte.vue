@@ -27,16 +27,21 @@
                     <p class="text-right"><b>Fecha:</b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
-                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
+                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.ResponsableSeguimiento}}</p>
 
                     <div class="miGrid2 mt-1">
                         
                         <div>
-                            <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select v-model="reporte.IdFamiliar">
-                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</option>
-                            </select>
-                            <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
+                           <div>
+                                <p class="m-0"><b>Padre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
+                            <div>
+                                <p class="m-0"><b>Madre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
 
                             <p><b>Motivo</b></p> 
                             <textarea required v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
@@ -70,12 +75,14 @@
 <script>
     import bus from '../../../event-bus';
     export default {
+        props: ['userlogeado'],
          data() {
             return {
                 alumno: {},
                 reporte: {},
-                familiares: [],
-                tipo: ''
+                familiar: {},
+                tipo: '',
+                auth: {}
             }
         },
         created() {
@@ -83,37 +90,27 @@
             bus.$on('EditarIncidencia', (incidencia, alumno) => {
                 this.alumno = Object.assign({}, alumno);   
                 this.reporte = Object.assign({}, incidencia);
-                this.jalarFamiliares();   
+                this.jalarFamiliar();   
                 this.tipo = 'Editar';
             });
 
 
-            this.$parent.$on('generarIncidencia', alumno => {              
+            this.$parent.$on('generarIncidencia', alumno => {    
+                this.reporte = {};
                 this.alumno = alumno;   
-                this.reporte.Nombrequienderiva = this.auth.name;;
                 this.reporte.IdAlumno = alumno.IdAlumno; 
-                this.reporte.ResponsableSeguimiento = this.auth.name;;
+                this.auth = JSON.parse(this.userlogeado);
+                this.reporte.ResponsableSeguimiento = this.auth.name;
+                console.log(this.auth);
                 this.tipo = 'Guardar';
-                this.jalarFamiliares();      
+                this.jalarFamiliar();      
             });
         },
         methods: {
-            jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
-                this.familiares = res.data;
+            jalarFamiliar() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                this.familiar = res.data;
                 });
-            },
-            obtenerTelefono() {
-                let telefono = '';
-                if (!this.reporte.IdFamiliar || !this.familiares) {
-                    return telefono;
-                }
-                this.familiares.forEach(familiar => {
-                    if (familiar.IdFamiliar === this.reporte.IdFamiliar) {
-                        telefono = familiar.TelefonoPadre;
-                    }
-                });
-                return telefono;
             },
             guardarReporte() {
                 if (this.tipo == 'Guardar') {

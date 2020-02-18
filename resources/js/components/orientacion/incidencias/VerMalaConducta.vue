@@ -106,11 +106,15 @@
             }
         },
         created() {
-              this.$parent.$on('verIncidencia', (incidencia, alumno) => {
+              bus.$on('verIncidencia', (incidencia, alumno) => {
                 this.incidencia = Object.assign({}, incidencia); ;
                 this.alumno = Object.assign({}, alumno);   ;
                 this.familiar = this.incidencia.familiar;
 
+                
+                console.log(this.incidencia);
+                console.log(this.alumno);
+                console.log(this.familiar);
             });
         },
         methods: {

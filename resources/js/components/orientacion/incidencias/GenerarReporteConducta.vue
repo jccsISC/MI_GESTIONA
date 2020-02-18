@@ -41,11 +41,16 @@
                     <div class="miGrid2 mt-1">
                         
                         <div>
-                            <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="incidencia.IdFamiliar">
-                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</option>
-                            </select>
-                            <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
+                          <div>
+                                <p class="m-0"><b>Padre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
+                            <div>
+                                <p class="m-0"><b>Madre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
 
                             <p><b>Descripció del reporte</b></p> 
                             <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí la descripción del reporte"></textarea>
@@ -85,12 +90,14 @@
 <script>
     import bus from '../../../event-bus';
     export default {
+        props: ['userlogeado'],
          data() {
             return {
                 alumno: {},
                 incidencia: {},
-                familiares: [],
-                tipo: ''
+                familiar: [],
+                tipo: '',
+                auth: {}
             }
         },
         created() {
@@ -98,35 +105,24 @@
                 this.alumno = alumno;   
                 this.incidencia = {};
                 this.incidencia.IdAlumno = alumno.IdAlumno; 
-                this.incidencia.ResponsableSeguimiento = this.auth.name;;
-                this.jalarFamiliares();
+                this.auth = JSON.parse(this.userlogeado);
+                this.incidencia.ResponsableSeguimiento = this.auth.name;
+                this.jalarFamiliar();
                 this.tipo = 'Guardar';      
             });
             bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
                 console.log('consolelog'); 
                 this.alumno = Object.assign({}, alumno);   
                 this.incidencia = Object.assign({}, incidencia);
-                this.jalarFamiliares();   
+                this.jalarFamiliar();   
                 this.tipo = 'Editar';
             });
         },
         methods: {
-            jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
-                    this.familiares = res.data;
+            jalarFamiliar() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                    this.familiar = res.data;
                 });
-            },
-            obtenerTelefono() {
-                let telefono = '';
-                if (!this.incidencia.IdFamiliar || !this.familiares) {
-                    return telefono;
-                }
-                this.familiares.forEach(familiar => {
-                    if (familiar.IdFamiliar === this.incidencia.IdFamiliar) {
-                        telefono = familiar.Telefono;
-                    }
-                });
-                return telefono;
             },
             guardarReporte() {
           

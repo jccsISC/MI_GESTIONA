@@ -88,6 +88,7 @@
 
 
 <script>
+    import bus from '../../../event-bus';
   export default {
     created: function() {
       console.log(this.role);
@@ -99,11 +100,12 @@
         this.tipo = 'justificante';
         this.jalarFamiliares();
       });
-      this.$parent.$on('verJustificante', justificante => {
+      bus.$on('verJustificante', justificante => {
         this.justificante = justificante;
         this.pase={};
         this.ver = true;
         this.tipo = 'justificante';
+        console.log(this.justificante);
       });
       this.$parent.$on('verPase', pase => {
         this.pase = pase;
@@ -124,8 +126,11 @@
       }
     },
     methods: {
+      mostrarJustificante(justificante) {
+        bus.$emit('verJustificante', justificante);
+      },
       jalarFamiliares(){
-        axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
+        axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
           this.familiares = res.data;
         });
       },

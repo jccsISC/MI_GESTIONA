@@ -31,8 +31,8 @@ class tblalumno extends Model
         return $this->hasMany(tblpasesalida::class, 'IdAlumno', 'IdAlumno');
     }
 
-    public function familiares() {
-        return $this->hasMany(tblfamiliare::class, 'IdAlumno', 'IdAlumno');
+    public function familiar() {
+        return $this->hasOne(tblfamiliare::class, 'IdAlumno', 'IdAlumno');
     }
 
     public function calificaciones() {

@@ -2172,6 +2172,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   // props:['role'],
@@ -2181,7 +2184,7 @@ __webpack_require__.r(__webpack_exports__);
       salud: {},
       practica: {},
       servicio: {},
-      familiares: [],
+      familiar: {},
       calificaciones: [],
       becas: [],
       incidencias: [],
@@ -2199,7 +2202,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.jalarCalificaciones();
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
 
       _this.jalarSalud();
 
@@ -2240,6 +2243,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    mostrarJustificante: function mostrarJustificante(justificante) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
+    },
     jalarFaltas: function jalarFaltas() {
       var _this2 = this;
 
@@ -2271,12 +2277,11 @@ __webpack_require__.r(__webpack_exports__);
       });
       return cantidad;
     },
-    jalarFamiliares: function jalarFamiliares() {
+    jalarFamiliar: function jalarFamiliar() {
       var _this4 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
-        _this4.familiares = res.data;
-        console.log(res);
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
+        _this4.familiar = res.data;
       });
     },
     jalarSalud: function jalarSalud() {
@@ -3025,6 +3030,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    mostrarJustificante: function mostrarJustificante(justificante) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
+    },
+    mostrarIncidencia: function mostrarIncidencia(incidencia, alumno) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verIncidencia', incidencia, alumno);
+    },
     jalarFaltas: function jalarFaltas() {
       axios.get('faltas/' + this.alumno.IdAlumno).then(function (res) {
         console.log(res.data); // this.faltas = res.data;
@@ -3056,7 +3067,7 @@ __webpack_require__.r(__webpack_exports__);
     jalarFamiliares: function jalarFamiliares() {
       var _this3 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
         _this3.familiares = res.data;
         console.log(res);
       });
@@ -3830,6 +3841,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {}
@@ -3934,6 +3946,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    mostrarIncidencia: function mostrarIncidencia(incidencia, alumno) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verIncidencia', incidencia, alumno);
+    },
     jalarIncidencias: function jalarIncidencias() {
       var _this2 = this;
 
@@ -4028,14 +4043,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
       reporte: {},
-      familiares: [],
-      tipo: ''
+      familiar: {},
+      tipo: '',
+      auth: {}
     };
   },
   created: function created() {
@@ -4045,45 +4067,29 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = Object.assign({}, alumno);
       _this.reporte = Object.assign({}, incidencia);
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
 
       _this.tipo = 'Editar';
     });
     this.$parent.$on('generarIncidencia', function (alumno) {
+      _this.reporte = {};
       _this.alumno = alumno;
-      _this.reporte.Nombrequienderiva = _this.auth.name;
-      ;
       _this.reporte.IdAlumno = alumno.IdAlumno;
+      _this.auth = JSON.parse(_this.userlogeado);
       _this.reporte.ResponsableSeguimiento = _this.auth.name;
-      ;
+      console.log(_this.auth);
       _this.tipo = 'Guardar';
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
     });
   },
   methods: {
-    jalarFamiliares: function jalarFamiliares() {
+    jalarFamiliar: function jalarFamiliar() {
       var _this2 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
-        _this2.familiares = res.data;
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
+        _this2.familiar = res.data;
       });
-    },
-    obtenerTelefono: function obtenerTelefono() {
-      var _this3 = this;
-
-      var telefono = '';
-
-      if (!this.reporte.IdFamiliar || !this.familiares) {
-        return telefono;
-      }
-
-      this.familiares.forEach(function (familiar) {
-        if (familiar.IdFamiliar === _this3.reporte.IdFamiliar) {
-          telefono = familiar.TelefonoPadre;
-        }
-      });
-      return telefono;
     },
     guardarReporte: function guardarReporte() {
       if (this.tipo == 'Guardar') {
@@ -4199,14 +4205,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
       incidencia: {},
-      familiares: [],
-      tipo: ''
+      familiar: [],
+      tipo: '',
+      auth: {}
     };
   },
   created: function created() {
@@ -4216,10 +4229,10 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = alumno;
       _this.incidencia = {};
       _this.incidencia.IdAlumno = alumno.IdAlumno;
+      _this.auth = JSON.parse(_this.userlogeado);
       _this.incidencia.ResponsableSeguimiento = _this.auth.name;
-      ;
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
 
       _this.tipo = 'Guardar';
     });
@@ -4228,34 +4241,18 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = Object.assign({}, alumno);
       _this.incidencia = Object.assign({}, incidencia);
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
 
       _this.tipo = 'Editar';
     });
   },
   methods: {
-    jalarFamiliares: function jalarFamiliares() {
+    jalarFamiliar: function jalarFamiliar() {
       var _this2 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
-        _this2.familiares = res.data;
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
+        _this2.familiar = res.data;
       });
-    },
-    obtenerTelefono: function obtenerTelefono() {
-      var _this3 = this;
-
-      var telefono = '';
-
-      if (!this.incidencia.IdFamiliar || !this.familiares) {
-        return telefono;
-      }
-
-      this.familiares.forEach(function (familiar) {
-        if (familiar.IdFamiliar === _this3.incidencia.IdFamiliar) {
-          telefono = familiar.Telefono;
-        }
-      });
-      return telefono;
     },
     guardarReporte: function guardarReporte() {
       if (this.incidencia.Status == undefined) {
@@ -4400,9 +4397,8 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$parent.$on('verIncidencia', function (incidencia, alumno) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
-      ;
       _this.alumno = Object.assign({}, alumno);
       _this.familiar = _this.incidencia.familiar;
     });
@@ -4536,12 +4532,15 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.$parent.$on('verIncidencia', function (incidencia, alumno) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
       ;
       _this.alumno = Object.assign({}, alumno);
       ;
       _this.familiar = _this.incidencia.familiar;
+      console.log(_this.incidencia);
+      console.log(_this.alumno);
+      console.log(_this.familiar);
     });
   },
   methods: {
@@ -5350,6 +5349,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumnos: [],
@@ -5377,7 +5377,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     });
     this.idalumno = new URLSearchParams(window.location.search).get('show');
-    console.log(this.idalumno);
+    console.log(this.idalumno + ' idalumno');
     axios.get('/incidencias').then(function (res) {
       _this.alumnos = res.data;
       _this.loading = false;
@@ -5799,7 +5799,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -6157,6 +6156,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -6246,10 +6246,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
 
+    console.log(this.role);
     this.$parent.$on('agregarJustificante', function (alumno) {
       _this.alumno = alumno;
       _this.justificante = {};
@@ -6259,11 +6261,12 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.jalarFamiliares();
     });
-    this.$parent.$on('verJustificante', function (justificante) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('verJustificante', function (justificante) {
       _this.justificante = justificante;
       _this.pase = {};
       _this.ver = true;
       _this.tipo = 'justificante';
+      console.log(_this.justificante);
     });
     this.$parent.$on('verPase', function (pase) {
       _this.pase = pase;
@@ -6284,10 +6287,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    mostrarJustificante: function mostrarJustificante(justificante) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
+    },
     jalarFamiliares: function jalarFamiliares() {
       var _this2 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
         _this2.familiares = res.data;
       });
     },
@@ -6434,6 +6440,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    mostrarJustificante: function mostrarJustificante(justificante) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
+    },
     justificanteEliminado: function justificanteEliminado(id) {
       var posicion = -1;
       this.justificantes.forEach(function (justificante, key) {
@@ -6883,6 +6892,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -6975,14 +6985,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import bus from '../../event-bus';
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
   data: function data() {
     return {
       alumno: {},
       reporte: {},
-      familiares: [],
+      familiar: {},
       tipo: '',
       errors: [],
       users: [],
@@ -6993,14 +7008,17 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.$parent.$on('generarReporte', function (alumno) {
+      _this.reporte = {};
       _this.alumno = alumno;
       _this.auth = JSON.parse(_this.userlogeado);
-      _this.reporte.Nombrequienderiva = _this.auth.name;
+      _this.reporte.Nombrequienderiva = _this.auth.name; // this.reporte.Nombrequienderiva = 'Hardcoded';
+
       _this.reporte.IdAlumno = alumno.IdAlumno;
 
-      _this.jalarFamiliares();
+      _this.jalarFamiliar();
 
-      _this.jalarUsers();
+      _this.jalarUsers(); // this.jalarCurrentUser();// return auth()->user();
+
     }); // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
     //     console.log('consolelog'); 
     //     this.alumno = Object.assign({}, alumno);   
@@ -7010,62 +7028,47 @@ __webpack_require__.r(__webpack_exports__);
     // });
   },
   methods: {
-    jalarFamiliares: function jalarFamiliares() {
+    jalarFamiliar: function jalarFamiliar() {
       var _this2 = this;
 
-      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiares').then(function (res) {
-        _this2.familiares = res.data;
+      axios.get('alumnos/' + this.alumno.IdAlumno + '/familiar').then(function (res) {
+        _this2.familiar = res.data;
+        _this2.reporte.IdFamiliar = _this2.familiar.IdFamiliar;
       });
-    },
-    obtenerTelefono: function obtenerTelefono() {
-      var _this3 = this;
-
-      var telefono = '';
-
-      if (!this.reporte.IdFamiliar || !this.familiares) {
-        return telefono;
-      }
-
-      this.familiares.forEach(function (familiar) {
-        if (familiar.IdFamiliar === _this3.reporte.IdFamiliar) {
-          telefono = familiar.TelefonoPadre;
-        }
-      });
-      return telefono;
     },
     guardarReporte: function guardarReporte() {
-      var _this4 = this;
+      var _this3 = this;
 
       if (this.reporte.Status == undefined) {
         alert('Seleccione el estatus de este reporte');
         return;
       }
 
-      if (this.reporte.IdFamiliar == undefined || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
+      if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
         alert('Verifique y llene todos los campos');
         return;
       }
 
       this.users.forEach(function (element) {
-        if (element.id == _this4.reporte.user_id) {
-          _this4.reporte.ResponsableSeguimiento = element.name;
+        if (element.id == _this3.reporte.user_id) {
+          _this3.reporte.ResponsableSeguimiento = element.name;
           return;
         }
       });
       axios.post('/yonoAbandono', this.reporte).then(function (res) {
-        _this4.reporte = res.data;
+        _this3.reporte = res.data;
         $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
       })["catch"](function (error) {
         if (error.res.status == 422) {
-          _this4.errors = error.res.data.errors;
+          _this3.errors = error.res.data.errors;
         }
       });
     },
     jalarUsers: function jalarUsers() {
-      var _this5 = this;
+      var _this4 = this;
 
       axios.get('/users').then(function (res) {
-        _this5.users = res.data;
+        _this4.users = res.data;
         console.log(res);
       });
     }
@@ -7223,6 +7226,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -12265,7 +12269,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n", ""]);
+exports.push([module.i, "\n.midiv{\n    width: 50%;\n    margin-right: auto;\n    margin-left: auto;\n    border: 1px solid rgb(223, 223, 223);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 10px;\n}\n.pbtn{\n    position: fixed;\n    right: 7%;\n    bottom: 20%;\n}\n.carreraSelect {\n    width: 100%;\n    background: #800000;\n    color: white;\n    outline: none;\n    font-size: 16px;\n    border: 1px solid #800000;\n    padding: 5px;\n    margin: 0;\n    -webkit-transition: 0.4s;\n    transition: 0.4s;\n    /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.carreraSelect:hover{\n    background: white;\n    color: #800000;\n    border: 1px solid #800000;\n    -webkit-transition: 0.6s;\n    transition: 0.6s;\n    /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -12341,7 +12345,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
 
 // exports
 
@@ -45037,34 +45041,47 @@ var render = function() {
                 _c("div", [
                   _vm._m(2),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "subGrid" },
-                    _vm._l(_vm.familiares, function(familiar, key) {
-                      return _c("div", { key: key }, [
-                        _c("p", { staticClass: "m-0" }, [
-                          _c("b", [_vm._v(_vm._s(familiar.Tipo))])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "m-0" }, [
-                          _c("b", [_vm._v("Nombre: ")]),
-                          _vm._v(
-                            _vm._s(familiar.NombrePadre) +
-                              " " +
-                              _vm._s(familiar.ApePaternoPadre) +
-                              "  " +
-                              _vm._s(familiar.ApeMaternoPadre)
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "m-0" }, [
-                          _c("b", [_vm._v("Telefóno: ")]),
-                          _vm._v(_vm._s(familiar.TelefonoPadre))
-                        ])
+                  _c("div", { staticClass: "subGrid" }, [
+                    _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombrePadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoPadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoPadre)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                       ])
-                    }),
-                    0
-                  )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombreMadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoMadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoMadre)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
+                    ])
+                  ])
                 ])
               ])
             ])
@@ -45072,7 +45089,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "labelS" }, [
           _vm.alumno.IdAlumno
-            ? _c("div", { staticClass: "float" }, [_vm._m(3)])
+            ? _c("div", { staticClass: "float" }, [_vm._m(5)])
             : _vm._e(),
           _vm._v(" "),
           _vm.alumno.IdAlumno
@@ -45088,7 +45105,7 @@ var render = function() {
                     _vm._v(_vm._s(_vm.alumno.MunicipioNac))
                   ]),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("label", { staticClass: "mr-5" }, [
                     _c("b", [_vm._v("Calle: ")]),
@@ -45172,10 +45189,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(7),
                   _c("br"),
                   _vm._v(" "),
-                  _vm._m(6),
+                  _vm._m(8),
                   _c("br")
                 ])
               ])
@@ -45183,7 +45200,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(7),
+      _vm._m(9),
       _vm._v(" "),
       _c("div", { staticClass: "contentInf" }, [
         _c("div", { staticClass: "gridM2" }, [
@@ -45193,7 +45210,7 @@ var render = function() {
                 { staticClass: "container contentCalif scrollTCalif" },
                 [
                   _c("div", [
-                    _vm._m(8),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("p", [
                       _c("b", [_vm._v("Promedio General: ")]),
@@ -45210,7 +45227,7 @@ var render = function() {
                               "table table-striped table-hover contentTable table table-sm"
                           },
                           [
-                            _vm._m(9),
+                            _vm._m(11),
                             _vm._v(" "),
                             _c(
                               "tbody",
@@ -45290,7 +45307,7 @@ var render = function() {
                 "div",
                 { staticClass: "container contentCalif pl-5 scrollTCalif" },
                 [
-                  _vm._m(10),
+                  _vm._m(12),
                   _vm._v(" "),
                   _c("div", { staticClass: "tableCalf" }, [
                     _vm.alumno.IdAlumno
@@ -45301,7 +45318,7 @@ var render = function() {
                               "table table-striped table-hover contentTable table table-sm"
                           },
                           [
-                            _vm._m(11),
+                            _vm._m(13),
                             _vm._v(" "),
                             _c(
                               "tbody",
@@ -45339,13 +45356,13 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(12),
+      _vm._m(14),
       _vm._v(" "),
       _c("div", { staticClass: "contentInf" }, [
         _c("div", { staticClass: "gridM2" }, [
           _vm.alumno.IdAlumno
             ? _c("div", [
-                _vm._m(13),
+                _vm._m(15),
                 _vm._v(" "),
                 _c("div", [
                   _c("label", { staticClass: "mr-5" }, [
@@ -45486,13 +45503,13 @@ var render = function() {
                 [
                   _c("div", { staticClass: "linea2" }),
                   _vm._v(" "),
-                  _vm._m(14),
+                  _vm._m(16),
                   _vm._v(" "),
                   _c("div", [
                     _vm.alumno.IdAlumno
                       ? _c("div", [
                           _c("div", { staticClass: "pt-1 interlineado" }, [
-                            _vm._m(15),
+                            _vm._m(17),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -45541,7 +45558,7 @@ var render = function() {
                             "div",
                             { staticClass: "mcontenidoL pt-1 interlineado" },
                             [
-                              _vm._m(16),
+                              _vm._m(18),
                               _vm._v(" "),
                               _c("p", [
                                 _c("b", [_vm._v("Observaciones: ")]),
@@ -45598,7 +45615,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(17),
+      _vm._m(19),
       _vm._v(" "),
       _c("div", { staticClass: "contentInf" }, [
         _c("div", { staticClass: "gridTS" }, [
@@ -45606,7 +45623,7 @@ var render = function() {
             _vm.alumno.IdAlumno
               ? _c("div", [
                   _c("div", [
-                    _vm._m(18),
+                    _vm._m(20),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -45627,10 +45644,7 @@ var render = function() {
                             },
                             on: {
                               click: function($event) {
-                                return _vm.$emit(
-                                  "verJustificante",
-                                  justificante
-                                )
+                                return _vm.mostrarJustificante(justificante)
                               }
                             }
                           },
@@ -45648,7 +45662,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(19),
+                    _vm._m(21),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -45696,7 +45710,7 @@ var render = function() {
               _c("div", [
                 _vm.alumno.IdAlumno
                   ? _c("div", [
-                      _vm._m(20),
+                      _vm._m(22),
                       _vm._v(" "),
                       _c("div", [
                         _c("p", { staticClass: "mb-1" }, [
@@ -45711,33 +45725,67 @@ var render = function() {
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Dependencia: ")]),
-                          _vm._v(_vm._s(_vm.servicio.dependencia.Nombre))
+                          _vm._v(
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.Nombre
+                                : ""
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Giro: ")]),
-                          _vm._v(_vm._s(_vm.servicio.dependencia.Giro))
+                          _vm._v(
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.Giro
+                                : ""
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Dirección: ")]),
-                          _vm._v(_vm._s(_vm.servicio.dependencia.Direccion))
+                          _vm._v(
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.Direccion
+                                : ""
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Telefóno: ")]),
-                          _vm._v(_vm._s(_vm.servicio.dependencia.Telefono))
+                          _vm._v(
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.Telefono
+                                : ""
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Responsable: ")]),
-                          _vm._v(_vm._s(_vm.servicio.dependencia.Responsable))
+                          _vm._v(
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.Responsable
+                                : ""
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
                           _c("b", [_vm._v("Tipo de Vinculación: ")]),
                           _vm._v(
-                            _vm._s(_vm.servicio.dependencia.TipoVinculacion)
+                            _vm._s(
+                              _vm.servicio.IdServPrac
+                                ? _vm.servicio.dependencia.TipoVinculacion
+                                : ""
+                            )
                           )
                         ])
                       ])
@@ -45752,7 +45800,7 @@ var render = function() {
             _vm._v(" "),
             _vm.alumno.IdAlumno
               ? _c("div", [
-                  _vm._m(21),
+                  _vm._m(23),
                   _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "mb-1" }, [
@@ -45767,32 +45815,68 @@ var render = function() {
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Dependencia: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.Nombre))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.Nombre
+                            : ""
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Giro: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.Giro))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.Giro
+                            : ""
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Dirección: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.Direccion))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.Direccion
+                            : ""
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Telefóno: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.Telefono))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.Telefono
+                            : ""
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Responsable: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.Responsable))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.Responsable
+                            : ""
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
                       _c("b", [_vm._v("Tipo de Vinculación: ")]),
-                      _vm._v(_vm._s(_vm.practica.dependencia.TipoVinculacion))
+                      _vm._v(
+                        _vm._s(
+                          _vm.practica.IdServPrac
+                            ? _vm.practica.dependencia.TipoVinculacion
+                            : ""
+                        )
+                      )
                     ])
                   ])
                 ])
@@ -45804,7 +45888,7 @@ var render = function() {
                 "div",
                 { staticClass: "ml-5" },
                 [
-                  _vm._m(22),
+                  _vm._m(24),
                   _vm._v(" "),
                   _vm._l(_vm.becas, function(beca, key) {
                     return _c("div", { key: key }, [
@@ -45866,6 +45950,18 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center float" }, [
       _c("b", [_c("p", [_vm._v("INFORMACIÓN DE LOS PADRES O TUTOR")])])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
   },
   function() {
     var _vm = this
@@ -47127,8 +47223,7 @@ var render = function() {
                                                 },
                                                 on: {
                                                   click: function($event) {
-                                                    return _vm.$emit(
-                                                      "verIncidencia",
+                                                    return _vm.mostrarIncidencia(
                                                       incidencia,
                                                       _vm.alumno
                                                     )
@@ -47264,8 +47359,7 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                return _vm.$emit(
-                                                  "verJustificante",
+                                                return _vm.mostrarJustificante(
                                                   justificante
                                                 )
                                               }
@@ -47394,9 +47488,7 @@ var render = function() {
       _vm._v(" "),
       _c("ver-mala-conducta"),
       _vm._v(" "),
-      _c("ver-incidencias"),
-      _vm._v(" "),
-      _c("add-justificante", { attrs: { role: _vm.role } })
+      _c("ver-incidencias")
     ],
     1
   )
@@ -48655,9 +48747,9 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("genera-mala-conducta"),
+      _c("genera-mala-conducta", { attrs: { userlogeado: _vm.userlogeado } }),
       _vm._v(" "),
-      _c("genera-incidencia")
+      _c("genera-incidencia", { attrs: { userlogeado: _vm.userlogeado } })
     ],
     1
   )
@@ -48684,104 +48776,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "contenedorCard" }, [
-        _c("p", { staticClass: "subtitulos" }, [_vm._v("Incidencias")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "micard" }, [
-          _vm.alumno.IdAlumno
-            ? _c("div", [
-                _c("div", { staticClass: "pt-1 interlineado" }, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "borde" },
-                    _vm._l(_vm.incidencias, function(incidencia, key) {
-                      return _c(
-                        "button",
-                        {
-                          key: key,
-                          staticClass:
-                            "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
-                          attrs: {
-                            "data-toggle": "modal",
-                            "data-target":
-                              incidencia.TipoReporte == "Incidencia"
-                                ? "#verIncidencias"
-                                : "#verMalaConducta"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.$emit(
-                                "verIncidencia",
-                                incidencia,
-                                _vm.alumno
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        \n                            " +
-                              _vm._s(key + 1) +
-                              "\n\n                        "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]),
+  return _c("div", [
+    _c("div", { staticClass: "contenedorCard" }, [
+      _c("p", { staticClass: "subtitulos" }, [_vm._v("Incidencias")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "micard" }, [
+        _vm.alumno.IdAlumno
+          ? _c("div", [
+              _c("div", { staticClass: "pt-1 interlineado" }, [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "mcontenidoL pt-1 interlineado" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Observaciones: ")]),
-                    _vm._v(_vm._s(_vm.inconveniente.Observaciones))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _c("b", [_vm._v("Descripción del Reporte: ")]),
-                    _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "pt-1" }, [
-                  _c("p", { staticClass: "p-0 m-0 fecha" }, [
-                    _c("b", [_vm._v("Fecha: ")]),
-                    _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } },
-                    [
-                      _c("img", {
-                        staticClass: "float-right mr-3",
-                        staticStyle: { width: "20px", height: "20px" },
+                _c(
+                  "div",
+                  { staticClass: "borde" },
+                  _vm._l(_vm.incidencias, function(incidencia, key) {
+                    return _c(
+                      "button",
+                      {
+                        key: key,
+                        staticClass:
+                          "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
                         attrs: {
-                          src: "images/historial.png",
-                          alt: "ver el historial"
+                          "data-toggle": "modal",
+                          "data-target":
+                            incidencia.TipoReporte == "Incidencia"
+                              ? "#verIncidencias"
+                              : "#verMalaConducta"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarIncidencia(incidencia, _vm.alumno)
+                          }
                         }
-                      })
-                    ]
-                  )
+                      },
+                      [
+                        _vm._v(
+                          "\n                        \n                            " +
+                            _vm._s(key + 1) +
+                            "\n\n                        "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mcontenidoL pt-1 interlineado" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("p", [
+                  _c("b", [_vm._v("Observaciones: ")]),
+                  _vm._v(_vm._s(_vm.inconveniente.Observaciones))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("b", [_vm._v("Descripción del Reporte: ")]),
+                  _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "pt-1" }, [
+                _c("p", { staticClass: "p-0 m-0 fecha" }, [
+                  _c("b", [_vm._v("Fecha: ")]),
+                  _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
+                ]),
+                _vm._v(" "),
+                _c("a", { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } }, [
+                  _c("img", {
+                    staticClass: "float-right mr-3",
+                    staticStyle: { width: "20px", height: "20px" },
+                    attrs: {
+                      src: "images/historial.png",
+                      alt: "ver el historial"
+                    }
+                  })
                 ])
               ])
-            : _vm._e()
-        ])
-      ]),
-      _vm._v(" "),
-      _c("ver-mala-conducta"),
-      _vm._v(" "),
-      _c("ver-incidencias")
-    ],
-    1
-  )
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -48882,73 +48958,52 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", { staticClass: "m-0" }, [
                   _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                  _vm._v(_vm._s(_vm.reporte.Nombrequienderiva))
+                  _vm._v(_vm._s(_vm.reporte.ResponsableSeguimiento))
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
                   _c("div", [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.IdFamiliar,
-                            expression: "reporte.IdFamiliar"
-                          }
-                        ],
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.reporte,
-                              "IdFamiliar",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.familiares, function(familiar, key) {
-                        return _c(
-                          "option",
-                          {
-                            key: key,
-                            domProps: { value: familiar.IdFamiliar }
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(
-                                familiar.NombrePadre +
-                                  " " +
-                                  familiar.ApePaternoPadre +
-                                  " " +
-                                  familiar.ApeMaternoPadre
-                              )
-                            )
-                          ]
+                    _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombrePadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoPadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoPadre)
                         )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Telefono: ")]),
-                      _vm._v(_vm._s(_vm.obtenerTelefono()))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _c("div", [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombreMadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoMadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoMadre)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -48981,7 +49036,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49015,7 +49070,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -49049,7 +49104,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49081,7 +49136,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49115,7 +49170,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(9)
+                _vm._m(10)
               ]
             )
           ])
@@ -49203,9 +49258,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Padre o Tutor: ")])
-    ])
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
   },
   function() {
     var _vm = this
@@ -49371,68 +49430,47 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
                   _c("div", [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.incidencia.IdFamiliar,
-                            expression: "incidencia.IdFamiliar"
-                          }
-                        ],
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.incidencia,
-                              "IdFamiliar",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.familiares, function(familiar, key) {
-                        return _c(
-                          "option",
-                          {
-                            key: key,
-                            domProps: { value: familiar.IdFamiliar }
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(
-                                familiar.NombrePadre +
-                                  " " +
-                                  familiar.ApePaternoPadre +
-                                  " " +
-                                  familiar.ApeMaternoPadre
-                              )
-                            )
-                          ]
+                    _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombrePadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoPadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoPadre)
                         )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Telefono: ")]),
-                      _vm._v(_vm._s(_vm.obtenerTelefono()))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _c("div", [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombreMadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoMadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoMadre)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -49464,7 +49502,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49495,7 +49533,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -49545,7 +49583,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -49577,7 +49615,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49608,7 +49646,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -49739,9 +49777,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Padre o Tutor: ")])
-    ])
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
   },
   function() {
     var _vm = this
@@ -54659,7 +54701,7 @@ var render = function() {
                         },
                         on: {
                           click: function($event) {
-                            return _vm.$emit("verJustificante", justificante)
+                            return _vm.mostrarJustificante(justificante)
                           }
                         }
                       },
@@ -55052,7 +55094,7 @@ var render = function() {
                         "div",
                         { staticClass: "float-right m-0 mr-2" },
                         [
-                          !_vm.practica
+                          !_vm.practica.IdServPrac
                             ? _c(
                                 "button",
                                 {
@@ -55076,7 +55118,7 @@ var render = function() {
                               )
                             : _vm._e(),
                           _vm._v(" "),
-                          _vm.practica
+                          _vm.practica.IdServPrac
                             ? _c(
                                 "button",
                                 {
@@ -55445,69 +55487,47 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.IdFamiliar,
-                            expression: "reporte.IdFamiliar"
-                          }
-                        ],
-                        attrs: { id: "numero", name: "numero" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.reporte,
-                              "IdFamiliar",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.familiares, function(familiar, key) {
-                        return _c(
-                          "option",
-                          {
-                            key: key,
-                            domProps: { value: familiar.IdFamiliar }
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(
-                                familiar.NombrePadre +
-                                  " " +
-                                  familiar.ApePaternoPadre +
-                                  " " +
-                                  familiar.ApeMaternoPadre
-                              )
-                            )
-                          ]
+                    _c("div", [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombrePadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoPadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoPadre)
                         )
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("p", [
-                      _c("b", [_vm._v("Telefono: ")]),
-                      _vm._v(_vm._s(_vm.obtenerTelefono()))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4),
+                    _c("div", [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre: ")]),
+                        _vm._v(
+                          _vm._s(_vm.familiar.NombreMadre) +
+                            " " +
+                            _vm._s(_vm.familiar.ApePaternoMadre) +
+                            "  " +
+                            _vm._s(_vm.familiar.ApeMaternoMadre)
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Telefóno: ")]),
+                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -55541,7 +55561,7 @@ var render = function() {
                         ])
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -55574,7 +55594,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -55607,7 +55627,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -55638,7 +55658,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -55673,7 +55693,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-2" }, [
                   _c("div", [
-                    _vm._m(9),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -55821,9 +55841,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Padre o Tutor: ")])
-    ])
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
   },
   function() {
     var _vm = this
@@ -72596,8 +72620,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
