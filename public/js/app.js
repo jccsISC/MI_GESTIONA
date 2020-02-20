@@ -2174,10 +2174,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // props:['role'],
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -4562,7 +4561,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  //   props: ['role'],
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -4705,7 +4704,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  //   props: ['role'],
+  props: ['role'],
   data: function data() {
     return {
       alumno: {},
@@ -4718,9 +4717,7 @@ __webpack_require__.r(__webpack_exports__);
 
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('verIncidencia', function (incidencia, alumno) {
       _this.incidencia = Object.assign({}, incidencia);
-      ;
       _this.alumno = Object.assign({}, alumno);
-      ;
       _this.familiar = _this.incidencia.familiar;
       console.log(_this.incidencia);
       console.log(_this.alumno);
@@ -6440,16 +6437,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['role'],
   created: function created() {
     var _this = this;
 
@@ -6979,6 +6969,7 @@ __webpack_require__.r(__webpack_exports__);
     promedioGeneral: function promedioGeneral() {
       var promedio = 0;
       var counter = 0;
+      var pgeneral = 0;
 
       if (!this.calificaciones.length) {
         return '';
@@ -6988,7 +6979,9 @@ __webpack_require__.r(__webpack_exports__);
         promedio += calificacion.Calificacionfinal ? parseInt(calificacion.Calificacionfinal) : 0;
         counter++;
       });
-      return promedio / counter;
+      pgeneral = promedio / counter;
+      return pgeneral;
+      console.log('promedio GENERAL: ' + this.pgeneral);
     }
   },
   data: function data() {
@@ -7743,6 +7736,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12473,7 +12471,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\ntable.scrollT {\n    border-spacing: 0;\n    /* border: 2px solid black; */\n}\n.scrollT tbody,\n.scrollT thead { display: block;\n}\n.scrollT thead tr th { \n    height: 30px;\n    line-height: 30px;\n    /* text-align: left; */\n}\n.scrollT tbody {\n    height: 115px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n/* tbody { border-top: 2px solid black; } */\n.scrollT tbody td {\n    /* width: 20%; */ /* Optional */\n    border-right: 1px solid rgb(156, 156, 156);\n    /* white-space: nowrap; */\n}\n.scrollT tbody td:last-child, thead th:last-child {\n    border-right: none;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\n.scrollT tbody,\n.scrollT thead { \n    display: block;\n}\n.scrollT thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollT tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody {\n    max-height: 120px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -12588,6 +12586,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "\n.mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.mibtnEdit{\n    background: #008080;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #008080;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnEdit:hover{\n    background-color: rgb(255, 255, 255);\n    color: #008080;\n    border: 1px solid #008080;\n}\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.historialTalleres{\n    width: 100%;\n    height: 280px;\n    background-color: white;\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.scrollTalleres tbody,\n.scrollTalleres thead { \n    display: block;\n}\n.scrollTalleres thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollTalleres tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollTalleres tbody {\n    max-height: 250px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollTalleres tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollTalleres tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
 
 // exports
 
@@ -12758,7 +12775,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.btnImprimirPase{\n    float: right;\n    top: 110px;\n    margin-right: 10px;\n}\n.mibtnE{\n    background: #c40404;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #c40404;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnE:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.mibtnI{\n    background: #416de7;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #416de7;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnI:hover{\n    background-color: rgb(255, 255, 255);\n    color: #416de7;\n    border: 1px solid #416de7;\n}\n", ""]);
+exports.push([module.i, "\n.btnImprimirPase{\n    float: right;\n    top: 110px;\n    margin-right: 10px;\n}\n.mibtnE{\n    background: #c40404;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #c40404;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnE:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.mibtnI{\n    background: #416de7;\n    border-radius: 4px;\n    /* color: white; */\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #416de7;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.mibtnI:hover{\n    background-color: rgb(255, 255, 255);\n    color: #416de7;\n    border: 1px solid #416de7;\n}\n.link {\n  color: white;\n}\n.link:hover {\n  color: #416de7;\n}\n", ""]);
 
 // exports
 
@@ -12815,7 +12832,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 14px;\n}\n.scrollTCalif{\n    height: 260px;\n    /* background: #f7b6b6; */\n    overflow: scroll;\n    overflow: auto;\n}\n.scrollTCalif::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollTCalif::-webkit-scrollbar-thumb{\n    background: #800000;\n    width: 1px;\n}\n\n", ""]);
+exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 15px;\n}\n.scrollTCalif{\n    height: 260px;\n    /* background: #f7b6b6; */\n    overflow: scroll;\n    overflow: auto;\n}\n.scrollTCalif::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollTCalif::-webkit-scrollbar-thumb{\n    background: #800000;\n    width: 1px;\n}\n\n", ""]);
 
 // exports
 
@@ -44086,6 +44103,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./HistorialTalleres.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orientacion/notify/notifyTalleres.vue?vue&type=style&index=0&lang=css& ***!
@@ -45368,12 +45415,6 @@ var render = function() {
                     _vm._v(_vm._s(_vm.alumno.Municipio))
                   ]),
                   _vm._v(" "),
-                  _c("label", { staticClass: "mr-3" }, [
-                    _c("b", [_vm._v("Estado: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Estado))
-                  ]),
-                  _c("br"),
-                  _vm._v(" "),
                   _c("label", { staticClass: "mr-2" }, [
                     _c("b", [_vm._v("Entre Calle: ")]),
                     _vm._v(
@@ -45824,9 +45865,9 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("ver-mala-conducta"),
+                  _c("ver-mala-conducta", { attrs: { role: _vm.role } }),
                   _vm._v(" "),
-                  _c("ver-incidencias")
+                  _c("ver-incidencias", { attrs: { role: _vm.role } })
                 ],
                 1
               )
@@ -46151,7 +46192,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("add-justificante")
+      _c("add-justificante", { attrs: { role: _vm.role } })
     ],
     1
   )
@@ -46367,7 +46408,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "mt-4" }, [
+    return _c("p", { staticClass: "mt-4 m-0" }, [
       _c("b", [_vm._v("Pases de Salida")])
     ])
   },
@@ -47936,7 +47977,9 @@ var render = function() {
       _vm._v(" "),
       _c("ver-mala-conducta"),
       _vm._v(" "),
-      _c("ver-incidencias")
+      _c("ver-incidencias"),
+      _vm._v(" "),
+      _c("add-justificante", { attrs: { role: _vm.role } })
     ],
     1
   )
@@ -50767,23 +50810,34 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "mibtnEdit posicionbtn",
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#reporteOrientacion"
-                      },
-                      on: { click: _vm.metodo }
-                    },
-                    [_c("i", { staticClass: "fas fa-edit" })]
-                  ),
+                  _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnEdit posicionbtn",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#reporteOrientacion"
+                          },
+                          on: { click: _vm.metodo }
+                        },
+                        [_c("i", { staticClass: "fas fa-edit" })]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.role != "admin"
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "mibtnI positionImprimir",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fas fa-print" })]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-right mt-3" }, [
                     _c("b", [_vm._v("Fecha: ")]),
@@ -50824,7 +50878,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._m(4),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50844,7 +50898,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._m(5),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50891,9 +50945,9 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
-                  _vm._m(7)
+                  _vm._m(6)
                 ])
               ])
             ]
@@ -50916,7 +50970,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass: "float-left",
-          staticStyle: { "margin-left": "38%", "margin-right": "30%" }
+          staticStyle: { "margin-left": "42%", "margin-right": "30%" }
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
@@ -50946,16 +51000,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "imgLogo" }, [
       _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "mibtnI positionImprimir", attrs: { type: "button" } },
-      [_c("i", { staticClass: "fas fa-print" })]
-    )
   },
   function() {
     var _vm = this
@@ -51093,7 +51137,7 @@ var render = function() {
                 _c("div", { staticClass: "modal-body-g p-3 colorText" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  !_vm.incidencia.Status
+                  !_vm.incidencia.Status && _vm.role != "admin"
                     ? _c(
                         "button",
                         {
@@ -51109,7 +51153,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.incidencia.Status
+                  _vm.incidencia.Status && _vm.role != "admin"
                     ? _c(
                         "button",
                         {
@@ -51265,7 +51309,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass: "float-left",
-          staticStyle: { "margin-left": "38%", "margin-right": "30%" }
+          staticStyle: { "margin-left": "40%", "margin-right": "30%" }
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
@@ -51409,7 +51453,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "micardTalleres colorText" },
+      { staticClass: "historialTalleres colorText" },
       [
         _c("spinner", {
           directives: [
@@ -51426,14 +51470,13 @@ var render = function() {
           "table",
           {
             staticClass:
-              "table table-striped table-hover contentTable table table-sm"
+              "table table-striped table-hover contentTable table  scrollTalleres table-sm"
           },
           [
             _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
-              { staticClass: "scrollTable" },
               _vm._l(_vm.grupos, function(grupo, key) {
                 return _c(
                   "tr",
@@ -52711,37 +52754,37 @@ var render = function() {
               : _vm._e(),
             _vm._v(" "),
             _c("div", { staticClass: "mcontenido  pt-1 interlineado" }, [
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Estatura: ")]),
                 _vm._v(_vm._s(_vm.salud.Estatura))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Peso: ")]),
                 _vm._v(_vm._s(_vm.salud.Peso))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("IMC: ")]),
                 _vm._v(_vm._s(_vm.salud.IMC))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Anteojos: ")]),
                 _vm._v(_vm._s(_vm.salud.Anteojos == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Alergias: ")]),
                 _vm._v(_vm._s(_vm.salud.Alergias == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Graviez: ")]),
                 _vm._v(_vm._s(_vm.salud.Gravidez == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Problemas Posturales: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbPosturales == 1 ? "Si" : "No"))
               ]),
@@ -52753,32 +52796,32 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "mcontenido pt-1 interlineado" }, [
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Pie Plano: ")]),
                 _vm._v(_vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Salud Bucal: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Pediculosis: ")]),
                 _vm._v(_vm._s(_vm.salud.Pediculosis == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Problemas Lenguaje: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbLenguaje == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Problemas Auditivos: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbAuditivo == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
-              _c("p", [
+              _c("p", { staticClass: "m-0 p-0" }, [
                 _c("b", [_vm._v("Otros: ")]),
                 _vm._v(_vm._s(_vm.salud.Otros == 1 ? "Si" : "No"))
               ])
@@ -53529,8 +53572,6 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
       _c("ver-incidencias", { attrs: { role: _vm.role } }),
       _vm._v(" "),
       _c("ver-mala-conducta", { attrs: { role: _vm.role } }),
@@ -53568,47 +53609,6 @@ var staticRenderFns = [
         _c("th", { attrs: { colspan: "3" } }, [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", { attrs: { colspan: "3" } }, [_vm._v("Seguimiento")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { attrs: { "aria-label": "..." } }, [
-      _c("ul", { staticClass: "pagination justify-content-center" }, [
-        _c("li", { staticClass: "page-item disabled" }, [
-          _c(
-            "a",
-            { staticClass: "page-link", attrs: { href: "#", tabindex: "-1" } },
-            [_vm._v("Previous")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("1")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item active" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("2 "),
-            _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("3")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("Next")
-          ])
-        ])
       ])
     ])
   }
@@ -55135,7 +55135,10 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.ver
+                _vm.ver &&
+                _vm.role != "admin" &&
+                _vm.role != "tutor" &&
+                _vm.role != "orientador"
                   ? _c(
                       "button",
                       {
@@ -55151,17 +55154,22 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.tipo == "justificante" && _vm.ver
+                _vm.tipo == "justificante" &&
+                _vm.ver &&
+                _vm.role != "admin" &&
+                _vm.role != "tutor" &&
+                _vm.role != "orientador"
                   ? _c(
                       "button",
                       {
-                        staticClass: "mibtnI btnImprimirPase ",
+                        staticClass: "mibtnI btnImprimirPase",
                         attrs: { type: "button" }
                       },
                       [
                         _c(
                           "a",
                           {
+                            staticClass: "link",
                             attrs: {
                               href:
                                 "imprimirJust/" +
@@ -55174,7 +55182,11 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.tipo == "pase" && _vm.ver
+                _vm.tipo == "pase" &&
+                _vm.ver &&
+                _vm.role != "admin" &&
+                _vm.role != "tutor" &&
+                _vm.role != "orientador"
                   ? _c(
                       "button",
                       {
@@ -55185,6 +55197,7 @@ var render = function() {
                         _c(
                           "a",
                           {
+                            staticClass: "link",
                             attrs: {
                               href: "imprimirPase/" + _vm.pase.IdPaseSal
                             }
@@ -55459,7 +55472,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass: "float-left pl-2",
-          staticStyle: { "margin-left": "22%" }
+          staticStyle: { "margin-left": "28%" }
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
@@ -56042,7 +56055,7 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("p", { staticClass: "mt-3" }, [
+                  _c("p", { staticClass: "mt-2" }, [
                     _c("b", [_vm._v("Dependencia: ")]),
                     _vm._v(
                       " " +
@@ -56055,12 +56068,12 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "mt-2" }, [
+                  _c("p", { staticClass: "mt-1" }, [
                     _c("b", [_vm._v("Fecha Inicio: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaInicio))
                   ]),
                   _vm._v(" "),
-                  _c("p", { staticClass: "mt-2" }, [
+                  _c("p", { staticClass: "mt-1" }, [
                     _c("b", [_vm._v("Fecha Fin: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaFin) + " ")
                   ])
@@ -56100,13 +56113,13 @@ var render = function() {
   return _c("div", { staticClass: "contenedorCard" }, [
     _c("p", { staticClass: "subtitulos" }, [_vm._v("Calificaciones")]),
     _vm._v(" "),
-    _c("div", { staticClass: "micard scrollTCalif colorText" }, [
+    _c("div", { staticClass: "micard colorText" }, [
       _vm.alumno.IdAlumno
         ? _c(
             "table",
             {
               staticClass:
-                "table table-striped table-hover contentTable table table-sm"
+                "table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0"
             },
             [
               _vm._m(0),
@@ -56144,9 +56157,9 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.alumno.IdAlumno
-        ? _c("p", { staticClass: "subtitulos sizeCalGeneral" }, [
+        ? _c("p", { staticClass: "subtitulos sizeCalGeneral m-0" }, [
             _vm._v("Promedio General: "),
-            _c("label", { staticClass: "text-danger" }, [
+            _c("label", { staticClass: "text-danger m-0" }, [
               _vm._v(_vm._s(_vm.promedioGeneral))
             ])
           ])
@@ -56173,7 +56186,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("P5")]),
         _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Promedio Final")])
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("P.Final")])
       ])
     ])
   }
@@ -56208,7 +56221,7 @@ var render = function() {
             "table",
             {
               staticClass:
-                "table table-striped table-hover contentTable table table-sm"
+                "table table-striped table-hover contentTable scrollCalificaciones table table-sm"
             },
             [
               _vm._m(0),
@@ -57734,6 +57747,8 @@ var render = function() {
               _c("div", { staticClass: "modal-content" }, [
                 _vm._m(0),
                 _vm._v(" "),
+                _c("hr", { staticClass: "mt-1 m-0 p-0" }),
+                _vm._v(" "),
                 _c("div", { staticClass: "modal-body-g" }, [
                   _c(
                     "table",
@@ -57845,13 +57860,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h2", { staticClass: "modal-title" }, [_vm._v("Usuarios")]),
+    return _c("div", [
+      _c(
+        "div",
+        { staticClass: "float-left", staticStyle: { "margin-left": "43%" } },
+        [
+          _c("p", { staticClass: "subtitulos text-center" }, [
+            _vm._v("Usuarios")
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "close",
+          staticClass: "close mr-1",
           attrs: {
             type: "button",
             "data-dismiss": "modal",
@@ -71271,7 +71294,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _HistorialTalleres_vue_vue_type_template_id_8dfa9c6c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./HistorialTalleres.vue?vue&type=template&id=8dfa9c6c& */ "./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=template&id=8dfa9c6c&");
 /* harmony import */ var _HistorialTalleres_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HistorialTalleres.vue?vue&type=script&lang=js& */ "./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HistorialTalleres.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -71279,7 +71304,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _HistorialTalleres_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _HistorialTalleres_vue_vue_type_template_id_8dfa9c6c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _HistorialTalleres_vue_vue_type_template_id_8dfa9c6c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -71308,6 +71333,22 @@ component.options.__file = "resources/js/components/orientacion/notify/Historial
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./HistorialTalleres.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./HistorialTalleres.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orientacion/notify/HistorialTalleres.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_HistorialTalleres_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

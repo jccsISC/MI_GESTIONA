@@ -4,7 +4,7 @@
             <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div>
-                        <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
+                        <div class="float-left" style="margin-left: 40%; margin-right: 30%;">
                             <p class="subtitulos text-center">Reporte de Mala Conducta</p>
                         </div>
                         
@@ -21,11 +21,11 @@
                             <img src="images/logo.jpg" alt="">
                         </div>
 
-                        <button v-if="!incidencia.Status " @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
+                        <button v-if="!incidencia.Status && role!='admin' " @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteConducta">
                             <i class="fas fa-edit"></i>
                         </button>
 
-                        <button  v-if="incidencia.Status " type="button" class="mibtnI positionImprimir">
+                        <button  v-if="incidencia.Status && role!='admin'" type="button" class="mibtnI positionImprimir">
                             <i class="fas fa-print"></i>
                         </button>
                         
@@ -105,7 +105,7 @@
 <script>
     import bus from '../../../event-bus';
     export default {
-        //   props: ['role'],
+          props: ['role'],
          data() {
             return {
                 alumno: {},
@@ -115,8 +115,8 @@
         },
         created() {
               bus.$on('verIncidencia', (incidencia, alumno) => {
-                this.incidencia = Object.assign({}, incidencia); ;
-                this.alumno = Object.assign({}, alumno);   ;
+                this.incidencia = Object.assign({}, incidencia);
+                this.alumno = Object.assign({}, alumno);
                 this.familiar = this.incidencia.familiar;
 
                 

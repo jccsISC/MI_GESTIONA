@@ -14,11 +14,7 @@ class PaseDeSalidaController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            return tblpasesalida::all();
-        } else {
-            return view('home');
-        }
+      
     }
 
 
@@ -30,26 +26,6 @@ class PaseDeSalidaController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->ajax()) {
-
-            $atributos = $this->validate($request, [
-                'IdFamiliar' => 'IdFamiliar',
-                'Fecha' => 'required',
-                'Motivo' => 'required',
-                'Descripcion' => 'required'
-            ]);
-
-            return tblpasesalida::create([
-                'IdFamiliar' => $request->input('IdFamiliar'),
-                'Fecha' => $request->input('Fecha'),
-                'Motivo' => $request->input('Motivo'),
-                'Descripcion' => $request->input('Descripcion'),
-
-                'Existe' => 1
-            ]);
-        } else {
-            return view('home');
-        }
 
     }
 

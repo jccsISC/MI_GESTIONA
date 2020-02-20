@@ -71,7 +71,6 @@
                         <label><b>CP: </b>{{alumno.CodPostal}}</label> <br>
                         <label class="mr-5"><b>Colonia: </b>{{alumno.Colonia}}</label>
                         <label class="mr-4"><b>Municipio: </b>{{alumno.Municipio}}</label>
-                        <label class="mr-3"><b>Estado: </b>{{alumno.Estado}}</label><br>
                         <label class="mr-2"><b>Entre Calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
                         <label><b>Entre Calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
                     </div>
@@ -241,8 +240,8 @@
                             </div>
                         </div>
                     </div>
-                    <ver-mala-conducta ></ver-mala-conducta>
-                    <ver-incidencias ></ver-incidencias>
+                    <ver-mala-conducta :role="role"></ver-mala-conducta>
+                    <ver-incidencias :role="role"></ver-incidencias>
                 </div>
             </div>
         </div>
@@ -268,7 +267,7 @@
                         </div>
                         
                         <div>
-                            <p class="mt-4"><b>Pases de Salida</b></p>
+                            <p class="mt-4 m-0"><b>Pases de Salida</b></p>
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                                 @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
@@ -330,7 +329,7 @@
             </div>
         </div>
         
-        <add-justificante ></add-justificante>
+        <add-justificante :role="role"></add-justificante>
     </div>
 </template>
 
@@ -338,7 +337,7 @@
     import bus from '../../event-bus';
 
     export default {
-        // props:['role'],
+        props:['role'],
         data() {
             return {
                 alumno: {},

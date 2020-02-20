@@ -16,9 +16,9 @@
                         </button>
                         <add-practservi-alumn :tipo="tipo" @practicaAlumnoAgregada="practica = $event"></add-practservi-alumn>     
                     </div>
-                    <p class="mt-3"><b>Dependencia: </b> {{practica.dependencia ? practica.dependencia.Nombre : ''}} </p>
-                    <p class="mt-2"><b>Fecha Inicio: </b> {{practica.FechaInicio}}</p>
-                    <p class="mt-2"><b>Fecha Fin: </b> {{practica.FechaFin}} </p>
+                    <p class="mt-2"><b>Dependencia: </b> {{practica.dependencia ? practica.dependencia.Nombre : ''}} </p>
+                    <p class="mt-1"><b>Fecha Inicio: </b> {{practica.FechaInicio}}</p>
+                    <p class="mt-1"><b>Fecha Fin: </b> {{practica.FechaFin}} </p>
                 </div>
             </div>
         </div>    

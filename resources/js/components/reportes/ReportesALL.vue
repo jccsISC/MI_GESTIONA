@@ -53,7 +53,7 @@
            </div>
         </div>
     </div>
-   <nav aria-label="...">
+   <!-- <nav aria-label="...">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -67,7 +67,7 @@
             <a class="page-link" href="#">Next</a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 
     <ver-incidencias :role="role"></ver-incidencias>
     <ver-mala-conducta :role="role"></ver-mala-conducta>

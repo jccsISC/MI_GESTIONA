@@ -346,7 +346,7 @@
 
         <ver-mala-conducta></ver-mala-conducta>
         <ver-incidencias></ver-incidencias>
-        <!-- <add-justificante :role="role"></add-justificante> -->
+        <add-justificante :role="role"></add-justificante>
     </div>
  
 </template>
@@ -568,23 +568,27 @@
         border: 1px solid rgb(202, 201, 201);
     }
 
-
-    table.scrollT {
-        border-spacing: 0;
-        /* border: 2px solid black; */
+    .scrollT tbody,
+    .scrollT thead { 
+        display: block;     
     }
 
-    .scrollT tbody,
-    .scrollT thead { display: block; }
+     .scrollT thead tr th { 
+        width: 5%;
+        height: 20px;
+        line-height: 20px;
+        /* background: #800000; */
+        /* color: white; */
+    }
 
-    .scrollT thead tr th { 
-        height: 30px;
-        line-height: 30px;
-        /* text-align: left; */
+    .scrollT tbody tr td { 
+        width: 10%;
+        height: 20px;
+        line-height: 20px;
     }
 
     .scrollT tbody {
-        height: 115px;
+        max-height: 120px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -596,18 +600,6 @@
     .scrollT tbody::-webkit-scrollbar-thumb{
         width: 1px;
         background: #800000;
-    }
-
-    /* tbody { border-top: 2px solid black; } */
-
-    .scrollT tbody td {
-        /* width: 20%; */ /* Optional */
-        border-right: 1px solid rgb(156, 156, 156);
-        /* white-space: nowrap; */
-    }
-
-    .scrollT tbody td:last-child, thead th:last-child {
-        border-right: none;
     }
 
     .contentDetSaludG {

@@ -21,23 +21,23 @@
                 </div>
 
                 <div class="mcontenido  pt-1 interlineado">
-                    <p><b>Estatura: </b>{{salud.Estatura}}</p>
-                    <p><b>Peso: </b>{{salud.Peso}}</p>
-                    <p><b>IMC: </b>{{salud.IMC}}</p>
-                    <p><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Graviez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Problemas Posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Estatura: </b>{{salud.Estatura}}</p>
+                    <p class="m-0 p-0"><b>Peso: </b>{{salud.Peso}}</p>
+                    <p class="m-0 p-0"><b>IMC: </b>{{salud.IMC}}</p>
+                    <p class="m-0 p-0"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Graviez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas Posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No'}}</p>
                     <p class="miMaxLength2"><b>Trastornos: </b>{{salud.Transtornos}}</p>
                 </div>
 
                 <div class="mcontenido pt-1 interlineado">
-                    <p><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Salud Bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Problemas Lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Problemas Auditivos: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
-                    <p><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Salud Bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas Lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas Auditivos: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
                 </div>
             </div>
         </div>
