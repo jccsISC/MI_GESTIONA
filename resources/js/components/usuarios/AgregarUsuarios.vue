@@ -11,9 +11,9 @@
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
-            <div class="form-group">
+            <div  class="form-group">
 			          <label>Identificador</label>
-			          <input type="number" class="form-control" placeholder="Ingresa el numero de nomina" v-model="usuario.id">
+			          <input :disabled="ver" type="number" class="form-control" placeholder="Ingresa el numero de nómina" v-model="usuario.id">
 		  	    </div>
               <div class="form-group">
 			          <label>Nombre</label>
@@ -22,10 +22,16 @@
             <div class="form-group">
 			          <label>Usuario</label>
 			          <input type="text" class="form-control" placeholder="Ingresa el nombre del usuario" v-model="usuario.email">
+
 		  	      </div>
-                   <div class="form-group">
+              <div class="form-group">
 			          <label>Contraseña</label>
 			          <input type="password" class="form-control" placeholder="Ingresa la contraseña" v-model="usuario.password">
+		  	      </div>
+
+                   <div class="form-group">
+			          <label>Confirmar Contraseña</label>
+			          <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2">
 		  	      </div>
 		  	    
               <div class="form-group">
@@ -54,38 +60,57 @@
       this.$parent.$on('actualizarUsuario', usuario => {
         this.usuario = JSON.parse(JSON.stringify(usuario));
       }
+  
       );
     },  
     data() {
       return {
-        usuario: {}
+        usuario: {},
+        ver: false
+        
       }
     },
     methods: {
       onSubmit() {
+          if(this.ver){
+          return;
+        }
         if (this.usuario.id) {
           this.saveUsuario();
           this.actualizarUsuario();
+           
+         
         }
       },
        onSuccess(res) {
+      
         this.$emit('usuarioActualizado', res.data);
         $('#addUsuario').modal('hide');
       },
       actualizarUsuario() {
+             this.ver = true;
+  
         if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');
           return;
         }
-
+      if(this.usuario.password != this.usuario.password2){
+          alert('Las contraseñas no coinciden');
+            return;
+        }
         axios.put('/usuarios/' + this.usuario.id, this.usuario)
           .then(res => {
             this.onSuccess(res);
+         
           });
       },
       saveUsuario() {
         if (this.usuario.name == undefined || this.usuario.email == undefined || this.usuario.password == undefined) {
             alert('Verifique y llene todos los campos');
+              return;
+        }
+        if(this.usuario.password != this.usuario.password2){
+          alert('Las contraseñas no coinciden');
             return;
         }
 

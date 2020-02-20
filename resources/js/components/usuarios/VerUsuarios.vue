@@ -10,7 +10,7 @@
                         </button>
                     </div>
 
-                    <div class="modal-body-g">
+                    <div class="modal-body-g" style="overflow-y: scroll;">
                         <table class="table table-striped table-hover contentTable table table-sm">
                             <thead>
                                 <tr>
@@ -76,7 +76,8 @@
         },
          methods: {
 
-              actualizarUsuario(usuario) {               
+              actualizarUsuario(usuario) {             
+      
                 if (usuario.esNueva) {
                     this.usuarios.push(usuario);
                 } else {
