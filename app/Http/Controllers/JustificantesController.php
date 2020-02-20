@@ -114,18 +114,18 @@ class JustificantesController extends Controller
         return response('Eliminado');
     }
 
-    public function imprimirJ(){
-        $justi = tbljustificante::get();
-        $alumno = tblalumno::get();
+    public function imprimirJ(tbljustificante $tbljustificante){
+        $justi = $tbljustificante;
+        $alumno = $tbljustificante->alumno;
         $pdf = \PDF::loadView('/trabajosocial.justificante', compact('justi','alumno'));
         return $pdf->download('justificante.pdf');
-   }
+    }
 
-   public function imprimirP(){
-    $pase = tblpasesalida::get();
-    $alumno = tblalumno::get();    
-    $familiar = tblfamiliare::get();  
-    $pdf = \PDF::loadView('/trabajosocial.pase', compact('pase','alumno','familiar'));
-    return $pdf->download('pase.pdf');
-}
+    public function imprimirP(tblpasesalida $tblpasesalida){
+        $pase = $tblpasesalida;
+        $alumno = $tblpasesalida->alumno;    
+        $familiar = $tblpasesalida->familiar;  
+        $pdf = \PDF::loadView('/trabajosocial.pase', compact('pase','alumno','familiar'));
+        return $pdf->download('pase.pdf');
+    }
 }

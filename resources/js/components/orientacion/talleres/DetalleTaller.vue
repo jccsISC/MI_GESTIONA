@@ -130,6 +130,14 @@
           this.grupos.push({});
         },
         guardar() {
+           if (this.taller.Fecha == undefined || this.taller.Hora == undefined 
+              || this.taller.Nombre == undefined || this.taller.Institucion == undefined
+              || this.grupo.Grupo == undefined || this.grupo.Semestre == undefined
+              || this.grupo.Cantidad == undefined || this.taller.Responsable == undefined) {
+                  alert('Verifique y llene todos los campos');
+                  return;
+          }
+
           this.taller.grupos = this.grupos;
           axios.post('/talleres', this.taller).then(res => {
             this.$emit('tallerAgregado', res.data);

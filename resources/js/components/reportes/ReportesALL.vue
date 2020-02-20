@@ -19,7 +19,7 @@
                     </thead>
                 
                     <tbody>
-                        <tr data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" v-for="(incidencia, key2) in alumno.incidencias" :key="key2" @click="$emit('verIncidencia', incidencia, alumno)">
+                        <tr data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" v-for="(incidencia, key2) in alumno.incidencias" :key="key2" @click="mostrarIncidencia(incidencia, alumno)">
                             <td colspan="3">
                                 {{incidencia.TipoReporte}}
                             </td>
@@ -115,6 +115,11 @@
 
                 this.loading = false;
             });
+        },
+        methods: {
+            mostrarIncidencia(incidencia, alumno) {
+                bus.$emit('verIncidencia', incidencia, alumno);
+            }
         }
     }
 </script>

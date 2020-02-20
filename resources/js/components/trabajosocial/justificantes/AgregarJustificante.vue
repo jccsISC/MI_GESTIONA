@@ -28,14 +28,12 @@
             </button>
               
 
-            <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
-              <i class="fas fa-print"></i>
-               <a href="imprimirJust">Justificante</a>
+            <button v-if="tipo == 'justificante' && ver" type="button" class="mibtnI btnImprimirPase ">
+               <a :href="'imprimirJust/'+ justificante.IdJustificante"><i class="fas fa-print"></i></a>
             </button>
             
-            <button v-if="ver" type="button" class="mibtnI btnImprimirPase ">
-              <i class="fas fa-print"></i>
-               <a href="imprimirPase">Pase</a>
+            <button v-if="tipo == 'pase' && ver" type="button" class="mibtnI btnImprimirPase ">
+               <a :href="'imprimirPase/'+ pase.IdPaseSal"><i class="fas fa-print"></i></a>
             </button>
 
             <div v-if="tipo === 'justificante'" class="form-group">
@@ -58,14 +56,24 @@
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label><b>Familiar</b></label>
+                <div v-if="!ver">
+                    <p class="m-0"><b>Padre</b></p>
+                    <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                </div>
+                <div v-if="!ver">
+                    <p class="m-0"><b>Madre</b></p>
+                    <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                </div>
+                <!-- <label><b>Familiar</b></label>
 			          <select v-if="!ver" type="text" class="form-control" v-model="pase.IdFamiliar">
                   <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.Nombre + ' '+familiar.ApePaterno+ ' '+ familiar.ApeMaterno}}</option>
                 </select>
 
                 <select :disabled="ver" v-if="ver" type="text" class="form-control" v-model="pase.familiar.IdFamiliar">
                   <option :value="pase.familiar.IdFamiliar">{{pase.familiar.Nombre + ' '+pase.familiar.ApePaterno+ ' '+ pase.familiar.ApeMaterno}}</option>
-                </select>
+                </select> -->
 		  	    </div>
 		  	  
             <div v-if="tipo === 'pase' " class="form-group">
@@ -98,7 +106,7 @@
         this.pase={};
         this.ver=false;
         this.tipo = 'justificante';
-        this.jalarFamiliares();
+        this.jalarFamiliar();
       });
       bus.$on('verJustificante', justificante => {
         this.justificante = justificante;
@@ -120,7 +128,7 @@
         justificante: {},
         pase: {},
         tipo: 'justificante',
-        familiares: [],
+        familiar: {},
         ver: false,
         fecha: ''
       }
@@ -129,9 +137,10 @@
       mostrarJustificante(justificante) {
         bus.$emit('verJustificante', justificante);
       },
-      jalarFamiliares(){
+      jalarFamiliar(){
         axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
-          this.familiares = res.data;
+          this.familiar = res.data;
+          this.pase.IdFamiliar = this.familiar.IdFamiliar;
         });
       },
       onSubmit(){
@@ -154,12 +163,14 @@
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/justificantes', this.justificante)
         .then(res => {
             this.$emit('justificanteGuardado', res.data);
+            bus.$emit('busJustificantes');
             $('#addJustificantes').modal('hide');
         });
       },
       savePase() {
+        console.log('pase '+this.pase);
         if (this.pase.IdFamiliar == undefined || this.pase.Motivo == undefined 
-            || this.justificante.Motivo == undefined || this.pase.Descripcion == undefined) {
+            || this.pase.Descripcion == undefined) {
             alert('Verifique y llene todos los campos');
             return;
         }
@@ -167,6 +178,7 @@
         axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/pases', this.pase)
         .then(res => {
             this.$emit('paseGuardado', res.data);
+            bus.$emit('busPases');
             $('#addJustificantes').modal('hide');
         });
       },
