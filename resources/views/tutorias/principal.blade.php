@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <modal-generar-report userlogeado="{{auth()->user()}}"></modal-generar-report>
+    <modal-generar-report userlogeado="{{auth()->user()}}" ></modal-generar-report>
     
 
     <!--Seccion lateral-->
@@ -12,7 +12,7 @@
        <card-info-personal></card-info-personal>
 
          <!--card info general-->
-      <allinfo></allinfo>
+         <allinfo role="{{auth()->user()->roles->first()->name}}"></allinfo>
 
        <!--card Calificaciones-->
        <card-calificaciones></card-calificaciones>

@@ -38,16 +38,22 @@
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
-                this.loading = false;
+            this.jalarTodo();
+            bus.$on('busJustificantes', () => {
+                this.jalarTodo();
             });
+            
         },
         methods: {
-
+            jalarTodo() {
+                axios.get('/trabajosocial?tipo=justificantes').then(res => {
+                    this.alumnos = res.data.data;
+                    this.fechaInicio = res.data.fechas.Inicio;
+                    this.fechaFinal = res.data.fechas.Fin;
+                    this.semana = res.data.fechas.Semana;
+                    this.loading = false;
+                });
+            },
             seleccionarAlumno(alumno) {
                 console.log('click');
                 bus.$emit('alumnoSeleccionado', alumno);               

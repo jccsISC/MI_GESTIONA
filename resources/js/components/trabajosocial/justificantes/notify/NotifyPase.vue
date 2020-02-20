@@ -37,17 +37,23 @@
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=pases').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
-                this.loading = false;
+            this.jalarAllPases();
+             bus.$on('busPases', () => {
+                this.jalarAllPases();
             });
         },
         methods: {
             seleccionarAlumno(alumno) {
                 bus.$emit('alumnoSeleccionado', alumno);               
+            },
+            jalarAllPases() {
+                    axios.get('/trabajosocial?tipo=pases').then(res => {
+                    this.alumnos = res.data.data;
+                    this.fechaInicio = res.data.fechas.Inicio;
+                    this.fechaFinal = res.data.fechas.Fin;
+                    this.semana = res.data.fechas.Semana;
+                    this.loading = false;
+                });
             }
         }
     }

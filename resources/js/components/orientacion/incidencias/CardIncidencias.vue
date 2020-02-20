@@ -11,7 +11,7 @@
                             <button 
                                 v-for="(incidencia, key) in incidencias" :key="key"  
                                 class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
-                                data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+                                data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
                             
                                 {{key + 1}}
 
@@ -32,8 +32,8 @@
                 </div>
             </div>
         </div>
-        <ver-mala-conducta></ver-mala-conducta>
-        <ver-incidencias></ver-incidencias>
+        <!-- <ver-mala-conducta></ver-mala-conducta>
+        <ver-incidencias></ver-incidencias> -->
     </div>
 </template>
 
@@ -76,6 +76,9 @@
             
         },
         methods:{
+            mostrarIncidencia(incidencia, alumno) {
+                bus.$emit('verIncidencia', incidencia, alumno);
+            },
             jalarIncidencias() {
                 axios.get('/incidencias/'+this.alumno.IdAlumno).then(res => {
                     this.incidencias = [];

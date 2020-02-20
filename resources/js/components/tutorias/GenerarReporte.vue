@@ -43,11 +43,16 @@
                         </p>
 
                         <div>
-                            <label class="m-0"><b>Padre o Tutor: </b></label>
-                            <select  v-model="reporte.IdFamiliar" id="numero" name="numero">
-                                <option v-for="(familiar, key) in familiares " :key="key" :value="familiar.IdFamiliar">{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</option>
-                            </select>
-                            <p><b>Telefono: </b>{{obtenerTelefono()}}</p>
+                            <div>
+                                <p class="m-0"><b>Padre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
+                            <div>
+                                <p class="m-0"><b>Madre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
                                 
                             <p><b>Motivo</b></p> 
                             <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
@@ -91,14 +96,14 @@
 </template>
 
 <script>
-    // import bus from '../../event-bus';
+    import bus from '../../event-bus';
     export default {
-        props: ['userlogeado'],
+        props : ['userlogeado'],
          data() {
             return {
                 alumno: {},
                 reporte: {},
-                familiares: [],
+                familiar: {},
                 tipo: '',
                 errors: [],
                 users: [],
@@ -106,13 +111,16 @@
             }
         },
         created() {
-            this.$parent.$on('generarReporte', alumno => {              
+            this.$parent.$on('generarReporte', alumno => {    
+                this.reporte = {};          
                 this.alumno = alumno;   
                 this.auth = JSON.parse(this.userlogeado);
                 this.reporte.Nombrequienderiva = this.auth.name;
+                // this.reporte.Nombrequienderiva = 'Hardcoded';
                 this.reporte.IdAlumno = alumno.IdAlumno; 
-                this.jalarFamiliares();   
+                this.jalarFamiliar();   
                 this.jalarUsers();   
+                // this.jalarCurrentUser();// return auth()->user();
             });
 
             // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
@@ -124,22 +132,11 @@
             // });
         },
         methods: {
-            jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
-                this.familiares = res.data;
+            jalarFamiliar() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                    this.familiar = res.data;
+                    this.reporte.IdFamiliar = this.familiar.IdFamiliar;
                 });
-            },
-            obtenerTelefono() {
-                let telefono = '';
-                if (!this.reporte.IdFamiliar || !this.familiares) {
-                    return telefono;
-                }
-                this.familiares.forEach(familiar => {
-                    if (familiar.IdFamiliar === this.reporte.IdFamiliar) {
-                        telefono = familiar.TelefonoPadre;
-                    }
-                });
-                return telefono;
             },
             guardarReporte() {
                if (this.reporte.Status == undefined) {
@@ -147,8 +144,7 @@
                     return;
                 }
                 
-               if ( this.reporte.IdFamiliar == undefined 
-                    || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
+               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
                     || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
                     alert('Verifique y llene todos los campos');
                     return;

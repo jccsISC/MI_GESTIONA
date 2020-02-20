@@ -3,12 +3,17 @@
         <div class="modal fade" tabindex="-1" role="dialog" id="verUsuarios" aria-hidden="true">
             <div class="modal-dialog modal-md modal-dialog-scrollable" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title">Usuarios</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div>
+                        <div class="float-left" style="margin-left: 43%;">
+                            <p class="subtitulos text-center">Usuarios</p>
+                        </div>
+                        
+                        <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
+                    
+                    <hr class="mt-1 m-0 p-0">
 
                     <div class="modal-body-g" style="overflow-y: scroll;">
                         <table class="table table-striped table-hover contentTable table table-sm">

@@ -40,6 +40,19 @@ class TutoriasController extends Controller
                 //return $data;
 
             foreach ($data as $alumno => $unidades ) {
+                $reporte = tblyonoabandono::where('IdAlumno', $alumno)->orderBy('IdYonoabandono', 'desc')->first();
+                if (!empty($reporte) && $reporte->Status) {
+                    continue;
+                }
+                // si no hay reporte: Se muestra
+                // si hay reporte y el estatus es 0 (pendiente): Se muestra
+                // si hay reporte y el estatus es 1 (concluido): No se muestra
+
+                // Flujo:
+                // alumno reprobado: aparece
+                // alumno tiene reporte: aparece
+                // alumno concluye su reporte: desaparece
+                // alumno reprueba otra vez: no vuelve a aparecer en la vida porque su ultimo reporte ya esta concluido.
                 foreach ($unidades as $unidad) {
                     $return[$alumno .'_'.$unidad['Unidad']]['Unidad'] = $unidad['Unidad'];
                     $return[$alumno .'_'.$unidad['Unidad']]['Materias'][] = $unidad['calificacion']['Materia'];

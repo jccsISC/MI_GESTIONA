@@ -40,9 +40,14 @@
                         </div>
                         
                         <div class="subGrid">
-                            <div v-for="(familiar, key) in familiares" :key="key">
-                                <p class="m-0"><b>{{familiar.Tipo}}</b></p>
+                            <div>
+                                <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            </div>
+                            <div>
+                                <p class="m-0"><b>Madre</b></p>
+                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             </div>
                         </div>
@@ -52,7 +57,7 @@
 
             <div class="labelS">
                 <div v-if="alumno.IdAlumno" class="float">
-                    <b><p>LUGRAR DE NACIMIENTO</p></b>
+                    <b><p class="m-0 p-0">LUGRAR DE NACIMIENTO</p></b>
                 </div>
                 
                 <div v-if="alumno.IdAlumno" class="inforP2">
@@ -66,7 +71,6 @@
                         <label><b>CP: </b>{{alumno.CodPostal}}</label> <br>
                         <label class="mr-5"><b>Colonia: </b>{{alumno.Colonia}}</label>
                         <label class="mr-4"><b>Municipio: </b>{{alumno.Municipio}}</label>
-                        <label class="mr-3"><b>Estado: </b>{{alumno.Estado}}</label><br>
                         <label class="mr-2"><b>Entre Calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
                         <label><b>Entre Calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
                     </div>
@@ -87,14 +91,14 @@
         </div>
         <div class="contentInf">
             <div class="gridM2"> 
-                <div v-if="alumno.IdAlumno" class="container contentCalif scrollTCalif">
+                <div v-if="alumno.IdAlumno" class="container contentCalif">
                     <div>
-                        <p><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
-                        <p><b>Promedio General: </b> {{promedioGeneral}}</p>
+                        <p class="m-0 p-0"><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
+                        <p class="m-0 p-0"><b>Promedio General: </b> {{promedioGeneral}}</p>
                     </div>
 
                     <div class="tableCalf">
-                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
+                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table scrollCalificaciones widthTable table-sm">
                             <thead>
                                 <tr>
                                     <th>Asignaturas</th>
@@ -103,7 +107,7 @@
                                     <th>P3</th>
                                     <th>P4</th>
                                     <th>P5</th>
-                                    <th>Promedio Final</th>
+                                    <th>P. Final</th>
                                     <th>Ordinario</th>
                                     <th>Inter</th>
                                     <th>Extra</th>
@@ -115,10 +119,10 @@
                                 </tr>
                             </tbody>-->
                             <tbody>
-                                <tr  v-for="(calificacion, key) in calificaciones" :key="key">
-                                    <td>{{calificacion.Materia}}</td>
+                                 <tr v-for="(calificacion, key) in calificaciones" :key="key">
+                                    <td colspan="2">{{calificacion.Materia}}</td>
                                     <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                    <td>{{calificacion.Calificacionfinal}}</td>
+                                    <td colspan="2">{{calificacion.Calificacionfinal}}</td>
                                     <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
                                     <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
                                     <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
@@ -128,14 +132,14 @@
                     </div>
                 </div>
                
-                <div v-if="alumno.IdAlumno" class="container contentCalif pl-5 scrollTCalif">
+                <div v-if="alumno.IdAlumno" class="container contentCalif pl-5">
                     <div>
-                        <p><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
-                        <p><b>POR MATERIA</b></p>
+                        <p class="m-0 p-0"><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
+                        <p class="m-0 p-0"><b>POR MATERIA</b></p>
                     </div>
 
                     <div class="tableCalf">
-                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
+                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table scrollCalificaciones table-sm">
                             <thead>
                                 <tr>
                                     <th>Asignaturas</th>
@@ -152,9 +156,9 @@
                                 </tr>
                             </tbody>-->
                             <tbody>
-                                <tr  v-for="(falta, key) in faltas" :key="key">
+                               <tr  v-for="(falta, key) in faltas" :key="key">
                                     <td>{{falta.horario_maestro.Materia}}</td>
-                                    <td v-for="i in 5" :key="i">{{unidad(falta.parciales, i)}}</td>
+                                    <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
                                 </tr>                            
                             </tbody>
                         </table>
@@ -217,7 +221,7 @@
                                     <button 
                                         v-for="(incidencia, key) in incidencias" :key="key"  
                                         class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="$emit('verIncidencia', incidencia, alumno)">
+                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
                                     
                                         {{key + 1}}
                                     </button>
@@ -254,7 +258,7 @@
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                                 v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
-                                data-toggle="modal" data-target="#addJustificantes" @click="$emit('verJustificante', justificante)">
+                                data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
                                     
                                     {{keyjustificantepase + 1}}
 
@@ -263,7 +267,7 @@
                         </div>
                         
                         <div>
-                            <p class="mt-4"><b>Pases de Salida</b></p>
+                            <p class="mt-4 m-0"><b>Pases de Salida</b></p>
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                                 @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
@@ -284,15 +288,14 @@
                             <div v-if="alumno.IdAlumno">
                                  <p><b>Servicio Social</b></p>
                                 <div>
-                                    <p class="mb-1"><b>Fecha Inicio: </b>{{servicio.FechaInicio}}</p>
-                                    <p class="mb-1"><b>Fecha Final: </b>{{servicio.FechaFin}}</p>
-                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.dependencia.Nombre}}</p>
-                                    <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
-                                    <p class="mb-1"><b>Giro: </b>{{servicio.dependencia.Giro}}</p>
-                                    <p class="mb-1"><b>Dirección: </b>{{servicio.dependencia.Direccion}}</p>
-                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.dependencia.Telefono}}</p>
-                                    <p class="mb-1"><b>Responsable: </b>{{servicio.dependencia.Responsable}}</p>
-                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.dependencia.TipoVinculacion}}</p>
+                                    <p class="mb-1"><b>Fecha Inicio: </b>{{servicio.FechaInicio ? servicio.FechaInicio : 'NC'}}</p>
+                                    <p class="mb-1"><b>Fecha Final: </b>{{servicio.FechaFin ? servicio.FechaFin : 'NC'}}</p>
+                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.IdServPrac ? servicio.dependencia.Nombre : 'NC'}}</p>
+                                    <p class="mb-1"><b>Giro: </b>{{servicio.IdServPrac ? servicio.dependencia.Giro : 'NC'}}</p>
+                                    <p class="mb-1"><b>Dirección: </b>{{servicio.IdServPrac ? servicio.dependencia.Direccion : 'NC'}}</p>
+                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.IdServPrac ? servicio.dependencia.Telefono : 'NC'}}</p>
+                                    <p class="mb-1"><b>Responsable: </b>{{servicio.IdServPrac ? servicio.dependencia.Responsable : 'NC'}}</p>
+                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : 'NC'}}</p>
                                 </div>
                             </div>
                         </div>
@@ -304,15 +307,14 @@
                     <div v-if="alumno.IdAlumno">
                         <p><b>Practicas Profesionales</b></p>
                         <div>
-                            <p class="mb-1"><b>Fecha Inicio: </b>{{practica.FechaInicio}}</p>
-                            <p class="mb-1"><b>Fecha Final: </b>{{practica.FechaFin}}</p>
-                            <p class="mb-1"><b>Dependencia: </b>{{practica.dependencia.Nombre}}</p>
-                            <!-- <p class="mb-1"><b>Nombre: </b>{{practica.}}</p> -->
-                            <p class="mb-1"><b>Giro: </b>{{practica.dependencia.Giro}}</p>
-                            <p class="mb-1"><b>Dirección: </b>{{practica.dependencia.Direccion}}</p>
-                            <p class="mb-1"><b>Telefóno: </b>{{practica.dependencia.Telefono}}</p>
-                            <p class="mb-1"><b>Responsable: </b>{{practica.dependencia.Responsable}}</p>
-                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.dependencia.TipoVinculacion}}</p>
+                            <p class="mb-1"><b>Fecha Inicio: </b>{{practica.FechaInicio ? practica.FechaInicio : 'NC'}}</p>
+                            <p class="mb-1"><b>Fecha Final: </b>{{practica.FechaFin ? practica.FechaFin : 'NC'}}</p>
+                            <p class="mb-1"><b>Dependencia: </b>{{practica.IdServPrac ? practica.dependencia.Nombre : 'NC'}}</p>
+                            <p class="mb-1"><b>Giro: </b>{{practica.IdServPrac ? practica.dependencia.Giro : 'NC'}}</p>
+                            <p class="mb-1"><b>Dirección: </b>{{practica.IdServPrac ? practica.dependencia.Direccion : 'NC'}}</p>
+                            <p class="mb-1"><b>Telefóno: </b>{{practica.IdServPrac ? practica.dependencia.Telefono : 'NC'}}</p>
+                            <p class="mb-1"><b>Responsable: </b>{{practica.IdServPrac ? practica.dependencia.Responsable : 'NC'}}</p>
+                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.IdServPrac ? practica.dependencia.TipoVinculacion : 'NC'}}</p>
                         </div>
                     </div>
                 </div>
@@ -342,7 +344,7 @@
                 salud: {},
                 practica: {},
                 servicio: {},
-                familiares: [],
+                familiar: {},
                 calificaciones: [],
                 becas: [],
                 incidencias: [],
@@ -356,7 +358,7 @@
             bus.$on('alumnoSeleccionado', alumno => {
                 this.alumno = alumno;
                 this.jalarCalificaciones();
-                this.jalarFamiliares();
+                this.jalarFamiliar();
                 this.jalarSalud();
                 this.jalarIncidencias();
                 this.jalarJustificantes();
@@ -388,7 +390,12 @@
             }
          },
         methods:{
-
+            mostrarIncidencia(incidencia, alumno) {
+                bus.$emit('verIncidencia', incidencia, alumno);
+            },
+            mostrarJustificante(justificante) {
+                bus.$emit('verJustificante', justificante);
+            },
             jalarFaltas(){
                 axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
                     this.faltas = res.data;
@@ -400,25 +407,38 @@
                     this.calificaciones = res.data;
                 });
             },
-            unidad(parciales, parcial) {
-                let cantidad = '';
+            faltasPorUnidad(parciales, unidad) {
+                let faltas = '';
                 if (!parciales) {
-                    return cantidad;
+                    return faltas;
                 }
                 const unidades = Object.keys(parciales);
-                unidades.forEach(unidad => {
+                unidades.forEach(parcial => {
                     if (parcial == unidad) {
-                        cantidad = parciales[unidad].length;
+                        faltas = parciales[parcial].length;
                         return;
                     }
                 });
 
-                return cantidad;
+                return faltas;
             },
-            jalarFamiliares() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiares').then(res=>{
-                    this.familiares = res.data;
-                    console.log(res);
+            unidad(detalles, unidad) {
+                let calificacion = '';
+                if (!detalles) {
+                    return calificacion;
+                }
+                detalles.forEach(detalle => {
+                    if (detalle.Unidad == unidad) {
+                        calificacion = detalle.Calificacion;
+                        return;
+                    }
+                });
+
+                return calificacion;
+            },
+            jalarFamiliar() {
+                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                    this.familiar = res.data;
                 });
             },
             jalarSalud() {
@@ -498,7 +518,7 @@
     }
 
     .contentDetSalud{
-        height: 225px;
+        height: 220px;
         /* background: #eeeeee; */
         overflow: scroll;
         overflow: auto;
@@ -648,5 +668,43 @@
         grid-template-rows: 280px;
     }
 
+
+    .scrollCalificaciones tbody,
+    .scrollCalificaciones thead { 
+        display: block;     
+    }
+
+    .widthTable tbody, .widthTable thead {
+        display: block;   
+        width: 550px;  
+    }
+    .scrollCalificaciones thead tr th { 
+        width: 5%;
+        height: 20px;
+        line-height: 20px;
+        /* background: #800000; */
+        /* color: white; */
+    }
+
+    .scrollCalificaciones tbody tr td { 
+        width: 10%;
+        height: 20px;
+        line-height: 20px;
+    }
+
+    .scrollCalificaciones tbody {
+        max-height: 190px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .scrollCalificaciones tbody::-webkit-scrollbar {
+        width: 1px;
+    }
+
+    .scrollCalificaciones tbody::-webkit-scrollbar-thumb{
+        width: 1px;
+        background: #800000;
+    }
     
 </style>

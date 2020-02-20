@@ -13,14 +13,6 @@
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
-//LOGIN
-// Route::post('lg', 'Auth\LoginController@login')->name('login');
-// Route::get('lg', 'LoginController@showLoginForm')->name('login');
-// Route::get('lg', function () {
-//     return view('login');
-// });
-
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -46,8 +38,8 @@ Route::delete('becas/{tblbeca}','BecasController@destroy');
 Route::get('justificantes', 'JustificantesController@index');
 Route::post('justificantes', 'JustificantesController@store');
 Route::delete('justificantes/{tbljustificante}', 'JustificantesController@destroy');
-Route::name('imprimirJ')->get('imprimirJust','JustificantesController@imprimirJ');
-Route::name('imprimirP')->get('imprimirPase','JustificantesController@imprimirP');
+Route::name('imprimirJ')->get('imprimirJust/{tbljustificante}','JustificantesController@imprimirJ');
+Route::name('imprimirP')->get('imprimirPase/{tblpasesalida}','JustificantesController@imprimirP');
 //PASES
 Route::delete('pases/{tblpasesalida}', 'PaseDeSalidaController@destroy');
 //PRACTICAS
@@ -85,7 +77,7 @@ Route::resource('servicioPracticas','ServicioPracticasController');
 
 //ALUMNOS
 Route::get('alumnos/buscar', 'AlumnoController@buscar');
-Route::get('alumnos/{tblalumno}/familiares', 'AlumnoController@familiares');
+Route::get('alumnos/{tblalumno}/familiar', 'AlumnoController@familiar');
 Route::get('alumnos/{tblalumno}/calificaciones', 'AlumnoController@calificaciones');
 Route::get('tutorias/reprobados', 'TutoriasController@reprobados');
 Route::get('tutorias/inasistencias', 'TutoriasController@inasistencias');
