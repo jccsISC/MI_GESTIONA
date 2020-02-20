@@ -7672,6 +7672,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -7687,6 +7693,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
+      if (this.ver) {
+        return;
+      }
+
       if (this.usuario.id) {
         this.saveUsuario();
         this.actualizarUsuario();
@@ -7699,8 +7709,15 @@ __webpack_require__.r(__webpack_exports__);
     actualizarUsuario: function actualizarUsuario() {
       var _this2 = this;
 
+      this.ver = true;
+
       if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
+        return;
+      }
+
+      if (this.usuario.password != this.usuario.password2) {
+        alert('Las contraseñas no coinciden');
         return;
       }
 
@@ -7713,6 +7730,11 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.usuario.name == undefined || this.usuario.email == undefined || this.usuario.password == undefined) {
         alert('Verifique y llene todos los campos');
+        return;
+      }
+
+      if (this.usuario.password != this.usuario.password2) {
+        alert('Las contraseñas no coinciden');
         return;
       }
 
@@ -57494,7 +57516,7 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "number",
-                      placeholder: "Ingresa el numero de nomina"
+                      placeholder: "Ingresa el numero de nómina"
                     },
                     domProps: { value: _vm.usuario.id },
                     on: {
@@ -57590,6 +57612,35 @@ var render = function() {
                           return
                         }
                         _vm.$set(_vm.usuario, "password", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Confirmar Contraseña")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.usuario.password2,
+                        expression: "usuario.password2"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "password",
+                      placeholder: "Confirmar la contraseña"
+                    },
+                    domProps: { value: _vm.usuario.password2 },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.usuario, "password2", $event.target.value)
                       }
                     }
                   })
@@ -73556,8 +73607,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -13,7 +13,7 @@
           <form @submit.prevent="onSubmit">
             <div  class="form-group">
 			          <label>Identificador</label>
-			          <input :disabled="ver" type="number" class="form-control" placeholder="Ingresa el numero de nómina" v-model="usuario.id">
+			          <input  type="number" class="form-control" placeholder="Ingresa el numero de nómina" v-model="usuario.id">
 		  	    </div>
               <div class="form-group">
 			          <label>Nombre</label>
@@ -65,16 +65,13 @@
     },  
     data() {
       return {
-        usuario: {},
-        ver: false
+        usuario: {}
         
       }
     },
     methods: {
       onSubmit() {
-          if(this.ver){
-          return;
-        }
+         
         if (this.usuario.id) {
           this.saveUsuario();
           this.actualizarUsuario();
@@ -88,7 +85,7 @@
         $('#addUsuario').modal('hide');
       },
       actualizarUsuario() {
-             this.ver = true;
+            
   
         if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');

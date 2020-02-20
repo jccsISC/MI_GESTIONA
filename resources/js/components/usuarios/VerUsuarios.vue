@@ -15,7 +15,7 @@
                     
                     <hr class="mt-1 m-0 p-0">
 
-                    <div class="modal-body-g" style="overflow-y: scroll;">
+                    <div class="modal-body-g">
                         <table class="table table-striped table-hover contentTable table table-sm">
                             <thead>
                                 <tr>
@@ -110,3 +110,4 @@
 </script>
 
 <style>
+</style>

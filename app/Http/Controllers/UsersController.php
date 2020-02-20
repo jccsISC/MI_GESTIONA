@@ -39,7 +39,7 @@ class UsersController extends Controller
             ]);
     
             return roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]) &&
-            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
+            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
             } else {
      return view('admin');
  }
@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         ]);
         
-        $tblusuarios->update($atributos);
+        $tblusuarios->update(['name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
         return $tblusuarios;
     }
         public function destroy(tblusuarios $tblusuarios) {
