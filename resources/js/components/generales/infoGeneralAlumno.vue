@@ -62,7 +62,7 @@
                                             <div>
                                                 <p class="m-0"><b>Madre</b></p>
                                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +85,6 @@
                                         <label class="m-0"><b>CP: </b>{{alumno.CodPostal}}</label> <br>
                                         <label class="m-0 mr-3"><b>Colonia: </b>{{alumno.Colonia}}</label>
                                         <label class="m-0 mr-3"><b>Municipio: </b>{{alumno.Municipio}}</label>
-                                        <label class="m-0 mr-2"><b>Estado: </b>{{alumno.Estado}}</label><br>
                                         <label class="m-0 mr-1"><b>Entre Calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
                                         <label class="m-0"><b>Entre Calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
                                     </div>
@@ -624,7 +623,7 @@
         height: 150px;
         float: left;
         margin-top: 35px;
-        margin-right: 10px;
+        margin-right: 30px;
     }
 
 

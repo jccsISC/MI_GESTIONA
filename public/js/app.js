@@ -2983,7 +2983,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'role'],
@@ -5657,19 +5656,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('becaActualizada', res.data);
       $('#addBeca').modal('hide');
     },
+    actualizarBeca: function actualizarBeca() {
+      var _this2 = this;
 
-    /*actualizarBeca() {
       if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
         alert('Debes de completar todos los campos antes de guardar');
         return;
-      
-       axios.put('/becas/' + this.beca.IdBeca, this.beca)
-        .then(res => {
-          this.onSuccess(res);
+        axios.put('/becas/' + this.beca.IdBeca, this.beca).then(function (res) {
+          _this2.onSuccess(res);
         });
-    },*/
+      }
+    },
     saveBeca: function saveBeca() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
         alert('Verifique y llene todos los campos');
@@ -5679,7 +5678,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/becas', this.beca).then(function (res) {
         res.data.esNueva = true;
 
-        _this2.onSuccess(res);
+        _this3.onSuccess(res);
       });
     }
   }
@@ -7255,13 +7254,12 @@ __webpack_require__.r(__webpack_exports__);
     guardarReporte: function guardarReporte() {
       var _this3 = this;
 
-      if (this.reporte.Status == undefined) {
-        alert('Seleccione el estatus de este reporte');
+      if (this.reporte.Motivo == undefined || this.reporte.Observaciones == undefined) {
         return;
       }
 
-      if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
-        alert('Verifique y llene todos los campos');
+      if (this.reporte.Status == undefined) {
+        alert('Seleccione el estatus de este reporte');
         return;
       }
 
@@ -12471,7 +12469,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\n.scrollT tbody,\n.scrollT thead { \n    display: block;\n}\n.scrollT thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollT tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody {\n    max-height: 120px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\n.scrollT tbody,\n.scrollT thead { \n    display: block;\n}\n.scrollT thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollT tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody {\n    max-height: 120px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 30px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -12851,7 +12849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.bordeReport{\n    border: 1px solid #a5a5a5;\n    border-radius: 4px;\n    margin: 10px;\n    padding: 5px;\n    font-size: 14px;\n}\n.imageLogo{\n    float: left;\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.imageLogo img {\n    width: 120px;\n    height: 40px;\n}\n.btnGuardar{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.btnGuardar:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.miGrid2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.colorText {\n    /* color: #414141; */\n    color: #3d3d3d;\n}\n\n", ""]);
+exports.push([module.i, "\n.bordeReport{\n    border: 1px solid #a5a5a5;\n    border-radius: 4px;\n    margin: 10px;\n    padding: 5px;\n    font-size: 14px;\n}\n.imageLogo{\n    float: left;\n    width: 120px;\n    height: 40px;\n    background: #a5a5a5;\n}\n.imageLogo img {\n    width: 120px;\n    height: 40px;\n}\n.btnGuardar{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n.btnGuardar:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n.miGrid2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.colorText {\n    /* color: #414141; */\n    color: #3d3d3d;\n}\n.modal-body-g{\n    height: 500px;\n}\n\n", ""]);
 
 // exports
 
@@ -46990,7 +46988,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("p", { staticClass: "m-0" }, [
                                     _c("b", [_vm._v("Telefóno: ")]),
-                                    _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                                    _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
                                   ])
                                 ])
                               ])
@@ -47056,12 +47054,6 @@ var render = function() {
                                 _c("b", [_vm._v("Municipio: ")]),
                                 _vm._v(_vm._s(_vm.alumno.Municipio))
                               ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-2" }, [
-                                _c("b", [_vm._v("Estado: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Estado))
-                              ]),
-                              _c("br"),
                               _vm._v(" "),
                               _c("label", { staticClass: "m-0 mr-1" }, [
                                 _c("b", [_vm._v("Entre Calle: ")]),
@@ -49938,7 +49930,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
                       ])
                     ]),
                     _vm._v(" "),
@@ -51790,7 +51782,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "mcontenidoSalud" }, [
                     _c("div", [
-                      _c("label", [_vm._v("Esatatura ")]),
+                      _c("label", [_vm._v("Estatura ")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -56287,384 +56279,406 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "form",
     {
-      staticClass: "modal fade",
-      staticStyle: { "z-index": "100000" },
-      attrs: { role: "dialog", id: "reporteTuto", "aria-hidden": "true" }
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.guardarReporte($event)
+        }
+      }
     },
     [
       _c(
         "div",
         {
-          staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
-          attrs: { role: "document" }
+          staticClass: "modal fade",
+          staticStyle: { "z-index": "100000" },
+          attrs: { role: "dialog", id: "reporteTuto", "aria-hidden": "true" }
         },
         [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body-g p-3 bordeReport colorText" },
-              [
-                _vm._m(1),
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-lg modal-dialog-scrollable",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "float-right mt-5" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.reporte.Status = 1
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-check" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.reporte.Status = 0
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-exclamation-triangle" })]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-right" }, [
-                  _c("b", [_vm._v("Fecha: ")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(new Date().getDate()) +
-                      "-" +
-                      _vm._s(new Date().getMonth() + 1) +
-                      "-" +
-                      _vm._s(new Date().getFullYear())
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Alumno: ")]),
-                  _vm._v(
-                    _vm._s(_vm.alumno.Nombre) +
-                      " " +
-                      _vm._s(_vm.alumno.ApePaterno) +
-                      "  " +
-                      _vm._s(_vm.alumno.ApeMaterno)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0 ml-2" }, [
-                  _c("b", [_vm._v("Grupo: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Grupo))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                  _vm._v(_vm._s(_vm.reporte.Nombrequienderiva))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "miGrid2 mt-1" }, [
-                  _vm.errors.length
-                    ? _c("p", [
-                        _c("b", [
-                          _vm._v(
-                            "Por favor, corrija el(los) siguiente(s) error(es): "
-                          )
+                _c(
+                  "div",
+                  { staticClass: "modal-body-g p-3 bordeReport colorText" },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "float-right mt-5" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success m-0 p-0 pr-2 pl-2",
+                          on: {
+                            click: function($event) {
+                              _vm.reporte.Status = 1
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-check" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-warning m-0 p-0 pr-2 pl-2",
+                          on: {
+                            click: function($event) {
+                              _vm.reporte.Status = 0
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-exclamation-triangle"
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-right" }, [
+                      _c("b", [_vm._v("Fecha: ")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(new Date().getDate()) +
+                          "-" +
+                          _vm._s(new Date().getMonth() + 1) +
+                          "-" +
+                          _vm._s(new Date().getFullYear())
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Alumno: ")]),
+                      _vm._v(
+                        _vm._s(_vm.alumno.Nombre) +
+                          " " +
+                          _vm._s(_vm.alumno.ApePaterno) +
+                          "  " +
+                          _vm._s(_vm.alumno.ApeMaterno)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "m-0 ml-2" }, [
+                      _c("b", [_vm._v("Grupo: ")]),
+                      _vm._v(_vm._s(_vm.alumno.Grupo))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                      _vm._v(_vm._s(_vm.reporte.Nombrequienderiva))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "miGrid2 mt-1" }, [
+                      _vm.errors.length
+                        ? _c("p", [
+                            _c("b", [
+                              _vm._v(
+                                "Por favor, corrija el(los) siguiente(s) error(es): "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "ul",
+                              _vm._l(_vm.errors, function(error, key) {
+                                return _c("li", { key: key }, [
+                                  _vm._v(_vm._s(error))
+                                ])
+                              }),
+                              0
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("div", [
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Padre: ")]),
+                            _vm._v(
+                              _vm._s(_vm.familiar.NombrePadre) +
+                                " " +
+                                _vm._s(_vm.familiar.ApePaternoPadre) +
+                                "  " +
+                                _vm._s(_vm.familiar.ApeMaternoPadre)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno: ")]),
+                            _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                          ])
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "ul",
-                          _vm._l(_vm.errors, function(error, key) {
-                            return _c("li", { key: key }, [
-                              _vm._v(_vm._s(error))
+                        _c("div", [
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Madre: ")]),
+                            _vm._v(
+                              _vm._s(_vm.familiar.NombreMadre) +
+                                " " +
+                                _vm._s(_vm.familiar.ApePaternoMadre) +
+                                "  " +
+                                _vm._s(_vm.familiar.ApeMaternoMadre)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno: ")]),
+                            _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.reporte.Motivo,
+                              expression: "reporte.Motivo"
+                            }
+                          ],
+                          staticClass: "form-control w-75 p-1 mb-1",
+                          attrs: {
+                            required: "",
+                            name: "motivo",
+                            id: "motivo",
+                            placeholder: "Escriba aquí los motivos"
+                          },
+                          domProps: { value: _vm.reporte.Motivo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.reporte,
+                                "Motivo",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors.motivo
+                          ? _c("span", { staticClass: "error" }, [
+                              _vm._v(_vm._s(_vm.errors.motivo))
                             ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.reporte.Derivacion,
+                              expression: "reporte.Derivacion"
+                            }
+                          ],
+                          staticClass: "form-control w-75",
+                          attrs: {
+                            type: "text",
+                            placeholder:
+                              "Escriba aquí la institución externa a donde lo deriva"
+                          },
+                          domProps: { value: _vm.reporte.Derivacion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.reporte,
+                                "Derivacion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.reporte.DescripcionDer,
+                              expression: "reporte.DescripcionDer"
+                            }
+                          ],
+                          staticClass: "form-control p-1 mb-1",
+                          attrs: {
+                            name: "",
+                            id: "",
+                            placeholder:
+                              "Escriba aquí la descripción de la deribación"
+                          },
+                          domProps: { value: _vm.reporte.DescripcionDer },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.reporte,
+                                "DescripcionDer",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.reporte.Observaciones,
+                              expression: "reporte.Observaciones"
+                            }
+                          ],
+                          staticClass: "form-control p-1 mb-1",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            placeholder: "Ingresa aquí las observaciones"
+                          },
+                          domProps: { value: _vm.reporte.Observaciones },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.reporte,
+                                "Observaciones",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.reporte.Seguimiento,
+                              expression: "reporte.Seguimiento"
+                            }
+                          ],
+                          staticClass: "form-control p-1 mb-1",
+                          attrs: {
+                            type: "text",
+                            placeholder:
+                              "Ingresa aquí el seguimiento que se dará"
+                          },
+                          domProps: { value: _vm.reporte.Seguimiento },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.reporte,
+                                "Seguimiento",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "miGrid2 mt-2" }, [
+                      _c("div", [
+                        _vm._m(8),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.reporte.user_id,
+                                expression: "reporte.user_id"
+                              }
+                            ],
+                            staticClass:
+                              "mdb-select md-form colorful-select dropdown-primary",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.reporte,
+                                  "user_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          _vm._l(_vm.users, function(user, key) {
+                            return _c(
+                              "option",
+                              { key: key, domProps: { value: user.id } },
+                              [_vm._v(_vm._s(user.name))]
+                            )
                           }),
                           0
                         )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Nombre: ")]),
-                        _vm._v(
-                          _vm._s(_vm.familiar.NombrePadre) +
-                            " " +
-                            _vm._s(_vm.familiar.ApePaternoPadre) +
-                            "  " +
-                            _vm._s(_vm.familiar.ApeMaternoPadre)
-                        )
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Nombre: ")]),
-                        _vm._v(
-                          _vm._s(_vm.familiar.NombreMadre) +
-                            " " +
-                            _vm._s(_vm.familiar.ApePaternoMadre) +
-                            "  " +
-                            _vm._s(_vm.familiar.ApeMaternoMadre)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reporte.Motivo,
-                          expression: "reporte.Motivo"
-                        }
-                      ],
-                      staticClass: "form-control w-75 p-1 mb-1",
-                      attrs: {
-                        name: "motivo",
-                        id: "motivo",
-                        placeholder: "Escriba aquí los motivos"
-                      },
-                      domProps: { value: _vm.reporte.Motivo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.reporte, "Motivo", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.motivo
-                      ? _c("span", { staticClass: "error" }, [
-                          _vm._v(_vm._s(_vm.errors.motivo))
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reporte.Derivacion,
-                          expression: "reporte.Derivacion"
-                        }
-                      ],
-                      staticClass: "form-control w-75 p-1 mb-1",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Escriba aquí a donde lo deriva"
-                      },
-                      domProps: { value: _vm.reporte.Derivacion },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.reporte,
-                            "Derivacion",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reporte.DescripcionDer,
-                          expression: "reporte.DescripcionDer"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        name: "",
-                        id: "",
-                        placeholder:
-                          "Escriba aquí la descripción de la deribación"
-                      },
-                      domProps: { value: _vm.reporte.DescripcionDer },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.reporte,
-                            "DescripcionDer",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reporte.Observaciones,
-                          expression: "reporte.Observaciones"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Ingresa aquí las observaciones"
-                      },
-                      domProps: { value: _vm.reporte.Observaciones },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.reporte,
-                            "Observaciones",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(9),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.reporte.Seguimiento,
-                          expression: "reporte.Seguimiento"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Ingresa aquí el seguimiento que se dará"
-                      },
-                      domProps: { value: _vm.reporte.Seguimiento },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.reporte,
-                            "Seguimiento",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "miGrid2 mt-2" }, [
-                  _c("div", [
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
+                      _c("div", [
+                        _c(
+                          "button",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.user_id,
-                            expression: "reporte.user_id"
-                          }
-                        ],
-                        staticClass:
-                          "mdb-select md-form colorful-select dropdown-primary",
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.reporte,
-                              "user_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.users, function(user, key) {
-                        return _c(
-                          "option",
-                          { key: key, domProps: { value: user.id } },
-                          [_vm._v(_vm._s(user.name))]
+                            staticClass: "mibtn btnGuardar positionSave",
+                            attrs: { type: "submit" },
+                            on: { click: _vm.guardarReporte }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-save" }),
+                            _vm._v(" Guardar\r\n                            ")
+                          ]
                         )
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "mibtn btnGuardar positionSave",
-                        attrs: { type: "submit" },
-                        on: { click: _vm.guardarReporte }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-save" }),
-                        _vm._v(" Guardar\n                        ")
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ])
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
         ]
       )
     ]
@@ -56749,18 +56763,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Motivo")])])
   },
   function() {
@@ -56791,9 +56793,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Responsable de seguimiento")])
-    ])
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Canalizar a ")])])
   }
 ]
 render._withStripped = true
@@ -73556,8 +73556,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

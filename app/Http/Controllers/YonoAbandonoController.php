@@ -32,12 +32,12 @@ class YonoAbandonoController extends Controller
             'IdAlumno' => 'required',
             'Nombrequienderiva' => 'required',
             'Motivo' => 'required',
-            'Derivacion' => 'required',
-            'DescripcionDer' => 'required',
+            // 'Derivacion' => 'required',
+            // 'DescripcionDer' => 'required',
             'Status' => 'required',
-            'Seguimiento' => 'required',
+            // 'Seguimiento' => 'required',
             'Observaciones' => 'required',
-            'ResponsableSeguimiento' => 'required',
+            // 'ResponsableSeguimiento' => 'required',
             'user_id' => 'required'
         ]);
 

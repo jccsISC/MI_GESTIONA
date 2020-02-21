@@ -139,7 +139,6 @@
                     return;
                 }
 
-
                 if (this.tipo == 'Guardar') {
                     this.incidencia.TipoReporte = 'Mala Conducta';
                     axios.post('/incidencias', this.incidencia).then(res => {

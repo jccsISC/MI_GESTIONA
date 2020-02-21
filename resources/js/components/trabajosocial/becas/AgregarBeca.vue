@@ -66,7 +66,7 @@
         this.$emit('becaActualizada', res.data);
         $('#addBeca').modal('hide');
       },
-      /*actualizarBeca() {
+      actualizarBeca() {
         if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
           alert('Debes de completar todos los campos antes de guardar');
           return;
@@ -76,7 +76,8 @@
           .then(res => {
             this.onSuccess(res);
           });
-      },*/
+        }
+      },
       saveBeca() {
         if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
             alert('Verifique y llene todos los campos');

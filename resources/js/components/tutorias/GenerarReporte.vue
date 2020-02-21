@@ -1,4 +1,5 @@
 <template>
+<form @submit.prevent="guardarReporte">
     <div class="modal fade" role="dialog" id="reporteTuto" style="z-index: 100000" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -44,22 +45,20 @@
 
                         <div>
                             <div>
-                                <p class="m-0"><b>Padre</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                <p class="m-0"><b>Padre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             </div>
                             <div>
-                                <p class="m-0"><b>Madre</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <p class="m-0"><b>Madre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                             </div>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <textarea required v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
                             <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
 
                             <p><b>Derivación</b></p>
-                            <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+                            <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí la institución externa a donde lo deriva">
                         </div>
 
                         <div>
@@ -67,7 +66,7 @@
                             <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la deribación"></textarea>
                         
                             <p><b>Observaciones</b></p>
-                            <input v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
+                            <input required v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
                     
                             <p><b>Seguimiento</b></p>
                             <input v-model="reporte.Seguimiento" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
@@ -77,8 +76,8 @@
                    
                    <div class="miGrid2 mt-2">
                        <div>
-                            <p class="m-0"><b>Responsable de seguimiento</b></p> 
-                            <select v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
+                            <p class="m-0"><b>Canalizar a </b></p> 
+                            <select required v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
                                 <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
                             </select>
                        </div>
@@ -93,6 +92,7 @@
             </div>
         </div>
     </div>
+    </form>
 </template>
 
 <script>
@@ -139,17 +139,16 @@
                 });
             },
             guardarReporte() {
-               if (this.reporte.Status == undefined) {
+                if (this.reporte.Motivo == undefined
+                    || this.reporte.Observaciones == undefined ) {
+                    return;
+                }
+                
+                if (this.reporte.Status == undefined) {
                     alert('Seleccione el estatus de este reporte');
                     return;
                 }
                 
-               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
-                    alert('Verifique y llene todos los campos');
-                    return;
-                }
-
                 this.users.forEach(element => {
                     if (element.id == this.reporte.user_id) {
                         this.reporte.ResponsableSeguimiento = element.name;
@@ -222,6 +221,10 @@
     .colorText {
         /* color: #414141; */
         color: #3d3d3d;
+    }
+
+    .modal-body-g{
+        height: 500px;
     }
 
 </style>

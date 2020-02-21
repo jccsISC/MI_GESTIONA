@@ -18,7 +18,7 @@
             <form @submit.prevent="guardarSalud">
                 <div class="mcontenidoSalud">
                     <div>
-                        <label>Esatatura </label>
+                        <label>Estatura </label>
                         <input type="number" step="0.0" min="0" class="widthInput" placeholder="0.0" v-model="salud.Estatura">
 
                         <label class="ml-3">Peso </label>
