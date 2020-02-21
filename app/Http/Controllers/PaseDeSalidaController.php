@@ -12,20 +12,11 @@ class PaseDeSalidaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,7 @@ class PaseDeSalidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

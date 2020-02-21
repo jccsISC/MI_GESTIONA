@@ -9,7 +9,7 @@
       <card-info-personal></card-info-personal>
 
       <!--card info general-->
-      <allinfo></allinfo>
+      <allinfo role="{{auth()->user()->roles->first()->name}}"></allinfo>
       
       <!--card becas-->
       <card-becas></card-becas>

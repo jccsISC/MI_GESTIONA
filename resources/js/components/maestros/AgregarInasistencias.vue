@@ -370,6 +370,125 @@
                                                     <td><input type="number" step="0.0" min="0"></td>
                                                     <td><input type="date"></td>
                                                 </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="background: #800000; color:white; text-align: center;">6 B</td>
+                                                    <td>
+                                                        <select name="" id="">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                            <option value="">3</option>
+                                                            <option value="">4</option>
+                                                            <option value="">5</option>
+                                                            <option value="">6</option>
+                                                        </select>
+                                                    </td>
+                                                    <td colspan="2">Julio Cesar Camacho Silva</td>
+                                                    <td><input type="number" step="0.0" min="0"></td>
+                                                    <td><input type="date"></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                 </div>

@@ -1,8 +1,8 @@
 <template>
     <div class="contenedorCard">
         <p class="subtitulos">Calificaciones</p>
-        <div class="micard scrollTCalif colorText">
-            <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm">
+        <div class="micard colorText">
+            <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0">
                 <thead>
                     <tr>
                         <th>Asignaturas</th>
@@ -11,7 +11,7 @@
                         <th>P3</th>
                         <th>P4</th>
                         <th>P5</th>
-                        <th colspan="2">Promedio Final</th>
+                        <th colspan="2">P.Final</th>
                     </tr>
                 </thead>
                 <!--<tbody>
@@ -28,7 +28,7 @@
                 </tbody>
             </table>
 
-            <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral">Promedio General: <label class="text-danger">{{promedioGeneral}}</label></p> 
+            <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral m-0">Promedio General: <label class="text-danger m-0">{{promedioGeneral}}</label></p> 
         </div>
     </div>
 </template>
@@ -40,6 +40,7 @@
             promedioGeneral() {
                 let promedio = 0;
                 let counter = 0;
+                let pgeneral = 0;
                 if (!this.calificaciones.length) {
                     return '';
                 }
@@ -48,7 +49,9 @@
                     counter++;
                 });
           
-                return promedio/counter;
+                pgeneral = promedio/counter; 
+                return pgeneral;
+                console.log('promedio GENERAL: '+ this.pgeneral);
             }
         },
         data() {
@@ -92,7 +95,7 @@
 
 <style>
     .sizeCalGeneral{
-        font-size: 14px;
+        font-size: 15px;
     }
 
 

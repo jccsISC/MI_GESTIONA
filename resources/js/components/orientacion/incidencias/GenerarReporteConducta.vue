@@ -41,7 +41,7 @@
                     <div class="miGrid2 mt-1">
                         
                         <div>
-                          <div>
+                            <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>

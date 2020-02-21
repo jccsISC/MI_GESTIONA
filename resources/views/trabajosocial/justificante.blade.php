@@ -14,7 +14,7 @@
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
                 
                 <label>Folio:</label>
-                @foreach ($justi as $j) <i>{{ $j->IdJustificante }}</i> @endforeach 
+                <i>{{ $justi->IdJustificante }}</i>
             </div>
 
             <hr class="linea" width=670px>
@@ -23,21 +23,21 @@
             <div class="quien">
                 <label>DE: DEPARTAMENTO DE TRABAJO SOCIAL</label><br>
                 <div class="fecha">
-                    <label>FECHA:@foreach ($justi as $j) <i>{{ $j->Fecha }}</i> @endforeach 
+                    <label>FECHA: <i>{{ $justi->Fecha }}</i> 
                 </div>
                 <label>A: PREFECTURA Y DOCENTE</label>   
             </div>   
             
             <div class="texto">
-                <p>Por medio de la presente comunico a usted que el (la) alumno(a) @foreach ($alumno as $a) <i>{{ $a->Nombre }}</i> @endforeach  
-                del grado: @foreach ($alumno as $a) <i>{{ $a->Grado }}</i> @endforeach   
-                grupo: @foreach ($alumno as $a) <i>{{ $a->Grupo }}</i> @endforeach   
-                turno: @foreach ($alumno as $a) <i>{{ $a->Turno }}</i> @endforeach   
-                carrera: @foreach ($alumno as $a) <i>{{ $a->Carrera }}</i> @endforeach  . 
+                <p>Por medio de la presente comunico a usted que el (la) alumno(a) <i>{{ $alumno->Nombre }}</i>
+                del grado: <i>{{ $alumno->Grado }}</i>  
+                grupo: <i>{{ $alumno->Grupo }}</i>  
+                turno: <i>{{ $alumno->Turno }}</i>
+                carrera: <i>{{ $alumno->Carrera }}</i>.
                 Justifico sus inasistencias a clases ante éste departamento el (los) días:
-                @foreach ($justi as $j) <i>{{ $j->FechaInicio }}</i> @endforeach  - @foreach ($justi as $j) <i>{{ $j->FechaFin }}</i> @endforeach </i> 
+                <i>{{ $justi->FechaInicio }}</i> - <i>{{ $justi->FechaFin }}</i> 
                 Por lo que solicito justificarle las inasistencias de los días proporcionados debido a:
-                    @foreach ($justi as $j) <i>{{ $j->Motivo }}</i> @endforeach .
+                <i>{{ $justi->Motivo }}</i>.
                 <p><label><b><i>(No justifica trabajos).</i></b></label><p></p>
             </div>
 
