@@ -12,9 +12,15 @@
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
-                    
-                    <hr class="mt-1 m-0 p-0">
+                     <div class="divbuscador">
 
+                        <form @submit.prevent="buscar">
+                            <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
+                            <input v-model="buscador" type="text"style="width:150px;" placeholder="Buscar">
+                        </form>
+                    </div>
+                    <hr class="mt-1 m-0 p-0">
+           
                     <div class="modal-body-g">
                         <table class="table table-striped table-hover contentTable table table-sm">
                             <thead>
@@ -34,13 +40,13 @@
                                 <tr v-for="(usuario, key) in usuarios" :key="key">
                                     <td> {{ usuario.name }} </td>
                                     <td> {{ usuario.email }} </td>
-                                    <td> {{ usuario.name }}</td>
+                                    <td> {{ usuario.role }}</td>
                                     
 
                                     
                                     <td>
-                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUsuario" 
-                                            @click="$emit('actualizarUsuario', usuario)">
+                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModUsuario" 
+                                            @click="$emit('modificarUsuario', usuario)">
                                             <i class="far fa-edit"></i>
                                         </button>
                                         <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
@@ -64,6 +70,7 @@
         </div>
 
         <create-form-usuarios @usuarioActualizado="actualizarUsuario($event)"></create-form-usuarios>
+        <edit-form-usuarios @usuarioActualizado="modificarUsuario($event)"></edit-form-usuarios>
     </div>
 </template>
 
@@ -71,7 +78,8 @@
     export default {
         data() {
             return {
-                usuarios: []
+                usuarios: [],
+                buscador: ''
             }
         },
         created() {
@@ -85,17 +93,21 @@
       
                 if (usuario.esNueva) {
                     this.usuarios.push(usuario);
-                } else {
-                    const temp = Object.assign({}, this.usuarios);//clonamos el array usuarios
+                
+                }  
+
+            },
+
+            modificarUsuario(usuario){
+                const temp = Object.assign({}, this.usuarios);//clonamos el array usuarios
                     this.usuarios = []; //reiniciamos el array usuarios para que actualice al momento de guardar
                     Object.keys(temp).forEach(key => {
-                        if (temp[key].id === usuario.id) {
+                        if (temp[key].id=== usuario.id) {
                             this.usuarios[key] = usuario;
                         } else {
                             this.usuarios[key] = temp[key];
                         }
                     });
-                }   
             },
               eliminarUsuario(usuario, key) {
                 // Lo elimina en la base de datos.
@@ -104,7 +116,20 @@
                     // Lo elimina de manera visual.
                     this.usuarios.splice(key,1);
                 })
-             }
+             },
+
+                buscar() {
+                if(!this.buscador){
+                    return;
+                }
+                axios.get('/usuarios/buscar?buscar='+this.buscador).then(res=>{
+                    if(res.data){
+                        bus.$emit('usuario seleccionado', res.data)
+                    }else{
+                        console.log('Alumno no encontrado');
+                    }
+                });
+            }
        }
     }
 </script>
