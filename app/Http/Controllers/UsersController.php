@@ -14,10 +14,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function buscar(Request $request) {
+        $buscar = $request->query('buscar');
+        return tblusuarios::where('id', $buscar)->orWhere('name', $buscar)->first();
+    }
     public function index(Request $request) {
 
         if ($request->ajax()) {
-        
     
         $users= tblusuarios::all();
         return $users;
@@ -39,7 +42,7 @@ class UsersController extends Controller
             ]);
     
             return roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]) &&
-            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => $atributos['password']]);
+            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
             } else {
      return view('admin');
  }
@@ -54,14 +57,17 @@ class UsersController extends Controller
 
         ]);
         
-        $tblusuarios->update($atributos);
+        $tblusuarios->update(['name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
         return $tblusuarios;
     }
-        public function destroy(tblusuarios $tblusuarios) {
+        public function destroy($id) {
         
-            $tblusuarios->delete();
+        $usuario= tblusuarios::find($id);
+        $roleusu = roleUser::where('user_id', $id);
+        $usuario->delete();
+        $roleusu->delete();
     
-            return response('Usuario Eliminado');
+       
         }
     
 
