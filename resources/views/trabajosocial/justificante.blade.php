@@ -44,14 +44,12 @@
             <p id="atte"><label>ATENTAMENTE</label></p><br><br>
  
             <div class="brenda">
-                <hr class="linea1"  width=150><br>
-                <label class="nombre1">LIC. BRENDA GABRIELA GONZALEZ RAMIREZ</label><br>
+                <label class="nombre">LIC. BRENDA GABRIELA GONZALEZ RAMIREZ</label><br>
                 <label class="puesto1">TRABAJADORA SOCIAL</label>
             </div>
             
             <div class="sandra">
-                <hr class="linea2"  width=150><br>
-                <label class="nombre2">LIC. SANDRA ISABEL GOMEZ REAL</label><br>
+                <label class="nombre">LIC. SANDRA ISABEL GOMEZ REAL</label><br>
                 <label class="puesto2">DIRECTORA DEL PLANTEL PITILLAL (LAS JUNTAS)</label>
             </div>
         </div>
@@ -91,6 +89,7 @@
         font-size: 12px;
         text-align: left;
         float: left; 
+       
     }
 
     .sandra{
@@ -115,4 +114,7 @@
         float:right;
     }
 
+    .nombre{
+        text-decoration:overline;
+    }
  </style>
