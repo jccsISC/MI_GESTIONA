@@ -10,9 +10,9 @@
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
                 <label>Folio:</label> <i>{{ $pase->IdPaseSal }}</i>
             </div>
-            <hr width=300>
-            <p><h1>PASE DE SALIDA</h1><p>
-            <p><h3>ESTIMADO COMPAÑERO(A):</h3><p>   
+            <hr width=250>
+            <p><h2>PASE DE SALIDA</h2><p>
+            <p><h4>ESTIMADO COMPAÑERO(A):</h4><p>   
             <p class="c3">Favor de permitir la salida del plantel a el (la) alumno(a), es importante que se registre su salida en bitácora.</p>
             <p><label><b>Fecha:</label><i>{{ $pase->Fecha }}</i> 
             <p><label><b>Alumno(a):</label> <i>{{ $alumno->Nombre }}</i>
@@ -21,9 +21,7 @@
             <label><b>Turno: <i>{{ $alumno->Turno }}</i>
             <p><label><b>Padre o Tutor:</label> <i>{{ $familiar->NombrePadre }} {{ $familiar->ApePaternoPadre }} {{ $familiar->ApeMaternoPadre }}</i>
             <p><label><b>Tel/Cel:</label> <i>{{ $familiar->TelefonoPadre }}</i>
-            <p id="motivo"><label><b>Motivo:</label></p> <i>{{ $pase->Motivo }}</i>
-      
-            <hr id="linea"  width=180>  
+            <p id="motivo"><label><b>Motivo:</label></p> <i>{{ $pase->Motivo }}</i> 
             <p id="autoriza"><label >Autorizó salida</label></p>
             <p id="firma"><label >Nombre y Firma</label></p>
         </div>
@@ -33,15 +31,17 @@
 
 <style>
     .todo{
-        width: 300;
-        height: 500;
+        width: 260;
+        height: 400;
+        border: 1px solid black;
+        padding:5px;
     }
     img{
-        width: 80px; height: 30px;
+        width: 70px; height: 25px;
      }
 
      .encabezado{
-        font-size: .70em; 
+        font-size: .58em; 
         float: right; 
         text-align: right;     
     }
@@ -49,10 +49,10 @@
     .c3{
         text-align: center;
     }
-    h1{
+    h2{
         text-align: center;
     }
-    h3{
+    h4{
         text-align: center;
     }
 
@@ -64,8 +64,9 @@
         text-align: center;
         margin:-10;
     }
-    #linea{
-        margin-top: 50;  
+    #autoriza{
+        padding-top: 40px; 
+        text-decoration:overline; 
     }
 
     #motivo{
@@ -76,4 +77,9 @@
         border:none;
         border-bottom:1px solid black;
     }
+
+    p{
+        font-size:11;
+    }
+
     </style>
