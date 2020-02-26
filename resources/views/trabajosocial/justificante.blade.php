@@ -87,15 +87,19 @@
 
     .brenda{
         font-size: 12px;
-        text-align: left;
-        float: left; 
+        text-align: center;
+        float:left;
+        padding-left:25px;
+        padding-top:20px;
        
     }
 
     .sandra{
         font-size: 12px;
-        text-align: right; 
-        float: right;       
+        text-align: center; 
+        float:right;
+        padding-top:20px;
+       
     }
     
     #atte{
