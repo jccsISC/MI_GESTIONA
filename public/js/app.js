@@ -2981,8 +2981,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'role'],
@@ -47074,10 +47072,8 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "subGrid" }, [
                                 _c("div", [
-                                  _vm._m(3),
-                                  _vm._v(" "),
                                   _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Nombre: ")]),
+                                    _c("b", [_vm._v("Padre: ")]),
                                     _vm._v(
                                       _vm._s(_vm.familiar.NombrePadre) +
                                         " " +
@@ -47094,10 +47090,8 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", [
-                                  _vm._m(4),
-                                  _vm._v(" "),
                                   _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Nombre: ")]),
+                                    _c("b", [_vm._v("Madre: ")]),
                                     _vm._v(
                                       _vm._s(_vm.familiar.NombreMadre) +
                                         " " +
@@ -47120,7 +47114,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "sizeGeneral" }, [
                       _vm.alumno.IdAlumno
-                        ? _c("div", { staticClass: "float" }, [_vm._m(5)])
+                        ? _c("div", { staticClass: "float" }, [_vm._m(3)])
                         : _vm._e(),
                       _vm._v(" "),
                       _vm.alumno.IdAlumno
@@ -47136,7 +47130,7 @@ var render = function() {
                                 _vm._v(_vm._s(_vm.alumno.MunicipioNac))
                               ]),
                               _vm._v(" "),
-                              _vm._m(6),
+                              _vm._m(4),
                               _vm._v(" "),
                               _c("label", { staticClass: "m-0 mr-2" }, [
                                 _c("b", [_vm._v("Calle: ")]),
@@ -47218,10 +47212,10 @@ var render = function() {
                               _vm._v(" "),
                               _c("br"),
                               _vm._v(" "),
-                              _vm._m(7),
+                              _vm._m(5),
                               _c("br"),
                               _vm._v(" "),
-                              _vm._m(8),
+                              _vm._m(6),
                               _c("br")
                             ])
                           ])
@@ -47243,7 +47237,7 @@ var render = function() {
                         _vm.alumno.IdAlumno
                           ? _c("div", [
                               _c("div", [
-                                _vm._m(9),
+                                _vm._m(7),
                                 _vm._v(" "),
                                 _c("p", { staticClass: "m-0 p-0" }, [
                                   _c("b", [_vm._v("Promedio General: ")]),
@@ -47260,7 +47254,7 @@ var render = function() {
                                           "table table-striped table-hover contentTable table table-sm scrollT"
                                       },
                                       [
-                                        _vm._m(10),
+                                        _vm._m(8),
                                         _vm._v(" "),
                                         _c(
                                           "tbody",
@@ -47353,7 +47347,7 @@ var render = function() {
                         _vm._v(" "),
                         _vm.alumno.IdAlumno
                           ? _c("div", { staticClass: "pl-3" }, [
-                              _vm._m(11),
+                              _vm._m(9),
                               _vm._v(" "),
                               _c("div", { staticClass: "contentCalifG" }, [
                                 _vm.alumno.IdAlumno
@@ -47364,7 +47358,7 @@ var render = function() {
                                           "table table-striped table-hover contentTable table table-sm scrollT"
                                       },
                                       [
-                                        _vm._m(12),
+                                        _vm._m(10),
                                         _vm._v(" "),
                                         _c(
                                           "tbody",
@@ -47426,7 +47420,7 @@ var render = function() {
                       _c("div", { staticClass: "gridM2G" }, [
                         _vm.alumno.IdAlumno
                           ? _c("div", [
-                              _vm._m(13),
+                              _vm._m(11),
                               _vm._v(" "),
                               _c("div", [
                                 _c("label", { staticClass: "mr-5 m-0" }, [
@@ -47607,13 +47601,13 @@ var render = function() {
                           ? _c("div", [
                               _c("div", { staticClass: "linea2G" }),
                               _vm._v(" "),
-                              _vm._m(14),
+                              _vm._m(12),
                               _vm._v(" "),
                               _c("div", [
                                 _vm.alumno.IdAlumno
                                   ? _c("div", [
                                       _c("div", { staticClass: "pt-1" }, [
-                                        _vm._m(15),
+                                        _vm._m(13),
                                         _vm._v(" "),
                                         _c(
                                           "div",
@@ -47662,7 +47656,7 @@ var render = function() {
                                         "div",
                                         { staticClass: "mcontenidoL pt-1" },
                                         [
-                                          _vm._m(16),
+                                          _vm._m(14),
                                           _vm._v(" "),
                                           _c("p", [
                                             _c("b", [
@@ -47751,7 +47745,7 @@ var render = function() {
                           _vm.alumno.IdAlumno
                             ? _c("div", [
                                 _c("div", [
-                                  _vm._m(17),
+                                  _vm._m(15),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -47797,7 +47791,7 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", [
-                                  _vm._m(18),
+                                  _vm._m(16),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -47850,7 +47844,7 @@ var render = function() {
                             _c("div", [
                               _vm.alumno.IdAlumno
                                 ? _c("div", [
-                                    _vm._m(19),
+                                    _vm._m(17),
                                     _vm._v(" "),
                                     _c("div", [
                                       _c("p", { staticClass: "mb-1" }, [
@@ -47958,7 +47952,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.alumno.IdAlumno
                             ? _c("div", [
-                                _vm._m(20),
+                                _vm._m(18),
                                 _vm._v(" "),
                                 _c("div", [
                                   _c("p", { staticClass: "mb-1" }, [
@@ -48059,7 +48053,7 @@ var render = function() {
                               "div",
                               { staticClass: "ml-5" },
                               [
-                                _vm._m(21),
+                                _vm._m(19),
                                 _vm._v(" "),
                                 _vm._l(_vm.becas, function(beca, key) {
                                   return _c("div", { key: key }, [
@@ -48153,18 +48147,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center float" }, [
       _c("b", [_c("p", [_vm._v("INFORMACIÓN DE LOS PADRES O TUTOR")])])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
   },
   function() {
     var _vm = this
@@ -56556,10 +56538,11 @@ var render = function() {
                           _c("p", { staticClass: "m-0" }, [
                             _c("b", [_vm._v("Telefóno: ")]),
                             _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
-                          ])
+                          ]),
+                          _c("br")
                         ]),
                         _vm._v(" "),
-                        _vm._m(3),
+                        _c("b", [_vm._v("Motivo")]),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -56598,7 +56581,7 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _c("b", [_vm._v("Derivación")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -56609,7 +56592,7 @@ var render = function() {
                               expression: "reporte.Derivacion"
                             }
                           ],
-                          staticClass: "form-control w-75",
+                          staticClass: "form-control w-75 p-1 mb-1",
                           attrs: {
                             type: "text",
                             placeholder:
@@ -56632,7 +56615,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", [
-                        _vm._m(5),
+                        _c("b", [_vm._v("Descripción de la derivación")]),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -56664,8 +56647,9 @@ var render = function() {
                             }
                           }
                         }),
+                        _c("br"),
                         _vm._v(" "),
-                        _vm._m(6),
+                        _c("b", [_vm._v("Observaciones")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -56696,8 +56680,9 @@ var render = function() {
                             }
                           }
                         }),
+                        _c("br"),
                         _vm._v(" "),
-                        _vm._m(7),
+                        _c("b", [_vm._v("Seguimiento")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -56733,7 +56718,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "miGrid2 mt-2" }, [
                       _c("div", [
-                        _vm._m(8),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c(
                           "select",
@@ -56879,36 +56864,6 @@ var staticRenderFns = [
         _vm._v("SEGUIMIENTO Y DERIVACION")
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Motivo")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Derivación")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Descripción de la derivación")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Observaciones")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Seguimiento")])])
   },
   function() {
     var _vm = this
