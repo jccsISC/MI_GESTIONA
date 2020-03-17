@@ -21,7 +21,6 @@ class UsersController extends Controller
     public function index(Request $request) {
 
         if ($request->ajax()) {
-    
         $users= tblusuarios::all();
         return $users;
         } else {
@@ -71,7 +70,7 @@ class UsersController extends Controller
         }
     
 
-    
+  
 
     
 }
