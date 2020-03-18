@@ -110,12 +110,15 @@
                     });
             },
               eliminarUsuario(usuario, key) {
+                  const confirmacion = confirm(`Eliminar usuario ${usuario.name}`);
                 // Lo elimina en la base de datos.
+                if(confirmacion){
                 axios.delete(`/usuarios/${usuario.id}`)
                 .then(res => {
                     // Lo elimina de manera visual.
                     this.usuarios.splice(key,1);
                 })
+                }
              },
 
                 buscar() {

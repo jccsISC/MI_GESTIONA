@@ -98,13 +98,16 @@
                 
             },
             eliminarDependencia(dependencia, key) {
+                const confirmacion = confirm(`Eliminar dependencia ${dependencia.Nombre}`);
                 // Lo elimina en la base de datos.
+                if(confirmacion){
                 axios.delete(`/dependencias/${dependencia.IdDependencia}`)
                 .then(res => {
                     // Lo elimina de manera visual.
                     this.dependencias.splice(key,1);
                 })
             }
+        }
         }
     }
 </script>

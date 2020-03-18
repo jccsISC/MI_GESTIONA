@@ -5970,11 +5970,14 @@ __webpack_require__.r(__webpack_exports__);
     eliminarBeca: function eliminarBeca(beca, key) {
       var _this3 = this;
 
-      // Lo elimina en la base de datos.
-      axios["delete"]("/becas/".concat(beca.IdBeca)).then(function (res) {
-        // Lo elimina de manera visual.
-        _this3.becas.splice(key, 1);
-      });
+      var confirmacion = confirm("Eliminar beca ".concat(beca.Nombre)); // Lo elimina en la base de datos.
+
+      if (confirmacion) {
+        axios["delete"]("/becas/".concat(beca.IdBeca)).then(function (res) {
+          // Lo elimina de manera visual.
+          _this3.becas.splice(key, 1);
+        });
+      }
     }
   }
 });
@@ -6327,11 +6330,14 @@ __webpack_require__.r(__webpack_exports__);
     eliminarDependencia: function eliminarDependencia(dependencia, key) {
       var _this3 = this;
 
-      // Lo elimina en la base de datos.
-      axios["delete"]("/dependencias/".concat(dependencia.IdDependencia)).then(function (res) {
-        // Lo elimina de manera visual.
-        _this3.dependencias.splice(key, 1);
-      });
+      var confirmacion = confirm("Eliminar dependencia ".concat(dependencia.Nombre)); // Lo elimina en la base de datos.
+
+      if (confirmacion) {
+        axios["delete"]("/dependencias/".concat(dependencia.IdDependencia)).then(function (res) {
+          // Lo elimina de manera visual.
+          _this3.dependencias.splice(key, 1);
+        });
+      }
     }
   }
 });
@@ -7949,11 +7955,14 @@ __webpack_require__.r(__webpack_exports__);
     eliminarUsuario: function eliminarUsuario(usuario, key) {
       var _this3 = this;
 
-      // Lo elimina en la base de datos.
-      axios["delete"]("/usuarios/".concat(usuario.id)).then(function (res) {
-        // Lo elimina de manera visual.
-        _this3.usuarios.splice(key, 1);
-      });
+      var confirmacion = confirm("Eliminar usuario ".concat(usuario.name)); // Lo elimina en la base de datos.
+
+      if (confirmacion) {
+        axios["delete"]("/usuarios/".concat(usuario.id)).then(function (res) {
+          // Lo elimina de manera visual.
+          _this3.usuarios.splice(key, 1);
+        });
+      }
     },
     buscar: function buscar() {
       if (!this.buscador) {

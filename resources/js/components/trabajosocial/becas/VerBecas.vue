@@ -90,7 +90,9 @@
                 }   
             },
             eliminarBeca(beca, key) {
+                const confirmacion = confirm(`Eliminar beca ${beca.Nombre}`);
                 // Lo elimina en la base de datos.
+                  if(confirmacion){
                 axios.delete(`/becas/${beca.IdBeca}`)
                 .then(res => {
                     // Lo elimina de manera visual.
@@ -98,5 +100,6 @@
                 })
             }
         }
+         }
     }
 </script>
