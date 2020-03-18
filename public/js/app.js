@@ -5872,10 +5872,121 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/trabajosocial/becas/VerBecas.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\MI_GESTIONA\\resources\\js\\components\\trabajosocial\\becas\\VerBecas.vue: Unexpected token (93:98)\n\n\u001b[0m \u001b[90m 91 | \u001b[39m        }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 92 | \u001b[39m        eliminarBeca(beca\u001b[33m,\u001b[39m key) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 93 | \u001b[39m            \u001b[36mconst\u001b[39m confirmacion \u001b[33m=\u001b[39m confirm(\u001b[32m`¿Está seguro que desea eliminar la beca ${beca.Nombre}`\u001b[39m\u001b[33m?\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 | \u001b[39m            \u001b[90m// Lo elimina en la base de datos.\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 95 | \u001b[39m              \u001b[36mif\u001b[39m(confirmacion){\u001b[0m\n\u001b[0m \u001b[90m 96 | \u001b[39m            axios\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(\u001b[32m`/becas/${beca.IdBeca}`\u001b[39m)\u001b[0m\n    at Parser.raise (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:7012:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:8405:16)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9661:20)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseConditional (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9070:30)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9063:17)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseExprListItem (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10331:18)\n    at Parser.parseCallExpressionArguments (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9434:22)\n    at Parser.parseSubscript (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9342:29)\n    at Parser.parseSubscripts (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9258:19)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9247:17)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseVar (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:11341:26)\n    at Parser.parseVarStatement (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:11160:10)\n    at Parser.parseStatementContent (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10757:21)\n    at Parser.parseStatement (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10690:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:11266:25)\n    at Parser.parseBlockBody (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:11253:10)\n    at Parser.parseBlock (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:11237:10)\n    at Parser.parseFunctionBody (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10256:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10226:10)\n    at Parser.parseMethod (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10180:10)\n    at Parser.parseObjectMethod (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10096:19)\n    at Parser.parseObjPropValue (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10138:23)\n    at Parser.parseObjectMember (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:10062:10)\n    at Parser.parseObj (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9982:25)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9604:28)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\MI_GESTIONA\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      becas: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/becas').then(function (res) {
+      _this.becas = res.data;
+    });
+  },
+  methods: {
+    actualizarBeca: function actualizarBeca(beca) {
+      var _this2 = this;
+
+      if (beca.esNueva) {
+        this.becas.push(beca);
+      } else {
+        var temp = Object.assign({}, this.becas); //clonamos el array becas
+
+        this.becas = []; //reiniciamos el array beca para que actualice al momento de guardar
+
+        Object.keys(temp).forEach(function (key) {
+          if (temp[key].IdBeca === beca.IdBeca) {
+            _this2.becas[key] = beca;
+          } else {
+            _this2.becas[key] = temp[key];
+          }
+        });
+      }
+    },
+    eliminarBeca: function eliminarBeca(beca, key) {
+      var _this3 = this;
+
+      var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la beca ".concat(beca.Nombre, "?")); // Lo elimina en la base de datos.
+
+      if (confirmacion) {
+        axios["delete"]("/becas/".concat(beca.IdBeca)).then(function (res) {
+          // Lo elimina de manera visual.
+          _this3.becas.splice(key, 1);
+        });
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -72471,15 +72582,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************!*\
   !*** ./resources/js/components/trabajosocial/becas/VerBecas.vue ***!
   \******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VerBecas_vue_vue_type_template_id_22f3dd52___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerBecas.vue?vue&type=template&id=22f3dd52& */ "./resources/js/components/trabajosocial/becas/VerBecas.vue?vue&type=template&id=22f3dd52&");
 /* harmony import */ var _VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerBecas.vue?vue&type=script&lang=js& */ "./resources/js/components/trabajosocial/becas/VerBecas.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -72509,15 +72619,13 @@ component.options.__file = "resources/js/components/trabajosocial/becas/VerBecas
 /*!*******************************************************************************************!*\
   !*** ./resources/js/components/trabajosocial/becas/VerBecas.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerBecas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/trabajosocial/becas/VerBecas.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerBecas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
