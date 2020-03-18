@@ -55,11 +55,13 @@
                 .catch();
             },
             eliminarPractica(){
+                 const confirmacion = confirm(`¿Está seguro que desea eliminar?`);
+         if(confirmacion){
                 axios.delete(`/practicas/${this.practica.IdServPrac}`)
                 .then(res => {
                     console.log(res);
                     this.practica = {};
-                });
+                })};
             }
         },
         props: ['tipo']

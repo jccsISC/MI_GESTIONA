@@ -152,10 +152,13 @@
           this.grupos.splice(key, 1);
         },
         eliminarTaller() {
+          const confirmacion = confirm(`¿Está seguro que desea eliminar el taller?`);
+     if(confirmacion){
           axios.delete('/talleres/'+this.taller.IdTaller).then(res => {   
             this.$emit('tallerEliminado', this.key);
             $('#detalleTaller').modal('hide');
-          });
+          })};
+     
         },
         actualizarTaller() {
           this.taller.eliminados = this.eliminar;

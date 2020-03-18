@@ -5421,11 +5421,17 @@ __webpack_require__.r(__webpack_exports__);
     eliminarTaller: function eliminarTaller() {
       var _this3 = this;
 
-      axios["delete"]('/talleres/' + this.taller.IdTaller).then(function (res) {
-        _this3.$emit('tallerEliminado', _this3.key);
+      var confirmacion = confirm("Eliminar taller");
 
-        $('#detalleTaller').modal('hide');
-      });
+      if (confirmacion) {
+        axios["delete"]('/talleres/' + this.taller.IdTaller).then(function (res) {
+          _this3.$emit('tallerEliminado', _this3.key);
+
+          $('#detalleTaller').modal('hide');
+        });
+      }
+
+      ;
     },
     actualizarTaller: function actualizarTaller() {
       var _this4 = this;
@@ -6913,10 +6919,16 @@ __webpack_require__.r(__webpack_exports__);
     eliminarPractica: function eliminarPractica() {
       var _this3 = this;
 
-      axios["delete"]("/practicas/".concat(this.practica.IdServPrac)).then(function (res) {
-        console.log(res);
-        _this3.practica = {};
-      });
+      var confirmacion = confirm("Eliminar Pr\xE1cticas");
+
+      if (confirmacion) {
+        axios["delete"]("/practicas/".concat(this.practica.IdServPrac)).then(function (res) {
+          console.log(res);
+          _this3.practica = {};
+        });
+      }
+
+      ;
     }
   },
   props: ['tipo']
@@ -7973,7 +7985,7 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data) {
           bus.$emit('usuario seleccionado', res.data);
         } else {
-          console.log('Alumno no encontrado');
+          console.log('Usuario no encontrado');
         }
       });
     }

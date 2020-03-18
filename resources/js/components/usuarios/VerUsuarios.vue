@@ -110,7 +110,7 @@
                     });
             },
               eliminarUsuario(usuario, key) {
-                  const confirmacion = confirm(`Eliminar usuario ${usuario.name}`);
+                  const confirmacion = confirm(`¿Está seguro que desea eliminar el usuario ${usuario.name} ?`);
                 // Lo elimina en la base de datos.
                 if(confirmacion){
                 axios.delete(`/usuarios/${usuario.id}`)
@@ -129,7 +129,7 @@
                     if(res.data){
                         bus.$emit('usuario seleccionado', res.data)
                     }else{
-                        console.log('Alumno no encontrado');
+                        console.log('Usuario no encontrado');
                     }
                 });
             }
