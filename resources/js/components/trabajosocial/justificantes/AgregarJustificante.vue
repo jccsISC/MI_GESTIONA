@@ -93,7 +93,7 @@
       props: ['role'],
       created: function() {
         console.log(this.role);
-        this.$parent.$on('agregarJustificante', alumno => {
+        bus.$on('agregarJustificante', alumno => {
           this.alumno = alumno;
           this.justificante={};
           this.pase={};
@@ -108,7 +108,7 @@
           this.tipo = 'justificante';
           console.log(this.justificante);
         });
-        this.$parent.$on('verPase', pase => {
+        bus.$on('verPase', pase => {
           this.pase = pase;
           this.justificante={};
           this.ver = true;
@@ -127,9 +127,6 @@
         }
       },
       methods: {
-        mostrarJustificante(justificante) {
-          bus.$emit('verJustificante', justificante);
-        },
         jalarFamiliar(){
           axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
             this.familiar = res.data;
@@ -155,7 +152,7 @@
 
           axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/justificantes', this.justificante)
           .then(res => {
-              this.$emit('justificanteGuardado', res.data);
+              bus.$emit('justificanteGuardado', res.data);
               bus.$emit('busJustificantes');
               $('#addJustificantes').modal('hide');
           });
@@ -170,7 +167,7 @@
 
           axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/pases', this.pase)
           .then(res => {
-              this.$emit('paseGuardado', res.data);
+              bus.$emit('paseGuardado', res.data);
               bus.$emit('busPases');
               $('#addJustificantes').modal('hide');
           });
@@ -178,12 +175,12 @@
         eliminarJustiPase(){
           if(this.tipo === 'justificante'){
             axios.delete('/justificantes/'+this.justificante.IdJustificante).then(res =>{
-              this.$emit('justificanteEliminado', this.justificante.IdJustificante);
+              bus.$emit('justificanteEliminado', this.justificante.IdJustificante);
               $('#addJustificantes').modal('hide');
             });
           }else{
               axios.delete('/pases/'+this.pase.IdPaseSal).then(res =>{
-              this.$emit('paseEliminado', this.pase.IdPaseSal);
+              bus.$emit('paseEliminado', this.pase.IdPaseSal);
               $('#addJustificantes').modal('hide');
             });
           }

@@ -66,17 +66,15 @@
         this.$emit('becaActualizada', res.data);
         $('#addBeca').modal('hide');
       },
-      /*actualizarBeca() {
-        if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
-        
-
+      actualizarBeca() {
+        // if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
+        //   alert('Debes de completar todos los campos antes de guardar');
+        //   return;}
         axios.put('/becas/' + this.beca.IdBeca, this.beca)
           .then(res => {
             this.onSuccess(res);
           });
-      },*/
+      },
       saveBeca() {
         if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
             alert('Verifique y llene todos los campos');

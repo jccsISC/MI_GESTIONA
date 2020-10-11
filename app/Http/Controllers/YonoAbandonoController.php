@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\tblyonoabandono;
+use Barryvdh\DomPDF as PDF;
+use App\tblalumno;
+use App\tblfamiliare;
 
 class YonoAbandonoController extends Controller
 {
@@ -77,8 +80,6 @@ class YonoAbandonoController extends Controller
         
         $tblyonoabandono->update(
             $atributos + [
-                'Existe' => 1,
-                'FechaInicio' => date('Y-m-d'),
                 'FechaFin' => $atributos['Status'] ? date('Y-m-d') : NULL
             ]
         );
@@ -94,5 +95,13 @@ class YonoAbandonoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function imprimirYonoAbandono(tblyonoabandono $tblyonoabandono){
+        $reporte = $tblyonoabandono;
+        $alumno = $tblyonoabandono->alumno;    
+        $familiar = $tblyonoabandono->familiar;  
+        $pdf = \PDF::loadView('/tutorias.reporte', compact('reporte','alumno','familiar'));
+        return $pdf->download('reporte.pdf');
     }
 }

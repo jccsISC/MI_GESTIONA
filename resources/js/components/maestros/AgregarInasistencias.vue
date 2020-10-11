@@ -769,19 +769,20 @@
             return {
                 alumnos: [],
                 loading: true,
-                fechaInicio: '',
-                fechaFinal: '',
-                semana:'',
                 
             }
         },
         created() {
-            axios.get('/trabajosocial?tipo=justificantes').then(res => {
-                this.alumnos = res.data.data;
-                this.fechaInicio = res.data.fechas.Inicio;
-                this.fechaFinal = res.data.fechas.Fin;
-                this.semana = res.data.fechas.Semana;
-                this.loading = false;
+            // axios.get('/trabajosocial?tipo=justificantes').then(res => {
+            //     this.alumnos = res.data.data;
+            //     this.fechaInicio = res.data.fechas.Inicio;
+            //     this.fechaFinal = res.data.fechas.Fin;
+            //     this.semana = res.data.fechas.Semana;
+            //     this.loading = false;
+            // });
+
+            axios.get('registrarFaltas').then(res => {
+                 console.log(res.data);
             });
         },
         methods: {

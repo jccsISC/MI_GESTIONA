@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\tblalumno;
 use App\tblhorariomaestros;
 use App\tblinasistencias;
+use App\User;
 
 class FaltasController extends Controller
 {
@@ -27,6 +28,10 @@ class FaltasController extends Controller
         return $data;
     }
 
+
+    public function registrarFaltas() {
+        return auth()->user()->horarioMaestro;
+    }
 
     /**
      * Display a listing of the resource.

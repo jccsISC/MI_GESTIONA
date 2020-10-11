@@ -3,7 +3,7 @@
         <p class="subtitulos">Justificantes y Pases de Salida</p>
         <div class="micardsm colorText">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
-                <button type="button" class="btn btn-primary btn-sm mr-2 mt-2 float-right" data-toggle="modal" data-target="#addJustificantes" @click="$emit('agregarJustificante', alumno)">
+                <button type="button" class="btn btn-primary btn-sm mr-2 mt-2 float-right" data-toggle="modal" data-target="#addJustificantes" @click="agregarJustificante(alumno)">
                     <i class="fas fa-plus-circle"></i>
                 </button>
                
@@ -24,7 +24,7 @@
                 <p class="m-0"><b>Pases de Salida</b></p>
                 <div class="scrollHTS">
                     <button class="btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2" 
-                        @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
+                        @click="mostrarPase(pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                         :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
                     
                         {{keyjustificantepase2+1}}
@@ -35,13 +35,7 @@
             </div>
         </div>
         
-        <add-justificante
-         @paseGuardado="pases.push($event)" 
-         @justificanteGuardado="justificantes.push($event)"
-         @justificanteEliminado="justificanteEliminado($event)"
-         @paseEliminado="paseEliminado($event)"
-         >
-         </add-justificante>
+        <add-justificante></add-justificante>
         
     </div>
 </template>
@@ -65,36 +59,46 @@
                     this.jalarPases();
                  }
             });
-        },
-        methods: {
-            mostrarJustificante(justificante) {
-                bus.$emit('verJustificante', justificante);
-            },
-            justificanteEliminado(id){
-                let posicion = -1;
+
+            bus.$on('justificanteGuardado', justificante => {
+                this.justificantes.push(justificante);
+            });
+
+            bus.$on('paseGuardado', pase => {
+                 this.pases.push(pase);
+            });
+
+            bus.$on('justificanteEliminado', id => {
+               let posicion = -1;
                 this.justificantes.forEach((justificante,key) => {
                     if(justificante.IdJustificante === id){
                         posicion = key;
                         return;
                     }
                 });
-                console.log(posicion);
-                console.log(this.justificantes);
-                this.justificantes.splice(posicion,1);
-                console.log(this.justificantes);
-            },
-            paseEliminado(id){
-                 let posicion = -1;
+                this.justificantes.splice(posicion, 1);
+            });
+
+            bus.$on('paseEliminado', id => {
+                let posicion = -1;
                 this.pases.forEach((pase,key) => {
                     if(pase.IdPaseSal === id){
                         posicion = key;
                         return;
                     }
                 });
-                console.log(posicion);
-                console.log(this.pases);
-                this.pases.splice(posicion,1);
-                console.log(this.pases);
+                this.pases.splice(posicion, 1);
+            });
+        },
+        methods: {
+            agregarJustificante(alumno) {
+                bus.$emit('agregarJustificante', alumno);
+            },
+            mostrarJustificante(justificante) {
+                bus.$emit('verJustificante', justificante);
+            },
+            mostrarPase(pase) {
+                bus.$emit('verPase', pase);
             },
             jalarPases() {
                 axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(res => {

@@ -151,4 +151,21 @@ class IncidenciasController extends Controller
     {
         //
     }
+
+    public function imprimirIncidencias(tblincidencias $tblincidencias){
+        $incidencias = $tblincidencias;
+        $alumno = $tblincidencias->alumno;    
+        $familiar = $tblincidencias->familiar;  
+        $pdf = \PDF::loadView('/orientacion.incidencias', compact('incidencias','alumno','familiar'));
+        return $pdf->download('incidencias.pdf');
+    }
+
+
+    public function imprimirMalaConducta(tblincidencias $tblincidencias){
+        $malaConducta = $tblincidencias;
+        $alumno = $tblincidencias->alumno;    
+        $familiar = $tblincidencias->familiar;  
+        $pdf = \PDF::loadView('/orientacion.malaconducta', compact('malaConducta','alumno','familiar'));
+        return $pdf->download('malaConducta.pdf');
+    }
 }

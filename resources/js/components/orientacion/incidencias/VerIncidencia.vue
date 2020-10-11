@@ -23,7 +23,7 @@
                             <i class="fas fa-edit"></i>
                         </button>
                         <button v-if="role!='admin'" type="button" class="mibtnI positionImprimir">
-                            <i class="fas fa-print"></i>
+                            <a :href="'imprimirInci/'+ incidencia.IdIncidencia" class="link"><i class="fas fa-print"></i></a>
                         </button>
 
                         <div class="text-center mt-5">

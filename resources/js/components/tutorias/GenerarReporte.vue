@@ -107,7 +107,7 @@
                 tipo: '',
                 errors: [],
                 users: [],
-                auth: {}
+                auth: {},
             }
         },
         created() {
@@ -116,20 +116,19 @@
                 this.alumno = alumno;   
                 this.auth = JSON.parse(this.userlogeado);
                 this.reporte.Nombrequienderiva = this.auth.name;
-                // this.reporte.Nombrequienderiva = 'Hardcoded';
                 this.reporte.IdAlumno = alumno.IdAlumno; 
                 this.jalarFamiliar();   
                 this.jalarUsers();   
-                // this.jalarCurrentUser();// return auth()->user();
+                this.tipo = 'crear';
             });
 
-            // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
-            //     console.log('consolelog'); 
-            //     this.alumno = Object.assign({}, alumno);   
-            //     this.incidencia = Object.assign({}, incidencia);
-            //     this.jalarFamiliares();   
-            //     this.tipo = 'Editar';
-            // });
+            bus.$on('kevin', (reporte, alumno, familiar) => {   
+                this.alumno = Object.assign({}, alumno);   
+                this.reporte = Object.assign({}, reporte);
+                this.familiar = Object.assign({}, familiar);
+                this.jalarUsers(); 
+                this.tipo = 'editar';
+            });
         },
         methods: {
             jalarFamiliar() {
@@ -156,20 +155,34 @@
                         return;
                     }
                 });
-                axios.post('/yonoAbandono', this.reporte).then(res => {
-                    this.reporte = res.data;
-                    $('#reporteTuto').modal('hide');
-                    // bus.$emit('incidenciaAgregada', res.data);
-                }).catch(error => {
-                    if (error.res.status == 422) {
-                        this.errors = error.res.data.errors;
-                    }
-                });
+
+                if (this.tipo == 'crear') {
+                    axios.post('/yonoAbandono', this.reporte).then(res => {
+                        this.reporte = res.data;
+                        $('#reporteTuto').modal('hide');
+                        // bus.$emit('incidenciaAgregada', res.data);
+                    }).catch(error => {
+                        if (error.res.status == 422) {
+                            this.errors = error.res.data.errors;
+                        }
+                    });
+                } else {
+                    axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
+                        this.reporte = res.data;
+                        $('#reporteTuto').modal('hide');
+                        bus.$emit('julioselacome', res.data);
+                    }).catch(error => {
+                        if (error.res.status == 422) {
+                            this.errors = error.res.data.errors;
+                        }
+                    });
+                }
+
+                
             },
             jalarUsers() {
                 axios.get('/users').then(res => {
                     this.users = res.data;
-                    console.log(res);
                 });
             }
         }

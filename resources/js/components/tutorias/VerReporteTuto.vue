@@ -20,10 +20,10 @@
                     </div>
 
                     <button v-if="reporte.Status && role!='admin' && role!='maestro'" type="button" class="mibtnI positionImprimir">
-                        <i class="fas fa-print"></i>
+                        <a :href="'imprimirReport/'+ reporte.IdYonoabandono" class="link"><i class="fas fa-print"></i></a>
                     </button>
 
-                     <button v-if="!reporte.Status && role!='admin' && role!='maestro'" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteTuto">
+                     <button @click="editarReporte()" v-if="!reporte.Status && role!='admin' && role!='maestro'" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteTuto">
                             <i class="fas fa-edit"></i>
                     </button>
 
@@ -55,7 +55,7 @@
                         <p class="minicontenedor"><b>Derivacion: </b>{{reporte.Derivacion}}</p>
                         <p class="minicontenedor"><b>Descripcion del reporte: </b>{{reporte.DescripcionDer}}</p>
                         <p class="minicontenedor"><b>Seguimiento: </b>{{reporte.Seguimiento}}</p>
-                        <p class="minicontenedor"><b>Observaciones:</b>{{reporte.Observaciones}}</p>
+                        <p class="minicontenedor"><b>Observaciones: </b>{{reporte.Observaciones}}</p>
                     </div>
                     
                     <div class="contenedorRT mt-4 txtP">
@@ -109,6 +109,15 @@
                 this.familiar = reporte.familiar;
 
             });
+
+            bus.$on('julioselacome', reporte => {
+                this.reporte = reporte;
+            });
+        },
+        methods: {
+            editarReporte() {
+                bus.$emit('kevin', this.reporte, this.alumno, this.familiar);
+            }
         }
     }
 </script>

@@ -3953,21 +3953,19 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       alumnos: [],
-      loading: true,
-      fechaInicio: '',
-      fechaFinal: '',
-      semana: ''
+      loading: true
     };
   },
   created: function created() {
-    var _this = this;
-
-    axios.get('/trabajosocial?tipo=justificantes').then(function (res) {
-      _this.alumnos = res.data.data;
-      _this.fechaInicio = res.data.fechas.Inicio;
-      _this.fechaFinal = res.data.fechas.Fin;
-      _this.semana = res.data.fechas.Semana;
-      _this.loading = false;
+    // axios.get('/trabajosocial?tipo=justificantes').then(res => {
+    //     this.alumnos = res.data.data;
+    //     this.fechaInicio = res.data.fechas.Inicio;
+    //     this.fechaFinal = res.data.fechas.Fin;
+    //     this.semana = res.data.fechas.Semana;
+    //     this.loading = false;
+    // });
+    axios.get('registrarFaltas').then(function (res) {
+      console.log(res.data);
     });
   },
   methods: {
@@ -5657,19 +5655,18 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('becaActualizada', res.data);
       $('#addBeca').modal('hide');
     },
-
-    /*actualizarBeca() {
-      if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
-        return;
-      
-       axios.put('/becas/' + this.beca.IdBeca, this.beca)
-        .then(res => {
-          this.onSuccess(res);
-        });
-    },*/
-    saveBeca: function saveBeca() {
+    actualizarBeca: function actualizarBeca() {
       var _this2 = this;
+
+      // if (this.beca.Nombre.trim() === '' || this.beca.Tipo.trim() === '') {
+      //   alert('Debes de completar todos los campos antes de guardar');
+      //   return;}
+      axios.put('/becas/' + this.beca.IdBeca, this.beca).then(function (res) {
+        _this2.onSuccess(res);
+      });
+    },
+    saveBeca: function saveBeca() {
+      var _this3 = this;
 
       if (this.beca.Nombre == undefined || this.beca.Tipo == undefined) {
         alert('Verifique y llene todos los campos');
@@ -5679,7 +5676,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/becas', this.beca).then(function (res) {
         res.data.esNueva = true;
 
-        _this2.onSuccess(res);
+        _this3.onSuccess(res);
       });
     }
   }
@@ -6181,19 +6178,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('dependenciaActualizada', res.data);
       $('#addDepencencia').modal('hide');
     },
-
-    /*actualizarDependencia() {
-      if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
-        alert('Debes de completar todos los campos antes de guardar');
-        return;
-      }
-       axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia)
-        .then(res => {
-          this.onSuccess(res);
-        });
-    },*/
-    saveDependencia: function saveDependencia() {
+    actualizarDependencia: function actualizarDependencia() {
       var _this2 = this;
+
+      // if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
+      //   alert('Debes de completar todos los campos antes de guardar');
+      //   return;
+      // }
+      axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia).then(function (res) {
+        _this2.onSuccess(res);
+      });
+    },
+    saveDependencia: function saveDependencia() {
+      var _this3 = this;
 
       if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined || this.dependencia.Responsable == undefined || this.dependencia.TipoVinculacion == undefined) {
         alert('Verifique y llene todos los campos');
@@ -6204,7 +6201,7 @@ __webpack_require__.r(__webpack_exports__);
         res.data.esNuevo = true;
         console.log(res.data);
 
-        _this2.onSuccess(res);
+        _this3.onSuccess(res);
       });
     }
   }
@@ -6444,7 +6441,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log(this.role);
-    this.$parent.$on('agregarJustificante', function (alumno) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('agregarJustificante', function (alumno) {
       _this.alumno = alumno;
       _this.justificante = {};
       _this.pase = {};
@@ -6460,7 +6457,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.tipo = 'justificante';
       console.log(_this.justificante);
     });
-    this.$parent.$on('verPase', function (pase) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('verPase', function (pase) {
       _this.pase = pase;
       _this.justificante = {};
       _this.ver = true;
@@ -6479,9 +6476,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    mostrarJustificante: function mostrarJustificante(justificante) {
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
-    },
     jalarFamiliar: function jalarFamiliar() {
       var _this2 = this;
 
@@ -6502,23 +6496,18 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     saveJustificante: function saveJustificante() {
-      var _this3 = this;
-
       if (this.justificante.FechaInicio == undefined || this.justificante.FechaFin == undefined || this.justificante.Motivo == undefined) {
         alert('Verifique y llene todos los campos');
         return;
       }
 
       axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes', this.justificante).then(function (res) {
-        _this3.$emit('justificanteGuardado', res.data);
-
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('justificanteGuardado', res.data);
         _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('busJustificantes');
         $('#addJustificantes').modal('hide');
       });
     },
     savePase: function savePase() {
-      var _this4 = this;
-
       console.log('pase ' + this.pase);
 
       if (this.pase.IdFamiliar == undefined || this.pase.Motivo == undefined || this.pase.Descripcion == undefined) {
@@ -6527,25 +6516,22 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       axios.post('/trabajosocial/' + this.alumno.IdAlumno + '/pases', this.pase).then(function (res) {
-        _this4.$emit('paseGuardado', res.data);
-
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('paseGuardado', res.data);
         _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('busPases');
         $('#addJustificantes').modal('hide');
       });
     },
     eliminarJustiPase: function eliminarJustiPase() {
-      var _this5 = this;
+      var _this3 = this;
 
       if (this.tipo === 'justificante') {
         axios["delete"]('/justificantes/' + this.justificante.IdJustificante).then(function (res) {
-          _this5.$emit('justificanteEliminado', _this5.justificante.IdJustificante);
-
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('justificanteEliminado', _this3.justificante.IdJustificante);
           $('#addJustificantes').modal('hide');
         });
       } else {
         axios["delete"]('/pases/' + this.pase.IdPaseSal).then(function (res) {
-          _this5.$emit('paseEliminado', _this5.pase.IdPaseSal);
-
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('paseEliminado', _this3.pase.IdPaseSal);
           $('#addJustificantes').modal('hide');
         });
       }
@@ -6565,12 +6551,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6635,36 +6615,46 @@ __webpack_require__.r(__webpack_exports__);
         _this.jalarPases();
       }
     });
-  },
-  methods: {
-    mostrarJustificante: function mostrarJustificante(justificante) {
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
-    },
-    justificanteEliminado: function justificanteEliminado(id) {
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('justificanteGuardado', function (justificante) {
+      _this.justificantes.push(justificante);
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('paseGuardado', function (pase) {
+      _this.pases.push(pase);
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('justificanteEliminado', function (id) {
       var posicion = -1;
-      this.justificantes.forEach(function (justificante, key) {
+
+      _this.justificantes.forEach(function (justificante, key) {
         if (justificante.IdJustificante === id) {
           posicion = key;
           return;
         }
       });
-      console.log(posicion);
-      console.log(this.justificantes);
-      this.justificantes.splice(posicion, 1);
-      console.log(this.justificantes);
-    },
-    paseEliminado: function paseEliminado(id) {
+
+      _this.justificantes.splice(posicion, 1);
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('paseEliminado', function (id) {
       var posicion = -1;
-      this.pases.forEach(function (pase, key) {
+
+      _this.pases.forEach(function (pase, key) {
         if (pase.IdPaseSal === id) {
           posicion = key;
           return;
         }
       });
-      console.log(posicion);
-      console.log(this.pases);
-      this.pases.splice(posicion, 1);
-      console.log(this.pases);
+
+      _this.pases.splice(posicion, 1);
+    });
+  },
+  methods: {
+    agregarJustificante: function agregarJustificante(alumno) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('agregarJustificante', alumno);
+    },
+    mostrarJustificante: function mostrarJustificante(justificante) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verJustificante', justificante);
+    },
+    mostrarPase: function mostrarPase(pase) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('verPase', pase);
     },
     jalarPases: function jalarPases() {
       var _this2 = this;
@@ -7227,21 +7217,24 @@ __webpack_require__.r(__webpack_exports__);
       _this.reporte = {};
       _this.alumno = alumno;
       _this.auth = JSON.parse(_this.userlogeado);
-      _this.reporte.Nombrequienderiva = _this.auth.name; // this.reporte.Nombrequienderiva = 'Hardcoded';
-
+      _this.reporte.Nombrequienderiva = _this.auth.name;
       _this.reporte.IdAlumno = alumno.IdAlumno;
 
       _this.jalarFamiliar();
 
-      _this.jalarUsers(); // this.jalarCurrentUser();// return auth()->user();
+      _this.jalarUsers();
 
-    }); // bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
-    //     console.log('consolelog'); 
-    //     this.alumno = Object.assign({}, alumno);   
-    //     this.incidencia = Object.assign({}, incidencia);
-    //     this.jalarFamiliares();   
-    //     this.tipo = 'Editar';
-    // });
+      _this.tipo = 'crear';
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('kevin', function (reporte, alumno, familiar) {
+      _this.alumno = Object.assign({}, alumno);
+      _this.reporte = Object.assign({}, reporte);
+      _this.familiar = Object.assign({}, familiar);
+
+      _this.jalarUsers();
+
+      _this.tipo = 'editar';
+    });
   },
   methods: {
     jalarFamiliar: function jalarFamiliar() {
@@ -7271,21 +7264,33 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
       });
-      axios.post('/yonoAbandono', this.reporte).then(function (res) {
-        _this3.reporte = res.data;
-        $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
-      })["catch"](function (error) {
-        if (error.res.status == 422) {
-          _this3.errors = error.res.data.errors;
-        }
-      });
+
+      if (this.tipo == 'crear') {
+        axios.post('/yonoAbandono', this.reporte).then(function (res) {
+          _this3.reporte = res.data;
+          $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
+        })["catch"](function (error) {
+          if (error.res.status == 422) {
+            _this3.errors = error.res.data.errors;
+          }
+        });
+      } else {
+        axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(function (res) {
+          _this3.reporte = res.data;
+          $('#reporteTuto').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('julioselacome', res.data);
+        })["catch"](function (error) {
+          if (error.res.status == 422) {
+            _this3.errors = error.res.data.errors;
+          }
+        });
+      }
     },
     jalarUsers: function jalarUsers() {
       var _this4 = this;
 
       axios.get('/users').then(function (res) {
         _this4.users = res.data;
-        console.log(res);
       });
     }
   }
@@ -7458,6 +7463,14 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = alumno;
       _this.familiar = reporte.familiar;
     });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('julioselacome', function (reporte) {
+      _this.reporte = reporte;
+    });
+  },
+  methods: {
+    editarReporte: function editarReporte() {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('kevin', this.reporte, this.alumno, this.familiar);
+    }
   }
 });
 
@@ -50833,7 +50846,19 @@ var render = function() {
                           staticClass: "mibtnI positionImprimir",
                           attrs: { type: "button" }
                         },
-                        [_c("i", { staticClass: "fas fa-print" })]
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "link",
+                              attrs: {
+                                href:
+                                  "imprimirInci/" + _vm.incidencia.IdIncidencia
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-print" })]
+                          )
+                        ]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -51160,7 +51185,20 @@ var render = function() {
                           staticClass: "mibtnI positionImprimir",
                           attrs: { type: "button" }
                         },
-                        [_c("i", { staticClass: "fas fa-print" })]
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "link",
+                              attrs: {
+                                href:
+                                  "imprimirConducta/" +
+                                  _vm.incidencia.IdIncidencia
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-print" })]
+                          )
+                        ]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -55581,7 +55619,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      return _vm.$emit("agregarJustificante", _vm.alumno)
+                      return _vm.agregarJustificante(_vm.alumno)
                     }
                   }
                 },
@@ -55648,7 +55686,7 @@ var render = function() {
                         },
                         on: {
                           click: function($event) {
-                            return _vm.$emit("verPase", pase)
+                            return _vm.mostrarPase(pase)
                           }
                         }
                       },
@@ -55668,22 +55706,7 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("add-justificante", {
-        on: {
-          paseGuardado: function($event) {
-            return _vm.pases.push($event)
-          },
-          justificanteGuardado: function($event) {
-            return _vm.justificantes.push($event)
-          },
-          justificanteEliminado: function($event) {
-            return _vm.justificanteEliminado($event)
-          },
-          paseEliminado: function($event) {
-            return _vm.paseEliminado($event)
-          }
-        }
-      })
+      _c("add-justificante")
     ],
     1
   )
@@ -56899,7 +56922,18 @@ var render = function() {
                       staticClass: "mibtnI positionImprimir",
                       attrs: { type: "button" }
                     },
-                    [_c("i", { staticClass: "fas fa-print" })]
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "link",
+                          attrs: {
+                            href: "imprimirReport/" + _vm.reporte.IdYonoabandono
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-print" })]
+                      )
+                    ]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -56914,6 +56948,11 @@ var render = function() {
                         type: "button",
                         "data-toggle": "modal",
                         "data-target": "#reporteTuto"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.editarReporte()
+                        }
                       }
                     },
                     [_c("i", { staticClass: "fas fa-edit" })]
@@ -57011,7 +57050,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "minicontenedor" }, [
-                  _c("b", [_vm._v("Observaciones:")]),
+                  _c("b", [_vm._v("Observaciones: ")]),
                   _vm._v(_vm._s(_vm.reporte.Observaciones))
                 ])
               ]),

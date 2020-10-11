@@ -88,7 +88,7 @@ Route::get('yonoAbandono', 'YonoAbandonoController@index');
 Route::post('yonoAbandono', 'YonoAbandonoController@store');
 Route::put('yonoAbandono/{tblyonoabandono}', 'YonoAbandonoController@update');
 Route::get('users', 'UserController@index');
-
+Route::name('imprimirYonoAbandono')->get('imprimirReport/{tblyonoabandono}','YonoAbandonoController@imprimirYonoAbandono');
 
 //ORIENTACION E
 Route::get('orientacion','OrientacionEController@reportes');
@@ -108,7 +108,8 @@ Route::post('incidencias', 'IncidenciasController@store');
 Route::put('incidencias/{tblincidencias}', 'IncidenciasController@update');
 Route::post('incidenciareal', 'IncidenciasController@reporteIncidencia');
 Route::put('incidenciareal/{tblincidencias}', 'IncidenciasController@editarIncidencia');
-
+Route::name('imprimirIncidencias')->get('imprimirInci/{tblincidencias}','IncidenciasController@imprimirIncidencias');
+Route::name('imprimirMalaConducta')->get('imprimirConducta/{tblincidencias}','IncidenciasController@imprimirMalaConducta');
 
 
 //INASISTENCIAS MAESTROS
@@ -118,6 +119,7 @@ Route::get('M', function(Illuminate\Http\Request $request) {
 });
 //INASISTENCIAS MAESTROS
 Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
+Route::get('registrarFaltas', 'FaltasController@registrarFaltas');
 
 //REPORTES GENERALES
 Route::get('R', function(){

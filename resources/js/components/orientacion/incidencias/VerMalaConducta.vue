@@ -26,7 +26,7 @@
                         </button>
 
                         <button  v-if="incidencia.Status && role!='admin'" type="button" class="mibtnI positionImprimir">
-                            <i class="fas fa-print"></i>
+                            <a :href="'imprimirConducta/'+ incidencia.IdIncidencia" class="link"><i class="fas fa-print"></i></a>
                         </button>
                         
                         <div class="text-center mt-5">

@@ -87,17 +87,17 @@
         this.$emit('dependenciaActualizada', res.data);
         $('#addDepencencia').modal('hide');
       },
-      /*actualizarDependencia() {
-        if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
-          alert('Debes de completar todos los campos antes de guardar');
-          return;
-        }
+      actualizarDependencia() {
+        // if (this.dependencia.Nombre.trim() === '' || this.dependencia.Direccion.trim() === '') {
+        //   alert('Debes de completar todos los campos antes de guardar');
+        //   return;
+        // }
 
         axios.put('/dependencias/' + this.dependencia.IdDependencia, this.dependencia)
           .then(res => {
             this.onSuccess(res);
           });
-      },*/
+      },
       saveDependencia() {
         if (this.dependencia.Nombre == undefined || this.dependencia.Direccion == undefined 
             || this.dependencia.Giro == undefined || this.dependencia.Telefono == undefined
