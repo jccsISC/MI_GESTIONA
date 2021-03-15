@@ -3,7 +3,7 @@
         <p class="subtitulos">Alumnos Reprobados por Unidad</p>
         <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
-            <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno)">
+            <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno, calificacion.Unidad, calificacion.Reporte)">
 
                 <div class="mcontent pl-2">
                     <p class="sizeName m-0"><b>{{ calificacion.Alumno.Nombre }} {{ calificacion.Alumno.ApePaterno }} {{ calificacion.Alumno.ApeMaterno }}</b></p>
@@ -50,7 +50,9 @@
             });
         },
         methods: {
-            seleccionarAlumno(alumno) {
+            seleccionarAlumno(alumno, unidad, reporte) {
+                alumno.Unidad = unidad;
+                alumno.Reporte = reporte;
                 bus.$emit('alumnoSeleccionado', alumno);               
             }
         }

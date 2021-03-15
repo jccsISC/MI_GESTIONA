@@ -387,6 +387,28 @@
                 this.jalarBecas();
                 this.jalarFaltas();
             });
+
+            bus.$on('incidenciaEditada', info => {
+
+               console.log('incidencias que ya tengo', this.incidencias);
+               // incidencias [{idIncidencia: 11, description: "hola"}, {idIncidencia: 12, description: "hola"}, {idIncidencia: 13, description: "hola"}]
+               console.log('lo que estoy recibiendo', info);
+               // info {idIncidencia: 11, description: "hola actualizado"}
+                
+                const nuevasIncidencias = [];
+
+
+               this.incidencias.forEach((i) => {
+                    if (i.idIncidencia == info.idIncidencia) {
+                        nuevasIncidencias.push(info);
+                    } else {
+                        nuevasIncidencias.push(i);
+                    }
+               });
+
+               this.incidencias = nuevasIncidencias;
+            });
+
         },
         computed:{
             promedioGeneral() {

@@ -9,7 +9,7 @@ class tblyonoabandono extends Model
     protected $table = 'tblyonoabandono';
     protected $primaryKey = 'IdYonoabandono';
     protected $fillable = ['IdAlumno','FechaInicio','FechaFin','Nombrequienderiva','IdFamiliar','Motivo'
-    ,'Derivacion','DescripcionDer','Status','Seguimiento','Observaciones','ResponsableSeguimiento','Existe', 'user_id'];
+    ,'Derivacion','DescripcionDer','Status','Seguimiento','Observaciones','ResponsableSeguimiento','Existe', 'user_id', 'Unidad'];
     public $timestamps = false;
 
     public function alumno() {

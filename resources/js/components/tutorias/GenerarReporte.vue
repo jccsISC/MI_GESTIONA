@@ -123,6 +123,7 @@
             });
 
             bus.$on('kevin', (reporte, alumno, familiar) => {   
+                console.log('jaskdfjklasjdf')
                 this.alumno = Object.assign({}, alumno);   
                 this.reporte = Object.assign({}, reporte);
                 this.familiar = Object.assign({}, familiar);
@@ -157,6 +158,7 @@
                 });
 
                 if (this.tipo == 'crear') {
+                    this.reporte.Unidad = this.alumno.Unidad;
                     axios.post('/yonoAbandono', this.reporte).then(res => {
                         this.reporte = res.data;
                         $('#reporteTuto').modal('hide');

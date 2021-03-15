@@ -1,9 +1,16 @@
 <template>
     <div>
-        <div v-if="alumno.IdAlumno" class="posicionBtn">
+        <div v-if="alumno.IdAlumno && !alumno.Reporte" class="posicionBtn">
             <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
                 @click="$emit('generarReporte', alumno)">
                 Generar Reporte
+            </button>
+        </div>
+
+        <div v-if="alumno.IdAlumno && alumno.Reporte" class="posicionBtn">
+            <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
+                @click="emit('kevin', alumno.Reporte, alumno, alumno.Reporte.familiar)">
+                Editar Reporte
             </button>
         </div>
 
@@ -19,6 +26,11 @@
             return {
                 alumno: {},
             
+            }
+        },
+        methods: {
+            emit(el, julio, se, lacome) {
+                bus.$emit(el, julio, se, lacome);
             }
         },
         created() {

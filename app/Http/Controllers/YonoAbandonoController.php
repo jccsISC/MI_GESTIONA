@@ -41,7 +41,8 @@ class YonoAbandonoController extends Controller
             'Seguimiento' => 'required',
             'Observaciones' => 'required',
             'ResponsableSeguimiento' => 'required',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'Unidad' => 'required',
         ]);
 
         return tblyonoabandono::create(

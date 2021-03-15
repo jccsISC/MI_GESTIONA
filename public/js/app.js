@@ -3030,6 +3030,23 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.jalarFaltas();
     });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('incidenciaEditada', function (info) {
+      console.log('incidencias que ya tengo', _this.incidencias); // incidencias [{idIncidencia: 11, description: "hola"}, {idIncidencia: 12, description: "hola"}, {idIncidencia: 13, description: "hola"}]
+
+      console.log('lo que estoy recibiendo', info); // info {idIncidencia: 11, description: "hola actualizado"}
+
+      var nuevasIncidencias = [];
+
+      _this.incidencias.forEach(function (i) {
+        if (i.idIncidencia == info.idIncidencia) {
+          nuevasIncidencias.push(info);
+        } else {
+          nuevasIncidencias.push(i);
+        }
+      });
+
+      _this.incidencias = nuevasIncidencias;
+    });
   },
   computed: {
     promedioGeneral: function promedioGeneral() {
@@ -7227,6 +7244,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.tipo = 'crear';
     });
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('kevin', function (reporte, alumno, familiar) {
+      console.log('jaskdfjklasjdf');
       _this.alumno = Object.assign({}, alumno);
       _this.reporte = Object.assign({}, reporte);
       _this.familiar = Object.assign({}, familiar);
@@ -7266,6 +7284,7 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       if (this.tipo == 'crear') {
+        this.reporte.Unidad = this.alumno.Unidad;
         axios.post('/yonoAbandono', this.reporte).then(function (res) {
           _this3.reporte = res.data;
           $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
@@ -7321,6 +7340,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -7328,6 +7354,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       alumno: {}
     };
+  },
+  methods: {
+    emit: function emit(el, julio, se, lacome) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit(el, julio, se, lacome);
+    }
   },
   created: function created() {
     var _this = this;
@@ -7618,7 +7649,9 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    seleccionarAlumno: function seleccionarAlumno(alumno) {
+    seleccionarAlumno: function seleccionarAlumno(alumno, unidad, reporte) {
+      alumno.Unidad = unidad;
+      alumno.Reporte = reporte;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('alumnoSeleccionado', alumno);
     }
   }
@@ -50938,7 +50971,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
                       ])
                     ])
                   ]),
@@ -56843,7 +56876,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.alumno.IdAlumno
+      _vm.alumno.IdAlumno && !_vm.alumno.Reporte
         ? _c("div", { staticClass: "posicionBtn" }, [
             _c(
               "button",
@@ -56861,6 +56894,33 @@ var render = function() {
                 }
               },
               [_vm._v("\n            Generar Reporte\n        ")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.alumno.IdAlumno && _vm.alumno.Reporte
+        ? _c("div", { staticClass: "posicionBtn" }, [
+            _c(
+              "button",
+              {
+                staticClass: "miBtn",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#reporteTuto"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.emit(
+                      "kevin",
+                      _vm.alumno.Reporte,
+                      _vm.alumno,
+                      _vm.alumno.Reporte.familiar
+                    )
+                  }
+                }
+              },
+              [_vm._v("\n            Editar Reporte\n        ")]
             )
           ])
         : _vm._e(),
@@ -57372,7 +57432,11 @@ var render = function() {
               staticClass: "micardNotificaciones mb-3",
               on: {
                 click: function($event) {
-                  return _vm.seleccionarAlumno(calificacion.Alumno)
+                  return _vm.seleccionarAlumno(
+                    calificacion.Alumno,
+                    calificacion.Unidad,
+                    calificacion.Reporte
+                  )
                 }
               }
             },
