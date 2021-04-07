@@ -8,7 +8,7 @@ class tblusuarios extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name','email','password','role'];
+    protected $fillable = ['id', 'name','email','password'];
     public $timestamps = false;
   
     public function roles() {

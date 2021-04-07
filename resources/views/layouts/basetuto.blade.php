@@ -30,12 +30,15 @@
                 <nav id="menu">
                     <ul>
                         <li><a href="/R">Reportes</a></li>
-                        <li><div class="cerrar" aria-labelledby="navbarDropdown">
+                        <li><a href="#"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></a>
+                            <ul>
+                               
+                                <li><div class="cerrar" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     <!-- {{ __('Logout') }} -->
-                                    Cerrar Sesión
+                                   Salir
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -43,6 +46,8 @@
                                 </form>
                             </div>
                         </li>
+                            </ul>
+                        </li> 
                     </ul>
                 </nav>
             </div>

@@ -16,10 +16,11 @@ Vue.component('cal-general', require('./components/generales/calGeneral.vue').de
 Vue.component('admin', require('./components/generales/Admin.vue').default);
 
 
-
 //Usuarios
 Vue.component('ver-usuarios', require('./components/usuarios/VerUsuarios.vue').default);
 Vue.component('create-form-usuarios', require('./components/usuarios/AgregarUsuarios.vue').default);
+Vue.component('edit-form-usuarios', require('./components/usuarios/ModificarUsuarios.vue').default);
+
 
 //becas
 Vue.component('ver-becas', require('./components/trabajosocial/becas/VerBecas.vue').default);

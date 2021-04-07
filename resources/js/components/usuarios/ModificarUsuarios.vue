@@ -1,9 +1,9 @@
 <template >  
-  <div class="modal fade" id="addUsuario" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="ModUsuario" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Agregar Usuario</h5>
+          <h5 class="modal-title">Modificar Usuario</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
@@ -11,10 +11,7 @@
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
-            <div  class="form-group">
-			          <label>Identificador</label>
-			          <input  type="number" class="form-control" placeholder="Ingresa el numero de nómina" v-model="usuario.id">
-		  	    </div>
+        
               <div class="form-group">
 			          <label>Nombre</label>
 			          <input type="text" class="form-control" placeholder="Ingresa el nombre completo" v-model="usuario.name">
@@ -37,6 +34,7 @@
               <div class="form-group">
 			          <label>Tipo de Usuario</label>
 			          <select name="role" required v-model="usuario.role">
+                <option value="1">Administrador</option> 
                 <option value="2">Tutor</option> 
                 <option value="3">Orientador</option> 
                 <option value="4">Trabajador social</option> 
@@ -44,7 +42,7 @@
               </select>
 		  	      </div>
 
-		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> Guardar </button>
+		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> Actualizar </button>
 	  	    </form>
         </div>
       </div>
@@ -56,7 +54,7 @@
 <script>
   export default {
     created: function() {
-      this.$parent.$on('actualizarUsuario', usuario => {
+      this.$parent.$on('modificarUsuario', usuario => {
         this.usuario = JSON.parse(JSON.stringify(usuario));
       }
   
@@ -72,29 +70,29 @@
       onSubmit() {
          
         if (this.usuario.id) {
-          this.saveUsuario()
+     
+          this.modificarUsuario();
+           
+         
         }
       },
        onSuccess(res) {
       
         this.$emit('usuarioActualizado', res.data);
-        $('#addUsuario').modal('hide');
+        $('#ModUsuario').modal('hide');
       },
+      modificarUsuario() {
+            
+  
+        if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
+          alert('Debes de completar todos los campos antes de guardar');
+          return;
+        }
     
-      saveUsuario() {
-        if (this.usuario.name == undefined || this.usuario.email == undefined || this.usuario.password == undefined || this.usuario.password2 == undefined) {
-            alert('Verifique y llene todos los campos');
-              return;
-        }
-        if(this.usuario.password != this.usuario.password2){
-          alert('Las contraseñas no coinciden');
-            return;
-        }
-
-        axios.post('/usuarios', this.usuario)
+        axios.put('/usuarios/' + this.usuario.id, this.usuario)
           .then(res => {
-            res.data.esNueva = true;
             this.onSuccess(res);
+         
           });
       }
     }
