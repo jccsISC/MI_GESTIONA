@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/waves.css">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script type="text/javascript" src="js/dom-drag.js"></script>
@@ -56,6 +57,11 @@
         </footer>
 
     </div>
+    <script src="js/waves.js"></script>
+    <script type="text/javascript">
+        Waves.init();
+        Waves.attach('.button', ['waves-button', 'waves-float']);
+    </script>
 </body>
 
 <style>
