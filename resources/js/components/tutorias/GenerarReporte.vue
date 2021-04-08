@@ -47,11 +47,13 @@
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <br>
                             </div>
                             <div>
                                 <p class="m-0"><b>Madre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
+                                <br>
                             </div>
                                 
                             <p><b>Motivo</b></p> 

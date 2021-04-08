@@ -2980,10 +2980,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'role'],
@@ -4392,7 +4388,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -4476,6 +4471,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
 //
 //
 //
@@ -6463,6 +6460,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['role'],
@@ -7231,6 +7229,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -7401,6 +7401,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12754,7 +12764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
 
 // exports
 
@@ -45430,7 +45440,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                    _c("b", [_vm._v("Fecha nacimiento: ")]),
                     _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
                   ]),
                   _vm._v(" "),
@@ -45604,7 +45614,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("label", { staticClass: "mr-2" }, [
-                    _c("b", [_vm._v("Entre Calle: ")]),
+                    _c("b", [_vm._v("Entre calle: ")]),
                     _vm._v(
                       _vm._s(
                         _vm.alumno.EntreCalle
@@ -45615,7 +45625,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("label", [
-                    _c("b", [_vm._v("Entre Calle: ")]),
+                    _c("b", [_vm._v("Entre calle: ")]),
                     _vm._v(
                       _vm._s(
                         _vm.alumno.EntreCalle2
@@ -45662,7 +45672,7 @@ var render = function() {
                   _vm._m(10),
                   _vm._v(" "),
                   _c("p", { staticClass: "m-0 p-0" }, [
-                    _c("b", [_vm._v("Promedio General: ")]),
+                    _c("b", [_vm._v("Promedio general: ")]),
                     _vm._v(" " + _vm._s(_vm.promedioGeneral))
                   ])
                 ]),
@@ -45839,12 +45849,12 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("Pie Plano: ")]),
+                      _c("b", [_vm._v("Pie plano: ")]),
                       _vm._v(_vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No"))
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("ProbBucal: ")]),
+                      _c("b", [_vm._v("Salud bucal: ")]),
                       _vm._v(_vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No"))
                     ]),
                     _vm._v(" "),
@@ -45854,13 +45864,13 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("ProbAuditivo: ")]),
-                      _vm._v(_vm._s(_vm.salud.ProbAuditivo == 1 ? "Si" : "No"))
+                      _c("b", [_vm._v("Problemas lenguaje: ")]),
+                      _vm._v(_vm._s(_vm.salud.ProbLenguaje == 1 ? "Si" : "No"))
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("ProbLenguaje: ")]),
-                      _vm._v(_vm._s(_vm.salud.ProbLenguaje == 1 ? "Si" : "No"))
+                      _c("b", [_vm._v("Problemas auditivo: ")]),
+                      _vm._v(_vm._s(_vm.salud.ProbAuditivo == 1 ? "Si" : "No"))
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
@@ -45909,7 +45919,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "m-0" }, [
-                      _c("b", [_vm._v("Problemas Posturales: ")]),
+                      _c("b", [_vm._v("Problemas posturales: ")]),
                       _vm._v(
                         _vm._s(_vm.salud.ProbPosturales == 1 ? "Si" : "No")
                       )
@@ -46014,7 +46024,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("p", [
-                                _c("b", [_vm._v("Descripción del Reporte: ")]),
+                                _c("b", [_vm._v("Descripción del reporte: ")]),
                                 _vm._v(
                                   _vm._s(_vm.inconveniente.DescripcionReporte)
                                 )
@@ -46162,7 +46172,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", [
                         _c("p", { staticClass: "mb-1" }, [
-                          _c("b", [_vm._v("Fecha Inicio: ")]),
+                          _c("b", [_vm._v("Fecha inicio: ")]),
                           _vm._v(
                             _vm._s(
                               _vm.servicio.FechaInicio
@@ -46173,7 +46183,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
-                          _c("b", [_vm._v("Fecha Final: ")]),
+                          _c("b", [_vm._v("Fecha final: ")]),
                           _vm._v(
                             _vm._s(
                               _vm.servicio.FechaFin
@@ -46239,7 +46249,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "mb-1" }, [
-                          _c("b", [_vm._v("Tipo de Vinculación: ")]),
+                          _c("b", [_vm._v("Tipo de vinculación: ")]),
                           _vm._v(
                             _vm._s(
                               _vm.servicio.IdServPrac
@@ -46264,7 +46274,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("Fecha Inicio: ")]),
+                      _c("b", [_vm._v("Fecha inicio: ")]),
                       _vm._v(
                         _vm._s(
                           _vm.practica.FechaInicio
@@ -46275,7 +46285,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("Fecha Final: ")]),
+                      _c("b", [_vm._v("Fecha final: ")]),
                       _vm._v(
                         _vm._s(
                           _vm.practica.FechaFin ? _vm.practica.FechaFin : "NC"
@@ -46339,7 +46349,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mb-1" }, [
-                      _c("b", [_vm._v("Tipo de Vinculación: ")]),
+                      _c("b", [_vm._v("Tipo de vinculación: ")]),
                       _vm._v(
                         _vm._s(
                           _vm.practica.IdServPrac
@@ -46452,15 +46462,15 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "mr-3" }, [
-      _c("b", [_vm._v("Tipo de Afiliación: ")]),
-      _vm._v("No Capturado")
+      _c("b", [_vm._v("Tipo de afiliación: ")]),
+      _vm._v("No capturado")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v("NSS: ")]), _vm._v(" No Capturado")])
+    return _c("label", [_c("b", [_vm._v("NSS: ")]), _vm._v(" No capturado")])
   },
   function() {
     var _vm = this
@@ -46597,7 +46607,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "mt-4 m-0" }, [
-      _c("b", [_vm._v("Pases de Salida")])
+      _c("b", [_vm._v("Pases de salida")])
     ])
   },
   function() {
@@ -46610,7 +46620,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Practicas Profesionales")])])
+    return _c("p", [_c("b", [_vm._v("Practicas profesionales")])])
   },
   function() {
     var _vm = this
@@ -46705,7 +46715,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "contenedorCard" }, [
-    _c("p", { staticClass: "subtitulos" }, [_vm._v("Información Personal")]),
+    _c("p", { staticClass: "subtitulos" }, [_vm._v("Información personal")]),
     _vm._v(" "),
     _c(
       "div",
@@ -46745,7 +46755,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                  _c("b", [_vm._v("Fecha nacimiento: ")]),
                   _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
                 ]),
                 _vm._v(" "),
@@ -46803,7 +46813,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "m-0 miMaxLength2" }, [
-                      _c("b", [_vm._v("Lugar De Nacimiento: ")]),
+                      _c("b", [_vm._v("Lugar de nacimiento: ")]),
                       _vm._v(
                         _vm._s(_vm.alumno.MunicipioNac) +
                           " " +
@@ -46818,7 +46828,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", [
                   _c("p", { staticClass: "m-0 pl-4" }, [
-                    _c("b", [_vm._v("Tipo de Sangre: ")]),
+                    _c("b", [_vm._v("Tipo de sangre: ")]),
                     _vm._v(_vm._s(_vm.alumno.TipoSangre))
                   ]),
                   _vm._v(" "),
@@ -46943,7 +46953,7 @@ var render = function() {
       _vm._v(" "),
       _vm.alumno.IdAlumno
         ? _c("p", { staticClass: "subtitulos sizeCalGeneral" }, [
-            _vm._v("Promedio General: "),
+            _vm._v("Promedio general: "),
             _c("label", { staticClass: "text-danger" }, [
               _vm._v(_vm._s(_vm.promedioGeneral))
             ])
@@ -46971,7 +46981,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("P5")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Promedio Final")]),
+        _c("th", [_vm._v("Promedio final")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ordinario")]),
         _vm._v(" "),
@@ -47033,7 +47043,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body-g2 sizeGeneral" }, [
                   _c("p", { staticClass: "subtitulos" }, [
-                    _vm._v("Información Personal")
+                    _vm._v("Información personal")
                   ]),
                   _vm._v(" "),
                   _c("hr", { staticClass: "barrasubtitulos" }),
@@ -47062,7 +47072,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Fecha Nacimiento: ")]),
+                                _c("b", [_vm._v("Fecha nacimiento: ")]),
                                 _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
                               ]),
                               _vm._v(" "),
@@ -47252,7 +47262,7 @@ var render = function() {
                               _c("br"),
                               _vm._v(" "),
                               _c("label", { staticClass: "m-0 mr-1" }, [
-                                _c("b", [_vm._v("Entre Calle: ")]),
+                                _c("b", [_vm._v("Entre calle: ")]),
                                 _vm._v(
                                   _vm._s(
                                     _vm.alumno.EntreCalle
@@ -47263,7 +47273,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("label", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Entre Calle: ")]),
+                                _c("b", [_vm._v("Entre calle: ")]),
                                 _vm._v(
                                   _vm._s(
                                     _vm.alumno.EntreCalle2
@@ -47278,7 +47288,7 @@ var render = function() {
                               _c("div", { staticClass: "linea" }),
                               _vm._v(" "),
                               _c("label", { staticClass: "m-0 mr-5" }, [
-                                _c("b", [_vm._v("Tipo de Sangre: ")]),
+                                _c("b", [_vm._v("Tipo de sangre: ")]),
                                 _vm._v(_vm._s(_vm.alumno.TipoSangre))
                               ]),
                               _vm._v(" "),
@@ -47305,7 +47315,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitulos text-center" }, [
-                    _vm._v("Información Académica")
+                    _vm._v("Información académica")
                   ]),
                   _vm._v(" "),
                   _c("hr", { staticClass: "barrasubtitulos" }),
@@ -47321,7 +47331,7 @@ var render = function() {
                                 _vm._m(9),
                                 _vm._v(" "),
                                 _c("p", { staticClass: "m-0 p-0" }, [
-                                  _c("b", [_vm._v("Promedio General: ")]),
+                                  _c("b", [_vm._v("Promedio general: ")]),
                                   _vm._v(" " + _vm._s(_vm.promedioGeneral))
                                 ])
                               ]),
@@ -47542,7 +47552,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("ProbBucal: ")]),
+                                    _c("b", [_vm._v("Salud bucal: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.salud.ProbBucal == 1 ? "Si" : "No"
@@ -47560,7 +47570,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("ProbAuditivo: ")]),
+                                    _c("b", [_vm._v("Problemas auditivo: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.salud.ProbAuditivo == 1
@@ -47571,7 +47581,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("ProbLenguaje: ")]),
+                                    _c("b", [_vm._v("Problemas lenguaje: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.salud.ProbLenguaje == 1
@@ -47635,7 +47645,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Problemas Posturales: ")]),
+                                    _c("b", [_vm._v("Problemas posturales: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.salud.ProbPosturales == 1
@@ -47753,7 +47763,7 @@ var render = function() {
                                           _c("p", [
                                             _c("b", [
                                               _vm._v(
-                                                "Descripción del Reporte: "
+                                                "Descripción del reporte: "
                                               )
                                             ]),
                                             _vm._v(
@@ -47812,7 +47822,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitulos text-center" }, [
-                    _vm._v("Trabajo Social")
+                    _vm._v("Trabajo social")
                   ]),
                   _vm._v(" "),
                   _c("hr", { staticClass: "barrasubtitulos" }),
@@ -47929,7 +47939,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("div", [
                                       _c("p", { staticClass: "mb-1" }, [
-                                        _c("b", [_vm._v("Fecha Inicio: ")]),
+                                        _c("b", [_vm._v("Fecha inicio: ")]),
                                         _vm._v(
                                           _vm._s(
                                             _vm.servicio.FechaInicio
@@ -47940,7 +47950,7 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("p", { staticClass: "mb-1" }, [
-                                        _c("b", [_vm._v("Fecha Final: ")]),
+                                        _c("b", [_vm._v("Fecha final: ")]),
                                         _vm._v(
                                           _vm._s(
                                             _vm.servicio.FechaFin
@@ -48010,7 +48020,7 @@ var render = function() {
                                       _vm._v(" "),
                                       _c("p", { staticClass: "mb-1" }, [
                                         _c("b", [
-                                          _vm._v("Tipo de Vinculación: ")
+                                          _vm._v("Tipo de vinculación: ")
                                         ]),
                                         _vm._v(
                                           _vm._s(
@@ -48037,7 +48047,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", [
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Fecha Inicio: ")]),
+                                    _c("b", [_vm._v("Fecha inicio: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.practica.FechaInicio
@@ -48048,7 +48058,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Fecha Final: ")]),
+                                    _c("b", [_vm._v("Fecha final: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.practica.FechaFin
@@ -48114,7 +48124,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Tipo de Vinculación: ")]),
+                                    _c("b", [_vm._v("Tipo de vinculación: ")]),
                                     _vm._v(
                                       _vm._s(
                                         _vm.practica.IdServPrac
@@ -48260,8 +48270,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Tipo de Afiliación: ")]),
-      _vm._v("No Capturado")
+      _c("b", [_vm._v("Tipo de sfiliación: ")]),
+      _vm._v("No capturado")
     ])
   },
   function() {
@@ -48270,7 +48280,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "m-0" }, [
       _c("b", [_vm._v("NSS: ")]),
-      _vm._v(" No Capturado")
+      _vm._v(" No capturado")
     ])
   },
   function() {
@@ -48388,7 +48398,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "mt-4" }, [
-      _c("b", [_vm._v("Pases de Salida")])
+      _c("b", [_vm._v("Pases de salida")])
     ])
   },
   function() {
@@ -48477,7 +48487,7 @@ var staticRenderFns = [
           _c("option", { attrs: { value: "" } }, [_vm._v("Informática")]),
           _vm._v(" "),
           _c("option", { attrs: { value: "" } }, [
-            _vm._v("Ecuaciones Diferenciales")
+            _vm._v("Ecuaciones diferenciales")
           ]),
           _vm._v(" "),
           _c("option", { attrs: { value: "" } }, [_vm._v("Calculo integral")])
@@ -49869,7 +49879,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            Mala Conducta\n        ")]
+              [_vm._v("\n            Mala conducta\n        ")]
             )
           ])
         : _vm._e(),
@@ -49958,7 +49968,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", [
-                  _c("b", [_vm._v("Descripción del Reporte: ")]),
+                  _c("b", [_vm._v("Descripción del reporte: ")]),
                   _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
                 ])
               ]),
@@ -50107,7 +50117,9 @@ var render = function() {
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
                         _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _c("div", [
@@ -50126,8 +50138,10 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _vm._m(5),
@@ -50574,7 +50588,9 @@ var render = function() {
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
                         _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _c("div", [
@@ -50593,8 +50609,10 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _vm._m(5),
@@ -50839,7 +50857,7 @@ var staticRenderFns = [
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
-            _vm._v("Reporte de Mala Conducta")
+            _vm._v("Reporte de mala conducta")
           ])
         ]
       ),
@@ -50916,7 +50934,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Descripció del reporte")])])
+    return _c("p", [_c("b", [_vm._v("Descripción del reporte")])])
   },
   function() {
     var _vm = this
@@ -50936,7 +50954,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Comentario del Padre o Tutor")])])
+    return _c("p", [_c("b", [_vm._v("Comentario del padre o tutor")])])
   },
   function() {
     var _vm = this
@@ -51094,7 +51112,9 @@ var render = function() {
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
                         _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _c("div", [
@@ -51114,7 +51134,9 @@ var render = function() {
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
                         _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ])
                   ]),
                   _vm._v(" "),
@@ -51267,21 +51289,21 @@ var staticRenderFns = [
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y Firma quien deriva")])
+        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y firma quien deriva")])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
         _c("p", { staticClass: "miM" }, [
-          _vm._v("Nombre y Firma del encargado Yo No Abandono Seguimiento")
+          _vm._v("Nombre y firma del encargado Yo No Abandono Seguimiento")
         ])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y Firma de quien da")])
+        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y firma de quien da")])
       ])
     ])
   }
@@ -51458,7 +51480,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
                       ])
                     ])
                   ]),
@@ -51482,7 +51504,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "minicontenedor" }, [
-                      _c("b", [_vm._v("Comentario del Padre o Tutor: ")]),
+                      _c("b", [_vm._v("Comentario del padre o tutor: ")]),
                       _vm._v(_vm._s(_vm.incidencia.ComentariosPa))
                     ]),
                     _vm._v(" "),
@@ -51526,7 +51548,7 @@ var staticRenderFns = [
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
-            _vm._v("Reporte de Mala Conducta")
+            _vm._v("Reporte de mala conducta")
           ])
         ]
       ),
@@ -51619,21 +51641,21 @@ var staticRenderFns = [
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y Firma quien deriva")])
+        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y firma quien deriva")])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
         _c("p", { staticClass: "miM" }, [
-          _vm._v("Nombre y Firma del encargado Yo No Abandono Seguimiento")
+          _vm._v("Nombre y firma del encargado Yo No Abandono Seguimiento")
         ])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y Firma de quien da")])
+        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y firma de quien da")])
       ])
     ])
   }
@@ -52159,7 +52181,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", [
                       _c("label", { staticClass: "ml-1" }, [
-                        _vm._v("Salud Bucal ")
+                        _vm._v("Salud bucal ")
                       ]),
                       _vm._v(" "),
                       _c("label", { staticClass: "radioContent" }, [
@@ -52223,7 +52245,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("label", { staticClass: "ml-2 mr-3" }, [
-                        _vm._v("Pie Plano ")
+                        _vm._v("Pie plano ")
                       ]),
                       _vm._v(" "),
                       _c("label", { staticClass: "radioContent" }, [
@@ -52350,7 +52372,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _c("label", [_vm._v("Problemas de Lenguaje ")]),
+                      _c("label", [_vm._v("Problemas de lenguaje ")]),
                       _vm._v(" "),
                       _c("label", { staticClass: "radioContent" }, [
                         _vm._v("Si\n                          "),
@@ -52413,7 +52435,7 @@ var render = function() {
                       _c("br"),
                       _vm._v(" "),
                       _c("label", { staticClass: "ml-1 mr-3" }, [
-                        _vm._v("Problemas Auditivos ")
+                        _vm._v("Problemas auditivos ")
                       ]),
                       _vm._v(" "),
                       _c("label", { staticClass: "radioContent" }, [
@@ -52569,7 +52591,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("label", [_vm._v("Problemas Posturales ")]),
+                      _c("label", [_vm._v("Problemas posturales ")]),
                       _vm._v(" "),
                       _c("label", { staticClass: "radioContent" }, [
                         _vm._v("Si\n                          "),
@@ -52998,7 +53020,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "m-0 p-0" }, [
-                _c("b", [_vm._v("Problemas Posturales: ")]),
+                _c("b", [_vm._v("Problemas posturales: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbPosturales == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
@@ -53010,12 +53032,12 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "mcontenido pt-1 interlineado" }, [
               _c("p", { staticClass: "m-0 p-0" }, [
-                _c("b", [_vm._v("Pie Plano: ")]),
+                _c("b", [_vm._v("Pie plano: ")]),
                 _vm._v(_vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "m-0 p-0" }, [
-                _c("b", [_vm._v("Salud Bucal: ")]),
+                _c("b", [_vm._v("Salud bucal: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
@@ -53025,12 +53047,12 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "m-0 p-0" }, [
-                _c("b", [_vm._v("Problemas Lenguaje: ")]),
+                _c("b", [_vm._v("Problemas lenguaje: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbLenguaje == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "m-0 p-0" }, [
-                _c("b", [_vm._v("Problemas Auditivos: ")]),
+                _c("b", [_vm._v("Problemas auditivos: ")]),
                 _vm._v(_vm._s(_vm.salud.ProbAuditivo == 1 ? "Si" : "No"))
               ]),
               _vm._v(" "),
@@ -53112,7 +53134,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("label", { staticClass: "ml-5" }, [
-                _c("b", [_vm._v("Hora del Curso: ")]),
+                _c("b", [_vm._v("Hora del curso: ")]),
                 _c("input", {
                   directives: [
                     {
@@ -53520,7 +53542,7 @@ var staticRenderFns = [
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
-            _vm._v("Editar Taller")
+            _vm._v("Editar taller")
           ])
         ]
       ),
@@ -53543,7 +53565,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v("Nombre del Taller:")])])
+    return _c("label", [_c("b", [_vm._v("Nombre del taller:")])])
   },
   function() {
     var _vm = this
@@ -53567,7 +53589,7 @@ var staticRenderFns = [
         _c("th", [_vm._v("\n                  Semestre:\n                ")]),
         _vm._v(" "),
         _c("th", { attrs: { colspan: "2" } }, [
-          _vm._v("\n                  No Beneficiados:\n                ")
+          _vm._v("\n                  No. beneficiados:\n                ")
         ]),
         _vm._v(" "),
         _c("th", [_vm._v("\n                  Acciones\n                ")])
@@ -53750,7 +53772,7 @@ var render = function() {
                           [
                             _c("td", { attrs: { colspan: "3" } }, [
                               _vm._v(
-                                "\r\n                                Yo no Abandono\r\n                            "
+                                "\r\n                                Yo no abandono\r\n                            "
                               )
                             ]),
                             _vm._v(" "),
@@ -54221,11 +54243,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "float-left pl-3" }, [
-        _c("p", { staticClass: "subtitulos" }, [
-          _vm._v("Agregar beca al alumno")
-        ])
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "float-left pl-2",
+          staticStyle: { "margin-left": "28%" }
+        },
+        [
+          _c("p", { staticClass: "subtitulos text-center" }, [
+            _vm._v("Agregar beca al alumno")
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "button",
@@ -54630,11 +54659,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "float-left pl-2" }, [
-        _c("p", { staticClass: "subtitulos" }, [
-          _vm._v("Asignar dependencia al alumno")
-        ])
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "float-left pl-2",
+          staticStyle: { "margin-left": "20%" }
+        },
+        [
+          _c("p", { staticClass: "subtitulos text-center" }, [
+            _vm._v("Asignar dependencia al alumno")
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c(
         "button",
@@ -54663,7 +54699,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "mLabel" }, [
-      _c("b", [_vm._v("Fecha Inicio")])
+      _c("b", [_vm._v("Fecha inicio")])
     ])
   },
   function() {
@@ -54671,7 +54707,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "mLabel" }, [
-      _c("b", [_vm._v("Fecha Final")])
+      _c("b", [_vm._v("Fecha final")])
     ])
   },
   function() {
@@ -55028,7 +55064,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("b", [_vm._v("Tipo de Vinculación")])])
+    return _c("label", [_c("b", [_vm._v("Tipo de vinculación")])])
   }
 ]
 render._withStripped = true
@@ -55253,7 +55289,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Responsable")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tipo de Vinculación")]),
+        _c("th", [_vm._v("Tipo de vinculación")]),
         _vm._v(" "),
         _c("th", { attrs: { colspan: "2" } }, [_vm._v("Acciones")])
       ])
@@ -55341,7 +55377,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "pase" } }, [
-                            _vm._v("Pase de Salida")
+                            _vm._v("Pase de salida")
                           ])
                         ]
                       )
@@ -55533,7 +55569,13 @@ var render = function() {
                   ? _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { disabled: _vm.ver } }, [
                         _c("b", [_vm._v("Fecha: ")]),
-                        _vm._v(" 2020-01-29")
+                        _vm._v(
+                          _vm._s(new Date().getDate()) +
+                            "-" +
+                            _vm._s(new Date().getMonth() + 1) +
+                            "-" +
+                            _vm._s(new Date().getFullYear())
+                        )
                       ])
                     ])
                   : _vm._e(),
@@ -55558,7 +55600,9 @@ var render = function() {
                             _c("p", { staticClass: "m-0" }, [
                               _c("b", [_vm._v("Telefóno: ")]),
                               _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c("br")
                           ])
                         : _vm._e(),
                       _vm._v(" "),
@@ -55579,7 +55623,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("p", { staticClass: "m-0" }, [
                               _c("b", [_vm._v("Telefóno: ")]),
-                              _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                              _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
                             ])
                           ])
                         : _vm._e()
@@ -55689,7 +55733,7 @@ var staticRenderFns = [
         },
         [
           _c("p", { staticClass: "subtitulos text-center" }, [
-            _vm._v("Crear Justificante/Pase de salida")
+            _vm._v("Crear justificante/pase de salida")
           ])
         ]
       ),
@@ -55777,7 +55821,7 @@ var render = function() {
     { staticClass: "contenedorCard" },
     [
       _c("p", { staticClass: "subtitulos" }, [
-        _vm._v("Justificantes y Pases de Salida")
+        _vm._v("Justificantes y pases de salida")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "micardsm colorText" }, [
@@ -55900,7 +55944,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Pases de Salida")])
+      _c("b", [_vm._v("Pases de salida")])
     ])
   }
 ]
@@ -56180,7 +56224,7 @@ var render = function() {
       _c("p", { staticClass: "subtitulos" }, [
         _vm._v(
           _vm._s(
-            _vm.tipo === "ss" ? "Servicio Social" : "Practicas Profesionales"
+            _vm.tipo === "ss" ? "Servicio social" : "Practicas profesionales"
           )
         )
       ]),
@@ -56267,12 +56311,12 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "mt-1" }, [
-                    _c("b", [_vm._v("Fecha Inicio: ")]),
+                    _c("b", [_vm._v("Fecha inicio: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaInicio))
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "mt-1" }, [
-                    _c("b", [_vm._v("Fecha Fin: ")]),
+                    _c("b", [_vm._v("Fecha fin: ")]),
                     _vm._v(" " + _vm._s(_vm.practica.FechaFin) + " ")
                   ])
                 ])
@@ -56411,7 +56455,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "contenedorCard" }, [
-    _c("p", { staticClass: "subtitulos" }, [_vm._v("Faltas por Asignatura")]),
+    _c("p", { staticClass: "subtitulos" }, [_vm._v("Faltas por asignatura")]),
     _vm._v(" "),
     _c("div", { staticClass: "micard scrollTCalif colorText" }, [
       _vm.alumno.IdAlumno
@@ -56610,7 +56654,9 @@ var render = function() {
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
                         _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _c("div", [
@@ -56629,8 +56675,10 @@ var render = function() {
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                      ])
+                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
                     ]),
                     _vm._v(" "),
                     _vm._m(5),
@@ -57035,7 +57083,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            Generar Reporte\n        ")]
+              [_vm._v("\n            Generar reporte\n        ")]
             )
           ])
         : _vm._e(),
@@ -57062,7 +57110,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            Editar Reporte\n        ")]
+              [_vm._v("\n            Editar reporte\n        ")]
             )
           ])
         : _vm._e(),
@@ -57207,26 +57255,52 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", [
-                  _c("b", [_vm._v("ResponsableSeguimiento: ")]),
+                  _c("b", [_vm._v("Responsable de seguimiento: ")]),
                   _vm._v(_vm._s(_vm.reporte.ResponsableSeguimiento))
                 ]),
                 _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Fammiliar: ")]),
-                  _vm._v(
-                    _vm._s(
-                      _vm.familiar.NombrePadre +
+                _c("div", [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Nombre: ")]),
+                    _vm._v(
+                      _vm._s(_vm.familiar.NombrePadre) +
                         " " +
-                        _vm.familiar.ApePaternoPadre +
-                        " " +
-                        _vm.familiar.ApeMaternoPadre
+                        _vm._s(_vm.familiar.ApePaternoPadre) +
+                        "  " +
+                        _vm._s(_vm.familiar.ApeMaternoPadre)
                     )
-                  )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefóno: ")]),
+                    _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
                 ]),
                 _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Telefono: ")]),
-                  _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                _c("div", [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Nombre: ")]),
+                    _vm._v(
+                      _vm._s(_vm.familiar.NombreMadre) +
+                        " " +
+                        _vm._s(_vm.familiar.ApePaternoMadre) +
+                        "  " +
+                        _vm._s(_vm.familiar.ApeMaternoMadre)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "m-0" }, [
+                    _c("b", [_vm._v("Telefóno: ")]),
+                    _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                  ]),
+                  _vm._v(" "),
+                  _c("br")
                 ])
               ]),
               _vm._v(" "),
@@ -57257,9 +57331,9 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3),
+              _vm._m(5),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(6)
             ])
           ])
         ]
@@ -57341,6 +57415,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Padre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [_c("b", [_vm._v("Madre")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "contenedorRT mt-4 txtP" }, [
       _c("p", { staticClass: "m-0" }, [_vm._v("ACADEMICO")]),
       _vm._v(" "),
@@ -57369,21 +57455,21 @@ var staticRenderFns = [
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y Firma quien deriva")])
+        _c("p", { staticClass: "miI" }, [_vm._v("Nombre y firma quien deriva")])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
         _c("p", { staticClass: "miM" }, [
-          _vm._v("Nombre y Firma del encargado Yo No Abandono Seguimiento")
+          _vm._v("Nombre y firma del encargado Yo No Abandono Seguimiento")
         ])
       ]),
       _vm._v(" "),
       _c("div", [
         _c("hr", { staticClass: "miHr" }),
         _vm._v(" "),
-        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y Firma de quien da")])
+        _c("p", { staticClass: "miD" }, [_vm._v("Nombre y firma de quien da")])
       ])
     ])
   }
@@ -57419,7 +57505,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("p", { staticClass: "subtitulos" }, [
-      _vm._v("Notificación de Inasistencias")
+      _vm._v("Notificación de inasistencias")
     ]),
     _vm._v(" "),
     _c(
@@ -57548,7 +57634,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "contenedorCard" }, [
     _c("p", { staticClass: "subtitulos" }, [
-      _vm._v("Alumnos Reprobados por Unidad")
+      _vm._v("Alumnos reprobados por unidad")
     ]),
     _vm._v(" "),
     _c(
@@ -57654,7 +57740,7 @@ var render = function() {
                 [
                   _c("P", { staticClass: "sizeName m-0" }, [
                     _c("b", [
-                      _vm._v("Unidad Reprobada "),
+                      _vm._v("Unidad reprobada "),
                       _c("label", { staticClass: "textShadow" }, [
                         _vm._v(_vm._s(calificacion.Unidad))
                       ])
@@ -57833,7 +57919,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Confirmar Contraseña")]),
+                  _c("label", [_vm._v("Confirmar contraseña")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -57862,7 +57948,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Tipo de Usuario")]),
+                  _c("label", [_vm._v("Tipo de usuario")]),
                   _vm._v(" "),
                   _c(
                     "select",
@@ -57931,7 +58017,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [_vm._v("Agregar Usuario")]),
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Agregar usuario")]),
       _vm._v(" "),
       _c(
         "button",
@@ -58099,7 +58185,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Confirmar Contraseña")]),
+                  _c("label", [_vm._v("Confirmar contraseña")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -58128,7 +58214,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Tipo de Usuario")]),
+                  _c("label", [_vm._v("Tipo de usuario")]),
                   _vm._v(" "),
                   _c(
                     "select",
@@ -58201,7 +58287,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [_vm._v("Modificar Usuario")]),
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Modificar usuario")]),
       _vm._v(" "),
       _c(
         "button",
@@ -74207,8 +74293,8 @@ var bus = new Vue();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\MI_GESTIONA\Mi_GESTIONAJBK\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

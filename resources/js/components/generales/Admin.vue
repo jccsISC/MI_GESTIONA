@@ -14,7 +14,7 @@
                     <div>
                         <p class="m-0"><b>Matricula: </b>{{alumno.IdAlumno}}</p>
                         <p class="m-0"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                        <p class="m-0"><b>Fecha Nacimiento: </b>{{alumno.FechaNacimiento}}</p>
+                        <p class="m-0"><b>Fecha nacimiento: </b>{{alumno.FechaNacimiento}}</p>
                         <p class="m-0"><b>Género: </b>{{alumno.Sexo == 'M' ? 'Masculino' : 'Femenino'}}</p>
                         <p class="m-0"><b>Telefóno: </b>{{alumno.Telefono}}</p>
                         <p class="m-0"><b>Telefóno2: </b>{{alumno.Telefono2 ? alumno.Telefono2 : ''}}</p>
@@ -71,16 +71,16 @@
                         <label><b>CP: </b>{{alumno.CodPostal}}</label> <br>
                         <label class="mr-5"><b>Colonia: </b>{{alumno.Colonia}}</label>
                         <label class="mr-4"><b>Municipio: </b>{{alumno.Municipio}}</label>
-                        <label class="mr-2"><b>Entre Calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
-                        <label><b>Entre Calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
+                        <label class="mr-2"><b>Entre calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
+                        <label><b>Entre calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
                     </div>
 
                     <div>
                         <div class="linea"></div>
                         <label class="mr-5"><b>Tipo de Sangre: </b>{{alumno.TipoSangre}}</label>
                         <label class="mr-5"><b>Etnia: </b>{{alumno.Etnia ? alumno.Etnia : 'S/N'}}</label> <br>
-                        <label class="mr-3"><b>Tipo de Afiliación: </b>No Capturado</label><br>
-                        <label><b>NSS: </b> No Capturado</label><br>
+                        <label class="mr-3"><b>Tipo de afiliación: </b>No capturado</label><br>
+                        <label><b>NSS: </b> No capturado</label><br>
                     </div>  
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <div v-if="alumno.IdAlumno" class="container contentCalif">
                     <div>
                         <p class="m-0 p-0"><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
-                        <p class="m-0 p-0"><b>Promedio General: </b> {{promedioGeneral}}</p>
+                        <p class="m-0 p-0"><b>Promedio general: </b> {{promedioGeneral}}</p>
                     </div>
 
                     <div class="tableCalf">
@@ -186,11 +186,11 @@
                     <div class="gridM2">
                        <div class="contentDetSalud">
                             <p class="mb-1"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>ProbBucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
+                            <p class="mb-1"><b>Pie plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
+                            <p class="mb-1"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
                             <p class="mb-1"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>ProbAuditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>ProbLenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                              <p class="mb-1"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                            <p class="mb-1"><b>Problemas auditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
                             <p class="mb-1"><b>Transtornos: </b>{{salud.Transtornos ? salud.Transtornos : 'No padece de transtornos...'}}</p>
                        </div>
 
@@ -199,7 +199,7 @@
                             <p class="m-0"><b>Descripción: </b>{{salud.DetAlergias ? salud.DetAlergias : 'No tiene alergias...'}}</p>
                             <p class="m-0"><b>Gravidez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
                             <p class="m-0"><b>Descripción: </b>{{salud.Gravidez ? salud.DetGravidez : 'No tiene gravidez...'}}</p>
-                            <p class="m-0"><b>Problemas Posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
+                            <p class="m-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
                             <p class="m-0"><b>Descripción: </b>{{salud.DetProbPosturales ? salud.DetProbPosturales : 'No tiene problemas posturales...'}}</p>
                             <p class="m-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
                             <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>   
@@ -231,7 +231,7 @@
                             <div class="mcontenidoL pt-1 interlineado">
                                 <p><b>Detalles</b></p> 
                                 <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                                <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                                <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
                             </div>
 
                             <div class="pt-1">
@@ -267,7 +267,7 @@
                         </div>
                         
                         <div>
-                            <p class="mt-4 m-0"><b>Pases de Salida</b></p>
+                            <p class="mt-4 m-0"><b>Pases de salida</b></p>
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
                                 @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
@@ -288,14 +288,14 @@
                             <div v-if="alumno.IdAlumno">
                                  <p><b>Servicio Social</b></p>
                                 <div>
-                                    <p class="mb-1"><b>Fecha Inicio: </b>{{servicio.FechaInicio ? servicio.FechaInicio : 'NC'}}</p>
-                                    <p class="mb-1"><b>Fecha Final: </b>{{servicio.FechaFin ? servicio.FechaFin : 'NC'}}</p>
+                                    <p class="mb-1"><b>Fecha inicio: </b>{{servicio.FechaInicio ? servicio.FechaInicio : 'NC'}}</p>
+                                    <p class="mb-1"><b>Fecha final: </b>{{servicio.FechaFin ? servicio.FechaFin : 'NC'}}</p>
                                     <p class="mb-1"><b>Dependencia: </b>{{servicio.IdServPrac ? servicio.dependencia.Nombre : 'NC'}}</p>
                                     <p class="mb-1"><b>Giro: </b>{{servicio.IdServPrac ? servicio.dependencia.Giro : 'NC'}}</p>
                                     <p class="mb-1"><b>Dirección: </b>{{servicio.IdServPrac ? servicio.dependencia.Direccion : 'NC'}}</p>
                                     <p class="mb-1"><b>Telefóno: </b>{{servicio.IdServPrac ? servicio.dependencia.Telefono : 'NC'}}</p>
                                     <p class="mb-1"><b>Responsable: </b>{{servicio.IdServPrac ? servicio.dependencia.Responsable : 'NC'}}</p>
-                                    <p class="mb-1"><b>Tipo de Vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : 'NC'}}</p>
+                                    <p class="mb-1"><b>Tipo de vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : 'NC'}}</p>
                                 </div>
                             </div>
                         </div>
@@ -305,16 +305,16 @@
                 <div>
                     <div class="liena2"></div>
                     <div v-if="alumno.IdAlumno">
-                        <p><b>Practicas Profesionales</b></p>
+                        <p><b>Practicas profesionales</b></p>
                         <div>
-                            <p class="mb-1"><b>Fecha Inicio: </b>{{practica.FechaInicio ? practica.FechaInicio : 'NC'}}</p>
-                            <p class="mb-1"><b>Fecha Final: </b>{{practica.FechaFin ? practica.FechaFin : 'NC'}}</p>
+                            <p class="mb-1"><b>Fecha inicio: </b>{{practica.FechaInicio ? practica.FechaInicio : 'NC'}}</p>
+                            <p class="mb-1"><b>Fecha final: </b>{{practica.FechaFin ? practica.FechaFin : 'NC'}}</p>
                             <p class="mb-1"><b>Dependencia: </b>{{practica.IdServPrac ? practica.dependencia.Nombre : 'NC'}}</p>
                             <p class="mb-1"><b>Giro: </b>{{practica.IdServPrac ? practica.dependencia.Giro : 'NC'}}</p>
                             <p class="mb-1"><b>Dirección: </b>{{practica.IdServPrac ? practica.dependencia.Direccion : 'NC'}}</p>
                             <p class="mb-1"><b>Telefóno: </b>{{practica.IdServPrac ? practica.dependencia.Telefono : 'NC'}}</p>
                             <p class="mb-1"><b>Responsable: </b>{{practica.IdServPrac ? practica.dependencia.Responsable : 'NC'}}</p>
-                            <p class="mb-1"><b>Tipo de Vinculación: </b>{{practica.IdServPrac ? practica.dependencia.TipoVinculacion : 'NC'}}</p>
+                            <p class="mb-1"><b>Tipo de vinculación: </b>{{practica.IdServPrac ? practica.dependencia.TipoVinculacion : 'NC'}}</p>
                         </div>
                     </div>
                 </div>

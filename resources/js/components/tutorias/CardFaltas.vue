@@ -1,6 +1,6 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Faltas por Asignatura</p>
+        <p class="subtitulos">Faltas por asignatura</p>
         <div class="micard scrollTCalif colorText">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm">
                 <thead>

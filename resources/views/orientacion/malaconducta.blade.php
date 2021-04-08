@@ -26,9 +26,9 @@
         <label class="m-0 ml-4"><b>Telefono: </b>{{$alumno->Telefono}}</label> <br>
         
         <label class="m-0"><b>Nombre de quien deriva: </b>{{$malaConducta->ResponsableSeguimiento}}</label> <br>
-        <label class="m-0"><b>Nombre del Papá: </b>{{$familiar->NombrePadre.' '.$familiar->ApePaternoPadre.' '.$familiar->ApeMaternoPadre}}</label>
+        <label class="m-0"><b>Nombre del papá: </b>{{$familiar->NombrePadre.' '.$familiar->ApePaternoPadre.' '.$familiar->ApeMaternoPadre}}</label>
         <label class="m-0 ml-4"><b>Telefono: </b>{{$familiar->TelefonoPadre}}</label> <br>
-        <label class="m-0"><b>Nombre de la Mamá: </b>{{$familiar->NombreMadre.' '.$familiar->ApePaternoMadre.' '.$familiar->ApeMaternoMadre}}</label>
+        <label class="m-0"><b>Nombre de la mamá: </b>{{$familiar->NombreMadre.' '.$familiar->ApePaternoMadre.' '.$familiar->ApeMaternoMadre}}</label>
         <label class="m-0 ml-5"><b>Telefono: </b>{{$familiar->TelefonoMadre}}</label>
     </div>
     
@@ -36,7 +36,7 @@
         <label class="minicontenedor"><b>Descripció del reporte: </b>{{$malaConducta->DescripcionReporte}}</label> <br>  
         <label class="minicontenedor"><b>Comentario de quien le da seguimiento: </b>{{$malaConducta->Comentarios}}</label> <br>
         <label class="minicontenedor"><b>Gravedad de la falta: </b>{{$malaConducta->TipoFalta}}</label> <br>
-        <label class="minicontenedor"><b>Comentario del Padre o Tutor: </b>{{$malaConducta->ComentariosPa}}</label> <br>
+        <label class="minicontenedor"><b>Comentario del padre o tutor: </b>{{$malaConducta->ComentariosPa}}</label> <br>
         <label class="minicontenedor"><b>Observaciones: </b>{{$malaConducta->Observaciones}}</label><br>
         <label class="minicontenedor"><b>Derivación: </b>{{$malaConducta->Derivacion}}</label>
     </div>
@@ -54,20 +54,20 @@
         <div class="float-left p-3 contentFirma">
             <!-- <hr class="miHr"> -->
             <label class="m-0">________________________</label>
-            <p class="miI">Nombre y Firma quien deriva</p>
+            <p class="miI">Nombre y firma quien deriva</p>
         </div>
 
         <div class="float-left p-3 contentFirma">
             <!-- <hr class="miHr"> -->
             <label class="m-0">________________________</label> <br>
-            <label class="m-0">Nombre y Firma del encargado</label> <br>
+            <label class="m-0">Nombre y firma del encargado</label> <br>
             <label class="m-0">Yo No Abandono Seguimiento</label>
         </div>
 
         <div class="float-left p-3 contentFirma">
             <!-- <hr class="miHr"> -->
             <label class="m-0">________________________</label> <br>
-            <label class="m-0">Nombre y Firma de quien da</label>
+            <label class="m-0">Nombre y firma de quien da</label>
         </div>
     </div>
 </body>

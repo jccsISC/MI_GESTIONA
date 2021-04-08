@@ -49,7 +49,7 @@
 		  	      </div>
 
               <div class="form-group">
-			          <label><b>Tipo de Vinculación</b></label>
+			          <label><b>Tipo de vinculación</b></label>
 			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el tipo de vinculación de la dependencia" required v-model="dependencia.TipoVinculacion">
 		  	      </div>
           

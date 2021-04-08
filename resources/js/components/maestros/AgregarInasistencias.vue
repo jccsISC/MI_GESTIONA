@@ -25,7 +25,7 @@
             <select name="" id="">
                 <option value="">Matemáticas</option>
                 <option value="">Informática</option>
-                <option value="">Ecuaciones Diferenciales</option>
+                <option value="">Ecuaciones diferenciales</option>
                 <option value="">Calculo integral</option>
             </select>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">{{tipo === 'ss' ? 'Servicio Social' : 'Practicas Profesionales'}}</p>
+        <p class="subtitulos">{{tipo === 'ss' ? 'Servicio social' : 'Practicas profesionales'}}</p>
         <div class="micardsm colorText" data-toggle="modal" data-target="#addPracticas">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                 <div>
@@ -17,8 +17,8 @@
                         <add-practservi-alumn :tipo="tipo" @practicaAlumnoAgregada="practica = $event"></add-practservi-alumn>     
                     </div>
                     <p class="mt-2"><b>Dependencia: </b> {{practica.dependencia ? practica.dependencia.Nombre : ''}} </p>
-                    <p class="mt-1"><b>Fecha Inicio: </b> {{practica.FechaInicio}}</p>
-                    <p class="mt-1"><b>Fecha Fin: </b> {{practica.FechaFin}} </p>
+                    <p class="mt-1"><b>Fecha inicio: </b> {{practica.FechaInicio}}</p>
+                    <p class="mt-1"><b>Fecha fin: </b> {{practica.FechaFin}} </p>
                 </div>
             </div>
         </div>    

@@ -1,6 +1,6 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Información Personal</p>
+        <p class="subtitulos">Información personal</p>
         <div id="cardInfoPersonal" class="micardP colorText" data-toggle="modal" :data-target="dataTarget">
             <div v-if="alumno.IdAlumno" class="miContent">
                 <div class="miImg">
@@ -11,7 +11,7 @@
                     <p class="m-0"><b>Matricula: </b>{{alumno.IdAlumno}}</p>
                     <p class="m-0 miMaxLength"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
                     <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
-                    <p class="m-0"><b>Fecha Nacimiento: </b>{{alumno.FechaNacimiento}}</p>
+                    <p class="m-0"><b>Fecha nacimiento: </b>{{alumno.FechaNacimiento}}</p>
                     <p class="m-0"><b>Género: </b>{{alumno.Sexo}}</p>
                 </div>
 
@@ -30,13 +30,13 @@
                     <p class="m-0 small "><b>Domicilio</b></p>
                     <P class="m-0"><b>Colonia: </b>{{alumno.Colonia}}</P>
                     <P class="m-0"><b>Calle: </b>{{alumno.Calle}} #{{alumno.NumExterior}}</P>
-                    <p class="m-0 miMaxLength2"><b>Lugar De Nacimiento: </b>{{alumno.MunicipioNac}} {{alumno.EstadoNac}}</p>
+                    <p class="m-0 miMaxLength2"><b>Lugar de nacimiento: </b>{{alumno.MunicipioNac}} {{alumno.EstadoNac}}</p>
                 </div>
 
                 <div class="vl"></div>
 
                 <div>
-                    <p class="m-0 pl-4"><b>Tipo de Sangre: </b>{{alumno.TipoSangre}}</p>
+                    <p class="m-0 pl-4"><b>Tipo de sangre: </b>{{alumno.TipoSangre}}</p>
                     <p class="m-0 pl-4"><b>Etnia: </b>{{alumno.Etnia}}</p>
                 </div>
             </div>

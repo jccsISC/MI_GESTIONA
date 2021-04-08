@@ -10,10 +10,10 @@
             <img src="images/logoCecy.png" alt="Logo cecy">
 
             <div class="encabezado">
-                <label>Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco</label><br>
+                <label>COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</label><br>
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
                 
-                <label>Folio:</label>
+                <label>FOLIO:</label>
                 <i>{{ $justi->IdJustificante }}</i>
             </div>
 

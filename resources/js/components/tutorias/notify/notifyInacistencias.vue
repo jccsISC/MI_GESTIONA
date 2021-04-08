@@ -2,7 +2,7 @@
     <div class="contenedorCard">
         <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
         <p class="subtitulos-small">Semana {{semana}}</p>
-        <p class="subtitulos">Notificación de Inasistencias</p>
+        <p class="subtitulos">Notificación de inasistencias</p>
         <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones mb-3" v-for="(alumno, keyinasistencia) in alumnos" :key="keyinasistencia" @click="seleccionarAlumno(alumno)">

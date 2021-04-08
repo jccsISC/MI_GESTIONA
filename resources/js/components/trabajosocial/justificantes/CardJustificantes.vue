@@ -1,6 +1,6 @@
 <template>
     <div class="contenedorCard">
-        <p class="subtitulos">Justificantes y Pases de Salida</p>
+        <p class="subtitulos">Justificantes y pases de salida</p>
         <div class="micardsm colorText">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
                 <button type="button" class="btn btn-primary btn-sm mr-2 mt-2 float-right" data-toggle="modal" data-target="#addJustificantes" @click="agregarJustificante(alumno)">
@@ -21,7 +21,7 @@
                </div>
                
               <div>
-                <p class="m-0"><b>Pases de Salida</b></p>
+                <p class="m-0"><b>Pases de salida</b></p>
                 <div class="scrollHTS">
                     <button class="btn btn-danger btn-sm  mr-1 p-0 pr-2 pl-2" 
                         @click="mostrarPase(pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 

@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div>
-            <div class="float-left pl-2">
-                <p class="subtitulos">Asignar dependencia al alumno</p>
+            <div class="float-left pl-2"  style="margin-left: 20%;">
+                <p class="subtitulos text-center">Asignar dependencia al alumno</p>
             </div>
             
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -25,12 +25,12 @@
             </div>
           
             <div class="form-group ml-0">
-                <label class="mLabel"><b>Fecha Inicio</b></label>
+                <label class="mLabel"><b>Fecha inicio</b></label>
                 <input type="date" class="form-control" placeholder="Ingresa la fecha inicial" required v-model="practica.FechaInicio">
             </div>
             
             <div class="form-group ml-0">
-                <label class="mLabel"><b>Fecha Final</b></label>
+                <label class="mLabel"><b>Fecha final</b></label>
                 <input type="date" class="form-control" placeholder="Ingresa el nombre de la dependencia" required v-model="practica.FechaFin">
             </div>
             

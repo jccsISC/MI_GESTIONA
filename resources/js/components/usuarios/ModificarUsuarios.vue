@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modificar Usuario</h5>
+          <h5 class="modal-title">Modificar usuario</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color: #800000">&times;</span>
           </button>
@@ -27,12 +27,12 @@
 		  	      </div>
 
                    <div class="form-group">
-			          <label>Confirmar Contraseña</label>
+			          <label>Confirmar contraseña</label>
 			          <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2">
 		  	      </div>
 		  	    
               <div class="form-group">
-			          <label>Tipo de Usuario</label>
+			          <label>Tipo de usuario</label>
 			          <select name="role" required v-model="usuario.role">
                 <option value="1">Administrador</option> 
                 <option value="2">Tutor</option> 

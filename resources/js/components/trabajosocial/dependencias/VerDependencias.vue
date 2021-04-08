@@ -24,7 +24,7 @@
                                 <th>Giro</th>
                                 <th>Teléfono</th>
                                 <th>Responsable</th>
-                                <th>Tipo de Vinculación</th>
+                                <th>Tipo de vinculación</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
                         </thead>

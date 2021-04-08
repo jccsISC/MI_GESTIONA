@@ -27,16 +27,16 @@
                     <p class="m-0 p-0"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
                     <p class="m-0 p-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
                     <p class="m-0 p-0"><b>Graviez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
-                    <p class="m-0 p-0"><b>Problemas Posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No'}}</p>
                     <p class="miMaxLength2"><b>Trastornos: </b>{{salud.Transtornos}}</p>
                 </div>
 
                 <div class="mcontenido pt-1 interlineado">
-                    <p class="m-0 p-0"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
-                    <p class="m-0 p-0"><b>Salud Bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Pie plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
                     <p class="m-0 p-0"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
-                    <p class="m-0 p-0"><b>Problemas Lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
-                    <p class="m-0 p-0"><b>Problemas Auditivos: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                    <p class="m-0 p-0"><b>Problemas auditivos: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
                     <p class="m-0 p-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
                 </div>
             </div>

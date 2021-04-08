@@ -30,17 +30,18 @@
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.ResponsableSeguimiento}}</p>
 
                     <div class="miGrid2 mt-1">
-                        
                         <div>
                            <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <br>
                             </div>
                             <div>
                                 <p class="m-0"><b>Madre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
+                                <br>
                             </div>
 
                             <p><b>Motivo</b></p> 
@@ -61,7 +62,6 @@
                             <input required v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
                         </div>
                     </div>
-
 
                      <button  type="submit" class="btnGuardar positionSave">
                         <i class="fas fa-save"></i> Guardar
@@ -126,8 +126,6 @@
                         bus.$emit('incidenciaEditada', res.data);
                     });
                 }
-                
-
             }
         }
     }

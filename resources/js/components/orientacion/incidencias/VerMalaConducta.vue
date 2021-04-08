@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div>
                         <div class="float-left" style="margin-left: 40%; margin-right: 30%;">
-                            <p class="subtitulos text-center">Reporte de Mala Conducta</p>
+                            <p class="subtitulos text-center">Reporte de mala conducta</p>
                         </div>
                         
                         <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -55,7 +55,7 @@
                             <div>
                                 <p class="m-0"><b>Madre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                             </div>
                         </div>
                         
@@ -63,7 +63,7 @@
                             <p class="minicontenedor"><b>Descripció del reporte: </b>{{incidencia.DescripcionReporte}}</p>  
                             <p class="minicontenedor"><b>Comentario de quien le da seguimiento: </b>{{incidencia.Comentarios}}</p>
                             <p class="minicontenedor"><b>Gravedad de la falta: </b>{{incidencia.TipoFalta}}</p>
-                            <p class="minicontenedor"><b>Comentario del Padre o Tutor: </b>{{incidencia.ComentariosPa}}</p>
+                            <p class="minicontenedor"><b>Comentario del padre o tutor: </b>{{incidencia.ComentariosPa}}</p>
                             <p class="minicontenedor"><b>Observaciones: </b>{{incidencia.Observaciones}}</p>
                             <p class="minicontenedor"><b>Derivación: </b>{{incidencia.Derivacion}}</p>
                         </div>
@@ -80,17 +80,17 @@
                         <div class="gridFirmar mb-5">
                             <div>
                                 <hr class="miHr">
-                                <p class="miI">Nombre y Firma quien deriva</p>
+                                <p class="miI">Nombre y firma quien deriva</p>
                             </div>
 
                             <div>
                                 <hr class="miHr">
-                                <p class="miM">Nombre y Firma del encargado Yo No Abandono Seguimiento</p>
+                                <p class="miM">Nombre y firma del encargado Yo No Abandono Seguimiento</p>
                             </div>
 
                             <div>
                                 <hr class="miHr">
-                                <p class="miD">Nombre y Firma de quien da</p>
+                                <p class="miD">Nombre y firma de quien da</p>
                             </div>
                         </div>
                     </div>

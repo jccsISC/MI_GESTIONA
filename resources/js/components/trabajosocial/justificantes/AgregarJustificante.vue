@@ -4,7 +4,7 @@
       <div class="modal-content">
          <div>
             <div class="float-left pl-2"  style="margin-left: 28%;">
-                <p class="subtitulos text-center">Crear Justificante/Pase de salida</p>
+                <p class="subtitulos text-center">Crear justificante/pase de salida</p>
             </div>
             
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -19,7 +19,7 @@
             <div v-if="!ver" class="form-group">
 			          <select v-model="tipo">
                   <option value="justificante">Justificante</option>
-                  <option value="pase">Pase de Salida</option>
+                  <option value="pase">Pase de salida</option>
                 </select>
             </div>
 
@@ -52,7 +52,7 @@
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label :disabled="ver"><b>Fecha: </b> 2020-01-29</label>
+			          <label :disabled="ver"><b>Fecha: </b>{{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</label>
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
@@ -60,11 +60,12 @@
                     <p class="m-0"><b>Padre</b></p>
                     <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                     <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                    <br>
                 </div>
                 <div v-if="!ver">
                     <p class="m-0"><b>Madre</b></p>
                     <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                 </div>
 		  	    </div>
 		  	  

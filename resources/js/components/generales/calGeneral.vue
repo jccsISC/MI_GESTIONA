@@ -12,7 +12,7 @@
                         <th>P3</th>
                         <th>P4</th>
                         <th>P5</th>
-                        <th>Promedio Final</th>
+                        <th>Promedio final</th>
                         <th>Ordinario</th>
                         <th>Inter</th>
                         <th>Extra</th>
@@ -32,7 +32,7 @@
                 </tbody>
             </table>
 
-            <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral">Promedio General: <label class="text-danger">{{promedioGeneral}}</label></p> 
+            <p v-if="alumno.IdAlumno" class="subtitulos sizeCalGeneral">Promedio general: <label class="text-danger">{{promedioGeneral}}</label></p> 
         </div>
     </div>
 </template>

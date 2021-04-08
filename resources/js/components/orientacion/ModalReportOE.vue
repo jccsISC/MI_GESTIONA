@@ -6,7 +6,7 @@
             </button>
 
             <button @click="$emit('generarMalaConducta', alumno)" type="button" class="miBtn posicionbt" data-toggle="modal" data-target="#reporteConducta">
-                Mala Conducta
+                Mala conducta
             </button>
         </div>
 

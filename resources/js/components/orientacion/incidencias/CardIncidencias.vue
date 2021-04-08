@@ -22,7 +22,7 @@
                     <div class="mcontenidoL pt-1 interlineado">
                         <p><b>Detalles</b></p>
                         <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                        <p><b>Descripción del Reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                        <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
                     </div>
 
                     <div class="pt-1">

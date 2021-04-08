@@ -1,6 +1,6 @@
 <template>
       <div class="contenedorCard">
-        <p class="subtitulos">Alumnos Reprobados por Unidad</p>
+        <p class="subtitulos">Alumnos reprobados por unidad</p>
         <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno, calificacion.Unidad, calificacion.Reporte)">
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="mcontent">
-                    <P class="sizeName m-0"><b>Unidad Reprobada <label class="textShadow">{{calificacion.Unidad}}</label></b></P>
+                    <P class="sizeName m-0"><b>Unidad reprobada <label class="textShadow">{{calificacion.Unidad}}</label></b></P>
                     <!--  <p class="m-0 p-0">Motivo:</p>
                     <p class="m-0 pl-2">Faltas<img class="micircle mLeft " src="images/circleRojo.png" alt=""></p>
                     <p class="m-0 pl-2">Calificación<img class="micircle ml-1" src="images/circulo.png" alt=""></p> -->

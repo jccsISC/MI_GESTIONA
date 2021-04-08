@@ -6,9 +6,9 @@
        <div class="todo" >
             <img src="images/logoCecy.png" alt="Logo cecy">
             <div class="encabezado">
-                <label>Colegio de Estudios Científicos y Tecnológicos del Estado de Jalisco</label><br>
+            <label>COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</label><br>
                 <label>PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</label><br>
-                <label>Folio:</label> <i>{{ $pase->IdPaseSal }}</i>
+                <label>FOLIO:</label> <i>{{ $pase->IdPaseSal }}</i>
             </div>
             <hr width=300>
             <p><h1>PASE DE SALIDA</h1><p>
@@ -25,7 +25,7 @@
       
             <hr id="linea"  width=180>  
             <p id="autoriza"><label >Autorizó salida</label></p>
-            <p id="firma"><label >Nombre y Firma</label></p>
+            <p id="firma"><label >Nombre y firma</label></p>
         </div>
 
    </BODY>

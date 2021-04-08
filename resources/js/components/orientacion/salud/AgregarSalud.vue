@@ -39,7 +39,7 @@
                     </div>
                     
                     <div>
-                        <label class="ml-1">Salud Bucal </label>
+                        <label class="ml-1">Salud bucal </label>
                         <label class="radioContent">Si
                             <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal">
                             <span class="circle"></span>
@@ -50,7 +50,7 @@
                         </label> 
                         <br>
 
-                        <label class="ml-2 mr-3">Pie Plano </label>
+                        <label class="ml-2 mr-3">Pie plano </label>
                         <label class="radioContent">Si
                             <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano">
                             <span class="circle"></span>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div>
-                        <label>Problemas de Lenguaje </label>
+                        <label>Problemas de lenguaje </label>
                         <label class="radioContent">Si
                             <input type="radio" name="problemaL" value="1" v-model="salud.ProbLenguaje">
                             <span class="circle"></span>
@@ -83,7 +83,7 @@
                             <span class="circle"></span>
                         </label> 
                         <br>
-                        <label class="ml-1 mr-3">Problemas Auditivos </label>
+                        <label class="ml-1 mr-3">Problemas auditivos </label>
                         <label class="radioContent">Si
                             <input type="radio" name="problemaA" value="1" v-model="salud.ProbAuditivo">
                             <span class="circle"></span>
@@ -110,7 +110,7 @@
                         </label> 
                         <textarea type="text" class="form-control mt-1" placeholder="Ingresa la descripción de la alergia" v-model="salud.DetAlergias"></textarea>
                         
-                        <label>Problemas Posturales </label>
+                        <label>Problemas posturales </label>
                         <label class="radioContent">Si
                             <input type="radio" name="problemasPosturales" value="1" v-model="salud.ProbPosturales">
                             <span class="circle"></span>

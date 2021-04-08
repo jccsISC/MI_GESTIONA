@@ -3,14 +3,14 @@
         <div v-if="alumno.IdAlumno && !alumno.Reporte" class="posicionBtn">
             <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
                 @click="$emit('generarReporte', alumno)">
-                Generar Reporte
+                Generar reporte
             </button>
         </div>
 
         <div v-if="alumno.IdAlumno && alumno.Reporte" class="posicionBtn">
             <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
                 @click="emit('kevin', alumno.Reporte, alumno, alumno.Reporte.familiar)">
-                Editar Reporte
+                Editar reporte
             </button>
         </div>
 

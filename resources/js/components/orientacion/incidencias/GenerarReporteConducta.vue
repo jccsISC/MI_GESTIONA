@@ -4,14 +4,13 @@
             <div class="modal-content">
                 <div>
                     <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
-                        <p class="subtitulos text-center">Reporte de Mala Conducta</p>
+                        <p class="subtitulos text-center">Reporte de mala conducta</p>
                     </div>
                     
                     <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
                         <span style="color: #800000">&times;</span>
                     </button>
                 </div>
-
 
                 <div class="modal-body-g  p-3 bordeReport colorText">
                     <div class="imageLogo">
@@ -30,29 +29,29 @@
                         <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p  class="text-right"><b>Fecha:</b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="text-right"><b>Fecha:</b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Carrera: </b>{{alumno.Carrera}}</label>
                      <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
                      <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
                     
-
                     <div class="miGrid2 mt-1">
-                        
                         <div>
                             <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <br>
                             </div>
                             <div>
                                 <p class="m-0"><b>Madre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
+                                <br>
                             </div>
 
-                            <p><b>Descripció del reporte</b></p> 
+                            <p><b>Descripción del reporte</b></p> 
                             <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí la descripción del reporte"></textarea>
        
                             <p><b>Comentario de quien le da seguimiento</b></p>
@@ -67,7 +66,7 @@
                         </div>
 
                         <div>
-                            <p><b>Comentario del Padre o Tutor</b></p> 
+                            <p><b>Comentario del padre o tutor</b></p> 
                             <textarea v-model="incidencia.ComentariosPa" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí los comentariso del padre"></textarea>
 
                             <p><b>Observaciones</b></p>

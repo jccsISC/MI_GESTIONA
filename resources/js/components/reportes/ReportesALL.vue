@@ -42,7 +42,7 @@
                     <tbody>
                         <tr data-toggle="modal" data-target="#verReporte" v-for="(reporte, key3) in alumno.reportes" :key="key3" @click="$emit('verReporte', reporte, alumno)">
                             <td colspan="3">
-                                Yo no Abandono
+                                Yo no abandono
                             </td>
                             <td colspan="4">{{reporte.Motivo}}</td>
                             <td colspan="3"><label>{{reporte.Status ? 'Concluido' : 'Pendiente'}}</label></td>

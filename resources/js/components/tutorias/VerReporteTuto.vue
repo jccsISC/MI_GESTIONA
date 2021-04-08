@@ -44,10 +44,20 @@
                         <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
                         
                         <p><b>Nombre de quien deriva: </b>{{reporte.Nombrequienderiva}}</p>
-                        <p><b>ResponsableSeguimiento: </b>{{reporte.ResponsableSeguimiento}}</p>
-                        <p><b>Fammiliar: </b>{{familiar.NombrePadre + ' '+familiar.ApePaternoPadre+ ' '+ familiar.ApeMaternoPadre}}</p>
-                        
-                        <p><b>Telefono: </b>{{familiar.TelefonoPadre}}</p>
+                        <p><b>Responsable de seguimiento: </b>{{reporte.ResponsableSeguimiento}}</p>
+
+                        <div>
+                            <p class="m-0"><b>Padre</b></p>
+                            <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                            <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                            <br>
+                        </div>
+                        <div>
+                            <p class="m-0"><b>Madre</b></p>
+                            <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                            <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
+                            <br>
+                        </div>
                     </div>
                     
                     <div class="contenedorRT mt-4">
@@ -70,17 +80,17 @@
                     <div class="gridFirmar mb-5">
                         <div>
                             <hr class="miHr">
-                            <p class="miI">Nombre y Firma quien deriva</p>
+                            <p class="miI">Nombre y firma quien deriva</p>
                         </div>
 
                         <div>
                             <hr class="miHr">
-                            <p class="miM">Nombre y Firma del encargado Yo No Abandono Seguimiento</p>
+                            <p class="miM">Nombre y firma del encargado Yo No Abandono Seguimiento</p>
                         </div>
 
                         <div>
                             <hr class="miHr">
-                            <p class="miD">Nombre y Firma de quien da</p>
+                            <p class="miD">Nombre y firma de quien da</p>
                         </div>
                     </div>
                 </div>

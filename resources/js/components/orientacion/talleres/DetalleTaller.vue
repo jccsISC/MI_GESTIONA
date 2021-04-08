@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div>
             <div class="float-left" style="margin-left: 38%; margin-right: 30%;">
-              <p class="subtitulos text-center">Editar Taller</p>
+              <p class="subtitulos text-center">Editar taller</p>
             </div>
 
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
@@ -16,10 +16,10 @@
 
         <div class="modal-body-xl colorText">
           <label><b>Fecha: </b><input type="date" class="p-0 " v-model="taller.Fecha"></label>
-          <label class="ml-5"><b>Hora del Curso: </b><input type="time" class="p-0" v-model="taller.Hora"></label>
+          <label class="ml-5"><b>Hora del curso: </b><input type="time" class="p-0" v-model="taller.Hora"></label>
           
           <div>
-            <label><b>Nombre del Taller:</b></label>
+            <label><b>Nombre del taller:</b></label>
             <input type="text" class="p-0 pl-1" style="width:69%;" placeholder="Ingresa el nombre del taller" v-model="taller.Nombre">
           </div>
           
@@ -39,7 +39,7 @@
                     Semestre:
                   </th>
                   <th colspan="2">
-                    No Beneficiados:
+                    No. beneficiados:
                   </th>
                   <th>
                     Acciones

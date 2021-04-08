@@ -3,8 +3,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div>
-            <div class="float-left pl-3">
-                <p class="subtitulos">Agregar beca al alumno</p>
+            <div class="float-left pl-2" style="margin-left: 28%;">
+                <p class="subtitulos text-center">Agregar beca al alumno</p>
             </div>
             
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
