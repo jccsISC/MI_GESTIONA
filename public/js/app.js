@@ -4391,6 +4391,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
+  //otra forma de declarar nuestra data
   data: function data() {
     return {
       alumno: {},
@@ -4433,13 +4434,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     guardarReporte: function guardarReporte() {
-      if (this.incidencia.Status == undefined) {
-        alert('Seleccione el estatus de este reporte');
+      if (this.incidencia.IdFamiliar == undefined || this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
+        alert('Verifique y llene todos los campos');
         return;
       }
 
-      if (this.incidencia.IdFamiliar == undefined || this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
-        alert('Verifique y llene todos los campos');
+      if (this.incidencia.Status == undefined) {
+        alert('Seleccione el estatus de este reporte');
         return;
       }
 
@@ -7231,6 +7232,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -7245,6 +7253,17 @@ __webpack_require__.r(__webpack_exports__);
       auth: {}
     };
   },
+  //  data() {
+  //     return {
+  //         alumno: {},
+  //         reporte: {},
+  //         familiar: {},
+  //         tipo: '',
+  //         errors: [],
+  //         users: [],
+  //         auth: {},
+  //     }
+  // },
   created: function created() {
     var _this = this;
 
@@ -7328,6 +7347,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/users').then(function (res) {
         _this4.users = res.data;
+        console.log("USUARIOS: ", res.data);
       });
     }
   }
@@ -56552,34 +56572,6 @@ var render = function() {
               [
                 _vm._m(1),
                 _vm._v(" "),
-                _c("div", { staticClass: "float-right mt-5" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.reporte.Status = 1
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-check" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.reporte.Status = 0
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-exclamation-triangle" })]
-                  )
-                ]),
-                _vm._v(" "),
                 _vm._m(2),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
@@ -56687,9 +56679,10 @@ var render = function() {
                       directives: [
                         {
                           name: "model",
-                          rawName: "v-model",
+                          rawName: "v-model.trim",
                           value: _vm.reporte.Motivo,
-                          expression: "reporte.Motivo"
+                          expression: "reporte.Motivo",
+                          modifiers: { trim: true }
                         }
                       ],
                       staticClass: "form-control w-75 p-1 mb-1",
@@ -56704,7 +56697,14 @@ var render = function() {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.reporte, "Motivo", $event.target.value)
+                          _vm.$set(
+                            _vm.reporte,
+                            "Motivo",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
                         }
                       }
                     }),
@@ -56894,6 +56894,52 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.reporte.Status,
+                            expression: "reporte.Status"
+                          }
+                        ],
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.reporte,
+                              "Status",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Concluido")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Pendiente")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
                     _c(
                       "button",
                       {
@@ -57039,6 +57085,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "m-0" }, [
       _c("b", [_vm._v("Responsable de seguimiento")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("Seleccione un estado del reporte")])
     ])
   }
 ]

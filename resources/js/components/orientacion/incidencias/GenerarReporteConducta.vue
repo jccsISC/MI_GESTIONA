@@ -90,15 +90,14 @@
     import bus from '../../../event-bus';
     export default {
         props: ['userlogeado'],
-         data() {
-            return {
-                alumno: {},
-                incidencia: {},
-                familiar: [],
-                tipo: '',
-                auth: {}
-            }
-        },
+        //otra forma de declarar nuestra data
+        data: () => ({
+            alumno: {},
+            incidencia: {},
+            familiar: [],
+            tipo: '',
+            auth: {}
+        }),
         created() {
             this.$parent.$on('generarMalaConducta', alumno => {              
                 this.alumno = alumno;   
@@ -124,11 +123,6 @@
                 });
             },
             guardarReporte() {
-          
-                if (this.incidencia.Status == undefined) {
-                    alert('Seleccione el estatus de este reporte');
-                    return;
-                }
                 
                if (this.incidencia.IdFamiliar == undefined || this.incidencia.DescripcionReporte == undefined 
                     || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined
@@ -138,6 +132,10 @@
                     return;
                 }
 
+                 if (this.incidencia.Status == undefined) {
+                    alert('Seleccione el estatus de este reporte');
+                    return;
+                }
 
                 if (this.tipo == 'Guardar') {
                     this.incidencia.TipoReporte = 'Mala Conducta';

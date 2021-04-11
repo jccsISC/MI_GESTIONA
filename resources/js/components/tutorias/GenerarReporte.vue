@@ -17,11 +17,6 @@
                         <img src="images/logo.jpg" alt="">
                     </div>
 
-                    <div class="float-right mt-5">
-                        <button  class="btn btn-success m-0 p-0 pr-2 pl-2" @click="reporte.Status = 1"><i class="fas fa-check"></i></button>
-                        <button  class="btn btn-warning m-0 p-0 pr-2 pl-2" @click="reporte.Status = 0"><i class="fas fa-exclamation-triangle"></i></button>
-                    </div>
-
                     <div class="text-center">
                         <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
                         <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
@@ -57,7 +52,7 @@
                             </div>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <textarea v-model.trim="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
                             <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
 
                             <p><b>Derivación</b></p>
@@ -85,6 +80,18 @@
                             </select>
                        </div>
 
+                        <div>
+                            <p class="m-0"><b>Seleccione un estado del reporte</b></p> 
+                             <select v-model="reporte.Status">
+                                    <option value=0>Concluido</option>
+                                    <option value=1>Pendiente</option>
+                            </select>
+                       </div>
+                    <!-- <div class="float-right mt-5">
+                        <button  class="btn btn-success m-0 p-0 pr-2 pl-2" @click="reporte.Status = 1"><i class="fas fa-check"></i></button>
+                        <button  class="btn btn-warning m-0 p-0 pr-2 pl-2" @click="reporte.Status = 0"><i class="fas fa-exclamation-triangle"></i></button>
+                    </div> -->
+
                        <div>
                             <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
                                 <i class="fas fa-save"></i> Guardar
@@ -101,17 +108,26 @@
     import bus from '../../event-bus';
     export default {
         props : ['userlogeado'],
-         data() {
-            return {
-                alumno: {},
-                reporte: {},
-                familiar: {},
-                tipo: '',
-                errors: [],
-                users: [],
-                auth: {},
-            }
-        },
+        data: () => ({
+            alumno: {},
+            reporte: {},
+            familiar: {},
+            tipo: '',
+            errors: [],
+            users: [],
+            auth: {},
+        }),
+        //  data() {
+        //     return {
+        //         alumno: {},
+        //         reporte: {},
+        //         familiar: {},
+        //         tipo: '',
+        //         errors: [],
+        //         users: [],
+        //         auth: {},
+        //     }
+        // },
         created() {
             this.$parent.$on('generarReporte', alumno => {    
                 this.reporte = {};          
@@ -171,7 +187,7 @@
                         }
                     });
                 } else {
-                    axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
+                    axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
                         this.reporte = res.data;
                         $('#reporteTuto').modal('hide');
                         bus.$emit('julioselacome', res.data);
@@ -181,12 +197,11 @@
                         }
                     });
                 }
-
-                
             },
             jalarUsers() {
                 axios.get('/users').then(res => {
                     this.users = res.data;
+                    console.log("USUARIOS: ", res.data);
                 });
             }
         }
