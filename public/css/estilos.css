@@ -270,6 +270,7 @@ footer{
 
     .subtitulos{
         padding: 0;
+        padding-bottom: 5px;
         margin: 0;
         font-size: 18px;
         text-shadow: 1px 1px 5px #2c2b2b86;
@@ -312,7 +313,7 @@ footer{
         margin-top: 5rem;
         padding-right: 1rem;
         padding-bottom: 5rem;
-        float: left;
+        float: right;
         /*background-color: #EAEDED;*/
     }
 
@@ -419,6 +420,63 @@ footer{
         .micardNotificaciones:hover{
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
         }
+    /*Agregando Media Query sitio de tutorias*/
+        @media screen and (max-width: 1300px){
+            .contenedor-secciones{
+                width: 100%;
+                margin-top: 0px;
+            }
+           .contenedor-notify{
+                width: 100%;
+                padding-left: 55px;
+                padding-right: 0px;
+                margin-top: 80px;
+            }
+            .contenedorCard{
+                width: 46%;
+                float: left;
+                margin: 10px;
+            }
+            #reprobados-unidad{
+                margin-top: 52px;
+            }
+            #bottom-options{
+                width: 100%;
+                margin: 20px 0px;
+                text-align: center;
+            }
+        }
+        @media screen and (max-width: 950px){
+            .contenedorCard{
+                width: 80%;
+                float: none;
+                margin: 10%;
+            }
+            .contenedor-secciones{
+                padding: 0px;
+            }
+            .contenedor-notify{
+                padding: 0px;
+                margin-top: 20px;
+            }
+            .miBtn{
+                margin-top: 35px;
+                margin-left: 45px;
+                font-size: 0.8rem;
+            }
+        }
+        @media screen and (max-width: 550px){
+            .contenedorCard{
+                width: 90%;
+                float: none;
+                margin: 80px 5%;
+            }
+            #bottom-options{
+                font-size: 0.9rem;
+            }
+        }
+
+    /*__________________________________________________________*/
 
         
 /*ESTILOS PARA LA IMPRESION DEL REPORTE YONO ABANDONO*/

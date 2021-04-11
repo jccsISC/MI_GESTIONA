@@ -3,9 +3,9 @@
         <p class="subtitulos">Calificaciones</p>
         <div class="micard colorText">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0">
-                <thead>
+                <thead style="text-align: center">
                     <tr>
-                        <th>Asignaturas</th>
+                        <th colspan="2">Asignaturas</th>
                         <th>P1</th>
                         <th>P2</th>
                         <th>P3</th>
@@ -19,9 +19,9 @@
                         <td colspan="7" class="text-center">Sin resultados...</td>
                     </tr>
                 </tbody>-->
-                <tbody>
+                <tbody style="text-align: center">
                     <tr v-for="(calificacion, key) in calificaciones" :key="key">
-                        <td>{{calificacion.Materia}}</td>
+                        <td colspan="2">{{calificacion.Materia}}</td>
                         <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i) ? unidad(calificacion.detalles, i) : 'NC' }}</td>
                         <td>{{calificacion.Calificacionfinal}}</td>
                     </tr>          
