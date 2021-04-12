@@ -2,7 +2,7 @@
     <div class="contenedorCard">
         <p class="subtitulos">Información personal</p>
         <div id="cardInfoPersonal" class="micardP colorText" data-toggle="modal" :data-target="dataTarget">
-            <div v-if="alumno.IdAlumno" class="miContent">
+            <div v-if="alumno.IdAlumno" class="miContent" style="margin-top:4px">
                 <div class="miImg">
                     <img src="images/student.png" alt="Foto del Alumno">
                 </div>

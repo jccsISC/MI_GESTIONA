@@ -3,7 +3,7 @@
         <p class="subtitulos">Faltas por asignatura</p>
         <div class="micard scrollTCalif colorText">
             <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm">
-                <thead>
+                <thead style="text-align: center">
                     <tr>
                         <th>Asignaturas</th>
                         <th colspan="3">Días</th>
@@ -14,7 +14,7 @@
                         <td colspan="7" class="text-center">Sin resultados...</td>
                     </tr>
                 </tbody>-->
-                <tbody>
+                <tbody style="text-align: center">
                     <tr v-for="(materia, key) in materias" :key="key">
                         <td>{{materia.materia}}</td>
                         <td>

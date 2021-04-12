@@ -1,5 +1,5 @@
 <template>
-      <div class="contenedorCard">
+      <div class="contenedorCard" id="reprobados-unidad">
         <p class="subtitulos">Alumnos reprobados por unidad</p>
         <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
