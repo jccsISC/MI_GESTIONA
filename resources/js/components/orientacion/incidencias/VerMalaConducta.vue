@@ -37,7 +37,7 @@
                         </div>
 
 
-                        <p class="text-right mt-3"><b>Fecha: </b>{{incidencia.FechaInicio}}</p>
+                        <p class="text-right mt-3"><b>Fecha: </b>{{fechaFinal}}</p>
 
                         <div class="contenedorRT mt-4">
                             <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
@@ -111,6 +111,13 @@
                 alumno: {},
                 incidencia: {},
                 familiar: {}
+            }
+        },
+        computed: {
+            fechaFinal() {
+                const date = new Date(this.incidencia.FechaFin);
+
+                return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
             }
         },
         created() {

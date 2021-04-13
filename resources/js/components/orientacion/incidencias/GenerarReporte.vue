@@ -113,6 +113,7 @@
                 });
             },
             guardarReporte() {
+                this.reporte.IdFamiliar = this.familiar.IdFamiliar;
                 if (this.tipo == 'Guardar') {
                     this.reporte.TipoReporte = 'Incidencia';
                     axios.post('/incidenciareal', this.reporte).then(res => {

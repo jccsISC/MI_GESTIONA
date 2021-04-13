@@ -83,8 +83,8 @@
                         <div>
                             <p class="m-0"><b>Seleccione un estado del reporte</b></p> 
                              <select v-model="reporte.Status">
-                                    <option value=0>Concluido</option>
-                                    <option value=1>Pendiente</option>
+                                    <option :value="1">Concluido</option>
+                                    <option :value="0">Pendiente</option>
                             </select>
                        </div>
                     <!-- <div class="float-right mt-5">
@@ -117,17 +117,6 @@
             users: [],
             auth: {},
         }),
-        //  data() {
-        //     return {
-        //         alumno: {},
-        //         reporte: {},
-        //         familiar: {},
-        //         tipo: '',
-        //         errors: [],
-        //         users: [],
-        //         auth: {},
-        //     }
-        // },
         created() {
             this.$parent.$on('generarReporte', alumno => {    
                 this.reporte = {};          
@@ -157,10 +146,6 @@
                 });
             },
             guardarReporte() {
-               if (this.reporte.Status == undefined) {
-                    alert('Seleccione el estatus de este reporte');
-                    return;
-                }
                 
                if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
                     || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
@@ -175,6 +160,11 @@
                     }
                 });
 
+                if (this.reporte.Status == undefined) {
+                    alert('Seleccione el estatus de este reporte');
+                    return;
+                }
+
                 if (this.tipo == 'crear') {
                     this.reporte.Unidad = this.alumno.Unidad;
                     axios.post('/yonoAbandono', this.reporte).then(res => {
@@ -187,6 +177,8 @@
                         }
                     });
                 } else {
+
+                    
                     axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
                         this.reporte = res.data;
                         $('#reporteTuto').modal('hide');

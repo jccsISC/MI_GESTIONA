@@ -65,10 +65,10 @@
         },
          created() {
             bus.$on('alumnoSeleccionado', alumno => {
-                 if(this.alumno.IdAlumno != alumno.IdAlumno){
+                //  if(this.alumno.IdAlumno != alumno.IdAlumno){
                     this.alumno = alumno;
                     this.jalarCalificaciones();
-                 }
+                //  }
             });
         },
         methods:{

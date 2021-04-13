@@ -112,6 +112,7 @@
                 console.log('consolelog'); 
                 this.alumno = Object.assign({}, alumno);   
                 this.incidencia = Object.assign({}, incidencia);
+                this.incidencia.Status = undefined;
                 this.jalarFamiliar();   
                 this.tipo = 'Editar';
             });
@@ -123,8 +124,7 @@
                 });
             },
             guardarReporte() {
-                
-               if (this.incidencia.IdFamiliar == undefined || this.incidencia.DescripcionReporte == undefined 
+               if (this.incidencia.DescripcionReporte == undefined 
                     || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined
                     || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined
                     || this.incidencia.Derivacion == undefined) {
@@ -136,6 +136,8 @@
                     alert('Seleccione el estatus de este reporte');
                     return;
                 }
+
+                this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
                 if (this.tipo == 'Guardar') {
                     this.incidencia.TipoReporte = 'Mala Conducta';
