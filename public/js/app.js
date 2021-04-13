@@ -4433,6 +4433,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -4481,7 +4486,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     guardarReporte: function guardarReporte() {
       if (this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
-        alert('Verifique y llene todos los campos');
+        // alert('Verifique y llene todos los campos');
+        window.setTimeout(function () {
+          $(".alert").fadeTo(1500, 0).slideDown(1000, function () {
+            $(this).remove();
+          });
+        }, 2000);
         return;
       }
 
@@ -50599,11 +50609,13 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
             _c(
               "div",
               { staticClass: "modal-body-g  p-3 bordeReport colorText" },
               [
-                _vm._m(1),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "float-right mt-5" }, [
                   _c(
@@ -50633,7 +50645,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
                   _c("b", [_vm._v("Fecha:")]),
@@ -50681,7 +50693,7 @@ var render = function() {
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
                   _c("div", [
                     _c("div", [
-                      _vm._m(3),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50703,7 +50715,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._m(4),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50724,7 +50736,7 @@ var render = function() {
                       _c("br")
                     ]),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -50756,7 +50768,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50787,7 +50799,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -50837,7 +50849,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(8),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -50869,7 +50881,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50900,7 +50912,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(10),
+                    _vm._m(11),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50984,6 +50996,31 @@ var staticRenderFns = [
         [_c("span", { staticStyle: { color: "#800000" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "alert",
+              "aria-label": "close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        ),
+        _vm._v(" "),
+        _c("strong", [_vm._v("Ingrese todos los campos")])
+      ]
+    )
   },
   function() {
     var _vm = this

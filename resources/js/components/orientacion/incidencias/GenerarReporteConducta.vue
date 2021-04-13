@@ -12,6 +12,11 @@
                     </button>
                 </div>
 
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Ingrese todos los campos</strong>
+                </div>
+
                 <div class="modal-body-g  p-3 bordeReport colorText">
                     <div class="imageLogo">
                         <img src="images/logo.jpg" alt="">
@@ -128,11 +133,17 @@
                     || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined
                     || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined
                     || this.incidencia.Derivacion == undefined) {
-                    alert('Verifique y llene todos los campos');
+                   // alert('Verifique y llene todos los campos');
+                    
+                    window.setTimeout(function() {
+                        $(".alert").fadeTo(1500, 0).slideDown(1000, function() {
+                            $(this).remove();
+                        });
+                    }, 2000);
                     return;
                 }
 
-                 if (this.incidencia.Status == undefined) {
+                if (this.incidencia.Status == undefined) {
                     alert('Seleccione el estatus de este reporte');
                     return;
                 }
