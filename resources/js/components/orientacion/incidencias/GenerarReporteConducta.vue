@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" role="dialog" id="reporteConducta" style="z-index: 100000" aria-hidden="true">
+    <div class="modal fade" role="dialog" tabindex="-1" id="reporteConducta" style="z-index: 100000" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div>
@@ -10,11 +10,6 @@
                     <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
                         <span style="color: #800000">&times;</span>
                     </button>
-                </div>
-
-                <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Ingrese todos los campos</strong>
                 </div>
 
                 <div class="modal-body-g  p-3 bordeReport colorText">
@@ -87,6 +82,16 @@
                     <i class="fas fa-save"> </i> Guardar
                 </button>
             </div>
+
+            <div class="modal fade" id="modalEmpty" role="dialog" aria-labelledby="modalEmpty" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header alert alert-danger m-0">
+                            <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -95,15 +100,16 @@
     import bus from '../../../event-bus';
     export default {
         props: ['userlogeado'],
-        //otra forma de declarar nuestra data
         data: () => ({
             alumno: {},
             incidencia: {},
             familiar: [],
             tipo: '',
-            auth: {}
+            auth: {},
+            alertMessage: String,
         }),
         created() {
+
             this.$parent.$on('generarMalaConducta', alumno => {              
                 this.alumno = alumno;   
                 this.incidencia = {};
@@ -130,24 +136,23 @@
             },
             guardarReporte() {
                if (this.incidencia.DescripcionReporte == undefined 
-                    || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined
-                    || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined
+                    || this.incidencia.Comentarios == undefined
+                    || this.incidencia.ComentariosPa == undefined 
+                    || this.incidencia.Observaciones == undefined
                     || this.incidencia.Derivacion == undefined) {
-                   // alert('Verifique y llene todos los campos');
-                    
-                    window.setTimeout(function() {
-                        $(".alert").fadeTo(1500, 0).slideDown(1000, function() {
-                            $(this).remove();
-                        });
-                    }, 2000);
-                    return;
+                    this.alertMessage = "Llene todos los campos";
+                    $('#modalEmpty').modal('show');
+                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+                }else if (this.incidencia.TipoFalta == undefined) {
+                    this.alertMessage = "Seleccione la gravedad de la falta";
+                    $('#modalEmpty').modal('show');
+                }else if (this.incidencia.Status == undefined) {
+                    this.alertMessage = "Seleccione un status para el reporte";
+                    $('#modalEmpty').modal('show');
+                }else {
+                    $('#modalSuccess').modal('show');
                 }
-
-                if (this.incidencia.Status == undefined) {
-                    alert('Seleccione el estatus de este reporte');
-                    return;
-                }
-
+                
                 this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
                 if (this.tipo == 'Guardar') {

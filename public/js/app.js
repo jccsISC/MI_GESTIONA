@@ -4438,17 +4438,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
-  //otra forma de declarar nuestra data
   data: function data() {
     return {
       alumno: {},
       incidencia: {},
       familiar: [],
       tipo: '',
-      auth: {}
+      auth: {},
+      alertMessage: String
     };
   },
   created: function created() {
@@ -4485,19 +4490,20 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     guardarReporte: function guardarReporte() {
-      if (this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.TipoFalta == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
-        // alert('Verifique y llene todos los campos');
-        window.setTimeout(function () {
-          $(".alert").fadeTo(1500, 0).slideDown(1000, function () {
-            $(this).remove();
-          });
+      if (this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
+        this.alertMessage = "Llene todos los campos";
+        $('#modalEmpty').modal('show');
+        setTimeout(function () {
+          $('#modalEmpty').modal('hide');
         }, 2000);
-        return;
-      }
-
-      if (this.incidencia.Status == undefined) {
-        alert('Seleccione el estatus de este reporte');
-        return;
+      } else if (this.incidencia.TipoFalta == undefined) {
+        this.alertMessage = "Seleccione la gravedad de la falta";
+        $('#modalEmpty').modal('show');
+      } else if (this.incidencia.Status == undefined) {
+        this.alertMessage = "Seleccione un status para el reporte";
+        $('#modalEmpty').modal('show');
+      } else {
+        $('#modalSuccess').modal('show');
       }
 
       this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
@@ -50596,7 +50602,12 @@ var render = function() {
     {
       staticClass: "modal fade",
       staticStyle: { "z-index": "100000" },
-      attrs: { role: "dialog", id: "reporteConducta", "aria-hidden": "true" }
+      attrs: {
+        role: "dialog",
+        tabindex: "-1",
+        id: "reporteConducta",
+        "aria-hidden": "true"
+      }
     },
     [
       _c(
@@ -50609,13 +50620,11 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
             _c(
               "div",
               { staticClass: "modal-body-g  p-3 bordeReport colorText" },
               [
-                _vm._m(2),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "float-right mt-5" }, [
                   _c(
@@ -50645,7 +50654,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
                   _c("b", [_vm._v("Fecha:")]),
@@ -50693,7 +50702,7 @@ var render = function() {
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
                   _c("div", [
                     _c("div", [
-                      _vm._m(4),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50715,7 +50724,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._m(5),
+                      _vm._m(4),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -50736,7 +50745,7 @@ var render = function() {
                       _c("br")
                     ]),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -50768,7 +50777,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50799,7 +50808,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "select",
@@ -50849,7 +50858,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(9),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -50881,7 +50890,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(10),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50912,7 +50921,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(11),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50958,7 +50967,44 @@ var render = function() {
                 _vm._v(" Guardar\n            ")
               ]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modalEmpty",
+                role: "dialog",
+                "aria-labelledby": "modalEmpty",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      { staticClass: "modal-header alert alert-danger m-0" },
+                      [
+                        _c(
+                          "h5",
+                          { staticClass: "modal-title m-0 txt-center" },
+                          [_vm._v(" " + _vm._s(_vm.alertMessage) + " ")]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ]
+          )
         ]
       )
     ]
@@ -50996,31 +51042,6 @@ var staticRenderFns = [
         [_c("span", { staticStyle: { color: "#800000" } }, [_vm._v("×")])]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "alert alert-danger", attrs: { role: "alert" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "alert",
-              "aria-label": "close"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        ),
-        _vm._v(" "),
-        _c("strong", [_vm._v("Ingrese todos los campos")])
-      ]
-    )
   },
   function() {
     var _vm = this
