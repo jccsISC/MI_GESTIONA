@@ -19,9 +19,9 @@
                             <img src="images/logo.jpg" alt="">
                         </div>
 
-                        <button v-if="role!='admin'" @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
+                        <!-- <button v-if="role!='admin'" @click="metodo" type="button" class="mibtnEdit posicionbtn" data-toggle="modal" data-target="#reporteOrientacion">
                             <i class="fas fa-edit"></i>
-                        </button>
+                        </button> -->
                         <button v-if="role!='admin'" type="button" class="mibtnI positionImprimir">
                             <a :href="'imprimirInci/'+ incidencia.IdIncidencia" class="link"><i class="fas fa-print"></i></a>
                         </button>
@@ -33,7 +33,8 @@
                             <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
                         </div>
 
-                        <p class="text-right mt-3"><b>Fecha: </b>{{incidencia.FechaInicio}}</p>
+                        <!-- <p class="text-right mt-3"><b>Fecha: </b>{{ incidencia.Status = '0' ? incidencia.FechaInicio : incidencia.FechaFin }}</p> -->
+                        <p class="text-right mt-3"><b>Fecha: </b>{{fechaFinal}}</p>
 
                         <div class="contenedorRT mt-4">
                             <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
@@ -107,6 +108,13 @@
                 alumno: {},
                 incidencia: {},
                 familiar: {}
+            }
+        },
+        computed: {
+            fechaFinal() {
+                const date = new Date(this.incidencia.FechaInicio);
+
+                return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
             }
         },
         created() {

@@ -60,8 +60,6 @@
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
             <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
         </footer>
-
-        <script src="https://unpkg.com/vue-swal"></script>
     </div>
 </body>
 

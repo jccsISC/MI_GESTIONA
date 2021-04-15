@@ -17,11 +17,6 @@
                         <img src="images/logo.jpg" alt="">
                     </div>
 
-                    <div class="float-right mt-5">
-                        <button  class="btn btn-success m-0 p-0 pr-2 pl-2" @click="incidencia.Status = 1"><i class="fas fa-check"></i></button>
-                        <button  class="btn btn-warning m-0 p-0 pr-2 pl-2" @click="incidencia.Status = 0"><i class="fas fa-exclamation-triangle"></i></button>
-                    </div>
-
                     <div class="text-center">
                         <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
                         <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
@@ -52,28 +47,49 @@
                             </div>
 
                             <p><b>Descripción del reporte</b></p> 
+                            <span v-if="!incidencia.DescripcionReporte" class="text-danger" >Requerido*</span>
                             <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí la descripción del reporte"></textarea>
        
                             <p><b>Comentario de quien le da seguimiento</b></p>
+                             <span v-if="!incidencia.Comentarios" class="text-danger" >Requerido*</span>
                             <input v-model="incidencia.Comentarios" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los comentarios">
 
-                            <label class="m-0"><b>Gravedad de la falta: </b></label>
-                            <select v-model="incidencia.TipoFalta">
+                            <label class="m-0"><b>Gravedad de la falta</b></label>
+                            <form class="was-validated">
+                                <div class="form-group">
+                                <select class="custom-select" required v-model="incidencia.TipoFalta">
                                     <option value="Leve">Leve</option>
                                     <option value="Grave">Grave</option>
                                     <option value="Muy Grave">Muy Grave</option>
-                            </select>
+                                </select> 
+                                <div class="invalid-feedback">Seleccione la gravedad de la falta</div>
+                                </div>
+                            </form>
                         </div>
 
                         <div>
                             <p><b>Comentario del padre o tutor</b></p> 
+                             <span v-if="!incidencia.ComentariosPa" class="text-danger" >Requerido*</span>
                             <textarea v-model="incidencia.ComentariosPa" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí los comentariso del padre"></textarea>
 
                             <p><b>Observaciones</b></p>
+                             <span v-if="!incidencia.Observaciones" class="text-danger" >Requerido*</span>
                             <input v-model="incidencia.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
 
                             <p><b>Derivación</b></p>
-                            <input v-model="incidencia.Derivacion" type="text" class="form-control p-1 mb-1" placeholder="Escriba aquí la derivación">                        
+                             <span v-if="!incidencia.Derivacion" class="text-danger m-0" >Requerido*</span>
+                            <input v-model="incidencia.Derivacion" type="text" class="form-control p-1 mb-1" placeholder="Escriba aquí la derivación">   
+                            
+                            <label class="m-0"><b>Seleccione un estado del reporte </b></label>
+                            <form class="was-validated">
+                                <div class="form-group">
+                                <select class="custom-select" required  v-model="incidencia.Status">
+                                    <option :value= 0>Pendiente</option>
+                                    <option :value= 1>Concluido</option>
+                                </select> 
+                                <div class="invalid-feedback">Seleccion el estatus</div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -87,6 +103,15 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header alert alert-danger m-0">
+                            <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalSuccess" role="dialog" aria-labelledby="modalSuccess" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header alert alert-success m-0">
                             <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
                         </div>
                     </div>
@@ -109,7 +134,6 @@
             alertMessage: String,
         }),
         created() {
-
             this.$parent.$on('generarMalaConducta', alumno => {              
                 this.alumno = alumno;   
                 this.incidencia = {};
@@ -136,37 +160,41 @@
             },
             guardarReporte() {
                if (this.incidencia.DescripcionReporte == undefined 
-                    || this.incidencia.Comentarios == undefined
-                    || this.incidencia.ComentariosPa == undefined 
-                    || this.incidencia.Observaciones == undefined
-                    || this.incidencia.Derivacion == undefined) {
+                    || this.incidencia.Comentarios  == undefined 
+                    || this.incidencia.ComentariosPa  == undefined 
+                    || this.incidencia.Observaciones  == undefined 
+                    || this.incidencia.Derivacion  == undefined ) {
                     this.alertMessage = "Llene todos los campos";
                     $('#modalEmpty').modal('show');
                     setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
-                }else if (this.incidencia.TipoFalta == undefined) {
+                }else if (this.incidencia.TipoFalta  == undefined ) {
                     this.alertMessage = "Seleccione la gravedad de la falta";
                     $('#modalEmpty').modal('show');
-                }else if (this.incidencia.Status == undefined) {
+                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+                }else if (this.incidencia.Status  == undefined ) {
                     this.alertMessage = "Seleccione un status para el reporte";
                     $('#modalEmpty').modal('show');
+                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
                 }else {
-                    $('#modalSuccess').modal('show');
-                }
-                
-                this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
+                    this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
-                if (this.tipo == 'Guardar') {
-                    this.incidencia.TipoReporte = 'Mala Conducta';
-                    axios.post('/incidencias', this.incidencia).then(res => {
-                        $('#reporteConducta').modal('hide');
-                        bus.$emit('incidenciaAgregada', res.data);
-                    });
-                } else {
-                    axios.put('/incidencias/'+this.incidencia.IdIncidencia, this.incidencia).then(res => {
-                        $('#reporteConducta').modal('hide');
-                        bus.$emit('incidenciaEditada', res.data);
-                    });
-                }                
+                    if (this.tipo == 'Guardar') {
+                        this.incidencia.TipoReporte = 'Mala Conducta';
+                        axios.post('/incidencias', this.incidencia).then(res => {
+                            this.alertMessage = "Se guardó correctamente";
+                            $('#modalSuccess').modal('show');
+                            setTimeout(function() {  $('#modalSuccess').modal('hide'); }, 1000);
+                            setTimeout(function() {  $('#reporteConducta').modal('hide'); }, 2000);
+                        
+                            bus.$emit('incidenciaAgregada', res.data);
+                        });
+                    } else {
+                        axios.put('/incidencias/'+this.incidencia.IdIncidencia, this.incidencia).then(res => {
+                            $('#reporteConducta').modal('hide');
+                            bus.$emit('incidenciaEditada', res.data);
+                        });
+                    }           
+                }    
             }
         }
     }

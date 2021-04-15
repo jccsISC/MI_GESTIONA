@@ -4270,6 +4270,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -4279,7 +4302,8 @@ __webpack_require__.r(__webpack_exports__);
       reporte: {},
       familiar: {},
       tipo: '',
-      auth: {}
+      auth: {},
+      alertMessage: String
     };
   },
   created: function created() {
@@ -4314,6 +4338,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     guardarReporte: function guardarReporte() {
+      //  if (this.reporte.ComentariosPae == undefined 
+      //     || this.reporte.Derivacion  == undefined 
+      //     || this.reporte.DescripcionReporte  == undefined 
+      //     || this.reporte.Observaciones  == undefined 
+      //     || this.reporte.Comentarios  == undefined ) {
+      //     this.alertMessage = "Llene todos los campos";
+      //     $('#modalEmpty').modal('show');
+      //     setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+      // }else {
       this.reporte.IdFamiliar = this.familiar.IdFamiliar;
 
       if (this.tipo == 'Guardar') {
@@ -4328,7 +4361,8 @@ __webpack_require__.r(__webpack_exports__);
           $('#reporteOrientacion').modal('hide');
           _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaEditada', res.data);
         });
-      }
+      } // }    
+
     }
   }
 });
@@ -4345,6 +4379,31 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4490,6 +4549,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     guardarReporte: function guardarReporte() {
+      var _this3 = this;
+
       if (this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios == undefined || this.incidencia.ComentariosPa == undefined || this.incidencia.Observaciones == undefined || this.incidencia.Derivacion == undefined) {
         this.alertMessage = "Llene todos los campos";
         $('#modalEmpty').modal('show');
@@ -4499,26 +4560,37 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.incidencia.TipoFalta == undefined) {
         this.alertMessage = "Seleccione la gravedad de la falta";
         $('#modalEmpty').modal('show');
+        setTimeout(function () {
+          $('#modalEmpty').modal('hide');
+        }, 2000);
       } else if (this.incidencia.Status == undefined) {
         this.alertMessage = "Seleccione un status para el reporte";
         $('#modalEmpty').modal('show');
+        setTimeout(function () {
+          $('#modalEmpty').modal('hide');
+        }, 2000);
       } else {
-        $('#modalSuccess').modal('show');
-      }
+        this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
-      this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
-
-      if (this.tipo == 'Guardar') {
-        this.incidencia.TipoReporte = 'Mala Conducta';
-        axios.post('/incidencias', this.incidencia).then(function (res) {
-          $('#reporteConducta').modal('hide');
-          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaAgregada', res.data);
-        });
-      } else {
-        axios.put('/incidencias/' + this.incidencia.IdIncidencia, this.incidencia).then(function (res) {
-          $('#reporteConducta').modal('hide');
-          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaEditada', res.data);
-        });
+        if (this.tipo == 'Guardar') {
+          this.incidencia.TipoReporte = 'Mala Conducta';
+          axios.post('/incidencias', this.incidencia).then(function (res) {
+            _this3.alertMessage = "Se guardó correctamente";
+            $('#modalSuccess').modal('show');
+            setTimeout(function () {
+              $('#modalSuccess').modal('hide');
+            }, 1000);
+            setTimeout(function () {
+              $('#reporteConducta').modal('hide');
+            }, 2000);
+            _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaAgregada', res.data);
+          });
+        } else {
+          axios.put('/incidencias/' + this.incidencia.IdIncidencia, this.incidencia).then(function (res) {
+            $('#reporteConducta').modal('hide');
+            _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('incidenciaEditada', res.data);
+          });
+        }
       }
     }
   }
@@ -4636,6 +4708,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['role'],
@@ -4645,6 +4718,12 @@ __webpack_require__.r(__webpack_exports__);
       incidencia: {},
       familiar: {}
     };
+  },
+  computed: {
+    fechaFinal: function fechaFinal() {
+      var date = new Date(this.incidencia.FechaInicio);
+      return date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+    }
   },
   created: function created() {
     var _this = this;
@@ -7203,11 +7282,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -12842,7 +12916,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .mibtn{\n    background: #800000;\n    border-radius: 4px;\n    color: white;\n    outline: none;\n    padding-left:5px;\n    padding-right: 5px; \n    border: 1px solid #800000;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n}\n\n.miBtn:hover{\n    background-color: rgb(255, 255, 255);\n    color: rgb(167, 11, 11);\n    border: 1px solid #800000;\n}\n\n.descrip{\n    min-width: 40%;\n    min-height: 150px;\n    border: 1px solid rgb(31, 30, 30);\n    border-radius: 6px;\n    padding: 5px;\n} */\n\n", ""]);
 
 // exports
 
@@ -50193,8 +50267,7 @@ var render = function() {
                 _c("p", { staticClass: "text-right" }, [
                   _c("b", [_vm._v("Fecha:")]),
                   _vm._v(
-                    " " +
-                      _vm._s(new Date().getDate()) +
+                    _vm._s(new Date().getDate()) +
                       "-" +
                       _vm._s(new Date().getMonth() + 1) +
                       "-" +
@@ -50271,6 +50344,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(5),
                     _vm._v(" "),
+                    !_vm.reporte.ComentariosPa
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("textarea", {
                       directives: [
                         {
@@ -50303,6 +50382,12 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _vm._m(6),
+                    _vm._v(" "),
+                    !_vm.reporte.Derivacion
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50338,6 +50423,12 @@ var render = function() {
                   _c("div", [
                     _vm._m(7),
                     _vm._v(" "),
+                    !_vm.reporte.DescripcionReporte
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("textarea", {
                       directives: [
                         {
@@ -50372,6 +50463,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(8),
                     _vm._v(" "),
+                    !_vm.reporte.Observaciones
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -50403,6 +50500,12 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _vm._m(9),
+                    _vm._v(" "),
+                    !_vm.reporte.Comentarios
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -50437,6 +50540,80 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._m(10)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "modalEmpty",
+                  role: "dialog",
+                  "aria-labelledby": "modalEmpty",
+                  "aria-hidden": "true"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-dialog modal-dialog-centered",
+                    attrs: { role: "document" }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c(
+                        "div",
+                        { staticClass: "modal-header alert alert-danger m-0" },
+                        [
+                          _c(
+                            "h5",
+                            { staticClass: "modal-title m-0 txt-center" },
+                            [_vm._v(" " + _vm._s(_vm.alertMessage) + " ")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "modalSuccess",
+                  role: "dialog",
+                  "aria-labelledby": "modalSuccess",
+                  "aria-hidden": "true"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-dialog modal-dialog-centered",
+                    attrs: { role: "document" }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c(
+                        "div",
+                        { staticClass: "modal-header alert alert-success m-0" },
+                        [
+                          _c(
+                            "h5",
+                            { staticClass: "modal-title m-0 txt-center" },
+                            [_vm._v(" " + _vm._s(_vm.alertMessage) + " ")]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
               ]
             )
           ])
@@ -50626,34 +50803,6 @@ var render = function() {
               [
                 _vm._m(1),
                 _vm._v(" "),
-                _c("div", { staticClass: "float-right mt-5" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.incidencia.Status = 1
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-check" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning m-0 p-0 pr-2 pl-2",
-                      on: {
-                        click: function($event) {
-                          _vm.incidencia.Status = 0
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-exclamation-triangle" })]
-                  )
-                ]),
-                _vm._v(" "),
                 _vm._m(2),
                 _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
@@ -50747,6 +50896,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(5),
                     _vm._v(" "),
+                    !_vm.incidencia.DescripcionReporte
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("textarea", {
                       directives: [
                         {
@@ -50779,6 +50934,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(6),
                     _vm._v(" "),
+                    !_vm.incidencia.Comentarios
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -50810,55 +50971,71 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(7),
                     _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
+                    _c("form", { staticClass: "was-validated" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.incidencia.TipoFalta,
-                            expression: "incidencia.TipoFalta"
-                          }
-                        ],
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.incidencia,
-                              "TipoFalta",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "Leve" } }, [
-                          _vm._v("Leve")
-                        ]),
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.incidencia.TipoFalta,
+                                expression: "incidencia.TipoFalta"
+                              }
+                            ],
+                            staticClass: "custom-select",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.incidencia,
+                                  "TipoFalta",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "Leve" } }, [
+                              _vm._v("Leve")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Grave" } }, [
+                              _vm._v("Grave")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "Muy Grave" } }, [
+                              _vm._v("Muy Grave")
+                            ])
+                          ]
+                        ),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "Grave" } }, [
-                          _vm._v("Grave")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Muy Grave" } }, [
-                          _vm._v("Muy Grave")
+                        _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v("Seleccione la gravedad de la falta")
                         ])
-                      ]
-                    )
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", [
                     _vm._m(8),
+                    _vm._v(" "),
+                    !_vm.incidencia.ComentariosPa
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -50892,6 +51069,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(9),
                     _vm._v(" "),
+                    !_vm.incidencia.Observaciones
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -50923,6 +51106,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(10),
                     _vm._v(" "),
+                    !_vm.incidencia.Derivacion
+                      ? _c("span", { staticClass: "text-danger m-0" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -50950,7 +51139,61 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "was-validated" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.incidencia.Status,
+                                expression: "incidencia.Status"
+                              }
+                            ],
+                            staticClass: "custom-select",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.incidencia,
+                                  "Status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { domProps: { value: 0 } }, [
+                              _vm._v("Pendiente")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { domProps: { value: 1 } }, [
+                              _vm._v("Concluido")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v("Seleccion el estatus")
+                        ])
+                      ])
+                    ])
                   ])
                 ])
               ]
@@ -50992,6 +51235,43 @@ var render = function() {
                     _c(
                       "div",
                       { staticClass: "modal-header alert alert-danger m-0" },
+                      [
+                        _c(
+                          "h5",
+                          { staticClass: "modal-title m-0 txt-center" },
+                          [_vm._v(" " + _vm._s(_vm.alertMessage) + " ")]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "modalSuccess",
+                role: "dialog",
+                "aria-labelledby": "modalSuccess",
+                "aria-hidden": "true"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-dialog modal-dialog-centered",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      { staticClass: "modal-header alert alert-success m-0" },
                       [
                         _c(
                           "h5",
@@ -51114,7 +51394,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Gravedad de la falta: ")])
+      _c("b", [_vm._v("Gravedad de la falta")])
     ])
   },
   function() {
@@ -51134,6 +51414,14 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Derivación")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("Seleccione un estado del reporte ")])
+    ])
   }
 ]
 render._withStripped = true
@@ -51187,22 +51475,6 @@ var render = function() {
                     ? _c(
                         "button",
                         {
-                          staticClass: "mibtnEdit posicionbtn",
-                          attrs: {
-                            type: "button",
-                            "data-toggle": "modal",
-                            "data-target": "#reporteOrientacion"
-                          },
-                          on: { click: _vm.metodo }
-                        },
-                        [_c("i", { staticClass: "fas fa-edit" })]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.role != "admin"
-                    ? _c(
-                        "button",
-                        {
                           staticClass: "mibtnI positionImprimir",
                           attrs: { type: "button" }
                         },
@@ -51226,7 +51498,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", { staticClass: "text-right mt-3" }, [
                     _c("b", [_vm._v("Fecha: ")]),
-                    _vm._v(_vm._s(_vm.incidencia.FechaInicio))
+                    _vm._v(_vm._s(_vm.fechaFinal))
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "contenedorRT mt-4" }, [
@@ -57079,12 +57351,12 @@ var render = function() {
                         }
                       },
                       [
-                        _c("option", { domProps: { value: 1 } }, [
-                          _vm._v("Concluido")
-                        ]),
-                        _vm._v(" "),
                         _c("option", { domProps: { value: 0 } }, [
                           _vm._v("Pendiente")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { domProps: { value: 1 } }, [
+                          _vm._v("Concluido")
                         ])
                       ]
                     )
