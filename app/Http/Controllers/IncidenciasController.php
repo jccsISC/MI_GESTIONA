@@ -139,6 +139,9 @@ class IncidenciasController extends Controller
         if ($atributos['Status']) {
             $atributos['FechaFin'] = date('Y-m-d');
         }
+        // else {
+        //     $atributos['FechaInicio'] = date('Y-m-d');
+        // }
 
         $tblincidencias->update($atributos);
         return $tblincidencias->load('familiar');

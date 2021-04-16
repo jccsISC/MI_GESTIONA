@@ -46,25 +46,25 @@
 
                             <p><b>Motivo</b></p> 
                             <span v-if="!reporte.ComentariosPa" class="text-danger" >Requerido*</span>
-                            <textarea required v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <textarea v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
        
                             <p><b>Derivación</b></p>
                               <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
-                            <input required v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+                            <input  v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
                         </div>
 
                         <div>
                             <p><b>Descripción de la derivación</b></p> 
                               <span v-if="!reporte.DescripcionReporte" class="text-danger" >Requerido*</span>
-                            <textarea required v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
+                            <textarea  v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
 
                             <p><b>Observaciones</b></p>
                               <span v-if="!reporte.Observaciones" class="text-danger" >Requerido*</span>
-                            <input required v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
+                            <input  v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
 
                             <p><b>Seguimiento</b></p>
                               <span v-if="!reporte.Comentarios" class="text-danger" >Requerido*</span>
-                            <input required v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+                            <input  v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
                         </div>
                     </div>
 
@@ -72,24 +72,7 @@
                         <i class="fas fa-save"></i> Guardar
                     </button>
                 </form>
-                <div class="modal fade" id="modalEmpty" role="dialog" aria-labelledby="modalEmpty" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header alert alert-danger m-0">
-                                <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalSuccess" role="dialog" aria-labelledby="modalSuccess" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header alert alert-success m-0">
-                                <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                 <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="incidenciaModal"></alert-modal>
             </div>
         </div>
     </div>
@@ -107,6 +90,8 @@
                 tipo: '',
                 auth: {},
                 alertMessage: String,
+                showError: false,
+                alertType: 'danger',
             }
         },
         created() {
@@ -137,22 +122,26 @@
                 });
             },
             guardarReporte() {
-                
-                //  if (this.reporte.ComentariosPae == undefined 
-                //     || this.reporte.Derivacion  == undefined 
-                //     || this.reporte.DescripcionReporte  == undefined 
-                //     || this.reporte.Observaciones  == undefined 
-                //     || this.reporte.Comentarios  == undefined ) {
-                //     this.alertMessage = "Llene todos los campos";
-                //     $('#modalEmpty').modal('show');
-                //     setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
-                // }else {
+                this.alertType = 'danger';
+                 if (this.reporte.ComentariosPa == undefined 
+                    || this.reporte.Derivacion  == undefined 
+                    || this.reporte.DescripcionReporte  == undefined 
+                    || this.reporte.Observaciones  == undefined 
+                    || this.reporte.Comentarios  == undefined ) {
+                    this.alertMessage = "Llene todos los campos";
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
+                }else {
                     this.reporte.IdFamiliar = this.familiar.IdFamiliar;
                     if (this.tipo == 'Guardar') {
                         this.reporte.TipoReporte = 'Incidencia';
                         axios.post('/incidenciareal', this.reporte).then(res => {
-                            //window.location.href = '/T';
-                            $('#reporteOrientacion').modal('hide');
+                            this.alertMessage = "Se guardó correctamente";
+                            this.alertType = 'success';
+                            this.showError = true;
+                            setTimeout(() => { this.showError = false; }, 1000);
+                            setTimeout(function() {  $('#reporteOrientacion').modal('hide'); }, 2000);
+                         
                             bus.$emit('incidenciaAgregada', res.data);
                         });
                 } else {
@@ -161,7 +150,7 @@
                         bus.$emit('incidenciaEditada', res.data);
                     });
                 }
-            // }    
+            }    
             
         }
      }

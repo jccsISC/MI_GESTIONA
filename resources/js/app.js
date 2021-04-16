@@ -9,6 +9,7 @@ Vue.component('spinner', require('./components/generales/Spinner.vue').default);
 
 //VISTAS GENERALES
 Vue.component('mi-buscador', require('./components/generales/Buscador.vue').default);
+Vue.component('alert-modal', require('./components/generales/AlertWarning.vue').default);
 Vue.component('card-info-personal', require('./components/generales/CardInfoPersonal.vue').default);
 // Vue.component('card-info-personal-general', require('./components/generales/CardInfoPersonalGeneral.vue').default);
 Vue.component('allinfo', require('./components/generales/infoGeneralAlumno.vue').default);

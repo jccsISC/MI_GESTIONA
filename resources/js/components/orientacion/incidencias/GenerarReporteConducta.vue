@@ -24,7 +24,7 @@
                         <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p class="text-right"><b>Fecha:</b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="text-right"><b>Fecha:</b> {{ tipo == 'Guardar' ? toDay : getfechaInicial }}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Carrera: </b>{{alumno.Carrera}}</label>
                      <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
@@ -99,7 +99,9 @@
                 </button>
             </div>
 
-            <div class="modal fade" id="modalEmpty" role="dialog" aria-labelledby="modalEmpty" aria-hidden="true">
+            <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="malaConductaModal"></alert-modal>
+
+            <!-- <div class="modal fade" id="modalEmpty" role="dialog" aria-labelledby="modalEmpty" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header alert alert-danger m-0">
@@ -116,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -132,8 +134,24 @@
             tipo: '',
             auth: {},
             alertMessage: String,
+            showError: false,
+            alertType: 'danger',
+            toDay: String,
         }),
+        computed: {
+             getfechaInicial() {
+                if ( this.incidencia.FechaInicio != null ) {
+                    const date = new Date(this.incidencia.FechaInicio);
+                    console.log("FECHA Inicial: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                }
+            },
+        },
         created() {
+
+            this.toDay = new Date().getDate() +"-" + new Date().getMonth()+1 +"-" + new Date().getFullYear();
+            console.log("TODAY: ",this.toDay);
+
             this.$parent.$on('generarMalaConducta', alumno => {              
                 this.alumno = alumno;   
                 this.incidencia = {};
@@ -159,22 +177,23 @@
                 });
             },
             guardarReporte() {
+                this.alertType = 'danger';
                if (this.incidencia.DescripcionReporte == undefined 
                     || this.incidencia.Comentarios  == undefined 
                     || this.incidencia.ComentariosPa  == undefined 
                     || this.incidencia.Observaciones  == undefined 
                     || this.incidencia.Derivacion  == undefined ) {
                     this.alertMessage = "Llene todos los campos";
-                    $('#modalEmpty').modal('show');
-                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
                 }else if (this.incidencia.TipoFalta  == undefined ) {
                     this.alertMessage = "Seleccione la gravedad de la falta";
-                    $('#modalEmpty').modal('show');
-                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
                 }else if (this.incidencia.Status  == undefined ) {
                     this.alertMessage = "Seleccione un status para el reporte";
-                    $('#modalEmpty').modal('show');
-                    setTimeout(function(){ $('#modalEmpty').modal('hide') }, 2000);
+                    this.showError = true;
+                    setTimeout(() => {this.showError = false; }, 2000);
                 }else {
                     this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
@@ -182,8 +201,9 @@
                         this.incidencia.TipoReporte = 'Mala Conducta';
                         axios.post('/incidencias', this.incidencia).then(res => {
                             this.alertMessage = "Se guardó correctamente";
-                            $('#modalSuccess').modal('show');
-                            setTimeout(function() {  $('#modalSuccess').modal('hide'); }, 1000);
+                            this.alertType = 'success';
+                            this.showError = true;
+                            setTimeout(() => { this.showError = false; }, 1000);
                             setTimeout(function() {  $('#reporteConducta').modal('hide'); }, 2000);
                         
                             bus.$emit('incidenciaAgregada', res.data);

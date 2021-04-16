@@ -78,12 +78,12 @@ class YonoAbandonoController extends Controller
             'ResponsableSeguimiento' => 'required',
             'user_id' => 'required'
         ]);
-        
-        $tblyonoabandono->update(
-            $atributos + [
-                'FechaFin' => $atributos['Status'] ? date('Y-m-d') : NULL
-            ]
-        );
+
+        if ($atributos['Status']) {
+            $atributos['FechaFin'] = date('Y-m-d');
+        }
+
+        $tblyonoabandono->update($atributos);
         return $tblyonoabandono;
     }
 

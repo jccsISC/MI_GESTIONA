@@ -98,6 +98,7 @@
         },
         methods:{
             mostrarIncidencia(incidencia, alumno) {
+                console.log('mostrando incidencias', incidencia)
                 bus.$emit('verIncidencia', incidencia, alumno);
             },
             jalarIncidencias() {
