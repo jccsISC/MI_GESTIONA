@@ -7458,6 +7458,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -7469,8 +7493,21 @@ __webpack_require__.r(__webpack_exports__);
       tipo: '',
       errors: [],
       users: [],
-      auth: {}
+      auth: {},
+      alertMessage: String,
+      showError: false,
+      alertType: 'danger',
+      toDay: String
     };
+  },
+  computed: {
+    getfechaInicial: function getfechaInicial() {
+      if (this.reporte.FechaInicio != null) {
+        var date = new Date(this.reporte.FechaInicio);
+        console.log("FECHA Inicial: ", date);
+        return date.getDate() + 1 + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+      }
+    }
   },
   created: function created() {
     var _this = this;
@@ -7493,6 +7530,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.alumno = Object.assign({}, alumno);
       _this.reporte = Object.assign({}, reporte);
       _this.familiar = Object.assign({}, familiar);
+      _this.reporte.Status = undefined;
 
       _this.jalarUsers();
 
@@ -7512,42 +7550,46 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
-        alert('Verifique y llene todos los campos');
-        return;
-      }
-
-      this.users.forEach(function (element) {
-        if (element.id == _this3.reporte.user_id) {
-          _this3.reporte.ResponsableSeguimiento = element.name;
-          return;
-        }
-      });
-
-      if (this.reporte.Status == undefined) {
-        alert('Seleccione el estatus de este reporte');
-        return;
-      }
-
-      if (this.tipo == 'crear') {
-        this.reporte.Unidad = this.alumno.Unidad;
-        axios.post('/yonoAbandono', this.reporte).then(function (res) {
-          _this3.reporte = res.data;
-          $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
-        })["catch"](function (error) {
-          if (error.res.status == 422) {
-            _this3.errors = error.res.data.errors;
-          }
-        });
+        this.alertMessage = "Llene todos los campos";
+        this.showError = true;
+        setTimeout(function () {
+          _this3.showError = false;
+        }, 2000);
+      } else if (this.reporte.Status == undefined) {
+        this.alertMessage = "Seleccione un status para el reporte";
+        this.showError = true;
+        setTimeout(function () {
+          _this3.showError = false;
+        }, 2000);
       } else {
-        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(function (res) {
-          _this3.reporte = res.data;
-          $('#reporteTuto').modal('hide');
-          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('julioselacome', res.data);
-        })["catch"](function (error) {
-          if (error.res.status == 422) {
-            _this3.errors = error.res.data.errors;
+        this.users.forEach(function (element) {
+          if (element.id == _this3.reporte.user_id) {
+            _this3.reporte.ResponsableSeguimiento = element.name;
+            return;
           }
         });
+
+        if (this.tipo == 'crear') {
+          this.reporte.Unidad = this.alumno.Unidad;
+          axios.post('/yonoAbandono', this.reporte).then(function (res) {
+            _this3.reporte = res.data;
+            $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
+          })["catch"](function (error) {
+            if (error.res.status == 422) {
+              _this3.errors = error.res.data.errors;
+            }
+          });
+        } else {
+          axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(function (res) {
+            _this3.reporte = res.data;
+            $('#reporteTuto').modal('hide');
+            _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('julioselacome', res.data);
+          })["catch"](function (error) {
+            if (error.res.status == 422) {
+              _this3.errors = error.res.data.errors;
+            }
+          });
+        }
       }
     },
     jalarUsers: function jalarUsers() {
@@ -7731,6 +7773,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['role'],
@@ -7740,6 +7784,24 @@ __webpack_require__.r(__webpack_exports__);
       reporte: {},
       familiar: {}
     };
+  },
+  computed: {
+    getfechaInicial: function getfechaInicial() {
+      if (this.reporte.FechaInicio != null) {
+        var date = new Date(this.reporte.FechaInicio);
+        console.log("FECHA Inicial: ", date);
+        return date.getDate() + 1 + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+      }
+    },
+    getfechaFinal: function getfechaFinal() {
+      if (this.reporte.FechaFin != null) {
+        var date = new Date(this.reporte.FechaFin);
+        console.log("FECHA Final: ", date);
+        return date.getDate() + 1 + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+      } else {
+        console.log("No se ha concluido este reporte");
+      }
+    }
   },
   created: function created() {
     var _this = this;
@@ -57006,11 +57068,9 @@ var render = function() {
                   _c("b", [_vm._v("Fecha: ")]),
                   _vm._v(
                     " " +
-                      _vm._s(new Date().getDate()) +
-                      "-" +
-                      _vm._s(new Date().getMonth() + 1) +
-                      "-" +
-                      _vm._s(new Date().getFullYear())
+                      _vm._s(
+                        _vm.tipo == "crear" ? _vm.toDay : _vm.getfechaInicial
+                      )
                   )
                 ]),
                 _vm._v(" "),
@@ -57103,6 +57163,12 @@ var render = function() {
                     _vm._v(" "),
                     _vm._m(5),
                     _vm._v(" "),
+                    !_vm.reporte.Motivo
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("textarea", {
                       directives: [
                         {
@@ -57137,13 +57203,13 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm.errors.motivo
-                      ? _c("span", { staticClass: "error" }, [
-                          _vm._v(_vm._s(_vm.errors.motivo))
+                    _vm._m(6),
+                    _vm._v(" "),
+                    !_vm.reporte.Derivacion
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
                         ])
                       : _vm._e(),
-                    _vm._v(" "),
-                    _vm._m(6),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -57172,11 +57238,70 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "was-validated" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.reporte.user_id,
+                                expression: "reporte.user_id"
+                              }
+                            ],
+                            staticClass: "custom-select",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.reporte,
+                                  "user_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          _vm._l(_vm.users, function(user, key) {
+                            return _c(
+                              "option",
+                              { key: key, domProps: { value: user.id } },
+                              [_vm._v(_vm._s(user.name))]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v("Seleccione al responsable de seguimiento")
+                        ])
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(7),
+                    _vm._m(8),
+                    _vm._v(" "),
+                    !_vm.reporte.DescripcionDer
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -57209,7 +57334,13 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    !_vm.reporte.Observaciones
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -57240,7 +57371,13 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(10),
+                    _vm._v(" "),
+                    !_vm.reporte.Seguimiento
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -57269,104 +57406,65 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "was-validated" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.reporte.Status,
+                                expression: "reporte.Status"
+                              }
+                            ],
+                            staticClass: "custom-select",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.reporte,
+                                  "Status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { domProps: { value: 0 } }, [
+                              _vm._v("Pendiente")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { domProps: { value: 1 } }, [
+                              _vm._v("Concluido")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v("Seleccion el estatus")
+                        ])
+                      ])
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-2" }, [
-                  _c("div", [
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.user_id,
-                            expression: "reporte.user_id"
-                          }
-                        ],
-                        staticClass:
-                          "mdb-select md-form colorful-select dropdown-primary",
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.reporte,
-                              "user_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.users, function(user, key) {
-                        return _c(
-                          "option",
-                          { key: key, domProps: { value: user.id } },
-                          [_vm._v(_vm._s(user.name))]
-                        )
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.Status,
-                            expression: "reporte.Status"
-                          }
-                        ],
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.reporte,
-                              "Status",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("option", { domProps: { value: 0 } }, [
-                          _vm._v("Pendiente")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { domProps: { value: 1 } }, [
-                          _vm._v("Concluido")
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
                   _c("div", [
                     _c(
                       "button",
@@ -57377,15 +57475,25 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "fas fa-save" }),
-                        _vm._v(" Guardar\n                        ")
+                        _vm._v(" Guardar\n                    ")
                       ]
                     )
                   ])
                 ])
               ]
             )
-          ])
-        ]
+          ]),
+          _vm._v(" "),
+          _c("alert-modal", {
+            attrs: {
+              message: _vm.alertMessage,
+              type: _vm.alertType,
+              show: _vm.showError,
+              julio: "yonoAbandonoModalAlert"
+            }
+          })
+        ],
+        1
       )
     ]
   )
@@ -57493,6 +57601,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("Responsable de seguimiento")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Descripción de la derivación")])])
   },
   function() {
@@ -57511,15 +57627,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Responsable de seguimiento")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-0" }, [
+    return _c("label", { staticClass: "m-0" }, [
       _c("b", [_vm._v("Seleccione un estado del reporte")])
     ])
   }
@@ -57693,9 +57801,24 @@ var render = function() {
               _vm._v(" "),
               _vm._m(2),
               _vm._v(" "),
+              _c("p", [
+                _vm._v("Fecha inicial " + _vm._s(_vm.getfechaInicial) + " ")
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v("Fecha final " + _vm._s(_vm.getfechaFinal) + " ")
+              ]),
+              _vm._v(" "),
               _c("p", { staticClass: "text-right mt-3" }, [
                 _c("b", [_vm._v("Fecha: ")]),
-                _vm._v(_vm._s(_vm.reporte.FechaInicio))
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      _vm.reporte.Status == "0"
+                        ? _vm.getfechaInicial
+                        : _vm.getfechaFinal
+                    )
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "contenedorRT mt-4" }, [

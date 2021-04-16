@@ -69,7 +69,7 @@
 
                         <div>
                             <p><b>Comentario del padre o tutor</b></p> 
-                             <span v-if="!incidencia.ComentariosPa" class="text-danger" >Requerido*</span>
+                            <span v-if="!incidencia.ComentariosPa" class="text-danger" >Requerido*</span>
                             <textarea v-model="incidencia.ComentariosPa" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí los comentariso del padre"></textarea>
 
                             <p><b>Observaciones</b></p>
