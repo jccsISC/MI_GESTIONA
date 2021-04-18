@@ -24,7 +24,7 @@
                         <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p class="text-right"><b>Fecha:</b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="text-right"><b>Fecha:</b>{{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.ResponsableSeguimiento}}</p>
@@ -45,21 +45,26 @@
                             </div>
 
                             <p><b>Motivo</b></p> 
-                            <textarea required v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
+                            <span v-if="!reporte.ComentariosPa" class="text-danger" >Requerido*</span>
+                            <textarea v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
        
                             <p><b>Derivación</b></p>
-                            <input required v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+                              <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
+                            <input  v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
                         </div>
 
                         <div>
                             <p><b>Descripción de la derivación</b></p> 
-                            <textarea required v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
+                              <span v-if="!reporte.DescripcionReporte" class="text-danger" >Requerido*</span>
+                            <textarea  v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
 
                             <p><b>Observaciones</b></p>
-                            <input required v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
+                              <span v-if="!reporte.Observaciones" class="text-danger" >Requerido*</span>
+                            <input  v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
 
                             <p><b>Seguimiento</b></p>
-                            <input required v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+                              <span v-if="!reporte.Comentarios" class="text-danger" >Requerido*</span>
+                            <input  v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
                         </div>
                     </div>
 
@@ -67,6 +72,7 @@
                         <i class="fas fa-save"></i> Guardar
                     </button>
                 </form>
+                 <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="incidenciaModal"></alert-modal>
             </div>
         </div>
     </div>
@@ -82,7 +88,10 @@
                 reporte: {},
                 familiar: {},
                 tipo: '',
-                auth: {}
+                auth: {},
+                alertMessage: String,
+                showError: false,
+                alertType: 'danger',
             }
         },
         created() {
@@ -113,22 +122,39 @@
                 });
             },
             guardarReporte() {
-                if (this.tipo == 'Guardar') {
-                    this.reporte.TipoReporte = 'Incidencia';
-                    axios.post('/incidenciareal', this.reporte).then(res => {
-                        //window.location.href = '/T';
-                        $('#reporteOrientacion').modal('hide');
-                        bus.$emit('incidenciaAgregada', res.data);
-                    });
+                this.alertType = 'danger';
+                 if (this.reporte.ComentariosPa == undefined 
+                    || this.reporte.Derivacion  == undefined 
+                    || this.reporte.DescripcionReporte  == undefined 
+                    || this.reporte.Observaciones  == undefined 
+                    || this.reporte.Comentarios  == undefined ) {
+                    this.alertMessage = "Llene todos los campos";
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
+                }else {
+                    this.reporte.IdFamiliar = this.familiar.IdFamiliar;
+                    if (this.tipo == 'Guardar') {
+                        this.reporte.TipoReporte = 'Incidencia';
+                        axios.post('/incidenciareal', this.reporte).then(res => {
+                            this.alertMessage = "Se guardó correctamente";
+                            this.alertType = 'success';
+                            this.showError = true;
+                            setTimeout(() => { this.showError = false; }, 1000);
+                            setTimeout(function() {  $('#reporteOrientacion').modal('hide'); }, 2000);
+                         
+                            bus.$emit('incidenciaAgregada', res.data);
+                        });
                 } else {
                     axios.put('/incidenciareal/'+this.reporte.IdIncidencia, this.reporte).then(res => {
                         $('#reporteOrientacion').modal('hide');
                         bus.$emit('incidenciaEditada', res.data);
                     });
                 }
-            }
+            }    
+            
         }
-    }
+     }
+}
 </script>
 
 <style>

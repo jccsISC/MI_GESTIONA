@@ -68,7 +68,7 @@ class IncidenciasController extends Controller
         $atributos = $this->validate($request, [
             'IdAlumno' => 'required',
             'IdFamiliar' => 'required',
-            'Motivo' => 'required',
+            'ComentariosPa' => 'required',
             'Derivacion' => 'required',
             'DescripcionReporte' => 'required',
             'Observaciones' => 'required',
@@ -135,6 +135,13 @@ class IncidenciasController extends Controller
             'ResponsableSeguimiento' => 'required',
             'TipoReporte' => 'required'
         ]);
+
+        if ($atributos['Status']) {
+            $atributos['FechaFin'] = date('Y-m-d');
+        }
+        // else {
+        //     $atributos['FechaInicio'] = date('Y-m-d');
+        // }
 
         $tblincidencias->update($atributos);
         return $tblincidencias->load('familiar');

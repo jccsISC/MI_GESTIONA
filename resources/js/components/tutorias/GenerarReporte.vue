@@ -24,7 +24,7 @@
                         <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+                    <p class="text-right"><b>Fecha: </b> {{  tipo == 'crear' ? toDay : getfechaInicial }}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
@@ -52,54 +52,73 @@
                             </div>
                                 
                             <p><b>Motivo</b></p> 
-                            <textarea v-model.trim="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
-                            <span v-if="errors.motivo" class="error">{{errors.motivo}}</span> 
+                            <span v-if="!reporte.Motivo" class="text-danger" >Requerido*</span>
+                            <textarea v-model.trim="reporte.Motivo" name="motivo" id="motivo" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea> 
 
                             <p><b>Derivación</b></p>
+                            <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
+
+                            <label class="m-0"><b>Responsable de seguimiento</b></label>
+                            <form class="was-validated">
+                                <div class="form-group">
+                                <select class="custom-select" required  v-model="reporte.user_id" >
+                                        <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
+                                </select> 
+                                <div class="invalid-feedback">Seleccione al responsable de seguimiento</div>
+                                </div>
+                            </form>
+                            <!-- <div>
+                                    <p class="m-0"><b>Responsable de seguimiento</b></p> 
+                                    <select v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
+                                        <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
+                                    </select>
+                            </div> -->
                         </div>
 
                         <div>
-                            <p><b>Descripción de la derivación</b></p> 
+                            <p><b>Descripción de la derivación</b></p>
+                            <span v-if="!reporte.DescripcionDer" class="text-danger" >Requerido*</span>
                             <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la deribación"></textarea>
                         
                             <p><b>Observaciones</b></p>
+                            <span v-if="!reporte.Observaciones" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Observaciones" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí las observaciones">
                     
                             <p><b>Seguimiento</b></p>
+                            <span v-if="!reporte.Seguimiento" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Seguimiento" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+
+                            <label class="m-0"><b>Seleccione un estado del reporte</b></label>
+                            <form class="was-validated">
+                                <div class="form-group">
+                                <select class="custom-select" required v-model="reporte.Status" >
+                                    <option :value="0">Pendiente</option>
+                                    <option :value="1">Concluido</option>
+                                </select> 
+                                <div class="invalid-feedback">Seleccion el estatus</div>
+                                </div>
+                            </form>
+                            <!-- <div>
+                                <p class="m-0"><b>Seleccione un estado del reporte</b></p> 
+                                <select v-model="reporte.Status">
+                                        <option :value="0">Pendiente</option>
+                                        <option :value="1">Concluido</option>
+                                </select>
+                            </div> -->
                         </div>
                     </div>
-
-                   
+       
                    <div class="miGrid2 mt-2">
-                       <div>
-                            <p class="m-0"><b>Responsable de seguimiento</b></p> 
-                            <select v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
-                                <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
-                            </select>
-                       </div>
-
-                        <div>
-                            <p class="m-0"><b>Seleccione un estado del reporte</b></p> 
-                             <select v-model="reporte.Status">
-                                    <option value=0>Concluido</option>
-                                    <option value=1>Pendiente</option>
-                            </select>
-                       </div>
-                    <!-- <div class="float-right mt-5">
-                        <button  class="btn btn-success m-0 p-0 pr-2 pl-2" @click="reporte.Status = 1"><i class="fas fa-check"></i></button>
-                        <button  class="btn btn-warning m-0 p-0 pr-2 pl-2" @click="reporte.Status = 0"><i class="fas fa-exclamation-triangle"></i></button>
-                    </div> -->
-
-                       <div>
-                            <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
-                                <i class="fas fa-save"></i> Guardar
-                            </button>
-                       </div>
+                    <div>
+                        <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                    </div>
                    </div>                   
                 </div>  
             </div>
+            <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="yonoAbandonoModalAlert"></alert-modal>
         </div>
     </div>
 </template>
@@ -116,18 +135,20 @@
             errors: [],
             users: [],
             auth: {},
+            alertMessage: String,
+            showError: false,
+            alertType: 'danger',
+            toDay: String,
         }),
-        //  data() {
-        //     return {
-        //         alumno: {},
-        //         reporte: {},
-        //         familiar: {},
-        //         tipo: '',
-        //         errors: [],
-        //         users: [],
-        //         auth: {},
-        //     }
-        // },
+         computed: {
+             getfechaInicial() {
+                if ( this.reporte.FechaInicio != null ) {
+                    const date = new Date(this.reporte.FechaInicio);
+                    console.log("FECHA Inicial: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                }
+            },
+        },
         created() {
             this.$parent.$on('generarReporte', alumno => {    
                 this.reporte = {};          
@@ -145,6 +166,7 @@
                 this.alumno = Object.assign({}, alumno);   
                 this.reporte = Object.assign({}, reporte);
                 this.familiar = Object.assign({}, familiar);
+                this.reporte.Status = undefined;
                 this.jalarUsers(); 
                 this.tipo = 'editar';
             });
@@ -157,45 +179,49 @@
                 });
             },
             guardarReporte() {
-               if (this.reporte.Status == undefined) {
-                    alert('Seleccione el estatus de este reporte');
-                    return;
-                }
                 
-               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
-                    alert('Verifique y llene todos los campos');
-                    return;
-                }
+               if (this.reporte.Derivacion == undefined 
+                    || this.reporte.DescripcionDer == undefined
+                    || this.reporte.Observaciones == undefined 
+                    || this.reporte.Seguimiento == undefined ) {
+                    this.alertMessage = "Llene todos los campos";
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
+                }else if (this.reporte.Status == undefined) {
+                    this.alertMessage = "Seleccione un status para el reporte";
+                    this.showError = true;
+                    setTimeout(() => { this.showError = false; }, 2000);
+                }else {
+                      this.users.forEach(element => {
+                        if (element.id == this.reporte.user_id) {
+                            this.reporte.ResponsableSeguimiento = element.name;
+                            return;
+                        }
+                    });
 
-                this.users.forEach(element => {
-                    if (element.id == this.reporte.user_id) {
-                        this.reporte.ResponsableSeguimiento = element.name;
-                        return;
+                    if (this.tipo == 'crear') {
+                        this.reporte.Unidad = this.alumno.Unidad;
+                        axios.post('/yonoAbandono', this.reporte).then(res => {
+                            this.reporte = res.data;
+                            $('#reporteTuto').modal('hide');
+                            // bus.$emit('incidenciaAgregada', res.data);
+                        }).catch(error => {
+                            if (error.res.status == 422) {
+                                this.errors = error.res.data.errors;
+                            }
+                        });
+                    } else {
+                        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
+                            this.reporte = res.data;
+
+                            $('#reporteTuto').modal('hide');
+                            bus.$emit('julioselacome', res.data);
+                        }).catch(error => {
+                            if (error.res.status == 422) {
+                                this.errors = error.res.data.errors;
+                            }
+                        });
                     }
-                });
-
-                if (this.tipo == 'crear') {
-                    this.reporte.Unidad = this.alumno.Unidad;
-                    axios.post('/yonoAbandono', this.reporte).then(res => {
-                        this.reporte = res.data;
-                        $('#reporteTuto').modal('hide');
-                        // bus.$emit('incidenciaAgregada', res.data);
-                    }).catch(error => {
-                        if (error.res.status == 422) {
-                            this.errors = error.res.data.errors;
-                        }
-                    });
-                } else {
-                    axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
-                        this.reporte = res.data;
-                        $('#reporteTuto').modal('hide');
-                        bus.$emit('julioselacome', res.data);
-                    }).catch(error => {
-                        if (error.res.status == 422) {
-                            this.errors = error.res.data.errors;
-                        }
-                    });
                 }
             },
             jalarUsers() {

@@ -36,8 +36,7 @@
                             <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
                         </div>
 
-
-                        <p class="text-right mt-3"><b>Fecha: </b>{{incidencia.FechaInicio}}</p>
+                        <p class="text-right mt-3"><b>Fecha: </b>{{ incidencia.Status == '0' ? getfechaInicial : getfechaFinal }}</p>
 
                         <div class="contenedorRT mt-4">
                             <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
@@ -53,7 +52,6 @@
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             </div>
                             <div>
-                                <p class="m-0"><b>Madre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                             </div>
@@ -97,7 +95,6 @@
                 </div>
             </div>
         </div>
-        
         <genera-mala-conducta></genera-mala-conducta>
     </div>
 </template>
@@ -110,7 +107,25 @@
             return {
                 alumno: {},
                 incidencia: {},
-                familiar: {}
+                familiar: {},
+            }
+        },
+        computed: {
+            getfechaInicial() {
+                if ( this.incidencia.FechaInicio != null ) {
+                    const date = new Date(this.incidencia.FechaInicio);
+                    console.log("FECHA Inicial: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                }
+            },
+            getfechaFinal() {
+                if ( this.incidencia.FechaFin != null ) {
+                    const date = new Date(this.incidencia.FechaFin);
+                    console.log("FECHA Final: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                } else {
+                    console.log("No se ha concluido este reporte");
+                }
             }
         },
         created() {
@@ -120,7 +135,7 @@
                 this.familiar = this.incidencia.familiar;
 
                 
-                console.log(this.incidencia);
+                console.log('esta mal la incidencia', this.incidencia);
                 console.log(this.alumno);
                 console.log(this.familiar);
             });

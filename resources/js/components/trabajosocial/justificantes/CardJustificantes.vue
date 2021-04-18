@@ -53,11 +53,11 @@
         },
         created() {
             bus.$on('alumnoSeleccionado', alumno => {
-                 if(this.alumno.IdAlumno != alumno.IdAlumno){
+                //  if(this.alumno.IdAlumno != alumno.IdAlumno){
                     this.alumno = alumno;
                     this.jalarJustificantes();
                     this.jalarPases();
-                 }
+                //  }
             });
 
             bus.$on('justificanteGuardado', justificante => {

@@ -22,7 +22,9 @@
     <div id="app" class="contenedor-principal" >
         <header>
             <div class="contenedor minavbar">
-                <a href="http://127.0.0.1:8000/OE"><img class="logoCecy" src="/images/gestiona.png" alt="logo"></a>
+                <a href="{{ auth()->user()->hasRole('tsocial') ? '/TS' : (auth()->user()->hasRole('orientador') ? '/OE': (auth()->user()->hasRole('maestro') ? '/M' : (auth()->user()->hasRole('tutor') ? '/T' : '/A'))) }}">
+                    <img class="logoCecy" src="/images/gestiona.png" alt="logo">
+                </a>
                 <mi-buscador></mi-buscador>
 
                 <nav id="menu">
@@ -70,8 +72,6 @@
     .cerrar a{
         color: white;
     }
-
-    
 
 </style>
 

@@ -34,7 +34,9 @@
                         <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p class="text-right mt-3"><b>Fecha: </b>{{reporte.FechaInicio}}</p>
+                    <p>Fecha inicial {{getfechaInicial}} </p>
+                    <p>Fecha final {{ getfechaFinal }} </p>
+                    <p class="text-right mt-3"><b>Fecha: </b> {{ reporte.Status == '0' ? getfechaInicial : getfechaFinal }}</p>
                     
                     <div class="contenedorRT mt-4">
                         <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
@@ -110,6 +112,24 @@
                 alumno: {},
                 reporte: {},
                 familiar: {}
+            }
+        },
+        computed: {
+            getfechaInicial() {
+                if ( this.reporte.FechaInicio != null ) {
+                    const date = new Date(this.reporte.FechaInicio);
+                    console.log("FECHA Inicial: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                }
+            },
+            getfechaFinal() {
+                if ( this.reporte.FechaFin != null ) {
+                    const date = new Date(this.reporte.FechaFin);
+                    console.log("FECHA Final: ", date);
+                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+                } else {
+                    console.log("No se ha concluido este reporte");
+                }
             }
         },
         created() {

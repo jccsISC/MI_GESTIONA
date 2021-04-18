@@ -9,9 +9,24 @@
                         
                         <div class="borde">
                             <button 
-                                v-for="(incidencia, key) in incidencias" :key="key"  
+                                v-for="(incidencia, key) in incidenciasComputed" :key="key"
                                 class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
-                                data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                data-toggle="modal" :data-target="'#verIncidencias'" @click="mostrarIncidencia(incidencia, alumno)">
+                            
+                                {{key + 1}}
+
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pt-1 interlineado">
+                        <p><b>Mala conducta</b></p>
+                        
+                        <div class="borde">
+                            <button 
+                                v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
+                                data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
                             
                                 {{key + 1}}
 
@@ -44,6 +59,12 @@
         computed: {
             inconveniente() {
                 return this.incidencias[0] ? this.incidencias[0] : {};
+            },
+            incidenciasComputed() {
+                return this.incidencias.filter(incidencia => incidencia.TipoReporte === 'Incidencia');
+            },
+            malaConductaComputed() {
+                return this.incidencias.filter(incidencia => incidencia.TipoReporte !== 'Incidencia');    
             }
         },
         data() {
@@ -77,6 +98,7 @@
         },
         methods:{
             mostrarIncidencia(incidencia, alumno) {
+                console.log('mostrando incidencias', incidencia)
                 bus.$emit('verIncidencia', incidencia, alumno);
             },
             jalarIncidencias() {
