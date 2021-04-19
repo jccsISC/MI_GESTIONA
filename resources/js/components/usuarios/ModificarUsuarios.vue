@@ -21,24 +21,27 @@
 			          <input type="text" class="form-control" placeholder="Ingresa el nombre del usuario" v-model="usuario.email">
 
 		  	      </div>
-              <div class="form-group">
+              			          <input type="checkbox" class="form-control" v-model="usuario.actualizar_password">
+
+              
+              <div class="form-group" v-if="usuario.actualizar_password">
 			          <label>Contraseña</label>
 			          <input type="password" class="form-control" placeholder="Ingresa la contraseña" v-model="usuario.password">
 		  	      </div>
 
-                   <div class="form-group">
+                   <div class="form-group" v-if="usuario.actualizar_password">
 			          <label>Confirmar contraseña</label>
 			          <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2">
 		  	      </div>
 		  	    
               <div class="form-group">
 			          <label>Tipo de usuario</label>
-			          <select name="role" required v-model="usuario.role">
-                <option value="1">Administrador</option> 
-                <option value="2">Tutor</option> 
-                <option value="3">Orientador</option> 
-                <option value="4">Trabajador social</option> 
-                <option value="5">Maestro</option> 
+			          <select name="role" required v-model="usuario.role" v-if="usuario.role != 1">
+                  <option value="1">Administrador</option> 
+                  <option value="2">Tutor</option> 
+                  <option value="3">Orientador</option> 
+                  <option value="4">Trabajador social</option> 
+                  <option value="5">Maestro</option> 
               </select>
 		  	      </div>
 
@@ -56,6 +59,10 @@
     created: function() {
       this.$parent.$on('modificarUsuario', usuario => {
         this.usuario = JSON.parse(JSON.stringify(usuario));
+        if (this.usuario.roles && this.usuario.roles.length && this.usuario.roles[0]) {
+          this.usuario.role = this.usuario.roles[0].id;
+        }
+        console.log('usuario', this.usuario)
       }
   
       );
@@ -84,7 +91,7 @@
       modificarUsuario() {
             
   
-        if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
+        if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || ((!this.usuario.password || this.usuario.password.trim() === '') && this.usuario.actualizar_password)) {
           alert('Debes de completar todos los campos antes de guardar');
           return;
         }

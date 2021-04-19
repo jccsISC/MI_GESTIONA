@@ -144,7 +144,6 @@
              getfechaInicial() {
                 if ( this.reporte.FechaInicio != null ) {
                     const date = new Date(this.reporte.FechaInicio);
-                    console.log("FECHA Inicial: ", date);
                     return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
                 }
             },
@@ -161,8 +160,7 @@
                 this.tipo = 'crear';
             });
 
-            bus.$on('kevin', (reporte, alumno, familiar) => {   
-                console.log('jaskdfjklasjdf')
+            bus.$on('kevin', (reporte, alumno, familiar) => {
                 this.alumno = Object.assign({}, alumno);   
                 this.reporte = Object.assign({}, reporte);
                 this.familiar = Object.assign({}, familiar);
@@ -179,6 +177,7 @@
                 });
             },
             guardarReporte() {
+                console.log('guardarndo reporte 1', this.reporte)
                 
                if (this.reporte.Derivacion == undefined 
                     || this.reporte.DescripcionDer == undefined
@@ -206,18 +205,18 @@
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
                         }).catch(error => {
-                            if (error.res.status == 422) {
+                            if (error.res && error.res.status == 422) {
                                 this.errors = error.res.data.errors;
                             }
                         });
                     } else {
-                        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
+                        axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
                             this.reporte = res.data;
 
                             $('#reporteTuto').modal('hide');
                             bus.$emit('julioselacome', res.data);
                         }).catch(error => {
-                            if (error.res.status == 422) {
+                            if (error.res && error.res.status == 422) {
                                 this.errors = error.res.data.errors;
                             }
                         });
@@ -227,7 +226,6 @@
             jalarUsers() {
                 axios.get('/users').then(res => {
                     this.users = res.data;
-                    console.log("USUARIOS: ", res.data);
                 });
             }
         }

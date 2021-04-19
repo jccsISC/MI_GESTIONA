@@ -10,7 +10,7 @@
 
 <script>
     import bus from '../../event-bus';
-    
+  
     export default {
         data() {
             return {

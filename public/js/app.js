@@ -7504,7 +7504,6 @@ __webpack_require__.r(__webpack_exports__);
     getfechaInicial: function getfechaInicial() {
       if (this.reporte.FechaInicio != null) {
         var date = new Date(this.reporte.FechaInicio);
-        console.log("FECHA Inicial: ", date);
         return date.getDate() + 1 + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
       }
     }
@@ -7526,7 +7525,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.tipo = 'crear';
     });
     _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('kevin', function (reporte, alumno, familiar) {
-      console.log('jaskdfjklasjdf');
       _this.alumno = Object.assign({}, alumno);
       _this.reporte = Object.assign({}, reporte);
       _this.familiar = Object.assign({}, familiar);
@@ -7548,6 +7546,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     guardarReporte: function guardarReporte() {
       var _this3 = this;
+
+      console.log('guardarndo reporte 1', this.reporte);
 
       if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
         this.alertMessage = "Llene todos los campos";
@@ -7575,17 +7575,17 @@ __webpack_require__.r(__webpack_exports__);
             _this3.reporte = res.data;
             $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
           })["catch"](function (error) {
-            if (error.res.status == 422) {
+            if (error.res && error.res.status == 422) {
               _this3.errors = error.res.data.errors;
             }
           });
         } else {
-          axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(function (res) {
+          axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(function (res) {
             _this3.reporte = res.data;
             $('#reporteTuto').modal('hide');
             _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('julioselacome', res.data);
           })["catch"](function (error) {
-            if (error.res.status == 422) {
+            if (error.res && error.res.status == 422) {
               _this3.errors = error.res.data.errors;
             }
           });
@@ -7597,7 +7597,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/users').then(function (res) {
         _this4.users = res.data;
-        console.log("USUARIOS: ", res.data);
       });
     }
   }
@@ -7864,6 +7863,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7887,6 +7887,13 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    unidad: function unidad(inasistencias) {
+      if (inasistencias && inasistencias.length) {
+        return inasistencias[0].parcial;
+      }
+
+      return '';
+    },
     totalInasistencias: function totalInasistencias(inasistencias) {
       var keys = Object.keys(inasistencias);
       var contador = 0;
@@ -7897,6 +7904,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     seleccionarAlumno: function seleccionarAlumno(alumno) {
       console.log('click');
+      alumno.Unidad = this.unidad(alumno.inasistencias);
       _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('alumnoSeleccionado', alumno);
     }
   }
@@ -8149,12 +8157,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
 
     this.$parent.$on('modificarUsuario', function (usuario) {
       _this.usuario = JSON.parse(JSON.stringify(usuario));
+
+      if (_this.usuario.roles && _this.usuario.roles.length && _this.usuario.roles[0]) {
+        _this.usuario.role = _this.usuario.roles[0].id;
+      }
+
+      console.log('usuario', _this.usuario);
     });
   },
   data: function data() {
@@ -8175,7 +8192,7 @@ __webpack_require__.r(__webpack_exports__);
     modificarUsuario: function modificarUsuario() {
       var _this2 = this;
 
-      if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || this.usuario.password.trim() === '') {
+      if (this.usuario.name.trim() === '' || this.usuario.email.trim() === '' || (!this.usuario.password || this.usuario.password.trim() === '') && this.usuario.actualizar_password) {
         alert('Debes de completar todos los campos antes de guardar');
         return;
       }
@@ -8198,8 +8215,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -8285,8 +8308,29 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/usuarios').then(function (res) {
-      _this.usuarios = res.data;
+      _this.usuarios = res.data.map(function (user) {
+        if (user.roles && user.roles.length && user.roles[0]) {
+          user.role = user.roles[0].id;
+          user.role_name = user.roles[0].name;
+        }
+
+        return user;
+      });
+      console.log(_this.usuarios);
     });
+  },
+  computed: {
+    filterUsers: function filterUsers() {
+      var _this2 = this;
+
+      if (!this.buscador) {
+        return this.usuarios;
+      }
+
+      return this.usuarios.filter(function (user) {
+        return user.name.toLowerCase().includes(_this2.buscador.toLowerCase()) || String(user.id).toLowerCase().includes(_this2.buscador.toLowerCase());
+      });
+    }
   },
   methods: {
     actualizarUsuario: function actualizarUsuario(usuario) {
@@ -8295,7 +8339,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     modificarUsuario: function modificarUsuario(usuario) {
-      var _this2 = this;
+      var _this3 = this;
 
       var temp = Object.assign({}, this.usuarios); //clonamos el array usuarios
 
@@ -8303,21 +8347,31 @@ __webpack_require__.r(__webpack_exports__);
 
       Object.keys(temp).forEach(function (key) {
         if (temp[key].id === usuario.id) {
-          _this2.usuarios[key] = usuario;
+          _this3.usuarios[key] = usuario;
         } else {
-          _this2.usuarios[key] = temp[key];
+          _this3.usuarios[key] = temp[key];
         }
       });
     },
-    eliminarUsuario: function eliminarUsuario(usuario, key) {
-      var _this3 = this;
+    eliminarUsuario: function eliminarUsuario(usuario) {
+      var _this4 = this;
 
       var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar el usuario ".concat(usuario.name, " ?")); // Lo elimina en la base de datos.
 
       if (confirmacion) {
-        axios["delete"]("/usuarios/".concat(usuario.id)).then(function (res) {
+        axios["delete"]("/usuarios/".concat(usuario.id)).then(function () {
           // Lo elimina de manera visual.
-          _this3.usuarios.splice(key, 1);
+          var users = _toConsumableArray(_this4.usuarios);
+
+          var key = users.findIndex(function (user) {
+            return user.id === usuario.id;
+          });
+
+          if (key >= 0) {
+            users.splice(key, 1);
+
+            _this4.$set(_this4, 'usuarios', _toConsumableArray(users));
+          }
         });
       }
     },
@@ -58180,6 +58234,15 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
+                _c("p", { staticClass: "sizeName m-0" }, [
+                  _c("b", [
+                    _vm._v("Unidad  "),
+                    _c("label", { staticClass: "textShadow" }, [
+                      _vm._v(_vm._s(_vm.unidad(alumno.inasistencias)))
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
                 _c(
                   "div",
                   { staticClass: "scrollFM" },
@@ -58767,121 +58830,181 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Contraseña")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.usuario.password,
-                        expression: "usuario.password"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "password",
-                      placeholder: "Ingresa la contraseña"
-                    },
-                    domProps: { value: _vm.usuario.password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.usuario.actualizar_password,
+                      expression: "usuario.actualizar_password"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.usuario.actualizar_password)
+                      ? _vm._i(_vm.usuario.actualizar_password, null) > -1
+                      : _vm.usuario.actualizar_password
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.usuario.actualizar_password,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.usuario,
+                              "actualizar_password",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.usuario,
+                              "actualizar_password",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
                         }
-                        _vm.$set(_vm.usuario, "password", $event.target.value)
+                      } else {
+                        _vm.$set(_vm.usuario, "actualizar_password", $$c)
                       }
                     }
-                  })
-                ]),
+                  }
+                }),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Confirmar contraseña")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.usuario.password2,
-                        expression: "usuario.password2"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "password",
-                      placeholder: "Confirmar la contraseña"
-                    },
-                    domProps: { value: _vm.usuario.password2 },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _vm.usuario.actualizar_password
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Contraseña")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.usuario.password,
+                            expression: "usuario.password"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "password",
+                          placeholder: "Ingresa la contraseña"
+                        },
+                        domProps: { value: _vm.usuario.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.usuario,
+                              "password",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(_vm.usuario, "password2", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
+                      })
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.usuario.actualizar_password
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Confirmar contraseña")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.usuario.password2,
+                            expression: "usuario.password2"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "password",
+                          placeholder: "Confirmar la contraseña"
+                        },
+                        domProps: { value: _vm.usuario.password2 },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.usuario,
+                              "password2",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Tipo de usuario")]),
                   _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+                  _vm.usuario.role != 1
+                    ? _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.usuario.role,
-                          expression: "usuario.role"
-                        }
-                      ],
-                      attrs: { name: "role", required: "" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.usuario,
-                            "role",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Administrador")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Tutor")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [
-                        _vm._v("Orientador")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "4" } }, [
-                        _vm._v("Trabajador social")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "5" } }, [
-                        _vm._v("Maestro")
-                      ])
-                    ]
-                  )
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.usuario.role,
+                              expression: "usuario.role"
+                            }
+                          ],
+                          attrs: { name: "role", required: "" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.usuario,
+                                "role",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("Administrador")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Tutor")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("Orientador")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4" } }, [
+                            _vm._v("Trabajador social")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("Maestro")
+                          ])
+                        ]
+                      )
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm._m(1)
@@ -58982,40 +59105,27 @@ var render = function() {
                 _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "divbuscador" }, [
-                  _c(
-                    "form",
-                    {
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.buscar($event)
-                        }
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.buscador,
+                        expression: "buscador"
                       }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.buscador,
-                            expression: "buscador"
-                          }
-                        ],
-                        staticStyle: { width: "150px" },
-                        attrs: { type: "text", placeholder: "Buscar" },
-                        domProps: { value: _vm.buscador },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.buscador = $event.target.value
-                          }
+                    ],
+                    staticStyle: { width: "150px" },
+                    attrs: { type: "text", placeholder: "Buscar" },
+                    domProps: { value: _vm.buscador },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      })
-                    ]
-                  )
+                        _vm.buscador = $event.target.value
+                      }
+                    }
+                  })
                 ]),
                 _vm._v(" "),
                 _c("hr", { staticClass: "mt-1 m-0 p-0" }),
@@ -59032,7 +59142,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.usuarios, function(usuario, key) {
+                        _vm._l(_vm.filterUsers, function(usuario, key) {
                           return _c("tr", { key: key }, [
                             _c("td", [
                               _vm._v(" " + _vm._s(usuario.name) + " ")
@@ -59042,7 +59152,7 @@ var render = function() {
                               _vm._v(" " + _vm._s(usuario.email) + " ")
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(" " + _vm._s(usuario.role))]),
+                            _c("td", [_vm._v(" " + _vm._s(usuario.role_name))]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -59067,21 +59177,24 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.eliminarUsuario(
-                                        usuario,
-                                        _vm.keyusuario
-                                      )
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "far fa-trash-alt" })]
-                              )
+                              usuario.role != 1
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger btn-sm",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.eliminarUsuario(usuario)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "far fa-trash-alt"
+                                      })
+                                    ]
+                                  )
+                                : _vm._e()
                             ])
                           ])
                         }),
@@ -74807,14 +74920,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************!*\
   !*** ./resources/js/components/usuarios/ModificarUsuarios.vue ***!
   \****************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ModificarUsuarios_vue_vue_type_template_id_37e75b70___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModificarUsuarios.vue?vue&type=template&id=37e75b70& */ "./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=template&id=37e75b70&");
 /* harmony import */ var _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ModificarUsuarios.vue?vue&type=script&lang=js& */ "./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -74844,7 +74958,7 @@ component.options.__file = "resources/js/components/usuarios/ModificarUsuarios.v
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

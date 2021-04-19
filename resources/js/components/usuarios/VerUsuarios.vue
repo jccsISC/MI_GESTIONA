@@ -14,10 +14,10 @@
                     </div>
                      <div class="divbuscador">
 
-                        <form @submit.prevent="buscar">
+                        <!-- <form @submit.prevent="buscar"> -->
                             <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
-                            <input v-model="buscador" type="text"style="width:150px;" placeholder="Buscar">
-                        </form>
+                            <input v-model="buscador" type="text" style="width:150px;" placeholder="Buscar">
+                        <!-- </form> -->
                     </div>
                     <hr class="mt-1 m-0 p-0">
            
@@ -37,12 +37,10 @@
                                 </tr>
                             </tbody>-->
                             <tbody>
-                                <tr v-for="(usuario, key) in usuarios" :key="key">
+                                <tr v-for="(usuario, key) in filterUsers" :key="key">
                                     <td> {{ usuario.name }} </td>
                                     <td> {{ usuario.email }} </td>
-                                    <td> {{ usuario.role }}</td>
-                                    
-
+                                    <td> {{ usuario.role_name }}</td>
                                     
                                     <td>
                                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModUsuario" 
@@ -52,7 +50,7 @@
                                         <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-sm" @click="eliminarUsuario(usuario, keyusuario)"><i class="far fa-trash-alt"></i></button>
+                                        <button v-if="usuario.role != 1" class="btn btn-danger btn-sm" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -84,16 +82,34 @@
         },
         created() {
             axios.get('/usuarios').then(res => {
-                this.usuarios = res.data;
+                this.usuarios = res.data.map(user => {
+                     if (user.roles && user.roles.length && user.roles[0]) {
+                         user.role = user.roles[0].id;
+                         user.role_name = user.roles[0].name;
+                    }
+
+                    return user;
+                });
+
+                console.log(this.usuarios);
             });
         },
+        computed: {
+            filterUsers() {
+                if (!this.buscador) {
+                    return this.usuarios;
+                }
+                return this.usuarios.filter(user => 
+                    user.name.toLowerCase().includes(this.buscador.toLowerCase()) || 
+                    String(user.id).toLowerCase().includes(this.buscador.toLowerCase())
+                )
+            },
+        },
          methods: {
-
               actualizarUsuario(usuario) {             
       
                 if (usuario.esNueva) {
                     this.usuarios.push(usuario);
-                
                 }  
 
             },
@@ -109,14 +125,19 @@
                         }
                     });
             },
-              eliminarUsuario(usuario, key) {
+              eliminarUsuario(usuario) {
                   const confirmacion = confirm(`¿Está seguro que desea eliminar el usuario ${usuario.name} ?`);
                 // Lo elimina en la base de datos.
                 if(confirmacion){
                 axios.delete(`/usuarios/${usuario.id}`)
-                .then(res => {
+                .then(() => {
                     // Lo elimina de manera visual.
-                    this.usuarios.splice(key,1);
+                    const users = [...this.usuarios];
+                    const key = users.findIndex(user => user.id === usuario.id);
+                    if (key >= 0) {
+                        users.splice(key,1);
+                        this.$set(this, 'usuarios', [...users])
+                    }
                 })
                 }
              },
