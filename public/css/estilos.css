@@ -12,6 +12,9 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
 }
+header{
+    z-index: 1;
+}
 
 body::-webkit-scrollbar{
     width: 4px;
@@ -404,7 +407,7 @@ footer{
     /*TODO VENTANAS NOTIFICACIONES--------------------------------------------------------------------------------*/    
         .micardNotificaciones{
             width: 96%;
-            height: 85px;
+            height: 100px;
             background-color: white;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
             border-radius: 8px;
@@ -445,6 +448,9 @@ footer{
                 margin: 20px 0px;
                 text-align: center;
             }
+            .micardNotificaciones{
+                height: 120px;
+            }
         }
         @media screen and (max-width: 950px){
             .contenedorCard{
@@ -464,6 +470,14 @@ footer{
                 margin-left: 45px;
                 font-size: 0.8rem;
             }
+            .micardNotificaciones{
+                height: 80px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .micardNotificaciones{
+                height: 200px;
+            }
         }
         @media screen and (max-width: 550px){
             .contenedorCard{
@@ -473,6 +487,11 @@ footer{
             }
             #bottom-options{
                 font-size: 0.9rem;
+            }
+            .micardNotificaciones{
+                height: 200px;
+                margin: 10%;
+                width: 80%;
             }
         }
 

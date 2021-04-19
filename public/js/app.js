@@ -7562,10 +7562,20 @@ __webpack_require__.r(__webpack_exports__);
           _this3.showError = false;
         }, 2000);
       } else {
+<<<<<<< HEAD
+        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(function (res) {
+          _this3.reporte = res.data;
+          $('#reporteTuto').modal('hide');
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('julioselacome', res.data);
+        })["catch"](function (error) {
+          if (error.res.status == 422) {
+            _this3.errors = error.res.data.errors;
+=======
         this.users.forEach(function (element) {
           if (element.id == _this3.reporte.user_id) {
             _this3.reporte.ResponsableSeguimiento = element.name;
             return;
+>>>>>>> ef9dfc34baddc9442fcb77c7d8ba4ed4c2bf59e3
           }
         });
 
@@ -7922,6 +7932,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
 //
 //
 //
@@ -58340,89 +58353,93 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "mcontent pl-2" }, [
-                  _c("p", { staticClass: "sizeName m-0" }, [
-                    _c("b", [
-                      _vm._v(
-                        _vm._s(calificacion.Alumno.Nombre) +
-                          " " +
-                          _vm._s(calificacion.Alumno.ApePaterno) +
-                          " " +
-                          _vm._s(calificacion.Alumno.ApeMaterno)
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Grado: " +
-                          _vm._s(calificacion.Alumno.Grado) +
-                          " semestre"
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [
-                      _vm._v("Grupo: " + _vm._s(calificacion.Alumno.Grupo))
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "mcontent pl-3" },
-                  [
-                    _c("P", { staticClass: "sizeName m-0" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-4 text-center mt-2" }, [
+                    _c("p", { staticClass: "m-0" }, [
                       _c("b", [
-                        _vm._v("Materias reprobadas "),
-                        _c("label", { staticClass: "textShadow" }, [
-                          _vm._v(_vm._s(calificacion.Materias.length))
-                        ])
+                        _vm._v(
+                          _vm._s(calificacion.Alumno.Nombre) +
+                            " " +
+                            _vm._s(calificacion.Alumno.ApePaterno) +
+                            " " +
+                            _vm._s(calificacion.Alumno.ApeMaterno)
+                        )
                       ])
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "scrollFM" },
-                      _vm._l(calificacion.Materias, function(
-                        materia,
-                        keypases2
-                      ) {
-                        return _c(
-                          "p",
-                          { key: keypases2, staticClass: "m-0 pl-2" },
-                          [
-                            _c("img", {
-                              staticClass: "micircle",
-                              attrs: { src: "images/circleRojo.png", alt: "" }
-                            }),
-                            _vm._v(" " + _vm._s(materia))
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "mcontent" },
-                  [
-                    _c("P", { staticClass: "sizeName m-0" }, [
+                    _c("p", { staticClass: "m-0" }, [
                       _c("b", [
-                        _vm._v("Unidad reprobada "),
-                        _c("label", { staticClass: "textShadow" }, [
-                          _vm._v(_vm._s(calificacion.Unidad))
-                        ])
+                        _vm._v(
+                          "Grado: " +
+                            _vm._s(calificacion.Alumno.Grado) +
+                            " semestre"
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [
+                        _vm._v("Grupo: " + _vm._s(calificacion.Alumno.Grupo))
                       ])
                     ])
-                  ],
-                  1
-                )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 text-center mt-2" },
+                    [
+                      _c("P", { staticClass: "sizeName m-0" }, [
+                        _c("b", [
+                          _vm._v("Materias reprobadas "),
+                          _c("label", { staticClass: "textShadow" }, [
+                            _vm._v(_vm._s(calificacion.Materias.length))
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "scrollFM pb-3" },
+                        _vm._l(calificacion.Materias, function(
+                          materia,
+                          keypases2
+                        ) {
+                          return _c(
+                            "p",
+                            { key: keypases2, staticClass: "m-0 pl-2" },
+                            [
+                              _c("img", {
+                                staticClass: "micircle",
+                                attrs: { src: "images/circleRojo.png", alt: "" }
+                              }),
+                              _vm._v(" " + _vm._s(materia))
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 text-center mt-2" },
+                    [
+                      _c("P", { staticClass: "sizeName m-0" }, [
+                        _c("b", [
+                          _vm._v("Unidad reprobada "),
+                          _c("label", { staticClass: "textShadow" }, [
+                            _vm._v(_vm._s(calificacion.Unidad))
+                          ])
+                        ])
+                      ])
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mcontent" })
               ]
             )
           })
