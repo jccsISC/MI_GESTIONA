@@ -19,6 +19,7 @@
 
                 <div class="mcontent">
                     <p class="sizeName m-0"><b>Faltas por asignatura  <label class="textShadow">{{totalInasistencias(alumno.inasistenciasMateria)}}</label></b></p>
+                    <p class="sizeName m-0"><b>Unidad  <label class="textShadow">{{unidad(alumno.inasistencias)}}</label></b></p>
                     <div class="scrollFM">
                         <p class="pl-2 m-0" v-for="(inasistencia, keyinasistencia2) in alumno.inasistenciasMateria" :key="keyinasistencia2"><img class="micircle" src="images/circleRojo.png" alt=""> {{inasistencia.materia}} - {{inasistencia.data.length}}</p>
                     </div>
@@ -51,6 +52,12 @@
             });
         },
         methods: {
+            unidad(inasistencias) {
+                if (inasistencias && inasistencias.length) {
+                    return inasistencias[0].parcial;
+                }
+                return '';
+            },
             totalInasistencias(inasistencias) {
                 const keys = Object.keys(inasistencias);
                 let  contador = 0;
@@ -61,6 +68,7 @@
             },
             seleccionarAlumno(alumno) {
                 console.log('click');
+                alumno.Unidad = this.unidad(alumno.inasistencias);
                 bus.$emit('alumnoSeleccionado', alumno);               
             }
         }

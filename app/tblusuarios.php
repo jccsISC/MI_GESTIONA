@@ -12,7 +12,16 @@ class tblusuarios extends Model
     public $timestamps = false;
   
     public function roles() {
-        return $this->belongsToMany('App\Roles');
+        return $this->belongsToMany('App\Roles', 'role_user', 'user_id', 'role_id');
     }
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
 }

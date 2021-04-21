@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\tblusuarios;
 use App\Roles;
 use App\roleUser;
@@ -21,7 +22,9 @@ class UsersController extends Controller
     public function index(Request $request) {
 
         if ($request->ajax()) {
-        $users= tblusuarios::all();
+        $users= tblusuarios::with('roles')->get();
+       // $users= tblusuarios::all();
+
         return $users;
         } else {
             return view('admin');
@@ -39,9 +42,10 @@ class UsersController extends Controller
                 'password' => 'required',
                 'role' => 'required'
             ]);
-    
-            return roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]) &&
-            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
+
+            roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]);
+            return tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])])->load('roles');
+
             } else {
      return view('admin');
  }
@@ -49,15 +53,35 @@ class UsersController extends Controller
 
 
     public function update(Request $request, tblusuarios $tblusuarios) {
-        $atributos = $this->validate($request, [
+        $actualizarPassword = $request->input('actualizar_password');
+
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
-
+            'role' => 'required',
         ]);
+
+        $validator->sometimes('password', 'required', function ($input) {
+            return $input->actualizar_password;
+        });
+
+        $validator->validate();
+
+        $atributos = $validator->validated();
+
+        $data = ['name' => $atributos['name'], 'email' => $atributos['email']];
+        if ($actualizarPassword) {
+            $data['password'] = bcrypt($atributos['password']);
+        }
         
-        $tblusuarios->update(['name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
-        return $tblusuarios;
+        $tblusuarios->update($data);
+
+        if ($tblusuarios->role != $atributos['role']) {
+            $tblusuarios->roles()->detach();
+            $tblusuarios->roles()->attach($atributos['role']);
+        }
+        
+        return $tblusuarios->load('roles');
     }
         public function destroy($id) {
         
