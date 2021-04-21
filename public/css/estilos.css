@@ -25,6 +25,15 @@ body::-webkit-scrollbar-thumb{
     background: #800000;
 }
 
+tbody::-webkit-scrollbar{
+    width: 4px;
+}
+
+tbody::-webkit-scrollbar-thumb{
+    width: 3px;
+    background: #800000;
+}
+
 .modal-body-g{
     height: 450px;
     overflow-y: auto;
@@ -419,6 +428,16 @@ footer{
             text-indent: 5px ;  
             font-size: .75em;       
         }
+        #info-academica{
+            float:left; 
+            width:48%;
+            margin: 10px 1%;
+        }
+        #info-faltas{
+            float: right;
+            width:48%;
+            margin: 10px 1%;
+        }
 
         .micardNotificaciones:hover{
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
@@ -450,6 +469,19 @@ footer{
             }
             .micardNotificaciones{
                 height: 120px;
+            }
+        }
+        @media screen and (max-width: 1000px){
+            #info-academica{
+                width:94%;
+                margin: 30px 3%;
+            }
+            #info-faltas{
+                width:94%;
+                margin: 30px 3%;
+            }
+            #div-info{
+                height: 460px;
             }
         }
         @media screen and (max-width: 950px){
@@ -500,3 +532,7 @@ footer{
         
 /*ESTILOS PARA LA IMPRESION DEL REPORTE YONO ABANDONO*/
 
+/*ESTILOS PARA TABLA DE MATERIAS*/
+#tabla-materias{
+    margin: -1px 15px 0px 15px !important; 
+}

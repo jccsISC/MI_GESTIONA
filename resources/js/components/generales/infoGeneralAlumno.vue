@@ -94,7 +94,7 @@
                                         <div class="linea"></div>
                                         <label class="m-0 mr-5"><b>Tipo de sangre: </b>{{alumno.TipoSangre}}</label>
                                         <label class=""><b>Etnia: </b>{{alumno.Etnia ? alumno.Etnia : 'S/N'}}</label> <br>
-                                        <label class="m-0"><b>Tipo de sfiliación: </b>No capturado</label><br>
+                                        <label class="m-0"><b>Tipo de afiliación: </b>No capturado</label><br>
                                         <label class="m-0"><b>NSS: </b> No capturado</label><br>
                                     </div>  
                                 </div>
@@ -103,81 +103,74 @@
 
                         <p class="subtitulos text-center">Información académica</p>
                         <hr class="barrasubtitulos">
-                        <div class="contenedorVentana2 colorText sizeGeneral">
+                        <div id="div-info" class="contenedorVentana2 colorText sizeGeneral" style="overflow-x:auto">
                             <!-- <cal-general></cal-general> -->
-                            <div class="gridM2G"> 
-                                <div v-if="alumno.IdAlumno">
-                                    <div>
+                            <div style="float: left; width: 100%">
+                                <div id="info-academica"> 
+                                    <div v-if="alumno.IdAlumno" class="header">
                                         <p class="m-0 p-0"><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
                                         <p class="m-0 p-0"><b>Promedio general: </b> {{promedioGeneral}}</p>
                                     </div>
-
-                                    <div class="contentCalifG">
-                                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm scrollT">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="2">Asignaturas</th>
-                                                    <th>P1</th>
-                                                    <th>P2</th>
-                                                    <th>P3</th>
-                                                    <th>P4</th>
-                                                    <th>P5</th>
-                                                    <th colspan="2">P/Final</th>
-                                                    <th>Ordinario</th>
-                                                    <th>Inter</th>
-                                                    <th>Extra</th>
-                                                </tr>
-                                            </thead>
-                                            <!--<tbody>
-                                                <tr>
-                                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                                </tr>
-                                            </tbody>-->
-                                            <tbody>
-                                                <tr v-for="(calificacion, key) in calificaciones" :key="key">
-                                                    <td colspan="2">{{calificacion.Materia}}</td>
-                                                    <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                                    <td colspan="2">{{calificacion.Calificacionfinal}}</td>
-                                                    <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
-                                                    <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
-                                                    <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                    <table v-for="(calificacion, key) in calificaciones" :key="key" class="table table-striped table-hover contentTable table-responsive text-center scrollHTS" style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="10" class="texte-left">{{calificacion.Materia}}</th>
+                                            </tr>
+                                            <tr>
+                                                <th>P1</th>
+                                                <th>P2</th>
+                                                <th>P3</th>
+                                                <th>P4</th>
+                                                <th>P5</th>
+                                                <th colspan="2">P/Final</th>
+                                                <th>Ordinario</th>
+                                                <th>Inter</th>
+                                                <th>Extra</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
+                                                <td colspan="2">{{calificacion.Calificacionfinal}}</td>
+                                                <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
+                                                <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
+                                                <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                            </tr>                            
                                                 </tr>                            
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </tr>                            
+                                        </tbody>
+                                    </table>
                                 </div>
-                
-                                <div v-if="alumno.IdAlumno" class="pl-3">
-                                    <div>
+                                <div id="info-faltas"> 
+                                    <div class="header">
                                         <p class="m-0 p-0"><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
                                         <p class="m-0 p-0"><b>POR MATERIA</b></p>
                                     </div>
-
-                                    <div class="contentCalifG">
-                                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm scrollT">
-                                            <thead>
-                                                <tr>
-                                                    <th>Asignaturas</th>
-                                                    <th>P1</th>
-                                                    <th>P2</th>
-                                                    <th>P3</th>
-                                                    <th>P4</th>
-                                                    <th>P5</th>
-                                                </tr>
-                                            </thead>
-                                    
-                                            <tbody >
-                                                <tr  v-for="(falta, key) in faltas" :key="key">
-                                                    <td>{{falta.horario_maestro.Materia}}</td>
-                                                    <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
+                                    <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm scrollT">
+                                        <thead>
+                                            <tr>
+                                                <th>Asignaturas</th>
+                                                <th>P1</th>
+                                                <th>P2</th>
+                                                <th>P3</th>
+                                                <th>P4</th>
+                                                <th>P5</th>
+                                            </tr>
+                                        </thead>
+                                
+                                        <tbody >
+                                            <tr  v-for="(falta, key) in faltas" :key="key">
+                                                <td>{{falta.horario_maestro.Materia}}</td>
+                                                <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
+                                            </tr>                             
                                                 </tr>                             
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </tr>                             
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <p class="subtitulos text-center">Salud - Incidencias</p>
                         <hr class="barrasubtitulos">
                         <div class="contenedorVentana2 colorText sizeGeneral">
@@ -287,29 +280,25 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="ml-4">
+                                <div class="col-right">
                                     <div class="liena2"></div>
                                     <div>
-                                        <div>
-                                            <div v-if="alumno.IdAlumno">
-                                                <p><b>SERVICIO SOCIAL</b></p>
-                                                <div>
-                                                    <p class="mb-1"><b>Fecha inicio: </b>{{servicio.FechaInicio ? servicio.FechaInicio : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Fecha final: </b>{{servicio.FechaFin ? servicio.FechaFin : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Dependencia: </b>{{servicio.IdServPrac ? servicio.dependencia.Nombre : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Giro: </b>{{servicio.IdServPrac ? servicio.dependencia.Giro : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Dirección: </b>{{servicio.IdServPrac ? servicio.dependencia.Direccion : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Telefóno: </b>{{servicio.IdServPrac ? servicio.dependencia.Telefono : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Responsable: </b>{{servicio.IdServPrac ? servicio.dependencia.Responsable : 'NC'}}</p>
-                                                    <p class="mb-1"><b>Tipo de vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : 'NC'}}</p>
-                                                </div>
+                                        <div v-if="alumno.IdAlumno">
+                                            <p><b>SERVICIO SOCIAL</b></p>
+                                            <div>
+                                                <p class="mb-1"><b>Fecha inicio: </b>{{servicio.FechaInicio ? servicio.FechaInicio : 'NC'}}</p>
+                                                <p class="mb-1"><b>Fecha final: </b>{{servicio.FechaFin ? servicio.FechaFin : 'NC'}}</p>
+                                                <p class="mb-1"><b>Dependencia: </b>{{servicio.IdServPrac ? servicio.dependencia.Nombre : 'NC'}}</p>
+                                                <p class="mb-1"><b>Giro: </b>{{servicio.IdServPrac ? servicio.dependencia.Giro : 'NC'}}</p>
+                                                <p class="mb-1"><b>Dirección: </b>{{servicio.IdServPrac ? servicio.dependencia.Direccion : 'NC'}}</p>
+                                                <p class="mb-1"><b>Telefóno: </b>{{servicio.IdServPrac ? servicio.dependencia.Telefono : 'NC'}}</p>
+                                                <p class="mb-1"><b>Responsable: </b>{{servicio.IdServPrac ? servicio.dependencia.Responsable : 'NC'}}</p>
+                                                <p class="mb-1"><b>Tipo de vinculación: </b>{{servicio.IdServPrac ? servicio.dependencia.TipoVinculacion : 'NC'}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div>
+                                <div class="col-right">
                                     <div class="liena2"></div>
                                     <div v-if="alumno.IdAlumno">
                                         <p><b>PRACTICAS PROFESIONALES</b></p>
@@ -325,8 +314,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div v-if="alumno.IdAlumno" class="ml-5">
+                                <div class="col-right">
                                     <p><b>BECAS</b></p>
                                     <div v-for="(beca, key) in becas" :key="key">
                                         <p class="mb-1"><b>Nombre: </b>{{beca.Nombre}} </p>
