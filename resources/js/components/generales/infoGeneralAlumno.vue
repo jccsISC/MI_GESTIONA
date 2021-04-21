@@ -249,13 +249,13 @@
 
                         <p class="subtitulos text-center">Trabajo social</p>
                         <hr class="barrasubtitulos">
-                        <div class="contenedorVentana colorText sizeGeneral">
-                            <div class="gridTS">
-                                <div>
+                        <div class="contenedorVentana colorText sizeGeneral" id="divSocial">
+                            <div id="trabajo-social">
+                                <div class="left">
                                     <div v-if="alumno.IdAlumno">
                                         <div>
                                             <p class="m-sm-1"><b>Justificantes</b></p>
-                                            <div class="scrollJ">
+                                            <div class="miCard">
                                                 <button class="btn btn-danger btn-sm m-1 p-0 pr-2 pl-2" 
                                                 v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
                                                 data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
@@ -268,7 +268,7 @@
                                         
                                         <div>
                                             <p class="mt-4"><b>Pases de salida</b></p>
-                                            <div class="scrollJ">
+                                            <div class="miCard">
                                                 <button class="btn btn-danger btn-sm m-1 p-0 pr-2 pl-2" 
                                                 @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                                                 :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
@@ -280,7 +280,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-right">
+                                <div class="right">
                                     <div class="liena2"></div>
                                     <div>
                                         <div v-if="alumno.IdAlumno">
@@ -298,7 +298,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-right">
+                                <div class="right">
                                     <div class="liena2"></div>
                                     <div v-if="alumno.IdAlumno">
                                         <p><b>PRACTICAS PROFESIONALES</b></p>
@@ -314,7 +314,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-right">
+                                <div class="right">
                                     <p><b>BECAS</b></p>
                                     <div v-for="(beca, key) in becas" :key="key">
                                         <p class="mb-1"><b>Nombre: </b>{{beca.Nombre}} </p>
@@ -548,6 +548,16 @@
     img{
         width: 100%;
     }
+    .miCard{
+        height: auto;
+        padding: 10px;
+        background: rgba(247, 247, 247, 0.418);
+        border: 1px solid rgb(202, 201, 201);
+        border-radius: 3px;
+    }
+    .miCard button{
+        width: auto;
+    }
 
     .subGrid {
         display: grid;
@@ -583,8 +593,6 @@
         width: 5%;
         height: 20px;
         line-height: 20px;
-        /* background: #800000; */
-        /* color: white; */
     }
 
     .scrollT tbody tr td { 

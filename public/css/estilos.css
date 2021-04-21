@@ -442,6 +442,23 @@ footer{
         .micardNotificaciones:hover{
             box-shadow: 0 2px 4px 0 rgb(167, 11, 11);
         }
+
+        #trabajo-social{
+            width: 100%;
+            float: left;
+        }
+
+        #trabajo-social .left{
+            width: 23%;
+            margin: 1%;
+            float: left;
+        }
+        #trabajo-social .right{
+            width: 23%;
+            margin: 1%;
+            float: left;
+        }
+
     /*Agregando Media Query sitio de tutorias*/
         @media screen and (max-width: 1300px){
             .contenedor-secciones{
@@ -477,11 +494,24 @@ footer{
                 margin: 30px 3%;
             }
             #info-faltas{
-                width:94%;
+                width: 94%;
                 margin: 30px 3%;
             }
             #div-info{
                 height: 460px;
+            }
+            #divSocial{
+                height: 480px;
+            }
+            #trabajo-social .left{
+                width: 46%;
+                margin: 20px 2%;
+                float: left;
+            }
+            #trabajo-social .right{
+                width: 46%;
+                margin: 15px 2%;
+                float: right;
             }
         }
         @media screen and (max-width: 950px){

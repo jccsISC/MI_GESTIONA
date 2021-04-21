@@ -13031,7 +13031,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\n.scrollT tbody,\n.scrollT thead { \n    display: block;\n}\n.scrollT thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollT tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody {\n    max-height: 120px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.subtitulos {\n   text-align: center;\n}\n.sizeGeneral {\n    font-size: 12px;\n}\n.inforPG{\n    display: grid;\n    grid-template-columns: 1fr 7fr 4fr;\n    grid-template-rows: 120px;\n}\n.inforP2G{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 120px;\n}\n.mifotoG {\n    width: 80px;\n    height: 80px;\n    border-radius: 6px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.miCard{\n    height: auto;\n    padding: 10px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n}\n.miCard button{\n    width: auto;\n}\n.subGrid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.lineaG {\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 80px;\n    float: left;\n    margin-top: 15px;\n    margin-right: 10px;\n}\n.gridM2G {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalifG {\n    height: 160px;\n    border: 1px solid rgb(202, 201, 201);\n}\n.scrollT tbody,\n.scrollT thead { \n    display: block;\n}\n.scrollT thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollT tbody {\n    max-height: 120px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollT tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollT tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentDetSaludG {\n    height: 160px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSaludG::-webkit-scrollbar {\n    width: 1px;\n}\n.contentDetSaludG::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n.linea2G{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 150px;\n    float: left;\n    margin-top: 35px;\n    margin-right: 10px;\n}\n.scrollHG {\n    width: 330px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollHG::-webkit-scrollbar {\n    width: 1px;\n    height: 4px;\n}\n.scrollHG::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -48621,10 +48621,13 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "contenedorVentana colorText sizeGeneral" },
+                    {
+                      staticClass: "contenedorVentana colorText sizeGeneral",
+                      attrs: { id: "divSocial" }
+                    },
                     [
-                      _c("div", { staticClass: "gridTS" }, [
-                        _c("div", [
+                      _c("div", { attrs: { id: "trabajo-social" } }, [
+                        _c("div", { staticClass: "left" }, [
                           _vm.alumno.IdAlumno
                             ? _c("div", [
                                 _c("div", [
@@ -48632,7 +48635,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "scrollJ" },
+                                    { staticClass: "miCard" },
                                     _vm._l(
                                       _vm.justificantes.slice().reverse(),
                                       function(
@@ -48678,7 +48681,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "scrollJ" },
+                                    { staticClass: "miCard" },
                                     _vm._l(
                                       _vm.pases.slice().reverse(),
                                       function(pase, keyjustificantepase2) {
@@ -48720,7 +48723,7 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-right" }, [
+                        _c("div", { staticClass: "right" }, [
                           _c("div", { staticClass: "liena2" }),
                           _vm._v(" "),
                           _c("div", [
@@ -48826,7 +48829,7 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-right" }, [
+                        _c("div", { staticClass: "right" }, [
                           _c("div", { staticClass: "liena2" }),
                           _vm._v(" "),
                           _vm.alumno.IdAlumno
@@ -48929,7 +48932,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "col-right" },
+                          { staticClass: "right" },
                           [
                             _vm._m(21),
                             _vm._v(" "),
@@ -75292,15 +75295,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************!*\
   !*** ./resources/js/components/usuarios/ModificarUsuarios.vue ***!
   \****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ModificarUsuarios_vue_vue_type_template_id_37e75b70___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModificarUsuarios.vue?vue&type=template&id=37e75b70& */ "./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=template&id=37e75b70&");
 /* harmony import */ var _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ModificarUsuarios.vue?vue&type=script&lang=js& */ "./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ModificarUsuarios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -75330,7 +75332,7 @@ component.options.__file = "resources/js/components/usuarios/ModificarUsuarios.v
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/usuarios/ModificarUsuarios.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
