@@ -16,91 +16,72 @@
                     <hr class="mt-1 m-0 p-0">
 
                     <div class="modal-body-g2 sizeGeneral">
+                        <!-- Informacion personal -->
                         <p class="subtitulos">Información personal</p>
                         <hr class="barrasubtitulos">
-                        <div class="contenedorVentana colorText">
-                            <div v-if="alumno.IdAlumno" class="inforPG">
-                                <div class="mifotoG">
-                                    <img src="images/student.png" alt="Foto del Alumno">
-                                    <p class="text-center" style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p>
-                                </div>
-
-                                <div class="subGrid">
-                                    <div class="pl-2">
-                                        <p class="m-0"><b>Matricula: </b>{{alumno.IdAlumno}}</p>
-                                        <p class="m-0"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
-                                        <p class="m-0"><b>Fecha nacimiento: </b>{{alumno.FechaNacimiento}}</p>
-                                        <p class="m-0"><b>Género: </b>{{alumno.Sexo == 'M' ? 'Masculino' : 'Femenino'}}</p>
-                                        <p class="m-0"><b>Telefóno: </b>{{alumno.Telefono}}</p>
-                                        <p class="m-0"><b>Telefóno2: </b>{{alumno.Telefono2 ? alumno.Telefono2 : ''}}</p>
-                                    </div>
-
-                                    <div>
-                                        <div class="lineaG"></div>
-                                        <p class="m-0"><b>CURP: </b>{{alumno.Curp}}</p>
-                                        <p class="m-0"><b>Correo: </b>{{alumno.EMAIL}}</p>
-                                        <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
-                                        <p class="m-0"><b>Grado: </b>{{alumno.Grado}} Semestre</p>
-                                        <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
-                                        <p class="m-0"><b>Turno: </b>{{alumno.Turno == 'M' ? 'Matutino' : 'Vespertino'}}</p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="lineaG"></div>
-                                    <div>
-                                        <div class="text-center float">
-                                            <b><p>INFORMACIÓN DE LOS PADRES O TUTOR</p></b>
-                                        </div>
-                                        
-                                        <div class="subGrid">
-                                            <div>
-                                                <p class="m-0"><b>Padre</b></p>
-                                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
-                                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
-                                            </div>
-                                            <div>
-                                                <p class="m-0"><b>Madre</b></p>
-                                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
+                        <div id="info-personal" v-if="alumno.IdAlumno">
+                            <div class="uno text-center" >
+                                <img src="images/student.png" alt="Foto del Alumno" style="width: 100px; height: 100px;">
+                                <p style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p>
                             </div>
-                            
-                            <div class="sizeGeneral">
-                                <div v-if="alumno.IdAlumno" class="float">
-                                    <b><p class="m-0 p-0">Lugar de nacimiento</p></b>
+                            <div class="dos">
+                                <p class="m-0"><b>Matricula: </b>{{alumno.IdAlumno}}</p>
+                                <p class="m-0"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
+                                <p class="m-0"><b>Fecha nacimiento: </b>{{alumno.FechaNacimiento}}</p>
+                                <p class="m-0"><b>Género: </b>{{alumno.Sexo == 'M' ? 'Masculino' : 'Femenino'}}</p>
+                                <p class="m-0"><b>Telefóno: </b>{{alumno.Telefono}}</p>
+                                <p class="m-0"><b>Telefóno 2: </b>{{alumno.Telefono2 ? alumno.Telefono2 : ''}}</p>
+                            </div>
+                            <div class="tres pl-2">
+                                <p class="m-0"><b>CURP: </b>{{alumno.Curp}}</p>
+                                <p class="m-0"><b>Correo: </b>{{alumno.EMAIL}}</p>
+                                <p class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</p>
+                                <p class="m-0"><b>Grado: </b>{{alumno.Grado}} Semestre</p>
+                                <p class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</p>
+                                <p class="m-0"><b>Turno: </b>{{alumno.Turno == 'M' ? 'Matutino' : 'Vespertino'}}</p>
+                            </div>
+                            <div class="cuatro pl-2">
+                                <div class="text-center float">
+                                    <b><p>INFORMACIÓN DE LOS PADRES O TUTOR</p></b>
                                 </div>
-                    
-                                <div v-if="alumno.IdAlumno" class="inforP2G sizeGeneral">
-                                    <div>
-                                        <label class="m-0 mr-5"><b>Estado: </b>{{alumno.EstadoNac}}</label>
-                                        <label><b>Municipio: </b>{{alumno.MunicipioNac}}</label>
-                                        <p class="m-0 p-0"><b>Domicilio</b></p>
-                                        <label class="m-0 mr-2"><b>Calle: </b>{{alumno.Calle}}</label>
-                                        <label class="m-0 mr-2"><b>No. Exterior: </b>{{alumno.NumExterior}}</label>
-                                        <label class="m-0 mr-2"><b>No. Interior: </b>{{alumno.NumInterior == '' ? '' : alumno.NumInterior}}</label>
-                                        <label class="m-0"><b>CP: </b>{{alumno.CodPostal}}</label> <br>
-                                        <label class="m-0 mr-3"><b>Colonia: </b>{{alumno.Colonia}}</label>
-                                        <label class="m-0 mr-3"><b>Municipio: </b>{{alumno.Municipio}}</label>
-                                        <label class="m-0 mr-2"><b>Estado: </b>{{alumno.Estado}}</label><br>
-                                        <label class="m-0 mr-1"><b>Entre calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
-                                        <label class="m-0"><b>Entre calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="m-0"><b>Padre</b></p>
+                                        <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                        <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                                     </div>
-
-                                    <div>
-                                        <div class="linea"></div>
-                                        <label class="m-0 mr-5"><b>Tipo de sangre: </b>{{alumno.TipoSangre}}</label>
-                                        <label class=""><b>Etnia: </b>{{alumno.Etnia ? alumno.Etnia : 'S/N'}}</label> <br>
-                                        <label class="m-0"><b>Tipo de afiliación: </b>No capturado</label><br>
-                                        <label class="m-0"><b>NSS: </b> No capturado</label><br>
-                                    </div>  
+                                    <div class="col">
+                                        <p class="m-0"><b>Madre</b></p>
+                                        <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                        <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="cinco">
+                                <b><p class="m-0 p-0">Lugar de nacimiento</p></b>
+                                <label class="m-0 mr-5"><b>Estado: </b>{{alumno.EstadoNac}}</label>
+                                <label><b>Municipio: </b>{{alumno.MunicipioNac}}</label>
+                                <p class="m-0 p-0"><b>Domicilio</b></p>
+                                <label class="m-0 mr-2"><b>Calle: </b>{{alumno.Calle}}</label>
+                                <label class="m-0 mr-2"><b>No. Exterior: </b>{{alumno.NumExterior}}</label>
+                                <label class="m-0 mr-2"><b>No. Interior: </b>{{alumno.NumInterior == '' ? '' : alumno.NumInterior}}</label>
+                                <label class="m-0"><b>CP: </b>{{alumno.CodPostal}}</label> <br>
+                                <label class="m-0 mr-3"><b>Colonia: </b>{{alumno.Colonia}}</label>
+                                <label class="m-0 mr-3"><b>Municipio: </b>{{alumno.Municipio}}</label>
+                                <label class="m-0 mr-2"><b>Estado: </b>{{alumno.Estado}}</label><br>
+                                <label class="m-0 mr-1"><b>Entre calle: </b>{{alumno.EntreCalle ? alumno.EntreCalle :'No Capturada' }}</label>
+                                <label class="m-0"><b>Entre calle: </b>{{alumno.EntreCalle2 ? alumno.EntreCalle2 : 'No Capturada' }}</label>
+                            </div>
+                            <div class="seis pl-2">
+                                <label class="m-0 mr-5"><b>Tipo de sangre: </b>{{alumno.TipoSangre}}</label>
+                                <label class=""><b>Etnia: </b>{{alumno.Etnia ? alumno.Etnia : 'S/N'}}</label> <br>
+                                <label class="m-0"><b>Tipo de afiliación: </b>No capturado</label><br>
+                                <label class="m-0"><b>NSS: </b> No capturado</label><br>
                             </div>
                         </div>
 
+                        <!-- Informacion academica -->
                         <p class="subtitulos text-center">Información académica</p>
                         <hr class="barrasubtitulos">
                         <div id="div-info" class="contenedorVentana2 colorText sizeGeneral" style="overflow-x:auto">
@@ -171,91 +152,73 @@
                             </div>
                         </div>
                         
+                        <!-- Salud - Incidencias -->
                         <p class="subtitulos text-center">Salud - Incidencias</p>
                         <hr class="barrasubtitulos">
-                        <div class="contenedorVentana2 colorText sizeGeneral">
-                            <div class="gridM2G">
-                                <div v-if="alumno.IdAlumno">
+                        <div id="salud-incidencias">
+                            <div id="divSalud" v-if="alumno.IdAlumno">
+                                <div class="header">
                                     <div>
                                         <p class="text-center p-0 m-0"><b>SALUD</b></p>
                                     </div>
-
                                     <div>
                                         <label class="mr-5 m-0"><b>Estatura: </b>{{salud.Estatura}}</label>
                                         <label class="mr-4 m-0"><b>Peso: </b>{{salud.Peso}}</label>
                                         <label class="m-0"><b>IMC: </b>{{salud.IMC}}</label><br>
                                     </div>
-
-                                    <div class="gridM2G">
-                                    <div class="contentDetSaludG">
-                                            <p class="mb-1"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Problemas auditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="mb-1"><b>Transtornos: </b>{{salud.Transtornos ? salud.Transtornos : 'No padece de transtornos...'}}</p>
-                                    </div>
-
-                                    <div class="contentDetSaludG">
-                                            <p class="m-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="m-0"><b>Descripción: </b>{{salud.DetAlergias ? salud.DetAlergias : 'No tiene alergias...'}}</p>
-                                            <p class="m-0"><b>Gravidez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="m-0"><b>Descripción: </b>{{salud.Gravidez ? salud.DetGravidez : 'No tiene gravidez...'}}</p>
-                                            <p class="m-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
-                                            <p class="m-0"><b>Descripción: </b>{{salud.DetProbPosturales ? salud.DetProbPosturales : 'No tiene problemas posturales...'}}</p>
-                                            <p class="m-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
-                                            <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>   
-                                    </div>
-                                    </div>
                                 </div>
-                
-                                <div v-if="alumno.IdAlumno">
-                                    <div class="linea2G"></div>
-                                    <div>
-                                        <p class="text-center p-0 m-0"><b>INCIDENCIAS</b></p>
-                                    </div>
-
-                                    <div>
-                                        <div v-if="alumno.IdAlumno">
-                                            <div class="pt-1">
-                                                <p class="p-0 m-0"><b>Cantidad de incidencias</b></p>
-                                                <div class="scrollHG">
-                                                    <button 
-                                                        v-for="(incidencia, key) in incidencias" :key="key"  
-                                                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
-                                                    
-                                                        {{key + 1}}
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="mcontenidoL pt-1">
-                                                <p><b>Detalles</b></p> 
-                                                <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                                                <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
-                                            </div>
-
-                                            <div class="pt-1 mr-4">
-                                                <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
-                                                <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="left">
+                                    <p class="mb-1"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Problemas auditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="mb-1"><b>Transtornos: </b>{{salud.Transtornos ? salud.Transtornos : 'No padece de transtornos...'}}</p>
+                                </div>
+                                <div class="right">
+                                    <p class="m-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="m-0"><b>Descripción: </b>{{salud.DetAlergias ? salud.DetAlergias : 'No tiene alergias...'}}</p>
+                                    <p class="m-0"><b>Gravidez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="m-0"><b>Descripción: </b>{{salud.Gravidez ? salud.DetGravidez : 'No tiene gravidez...'}}</p>
+                                    <p class="m-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
+                                    <p class="m-0"><b>Descripción: </b>{{salud.DetProbPosturales ? salud.DetProbPosturales : 'No tiene problemas posturales...'}}</p>
+                                    <p class="m-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
+                                    <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>  
+                                </div>
+                            </div>
+                            <div id="divIncidencia" v-if="alumno.IdAlumno">
+                                <div class="header">
+                                    <p class="text-center p-0 m-0"><b>INCIDENCIAS</b></p>
+                                    <p class="p-0 m-0"><b>Cantidad de incidencias</b></p>
+                                </div>
+                                <div class="left">
+                                    <button 
+                                        v-for="(incidencia, key) in incidencias" :key="key"  
+                                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
+                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                    
+                                        {{key + 1}}
+                                    </button>
+                                    <p><b>Detalles</b></p> 
+                                    <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
+                                    <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                                </div>
+                                <div class="right text-center">
+                                    <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
+                                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
                                 </div>
                             </div>
                         </div>
-
                         <p class="subtitulos text-center">Trabajo social</p>
                         <hr class="barrasubtitulos">
                         <div class="contenedorVentana colorText sizeGeneral" id="divSocial">
                             <div id="trabajo-social">
                                 <div class="left">
-                                    <div v-if="alumno.IdAlumno">
+                                    <div v-if="alumno.IdAlumno" style="padding: 10px">
                                         <div>
                                             <p class="m-sm-1"><b>Justificantes</b></p>
-                                            <div class="miCard">
+                                            <div class="miCard" style="min-height: 53px;">
                                                 <button class="btn btn-danger btn-sm m-1 p-0 pr-2 pl-2" 
                                                 v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
                                                 data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
@@ -268,7 +231,7 @@
                                         
                                         <div>
                                             <p class="mt-4"><b>Pases de salida</b></p>
-                                            <div class="miCard">
+                                            <div class="miCard" style="min-height: 53px;">
                                                 <button class="btn btn-danger btn-sm m-1 p-0 pr-2 pl-2" 
                                                 @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
                                                 :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">

@@ -3119,43 +3119,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'role'],
@@ -47839,271 +47802,249 @@ var render = function() {
                   _vm._v(" "),
                   _c("hr", { staticClass: "barrasubtitulos" }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "contenedorVentana colorText" }, [
-                    _vm.alumno.IdAlumno
-                      ? _c("div", { staticClass: "inforPG" }, [
-                          _vm._m(1),
+                  _vm.alumno.IdAlumno
+                    ? _c("div", { attrs: { id: "info-personal" } }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "dos" }, [
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Matricula: ")]),
+                            _vm._v(_vm._s(_vm.alumno.IdAlumno))
+                          ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "subGrid" }, [
-                            _c("div", { staticClass: "pl-2" }, [
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Matricula: ")]),
-                                _vm._v(_vm._s(_vm.alumno.IdAlumno))
-                              ]),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Nombre: ")]),
+                            _vm._v(
+                              _vm._s(_vm.alumno.Nombre) +
+                                " " +
+                                _vm._s(_vm.alumno.ApePaterno) +
+                                "  " +
+                                _vm._s(_vm.alumno.ApeMaterno)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Fecha nacimiento: ")]),
+                            _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Género: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Sexo == "M"
+                                  ? "Masculino"
+                                  : "Femenino"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Telefono))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Telefóno 2: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Telefono2 ? _vm.alumno.Telefono2 : ""
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "tres pl-2" }, [
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("CURP: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Curp))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Correo: ")]),
+                            _vm._v(_vm._s(_vm.alumno.EMAIL))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Carrera: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Carrera))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Grado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Grupo: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Grupo))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Turno: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Turno == "M"
+                                  ? "Matutino"
+                                  : "Vespertino"
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "cuatro pl-2" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col" }, [
+                              _vm._m(3),
                               _vm._v(" "),
                               _c("p", { staticClass: "m-0" }, [
                                 _c("b", [_vm._v("Nombre: ")]),
                                 _vm._v(
-                                  _vm._s(_vm.alumno.Nombre) +
+                                  _vm._s(_vm.familiar.NombrePadre) +
                                     " " +
-                                    _vm._s(_vm.alumno.ApePaterno) +
+                                    _vm._s(_vm.familiar.ApePaternoPadre) +
                                     "  " +
-                                    _vm._s(_vm.alumno.ApeMaterno)
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Fecha nacimiento: ")]),
-                                _vm._v(_vm._s(_vm.alumno.FechaNacimiento))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Género: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.Sexo == "M"
-                                      ? "Masculino"
-                                      : "Femenino"
-                                  )
+                                    _vm._s(_vm.familiar.ApeMaternoPadre)
                                 )
                               ]),
                               _vm._v(" "),
                               _c("p", { staticClass: "m-0" }, [
                                 _c("b", [_vm._v("Telefóno: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Telefono))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Telefóno2: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.Telefono2
-                                      ? _vm.alumno.Telefono2
-                                      : ""
-                                  )
-                                )
+                                _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                               ])
                             ]),
                             _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "lineaG" }),
+                            _c("div", { staticClass: "col" }, [
+                              _vm._m(4),
                               _vm._v(" "),
                               _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("CURP: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Curp))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Correo: ")]),
-                                _vm._v(_vm._s(_vm.alumno.EMAIL))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Carrera: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Carrera))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Grado: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Grado) + " Semestre")
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Grupo: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Grupo))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Turno: ")]),
+                                _c("b", [_vm._v("Nombre: ")]),
                                 _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.Turno == "M"
-                                      ? "Matutino"
-                                      : "Vespertino"
-                                  )
+                                  _vm._s(_vm.familiar.NombreMadre) +
+                                    " " +
+                                    _vm._s(_vm.familiar.ApePaternoMadre) +
+                                    "  " +
+                                    _vm._s(_vm.familiar.ApeMaternoMadre)
                                 )
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("Telefóno: ")]),
+                                _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
                               ])
                             ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "cinco" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-5" }, [
+                            _c("b", [_vm._v("Estado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.EstadoNac))
                           ]),
                           _vm._v(" "),
-                          _c("div", [
-                            _c("div", { staticClass: "lineaG" }),
-                            _vm._v(" "),
-                            _c("div", [
-                              _vm._m(2),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "subGrid" }, [
-                                _c("div", [
-                                  _vm._m(3),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Nombre: ")]),
-                                    _vm._v(
-                                      _vm._s(_vm.familiar.NombrePadre) +
-                                        " " +
-                                        _vm._s(_vm.familiar.ApePaternoPadre) +
-                                        "  " +
-                                        _vm._s(_vm.familiar.ApeMaternoPadre)
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Telefóno: ")]),
-                                    _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", [
-                                  _vm._m(4),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Nombre: ")]),
-                                    _vm._v(
-                                      _vm._s(_vm.familiar.NombreMadre) +
-                                        " " +
-                                        _vm._s(_vm.familiar.ApePaternoMadre) +
-                                        "  " +
-                                        _vm._s(_vm.familiar.ApeMaternoMadre)
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Telefóno: ")]),
-                                    _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
-                                  ])
-                                ])
-                              ])
-                            ])
+                          _c("label", [
+                            _c("b", [_vm._v("Municipio: ")]),
+                            _vm._v(_vm._s(_vm.alumno.MunicipioNac))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("Calle: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Calle))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("No. Exterior: ")]),
+                            _vm._v(_vm._s(_vm.alumno.NumExterior))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("No. Interior: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.NumInterior == ""
+                                  ? ""
+                                  : _vm.alumno.NumInterior
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("CP: ")]),
+                            _vm._v(_vm._s(_vm.alumno.CodPostal))
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-3" }, [
+                            _c("b", [_vm._v("Colonia: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Colonia))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-3" }, [
+                            _c("b", [_vm._v("Municipio: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Municipio))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-2" }, [
+                            _c("b", [_vm._v("Estado: ")]),
+                            _vm._v(_vm._s(_vm.alumno.Estado))
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0 mr-1" }, [
+                            _c("b", [_vm._v("Entre calle: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.EntreCalle
+                                  ? _vm.alumno.EntreCalle
+                                  : "No Capturada"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", { staticClass: "m-0" }, [
+                            _c("b", [_vm._v("Entre calle: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.EntreCalle2
+                                  ? _vm.alumno.EntreCalle2
+                                  : "No Capturada"
+                              )
+                            )
                           ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "seis pl-2" }, [
+                          _c("label", { staticClass: "m-0 mr-5" }, [
+                            _c("b", [_vm._v("Tipo de sangre: ")]),
+                            _vm._v(_vm._s(_vm.alumno.TipoSangre))
+                          ]),
+                          _vm._v(" "),
+                          _c("label", {}, [
+                            _c("b", [_vm._v("Etnia: ")]),
+                            _vm._v(
+                              _vm._s(
+                                _vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"
+                              )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm._m(7),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm._m(8),
+                          _c("br")
                         ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "sizeGeneral" }, [
-                      _vm.alumno.IdAlumno
-                        ? _c("div", { staticClass: "float" }, [_vm._m(5)])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.alumno.IdAlumno
-                        ? _c("div", { staticClass: "inforP2G sizeGeneral" }, [
-                            _c("div", [
-                              _c("label", { staticClass: "m-0 mr-5" }, [
-                                _c("b", [_vm._v("Estado: ")]),
-                                _vm._v(_vm._s(_vm.alumno.EstadoNac))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", [
-                                _c("b", [_vm._v("Municipio: ")]),
-                                _vm._v(_vm._s(_vm.alumno.MunicipioNac))
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(6),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-2" }, [
-                                _c("b", [_vm._v("Calle: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Calle))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-2" }, [
-                                _c("b", [_vm._v("No. Exterior: ")]),
-                                _vm._v(_vm._s(_vm.alumno.NumExterior))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-2" }, [
-                                _c("b", [_vm._v("No. Interior: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.NumInterior == ""
-                                      ? ""
-                                      : _vm.alumno.NumInterior
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("CP: ")]),
-                                _vm._v(_vm._s(_vm.alumno.CodPostal))
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-3" }, [
-                                _c("b", [_vm._v("Colonia: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Colonia))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-3" }, [
-                                _c("b", [_vm._v("Municipio: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Municipio))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-2" }, [
-                                _c("b", [_vm._v("Estado: ")]),
-                                _vm._v(_vm._s(_vm.alumno.Estado))
-                              ]),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-1" }, [
-                                _c("b", [_vm._v("Entre calle: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.EntreCalle
-                                      ? _vm.alumno.EntreCalle
-                                      : "No Capturada"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0" }, [
-                                _c("b", [_vm._v("Entre calle: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.EntreCalle2
-                                      ? _vm.alumno.EntreCalle2
-                                      : "No Capturada"
-                                  )
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("div", { staticClass: "linea" }),
-                              _vm._v(" "),
-                              _c("label", { staticClass: "m-0 mr-5" }, [
-                                _c("b", [_vm._v("Tipo de sangre: ")]),
-                                _vm._v(_vm._s(_vm.alumno.TipoSangre))
-                              ]),
-                              _vm._v(" "),
-                              _c("label", {}, [
-                                _c("b", [_vm._v("Etnia: ")]),
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.alumno.Etnia ? _vm.alumno.Etnia : "S/N"
-                                  )
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _vm._m(7),
-                              _c("br"),
-                              _vm._v(" "),
-                              _vm._m(8),
-                              _c("br")
-                            ])
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitulos text-center" }, [
                     _vm._v("Información académica")
@@ -48296,322 +48237,257 @@ var render = function() {
                   _vm._v(" "),
                   _c("hr", { staticClass: "barrasubtitulos" }),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "contenedorVentana2 colorText sizeGeneral" },
-                    [
-                      _c("div", { staticClass: "gridM2G" }, [
-                        _vm.alumno.IdAlumno
-                          ? _c("div", [
-                              _vm._m(13),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c("label", { staticClass: "mr-5 m-0" }, [
-                                  _c("b", [_vm._v("Estatura: ")]),
-                                  _vm._v(_vm._s(_vm.salud.Estatura))
-                                ]),
-                                _vm._v(" "),
-                                _c("label", { staticClass: "mr-4 m-0" }, [
-                                  _c("b", [_vm._v("Peso: ")]),
-                                  _vm._v(_vm._s(_vm.salud.Peso))
-                                ]),
-                                _vm._v(" "),
-                                _c("label", { staticClass: "m-0" }, [
-                                  _c("b", [_vm._v("IMC: ")]),
-                                  _vm._v(_vm._s(_vm.salud.IMC))
-                                ]),
-                                _c("br")
+                  _c("div", { attrs: { id: "salud-incidencias" } }, [
+                    _vm.alumno.IdAlumno
+                      ? _c("div", { attrs: { id: "divSalud" } }, [
+                          _c("div", { staticClass: "header" }, [
+                            _vm._m(13),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c("label", { staticClass: "mr-5 m-0" }, [
+                                _c("b", [_vm._v("Estatura: ")]),
+                                _vm._v(_vm._s(_vm.salud.Estatura))
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "gridM2G" }, [
-                                _c("div", { staticClass: "contentDetSaludG" }, [
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Anteojos: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Anteojos == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Pie Plano: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.PiePlano == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Salud bucal: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.ProbBucal == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Pediculosis: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Pediculosis == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Problemas auditivo: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.ProbAuditivo == 1
-                                          ? "Si"
-                                          : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Problemas lenguaje: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.ProbLenguaje == 1
-                                          ? "Si"
-                                          : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "mb-1" }, [
-                                    _c("b", [_vm._v("Transtornos: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Transtornos
-                                          ? _vm.salud.Transtornos
-                                          : "No padece de transtornos..."
-                                      )
-                                    )
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "contentDetSaludG" }, [
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Alergias: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Alergias == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Descripción: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.DetAlergias
-                                          ? _vm.salud.DetAlergias
-                                          : "No tiene alergias..."
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Gravidez: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Gravidez == 1 ? "Si" : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Descripción: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.Gravidez
-                                          ? _vm.salud.DetGravidez
-                                          : "No tiene gravidez..."
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Problemas posturales: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.ProbPosturales == 1
-                                          ? "Si"
-                                          : "No"
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Descripción: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.DetProbPosturales
-                                          ? _vm.salud.DetProbPosturales
-                                          : "No tiene problemas posturales..."
-                                      )
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Otros: ")]),
-                                    _vm._v(
-                                      _vm._s(_vm.salud.Otros == 1 ? "Si" : "No")
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-0" }, [
-                                    _c("b", [_vm._v("Descripción: ")]),
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.salud.DetOtros
-                                          ? _vm.salud.DetOtros
-                                          : "No tiene otros..."
-                                      )
-                                    )
-                                  ])
-                                ])
-                              ])
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.alumno.IdAlumno
-                          ? _c("div", [
-                              _c("div", { staticClass: "linea2G" }),
+                              _c("label", { staticClass: "mr-4 m-0" }, [
+                                _c("b", [_vm._v("Peso: ")]),
+                                _vm._v(_vm._s(_vm.salud.Peso))
+                              ]),
                               _vm._v(" "),
-                              _vm._m(14),
-                              _vm._v(" "),
-                              _c("div", [
-                                _vm.alumno.IdAlumno
-                                  ? _c("div", [
-                                      _c("div", { staticClass: "pt-1" }, [
-                                        _vm._m(15),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "scrollHG" },
-                                          _vm._l(_vm.incidencias, function(
-                                            incidencia,
-                                            key
-                                          ) {
-                                            return _c(
-                                              "button",
-                                              {
-                                                key: key,
-                                                staticClass:
-                                                  "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
-                                                attrs: {
-                                                  "data-toggle": "modal",
-                                                  "data-target":
-                                                    incidencia.TipoReporte ==
-                                                    "Incidencia"
-                                                      ? "#verIncidencias"
-                                                      : "#verMalaConducta"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.mostrarIncidencia(
-                                                      incidencia,
-                                                      _vm.alumno
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                \n                                                    " +
-                                                    _vm._s(key + 1) +
-                                                    "\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          }),
-                                          0
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "mcontenidoL pt-1" },
-                                        [
-                                          _vm._m(16),
-                                          _vm._v(" "),
-                                          _c("p", [
-                                            _c("b", [
-                                              _vm._v("Observaciones: ")
-                                            ]),
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.inconveniente.Observaciones
-                                              )
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("p", [
-                                            _c("b", [
-                                              _vm._v(
-                                                "Descripción del reporte: "
-                                              )
-                                            ]),
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.inconveniente
-                                                  .DescripcionReporte
-                                              )
-                                            )
-                                          ])
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "pt-1 mr-4" }, [
-                                        _c(
-                                          "p",
-                                          { staticClass: "p-0 m-0 fecha" },
-                                          [
-                                            _c("b", [_vm._v("Fecha: ")]),
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.inconveniente.FechaInicio
-                                              )
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "a",
-                                          {
-                                            attrs: {
-                                              href:
-                                                "/R?show=" + _vm.alumno.IdAlumno
-                                            }
-                                          },
-                                          [
-                                            _c("img", {
-                                              staticStyle: {
-                                                width: "20px",
-                                                height: "20px"
-                                              },
-                                              attrs: {
-                                                src: "images/historial.png",
-                                                alt: "ver el historial"
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ])
-                                    ])
-                                  : _vm._e()
-                              ])
+                              _c("label", { staticClass: "m-0" }, [
+                                _c("b", [_vm._v("IMC: ")]),
+                                _vm._v(_vm._s(_vm.salud.IMC))
+                              ]),
+                              _c("br")
                             ])
-                          : _vm._e()
-                      ])
-                    ]
-                  ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "left" }, [
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Anteojos: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.Anteojos == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Pie Plano: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.PiePlano == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Salud bucal: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.ProbBucal == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Pediculosis: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.Pediculosis == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Problemas auditivo: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.ProbAuditivo == 1 ? "Si" : "No"
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Problemas lenguaje: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.ProbLenguaje == 1 ? "Si" : "No"
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "mb-1" }, [
+                              _c("b", [_vm._v("Transtornos: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.Transtornos
+                                    ? _vm.salud.Transtornos
+                                    : "No padece de transtornos..."
+                                )
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "right" }, [
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Alergias: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.Alergias == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Descripción: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.DetAlergias
+                                    ? _vm.salud.DetAlergias
+                                    : "No tiene alergias..."
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Gravidez: ")]),
+                              _vm._v(
+                                _vm._s(_vm.salud.Gravidez == 1 ? "Si" : "No")
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Descripción: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.Gravidez
+                                    ? _vm.salud.DetGravidez
+                                    : "No tiene gravidez..."
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Problemas posturales: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.ProbPosturales == 1 ? "Si" : "No"
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Descripción: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.DetProbPosturales
+                                    ? _vm.salud.DetProbPosturales
+                                    : "No tiene problemas posturales..."
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Otros: ")]),
+                              _vm._v(_vm._s(_vm.salud.Otros == 1 ? "Si" : "No"))
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "m-0" }, [
+                              _c("b", [_vm._v("Descripción: ")]),
+                              _vm._v(
+                                _vm._s(
+                                  _vm.salud.DetOtros
+                                    ? _vm.salud.DetOtros
+                                    : "No tiene otros..."
+                                )
+                              )
+                            ])
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.alumno.IdAlumno
+                      ? _c("div", { attrs: { id: "divIncidencia" } }, [
+                          _vm._m(14),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "left" },
+                            [
+                              _vm._l(_vm.incidencias, function(
+                                incidencia,
+                                key
+                              ) {
+                                return _c(
+                                  "button",
+                                  {
+                                    key: key,
+                                    staticClass:
+                                      "btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target":
+                                        incidencia.TipoReporte == "Incidencia"
+                                          ? "#verIncidencias"
+                                          : "#verMalaConducta"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.mostrarIncidencia(
+                                          incidencia,
+                                          _vm.alumno
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                \n                                    " +
+                                        _vm._s(key + 1) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                )
+                              }),
+                              _vm._v(" "),
+                              _vm._m(15),
+                              _vm._v(" "),
+                              _c("p", [
+                                _c("b", [_vm._v("Observaciones: ")]),
+                                _vm._v(_vm._s(_vm.inconveniente.Observaciones))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", [
+                                _c("b", [_vm._v("Descripción del reporte: ")]),
+                                _vm._v(
+                                  _vm._s(_vm.inconveniente.DescripcionReporte)
+                                )
+                              ])
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "right text-center" }, [
+                            _c("p", { staticClass: "p-0 m-0 fecha" }, [
+                              _c("b", [_vm._v("Fecha: ")]),
+                              _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href: "/R?show=" + _vm.alumno.IdAlumno
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  staticStyle: {
+                                    width: "20px",
+                                    height: "20px"
+                                  },
+                                  attrs: {
+                                    src: "images/historial.png",
+                                    alt: "ver el historial"
+                                  }
+                                })
+                              ]
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitulos text-center" }, [
                     _vm._v("Trabajo social")
@@ -48629,13 +48505,16 @@ var render = function() {
                       _c("div", { attrs: { id: "trabajo-social" } }, [
                         _c("div", { staticClass: "left" }, [
                           _vm.alumno.IdAlumno
-                            ? _c("div", [
+                            ? _c("div", { staticStyle: { padding: "10px" } }, [
                                 _c("div", [
-                                  _vm._m(17),
+                                  _vm._m(16),
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "miCard" },
+                                    {
+                                      staticClass: "miCard",
+                                      staticStyle: { "min-height": "53px" }
+                                    },
                                     _vm._l(
                                       _vm.justificantes.slice().reverse(),
                                       function(
@@ -48677,11 +48556,14 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", [
-                                  _vm._m(18),
+                                  _vm._m(17),
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "miCard" },
+                                    {
+                                      staticClass: "miCard",
+                                      staticStyle: { "min-height": "53px" }
+                                    },
                                     _vm._l(
                                       _vm.pases.slice().reverse(),
                                       function(pase, keyjustificantepase2) {
@@ -48729,7 +48611,7 @@ var render = function() {
                           _c("div", [
                             _vm.alumno.IdAlumno
                               ? _c("div", [
-                                  _vm._m(19),
+                                  _vm._m(18),
                                   _vm._v(" "),
                                   _c("div", [
                                     _c("p", { staticClass: "mb-1" }, [
@@ -48834,7 +48716,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.alumno.IdAlumno
                             ? _c("div", [
-                                _vm._m(20),
+                                _vm._m(19),
                                 _vm._v(" "),
                                 _c("div", [
                                   _c("p", { staticClass: "mb-1" }, [
@@ -48934,7 +48816,7 @@ var render = function() {
                           "div",
                           { staticClass: "right" },
                           [
-                            _vm._m(21),
+                            _vm._m(20),
                             _vm._v(" "),
                             _vm._l(_vm.becas, function(beca, key) {
                               return _c("div", { key: key }, [
@@ -49005,19 +48887,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mifotoG" }, [
+    return _c("div", { staticClass: "uno text-center" }, [
       _c("img", {
+        staticStyle: { width: "100px", height: "100px" },
         attrs: { src: "images/student.png", alt: "Foto del Alumno" }
       }),
       _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "text-center",
-          staticStyle: { "text-shadow": "1px 1px 5px #2c2b2b86" }
-        },
-        [_vm._v("Regular")]
-      )
+      _c("p", { staticStyle: { "text-shadow": "1px 1px 5px #2c2b2b86" } }, [
+        _vm._v("Regular")
+      ])
     ])
   },
   function() {
@@ -49150,18 +49028,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "header" }, [
       _c("p", { staticClass: "text-center p-0 m-0" }, [
         _c("b", [_vm._v("INCIDENCIAS")])
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "p-0 m-0" }, [
+        _c("b", [_vm._v("Cantidad de incidencias")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "p-0 m-0" }, [
-      _c("b", [_vm._v("Cantidad de incidencias")])
     ])
   },
   function() {
