@@ -12,15 +12,15 @@
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
-                     <div class="divbuscador">
-
-                        <!-- <form @submit.prevent="buscar"> -->
-                            <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
-                            <input v-model="buscador" type="text" style="width:150px;" placeholder="Buscar">
-                        <!-- </form> -->
+                    
+                    <div class="mt-3">
+                        <input v-model="buscador" type="text" style="width:180px;" placeholder="Buscar" class="form-control  mb-1 ml-3">
+                        <button class="btn btn-primary" style="position:absolute; right:20px; top:48px;" data-toggle="modal" data-target="#addUsuario"
+                            @click="$emit('actualizarUsuario', {})">
+                            <i class="fas fa-plus-circle"> Agregar</i>
+                        </button>
                     </div>
                     <hr class="mt-1 m-0 p-0">
-           
                     <div class="modal-body-g">
                         <table class="table table-striped table-hover contentTable table table-sm">
                             <thead>
@@ -31,38 +31,18 @@
                                     <th colspan="2">Acciones</th>
                                 </tr>
                             </thead>
-                            <!--<tbody>
-                                <tr>
-                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                </tr>
-                            </tbody>-->
                             <tbody>
-                                <tr v-for="(usuario, key) in filterUsers" :key="key">
+                                <tr v-for="(usuario, key) in filterUsers" :key="key" @click="$emit('modificarUsuario', usuario)" data-toggle="modal" data-target="#ModUsuario">
                                     <td> {{ usuario.name }} </td>
                                     <td> {{ usuario.email }} </td>
                                     <td> {{ usuario.role_name }}</td>
-                                    
-                                    <td>
-                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModUsuario" 
-                                            @click="$emit('modificarUsuario', usuario)">
-                                            <i class="far fa-edit"></i>
-                                        </button>
-                                        <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
-                                    </td>
                                     <td>
                                         <button v-if="usuario.role != 1" class="btn btn-danger btn-sm" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#addUsuario"
-                            @click="$emit('actualizarUsuario', {})">
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-                    </div>     
+                    </div> 
                 </div>
             </div>
         </div>
@@ -157,6 +137,3 @@
        }
     }
 </script>
-
-<style>
-</style>

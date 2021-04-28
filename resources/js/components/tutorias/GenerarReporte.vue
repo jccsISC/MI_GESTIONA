@@ -200,7 +200,7 @@
 
                     if (this.tipo == 'crear') {
                         this.reporte.Unidad = this.alumno.Unidad;
-                        axios.post('/yonoAbandono', this.reporte).then(res => {
+                        axios.post('/yonoAbandono' + this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
