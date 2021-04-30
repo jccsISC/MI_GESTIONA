@@ -56,6 +56,13 @@
    
     import bus from '../../../event-bus';
     export default {
+        
+        data() {
+            return {
+                alumno: {},
+                incidencias: []
+            }
+        },
         computed: {
             inconveniente() {
                 return this.incidencias[0] ? this.incidencias[0] : {};
@@ -65,12 +72,6 @@
             },
             malaConductaComputed() {
                 return this.incidencias.filter(incidencia => incidencia.TipoReporte !== 'Incidencia');    
-            }
-        },
-        data() {
-            return {
-                alumno: {},
-                incidencias: []
             }
         },
         created() {

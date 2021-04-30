@@ -1,5 +1,6 @@
 <template>
     <div class="contenedorCardG">  
+        <spinner v-show="loading"></spinner>
         <p>Semestre:</p>    
         <p>Promedio:</p>      
         <div class="micardG">
@@ -18,11 +19,7 @@
                         <th>Extra</th>
                     </tr>
                 </thead>
-                <!--<tbody>
-                    <tr>
-                        <td colspan="7" class="text-center">Sin resultados...</td>
-                    </tr>
-                </tbody>-->
+
                 <tbody>
                     <tr  v-for="(calificacion, key) in calificaciones" :key="key">
                         <td>{{calificacion.Materia}}</td>
@@ -60,7 +57,8 @@
         data() {
             return {
                 alumno: {},
-                calificaciones: []
+                calificaciones: [],
+                loading: true,
             }
         },
          created() {
@@ -73,6 +71,7 @@
         },
         methods:{
             jalarCalificaciones(){
+                this.loading = false;
                 axios.get('alumnos/'+this.alumno.IdAlumno+'/calificaciones').then(res =>{
                     console.log(res.data);
                     this.calificaciones = res.data;

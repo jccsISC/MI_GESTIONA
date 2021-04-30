@@ -7,9 +7,9 @@
             </button>
         </div>
 
-        <div v-if="alumno.IdAlumno && alumno.Reporte" class="posicionBtn">
+        <div v-if="alumno.Reporte" class="posicionBtn">
             <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
-                @click="emit('kevin', alumno.Reporte, alumno, alumno.Reporte.familiar)">
+                @click="emit('editReport', alumno.Reporte, alumno, alumno.Reporte.familiar)">
                 Editar reporte
             </button>
         </div>
@@ -25,7 +25,6 @@
         data() {
             return {
                 alumno: {},
-            
             }
         },
         methods: {

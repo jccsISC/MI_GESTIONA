@@ -42,18 +42,18 @@
 			        <label>Confirmar contraseña</label>
               <span v-if="!usuario.password2" class="text-danger" >Requerido*</span>
 			        <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2" id="password2">
-                <span class="eyesConfirm"><i class="showIcon fa fa-eye" aria-hidden="true" id="eye2" @click="toogle2()"></i></span>
+              <span class="eyesConfirm"><i class="showIcon fa fa-eye" aria-hidden="true" id="eye2" @click="toogle2()"></i></span>
 		  	    </div>
 
             <form class="was-validated">
                 <div class="form-group">
                   <label>Tipo de usuario</label>
-                <select class="custom-select" name="role" required v-model="usuario.role">
-                    <option value="2">Tutor</option> 
-                    <option value="3">Orientador</option> 
-                    <option value="4">Trabajador social</option> 
-                    <option value="5">Maestro</option> 
-                </select> 
+                  <select class="custom-select" name="role" required v-model="usuario.role">
+                      <option value="2">Tutor</option> 
+                      <option value="3">Orientador</option> 
+                      <option value="4">Trabajador social</option> 
+                      <option value="5">Maestro</option> 
+                  </select> 
                 </div>
             </form>
 
@@ -61,7 +61,8 @@
 	  	    </form>
         </div>
       </div>
-      <alert-modal class="m-5" :message="alertMessage" :type="alertType" :show="showError" julio="agregarUsuarioModalAlert"></alert-modal>
+      
+      <alert-modal class="m-5" :message="alertMessage" :type="alertType" :show="showError" nameAlert="agregarUsuarioModalAlert"></alert-modal>
     </div>
   </div>
 </template>

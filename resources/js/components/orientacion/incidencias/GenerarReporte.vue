@@ -72,7 +72,8 @@
                         <i class="fas fa-save"></i> Guardar
                     </button>
                 </form>
-                 <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="incidenciaModal"></alert-modal>
+                
+                <alert-modal :message="alertMessage" :type="alertType" :show="showError" nameAlert="incidenciaModal"></alert-modal>
             </div>
         </div>
     </div>
@@ -116,35 +117,48 @@
             });
         },
         methods: {
-            jalarFamiliar() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
-                this.familiar = res.data;
-                });
+            async jalarFamiliar() {
+
+                const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
+                this.familiar = data;
+
+                // axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                // this.familiar = res.data;
+                // });
             },
             guardarReporte() {
+
                 this.alertType = 'danger';
-                 if (this.reporte.ComentariosPa == undefined 
-                    || this.reporte.Derivacion  == undefined 
-                    || this.reporte.DescripcionReporte  == undefined 
-                    || this.reporte.Observaciones  == undefined 
+
+                 if (this.reporte.ComentariosPa == undefined || this.reporte.Derivacion  == undefined 
+                    || this.reporte.DescripcionReporte  == undefined || this.reporte.Observaciones  == undefined 
                     || this.reporte.Comentarios  == undefined ) {
+
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
+
                 }else {
+                    
                     this.reporte.IdFamiliar = this.familiar.IdFamiliar;
+
                     if (this.tipo == 'Guardar') {
+
                         this.reporte.TipoReporte = 'Incidencia';
+
                         axios.post('/incidenciareal', this.reporte).then(res => {
+                            
                             this.alertMessage = "Se guardó correctamente";
                             this.alertType = 'success';
                             this.showError = true;
+
                             setTimeout(() => { this.showError = false; }, 1000);
                             setTimeout(function() {  $('#reporteOrientacion').modal('hide'); }, 2000);
                          
                             bus.$emit('incidenciaAgregada', res.data);
                         });
                 } else {
+
                     axios.put('/incidenciareal/'+this.reporte.IdIncidencia, this.reporte).then(res => {
                         $('#reporteOrientacion').modal('hide');
                         bus.$emit('incidenciaEditada', res.data);

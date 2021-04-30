@@ -2,11 +2,11 @@
     <div class="contenedorCard">
         <p class="subtitulos">Información personal</p>
         <div id="cardInfoPersonal" class="micardP colorText" data-toggle="modal" :data-target="dataTarget">
+            <spinner v-show="loading"></spinner>
             <div v-if="alumno.IdAlumno" class="miContent" style="margin-top:4px">
                 <div class="miImg">
                     <img src="images/student.png" alt="Foto del Alumno">
                 </div>
-
                 <div>
                     <p class="m-0"><b>Matricula: </b>{{alumno.IdAlumno}}</p>
                     <p class="m-0 miMaxLength"><b>Nombre: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</p>
@@ -49,18 +49,18 @@
     export default {
         data() {
             return {
-                alumno: {}
+                alumno: {},
+                loading: true,
             }
         },
         created() {
             bus.$on('alumnoSeleccionado', alumno => {
-                
-                this.alumno = alumno;
-               
-            });
+                this.alumno = alumno;}
+            );
         },
         computed:{
             dataTarget(){
+                this.loading = false;
                 return this.alumno.IdAlumno ? '#allinfo' : '';
             }
         }

@@ -29,6 +29,7 @@
                             <input type="radio" name="anteojos" value="1" v-model="salud.Anteojos">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="anteojos" value="0" v-model="salud.Anteojos">
                             <span class="circle"></span>
@@ -44,6 +45,7 @@
                             <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="saludbucal" value="0" v-model="salud.ProbBucal">
                             <span class="circle"></span>
@@ -55,6 +57,7 @@
                             <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="pieplano" value="0" v-model="salud.PiePlano">
                             <span class="circle"></span>
@@ -66,6 +69,7 @@
                             <input type="radio" name="pediculosis" value="1" v-model="salud.Pediculosis">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="pediculosis" value="0" v-model="salud.Pediculosis">
                             <span class="circle"></span>
@@ -78,16 +82,19 @@
                             <input type="radio" name="problemaL" value="1" v-model="salud.ProbLenguaje">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="problemaL" value="0" v-model="salud.ProbLenguaje">
                             <span class="circle"></span>
                         </label> 
                         <br>
+
                         <label class="ml-1 mr-3">Problemas auditivos </label>
                         <label class="radioContent">Si
                             <input type="radio" name="problemaA" value="1" v-model="salud.ProbAuditivo">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="problemaA" value="0" v-model="salud.ProbAuditivo">
                             <span class="circle"></span>
@@ -104,6 +111,7 @@
                             <input type="radio" name="alergias" value="1" v-model="salud.Alergias">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="alergias" value="0" v-model="salud.Alergias">
                             <span class="circle"></span>
@@ -115,6 +123,7 @@
                             <input type="radio" name="problemasPosturales" value="1" v-model="salud.ProbPosturales">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="problemasPosturales" value="0"  v-model="salud.ProbPosturales">
                             <span class="circle"></span>
@@ -129,6 +138,7 @@
                             <input type="radio" name="gravidez" value="1" v-model="salud.Gravidez">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="gravidez" value="0" v-model="salud.Gravidez">
                             <span class="circle"></span>
@@ -140,6 +150,7 @@
                             <input type="radio" name="otros" value="1" v-model="salud.Otros">
                             <span class="circle"></span>
                         </label>
+
                         <label class="radioContent">No
                             <input type="radio" name="otros" value="0" v-model="salud.Otros">
                             <span class="circle"></span>
@@ -160,7 +171,7 @@
 <script>
 
   export default {
-         data() {
+        data() {
             return {
                 alumno: {},
                 salud: {},

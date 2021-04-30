@@ -107,6 +107,7 @@
             },
               eliminarUsuario(usuario) {
                   const confirmacion = confirm(`¿Está seguro que desea eliminar el usuario ${usuario.name} ?`);
+
                 // Lo elimina en la base de datos.
                 if(confirmacion){
                 axios.delete(`/usuarios/${usuario.id}`)
@@ -122,7 +123,7 @@
                 }
              },
 
-                buscar() {
+            buscar() {
                 if(!this.buscador){
                     return;
                 }

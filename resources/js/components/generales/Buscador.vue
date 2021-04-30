@@ -2,7 +2,6 @@
     <div class="divbuscador">
 
         <form @submit.prevent="buscar">
-            <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
             <input v-model="buscador" type="text" id="buscador" class="mibuscador" style="width:300px;" placeholder="Buscar por nombre o número de control" ref="buscador">
         </form>
     </div>
@@ -50,7 +49,3 @@
     
     }
 </script>
-
-<style>
-
-</style>
