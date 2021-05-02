@@ -69,6 +69,7 @@
             seleccionarAlumno(alumno) {
                 console.log('click');
                 alumno.Unidad = this.unidad(alumno.inasistencias);
+                alumno.mostrarReporte = true;
                 bus.$emit('alumnoSeleccionado', alumno);               
             }
         }

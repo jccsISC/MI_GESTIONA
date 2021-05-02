@@ -28,7 +28,6 @@
                                     <th>Nombre</th>
                                     <th>Usuario</th>
                                     <th>Tipo</th>
-                                    <th colspan="2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,9 +35,6 @@
                                     <td> {{ usuario.name }} </td>
                                     <td> {{ usuario.email }} </td>
                                     <td> {{ usuario.role_name }}</td>
-                                    <td>
-                                        <button v-if="usuario.role != 1" class="btn btn-danger btn-sm" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i></button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -48,7 +44,7 @@
         </div>
 
         <create-form-usuarios @usuarioActualizado="actualizarUsuario($event)"></create-form-usuarios>
-        <edit-form-usuarios @usuarioActualizado="modificarUsuario($event)"></edit-form-usuarios>
+        <edit-form-usuarios @usuarioActualizado="modificarUsuario($event)" :onDelete="eliminarUsuario" ></edit-form-usuarios>
     </div>
 </template>
 
@@ -63,11 +59,7 @@
         created() {
             axios.get('/usuarios').then(res => {
                 this.usuarios = res.data.map(user => {
-                     if (user.roles && user.roles.length && user.roles[0]) {
-                         user.role = user.roles[0].id;
-                         user.role_name = user.roles[0].name;
-                    }
-
+                    this.addRole(user);
                     return user;
                 });
 
@@ -75,26 +67,45 @@
             });
         },
         computed: {
+            orderedUsers() {
+                return this.usuarios.sort((a, b) => {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            },
             filterUsers() {
                 if (!this.buscador) {
-                    return this.usuarios;
+                    return this.orderedUsers;
                 }
-                return this.usuarios.filter(user => 
+                return this.orderedUsers.filter(user => 
                     user.name.toLowerCase().includes(this.buscador.toLowerCase()) || 
                     String(user.id).toLowerCase().includes(this.buscador.toLowerCase())
                 )
             },
         },
          methods: {
+             addRole(usuario) {
+                if (usuario.roles && usuario.roles.length && usuario.roles[0]) {
+                    usuario.role = usuario.roles[0].id;
+                    usuario.role_name = usuario.roles[0].name;
+                }
+             },
               actualizarUsuario(usuario) {             
       
                 if (usuario.esNueva) {
+                    this.addRole(usuario);
                     this.usuarios.push(usuario);
                 }  
 
             },
 
             modificarUsuario(usuario){
+                this.addRole(usuario);
                 const temp = Object.assign({}, this.usuarios);//clonamos el array usuarios
                     this.usuarios = []; //reiniciamos el array usuarios para que actualice al momento de guardar
                     Object.keys(temp).forEach(key => {

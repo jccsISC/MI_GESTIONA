@@ -29,7 +29,7 @@
               
             <div class="form-check pb-1">
               <input type="checkbox" class="form-check-input" id="checkPassword" v-model="usuario.actualizar_password">
-              <label class="form-check-label" for="changePass" id="changePass">
+              <label class="form-check-label" for="checkPassword" id="changePass" >
                   Cambiar contraseña
               </label>
             </div>
@@ -62,7 +62,7 @@
 
             </form>
 
-            <button v-if="usuario.role != 1" class="btn btn-danger" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i> Eliminar</button>
+            <button type="button" v-if="usuario.role != 1" class="btn btn-danger" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i> Eliminar</button>
             <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> Actualizar </button>
 	  	    </form>
         </div>
@@ -75,6 +75,7 @@
 
 <script>
   export default {
+    props: ['onDelete'],
     data() {
       return {
         usuario: {},
@@ -94,6 +95,10 @@
       });
     },
     methods: {
+      eliminarUsuario(usuario) {
+        this.onDelete(usuario);
+        $('#ModUsuario').modal('hide');
+      },
       onSubmit() {
         if (this.usuario.id) {
             this.modificarUsuario();       
@@ -109,32 +114,37 @@
             this.alertMessage = "Llene todos los campos";
             this.showError = true;
             setTimeout(() => { this.showError = false; }, 2000);
+            return;
+          }
           
-          }else if (this.checkPassword) {
-
-            if (this.usuario.password == undefined || this.usuario.password2 == undefined) {
-                
+          if (this.usuario.actualizar_password) {
+            if (!this.usuario.password || !this.usuario.password2) {
                 this.alertMessage = "Ingrese la nueva contraseña";
-
-            } else if (usuario.password != this.usuario.password2) {
-
+                this.showError = true;
+                setTimeout(() => { this.showError = false; }, 2000);
+                return;
+            }
+            
+            if (this.usuario.password != this.usuario.password2) {
               this.alertMessage = "Las contraseñas no coinciden";
               this.showError = true;
               setTimeout(() => { this.showError = false; }, 2000);
-
-            }else if (this.usuario.role == undefined) {
-
-                this.alertMessage = "Seleccione el role para este usuario";
-                this.showError = true;
-                setTimeout(() => { this.showError = false; }, 2000);
-
-            } else {     
-              axios.put('/usuarios/' + this.usuario.id, this.usuario)
-                .then(res => {
-                  this.onSuccess(res);
-                });
+              return;
             }
         }
+        
+        if (this.usuario.role == undefined) {
+            this.alertMessage = "Seleccione el role para este usuario";
+            this.showError = true;
+            setTimeout(() => { this.showError = false; }, 2000);
+            return;
+        }
+
+        axios.put('/usuarios/' + this.usuario.id, this.usuario)
+            .then(res => {
+               this.onSuccess(res);
+            });
+
       }
     }
   }

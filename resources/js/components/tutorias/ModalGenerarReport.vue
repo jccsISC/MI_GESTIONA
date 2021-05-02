@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="alumno.IdAlumno && !alumno.Reporte" class="posicionBtn">
+        <div v-if="alumno.IdAlumno && !alumno.Reporte && alumno.mostrarReporte" class="posicionBtn">
             <button type="button" class="miBtn" data-toggle="modal" data-target="#reporteTuto"
                 @click="$emit('generarReporte', alumno)">
                 Generar reporte
@@ -28,8 +28,8 @@
             }
         },
         methods: {
-            emit(el, julio, se, lacome) {
-                bus.$emit(el, julio, se, lacome);
+            emit(evento, reporte, alumno, familiar) {
+                bus.$emit(evento, reporte, alumno, familiar);
             }
         },
         created() {

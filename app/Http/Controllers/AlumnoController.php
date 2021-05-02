@@ -9,7 +9,16 @@ class AlumnoController extends Controller
 {
     public function buscar(Request $request) {
         $buscar = $request->query('buscar');
-        return tblalumno::where('IdAlumno', $buscar)->orWhere('Nombre', $buscar)->first();
+        $query = null;
+        if ($request->query('opciones')) {
+            $query = tblalumno::where('IdAlumno', 'like', '%' . $buscar . '');
+            $query->orWhere('Nombre', 'like', '%' . $buscar . '%');
+        } else {
+            $query = tblalumno::where('IdAlumno', $buscar);
+            $query->orWhere('Nombre', $buscar);
+        }
+        
+        return $request->query('opciones') ? $query->limit(8)->get() : $query->first();
     }
 
     public function familiar(tblalumno $tblalumno) {

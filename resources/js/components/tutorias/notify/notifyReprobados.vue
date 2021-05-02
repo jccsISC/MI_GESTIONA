@@ -4,7 +4,6 @@
         <div class="micardNotifications colorText">        
             <spinner v-show="loading"></spinner>
             <div class="micardNotificaciones mb-3" v-for="(calificacion, key) in calificaciones" :key="key" @click="seleccionarAlumno(calificacion.Alumno, calificacion.Unidad, calificacion.Reporte)">
-
                 <div class="row">
                     <div class="col-md-4 text-center mt-2">
                         <p class="m-0"><b>{{ calificacion.Alumno.Nombre }} {{ calificacion.Alumno.ApePaterno }} {{ calificacion.Alumno.ApeMaterno }}</b></p>
@@ -56,6 +55,7 @@
             seleccionarAlumno(alumno, unidad, reporte) {
                 alumno.Unidad = unidad;
                 alumno.Reporte = reporte;
+                alumno.mostrarReporte = true;
                 bus.$emit('alumnoSeleccionado', alumno);               
             }
         }

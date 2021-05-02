@@ -134,7 +134,7 @@
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
-                }else if (usuario.password != this.usuario.password2) {
+                }else if (this.usuario.password != this.usuario.password2) {
                     this.alertMessage = "Las contraseñas no coinciden";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
