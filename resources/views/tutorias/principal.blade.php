@@ -34,12 +34,12 @@
    
 
    <form action="{{ route('alumnos.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
-    @csrf
-    @if(Session::has('message'))
-    <p>{{ Session::get('message') }}</p>
-    @endif
-    <input type="file" name="file">
-    <button>Importar Alumnos</button>  
+      @csrf
+      @if(Session::has('message'))
+      <p>{{ Session::get('message') }}</p>
+      @endif
+      <input type="file" name="file">
+      <button class="btn btn-secondary ml-5">Importar Alumnos</button>  
     </form>
 
 @endsection

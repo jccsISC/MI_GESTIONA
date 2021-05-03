@@ -149,7 +149,6 @@ class TutoriasController extends Controller
         $file = $request->file('file');
         Excel::import(new AlumnosImport, $file);
         Excel::import(new FamiliarImport, $file);
-
         return back()->with('message', 'Importación de alumnos completada');
     }
 }

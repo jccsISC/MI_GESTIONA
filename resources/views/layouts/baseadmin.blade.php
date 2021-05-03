@@ -29,20 +29,19 @@
                      
                         <li><a href="#"><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i></a>
                             <ul>
-                                
                                 <li><div class="cerrar" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <!-- {{ __('Logout') }} -->
-                                   Salir
-                                </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <!-- {{ __('Logout') }} -->
+                                    Salir
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    </div>
+                                </li>
                             </ul>
                         </li>   
                     </ul>
@@ -53,8 +52,6 @@
         <!-- <edit-contra></edit-contra> -->
         @yield('content')
 
-     
-     
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
             <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
         </footer>

@@ -37,13 +37,15 @@
             <div class="form-group" v-if="usuario.actualizar_password">
               <label>Contraseña</label>
               <span v-if="!usuario.password" class="text-danger" >Requerido*</span>
-              <input type="password" class="form-control" placeholder="Ingresa la contraseña" v-model="usuario.password">
+              <input type="password" class="form-control" placeholder="Ingresa la contraseña" v-model="usuario.password" id="password">
+              <!-- <span class="eyesPosition"><i class="showIcon fa fa-eye" aria-hidden="true" id="eye" @click="toogle()"></i></span> -->
             </div>
 
             <div class="form-group" v-if="usuario.actualizar_password">
               <label>Confirmar contraseña</label>
               <span v-if="!usuario.password2" class="text-danger" >Requerido*</span>
-              <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2">
+              <input type="password" class="form-control" placeholder="Confirmar la contraseña" v-model="usuario.password2" id="password2">
+              <!-- <span class="eyesConfirm"><i class="showIcon fa fa-eye" aria-hidden="true" id="eye2" @click="toogle2()"></i></span> -->
             </div>
 
             <form class="was-validated">
@@ -82,7 +84,9 @@
         alertMessage: String,
         showError: false,
         alertType: 'danger',
-        checkPassword: false
+        checkPassword: false,
+        showPassword: false,
+        showPassword2: false,
       }
     },
     created: function() {
@@ -98,6 +102,28 @@
       eliminarUsuario(usuario) {
         this.onDelete(usuario);
         $('#ModUsuario').modal('hide');
+      },
+      toogle() {
+        if (this.showPassword) {
+          document.getElementById("password").setAttribute("type", "password");
+           this.showPassword = false;
+           document.getElementById("eye").style.color = '#7a797e';
+        }else {
+          document.getElementById("password").setAttribute("type", "text");
+           this.showPassword = true;
+            document.getElementById("eye").style.color = '#800000';
+        }
+      },
+      toogle2() {
+        if (this.showPassword2) {
+          document.getElementById("password2").setAttribute("type", "password");
+           this.showPassword2 = false;
+           document.getElementById("eye2").style.color = '#7a797e';
+        }else {
+          document.getElementById("password2").setAttribute("type", "text");
+           this.showPassword2 = true;
+            document.getElementById("eye2").style.color = '#800000';
+        }
       },
       onSubmit() {
         if (this.usuario.id) {
@@ -149,3 +175,30 @@
     }
   }
 </script>
+
+<style scoped>
+
+ .showIcon,
+  .hideIcon {
+    position: absolute;
+    right: 20px;
+    font-size: 24px;
+    color: #7a797e;
+  }
+  .hideIcon {
+    display: none;
+  }
+  
+  .eyesPosition {
+    position: absolute;
+    right: 2%;
+    top: 49%;
+  }
+
+  .eyesConfirm {
+    position: absolute;
+    right: 2%;
+    top: 65%;
+  }
+
+</style>

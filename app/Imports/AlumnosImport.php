@@ -14,6 +14,10 @@ class AlumnosImport implements ToModel
     */
     public function model(array $row)
     {
+        if (!isset($row[4])) {
+            return null;
+        }
+
         return new tblalumno([
             'Grado'                => $row[0],
             'Grupo'                => $row[2],

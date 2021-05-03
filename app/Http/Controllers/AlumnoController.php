@@ -11,7 +11,7 @@ class AlumnoController extends Controller
         $buscar = $request->query('buscar');
         $query = null;
         if ($request->query('opciones')) {
-            $query = tblalumno::where('IdAlumno', 'like', '%' . $buscar . '');
+            $query = tblalumno::where('IdAlumno', 'like', '%' . $buscar . '%');
             $query->orWhere('Nombre', 'like', '%' . $buscar . '%');
         } else {
             $query = tblalumno::where('IdAlumno', $buscar);

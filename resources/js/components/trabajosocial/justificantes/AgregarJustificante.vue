@@ -52,7 +52,7 @@
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label :disabled="ver"><b>Fecha: </b>{{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</label>
+			          <label v-if="ver"><b>Fecha: </b>{{ pase.Fecha }}</label>
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">

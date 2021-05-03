@@ -90,14 +90,18 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    background: antiquewhite;
+    background: white;
     width: 300px;
     }
     .divbuscador li {
-        padding: 1rem;
+        margin: 0.2rem;
+        padding: 0.5rem;
         cursor: pointer;
+        color: #800000;
+        border-radius: 5px;
     }
     .divbuscador li:hover {
-        background: burlywood;
+        background: #d1d1d1;
+        color: #800000;
     }
 </style>

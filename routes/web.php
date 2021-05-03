@@ -132,7 +132,6 @@ Route::get('T', function(Illuminate\Http\Request $request) {
     return view('/tutorias.principal');
 });
 Route::post('importAlumnos', 'TutoriasController@importExcelAlumno')->name('alumnos.import.excel');
-//Route::post('importInfoDocente', 'TutoriasController@importExcelInfoDocente')->name('infoDocente.import.excel');
 
 
 
