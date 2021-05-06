@@ -25,7 +25,7 @@
 
    <section class="contenedor-notify">
        
-        <card-notify-seguimiento></card-notify-seguimiento>
+        <!-- <card-notify-seguimiento></card-notify-seguimiento> -->
         
         <card-notify-talleres></card-notify-talleres>
 

@@ -5,7 +5,7 @@
         <!-- </form> -->
         <ul v-if="mostrarOpciones">
             <li v-for="opcion in opciones" :key="opcion.id" @click="seleccionarOpcion(opcion)">
-                {{ opcion.Nombre }}
+                {{ opcion.Nombre }} {{ opcion.ApePaterno }} {{ opcion.ApeMaterno }}
             </li>
             <li v-if="!opciones || !opciones.length" key="noresults" @click="cancelarBusqueda()">
                 No hay resultados
@@ -60,6 +60,7 @@
             },
             seleccionarOpcion(opcion) {
                 this.mostrarOpciones = false;
+                this.buscador = '';
                 bus.$emit('alumnoSeleccionado', opcion);
             },
             buscar() {
@@ -91,6 +92,9 @@
     flex-direction: column;
     position: absolute;
     background: white;
+    border-radius: 8px;
+    border:  solid #800000;
+    margin-top: 5px;
     width: 300px;
     }
     .divbuscador li {

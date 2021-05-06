@@ -12,19 +12,20 @@
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
+                    <hr class="mt-1 p-0">
                     
                     <div class="mt-3">
                         <input v-model="buscador" type="text" style="width:180px;" placeholder="Buscar" class="form-control  mb-1 ml-3">
-                        <button class="btn btn-primary" style="position:absolute; right:20px; top:48px;" data-toggle="modal" data-target="#addUsuario"
+                        <button class="btn btn-primary" style="position:absolute; right:16px; top:48px;" data-toggle="modal" data-target="#addUsuario"
                             @click="$emit('actualizarUsuario', {})">
                             <i class="fas fa-plus-circle"> Agregar</i>
                         </button>
                     </div>
                     <hr class="mt-1 m-0 p-0">
                     <div class="modal-body-g">
-                        <table class="table table-striped table-hover contentTable table table-sm">
-                            <thead>
-                                <tr>
+                        <table class="table table-striped table-hover contentTable table table-sm table-bordered" >
+                            <thead style="background-color: #800000; color: white;">
+                                <tr style="border: solid #800000;">
                                     <th>Nombre</th>
                                     <th>Usuario</th>
                                     <th>Tipo</th>

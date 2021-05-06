@@ -3,9 +3,9 @@
         <p class="subtitulos">Historial de talleres tomados</p>
         <div class="historialTalleres colorText">
             <spinner v-show="loading"></spinner>
-            <table class="table table-striped table-hover contentTable table  scrollTalleres table-sm">
-                <thead>
-                    <tr style="text-align: center;">
+            <table v-if="!loading" class="table table-striped table-hover contentTable table  scrollTalleres table-sm table-bordered ">
+                <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                    <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;">
                         <th>Grupos</th>
                         <th colspan="2">Taller</th>
                         <th>Beneficiarios</th>
@@ -58,7 +58,8 @@
 <style>
     .historialTalleres{
         width: 100%;
-        height: 280px;
+        height: 550px;
+        margin-bottom: 2rem;
         background-color: white;
         box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);
         border-radius: 8px;

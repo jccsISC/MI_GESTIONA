@@ -99,12 +99,6 @@ class UsersController extends Controller
         $roleusu = roleUser::where('user_id', $id);
         $usuario->delete();
         $roleusu->delete();
-    
        
         }
-    
-
-  
-
-    
 }

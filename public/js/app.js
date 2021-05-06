@@ -2760,6 +2760,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     seleccionarOpcion: function seleccionarOpcion(opcion) {
       this.mostrarOpciones = false;
+      this.buscador = '';
       _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('alumnoSeleccionado', opcion);
     },
     buscar: function buscar() {
@@ -4375,12 +4376,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6176,7 +6171,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['onDelete'],
+  data: function data() {
+    return {
+      beca: {}
+    };
+  },
   created: function created() {
     var _this = this;
 
@@ -6188,12 +6191,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
   },
-  data: function data() {
-    return {
-      beca: {}
-    };
-  },
   methods: {
+    eliminarBeca: function eliminarBeca(beca) {
+      this.onDelete(beca);
+      $('#addBeca').modal('hide');
+    },
     onSubmit: function onSubmit() {
       if (this.beca.IdBeca) {
         this.actualizarBeca();
@@ -6418,23 +6420,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 //
 //
 //
@@ -6514,17 +6507,35 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    eliminarBeca: function eliminarBeca(beca, key) {
+    eliminarBeca: function eliminarBeca(beca) {
       var _this3 = this;
 
       var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la beca ".concat(beca.Nombre, "?")); // Lo elimina en la base de datos.
 
       if (confirmacion) {
-        axios["delete"]("/becas/".concat(beca.IdBeca)).then(function (res) {
+        axios["delete"]("/becas/".concat(beca.IdBec)).then(function () {
           // Lo elimina de manera visual.
-          _this3.becas.splice(key, 1);
+          var becas = _toConsumableArray(_this3.becas);
+
+          var key = becas.findIndex(function (beca) {
+            return beca.IdBec === beca.IdBec;
+          });
+
+          if (key >= 0) {
+            becas.splice(key, 1);
+
+            _this3.$set(_this3, 'becas', _toConsumableArray(becas));
+          }
         });
-      }
+      } // Lo elimina en la base de datos.
+      //       if(confirmacion){
+      //         axios.delete(`/becas/${beca.IdBeca}`)
+      //         .then(res => {
+      //             // Lo elimina de manera visual.
+      //             this.becas.splice(key,1);
+      //         })
+      // }
+
     }
   }
 });
@@ -6699,12 +6710,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -6756,6 +6761,18 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.onSuccess(res);
       });
+    },
+    eliminarDependencia: function eliminarDependencia(dependencia, key) {
+      var _this4 = this;
+
+      var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la dependencia ".concat(dependencia.Nombre, "?")); // Lo elimina en la base de datos.
+
+      if (confirmacion) {
+        axios["delete"]("/dependencias/".concat(dependencia.IdDependencia)).then(function (res) {
+          // Lo elimina de manera visual.
+          _this4.dependencias.splice(key, 1);
+        });
+      }
     }
   }
 });
@@ -6771,17 +6788,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7512,10 +7518,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -7593,10 +7595,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
 //
 //
 //
@@ -7871,7 +7869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log('guardando reporte 1', this.reporte);
 
-      if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
+      if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined) {
         this.alertMessage = "Llene todos los campos";
         this.showError = true;
         setTimeout(function () {
@@ -7884,12 +7882,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this2.showError = false;
         }, 2000);
       } else {
-        this.users.forEach(function (element) {
-          if (element.id == _this2.reporte.user_id) {
-            _this2.reporte.ResponsableSeguimiento = element.name;
-            return;
-          }
-        });
+        //   this.users.forEach(element => {
+        //     if (element.id == this.reporte.user_id) {
+        //         this.reporte.ResponsableSeguimiento = element.name;
+        //         return;
+        //     }
+        // });
+        this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+        console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
 
         if (this.tipo == 'crear') {
           this.reporte.Unidad = this.alumno.Unidad;
@@ -8602,6 +8602,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['onDelete'],
   data: function data() {
@@ -8731,6 +8732,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+//
 //
 //
 //
@@ -13457,7 +13459,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.divbuscador ul[data-v-00bb94ad] {\ndisplay: -webkit-box;\ndisplay: flex;\n-webkit-box-orient: vertical;\n-webkit-box-direction: normal;\n        flex-direction: column;\nposition: absolute;\nbackground: white;\nwidth: 300px;\n}\n.divbuscador li[data-v-00bb94ad] {\n    margin: 0.2rem;\n    padding: 0.5rem;\n    cursor: pointer;\n    color: #800000;\n    border-radius: 5px;\n}\n.divbuscador li[data-v-00bb94ad]:hover {\n    background: #d1d1d1;\n    color: #800000;\n}\n", ""]);
+exports.push([module.i, "\n.divbuscador ul[data-v-00bb94ad] {\ndisplay: -webkit-box;\ndisplay: flex;\n-webkit-box-orient: vertical;\n-webkit-box-direction: normal;\n        flex-direction: column;\nposition: absolute;\nbackground: white;\nborder-radius: 8px;\nborder:  solid #800000;\nmargin-top: 5px;\nwidth: 300px;\n}\n.divbuscador li[data-v-00bb94ad] {\n    margin: 0.2rem;\n    padding: 0.5rem;\n    cursor: pointer;\n    color: #800000;\n    border-radius: 5px;\n}\n.divbuscador li[data-v-00bb94ad]:hover {\n    background: #d1d1d1;\n    color: #800000;\n}\n", ""]);
 
 // exports
 
@@ -13590,7 +13592,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.mcontenidoL{\n    width: 75%;\n    float: left;\n    padding: 0;\n    /* overflow: hidden; */\n}\n.fecha{\n    font-size: 11px;\n}\n.borde {\n    width: 250px;\n    height: 80px;\n    border:1px solid #a5a5a5;\n    border-radius: 4px;\n    overflow: auto;\n    padding: 5;\n    margin: 0;\n}\n.borde::-webkit-scrollbar {\n    width: 1px;\n}\n.borde::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.mcontenidoL{\n    width: 75%;\n    float: left;\n    padding: 0;\n    /* overflow: hidden; */\n}\n.fecha{\n    font-size: 11px;\n}\n.borde {\n    width: 98%;\n    height: 80px;\n    border:1px solid #a5a5a5;\n    border-radius: 4px;\n    overflow: auto;\n    padding: 5;\n    margin: 0;\n}\n.borde::-webkit-scrollbar {\n    width: 1px;\n}\n.borde::-webkit-scrollbar-thumb {\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -13666,7 +13668,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.historialTalleres{\n    width: 100%;\n    height: 280px;\n    background-color: white;\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.scrollTalleres tbody,\n.scrollTalleres thead { \n    display: block;\n}\n.scrollTalleres thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollTalleres tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollTalleres tbody {\n    max-height: 250px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollTalleres tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollTalleres tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
+exports.push([module.i, "\n.historialTalleres{\n    width: 100%;\n    height: 550px;\n    margin-bottom: 2rem;\n    background-color: white;\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.scrollTalleres tbody,\n.scrollTalleres thead { \n    display: block;\n}\n.scrollTalleres thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollTalleres tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollTalleres tbody {\n    max-height: 250px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollTalleres tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollTalleres tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
 
 // exports
 
@@ -13894,7 +13896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 15px;\n}\n.scrollTCalif{\n    height: 260px;\n    /* background: #f7b6b6; */\n    overflow: scroll;\n    overflow: auto;\n}\n.scrollTCalif::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollTCalif::-webkit-scrollbar-thumb{\n    background: #800000;\n    width: 1px;\n}\n\n", ""]);
+exports.push([module.i, "\n.sizeCalGeneral{\n    font-size: 15px;\n}\n.scrollTCalif{\n    height: 260px;\n    /* background: #f7b6b6; */\n    overflow: scroll;\n    overflow: auto;\n}\n.scrollTCalif::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollTCalif::-webkit-scrollbar-thumb{\n    background: #800000;\n    width: 1px;\n}\n", ""]);
 
 // exports
 
@@ -48489,7 +48491,13 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n            " + _vm._s(opcion.Nombre) + "\n        "
+                    "\n            " +
+                      _vm._s(opcion.Nombre) +
+                      " " +
+                      _vm._s(opcion.ApePaterno) +
+                      " " +
+                      _vm._s(opcion.ApeMaterno) +
+                      "\n        "
                   )
                 ]
               )
@@ -51684,8 +51692,19 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "micard" }, [
         _vm.alumno.IdAlumno
-          ? _c("div", [
-              _c("div", { staticClass: "pt-1 interlineado" }, [
+          ? _c("div", { attrs: { id: "card-incidencias" } }, [
+              _c("div", { staticClass: "pt-1 uno" }, [
+                _c("a", { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } }, [
+                  _c("img", {
+                    staticClass: "float-right mr-2",
+                    staticStyle: { width: "20px", height: "20px" },
+                    attrs: {
+                      src: "images/historial.png",
+                      alt: "ver el historial"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
                 _c(
@@ -51697,7 +51716,7 @@ var render = function() {
                       {
                         key: key,
                         staticClass:
-                          "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
+                          "btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2",
                         attrs: {
                           "data-toggle": "modal",
                           "data-target": "#verIncidencias"
@@ -51718,10 +51737,8 @@ var render = function() {
                     )
                   }),
                   0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pt-1 interlineado" }, [
+                ),
+                _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
                 _c(
@@ -51733,7 +51750,7 @@ var render = function() {
                       {
                         key: key,
                         staticClass:
-                          "btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2",
+                          "btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2",
                         attrs: {
                           "data-toggle": "modal",
                           "data-target": "#verMalaConducta"
@@ -51755,38 +51772,6 @@ var render = function() {
                   }),
                   0
                 )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "mcontenidoL pt-1 interlineado" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Observaciones: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.Observaciones))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("b", [_vm._v("Descripción del reporte: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.DescripcionReporte))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pt-1" }, [
-                _c("p", { staticClass: "p-0 m-0 fecha" }, [
-                  _c("b", [_vm._v("Fecha: ")]),
-                  _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { href: "/R?show=" + _vm.alumno.IdAlumno } }, [
-                  _c("img", {
-                    staticClass: "float-right mr-3",
-                    staticStyle: { width: "20px", height: "20px" },
-                    attrs: {
-                      src: "images/historial.png",
-                      alt: "ver el historial"
-                    }
-                  })
-                ])
               ])
             ])
           : _vm._e()
@@ -51799,19 +51784,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Cantidad de incidencias")])])
+    return _c("label", [_c("b", [_vm._v("Cantidad de incidencias")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Mala conducta")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Detalles")])])
+    return _c("label", { staticClass: "mt-2" }, [
+      _c("b", [_vm._v("Mala conducta")])
+    ])
   }
 ]
 render._withStripped = true
@@ -53612,50 +53593,55 @@ var render = function() {
           ]
         }),
         _vm._v(" "),
-        _c(
-          "table",
-          {
-            staticClass:
-              "table table-striped table-hover contentTable table  scrollTalleres table-sm"
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.grupos, function(grupo, key) {
-                return _c(
-                  "tr",
-                  { key: key, staticStyle: { "text-align": "center" } },
-                  [
-                    _c(
-                      "td",
-                      {
-                        staticStyle: { background: "#800000", color: "white" }
-                      },
+        !_vm.loading
+          ? _c(
+              "table",
+              {
+                staticClass:
+                  "table table-striped table-hover contentTable table  scrollTalleres table-sm table-bordered "
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.grupos, function(grupo, key) {
+                    return _c(
+                      "tr",
+                      { key: key, staticStyle: { "text-align": "center" } },
                       [
-                        _vm._v(
-                          _vm._s(grupo.Semestre) + " " + _vm._s(grupo.Grupo)
-                        )
+                        _c(
+                          "td",
+                          {
+                            staticStyle: {
+                              background: "#800000",
+                              color: "white"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(grupo.Semestre) + " " + _vm._s(grupo.Grupo)
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { attrs: { colspan: "2" } }, [
+                          _vm._v(_vm._s(grupo.taller.Nombre))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(grupo.Cantidad))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(grupo.taller.Fecha))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(grupo.taller.Hora))])
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(grupo.taller.Nombre))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(grupo.Cantidad))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(grupo.taller.Fecha))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(grupo.taller.Hora))])
-                  ]
+                    )
+                  }),
+                  0
                 )
-              }),
-              0
+              ]
             )
-          ]
-        )
+          : _vm._e()
       ],
       1
     )
@@ -53666,19 +53652,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { staticStyle: { "text-align": "center" } }, [
-        _c("th", [_vm._v("Grupos")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Taller")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Beneficiarios")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Hora")])
-      ])
-    ])
+    return _c(
+      "thead",
+      {
+        staticStyle: {
+          "background-color": "#800000",
+          border: "solid #800000",
+          color: "white",
+          "border-radius": "8px 8px 0px 0px"
+        }
+      },
+      [
+        _c(
+          "tr",
+          {
+            staticStyle: {
+              border: "solid #800000",
+              "border-radius": "8px 8px 0px 0px"
+            }
+          },
+          [
+            _c("th", [_vm._v("Grupos")]),
+            _vm._v(" "),
+            _c("th", { attrs: { colspan: "2" } }, [_vm._v("Taller")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Beneficiarios")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Fecha")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Hora")])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -55856,7 +55862,7 @@ var render = function() {
                         expression: "beca.Nombre"
                       }
                     ],
-                    staticClass: "form-control  p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder: "Ingresa el nombre de la beca",
@@ -55929,7 +55935,25 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn miBtn float-right p-0 pl-1 pr-1",
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.eliminarBeca(_vm.beca)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "far fa-trash-alt" }, [
+                      _vm._v(" Eliminar")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary float-right",
                     attrs: { type: "submit" }
                   },
                   [
@@ -56263,14 +56287,40 @@ var render = function() {
               _c("div", { staticClass: "modal-content" }, [
                 _vm._m(0),
                 _vm._v(" "),
-                _c("hr", { staticClass: "mt-1" }),
+                _c("hr", { staticClass: "mt-1 p-0" }),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-body-g" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    staticStyle: {
+                      position: "absolute",
+                      right: "16px",
+                      top: "48px"
+                    },
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#addBeca"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.$emit("actualizarBeca", {})
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-plus-circle" }, [
+                      _vm._v(" Agregar")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body-g mt-4" }, [
                   _c(
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table table-sm"
+                        "table table-striped table-hover contentTable table table-sm mt-3 table-bordered"
                     },
                     [
                       _vm._m(1),
@@ -56282,48 +56332,22 @@ var render = function() {
                             "tr",
                             {
                               key: keybeca,
-                              staticStyle: { "text-align": "center" }
+                              attrs: {
+                                "data-toggle": "modal",
+                                "data-target": "#addBeca"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$emit("actualizarBeca", beca)
+                                }
+                              }
                             },
                             [
                               _c("td", [
                                 _vm._v(" " + _vm._s(beca.Nombre) + " ")
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(" " + _vm._s(beca.Tipo) + " ")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-info btn-sm",
-                                    attrs: {
-                                      "data-toggle": "modal",
-                                      "data-target": "#addBeca"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.$emit("actualizarBeca", beca)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "far fa-edit" })]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { attrs: { colspan: "2" } }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.eliminarBeca(beca, keybeca)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "far fa-trash-alt" })]
-                                )
-                              ])
+                              _c("td", [_vm._v(" " + _vm._s(beca.Tipo) + " ")])
                             ]
                           )
                         }),
@@ -56331,24 +56355,7 @@ var render = function() {
                       )
                     ]
                   )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary positionSave",
-                    attrs: {
-                      "data-toggle": "modal",
-                      "data-target": "#addBeca"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("actualizarBeca", {})
-                      }
-                    }
-                  },
-                  [_c("i", { staticClass: "fas fa-plus-circle" })]
-                )
+                ])
               ])
             ]
           )
@@ -56356,6 +56363,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("create-form-becas", {
+        attrs: { onDelete: _vm.eliminarBeca },
         on: {
           becaActualizada: function($event) {
             return _vm.actualizarBeca($event)
@@ -56403,15 +56411,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { staticStyle: { "text-align": "center" } }, [
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tipo")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Acciones")])
-      ])
-    ])
+    return _c(
+      "thead",
+      { staticStyle: { "background-color": "#800000", color: "white" } },
+      [
+        _c("tr", { staticStyle: { border: "solid #800000" } }, [
+          _c("th", [_vm._v("Nombre")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Tipo")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -56734,7 +56744,7 @@ var render = function() {
                         expression: "dependencia.Nombre"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder: "Ingresa el nombre de la dependencia",
@@ -56764,7 +56774,7 @@ var render = function() {
                         expression: "dependencia.Direccion"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder: "Ingresa la dirección de la dependencia",
@@ -56798,7 +56808,7 @@ var render = function() {
                         expression: "dependencia.Giro"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder: "Ingresa el giro de la dependencia",
@@ -56828,9 +56838,9 @@ var render = function() {
                         expression: "dependencia.Telefono"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
-                      type: "text",
+                      type: "number",
                       placeholder: "Ingresa el telefono de la dependencia",
                       required: ""
                     },
@@ -56862,7 +56872,7 @@ var render = function() {
                         expression: "dependencia.Responsable"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder: "Ingresa el responsable de la dependencia",
@@ -56896,7 +56906,7 @@ var render = function() {
                         expression: "dependencia.TipoVinculacion"
                       }
                     ],
-                    staticClass: "form-control p-0 pl-1",
+                    staticClass: "form-control",
                     attrs: {
                       type: "text",
                       placeholder:
@@ -56922,7 +56932,27 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn miBtn positionSave p-0 pl-1 pr-1",
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.eliminarDependencia(
+                          _vm.dependencia,
+                          _vm.keydependencia
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "far fa-trash-alt" }),
+                    _vm._v(" Eliminar")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary float-right",
                     attrs: { type: "submit" }
                   },
                   [
@@ -57048,102 +57078,15 @@ var render = function() {
                 _vm._v(" "),
                 _c("hr", { staticClass: "mt-1" }),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-body-g" }, [
-                  _c(
-                    "table",
-                    {
-                      staticClass:
-                        "table table-striped table-hover contentTable table table-sm"
-                    },
-                    [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.dependencias, function(
-                          dependencia,
-                          keydependencia
-                        ) {
-                          return _c("tr", { key: keydependencia }, [
-                            _c("td", [
-                              _vm._v(" " + _vm._s(dependencia.Nombre) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(" " + _vm._s(dependencia.Direccion) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(" " + _vm._s(dependencia.Giro) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(" " + _vm._s(dependencia.Telefono) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                " " + _vm._s(dependencia.Responsable) + " "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                " " + _vm._s(dependencia.TipoVinculacion) + " "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-info btn-sm",
-                                  attrs: {
-                                    "data-toggle": "modal",
-                                    "data-target": "#addDepencencia"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.$emit(
-                                        "actualizarDependencia",
-                                        dependencia
-                                      )
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "far fa-edit" })]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.eliminarDependencia(
-                                        dependencia,
-                                        keydependencia
-                                      )
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "far fa-trash-alt" })]
-                              )
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary positionSave",
+                    staticClass: "btn btn-primary",
+                    staticStyle: {
+                      position: "absolute",
+                      right: "16px",
+                      top: "48px"
+                    },
                     attrs: {
                       "data-toggle": "modal",
                       "data-target": "#addDepencencia"
@@ -57154,8 +57097,86 @@ var render = function() {
                       }
                     }
                   },
-                  [_c("i", { staticClass: "fas fa-plus-circle" })]
-                )
+                  [
+                    _c("i", { staticClass: "fas fa-plus-circle" }, [
+                      _vm._v(" Agregar")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body-g mt-5" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-striped table-hover contentTable table table-sm table-bordered"
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.dependencias, function(
+                          dependencia,
+                          keydependencia
+                        ) {
+                          return _c(
+                            "tr",
+                            {
+                              key: keydependencia,
+                              attrs: {
+                                "data-toggle": "modal",
+                                "data-target": "#addDepencencia"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$emit(
+                                    "actualizarDependencia",
+                                    dependencia
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("td", [
+                                _vm._v(" " + _vm._s(dependencia.Nombre) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  " " + _vm._s(dependencia.Direccion) + " "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(" " + _vm._s(dependencia.Giro) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(" " + _vm._s(dependencia.Telefono) + " ")
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  " " + _vm._s(dependencia.Responsable) + " "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(dependencia.TipoVinculacion) +
+                                    " "
+                                )
+                              ])
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
               ])
             ]
           )
@@ -57210,23 +57231,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Dirección")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Giro")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Teléfono")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Responsable")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tipo de vinculación")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Acciones")])
-      ])
-    ])
+    return _c(
+      "thead",
+      { staticStyle: { "background-color": "#800000", color: "white" } },
+      [
+        _c("tr", { staticStyle: { border: "solid #800000" } }, [
+          _c("th", [_vm._v("Nombre")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Dirección")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Giro")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Teléfono")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Responsable")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Tipo de vinculación")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58290,14 +58313,13 @@ var render = function() {
             "table",
             {
               staticClass:
-                "table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0"
+                "table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0"
             },
             [
               _vm._m(0),
               _vm._v(" "),
               _c(
                 "tbody",
-                { staticStyle: { "text-align": "center" } },
                 _vm._l(_vm.calificaciones, function(calificacion, key) {
                   return _c(
                     "tr",
@@ -58346,23 +58368,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticStyle: { "text-align": "center" } }, [
-      _c("tr", [
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Asignaturas")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("P1")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("P2")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("P3")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("P4")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("P5")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "2" } }, [_vm._v("P.Final")])
-      ])
-    ])
+    return _c(
+      "thead",
+      {
+        staticStyle: {
+          "background-color": "#800000",
+          border: "solid #800000",
+          color: "white",
+          "border-radius": "8px 8px 0px 0px"
+        }
+      },
+      [
+        _c(
+          "tr",
+          {
+            staticStyle: {
+              border: "solid #800000",
+              "border-radius": "8px 8px 0px 0px"
+            }
+          },
+          [
+            _c("th", { attrs: { colspan: "2" } }, [_vm._v("Asignaturas")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("P1")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("P2")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("P3")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("P4")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("P5")]),
+            _vm._v(" "),
+            _c("th", { attrs: { colspan: "2" } }, [_vm._v("P.Final")])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58395,7 +58437,7 @@ var render = function() {
             "table",
             {
               staticClass:
-                "table table-striped table-hover contentTable scrollCalificaciones table table-sm"
+                "table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm"
             },
             [
               _vm._m(0),
@@ -58431,13 +58473,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticStyle: { "text-align": "center" } }, [
-      _c("tr", [
-        _c("th", [_vm._v("Asignaturas")]),
-        _vm._v(" "),
-        _c("th", { attrs: { colspan: "3" } }, [_vm._v("Días")])
-      ])
-    ])
+    return _c(
+      "thead",
+      {
+        staticStyle: {
+          "background-color": "#800000",
+          border: "solid #800000",
+          color: "white",
+          "border-radius": "8px 8px 0px 0px"
+        }
+      },
+      [
+        _c(
+          "tr",
+          {
+            staticStyle: {
+              border: "solid #800000",
+              "border-radius": "8px 8px 0px 0px"
+            }
+          },
+          [
+            _c("th", [_vm._v("Asignaturas")]),
+            _vm._v(" "),
+            _c("th", { attrs: { colspan: "3" } }, [_vm._v("Días")])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58663,64 +58725,11 @@ var render = function() {
                           )
                         }
                       }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _c("form", { staticClass: "was-validated" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.reporte.user_id,
-                                expression: "reporte.user_id"
-                              }
-                            ],
-                            staticClass: "custom-select",
-                            attrs: { required: "" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.reporte,
-                                  "user_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          _vm._l(_vm.users, function(user, key) {
-                            return _c(
-                              "option",
-                              { key: key, domProps: { value: user.id } },
-                              [_vm._v(_vm._s(user.name))]
-                            )
-                          }),
-                          0
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v("Seleccione al responsable de seguimiento")
-                        ])
-                      ])
-                    ])
+                    })
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     !_vm.reporte.DescripcionDer
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -58759,7 +58768,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(8),
                     _vm._v(" "),
                     !_vm.reporte.Observaciones
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -58796,7 +58805,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(10),
+                    _vm._m(9),
                     _vm._v(" "),
                     !_vm.reporte.Seguimiento
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -58833,7 +58842,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(11),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("form", { staticClass: "was-validated" }, [
                       _c("div", { staticClass: "form-group" }, [
@@ -59021,14 +59030,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Derivación")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Responsable de seguimiento")])
-    ])
   },
   function() {
     var _vm = this
@@ -60210,6 +60211,8 @@ var render = function() {
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),
             _vm._v(" "),
+            _c("hr", { staticClass: "mt-1 p-0" }),
+            _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c(
                 "form",
@@ -60635,6 +60638,8 @@ var render = function() {
               _c("div", { staticClass: "modal-content" }, [
                 _vm._m(0),
                 _vm._v(" "),
+                _c("hr", { staticClass: "mt-1 p-0" }),
+                _vm._v(" "),
                 _c("div", { staticClass: "mt-3" }, [
                   _c("input", {
                     directives: [
@@ -60665,7 +60670,7 @@ var render = function() {
                       staticClass: "btn btn-primary",
                       staticStyle: {
                         position: "absolute",
-                        right: "20px",
+                        right: "16px",
                         top: "48px"
                       },
                       attrs: {
@@ -60693,7 +60698,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table table-sm"
+                        "table table-striped table-hover contentTable table table-sm table-bordered"
                     },
                     [
                       _vm._m(1),
@@ -60795,15 +60800,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Usuario")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tipo")])
-      ])
-    ])
+    return _c(
+      "thead",
+      { staticStyle: { "background-color": "#800000", color: "white" } },
+      [
+        _c("tr", { staticStyle: { border: "solid #800000" } }, [
+          _c("th", [_vm._v("Nombre")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Usuario")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Tipo")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

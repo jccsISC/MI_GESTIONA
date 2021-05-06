@@ -2,19 +2,15 @@
     <div class="contenedorCard">
         <p class="subtitulos">Faltas por asignatura</p>
         <div class="micard scrollTCalif colorText">
-            <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm">
-                <thead style="text-align: center">
-                    <tr>
+            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm">
+                <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                    <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;">
                         <th>Asignaturas</th>
                         <th colspan="3">Días</th>
                     </tr>
                 </thead>
-                <!--<tbody>
-                    <tr>
-                        <td colspan="7" class="text-center">Sin resultados...</td>
-                    </tr>
-                </tbody>-->
-                <tbody style="text-align: center">
+    
+                <tbody style="text-align: center;">
                     <tr v-for="(materia, key) in materias" :key="key">
                         <td>{{materia.materia}}</td>
                         <td>

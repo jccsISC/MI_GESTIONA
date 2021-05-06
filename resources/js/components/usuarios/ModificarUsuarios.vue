@@ -11,6 +11,7 @@
                 <span style="color: #800000">&times;</span>
             </button>
         </div>
+        <hr class="mt-1 p-0">
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">

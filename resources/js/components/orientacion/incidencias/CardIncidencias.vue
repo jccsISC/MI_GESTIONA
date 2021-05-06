@@ -3,29 +3,26 @@
         <div class="contenedorCard">
             <p class="subtitulos">Incidencias</p>
             <div class="micard">
-                <div v-if="alumno.IdAlumno">
-                    <div class="pt-1 interlineado">
-                        <p><b>Cantidad de incidencias</b></p>
+                <div id="card-incidencias" v-if="alumno.IdAlumno">
+                    <div class="pt-1 uno">
+                        <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" class="float-right mr-2" alt="ver el historial" style="width: 20px; height: 20px;"></a>
                         
+                        <label><b>Cantidad de incidencias</b></label>
                         <div class="borde">
                             <button 
                                 v-for="(incidencia, key) in incidenciasComputed" :key="key"
-                                class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
+                                class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
                                 data-toggle="modal" :data-target="'#verIncidencias'" @click="mostrarIncidencia(incidencia, alumno)">
                             
                                 {{key + 1}}
 
                             </button>
                         </div>
-                    </div>
-
-                    <div class="pt-1 interlineado">
-                        <p><b>Mala conducta</b></p>
-                        
+                        <label class="mt-2"><b>Mala conducta</b></label>
                         <div class="borde">
                             <button 
                                 v-for="(incidencia, key) in malaConductaComputed" :key="key"
-                                class="btn btn-danger btn-sm m-0 ml-1 p-0 pr-2 pl-2"
+                                class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
                                 data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
                             
                                 {{key + 1}}
@@ -34,16 +31,13 @@
                         </div>
                     </div>
 
-                    <div class="mcontenidoL pt-1 interlineado">
-                        <p><b>Detalles</b></p>
+                    <!-- <div class="mcontenidoL pt-1 dos"> -->
+                        <!-- <p><b>Detalles</b></p>
                         <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                        <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
-                    </div>
-
-                    <div class="pt-1">
-                        <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
-                        <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" class="float-right mr-3" alt="ver el historial" style="width: 20px; height: 20px;"></a>
-                    </div>
+                        <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p> -->
+                         <!-- <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p> -->
+                        
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -130,7 +124,7 @@
 
 
     .borde {
-        width: 250px;
+        width: 98%;
         height: 80px;
         border:1px solid #a5a5a5;
         border-radius: 4px;

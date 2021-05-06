@@ -15,50 +15,39 @@
 
                 <hr class="mt-1">
 
-                <div class="modal-body-g">
-                    <table class="table table-striped table-hover contentTable table table-sm">
-                        <thead>
-                            <tr>
+                <button class="btn btn-primary" style="position: absolute; right: 16px; top:48px;" data-toggle="modal" data-target="#addDepencencia"
+                    @click="$emit('actualizarDependencia', {})">
+                    <i class="fas fa-plus-circle"> Agregar</i>
+                </button>
+
+                <div class="modal-body-g mt-5">
+                    <table class="table table-striped table-hover contentTable table table-sm table-bordered">
+                        <thead style="background-color: #800000; color: white;">
+                            <tr style="border: solid #800000;">
                                 <th>Nombre</th>
                                 <th>Dirección</th>
                                 <th>Giro</th>
                                 <th>Teléfono</th>
                                 <th>Responsable</th>
                                 <th>Tipo de vinculación</th>
-                                <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
-                        <!--<tbody>
-                            <tr>
-                                <td colspan="7" class="text-center">Sin resultados...</td>
-                            </tr>
-                        </tbody>-->
+
                         <tbody>
-                            <tr v-for="(dependencia,keydependencia) in dependencias" :key="keydependencia">
+                            <tr v-for="(dependencia,keydependencia) in dependencias" :key="keydependencia" data-toggle="modal" data-target="#addDepencencia" 
+                                        @click="$emit('actualizarDependencia', dependencia)">
                                 <td> {{ dependencia.Nombre }} </td>
                                 <td> {{ dependencia.Direccion }} </td>
                                 <td> {{ dependencia.Giro }} </td>
                                 <td> {{ dependencia.Telefono }} </td>
                                 <td> {{ dependencia.Responsable }} </td>
                                 <td> {{ dependencia.TipoVinculacion }} </td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addDepencencia" 
-                                        @click="$emit('actualizarDependencia', dependencia)">
-                                        <i class="far fa-edit"></i>
-                                    </button>
-                                </td>
-                                <td>
-                                     <button class="btn btn-danger btn-sm" @click="eliminarDependencia(dependencia, keydependencia)"><i class="far fa-trash-alt"></i></button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 
-                <button class="btn btn-primary positionSave" data-toggle="modal" data-target="#addDepencencia"
-                    @click="$emit('actualizarDependencia', {})">
-                    <i class="fas fa-plus-circle"></i>
-                </button>
+          
             </div>
         </div>
     </div>

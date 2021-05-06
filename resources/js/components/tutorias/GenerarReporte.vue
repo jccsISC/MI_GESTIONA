@@ -59,7 +59,7 @@
                             <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
 
-                            <label class="m-0"><b>Responsable de seguimiento</b></label>
+                            <!-- <label class="m-0"><b>Responsable de seguimiento</b></label>
                             <form class="was-validated">
                                 <div class="form-group">
                                     <select class="custom-select" required  v-model="reporte.user_id" >
@@ -67,7 +67,7 @@
                                     </select> 
                                     <div class="invalid-feedback">Seleccione al responsable de seguimiento</div>
                                 </div>
-                            </form>
+                            </form> -->
 
                         </div>
 
@@ -167,7 +167,7 @@
                 console.log('guardando reporte 1', this.reporte)
                 
                if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
+                    || this.reporte.Observaciones == undefined ) {
 
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
@@ -180,15 +180,17 @@
                     setTimeout(() => { this.showError = false; }, 2000);
 
                 }else {
-                      this.users.forEach(element => {
+                    //   this.users.forEach(element => {
 
-                        if (element.id == this.reporte.user_id) {
+                    //     if (element.id == this.reporte.user_id) {
 
-                            this.reporte.ResponsableSeguimiento = element.name;
-                            return;
-                        }
-                    });
+                    //         this.reporte.ResponsableSeguimiento = element.name;
+                    //         return;
+                    //     }
+                    // });
 
+                    this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+                    console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
                     if (this.tipo == 'crear') {
 
                         this.reporte.Unidad = this.alumno.Unidad;
