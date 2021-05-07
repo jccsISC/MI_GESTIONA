@@ -20,6 +20,7 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
     <div id="app"><!--este id lo ocupamos en todas las vistas para poder usar vue-->

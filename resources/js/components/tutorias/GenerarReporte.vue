@@ -24,7 +24,7 @@
                         <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p class="text-right"><b>Fecha: </b> {{  tipo == 'crear' ? toDay : getfechaInicial }}</p>
+                    <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
                     <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
                     <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
@@ -59,21 +59,16 @@
                             <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
 
-                            <label class="m-0"><b>Responsable de seguimiento</b></label>
+                            <!-- <label class="m-0"><b>Responsable de seguimiento</b></label>
                             <form class="was-validated">
                                 <div class="form-group">
-                                <select class="custom-select" required  v-model="reporte.user_id" >
-                                        <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
-                                </select> 
-                                <div class="invalid-feedback">Seleccione al responsable de seguimiento</div>
+                                    <select class="custom-select" required  v-model="reporte.user_id" >
+                                            <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
+                                    </select> 
+                                    <div class="invalid-feedback">Seleccione al responsable de seguimiento</div>
                                 </div>
-                            </form>
-                            <!-- <div>
-                                    <p class="m-0"><b>Responsable de seguimiento</b></p> 
-                                    <select v-model="reporte.user_id" class="mdb-select md-form colorful-select dropdown-primary">
-                                        <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
-                                    </select>
-                            </div> -->
+                            </form> -->
+
                         </div>
 
                         <div>
@@ -99,26 +94,20 @@
                                 <div class="invalid-feedback">Seleccion el estatus</div>
                                 </div>
                             </form>
-                            <!-- <div>
-                                <p class="m-0"><b>Seleccione un estado del reporte</b></p> 
-                                <select v-model="reporte.Status">
-                                        <option :value="0">Pendiente</option>
-                                        <option :value="1">Concluido</option>
-                                </select>
-                            </div> -->
                         </div>
                     </div>
        
                    <div class="miGrid2 mt-2">
-                    <div>
-                        <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
-                            <i class="fas fa-save"></i> Guardar
-                        </button>
-                    </div>
+                        <div>
+                            <button @click="guardarReporte"  type="submit" class="mibtn btnGuardar positionSave">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                        </div>
                    </div>                   
                 </div>  
             </div>
-            <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="yonoAbandonoModalAlert"></alert-modal>
+
+            <alert-modal :message="alertMessage" :type="alertType" :show="showError" nameAlert="yonoAbandonoModalAlert"></alert-modal>
         </div>
     </div>
 </template>
@@ -140,14 +129,6 @@
             alertType: 'danger',
             toDay: String,
         }),
-         computed: {
-             getfechaInicial() {
-                if ( this.reporte.FechaInicio != null ) {
-                    const date = new Date(this.reporte.FechaInicio);
-                    return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-                }
-            },
-        },
         created() {
             this.$parent.$on('generarReporte', alumno => {    
                 this.reporte = {};          
@@ -160,7 +141,7 @@
                 this.tipo = 'crear';
             });
 
-            bus.$on('kevin', (reporte, alumno, familiar) => {
+            bus.$on('editReport', (reporte, alumno, familiar) => {
                 this.alumno = Object.assign({}, alumno);   
                 this.reporte = Object.assign({}, reporte);
                 this.familiar = Object.assign({}, familiar);
@@ -170,37 +151,50 @@
             });
         },
         methods: {
-            jalarFamiliar() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
-                    this.familiar = res.data;
-                    this.reporte.IdFamiliar = this.familiar.IdFamiliar;
-                });
+            async jalarFamiliar() {
+
+                const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
+                this.familiar = data
+                this.reporte.IdFamiliar = this.familiar.IdFamiliar
+
+                // axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                //     this.familiar = res.data;
+                //     this.reporte.IdFamiliar = this.familiar.IdFamiliar;
+                // });
             },
             guardarReporte() {
-                console.log('guardarndo reporte 1', this.reporte)
+
+                console.log('guardando reporte 1', this.reporte)
                 
-               if (this.reporte.Derivacion == undefined 
-                    || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined 
-                    || this.reporte.Seguimiento == undefined ) {
+               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
+                    || this.reporte.Observaciones == undefined ) {
+
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
+
                 }else if (this.reporte.Status == undefined) {
+
                     this.alertMessage = "Seleccione un status para el reporte";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
-                }else {
-                      this.users.forEach(element => {
-                        if (element.id == this.reporte.user_id) {
-                            this.reporte.ResponsableSeguimiento = element.name;
-                            return;
-                        }
-                    });
 
+                }else {
+                    //   this.users.forEach(element => {
+
+                    //     if (element.id == this.reporte.user_id) {
+
+                    //         this.reporte.ResponsableSeguimiento = element.name;
+                    //         return;
+                    //     }
+                    // });
+
+                    this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+                    console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
                     if (this.tipo == 'crear') {
+
                         this.reporte.Unidad = this.alumno.Unidad;
-                        axios.post('/yonoAbandono', this.reporte).then(res => {
+                        axios.post('/yonoAbandono' + this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
@@ -210,11 +204,11 @@
                             }
                         });
                     } else {
+
                         axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
                             this.reporte = res.data;
-
                             $('#reporteTuto').modal('hide');
-                            bus.$emit('julioselacome', res.data);
+                            bus.$emit('reporteTuto', res.data);
                         }).catch(error => {
                             if (error.res && error.res.status == 422) {
                                 this.errors = error.res.data.errors;
@@ -223,12 +217,15 @@
                     }
                 }
             },
-            jalarUsers() {
-                axios.get('/users').then(res => {
-                    this.users = res.data;
-                });
-            }
-        }
+            async jalarUsers() {
+                const {data} = await axios.get('/users');
+                this.users = data
+
+                // axios.get('/users').then(res => {
+                //     this.users = res.data;
+                // });
+            },
+        },
     }
 </script>
 

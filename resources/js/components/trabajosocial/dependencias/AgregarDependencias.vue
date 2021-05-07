@@ -13,47 +13,41 @@
         </div>
 
         <hr class="mt-1">
-        
-        <!-- <div class="modal-header">
-          <h5 class="modal-title">{{dependencia.IdDependencia ? 'Actualizar' : 'Agregar'}} Dependencia</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" style="color: #800000">&times;</span>
-          </button>
-        </div> -->
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label><b>Nombre</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el nombre de la dependencia" required v-model="dependencia.Nombre">
+			          <input type="text" class="form-control" placeholder="Ingresa el nombre de la dependencia" required v-model="dependencia.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
 			          <label><b>Dirección</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa la dirección de la dependencia" required v-model="dependencia.Direccion">
+			          <input type="text" class="form-control" placeholder="Ingresa la dirección de la dependencia" required v-model="dependencia.Direccion">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Giro</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el giro de la dependencia" required v-model="dependencia.Giro">
+			          <input type="text" class="form-control" placeholder="Ingresa el giro de la dependencia" required v-model="dependencia.Giro">
 		  	      </div>
                 
               <div class="form-group">
 			          <label><b>Telefono</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el telefono de la dependencia" required v-model="dependencia.Telefono">
+			          <input type="number" class="form-control" placeholder="Ingresa el telefono de la dependencia" required v-model="dependencia.Telefono">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Responsable</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el responsable de la dependencia" required v-model="dependencia.Responsable">
+			          <input type="text" class="form-control" placeholder="Ingresa el responsable de la dependencia" required v-model="dependencia.Responsable">
 		  	      </div>
 
               <div class="form-group">
 			          <label><b>Tipo de vinculación</b></label>
-			          <input type="text" class="form-control p-0 pl-1" placeholder="Ingresa el tipo de vinculación de la dependencia" required v-model="dependencia.TipoVinculacion">
+			          <input type="text" class="form-control" placeholder="Ingresa el tipo de vinculación de la dependencia" required v-model="dependencia.TipoVinculacion">
 		  	      </div>
-          
-		  	      <button type="submit" class="btn miBtn positionSave p-0 pl-1 pr-1"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
+        
+              <button type="button" class="btn btn-danger" @click="eliminarDependencia(dependencia, keydependencia)"><i class="far fa-trash-alt"></i> Eliminar</button>
+		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>
@@ -112,6 +106,17 @@
             console.log(res.data);
             this.onSuccess(res);
           });
+      },
+        eliminarDependencia(dependencia, key) {
+            const confirmacion = confirm(`¿Está seguro que desea eliminar la dependencia ${dependencia.Nombre}?`);
+            // Lo elimina en la base de datos.
+            if(confirmacion){
+            axios.delete(`/dependencias/${dependencia.IdDependencia}`)
+            .then(res => {
+                // Lo elimina de manera visual.
+                this.dependencias.splice(key,1);
+            })
+        }
       }
     }
   }

@@ -113,11 +113,7 @@
                                     <th>Extra</th>
                                 </tr>
                             </thead>
-                            <!--<tbody>
-                                <tr>
-                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                </tr>
-                            </tbody>-->
+
                             <tbody>
                                  <tr v-for="(calificacion, key) in calificaciones" :key="key">
                                     <td colspan="2">{{calificacion.Materia}}</td>
@@ -150,11 +146,7 @@
                                     <th>P5</th>
                                 </tr>
                             </thead>
-                            <!--<tbody>
-                                <tr>
-                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                </tr>
-                            </tbody>-->
+            
                             <tbody>
                                <tr  v-for="(falta, key) in faltas" :key="key">
                                     <td>{{falta.horario_maestro.Materia}}</td>
@@ -257,8 +249,8 @@
                             <p class="m-sm-1"><b>Justificantes</b></p>
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
-                                v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
-                                data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
+                                    v-for="(justificante, keyjustificantepase) in justificantes.slice().reverse()" :key="keyjustificantepase"  
+                                    data-toggle="modal" data-target="#addJustificantes" @click="mostrarJustificante(justificante)">
                                     
                                     {{keyjustificantepase + 1}}
 
@@ -270,8 +262,8 @@
                             <p class="mt-4 m-0"><b>Pases de salida</b></p>
                             <div class="scrollJ">
                                 <button class="btn btn-danger btn-sm mr-1 p-0 pr-2 pl-2" 
-                                @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
-                                :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
+                                    @click="$emit('verPase', pase)" v-for="(pase, keyjustificantepase2) in pases.slice().reverse()" 
+                                    :key="keyjustificantepase2" data-toggle="modal" data-target="#addJustificantes">
                             
                                     {{keyjustificantepase2+1}}
                             
@@ -355,6 +347,7 @@
             }
         },
         created() {
+
             bus.$on('alumnoSeleccionado', alumno => {
                 this.alumno = alumno;
                 this.jalarCalificaciones();
@@ -374,15 +367,18 @@
                 let promedio = 0;
                 let counter = 0;
                 let general = 0;
+
                 if (!this.calificaciones.length) {
                     return '';
                 }
+
                 this.calificaciones.forEach(calificacion => {
                     promedio += calificacion.Calificacionfinal ? parseInt(calificacion.Calificacionfinal) : 0;
                     counter++;
                 });
                 
                 general = promedio/counter;
+
                 return general.toFixed(1);
             },
             inconveniente() {
@@ -396,22 +392,33 @@
             mostrarJustificante(justificante) {
                 bus.$emit('verJustificante', justificante);
             },
-            jalarFaltas(){
-                axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
-                    this.faltas = res.data;
-                });
+            async jalarFaltas(){
+
+                const {data} = await axios.get('faltas/'+this.alumno.IdAlumno);
+                this.faltas = data;
+
+                // axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
+                //     this.faltas = res.data;
+                // });
             },
-            jalarCalificaciones(){
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/calificaciones').then(res =>{
-                    console.log(res.data);
-                    this.calificaciones = res.data;
-                });
+            async jalarCalificaciones() {
+
+                const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/calificaciones');
+                this.calificaciones = data;
+
+                // axios.get('alumnos/'+this.alumno.IdAlumno+'/calificaciones').then(res =>{
+                //     console.log(res.data);
+                //     this.calificaciones = res.data;
+                // });
             },
             faltasPorUnidad(parciales, unidad) {
+                
                 let faltas = '';
+
                 if (!parciales) {
                     return faltas;
                 }
+
                 const unidades = Object.keys(parciales);
                 unidades.forEach(parcial => {
                     if (parcial == unidad) {
@@ -423,11 +430,15 @@
                 return faltas;
             },
             unidad(detalles, unidad) {
+
                 let calificacion = '';
+
                 if (!detalles) {
                     return calificacion;
                 }
+
                 detalles.forEach(detalle => {
+
                     if (detalle.Unidad == unidad) {
                         calificacion = detalle.Calificacion;
                         return;
@@ -436,55 +447,57 @@
 
                 return calificacion;
             },
-            jalarFamiliar() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
-                    this.familiar = res.data;
+            async jalarFamiliar() {
+                
+                const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
+                this.familiar = data;
+           
+            },
+            async jalarSalud() {
+                
+                const {data} = await axios.get('/salud/'+this.alumno.IdAlumno);
+                this.salud = data;
+          
+            },
+            async jalarIncidencias() {
+                
+                const {data} = await axios.get('/incidencias/'+this.alumno.IdAlumno);
+                this.incidencias = [];
+                data.forEach( i => {
+                    this.incidencias.unshift(i);
                 });
+                
+                // axios.get().then(res => {
+                //     this.incidencias = [];
+                //     res.data.forEach(i => {
+                //         this.incidencias.unshift(i);
+                //     });
+                // });
             },
-            jalarSalud() {
-                axios.get('/salud/'+this.alumno.IdAlumno).then(res => {
-                    this.salud = res.data;
-                });
+            async jalarPases() {
+                
+                const {data} = await axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/pases');
+                this.pases = data;
             },
-            jalarIncidencias() {
-                axios.get('/incidencias/'+this.alumno.IdAlumno).then(res => {
-                    this.incidencias = [];
-                    res.data.forEach(i => {
-                        this.incidencias.unshift(i);
-                    });
-                });
+            async jalarJustificantes() {
+
+                const {data} = await axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes');
+                this.justificantes = data;
             },
-            jalarPases() {
-                axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/pases').then(res => {
-                    this.pases = res.data;
-                    console.log(res.data);
-                });
+            async jalarPractica() {
+
+                const {data} = await axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=pp');
+                this.practica = data;
             },
-            jalarJustificantes() {
-                axios.get('/trabajosocial/' + this.alumno.IdAlumno + '/justificantes').then(res => {
-                    this.justificantes = res.data;
-                    console.log(res.data);
-                });
+            async jalarServicio() {
+
+                const {data} = await axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=ss');
+                this.servicio = data;
             },
-            jalarPractica() {
-                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=pp').then(res => {
-                    this.practica = res.data;
-                    console.log(res);
-                })
-                .catch();
-            },
-            jalarServicio() {
-                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/practica?tipo=ss').then(res => {
-                    this.servicio = res.data;
-                    console.log(res);
-                })
-                .catch();
-            },
-            jalarBecas() {
-                axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/becas').then(res => {
-                    this.becas = res.data;
-                    console.log(res);
-                });
+            async jalarBecas() {
+
+                const {data} = await axios.get('/trabajosocial/'+this.alumno.IdAlumno+'/becas');
+                this.becas = data;
             }
         }
     }

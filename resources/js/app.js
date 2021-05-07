@@ -85,10 +85,6 @@ Vue.component('reportes', require('./components/reportes/ReportesALL.vue').defau
 
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------------------------
 const app = new Vue({
     el: '#app',

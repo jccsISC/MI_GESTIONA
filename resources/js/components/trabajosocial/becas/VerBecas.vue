@@ -12,52 +12,35 @@
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
+                    <hr class="mt-1 p-0">
+  
+                    <button class="btn btn-primary" data-toggle="modal" style="position: absolute; right: 16px; top:48px;" data-target="#addBeca"
+                        @click="$emit('actualizarBeca', {})">
+                        <i class="fas fa-plus-circle"> Agregar</i>
+                    </button>
 
-                    <hr class="mt-1">
-
-                    <div class="modal-body-g">
-                        <table class="table table-striped table-hover contentTable table table-sm">
-                            <thead>
-                                <tr style="text-align: center;">
+                    <div class="modal-body-g mt-4">
+                        <table class="table table-striped table-hover contentTable table table-sm mt-3 table-bordered">
+                            <thead style="background-color: #800000; color: white;">
+                                <tr style="border: solid #800000;">
                                     <th>Nombre</th>
                                     <th>Tipo</th>
-                                    <th colspan="2">Acciones</th>
                                 </tr>
                             </thead>
-                            <!--<tbody>
-                                <tr>
-                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                </tr>
-                            </tbody>-->
+                
                             <tbody>
-                                <tr v-for="(beca, keybeca) in becas" :key="keybeca" style="text-align: center;">
+                                <tr data-toggle="modal" data-target="#addBeca" @click="$emit('actualizarBeca', beca)" v-for="(beca, keybeca) in becas" :key="keybeca">
                                     <td> {{ beca.Nombre }} </td>
                                     <td> {{ beca.Tipo }} </td>
-                                    
-                                    <td>
-                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#addBeca" 
-                                            @click="$emit('actualizarBeca', beca)">
-                                            <i class="far fa-edit"></i>
-                                        </button>
-                                        <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
-                                    </td>
-                                    <td colspan="2">
-                                        <button class="btn btn-danger btn-sm" @click="eliminarBeca(beca, keybeca)"><i class="far fa-trash-alt"></i></button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
-                    <button class="btn btn-primary positionSave" data-toggle="modal" data-target="#addBeca"
-                        @click="$emit('actualizarBeca', {})">
-                        <i class="fas fa-plus-circle"></i>
-                    </button>
                 </div>
             </div>
         </div>
 
-        <create-form-becas @becaActualizada="actualizarBeca($event)"></create-form-becas>
+        <create-form-becas @becaActualizada="actualizarBeca($event)" :onDelete="eliminarBeca"></create-form-becas>
     </div>
 </template>
 
@@ -89,17 +72,31 @@
                     });
                 }   
             },
-            eliminarBeca(beca, key) {
+            eliminarBeca(beca) {
                 const confirmacion = confirm(`¿Está seguro que desea eliminar la beca ${beca.Nombre}?`);
+                 // Lo elimina en la base de datos.
+                if(confirmacion){
+                    axios.delete(`/becas/${beca.IdBec}`)
+                    .then(() => {
+                        // Lo elimina de manera visual.
+                        const becas = [...this.becas];
+                        const key = becas.findIndex(beca => beca.IdBec === beca.IdBec);
+                        if (key >= 0) {
+                            becas.splice(key,1);
+                            this.$set(this, 'becas', [...becas])
+                        }
+                    })
+                }
+                
                 // Lo elimina en la base de datos.
-                  if(confirmacion){
-                axios.delete(`/becas/${beca.IdBeca}`)
-                .then(res => {
-                    // Lo elimina de manera visual.
-                    this.becas.splice(key,1);
-                })
-            }
+            //       if(confirmacion){
+            //         axios.delete(`/becas/${beca.IdBeca}`)
+            //         .then(res => {
+            //             // Lo elimina de manera visual.
+            //             this.becas.splice(key,1);
+            //         })
+            // }
         }
-         }
     }
+}
 </script>

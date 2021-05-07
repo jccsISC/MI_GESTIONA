@@ -34,8 +34,9 @@
                         <p class="m-0">SEGUIMIENTO Y DERIVACION</p>
                     </div>
 
-                    <p>Fecha inicial {{getfechaInicial}} </p>
-                    <p>Fecha final {{ getfechaFinal }} </p>
+                    <!-- <p>Fecha inicial {{getfechaInicial}} </p>
+                    <p>Fecha final {{ getfechaFinal }} </p> -->
+
                     <p class="text-right mt-3"><b>Fecha: </b> {{ reporte.Status == '0' ? getfechaInicial : getfechaFinal }}</p>
                     
                     <div class="contenedorRT mt-4">
@@ -54,6 +55,7 @@
                             <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
                             <br>
                         </div>
+
                         <div>
                             <p class="m-0"><b>Madre</b></p>
                             <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
@@ -117,16 +119,19 @@
         computed: {
             getfechaInicial() {
                 if ( this.reporte.FechaInicio != null ) {
+
                     const date = new Date(this.reporte.FechaInicio);
-                    console.log("FECHA Inicial: ", date);
+                    console.log("Frcha inicial: ", date);
                     return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
                 }
             },
             getfechaFinal() {
                 if ( this.reporte.FechaFin != null ) {
+
                     const date = new Date(this.reporte.FechaFin);
-                    console.log("FECHA Final: ", date);
+                    console.log("Fecha final: ", date);
                     return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
                 } else {
                     console.log("No se ha concluido este reporte");
                 }
@@ -137,16 +142,15 @@
                 this.reporte = reporte;
                 this.alumno = alumno;
                 this.familiar = reporte.familiar;
-
             });
 
-            bus.$on('julioselacome', reporte => {
+            bus.$on('reporteTuto', reporte => {
                 this.reporte = reporte;
             });
         },
         methods: {
             editarReporte() {
-                bus.$emit('kevin', this.reporte, this.alumno, this.familiar);
+                bus.$emit('editReport', this.reporte, this.alumno, this.familiar);
             }
         }
     }

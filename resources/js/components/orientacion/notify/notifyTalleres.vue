@@ -64,6 +64,8 @@
    
 <style>
 
+  
+
     .cardTaller{
         background-color: white;
         width: 140px;

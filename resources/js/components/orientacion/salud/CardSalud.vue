@@ -6,14 +6,14 @@
                 <div v-if="alumno.IdAlumno" class="float-right">
                     
                     <button v-if="!salud.IdSalud" type="button" class="btn btn-sm btn-primary  p-0 pl-1 pr-1" 
-                    data-toggle="modal" data-target="#addSalud"
-                    @click="abrirModal()">
+                        data-toggle="modal" data-target="#addSalud"
+                        @click="abrirModal()">
                         <i  class="fas fa-plus"></i>
                     </button>
 
                     <button v-if="salud.IdSalud"  type="button" class="btn btn-sm mibtnEdit p-0 pl-1 pr-1"
-                    data-toggle="modal" data-target="#addSalud"
-                    @click="abrirModal()">
+                        data-toggle="modal" data-target="#addSalud"
+                        @click="abrirModal()">
                         <i class="fas fa-edit"></i>
                     </button>      
                     

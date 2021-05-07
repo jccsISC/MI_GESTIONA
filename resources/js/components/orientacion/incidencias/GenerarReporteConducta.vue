@@ -99,26 +99,7 @@
                 </button>
             </div>
 
-            <alert-modal :message="alertMessage" :type="alertType" :show="showError" julio="malaConductaModal"></alert-modal>
-
-            <!-- <div class="modal fade" id="modalEmpty" role="dialog" aria-labelledby="modalEmpty" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header alert alert-danger m-0">
-                            <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="modalSuccess" role="dialog" aria-labelledby="modalSuccess" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header alert alert-success m-0">
-                            <h5 class="modal-title m-0 txt-center"> {{alertMessage}} </h5>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            <alert-modal :message="alertMessage" :type="alertType" :show="showError" nameAlert="malaConductaModal"></alert-modal>
         </div>
     </div>
 </template>
@@ -140,9 +121,11 @@
         }),
         computed: {
              getfechaInicial() {
+
                 if ( this.incidencia.FechaInicio != null ) {
+
                     const date = new Date(this.incidencia.FechaInicio);
-                    console.log("FECHA Inicial: ", date);
+                    console.log("Fecha inicial: ", date);
                     return (date.getDate() +1) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
                 }
             },
@@ -150,7 +133,7 @@
         created() {
 
             this.toDay = new Date().getDate() +"-" + new Date().getMonth()+1 +"-" + new Date().getFullYear();
-            console.log("TODAY: ",this.toDay);
+            console.log("Today: ", this.toDay);
 
             this.$parent.$on('generarMalaConducta', alumno => {              
                 this.alumno = alumno;   
@@ -161,6 +144,7 @@
                 this.jalarFamiliar();
                 this.tipo = 'Guardar';      
             });
+
             bus.$on('EditarMalaConducta', (incidencia, alumno) => {      
                 console.log('consolelog'); 
                 this.alumno = Object.assign({}, alumno);   
@@ -171,35 +155,49 @@
             });
         },
         methods: {
-            jalarFamiliar() {
-                axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
-                    this.familiar = res.data;
-                });
+            async jalarFamiliar() {
+
+                const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
+                this.familiar = data;
+
+                // axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
+                //     this.familiar = res.data;
+                // });
             },
             guardarReporte() {
+
                 this.alertType = 'danger';
-               if (this.incidencia.DescripcionReporte == undefined 
-                    || this.incidencia.Comentarios  == undefined 
-                    || this.incidencia.ComentariosPa  == undefined 
-                    || this.incidencia.Observaciones  == undefined 
+
+               if (this.incidencia.DescripcionReporte == undefined || this.incidencia.Comentarios  == undefined 
+                    || this.incidencia.ComentariosPa  == undefined || this.incidencia.Observaciones  == undefined 
                     || this.incidencia.Derivacion  == undefined ) {
+
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
+
                 }else if (this.incidencia.TipoFalta  == undefined ) {
+
                     this.alertMessage = "Seleccione la gravedad de la falta";
                     this.showError = true;
                     setTimeout(() => { this.showError = false; }, 2000);
+
                 }else if (this.incidencia.Status  == undefined ) {
+
                     this.alertMessage = "Seleccione un status para el reporte";
                     this.showError = true;
                     setTimeout(() => {this.showError = false; }, 2000);
+
                 }else {
+
                     this.incidencia.IdFamiliar = this.familiar.IdFamiliar;
 
                     if (this.tipo == 'Guardar') {
+
                         this.incidencia.TipoReporte = 'Mala Conducta';
+
                         axios.post('/incidencias', this.incidencia).then(res => {
+
                             this.alertMessage = "Se guardó correctamente";
                             this.alertType = 'success';
                             this.showError = true;
@@ -209,6 +207,7 @@
                             bus.$emit('incidenciaAgregada', res.data);
                         });
                     } else {
+                        
                         axios.put('/incidencias/'+this.incidencia.IdIncidencia, this.incidencia).then(res => {
                             $('#reporteConducta').modal('hide');
                             bus.$emit('incidenciaEditada', res.data);

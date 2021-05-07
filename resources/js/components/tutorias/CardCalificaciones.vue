@@ -2,9 +2,9 @@
     <div class="contenedorCard">
         <p class="subtitulos">Calificaciones</p>
         <div class="micard colorText">
-            <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0">
-                <thead style="text-align: center">
-                    <tr>
+            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0">
+                <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                    <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;">
                         <th colspan="2">Asignaturas</th>
                         <th>P1</th>
                         <th>P2</th>
@@ -14,12 +14,8 @@
                         <th colspan="2">P.Final</th>
                     </tr>
                 </thead>
-                <!--<tbody>
-                    <tr>
-                        <td colspan="7" class="text-center">Sin resultados...</td>
-                    </tr>
-                </tbody>-->
-                <tbody style="text-align: center">
+
+                <tbody>
                     <tr v-for="(calificacion, key) in calificaciones" :key="key">
                         <td colspan="2">{{calificacion.Materia}}</td>
                         <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i) ? unidad(calificacion.detalles, i) : 'NC' }}</td>
@@ -113,6 +109,6 @@
     .scrollTCalif::-webkit-scrollbar-thumb{
         background: #800000;
         width: 1px;
+        
     }
-
 </style>

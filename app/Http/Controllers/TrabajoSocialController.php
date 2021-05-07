@@ -79,7 +79,9 @@ class TrabajoSocialController extends Controller
      */
     public function pases(tblalumno $tblalumno) 
     {   //ver los cambios que me pidió kevin en la ultima llamada hay una foto
-        return $tblalumno->pases()->with('familiar')->get();
+        return $tblalumno->pases()
+            ->where('Fecha', '>', date('Y-m-d', strtotime('first day of this month')))
+            ->with('familiar')->get();
     }
 
     /**
@@ -89,8 +91,8 @@ class TrabajoSocialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function justificantes(tblalumno $tblalumno) 
-    {   //ver los cambios que me pidió kevin en la ultima llamada hay una foto
-        return $tblalumno->justificantes;
+    {   return $tblalumno->justificantes()
+        ->where('Fecha', '>', date('Y-m-d', strtotime('first day of this month')))->get();
     }
 
     /**

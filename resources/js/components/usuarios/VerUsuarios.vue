@@ -12,63 +12,40 @@
                             <span style="color: #800000">&times;</span>
                         </button>
                     </div>
-                     <div class="divbuscador">
-
-                        <!-- <form @submit.prevent="buscar"> -->
-                            <!-- <img src="/images/loupe.png" alt="icon" class="miicosearch">-->
-                            <input v-model="buscador" type="text" style="width:150px;" placeholder="Buscar">
-                        <!-- </form> -->
+                    <hr class="mt-1 p-0">
+                    
+                    <div class="mt-3">
+                        <input v-model="buscador" type="text" style="width:180px;" placeholder="Buscar" class="form-control  mb-1 ml-3">
+                        <button class="btn btn-primary" style="position:absolute; right:16px; top:48px;" data-toggle="modal" data-target="#addUsuario"
+                            @click="$emit('actualizarUsuario', {})">
+                            <i class="fas fa-plus-circle"> Agregar</i>
+                        </button>
                     </div>
                     <hr class="mt-1 m-0 p-0">
-           
                     <div class="modal-body-g">
-                        <table class="table table-striped table-hover contentTable table table-sm">
-                            <thead>
-                                <tr>
+                        <table class="table table-striped table-hover contentTable table table-sm table-bordered" >
+                            <thead style="background-color: #800000; color: white;">
+                                <tr style="border: solid #800000;">
                                     <th>Nombre</th>
                                     <th>Usuario</th>
                                     <th>Tipo</th>
-                                    <th colspan="2">Acciones</th>
                                 </tr>
                             </thead>
-                            <!--<tbody>
-                                <tr>
-                                    <td colspan="7" class="text-center">Sin resultados...</td>
-                                </tr>
-                            </tbody>-->
                             <tbody>
-                                <tr v-for="(usuario, key) in filterUsers" :key="key">
+                                <tr v-for="(usuario, key) in filterUsers" :key="key" @click="$emit('modificarUsuario', usuario)" data-toggle="modal" data-target="#ModUsuario">
                                     <td> {{ usuario.name }} </td>
                                     <td> {{ usuario.email }} </td>
                                     <td> {{ usuario.role_name }}</td>
-                                    
-                                    <td>
-                                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#ModUsuario" 
-                                            @click="$emit('modificarUsuario', usuario)">
-                                            <i class="far fa-edit"></i>
-                                        </button>
-                                        <!--<a href="#" class="btn btn-primary"><i class="far fa-edit"></i></a>-->
-                                    </td>
-                                    <td>
-                                        <button v-if="usuario.role != 1" class="btn btn-danger btn-sm" @click="eliminarUsuario(usuario)"><i class="far fa-trash-alt"></i></button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#addUsuario"
-                            @click="$emit('actualizarUsuario', {})">
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-                    </div>     
+                    </div> 
                 </div>
             </div>
         </div>
 
         <create-form-usuarios @usuarioActualizado="actualizarUsuario($event)"></create-form-usuarios>
-        <edit-form-usuarios @usuarioActualizado="modificarUsuario($event)"></edit-form-usuarios>
+        <edit-form-usuarios @usuarioActualizado="modificarUsuario($event)" :onDelete="eliminarUsuario" ></edit-form-usuarios>
     </div>
 </template>
 
@@ -83,11 +60,7 @@
         created() {
             axios.get('/usuarios').then(res => {
                 this.usuarios = res.data.map(user => {
-                     if (user.roles && user.roles.length && user.roles[0]) {
-                         user.role = user.roles[0].id;
-                         user.role_name = user.roles[0].name;
-                    }
-
+                    this.addRole(user);
                     return user;
                 });
 
@@ -95,26 +68,45 @@
             });
         },
         computed: {
+            orderedUsers() {
+                return this.usuarios.sort((a, b) => {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            },
             filterUsers() {
                 if (!this.buscador) {
-                    return this.usuarios;
+                    return this.orderedUsers;
                 }
-                return this.usuarios.filter(user => 
+                return this.orderedUsers.filter(user => 
                     user.name.toLowerCase().includes(this.buscador.toLowerCase()) || 
                     String(user.id).toLowerCase().includes(this.buscador.toLowerCase())
                 )
             },
         },
          methods: {
+             addRole(usuario) {
+                if (usuario.roles && usuario.roles.length && usuario.roles[0]) {
+                    usuario.role = usuario.roles[0].id;
+                    usuario.role_name = usuario.roles[0].name;
+                }
+             },
               actualizarUsuario(usuario) {             
       
                 if (usuario.esNueva) {
+                    this.addRole(usuario);
                     this.usuarios.push(usuario);
                 }  
 
             },
 
             modificarUsuario(usuario){
+                this.addRole(usuario);
                 const temp = Object.assign({}, this.usuarios);//clonamos el array usuarios
                     this.usuarios = []; //reiniciamos el array usuarios para que actualice al momento de guardar
                     Object.keys(temp).forEach(key => {
@@ -127,6 +119,7 @@
             },
               eliminarUsuario(usuario) {
                   const confirmacion = confirm(`¿Está seguro que desea eliminar el usuario ${usuario.name} ?`);
+
                 // Lo elimina en la base de datos.
                 if(confirmacion){
                 axios.delete(`/usuarios/${usuario.id}`)
@@ -142,7 +135,7 @@
                 }
              },
 
-                buscar() {
+            buscar() {
                 if(!this.buscador){
                     return;
                 }
@@ -157,6 +150,3 @@
        }
     }
 </script>
-
-<style>
-</style>

@@ -13,28 +13,28 @@
 
 <script>
     export default {
-        props: ['message', 'type', 'show', 'julio'],
+        props: ['message', 'type', 'show', 'nameAlert'],
         computed: {
             uniqueClass() {
-                if (!this.julio) {
+                if (!this.nameAlert) {
                     return {};
                 }
 
                 return {
-                    [this.julio]: true,
+                    [this.nameAlert]: true,
                 }
             },
         },
         mounted() {
             if (this.show) {
-                const className = '.' + (this.julio || 'el-julio-se-la-come-riendo')
+                const className = '.' + (this.nameAlert || 'el-julio-se-la-come-riendo')
                 $(className).modal('show');
             }
         },
         watch: {
             show: function (value) {
                 console.log('showing', value)
-                const className = '.' + (this.julio || 'el-julio-se-la-come-riendo')
+                const className = '.' + (this.nameAlert || 'el-julio-se-la-come-riendo')
                 $(className).modal(value ? 'show' : 'hide');
             }
         }

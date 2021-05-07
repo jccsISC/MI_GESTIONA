@@ -10,9 +10,9 @@
             <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
               <span style="color: #800000">&times;</span>
             </button>
-          </div>
+        </div>
 
-          <hr class="mt-1">
+        <hr class="mt-1">
 
         <div class="modal-body-xl colorText">
           <label><b>Fecha: </b><input type="date" class="p-0 " v-model="taller.Fecha"></label>

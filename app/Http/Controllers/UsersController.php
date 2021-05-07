@@ -17,7 +17,14 @@ class UsersController extends Controller
      */
     public function buscar(Request $request) {
         $buscar = $request->query('buscar');
-        return tblusuarios::where('id', $buscar)->orWhere('name', $buscar)->first();
+        $query = tblusuarios::where('id', $buscar);
+        if ($request->query('opciones')) {
+            $query->orWhere('name', 'LIKE', '%'.$buscar.'%');
+        } else {
+            $query->orWhere('name', $buscar);
+        }
+        
+        return $request->query('opciones') ? $query->limit(8)->get() : $query->first();
     }
     public function index(Request $request) {
 
@@ -43,9 +50,12 @@ class UsersController extends Controller
                 'role' => 'required'
             ]);
 
-            roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]);
-            return tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])])->load('roles');
+            $atributos['name'] = strtoupper($atributos['name']);
 
+            roleUser::create(['user_id' => $atributos['id'],'role_id' => $atributos['role']]);
+            tblusuarios::create(['id' => $atributos['id'],'name' => $atributos['name'], 'email' => $atributos['email'], 'password' => bcrypt($atributos['password'])]);
+
+            return tblusuarios::find($atributos['id'])->load('roles');
             } else {
      return view('admin');
  }
@@ -68,7 +78,7 @@ class UsersController extends Controller
         $validator->validate();
 
         $atributos = $validator->validated();
-
+        $atributos['name'] = strtoupper($atributos['name']);
         $data = ['name' => $atributos['name'], 'email' => $atributos['email']];
         if ($actualizarPassword) {
             $data['password'] = bcrypt($atributos['password']);
@@ -89,12 +99,6 @@ class UsersController extends Controller
         $roleusu = roleUser::where('user_id', $id);
         $usuario->delete();
         $roleusu->delete();
-    
        
         }
-    
-
-  
-
-    
 }

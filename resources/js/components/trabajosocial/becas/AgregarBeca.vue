@@ -18,7 +18,7 @@
           <form @submit.prevent="onSubmit">
               <div class="form-group">
 			          <label>Nombre</label>
-			          <input type="text" class="form-control  p-0 pl-1" placeholder="Ingresa el nombre de la beca" required v-model="beca.Nombre">
+			          <input type="text" class="form-control" placeholder="Ingresa el nombre de la beca" required v-model="beca.Nombre">
 		  	      </div>
 		  	    
               <div class="form-group">
@@ -29,8 +29,10 @@
                   <option value="Otro">Otro</option>
                 </select>
 		  	      </div>
-
-		  	      <button type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> {{beca.IdBeca ? 'Actualizar' : 'Guardar'}}</button>
+                
+              <button type="button" class="btn btn-danger" @click="eliminarBeca(beca)"><i class="far fa-trash-alt"> Eliminar</i></button>
+                                  
+		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{beca.IdBeca ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
       </div>
@@ -41,6 +43,12 @@
 
 <script>
   export default {
+    props: ['onDelete'],
+    data() {
+      return {
+        beca: {}
+      }
+    },
     created: function() {
       this.$parent.$on('actualizarBeca', beca => {
         this.beca = JSON.parse(JSON.stringify(beca));
@@ -49,12 +57,11 @@
         }
       });
     },  
-    data() {
-      return {
-        beca: {}
-      }
-    },
     methods: {
+       eliminarBeca(beca) {
+        this.onDelete(beca);
+        $('#addBeca').modal('hide');
+      },
       onSubmit() {
         if (this.beca.IdBeca) {
           this.actualizarBeca();

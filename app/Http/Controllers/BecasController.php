@@ -68,10 +68,13 @@ class BecasController extends Controller
      * @param \App\tblbeca $tblbeca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tblbeca $tblbeca) {
+    public function destroy($IdBeca) {
         
-        $tblbeca->delete();
+        // $tblbeca->delete();
 
-        return response('Eliminado');
+        // return response('Eliminado');
+
+        $beca = tblbeca::find($IdBeca);
+        $beca -> delete();
     }
 }

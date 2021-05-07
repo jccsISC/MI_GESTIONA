@@ -7,7 +7,7 @@
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif, Arial, Helvetica;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -510,6 +510,16 @@ footer{
             border-left:  1px solid black;
         }
         
+        #card-incidencias {
+            width: 98%;
+            float: left;
+            margin: 1%;
+            padding: 4px;
+        }
+        #card-incidencias .uno {
+            width: 98%;
+            float: left;
+        }
 
     /*Agregando Media Query sitio de tutorias*/
         @media screen and (max-width: 1300px){
