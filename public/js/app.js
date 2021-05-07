@@ -58399,7 +58399,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "contenedorCard" }, [
+  return _c("div", { staticClass: "contenedorCard", attrs: { id: "first" } }, [
     _c("p", { staticClass: "subtitulos-small" }, [
       _vm._v(_vm._s(_vm.fechaInicio) + " a " + _vm._s(_vm.fechaFinal))
     ]),

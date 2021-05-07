@@ -614,7 +614,7 @@ footer{
             .contenedorCard{
                 width: 90%;
                 float: none;
-                margin: 80px 5%;
+                margin: 40px 5%;
             }
             #bottom-options{
                 font-size: 0.9rem;
@@ -627,6 +627,10 @@ footer{
             #info-personal .uno, #info-personal .dos, #info-personal .tres, #info-personal .cuatro, #info-personal .cinco, #info-personal .seis{
                 width: 80%;
                 margin: 10px 10%;
+            }
+            #first{
+                margin-top: 160px;
+                margin-bottom: 0px;
             }
         }
 

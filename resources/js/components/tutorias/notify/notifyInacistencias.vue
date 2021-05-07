@@ -1,5 +1,5 @@
 <template>
-    <div class="contenedorCard">
+    <div class="contenedorCard" id="first">
         <p class="subtitulos-small">{{fechaInicio}} a {{fechaFinal}}</p>
         <p class="subtitulos-small">Semana {{semana}}</p>
         <p class="subtitulos">Notificación de inasistencias</p>
