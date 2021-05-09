@@ -7,6 +7,16 @@ use App\tblalumno;
 
 class AlumnoController extends Controller
 {
+    public function index(Request $request) {
+
+        if ($request->ajax()) {
+            return tblalumno::all();
+        } else {
+            return view('home');
+        }
+    }
+
+
     public function buscar(Request $request) {
         $buscar = $request->query('buscar');
         $query = null;

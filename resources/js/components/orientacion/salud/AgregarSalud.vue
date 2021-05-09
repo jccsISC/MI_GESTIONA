@@ -14,7 +14,7 @@
 
         <hr class="mt-1">
 
-        <div class="modal-body-s colorText">
+        <div class="modal-body-s colorText animate__animated animate__bounce">
             <form @submit.prevent="guardarSalud">
                 <div class="mcontenidoSalud">
                     <div>

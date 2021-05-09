@@ -2,5 +2,5 @@
 @section('title','Inasistencias')
 
 @section('content')
-    <inasistencias  role="{{auth()->user()->roles->first()->name}}"></inasistencias>
+    <inasistencias  userlogeado="{{auth()->user()}}"></inasistencias>
 @endsection

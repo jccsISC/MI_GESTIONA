@@ -26,6 +26,7 @@ class UsersController extends Controller
         
         return $request->query('opciones') ? $query->limit(8)->get() : $query->first();
     }
+    
     public function index(Request $request) {
 
         if ($request->ajax()) {
