@@ -13,61 +13,51 @@
                 </div>
 
                 <div class="modal-body-g  p-3 bordeReport colorText">
-                    <div class="imageLogo">
-                        <img src="images/logo.jpg" alt="">
-                    </div>
-
-                    <div class="text-center">
-                        <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
-                        <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
-                        <p class="m-0" style="text-decoration: underline; padding-left:80px;">FORMATO YO NO ABANDONO</p>
-                        <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
-                    </div>
-
-                    <p class="text-right"><b>Fecha:</b> {{ tipo == 'Guardar' ? toDay : getfechaInicial }}</p>
-                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
-                    <label class="m-0 ml-2"><b>Carrera: </b>{{alumno.Carrera}}</label>
-                     <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
-                     <label class="m-0 ml-2"><b>Telefono: </b>{{alumno.Telefono}}</label>
-                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
-                    
-                    <div class="miGrid2 mt-1">
-                        <div>
-                            <div>
-                                <p class="m-0"><b>Padre</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
-                                <br>
-                            </div>
-                            <div>
-                                <p class="m-0"><b>Madre</b></p>
-                                <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
-                                <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
-                                <br>
-                            </div>
-
-                            <p><b>Descripción del reporte</b></p> 
-                            <span v-if="!incidencia.DescripcionReporte" class="text-danger" >Requerido*</span>
-                            <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí la descripción del reporte"></textarea>
-       
-                            <p><b>Comentario de quien le da seguimiento</b></p>
-                             <span v-if="!incidencia.Comentarios" class="text-danger" >Requerido*</span>
-                            <input v-model="incidencia.Comentarios" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los comentarios">
-
-                            <label class="m-0"><b>Gravedad de la falta</b></label>
-                            <form class="was-validated">
-                                <div class="form-group">
-                                <select class="custom-select" required v-model="incidencia.TipoFalta">
-                                    <option value="Leve">Leve</option>
-                                    <option value="Grave">Grave</option>
-                                    <option value="Muy Grave">Muy Grave</option>
-                                </select> 
-                                <div class="invalid-feedback">Seleccione la gravedad de la falta</div>
-                                </div>
-                            </form>
+                    <div class="row">
+                        <div class="col-md-2 text-center">
+                            <img src="images/logo.jpg" style="max-width: 200px;">
                         </div>
+                        <div class="col-md-10 text-center">
+                            <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                            <p class="m-0" >PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                            <p class="m-0" style="text-decoration: underline;">FORMATO YO NO ABANDONO</p>
+                            <p class="m-0" >SEGUIMIENTO Y DERIVACION</p>
+                        </div>
+                    </div>
+                    <p class="text-right"><b>Fecha:</b> {{ tipo == 'Guardar' ? toDay : getfechaInicial }}</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-12 p-0 mb-2">
+                                <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
+                                <label class="m-0"><b>Carrera: </b>{{alumno.Carrera}}</label><br>
+                                <label class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                                <label class="m-0 float-right"><b>Telefono: </b>{{alumno.Telefono}}</label>
+                                <p class="m-0" style="clear:both"><b>Nombre de quien lo deriva: </b>{{incidencia.ResponsableSeguimiento}}</p>
+                            </div>
+                            <div class="col-md-12 p-0">
+                                <div>
+                                    <p class="m-0"><b>Padre</b></p>
+                                    <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
+                                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
+                                    <br>
+                                </div>
+                                <div>
+                                    <p class="m-0"><b>Madre</b></p>
+                                    <p class="m-0"><b>Nombre: </b>{{familiar.NombreMadre}} {{familiar.ApePaternoMadre}}  {{familiar.ApeMaternoMadre}}</p>
+                                    <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
+                                    <br>
+                                </div>
 
-                        <div>
+                                <p><b>Descripción del reporte</b></p> 
+                                <span v-if="!incidencia.DescripcionReporte" class="text-danger" >Requerido*</span>
+                                <textarea v-model="incidencia.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción del reporte"></textarea>
+        
+                                <p><b>Comentario de quien le da seguimiento</b></p>
+                                <span v-if="!incidencia.Comentarios" class="text-danger" >Requerido*</span>
+                                <input v-model="incidencia.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Escriba aquí los comentarios">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
                             <p><b>Comentario del padre o tutor</b></p> 
                             <span v-if="!incidencia.ComentariosPa" class="text-danger" >Requerido*</span>
                             <textarea v-model="incidencia.ComentariosPa" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí los comentariso del padre"></textarea>
@@ -88,6 +78,17 @@
                                     <option :value= 1>Concluido</option>
                                 </select> 
                                 <div class="invalid-feedback">Seleccion el estatus</div>
+                                </div>
+                            </form>
+                            <label class="m-0"><b>Gravedad de la falta</b></label>
+                            <form class="was-validated">
+                                <div class="form-group">
+                                <select class="custom-select" required v-model="incidencia.TipoFalta">
+                                    <option value="Leve">Leve</option>
+                                    <option value="Grave">Grave</option>
+                                    <option value="Muy Grave">Muy Grave</option>
+                                </select> 
+                                <div class="invalid-feedback">Seleccione la gravedad de la falta</div>
                                 </div>
                             </form>
                         </div>

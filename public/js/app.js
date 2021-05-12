@@ -4706,6 +4706,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -4838,6 +4840,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -7780,19 +7783,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -52232,8 +52222,6 @@ var render = function() {
                 [
                   _vm._m(1),
                   _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
                   _c("p", { staticClass: "text-right" }, [
                     _c("b", [_vm._v("Fecha:")]),
                     _vm._v(
@@ -52245,31 +52233,32 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("label", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Alumno: ")]),
-                    _vm._v(
-                      _vm._s(_vm.alumno.Nombre) +
-                        " " +
-                        _vm._s(_vm.alumno.ApePaterno) +
-                        "  " +
-                        _vm._s(_vm.alumno.ApeMaterno)
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("label", { staticClass: "m-0 ml-2" }, [
-                    _c("b", [_vm._v("Grupo: ")]),
-                    _vm._v(_vm._s(_vm.alumno.Grupo))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "m-0" }, [
-                    _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                    _vm._v(_vm._s(_vm.reporte.ResponsableSeguimiento))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "miGrid2 mt-1" }, [
-                    _c("div", [
-                      _c("div", [
-                        _vm._m(3),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Alumno: ")]),
+                        _vm._v(
+                          _vm._s(_vm.alumno.Nombre) +
+                            " " +
+                            _vm._s(_vm.alumno.ApePaterno) +
+                            "  " +
+                            _vm._s(_vm.alumno.ApeMaterno)
+                        )
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Grupo: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Grupo))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                        _vm._v(_vm._s(_vm.reporte.ResponsableSeguimiento))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-2" }, [
+                        _vm._m(2),
                         _vm._v(" "),
                         _c("p", { staticClass: "m-0" }, [
                           _c("b", [_vm._v("Nombre: ")]),
@@ -52291,7 +52280,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", [
-                        _vm._m(4),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("p", { staticClass: "m-0" }, [
                           _c("b", [_vm._v("Nombre: ")]),
@@ -52312,7 +52301,7 @@ var render = function() {
                         _c("br")
                       ]),
                       _vm._v(" "),
-                      _vm._m(5),
+                      _vm._m(4),
                       _vm._v(" "),
                       !_vm.reporte.ComentariosPa
                         ? _c("span", { staticClass: "text-danger" }, [
@@ -52348,48 +52337,11 @@ var render = function() {
                             )
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(6),
-                      _vm._v(" "),
-                      !_vm.reporte.Derivacion
-                        ? _c("span", { staticClass: "text-danger" }, [
-                            _vm._v("Requerido*")
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.reporte.Derivacion,
-                            expression: "reporte.Derivacion"
-                          }
-                        ],
-                        staticClass: "form-control w-75 p-1 mb-1",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Escriba aquí a donde lo deriva"
-                        },
-                        domProps: { value: _vm.reporte.Derivacion },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.reporte,
-                              "Derivacion",
-                              $event.target.value
-                            )
-                          }
-                        }
                       })
                     ]),
                     _vm._v(" "),
-                    _c("div", [
-                      _vm._m(7),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _vm._m(5),
                       _vm._v(" "),
                       !_vm.reporte.DescripcionReporte
                         ? _c("span", { staticClass: "text-danger" }, [
@@ -52428,7 +52380,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(8),
+                      _vm._m(6),
                       _vm._v(" "),
                       !_vm.reporte.Observaciones
                         ? _c("span", { staticClass: "text-danger" }, [
@@ -52465,7 +52417,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(9),
+                      _vm._m(7),
                       _vm._v(" "),
                       !_vm.reporte.Comentarios
                         ? _c("span", { staticClass: "text-danger" }, [
@@ -52500,11 +52452,48 @@ var render = function() {
                             )
                           }
                         }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      !_vm.reporte.Derivacion
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v("Requerido*")
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.reporte.Derivacion,
+                            expression: "reporte.Derivacion"
+                          }
+                        ],
+                        staticClass: "form-control w-75 p-1 mb-1",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Escriba aquí a donde lo deriva"
+                        },
+                        domProps: { value: _vm.reporte.Derivacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.reporte,
+                              "Derivacion",
+                              $event.target.value
+                            )
+                          }
+                        }
                       })
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(10)
+                  _vm._m(9)
                 ]
               ),
               _vm._v(" "),
@@ -52561,41 +52550,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "imageLogo" }, [
-      _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("p", { staticClass: "m-0" }, [
-        _vm._v(
-          "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
-        )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-2 text-center" }, [
+        _c("img", {
+          staticStyle: { "max-width": "200px" },
+          attrs: { src: "images/logo.jpg" }
+        })
       ]),
       _vm._v(" "),
-      _c(
-        "p",
-        { staticClass: "m-0", staticStyle: { "padding-right": "110px" } },
-        [_vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")]
-      ),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "m-0",
-          staticStyle: {
-            "text-decoration": "underline",
-            "padding-left": "80px"
-          }
-        },
-        [_vm._v("FORMATO YO NO ABANDONO")]
-      ),
-      _vm._v(" "),
-      _c("p", { staticClass: "m-0", staticStyle: { "padding-left": "80px" } }, [
-        _vm._v("SEGUIMIENTO Y DERIVACION")
+      _c("div", { staticClass: "col-md-10 text-center" }, [
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v(
+            "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "m-0",
+            staticStyle: { "text-decoration": "underline" }
+          },
+          [_vm._v("FORMATO YO NO ABANDONO")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [_vm._v("SEGUIMIENTO Y DERIVACION")])
       ])
     ])
   },
@@ -52621,12 +52604,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Derivación")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Descripción de la derivación")])])
   },
   function() {
@@ -52640,6 +52617,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Seguimiento")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("b", [_vm._v("Derivación")])])
   },
   function() {
     var _vm = this
@@ -52705,8 +52688,6 @@ var render = function() {
               [
                 _vm._m(1),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
                   _c("b", [_vm._v("Fecha:")]),
                   _vm._v(
@@ -52717,86 +52698,172 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("label", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Alumno: ")]),
-                  _vm._v(
-                    _vm._s(_vm.alumno.Nombre) +
-                      " " +
-                      _vm._s(_vm.alumno.ApePaterno) +
-                      "  " +
-                      _vm._s(_vm.alumno.ApeMaterno)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0 ml-2" }, [
-                  _c("b", [_vm._v("Carrera: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Carrera))
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0 ml-2" }, [
-                  _c("b", [_vm._v("Grupo: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Grupo))
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0 ml-2" }, [
-                  _c("b", [_vm._v("Telefono: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Telefono))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                  _vm._v(_vm._s(_vm.incidencia.ResponsableSeguimiento))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "miGrid2 mt-1" }, [
-                  _c("div", [
-                    _c("div", [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Nombre: ")]),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("div", { staticClass: "col-md-12 p-0 mb-2" }, [
+                      _c("label", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Alumno: ")]),
                         _vm._v(
-                          _vm._s(_vm.familiar.NombrePadre) +
+                          _vm._s(_vm.alumno.Nombre) +
                             " " +
-                            _vm._s(_vm.familiar.ApePaternoPadre) +
+                            _vm._s(_vm.alumno.ApePaterno) +
                             "  " +
-                            _vm._s(_vm.familiar.ApeMaternoPadre)
+                            _vm._s(_vm.alumno.ApeMaterno)
                         )
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                      _c("label", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Carrera: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Carrera))
+                      ]),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "m-0" }, [
+                        _c("b", [_vm._v("Grupo: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Grupo))
                       ]),
                       _vm._v(" "),
-                      _c("br")
+                      _c("label", { staticClass: "m-0 float-right" }, [
+                        _c("b", [_vm._v("Telefono: ")]),
+                        _vm._v(_vm._s(_vm.alumno.Telefono))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        { staticClass: "m-0", staticStyle: { clear: "both" } },
+                        [
+                          _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                          _vm._v(_vm._s(_vm.incidencia.ResponsableSeguimiento))
+                        ]
+                      )
                     ]),
                     _vm._v(" "),
-                    _c("div", [
+                    _c("div", { staticClass: "col-md-12 p-0" }, [
+                      _c("div", [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "m-0" }, [
+                          _c("b", [_vm._v("Nombre: ")]),
+                          _vm._v(
+                            _vm._s(_vm.familiar.NombrePadre) +
+                              " " +
+                              _vm._s(_vm.familiar.ApePaternoPadre) +
+                              "  " +
+                              _vm._s(_vm.familiar.ApeMaternoPadre)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "m-0" }, [
+                          _c("b", [_vm._v("Telefóno: ")]),
+                          _vm._v(_vm._s(_vm.familiar.TelefonoPadre))
+                        ]),
+                        _vm._v(" "),
+                        _c("br")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "m-0" }, [
+                          _c("b", [_vm._v("Nombre: ")]),
+                          _vm._v(
+                            _vm._s(_vm.familiar.NombreMadre) +
+                              " " +
+                              _vm._s(_vm.familiar.ApePaternoMadre) +
+                              "  " +
+                              _vm._s(_vm.familiar.ApeMaternoMadre)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "m-0" }, [
+                          _c("b", [_vm._v("Telefóno: ")]),
+                          _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
+                        ]),
+                        _vm._v(" "),
+                        _c("br")
+                      ]),
+                      _vm._v(" "),
                       _vm._m(4),
                       _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Nombre: ")]),
-                        _vm._v(
-                          _vm._s(_vm.familiar.NombreMadre) +
-                            " " +
-                            _vm._s(_vm.familiar.ApePaternoMadre) +
-                            "  " +
-                            _vm._s(_vm.familiar.ApeMaternoMadre)
-                        )
-                      ]),
+                      !_vm.incidencia.DescripcionReporte
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v("Requerido*")
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _c("b", [_vm._v("Telefóno: ")]),
-                        _vm._v(_vm._s(_vm.familiar.TelefonoMadre))
-                      ]),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.incidencia.DescripcionReporte,
+                            expression: "incidencia.DescripcionReporte"
+                          }
+                        ],
+                        staticClass: "form-control p-1 mb-1",
+                        attrs: {
+                          name: "",
+                          id: "",
+                          placeholder: "Escriba aquí la descripción del reporte"
+                        },
+                        domProps: { value: _vm.incidencia.DescripcionReporte },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.incidencia,
+                              "DescripcionReporte",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("br")
-                    ]),
+                      _vm._m(5),
+                      _vm._v(" "),
+                      !_vm.incidencia.Comentarios
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v("Requerido*")
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.incidencia.Comentarios,
+                            expression: "incidencia.Comentarios"
+                          }
+                        ],
+                        staticClass: "form-control p-1 mb-1",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Escriba aquí los comentarios"
+                        },
+                        domProps: { value: _vm.incidencia.Comentarios },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.incidencia,
+                              "Comentarios",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6 mt-3" }, [
+                    _vm._m(6),
                     _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    !_vm.incidencia.DescripcionReporte
+                    !_vm.incidencia.ComentariosPa
                       ? _c("span", { staticClass: "text-danger" }, [
                           _vm._v("Requerido*")
                         ])
@@ -52807,17 +52874,17 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.incidencia.DescripcionReporte,
-                          expression: "incidencia.DescripcionReporte"
+                          value: _vm.incidencia.ComentariosPa,
+                          expression: "incidencia.ComentariosPa"
                         }
                       ],
-                      staticClass: "form-control w-75 p-1 mb-1",
+                      staticClass: "form-control p-1 mb-1",
                       attrs: {
                         name: "",
                         id: "",
-                        placeholder: "Escriba aquí la descripción del reporte"
+                        placeholder: "Escriba aquí los comentariso del padre"
                       },
-                      domProps: { value: _vm.incidencia.DescripcionReporte },
+                      domProps: { value: _vm.incidencia.ComentariosPa },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
@@ -52825,16 +52892,16 @@ var render = function() {
                           }
                           _vm.$set(
                             _vm.incidencia,
-                            "DescripcionReporte",
+                            "ComentariosPa",
                             $event.target.value
                           )
                         }
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
-                    !_vm.incidencia.Comentarios
+                    !_vm.incidencia.Observaciones
                       ? _c("span", { staticClass: "text-danger" }, [
                           _vm._v("Requerido*")
                         ])
@@ -52845,16 +52912,16 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.incidencia.Comentarios,
-                          expression: "incidencia.Comentarios"
+                          value: _vm.incidencia.Observaciones,
+                          expression: "incidencia.Observaciones"
                         }
                       ],
-                      staticClass: "form-control w-75 p-1 mb-1",
+                      staticClass: "form-control p-1 mb-1",
                       attrs: {
                         type: "text",
-                        placeholder: "Escriba aquí los comentarios"
+                        placeholder: "Ingresa aquí las observaciones"
                       },
-                      domProps: { value: _vm.incidencia.Comentarios },
+                      domProps: { value: _vm.incidencia.Observaciones },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
@@ -52862,14 +52929,105 @@ var render = function() {
                           }
                           _vm.$set(
                             _vm.incidencia,
-                            "Comentarios",
+                            "Observaciones",
                             $event.target.value
                           )
                         }
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
+                    _vm._v(" "),
+                    !_vm.incidencia.Derivacion
+                      ? _c("span", { staticClass: "text-danger m-0" }, [
+                          _vm._v("Requerido*")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.incidencia.Derivacion,
+                          expression: "incidencia.Derivacion"
+                        }
+                      ],
+                      staticClass: "form-control p-1 mb-1",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Escriba aquí la derivación"
+                      },
+                      domProps: { value: _vm.incidencia.Derivacion },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.incidencia,
+                            "Derivacion",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(9),
+                    _vm._v(" "),
+                    _c("form", { staticClass: "was-validated" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.incidencia.Status,
+                                expression: "incidencia.Status"
+                              }
+                            ],
+                            staticClass: "custom-select",
+                            attrs: { required: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.incidencia,
+                                  "Status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { domProps: { value: 0 } }, [
+                              _vm._v("Pendiente")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { domProps: { value: 1 } }, [
+                              _vm._v("Concluido")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "invalid-feedback" }, [
+                          _vm._v("Seleccion el estatus")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(10),
                     _vm._v(" "),
                     _c("form", { staticClass: "was-validated" }, [
                       _c("div", { staticClass: "form-group" }, [
@@ -52923,174 +53081,6 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "invalid-feedback" }, [
                           _vm._v("Seleccione la gravedad de la falta")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._m(8),
-                    _vm._v(" "),
-                    !_vm.incidencia.ComentariosPa
-                      ? _c("span", { staticClass: "text-danger" }, [
-                          _vm._v("Requerido*")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.incidencia.ComentariosPa,
-                          expression: "incidencia.ComentariosPa"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        name: "",
-                        id: "",
-                        placeholder: "Escriba aquí los comentariso del padre"
-                      },
-                      domProps: { value: _vm.incidencia.ComentariosPa },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.incidencia,
-                            "ComentariosPa",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(9),
-                    _vm._v(" "),
-                    !_vm.incidencia.Observaciones
-                      ? _c("span", { staticClass: "text-danger" }, [
-                          _vm._v("Requerido*")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.incidencia.Observaciones,
-                          expression: "incidencia.Observaciones"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Ingresa aquí las observaciones"
-                      },
-                      domProps: { value: _vm.incidencia.Observaciones },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.incidencia,
-                            "Observaciones",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(10),
-                    _vm._v(" "),
-                    !_vm.incidencia.Derivacion
-                      ? _c("span", { staticClass: "text-danger m-0" }, [
-                          _vm._v("Requerido*")
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.incidencia.Derivacion,
-                          expression: "incidencia.Derivacion"
-                        }
-                      ],
-                      staticClass: "form-control p-1 mb-1",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Escriba aquí la derivación"
-                      },
-                      domProps: { value: _vm.incidencia.Derivacion },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.incidencia,
-                            "Derivacion",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _c("form", { staticClass: "was-validated" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.incidencia.Status,
-                                expression: "incidencia.Status"
-                              }
-                            ],
-                            staticClass: "custom-select",
-                            attrs: { required: "" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.incidencia,
-                                  "Status",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("option", { domProps: { value: 0 } }, [
-                              _vm._v("Pendiente")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { domProps: { value: 1 } }, [
-                              _vm._v("Concluido")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "invalid-feedback" }, [
-                          _vm._v("Seleccion el estatus")
                         ])
                       ])
                     ])
@@ -53163,41 +53153,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "imageLogo" }, [
-      _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("p", { staticClass: "m-0" }, [
-        _vm._v(
-          "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
-        )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-2 text-center" }, [
+        _c("img", {
+          staticStyle: { "max-width": "200px" },
+          attrs: { src: "images/logo.jpg" }
+        })
       ]),
       _vm._v(" "),
-      _c(
-        "p",
-        { staticClass: "m-0", staticStyle: { "padding-right": "110px" } },
-        [_vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")]
-      ),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "m-0",
-          staticStyle: {
-            "text-decoration": "underline",
-            "padding-left": "80px"
-          }
-        },
-        [_vm._v("FORMATO YO NO ABANDONO")]
-      ),
-      _vm._v(" "),
-      _c("p", { staticClass: "m-0", staticStyle: { "padding-left": "80px" } }, [
-        _vm._v("SEGUIMIENTO Y DERIVACION")
+      _c("div", { staticClass: "col-md-10 text-center" }, [
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v(
+            "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "m-0",
+            staticStyle: { "text-decoration": "underline" }
+          },
+          [_vm._v("FORMATO YO NO ABANDONO")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [_vm._v("SEGUIMIENTO Y DERIVACION")])
       ])
     ])
   },
@@ -53229,14 +53213,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "m-0" }, [
-      _c("b", [_vm._v("Gravedad de la falta")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("p", [_c("b", [_vm._v("Comentario del padre o tutor")])])
   },
   function() {
@@ -53257,6 +53233,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "m-0" }, [
       _c("b", [_vm._v("Seleccione un estado del reporte ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "m-0" }, [
+      _c("b", [_vm._v("Gravedad de la falta")])
     ])
   }
 ]
@@ -58799,8 +58783,6 @@ var render = function() {
               [
                 _vm._m(1),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("p", { staticClass: "text-right" }, [
                   _c("b", [_vm._v("Fecha: ")]),
                   _vm._v(
@@ -58813,51 +58795,52 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("label", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Alumno: ")]),
-                  _vm._v(
-                    _vm._s(_vm.alumno.Nombre) +
-                      " " +
-                      _vm._s(_vm.alumno.ApePaterno) +
-                      "  " +
-                      _vm._s(_vm.alumno.ApeMaterno)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("label", { staticClass: "m-0 ml-2" }, [
-                  _c("b", [_vm._v("Grupo: ")]),
-                  _vm._v(_vm._s(_vm.alumno.Grupo))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0" }, [
-                  _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
-                  _vm._v(_vm._s(_vm.reporte.Nombrequienderiva))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "miGrid2 mt-1" }, [
-                  _vm.errors.length
-                    ? _c("p", [
-                        _c("b", [
-                          _vm._v(
-                            "Por favor, corrija el(los) siguiente(s) error(es): "
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("label", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Alumno: ")]),
+                      _vm._v(
+                        _vm._s(_vm.alumno.Nombre) +
+                          " " +
+                          _vm._s(_vm.alumno.ApePaterno) +
+                          "  " +
+                          _vm._s(_vm.alumno.ApeMaterno)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("label", { staticClass: "m-0 ml-2" }, [
+                      _c("b", [_vm._v("Grupo: ")]),
+                      _vm._v(_vm._s(_vm.alumno.Grupo))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "m-0" }, [
+                      _c("b", [_vm._v("Nombre de quien lo deriva: ")]),
+                      _c("br"),
+                      _vm._v(_vm._s(_vm.reporte.Nombrequienderiva))
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors.length
+                      ? _c("p", [
+                          _c("b", [
+                            _vm._v(
+                              "Por favor, corrija el(los) siguiente(s) error(es): "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            _vm._l(_vm.errors, function(error, key) {
+                              return _c("li", { key: key }, [
+                                _vm._v(_vm._s(error))
+                              ])
+                            }),
+                            0
                           )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "ul",
-                          _vm._l(_vm.errors, function(error, key) {
-                            return _c("li", { key: key }, [
-                              _vm._v(_vm._s(error))
-                            ])
-                          }),
-                          0
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", [
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _c("div", [
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -58879,7 +58862,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", [
-                      _vm._m(4),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
                         _c("b", [_vm._v("Nombre: ")]),
@@ -58900,7 +58883,7 @@ var render = function() {
                       _c("br")
                     ]),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     !_vm.reporte.Motivo
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -58942,7 +58925,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _vm._m(5),
                     _vm._v(" "),
                     !_vm.reporte.Derivacion
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -58980,8 +58963,8 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", [
-                    _vm._m(7),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _vm._m(6),
                     _vm._v(" "),
                     !_vm.reporte.DescripcionDer
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -59020,7 +59003,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(8),
+                    _vm._m(7),
                     _vm._v(" "),
                     !_vm.reporte.Observaciones
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -59057,7 +59040,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(9),
+                    _vm._m(8),
                     _vm._v(" "),
                     !_vm.reporte.Seguimiento
                       ? _c("span", { staticClass: "text-danger" }, [
@@ -59094,7 +59077,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(10),
+                    _vm._m(9),
                     _vm._v(" "),
                     _c("form", { staticClass: "was-validated" }, [
                       _c("div", { staticClass: "form-group" }, [
@@ -59221,41 +59204,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "imageLogo" }, [
-      _c("img", { attrs: { src: "images/logo.jpg", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("p", { staticClass: "m-0" }, [
-        _vm._v(
-          "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
-        )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-2 text-center" }, [
+        _c("img", {
+          staticStyle: { "max-width": "200px" },
+          attrs: { src: "images/logo.jpg" }
+        })
       ]),
       _vm._v(" "),
-      _c(
-        "p",
-        { staticClass: "m-0", staticStyle: { "padding-right": "110px" } },
-        [_vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")]
-      ),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "m-0",
-          staticStyle: {
-            "text-decoration": "underline",
-            "padding-left": "80px"
-          }
-        },
-        [_vm._v("FORMATO YO NO ABANDONO")]
-      ),
-      _vm._v(" "),
-      _c("p", { staticClass: "m-0", staticStyle: { "padding-left": "80px" } }, [
-        _vm._v("SEGUIMIENTO Y DERIVACION")
+      _c("div", { staticClass: "col-md-10 text-center" }, [
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v(
+            "COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [
+          _vm._v("PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)")
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "m-0",
+            staticStyle: { "text-decoration": "underline" }
+          },
+          [_vm._v("FORMATO YO NO ABANDONO")]
+        ),
+        _vm._v(" "),
+        _c("p", { staticClass: "m-0" }, [_vm._v("SEGUIMIENTO Y DERIVACION")])
       ])
     ])
   },

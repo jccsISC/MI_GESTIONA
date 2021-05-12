@@ -13,31 +13,30 @@
                 </div>
 
                 <div class="modal-body-g p-3 bordeReport colorText">
-                    <div class="imageLogo">
-                        <img src="images/logo.jpg" alt="">
+                    <div class="row">
+                        <div class="col-md-2 text-center">
+                            <img src="images/logo.jpg" style="max-width: 200px;">
+                        </div>
+                        <div class="col-md-10 text-center">
+                            <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                            <p class="m-0" >PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                            <p class="m-0" style="text-decoration: underline;">FORMATO YO NO ABANDONO</p>
+                            <p class="m-0" >SEGUIMIENTO Y DERIVACION</p>
+                        </div>
                     </div>
-
-                    <div class="text-center">
-                        <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
-                        <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
-                        <p class="m-0" style="text-decoration: underline; padding-left:80px;">FORMATO YO NO ABANDONO</p>
-                        <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
-                    </div>
-
                     <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
-                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
-                    <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
-                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
-                    
-                    <div class="miGrid2 mt-1">
-                        <p v-if="errors.length">
-                            <b>Por favor, corrija el(los) siguiente(s) error(es): </b>
-                            <ul>
-                                <li v-for="(error, key) in errors" :key="key">{{error}}</li>
-                            </ul>
-                        </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
+                            <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                            <p class="m-0"><b>Nombre de quien lo deriva: </b><br>{{reporte.Nombrequienderiva}}</p>
 
-                        <div>
+                            <p v-if="errors.length">
+                                <b>Por favor, corrija el(los) siguiente(s) error(es): </b>
+                                <ul>
+                                    <li v-for="(error, key) in errors" :key="key">{{error}}</li>
+                                </ul>
+                            </p>
                             <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
@@ -58,20 +57,8 @@
                             <p><b>Derivación</b></p>
                             <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
                             <input v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
-
-                            <!-- <label class="m-0"><b>Responsable de seguimiento</b></label>
-                            <form class="was-validated">
-                                <div class="form-group">
-                                    <select class="custom-select" required  v-model="reporte.user_id" >
-                                            <option v-for="(user, key) in users" :key="key" :value="user.id">{{user.name}}</option>
-                                    </select> 
-                                    <div class="invalid-feedback">Seleccione al responsable de seguimiento</div>
-                                </div>
-                            </form> -->
-
                         </div>
-
-                        <div>
+                        <div class="col-md-6">
                             <p><b>Descripción de la derivación</b></p>
                             <span v-if="!reporte.DescripcionDer" class="text-danger" >Requerido*</span>
                             <textarea v-model="reporte.DescripcionDer" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la deribación"></textarea>

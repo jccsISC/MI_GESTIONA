@@ -13,25 +13,27 @@
                 </div>
 
                 <form @submit.prevent="guardarReporte" class="modal-body-g p-3 bordeReport colorText">
-                    <div class="imageLogo">
-                        <img src="images/logo.jpg" alt="">
-                    </div>
-
-                    <div class="text-center">
-                        <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
-                        <p class="m-0" style="padding-right:110px;">PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
-                        <p class="m-0" style="text-decoration: underline; padding-left:80px;">FORMATO YO NO ABANDONO</p>
-                        <p class="m-0" style="padding-left:80px;">SEGUIMIENTO Y DERIVACION</p>
+                    <div class="row">
+                        <div class="col-md-2 text-center">
+                            <img src="images/logo.jpg" style="max-width: 200px;">
+                        </div>
+                        <div class="col-md-10 text-center">
+                            <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
+                            <p class="m-0" >PLANTEL PUERTO VALLARTA PITILLAL (LAS JUNTAS)</p>
+                            <p class="m-0" style="text-decoration: underline;">FORMATO YO NO ABANDONO</p>
+                            <p class="m-0" >SEGUIMIENTO Y DERIVACION</p>
+                        </div>
                     </div>
 
                     <p class="text-right"><b>Fecha:</b>{{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
-                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
-                    <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
-                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.ResponsableSeguimiento}}</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label><br>
+                            <label class="m-0"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                            <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.ResponsableSeguimiento}}</p>
 
-                    <div class="miGrid2 mt-1">
-                        <div>
-                           <div>
+                            <div class="mt-2">
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
                                 <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoPadre}}</p>
@@ -47,13 +49,8 @@
                             <p><b>Motivo</b></p> 
                             <span v-if="!reporte.ComentariosPa" class="text-danger" >Requerido*</span>
                             <textarea v-model="reporte.ComentariosPa" name="" id="" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí los motivos"></textarea>
-       
-                            <p><b>Derivación</b></p>
-                              <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
-                            <input  v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
                         </div>
-
-                        <div>
+                        <div class="col-md-6">
                             <p><b>Descripción de la derivación</b></p> 
                               <span v-if="!reporte.DescripcionReporte" class="text-danger" >Requerido*</span>
                             <textarea  v-model="reporte.DescripcionReporte" name="" id="" class="form-control p-1 mb-1" placeholder="Escriba aquí la descripción de la derivación"></textarea>
@@ -64,9 +61,14 @@
 
                             <p><b>Seguimiento</b></p>
                               <span v-if="!reporte.Comentarios" class="text-danger" >Requerido*</span>
-                            <input  v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">                        
+                            <input  v-model="reporte.Comentarios" type="text" class="form-control p-1 mb-1" placeholder="Ingresa aquí el seguimiento que se dará">
+                            
+                            <p><b>Derivación</b></p>
+                            <span v-if="!reporte.Derivacion" class="text-danger" >Requerido*</span>
+                            <input  v-model="reporte.Derivacion" type="text" class="form-control w-75 p-1 mb-1" placeholder="Escriba aquí a donde lo deriva">
                         </div>
                     </div>
+                    
 
                      <button  type="submit" class="btnGuardar positionSave">
                         <i class="fas fa-save"></i> Guardar
