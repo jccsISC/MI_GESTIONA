@@ -53896,7 +53896,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table table-sm scrollIncidencias"
+                        "table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias"
                     },
                     [
                       _vm._m(0, true),
@@ -53964,7 +53964,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table table-sm scrollIncidencias"
+                        "table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias"
                     },
                     [
                       _vm._m(1, true),

@@ -10,7 +10,7 @@
             </div>
             
             <div :id="'collapse'+ key" :class="['collapse', alumno.IdAlumno == idalumno ? 'show' : '' ] " :aria-labelledby="'heading'+ key" data-parent="#accordion">
-                <table class="table table-striped table-hover contentTable table table-sm scrollIncidencias">
+                <table class="table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias">
                     <thead>
                         <tr>
                             <th colspan="3">Tipo</th>
@@ -30,7 +30,7 @@
                     </tbody>
                  </table>
 
-                 <table class="table table-striped table-hover contentTable table table-sm scrollIncidencias">
+                 <table class="table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias">
                     <thead>
                         <tr >
                             <th colspan="3">Tipo</th>
