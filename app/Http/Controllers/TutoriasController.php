@@ -10,6 +10,8 @@ use App\tblalumno;
 use App\tblyonoabandono;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AlumnosImport;
+use App\Imports\CalifiacionImport;
+use App\Imports\DetCalifiacionImport;
 use App\Imports\DetInasistenciaImport;
 use App\Imports\FamiliarImport;
 use App\Imports\HorarioImport;
@@ -167,6 +169,14 @@ class TutoriasController extends Controller
         $file = $request->file('file');
         Excel::import(new InasistenciaImport, $file);
         Excel::import(new DetInasistenciaImport, $file);
+        return back()->with('message', 'Importación de inasistencias completada');
+    }
+
+    public function importExcelCalificacion(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new CalifiacionImport, $file);
+        Excel::import(new DetCalifiacionImport, $file);
         return back()->with('message', 'Importación de inasistencias completada');
     }
 }

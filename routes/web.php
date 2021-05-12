@@ -155,7 +155,7 @@ Route::get('/horario', 'HorarioMaestroController@index');
 Route::get('/alumno', 'AlumnoController@index'); 
 Route::get('registrarFaltas', 'FaltasController@registrarFaltas');
 Route::get('horario/{tblalumno}', 'HorarioMaestroController@alumnos');
-Route::post('importcalificacion', 'HorarioMaestroController@importCalificacion')->name('calificaciones.import.excel');
+Route::post('importcalificacion', 'TutoriasController@importExcelCalificacion')->name('calificaciones.import.excel');
 Route::post('importHorario', 'TutoriasController@importExcelHorarioM')->name('horario.import.excel');
 Route::post('importFaltas', 'TutoriasController@importExcelFaltas')->name('faltas.import.excel');
 
