@@ -10,7 +10,10 @@ use App\tblalumno;
 use App\tblyonoabandono;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AlumnosImport;
+use App\Imports\DetInasistenciaImport;
 use App\Imports\FamiliarImport;
+use App\Imports\HorarioImport;
+use App\Imports\InasistenciaImport;
 
 class TutoriasController extends Controller
 {
@@ -150,5 +153,20 @@ class TutoriasController extends Controller
         Excel::import(new AlumnosImport, $file);
         Excel::import(new FamiliarImport, $file);
         return back()->with('message', 'Importación de alumnos completada');
+    }
+
+    public function importExcelHorarioM(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new HorarioImport, $file);
+        return back()->with('message', 'Importación de horario completada');
+    }
+
+    public function importExcelFaltas(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new InasistenciaImport, $file);
+        Excel::import(new DetInasistenciaImport, $file);
+        return back()->with('message', 'Importación de inasistencias completada');
     }
 }

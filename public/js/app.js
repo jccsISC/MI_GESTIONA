@@ -3615,6 +3615,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -49621,31 +49631,26 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "midiv text-center" }, [
-      _c("label", [_vm._v("Ciclo escolar")]),
-      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("label", { staticClass: "ml-5" }, [_vm._v("Fecha")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "date" } }),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", [_vm._v("Parcial")]),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("label", { staticClass: "ml-4" }, [_vm._v("Materia")]),
-      _vm._v(" "),
-      _c(
-        "select",
-        { attrs: { name: "", id: "" } },
-        _vm._l(_vm.horariosMaestro, function(materia, key) {
-          return _c("option", { key: key, attrs: { value: "" } }, [
-            _vm._v(" " + _vm._s(materia.Materia) + " ")
-          ])
-        }),
-        0
-      )
+      _c("div", { staticClass: "row" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", {}, [_vm._v("Materia")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            { staticClass: "custom-select", attrs: { name: "", id: "" } },
+            _vm._l(_vm.horariosMaestro, function(materia, key) {
+              return _c("option", { key: key, attrs: { value: "" } }, [
+                _vm._v(" " + _vm._s(materia.Materia) + " ")
+              ])
+            }),
+            0
+          )
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -49717,7 +49722,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-bordered table-hover table- contentTable table-sm"
+                        "table table-striped table-hover contentTable table table-sm scrollIncidencias"
                     },
                     [
                       _vm._m(2),
@@ -49759,24 +49764,49 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("select", { attrs: { name: "", id: "" } }, [
-      _c("option", { attrs: { value: "" } }, [_vm._v("FEB - JUL")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "float-left" }, [_vm._v("Ciclo escolar")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "custom-select", attrs: { name: "", id: "" } },
+          [
+            _c("option", { attrs: { value: "" } }, [_vm._v("FEB - JUL")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "" } }, [_vm._v("AGO - ENE")])
+          ]
+        )
+      ]),
       _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v("AGO - ENE")])
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "float-left" }, [_vm._v("Fecha")]),
+        _vm._v(" "),
+        _c("input", { staticClass: "form-control", attrs: { type: "date" } }),
+        _c("br")
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("select", { attrs: { name: "", id: "" } }, [
-      _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("label", [_vm._v("Parcial")]),
       _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
-      _vm._v(" "),
-      _c("option", { attrs: { value: "" } }, [_vm._v("4")])
+      _c(
+        "select",
+        { staticClass: "custom-select", attrs: { name: "", id: "" } },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("3")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("4")])
+        ]
+      )
     ])
   },
   function() {
@@ -71952,15 +71982,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************************!*\
   !*** ./resources/js/components/maestros/AgregarInasistencias.vue ***!
   \*******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AgregarInasistencias_vue_vue_type_template_id_6fa0bae5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AgregarInasistencias.vue?vue&type=template&id=6fa0bae5& */ "./resources/js/components/maestros/AgregarInasistencias.vue?vue&type=template&id=6fa0bae5&");
 /* harmony import */ var _AgregarInasistencias_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AgregarInasistencias.vue?vue&type=script&lang=js& */ "./resources/js/components/maestros/AgregarInasistencias.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AgregarInasistencias_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AgregarInasistencias_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _AgregarInasistencias_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AgregarInasistencias.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/maestros/AgregarInasistencias.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AgregarInasistencias_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AgregarInasistencias.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/maestros/AgregarInasistencias.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -71992,7 +72021,7 @@ component.options.__file = "resources/js/components/maestros/AgregarInasistencia
 /*!********************************************************************************************!*\
   !*** ./resources/js/components/maestros/AgregarInasistencias.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

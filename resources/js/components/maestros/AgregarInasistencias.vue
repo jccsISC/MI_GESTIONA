@@ -3,27 +3,37 @@
 
         <h4 class="text-center">Maestro: {{name}}</h4>
         <div class="midiv text-center">
-            <label>Ciclo escolar</label>
-            <select name="" id="">
-                <option value="">FEB - JUL</option>
-                <option value="">AGO - ENE</option>
-            </select>
-
-            <label class="ml-5">Fecha</label>
-            <input type="date"><br>
+           <div class="row">
+               <div class="col-md-6">
+                    <label class="float-left">Ciclo escolar</label>
+                    <select class="custom-select" name="" id="">
+                        <option value="">FEB - JUL</option>
+                        <option value="">AGO - ENE</option>
+                    </select>
+               </div>
+               <div class="col-md-6">
+                    <label class="float-left">Fecha</label>
+                    <input class="form-control" type="date"><br>
+               </div>
+           </div>
             
-            <label>Parcial</label>
-            <select name="" id="">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-            </select>
-
-            <label class="ml-4">Materia</label>
-            <select name="" id="">
-                <option v-for="(materia, key) in horariosMaestro" :key="key" value=""> {{materia.Materia}} </option>
-            </select>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Parcial</label>
+                    <select class="custom-select" name="" id="">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="">Materia</label>
+                    <select class="custom-select" name="" id="">
+                        <option v-for="(materia, key) in horariosMaestro" :key="key" value=""> {{materia.Materia}} </option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="panel-group p-0 m-0 mt-4" id="accordion" role="tablist" aria-multiselectable="true">
@@ -37,7 +47,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <table class="table table-striped table-bordered table-hover table- contentTable table-sm">
+                        <table class="table table-striped table-hover contentTable table table-sm scrollIncidencias">
                             <thead>
                                 <tr>
                                     <th colspan="5">Nombre del ALumno</th>

@@ -28,6 +28,8 @@
       
        <!--card Faltas-->
        <card-faltas></card-faltas>
+
+      
       
    </section>
 
@@ -39,7 +41,24 @@
       <p>{{ Session::get('message') }}</p>
       @endif
       <input type="file" name="file">
-      <button class="btn btn-secondary ml-5">Importar Alumnos</button>  
+      <button class="btn btn-secondary p-1 ml-5">Importar Alumnos</button>  
     </form>
 
+    <form class="mt-2" action="{{ route('horario.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+      @csrf
+      @if(Session::has('message'))
+      <p>{{ Session::get('message') }}</p>
+      @endif
+      <input type="file"  name="file">
+      <button class="btn btn-secondary p-1 mt-2 ml-5">Importar Horario</button>  
+    </form>
+
+    <form class="mt-2" action="{{ route('faltas.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+        @csrf
+        @if(Session::has('message'))
+        <p>{{ Session::get('message') }}</p>
+        @endif
+        <input type="file"  name="file">
+        <button class="btn btn-secondary p-1 mt-2 ml-5">Importar Inasistencias</button>  
+      </form>
 @endsection

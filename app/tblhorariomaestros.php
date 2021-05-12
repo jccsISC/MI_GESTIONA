@@ -8,7 +8,7 @@ class tblhorariomaestros extends Model
 {
     protected $table = 'tblhorariomaestros';
     protected $primaryKey = 'IdHoraMa';
-    protected $fillable = ['IdUsuario','Materia','Horas','Turno','Grado', 'Grupo','Existe'];
+    protected $fillable = ['IdUsuario','Materia','Horas','Turno','Grado', 'Grupo', 'Carrera', 'IdAlumno','Existe'];
     public $timestamps = false;
 
     //
