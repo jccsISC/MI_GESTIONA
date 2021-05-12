@@ -15,152 +15,142 @@
         <hr class="mt-1">
 
         <div class="modal-body-s colorText">
-            <form @submit.prevent="guardarSalud">
-                <div class="mcontenidoSalud">
-                    <div>
-                        <label>Esatatura </label>
-                        <input type="number" step="0.0" min="0" class="widthInput" placeholder="0.0" v-model="salud.Estatura">
-
-                        <label class="ml-3">Peso </label>
-                        <input type="number" step="0.0" min="0" class="widthInput" placeholder="0.0" v-model="salud.Peso">
-
-                        <label class="ml-1">Anteojos </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="anteojos" value="1" v-model="salud.Anteojos">
-                            <span class="circle"></span>
-                        </label>
-
-                        <label class="radioContent">No
-                            <input type="radio" name="anteojos" value="0" v-model="salud.Anteojos">
-                            <span class="circle"></span>
-                        </label> 
-                        <br>
-                        <label class="ml-1">Trastornos: </label>
-                        <textarea type="text" class="form-control ml-2 p-0 pl-1" style="width:95%;" placeholder="Transtornos..." v-model="salud.Transtornos"></textarea>
-                    </div>
-                    
-                    <div>
-                        <label class="ml-1">Salud bucal </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal">
-                            <span class="circle"></span>
-                        </label>
-
-                        <label class="radioContent">No
-                            <input type="radio" name="saludbucal" value="0" v-model="salud.ProbBucal">
-                            <span class="circle"></span>
-                        </label> 
-                        <br>
-
-                        <label class="ml-2 mr-3">Pie plano </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano">
-                            <span class="circle"></span>
-                        </label>
-
-                        <label class="radioContent">No
-                            <input type="radio" name="pieplano" value="0" v-model="salud.PiePlano">
-                            <span class="circle"></span>
-                        </label> 
-                        <br>
-
-                        <label class="ml-2 mr-1">Pediculosis </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="pediculosis" value="1" v-model="salud.Pediculosis">
-                            <span class="circle"></span>
-                        </label>
-
-                        <label class="radioContent">No
-                            <input type="radio" name="pediculosis" value="0" v-model="salud.Pediculosis">
-                            <span class="circle"></span>
-                        </label> 
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col p-2 ml-2"><input type="number" class="form-control" step="0.0" min="0" placeholder="Estatura" v-model="salud.Estatura"></div>
+                        <div class="col p-2"><input type="number" step="0.0" min="0" class="form-control" placeholder="Peso" v-model="salud.Peso"></div>
                     </div>
 
-                    <div>
-                        <label>Problemas de lenguaje </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="problemaL" value="1" v-model="salud.ProbLenguaje">
-                            <span class="circle"></span>
-                        </label>
+                    <label class="ml-1">Anteojos </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="anteojos" value="1" v-model="salud.Anteojos">
+                        <span class="circle"></span>
+                    </label>
 
-                        <label class="radioContent">No
-                            <input type="radio" name="problemaL" value="0" v-model="salud.ProbLenguaje">
-                            <span class="circle"></span>
-                        </label> 
-                        <br>
-
-                        <label class="ml-1 mr-3">Problemas auditivos </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="problemaA" value="1" v-model="salud.ProbAuditivo">
-                            <span class="circle"></span>
-                        </label>
-
-                        <label class="radioContent">No
-                            <input type="radio" name="problemaA" value="0" v-model="salud.ProbAuditivo">
-                            <span class="circle"></span>
-                        </label> 
-                    </div>
+                    <label class="radioContent">No
+                        <input type="radio" name="anteojos" value="0" v-model="salud.Anteojos">
+                        <span class="circle"></span>
+                    </label> 
+                    <br>
+                    <label class="ml-1">Trastornos: </label>
+                    <textarea type="text" class="form-control ml-2 p-0 pl-1" style="width:95%; resize: none;" placeholder="Transtornos..." v-model="salud.Transtornos"></textarea>
                 </div>
-            
-                <div class="gridSalud">
-                    <div class="pr-3">
-                        <hr class="mt-3">
+                <div class="col-md-4">
+                    <label class="ml-1">Salud bucal </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal">
+                        <span class="circle"></span>
+                    </label>
 
-                        <label>Alergias </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="alergias" value="1" v-model="salud.Alergias">
-                            <span class="circle"></span>
-                        </label>
+                    <label class="radioContent">No
+                        <input type="radio" name="saludbucal" value="0" v-model="salud.ProbBucal">
+                        <span class="circle"></span>
+                    </label> 
+                    <br>
 
-                        <label class="radioContent">No
-                            <input type="radio" name="alergias" value="0" v-model="salud.Alergias">
-                            <span class="circle"></span>
-                        </label> 
-                        <textarea type="text" class="form-control mt-1" placeholder="Ingresa la descripción de la alergia" v-model="salud.DetAlergias"></textarea>
-                        
-                        <label>Problemas posturales </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="problemasPosturales" value="1" v-model="salud.ProbPosturales">
-                            <span class="circle"></span>
-                        </label>
+                    <label class="ml-2 mr-3">Pie plano </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano">
+                        <span class="circle"></span>
+                    </label>
 
-                        <label class="radioContent">No
-                            <input type="radio" name="problemasPosturales" value="0"  v-model="salud.ProbPosturales">
-                            <span class="circle"></span>
-                        </label> 
-                        <textarea type="text" class="form-control mt-1" placeholder="Detalle el problema postural" v-model="salud.DetProbPosturales"></textarea>
-                    </div>
+                    <label class="radioContent">No
+                        <input type="radio" name="pieplano" value="0" v-model="salud.PiePlano">
+                        <span class="circle"></span>
+                    </label> 
+                    <br>
 
-                    <div>
-                        <hr class="mt-3">
-                        <label>Gravidez </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="gravidez" value="1" v-model="salud.Gravidez">
-                            <span class="circle"></span>
-                        </label>
+                    <label class="ml-2 mr-1">Pediculosis </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="pediculosis" value="1" v-model="salud.Pediculosis">
+                        <span class="circle"></span>
+                    </label>
 
-                        <label class="radioContent">No
-                            <input type="radio" name="gravidez" value="0" v-model="salud.Gravidez">
-                            <span class="circle"></span>
-                        </label> 
-                        <textarea type="text" class="form-control mt-1" placeholder="Detalle de la gravidez" v-model="salud.DetGravidez"></textarea>
+                    <label class="radioContent">No
+                        <input type="radio" name="pediculosis" value="0" v-model="salud.Pediculosis">
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class="col-md-4">
+                    <label>Problemas de lenguaje </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="problemaL" value="1" v-model="salud.ProbLenguaje">
+                        <span class="circle"></span>
+                    </label>
 
-                        <label class="mr-3">Otros </label>
-                        <label class="radioContent">Si
-                            <input type="radio" name="otros" value="1" v-model="salud.Otros">
-                            <span class="circle"></span>
-                        </label>
+                    <label class="radioContent">No
+                        <input type="radio" name="problemaL" value="0" v-model="salud.ProbLenguaje">
+                        <span class="circle"></span>
+                    </label> 
+                    <br>
 
-                        <label class="radioContent">No
-                            <input type="radio" name="otros" value="0" v-model="salud.Otros">
-                            <span class="circle"></span>
-                        </label> 
-                        <textarea type="text" class="form-control mt-1" placeholder="Detalle..." v-model="salud.DetOtros"></textarea>
-                    </div>
-                </div>  
-        
-                <button type="submit" class="btn miBtn positionSave mt-2 mb-2 p-0 pl-2 pr-2"><i class="far fa-save"></i> {{salud.IdSalud ? 'Actualizar' : 'Guardar'}}</button>
-            </form>
+                    <label class="ml-1 mr-3">Problemas auditivos </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="problemaA" value="1" v-model="salud.ProbAuditivo">
+                        <span class="circle"></span>
+                    </label>
+
+                    <label class="radioContent">No
+                        <input type="radio" name="problemaA" value="0" v-model="salud.ProbAuditivo">
+                        <span class="circle"></span>
+                    </label> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <hr class="mt-3">
+                    <label>Alergias </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="alergias" value="1" v-model="salud.Alergias">
+                        <span class="circle"></span>
+                    </label>
+
+                    <label class="radioContent">No
+                        <input type="radio" name="alergias" value="0" v-model="salud.Alergias">
+                        <span class="circle"></span>
+                    </label> 
+                    <textarea type="text" class="form-control mt-1" placeholder="Ingresa la descripción de la alergia" v-model="salud.DetAlergias"></textarea>
+                    
+                    <label>Problemas posturales </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="problemasPosturales" value="1" v-model="salud.ProbPosturales">
+                        <span class="circle"></span>
+                    </label>
+
+                    <label class="radioContent">No
+                        <input type="radio" name="problemasPosturales" value="0"  v-model="salud.ProbPosturales">
+                        <span class="circle"></span>
+                    </label> 
+                    <textarea type="text" class="form-control mt-1" placeholder="Detalle el problema postural" v-model="salud.DetProbPosturales"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <hr class="mt-3">
+                    <label>Gravidez </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="gravidez" value="1" v-model="salud.Gravidez">
+                        <span class="circle"></span>
+                    </label>
+
+                    <label class="radioContent">No
+                        <input type="radio" name="gravidez" value="0" v-model="salud.Gravidez">
+                        <span class="circle"></span>
+                    </label> 
+                    <textarea type="text" class="form-control mt-1" placeholder="Detalle de la gravidez" v-model="salud.DetGravidez"></textarea>
+
+                    <label class="mr-3">Otros </label>
+                    <label class="radioContent">Si
+                        <input type="radio" name="otros" value="1" v-model="salud.Otros">
+                        <span class="circle"></span>
+                    </label>
+
+                    <label class="radioContent">No
+                        <input type="radio" name="otros" value="0" v-model="salud.Otros">
+                        <span class="circle"></span>
+                    </label> 
+                    <textarea type="text" class="form-control mt-1" placeholder="Detalle..." v-model="salud.DetOtros"></textarea>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -281,6 +271,9 @@
         position: fixed;
         bottom: 5px;
         right: 1%;
+    }
+    textarea{
+        resize: none;
     }
     
 </style>

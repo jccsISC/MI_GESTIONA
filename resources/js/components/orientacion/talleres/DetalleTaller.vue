@@ -15,76 +15,81 @@
         <hr class="mt-1">
 
         <div class="modal-body-xl colorText">
-          <label><b>Fecha: </b><input type="date" class="p-0 " v-model="taller.Fecha"></label>
-          <label class="ml-5"><b>Hora del curso: </b><input type="time" class="p-0" v-model="taller.Hora"></label>
-          
-          <div>
-            <label><b>Nombre del taller:</b></label>
-            <input type="text" class="p-0 pl-1" style="width:69%;" placeholder="Ingresa el nombre del taller" v-model="taller.Nombre">
+          <div class="form-row m-2">
+            <div class="form-group col-md-6">
+              <label>Fecha:</label>
+              <input type="date" class="form-control" v-model="taller.Fecha">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Hora del curso:</label>
+              <input type="time" class="form-control" v-model="taller.Hora">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Nombre del taller:</label>
+              <input type="text" class="form-control" placeholder="Ingresa el nombre del taller" v-model="taller.Nombre">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Institución:</label>
+              <input type="text" class="form-control" placeholder="Ingresa el nombre de la Institución" v-model="taller.Institucion">
+            </div>
           </div>
           
-          <div>
-            <label class="mt-2"><b>Institución</b>:</label>
-            <input type="text" class="p-0 pl-1" style="width:81%;" placeholder="Ingresa el nombre del taller"  v-model="taller.Institucion">
-          </div>
-              
-          <div class="borderTable">
-            <table class="table table-striped table-hover contentTable table table-sm">
-              <thead>
-                <tr style="text-align: center;">
-                  <th colspan="2">
-                    Dirigido a:
-                  </th>
-                  <th>
-                    Semestre:
-                  </th>
-                  <th colspan="2">
-                    No. beneficiados:
-                  </th>
-                  <th>
-                    Acciones
-                  </th>
-                </tr>
-              </thead>
-              
-              <tbody>
-                <tr style="text-align: center;" v-for="(grupo, key) in grupos" :key="key">
-                  <td colspan="2">
-                      <select class="p-0" v-model="grupo.Grupo">
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                        <option value="I">I</option>
-                        <option value="J">J</option>
-                      </select>
-                  </td>
-
-                  <td>
-                      <select class="p-0" v-model="grupo.Semestre">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
+          <table class="table table-striped table-hover table-sm">
+            <thead style="background-color: rgb(128, 0, 0); border: solid rgb(128, 0, 0); color: white;">
+              <tr style="text-align: center;">
+                <th colspan="2">
+                  Dirigido a:
+                </th>
+                <th>
+                  Semestre:
+                </th>
+                <th colspan="2">
+                  No. beneficiados:
+                </th>
+                <th>
+                  Acciones
+                </th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr style="text-align: center;" v-for="(grupo, key) in grupos" :key="key">
+                <td colspan="2">
+                  <!-- Example single danger button -->
+                    <select class="custom-select" v-model="grupo.Grupo" style="width: 50px">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                      <option value="F">F</option>
+                      <option value="G">G</option>
+                      <option value="H">H</option>
+                      <option value="I">I</option>
+                      <option value="J">J</option>
                     </select>
-                  </td>
+                </td>
 
-                  <td colspan="2">
-                    <input type="number" min="0" class="p-0  pl-1 w-25" placeholder="0" v-model="grupo.Cantidad">
-                  </td>
-                  <td>
-                    <button @click="eliminarGrupo(grupo, key)" class="btn btn-danger btn-sm p-0 pr-xl-1 pl-xl-1"><i class="far fa-trash-alt"></i></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button @click="agregarGrupo" class="btn btn-primary p-0 pl-1 pr-1 float-right"><i class="fas fa-plus-circle"></i></button>
+                <td>
+                    <select class="custom-select text-center" style="width: 50px" v-model="grupo.Semestre">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                  </select>
+                </td>
+
+                <td colspan="2">
+                  <center><input type="number" min="0" class="form-control" placeholder="0" v-model="grupo.Cantidad" style="width: 50px"></center>
+                </td>
+                <td>
+                  <button @click="eliminarGrupo(grupo, key)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button @click="agregarGrupo" class="btn btn-primary p-0 pl-1 pr-1 float-right"><i class="fas fa-plus-circle"></i> Agregar</button>
               
           <div>
             <label><b>Nombre del responsable:</b></label>
