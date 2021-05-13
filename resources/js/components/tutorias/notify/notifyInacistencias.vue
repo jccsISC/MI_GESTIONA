@@ -57,11 +57,11 @@
         methods: {
             julioselacome(alumno) {
                 const riendo = {};
-                // alumno.inasistenciasMateria.forEach(k => {
-                //     if (!) {
+                alumno.inasistenciasMateria.forEach(k => {
+                    // if (!) {
 
-                //     }
-                // });
+                    // }
+                });
              },
             unidad(inasistencias) {
                 if (inasistencias && inasistencias.length) {

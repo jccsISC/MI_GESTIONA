@@ -7688,10 +7688,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     julioselacome: function julioselacome(alumno) {
-      var riendo = {}; // alumno.inasistenciasMateria.forEach(k => {
-      //     if (!) {
-      //     }
-      // });
+      var riendo = {};
+      alumno.inasistenciasMateria.forEach(function (k) {// if (!) {
+        // }
+      });
     },
     unidad: function unidad(inasistencias) {
       if (inasistencias && inasistencias.length) {
