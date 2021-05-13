@@ -144,11 +144,16 @@
             this.saveJustificante();
           }
         },
-        saveJustificante() {      
+        saveJustificante() {
           if (this.justificante.FechaInicio == undefined || this.justificante.FechaFin == undefined 
               || this.justificante.Motivo == undefined) {
               alert('Verifique y llene todos los campos');
               return;
+          }
+
+          if ((new Date(this.justificante.FechaInicio)).getTime() > (new Date(this.justificante.FechaFin)).getTime()) {
+            alert('La fecha inicio no puede ser mayor que la fecha fin')
+            return;
           }
 
           axios.post('/trabajosocial/'+ this.alumno.IdAlumno+'/justificantes', this.justificante)

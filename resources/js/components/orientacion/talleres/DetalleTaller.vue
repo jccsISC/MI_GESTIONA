@@ -132,10 +132,18 @@
         guardar() {
            if (this.taller.Fecha == undefined || this.taller.Hora == undefined 
               || this.taller.Nombre == undefined || this.taller.Institucion == undefined
-              || this.grupo.Grupo == undefined || this.grupo.Semestre == undefined
-              || this.grupo.Cantidad == undefined || this.taller.Responsable == undefined) {
+               || this.taller.Responsable == undefined) {
                   alert('Verifique y llene todos los campos');
                   return;
+          }
+
+  
+
+          for (let grupo of this.grupos) {
+            if (grupo.Grupo == undefined || grupo.Semestre == undefined || grupo.Cantidad == undefined) {
+              alert('el julio se la come riendo a carcajadas');
+              return;
+            }
           }
 
           this.taller.grupos = this.grupos;

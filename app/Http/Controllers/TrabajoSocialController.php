@@ -15,8 +15,8 @@ class TrabajoSocialController extends Controller
     public function alumnos(Request $request) {
 
         $year=date('Y');
-        $month=date('m');;
-        $day=date('d');;
+        $month=date('m');
+        $day=date('d');
          
         # Obtenemos el numero de la semana
         $semana=date("W",mktime(0,0,0,$month,$day,$year));
@@ -39,8 +39,9 @@ class TrabajoSocialController extends Controller
         $data = tblalumno::whereHas($tipo, function($q) use($a, $b)
         {
             $q->whereBetween('Fecha', [$a, $b])->havingRaw('count(*) > 3');
-        
-        })->with($tipo)->get();
+        })->with([$tipo => function($query) use($a, $b) {
+            $query->whereBetween('Fecha', [$a, $b]);
+        }])->get();
         
         return [
             'data' => $data,

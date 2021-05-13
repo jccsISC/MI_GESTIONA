@@ -73,14 +73,15 @@
                 }   
             },
             eliminarBeca(beca) {
+                console.log('eliminar beca', beca);
                 const confirmacion = confirm(`¿Está seguro que desea eliminar la beca ${beca.Nombre}?`);
                  // Lo elimina en la base de datos.
                 if(confirmacion){
-                    axios.delete(`/becas/${beca.IdBec}`)
+                    axios.delete(`/becas/${beca.IdBeca}`)
                     .then(() => {
                         // Lo elimina de manera visual.
                         const becas = [...this.becas];
-                        const key = becas.findIndex(beca => beca.IdBec === beca.IdBec);
+                        const key = becas.findIndex(b => b.IdBeca === beca.IdBeca);
                         if (key >= 0) {
                             becas.splice(key,1);
                             this.$set(this, 'becas', [...becas])

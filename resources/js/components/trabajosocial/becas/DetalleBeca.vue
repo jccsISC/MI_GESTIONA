@@ -61,6 +61,7 @@
            $('#DetalleBeca').modal('hide');
         })
         .catch(error => {
+          alert('No puede tener dos becas del mismo tipo');
           console.log('no es valido');
           console.log(error);
         });

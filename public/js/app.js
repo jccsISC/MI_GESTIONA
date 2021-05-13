@@ -5361,9 +5361,37 @@ __webpack_require__.r(__webpack_exports__);
     guardar: function guardar() {
       var _this2 = this;
 
-      if (this.taller.Fecha == undefined || this.taller.Hora == undefined || this.taller.Nombre == undefined || this.taller.Institucion == undefined || this.grupo.Grupo == undefined || this.grupo.Semestre == undefined || this.grupo.Cantidad == undefined || this.taller.Responsable == undefined) {
+      if (this.taller.Fecha == undefined || this.taller.Hora == undefined || this.taller.Nombre == undefined || this.taller.Institucion == undefined || this.taller.Responsable == undefined) {
         alert('Verifique y llene todos los campos');
         return;
+      }
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.grupos[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var grupo = _step.value;
+
+          if (grupo.Grupo == undefined || grupo.Semestre == undefined || grupo.Cantidad == undefined) {
+            alert('el julio se la come riendo a carcajadas');
+            return;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
       }
 
       this.taller.grupos = this.grupos;
@@ -5604,6 +5632,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     eliminarBeca: function eliminarBeca(beca) {
+      console.log('el julio se la come', beca);
       this.onDelete(beca);
       $('#addBeca').modal('hide');
     },
@@ -5813,6 +5842,7 @@ __webpack_require__.r(__webpack_exports__);
 
         $('#DetalleBeca').modal('hide');
       })["catch"](function (error) {
+        alert('No puede tener dos becas del mismo tipo');
         console.log('no es valido');
         console.log(error);
       });
@@ -5921,15 +5951,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     eliminarBeca: function eliminarBeca(beca) {
       var _this3 = this;
 
+      console.log('eliminar beca', beca);
       var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la beca ".concat(beca.Nombre, "?")); // Lo elimina en la base de datos.
 
       if (confirmacion) {
-        axios["delete"]("/becas/".concat(beca.IdBec)).then(function () {
+        axios["delete"]("/becas/".concat(beca.IdBeca)).then(function () {
           // Lo elimina de manera visual.
           var becas = _toConsumableArray(_this3.becas);
 
-          var key = becas.findIndex(function (beca) {
-            return beca.IdBec === beca.IdBec;
+          var key = becas.findIndex(function (b) {
+            return b.IdBeca === beca.IdBeca;
           });
 
           if (key >= 0) {
@@ -6173,15 +6204,16 @@ __webpack_require__.r(__webpack_exports__);
         _this3.onSuccess(res);
       });
     },
-    eliminarDependencia: function eliminarDependencia(dependencia, key) {
+    eliminarDependencia: function eliminarDependencia(dependencia) {
       var _this4 = this;
 
       var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la dependencia ".concat(dependencia.Nombre, "?")); // Lo elimina en la base de datos.
 
       if (confirmacion) {
         axios["delete"]("/dependencias/".concat(dependencia.IdDependencia)).then(function (res) {
-          // Lo elimina de manera visual.
-          _this4.dependencias.splice(key, 1);
+          _this4.$emit('dependenciaEliminada', dependencia);
+
+          $('#addDepencencia').modal('hide');
         });
       }
     }
@@ -6199,6 +6231,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -6291,16 +6326,13 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    eliminarDependencia: function eliminarDependencia(dependencia, key) {
-      var _this3 = this;
+    eliminarDependencia: function eliminarDependencia(dependencia) {
+      var index = this.dependencias.findIndex(function (julio) {
+        return julio.IdDependencia == dependencia.IdDependencia;
+      });
 
-      var confirmacion = confirm("\xBFEst\xE1 seguro que desea eliminar la dependencia ".concat(dependencia.Nombre, "?")); // Lo elimina en la base de datos.
-
-      if (confirmacion) {
-        axios["delete"]("/dependencias/".concat(dependencia.IdDependencia)).then(function (res) {
-          // Lo elimina de manera visual.
-          _this3.dependencias.splice(key, 1);
-        });
+      if (index >= 0) {
+        this.dependencias.splice(index, 1);
       }
     }
   }
@@ -6472,6 +6504,11 @@ __webpack_require__.r(__webpack_exports__);
     saveJustificante: function saveJustificante() {
       if (this.justificante.FechaInicio == undefined || this.justificante.FechaFin == undefined || this.justificante.Motivo == undefined) {
         alert('Verifique y llene todos los campos');
+        return;
+      }
+
+      if (new Date(this.justificante.FechaInicio).getTime() > new Date(this.justificante.FechaFin).getTime()) {
+        alert('La fecha inicio no puede ser mayor que la fecha fin');
         return;
       }
 
@@ -6811,8 +6848,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
 //
 //
 //
@@ -7626,6 +7661,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7649,6 +7687,12 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    julioselacome: function julioselacome(alumno) {
+      var riendo = {}; // alumno.inasistenciasMateria.forEach(k => {
+      //     if (!) {
+      //     }
+      // });
+    },
     unidad: function unidad(inasistencias) {
       if (inasistencias && inasistencias.length) {
         return inasistencias[0].parcial;
@@ -54215,23 +54259,25 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.eliminarBeca(_vm.beca)
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "far fa-trash-alt" }, [
-                      _vm._v(" Eliminar")
-                    ])
-                  ]
-                ),
+                _vm.beca.IdBeca
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarBeca(_vm.beca)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "far fa-trash-alt" }, [
+                          _vm._v(" Eliminar")
+                        ])
+                      ]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -55212,25 +55258,24 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        return _vm.eliminarDependencia(
-                          _vm.dependencia,
-                          _vm.keydependencia
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "far fa-trash-alt" }),
-                    _vm._v(" Eliminar")
-                  ]
-                ),
+                _vm.dependencia.IdDependencia
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarDependencia(_vm.dependencia)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "far fa-trash-alt" }),
+                        _vm._v(" Eliminar")
+                      ]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "button",
@@ -55468,6 +55513,9 @@ var render = function() {
       _vm._v(" "),
       _c("crear-dependencia", {
         on: {
+          dependenciaEliminada: function($event) {
+            return _vm.eliminarDependencia($event)
+          },
           dependenciaActualizada: function($event) {
             return _vm.actualizarDependencia($event)
           }
@@ -56452,118 +56500,111 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "contenedorCard" },
-    [
-      _c("p", { staticClass: "subtitulos" }, [
-        _vm._v(
-          _vm._s(
-            _vm.tipo === "ss" ? "Servicio social" : "Practicas profesionales"
-          )
+  return _c("div", { staticClass: "contenedorCard" }, [
+    _c("p", { staticClass: "subtitulos" }, [
+      _vm._v(
+        _vm._s(
+          _vm.tipo === "ss" ? "Servicio social" : "Practicas profesionales"
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "micardsm colorText",
-          attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
-        },
-        [
-          _vm.alumno.IdAlumno
-            ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
-                _c("div", [
-                  _vm.alumno.IdAlumno
-                    ? _c(
-                        "div",
-                        { staticClass: "float-right m-0 mr-2" },
-                        [
-                          !_vm.practica.IdServPrac
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary btn-sm",
-                                  attrs: {
-                                    type: "button",
-                                    "data-toggle": "modal",
-                                    "data-target":
-                                      "#addPractServenAlumn" + _vm.tipo
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.$emit(
-                                        "agregarPracticaAlumno",
-                                        _vm.alumno
-                                      )
-                                    }
-                                  }
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "micardsm colorText",
+        attrs: { "data-toggle": "modal", "data-target": "#addPracticas" }
+      },
+      [
+        _vm.alumno.IdAlumno
+          ? _c("div", { staticClass: "contenedorPracticasServicio" }, [
+              _c("div", [
+                _vm.alumno.IdAlumno
+                  ? _c(
+                      "div",
+                      { staticClass: "float-right m-0 mr-2" },
+                      [
+                        !_vm.practica.IdServPrac
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary btn-sm",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target":
+                                    "#addPractServenAlumn" + _vm.tipo
                                 },
-                                [_c("i", { staticClass: "fas fa-plus-circle" })]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.practica.IdServPrac
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.eliminarPractica()
-                                    }
+                                on: {
+                                  click: function($event) {
+                                    return _vm.$emit(
+                                      "agregarPracticaAlumno",
+                                      _vm.alumno
+                                    )
                                   }
-                                },
-                                [_c("i", { staticClass: "far fa-trash-alt" })]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c("add-practservi-alumn", {
-                            attrs: { tipo: _vm.tipo },
-                            on: {
-                              practicaAlumnoAgregada: function($event) {
-                                _vm.practica = $event
-                              }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-plus-circle" })]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.practica.IdServPrac
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger btn-sm",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.eliminarPractica()
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "far fa-trash-alt" })]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("add-practservi-alumn", {
+                          attrs: { tipo: _vm.tipo },
+                          on: {
+                            practicaAlumnoAgregada: function($event) {
+                              _vm.practica = $event
                             }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mt-2" }, [
-                    _c("b", [_vm._v("Dependencia: ")]),
-                    _vm._v(
-                      " " +
-                        _vm._s(
-                          _vm.practica.dependencia
-                            ? _vm.practica.dependencia.Nombre
-                            : ""
-                        ) +
-                        " "
+                          }
+                        })
+                      ],
+                      1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mt-1" }, [
-                    _c("b", [_vm._v("Fecha inicio: ")]),
-                    _vm._v(" " + _vm._s(_vm.practica.FechaInicio))
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "mt-1" }, [
-                    _c("b", [_vm._v("Fecha fin: ")]),
-                    _vm._v(" " + _vm._s(_vm.practica.FechaFin) + " ")
-                  ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-2" }, [
+                  _c("b", [_vm._v("Dependencia: ")]),
+                  _vm._v(
+                    " " +
+                      _vm._s(
+                        _vm.practica.dependencia
+                          ? _vm.practica.dependencia.Nombre
+                          : ""
+                      ) +
+                      " "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-1" }, [
+                  _c("b", [_vm._v("Fecha inicio: ")]),
+                  _vm._v(" " + _vm._s(_vm.practica.FechaInicio))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-1" }, [
+                  _c("b", [_vm._v("Fecha fin: ")]),
+                  _vm._v(" " + _vm._s(_vm.practica.FechaFin) + " ")
                 ])
               ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("crear-dependencia")
-    ],
-    1
-  )
+            ])
+          : _vm._e()
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -57906,10 +57947,11 @@ var render = function() {
                           attrs: { src: "images/circleRojo.png", alt: "" }
                         }),
                         _vm._v(
-                          " " +
+                          " \n                        " +
                             _vm._s(inasistencia.materia) +
                             " - " +
-                            _vm._s(inasistencia.data.length)
+                            _vm._s(inasistencia.data.length) +
+                            "\n                    "
                         )
                       ]
                     )
