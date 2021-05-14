@@ -183,12 +183,12 @@
                     // });
 
                     this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
-                    this.reporte.user_id = this.users.id
+                    this.reporte.user_id = 2
                     console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
                     if (this.tipo == 'crear') {
 
                         this.reporte.Unidad = this.alumno.Unidad;
-                        axios.post('/yonoAbandono'+ this.reporte.IdYonoabandono).then(res => {
+                        axios.post('/yonoAbandono', this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
@@ -199,7 +199,7 @@
                         });
                     } else {
 
-                        axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
+                        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             bus.$emit('reporteTuto', res.data);
