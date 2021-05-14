@@ -7221,13 +7221,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['userlogeado'],
@@ -7254,6 +7247,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this.alumno = alumno;
       _this.auth = JSON.parse(_this.userlogeado);
       _this.reporte.Nombrequienderiva = _this.auth.name;
+      _this.reporte.user_id = _this.users.id;
       _this.reporte.IdAlumno = alumno.IdAlumno;
 
       _this.jalarFamiliar();
@@ -7315,7 +7309,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log('guardando reporte 1', this.reporte);
 
-      if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined) {
+      if (this.reporte.Motivo == undefined || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined) {
         this.alertMessage = "Llene todos los campos";
         this.showError = true;
         setTimeout(function () {
@@ -7335,11 +7329,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         //     }
         // });
         this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+        this.reporte.user_id = this.users.id;
         console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
 
         if (this.tipo == 'crear') {
           this.reporte.Unidad = this.alumno.Unidad;
-          axios.post('/yonoAbandono' + this.reporte).then(function (res) {
+          axios.post('/yonoAbandono' + this.reporte.IdYonoabandono).then(function (res) {
             _this2.reporte = res.data;
             $('#reporteTuto').modal('hide'); // bus.$emit('incidenciaAgregada', res.data);
           })["catch"](function (error) {
@@ -12895,7 +12890,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentDetSalud{\n    height: 220px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 300px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n.scrollCalificaciones tbody,\n.scrollCalificaciones thead { \n    display: block;\n}\n.widthTable tbody, .widthTable thead {\n    display: block;   \n    width: 550px;\n}\n.scrollCalificaciones thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollCalificaciones tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollCalificaciones tbody {\n    max-height: 190px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentDetSalud{\n    height: 220px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 320px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n    height: 80%;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n.scrollCalificaciones tbody,\n.scrollCalificaciones thead { \n    display: block;\n}\n.widthTable tbody, .widthTable thead {\n    display: block;   \n    width: 550px;\n}\n.scrollCalificaciones thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollCalificaciones tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollCalificaciones tbody {\n    max-height: 190px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
 
 // exports
 
@@ -46742,9 +46737,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "labelS" }, [
-          _vm.alumno.IdAlumno
-            ? _c("div", { staticClass: "float" }, [_vm._m(5)])
-            : _vm._e(),
+          _vm.alumno.IdAlumno ? _c("div", [_vm._m(5)]) : _vm._e(),
           _vm._v(" "),
           _vm.alumno.IdAlumno
             ? _c("div", { staticClass: "inforP2" }, [
@@ -47597,16 +47590,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "mifoto" }, [
       _c("img", {
         attrs: { src: "images/student.png", alt: "Foto del Alumno" }
-      }),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "text-center",
-          staticStyle: { "text-shadow": "1px 1px 5px #2c2b2b86" }
-        },
-        [_vm._v("Regular")]
-      )
+      })
     ])
   },
   function() {
@@ -47633,8 +47617,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("b", [
-      _c("p", { staticClass: "m-0 p-0" }, [_vm._v("LUGRAR DE NACIMIENTO")])
+    return _c("label", { staticClass: "mt-2" }, [
+      _c("b", [_vm._v("LUGRAR DE NACIMIENTO")])
     ])
   },
   function() {
@@ -56907,26 +56891,6 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "miGrid2 mt-1" }, [
-                  _vm.errors.length
-                    ? _c("p", [
-                        _c("b", [
-                          _vm._v(
-                            "Por favor, corrija el(los) siguiente(s) error(es): "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "ul",
-                          _vm._l(_vm.errors, function(error, key) {
-                            return _c("li", { key: key }, [
-                              _vm._v(_vm._s(error))
-                            ])
-                          }),
-                          0
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
                   _c("div", [
                     _c("div", [
                       _vm._m(3),

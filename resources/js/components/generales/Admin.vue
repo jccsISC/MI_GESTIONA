@@ -7,7 +7,7 @@
             <div v-if="alumno.IdAlumno" class="inforP">
                 <div class="mifoto">
                     <img src="images/student.png" alt="Foto del Alumno">
-                    <p class="text-center" style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p>
+                    <!-- <p class="text-center" style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p> -->
                 </div>
 
                 <div class="subGrid">
@@ -56,8 +56,8 @@
             </div>
 
             <div class="labelS">
-                <div v-if="alumno.IdAlumno" class="float">
-                    <b><p class="m-0 p-0">LUGRAR DE NACIMIENTO</p></b>
+                <div v-if="alumno.IdAlumno">
+                    <label class="mt-2"><b>LUGRAR DE NACIMIENTO</b></label>
                 </div>
                 
                 <div v-if="alumno.IdAlumno" class="inforP2">
@@ -589,7 +589,7 @@
 
     .contentInf{
         width: 100%;
-        height: 300px;
+        height: 320px;
         background: white;
         border: 1px solid rgb(165, 164, 164);
         border-radius: 3px;
@@ -673,6 +673,7 @@
     .tableCalf{
         border: 1px solid rgb(202, 201, 201);
         border-radius: 4px;
+        height: 80%;
     }
 
     .gridTS{

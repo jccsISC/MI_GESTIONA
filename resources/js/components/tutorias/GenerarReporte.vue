@@ -30,13 +30,6 @@
                     <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
                     
                     <div class="miGrid2 mt-1">
-                        <p v-if="errors.length">
-                            <b>Por favor, corrija el(los) siguiente(s) error(es): </b>
-                            <ul>
-                                <li v-for="(error, key) in errors" :key="key">{{error}}</li>
-                            </ul>
-                        </p>
-
                         <div>
                             <div>
                                 <p class="m-0"><b>Padre</b></p>
@@ -135,6 +128,7 @@
                 this.alumno = alumno;   
                 this.auth = JSON.parse(this.userlogeado);
                 this.reporte.Nombrequienderiva = this.auth.name;
+                this.reporte.user_id = this.users.id
                 this.reporte.IdAlumno = alumno.IdAlumno; 
                 this.jalarFamiliar();   
                 this.jalarUsers();   
@@ -154,8 +148,8 @@
             async jalarFamiliar() {
 
                 const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
-                this.familiar = data
-                this.reporte.IdFamiliar = this.familiar.IdFamiliar
+                this.familiar = data;
+                this.reporte.IdFamiliar = this.familiar.IdFamiliar;
 
                 // axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
                 //     this.familiar = res.data;
@@ -163,11 +157,10 @@
                 // });
             },
             guardarReporte() {
-
                 console.log('guardando reporte 1', this.reporte)
                 
-               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined ) {
+               if (this.reporte.Motivo == undefined || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
+                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
 
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
@@ -190,11 +183,12 @@
                     // });
 
                     this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+                    this.reporte.user_id = this.users.id
                     console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
                     if (this.tipo == 'crear') {
 
                         this.reporte.Unidad = this.alumno.Unidad;
-                        axios.post('/yonoAbandono' + this.reporte).then(res => {
+                        axios.post('/yonoAbandono'+ this.reporte.IdYonoabandono).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
