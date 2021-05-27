@@ -1,5 +1,5 @@
 @extends('layouts.baseadmin')
-@section('title','Administrador')
+@section('title','Adminiswhatrador')
 
 @section('content')
     <admin role="{{auth()->user()->roles->first()->name}}"></admin>

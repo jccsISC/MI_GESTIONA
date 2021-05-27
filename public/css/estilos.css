@@ -417,7 +417,7 @@ footer{
     /*TODO VENTANAS NOTIFICACIONES--------------------------------------------------------------------------------*/    
         .micardNotificaciones{
             width: 96%;
-            height: 100px;
+            height: 110px;
             background-color: white;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
             border-radius: 8px;
@@ -431,13 +431,9 @@ footer{
         }
         #info-academica{
             float:left; 
-            width:48%;
-            margin: 10px 1%;
         }
         #info-faltas{
             float: right;
-            width:48%;
-            margin: 10px 1%;
         }
 
         .micardNotificaciones:hover{

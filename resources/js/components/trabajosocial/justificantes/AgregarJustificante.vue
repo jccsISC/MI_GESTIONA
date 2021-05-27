@@ -16,13 +16,6 @@
 
         <div class="modal-body">
           <form @submit.prevent="onSubmit">
-            <div v-if="!ver" class="form-group">
-			          <select v-model="tipo">
-                  <option value="justificante">Justificante</option>
-                  <option value="pase">Pase de salida</option>
-                </select>
-            </div>
-
             <button  v-if="ver && role!='admin' && role!='tutor' && role!='orientador'" class="btn mibtnE btn-sm float-right p-0 pl-1 pr-1" @click="eliminarJustiPase()">
               <i class="far fa-trash-alt"></i>
             </button>
@@ -35,26 +28,6 @@
             <button v-if="tipo == 'pase' && ver && role!='admin' && role!='tutor' && role!='orientador'" type="button" class="mibtnI btnImprimirPase ">
                <a :href="'imprimirPase/'+ pase.IdPaseSal" class="link"><i class="fas fa-print"></i></a>
             </button>
-
-            <div v-if="tipo === 'justificante'" class="form-group">
-			          <label><b>Fecha Inicio</b></label>
-			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha inicial" v-model="justificante.FechaInicio">
-		  	    </div>
-		  	  
-            <div v-if="tipo === 'justificante' " class="form-group">
-			          <label><b>Fecha Fin</b></label>
-			          <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha final" v-model="justificante.FechaFin">
-		  	    </div>
-
-            <div v-if="tipo === 'justificante' " class="form-group">
-			          <label><b>Motivo</b></label>
-			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
-		  	    </div>
-
-            <div v-if="tipo === 'pase' " class="form-group">
-			          <label v-if="ver"><b>Fecha: </b>{{ pase.Fecha }}</label>
-		  	    </div>
-
             <div v-if="tipo === 'pase' " class="form-group">
                 <div v-if="!ver">
                     <p class="m-0"><b>Padre</b></p>
@@ -68,10 +41,39 @@
                     <p class="m-0"><b>Telefóno: </b>{{familiar.TelefonoMadre}}</p>
                 </div>
 		  	    </div>
-		  	  
+
+            <div class="row">
+              <div v-if="!ver" class="col-md-6">
+                  <label><b>Pase/Justificante</b></label>
+                  <select v-model="tipo" class="custom-select">
+                    <option value="justificante">Justificante</option>
+                    <option value="pase">Pase de salida</option>
+                  </select>
+              </div>
+              
+              <div v-if="tipo === 'justificante' " class="form-group col-md-6">
+                  <label><b>Motivo</b></label>
+                  <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="justificante.Motivo">
+              </div>
+
+              <div v-if="tipo === 'pase' " class="form-group col-md-6">
+                  <label><b>Motivo</b></label>
+                  <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="pase.Motivo">
+              </div>
+            </div>
+            <div class="row">
+              <div v-if="tipo === 'justificante'" class="form-group col-md-6">
+                  <label><b>Fecha Inicio</b></label>
+                  <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha inicial" v-model="justificante.FechaInicio">
+              </div>
+            
+              <div v-if="tipo === 'justificante' " class="form-group col-md-6">
+                  <label><b>Fecha Fin</b></label>
+                  <input :disabled="ver" type="date" class="form-control" placeholder="Ingresa la fecha final" v-model="justificante.FechaFin">
+              </div>
+            </div>
             <div v-if="tipo === 'pase' " class="form-group">
-			          <label><b>Motivo</b></label>
-			          <input :disabled="ver" type="text" class="form-control" placeholder="Ingresa el motivo del justificante" v-model="pase.Motivo">
+			          <label v-if="ver"><b>Fecha: </b>{{ pase.Fecha }}</label>
 		  	    </div>
 
             <div v-if="tipo === 'pase' " class="form-group">

@@ -49,7 +49,7 @@
             </div>
         </header>
         <ver-usuarios></ver-usuarios>
-        <!-- <edit-contra></edit-contra> -->
+        
         @yield('content')
 
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
@@ -80,8 +80,6 @@
     .cerrar a{
         color: white;
     }
-
-    
 
 </style>
 

@@ -1,4 +1,4 @@
-<template>
+// <template>
     <div class="contenedorCard">
         <p class="subtitulos">Faltas por asignatura</p>
         <div class="micard scrollTCalif colorText">
