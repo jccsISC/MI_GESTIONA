@@ -6034,6 +6034,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo'],
   data: function data() {
@@ -51920,7 +51922,7 @@ var render = function() {
               "table",
               {
                 staticClass:
-                  "table table-striped table-hover contentTable table  scrollTalleres table-sm table-bordered "
+                  "table table-striped table-hover contentTable table  scrollTalleres table-bordered p-0"
               },
               [
                 _vm._m(0),
@@ -51930,7 +51932,11 @@ var render = function() {
                   _vm._l(_vm.grupos, function(grupo, key) {
                     return _c(
                       "tr",
-                      { key: key, staticStyle: { "text-align": "center" } },
+                      {
+                        key: key,
+                        staticClass: "p-0",
+                        staticStyle: { "text-align": "center" }
+                      },
                       [
                         _c(
                           "td",
@@ -51977,6 +51983,7 @@ var staticRenderFns = [
     return _c(
       "thead",
       {
+        staticClass: "p-0",
         staticStyle: {
           "background-color": "#800000",
           border: "solid #800000",
@@ -51988,6 +51995,7 @@ var staticRenderFns = [
         _c(
           "tr",
           {
+            staticClass: "p-0",
             staticStyle: {
               border: "solid #800000",
               "border-radius": "8px 8px 0px 0px"
@@ -52142,7 +52150,7 @@ var render = function() {
               "div",
               {
                 key: key,
-                staticClass: "cardTaller izeTaller text-center ml-4 mb-3",
+                staticClass: "cardTaller izeTaller text-center mr-4 mb-3",
                 attrs: {
                   "data-toggle": "modal",
                   "data-target": "#detalleTaller"
@@ -52178,7 +52186,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btnaddTaller ml-4",
+              staticClass: "btnaddTaller mr-4git",
               attrs: {
                 "data-toggle": "modal",
                 "data-target": "#detalleTaller"
@@ -54373,7 +54381,8 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm bg-primary p-0 pl-2 pr-2",
+                  staticClass: "btn btn-primary btn-sm mr-2 float-right",
+                  staticStyle: { "margin-top": "40px" },
                   attrs: {
                     type: "button",
                     "data-toggle": "modal",
@@ -54411,6 +54420,7 @@ var render = function() {
             {
               key: key,
               staticClass: "micardBeca mt-1",
+              staticStyle: { width: "320px" },
               on: {
                 click: function($event) {
                   return _vm.$emit("actualizarBeca", beca)
@@ -54505,6 +54515,7 @@ var render = function() {
                           expression: "becaSeleccionada"
                         }
                       ],
+                      staticClass: "custom-select",
                       attrs: { required: "" },
                       on: {
                         change: function($event) {
@@ -54826,7 +54837,7 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "form-group ml-0" }, [
+                _c("div", { staticStyle: { width: "220px" } }, [
                   _vm._m(1),
                   _vm._v(" "),
                   _c(
@@ -54840,6 +54851,7 @@ var render = function() {
                           expression: "practica.IdDependencias"
                         }
                       ],
+                      staticClass: "custom-select ml-0 form-control",
                       attrs: { required: "" },
                       on: {
                         change: function($event) {
@@ -54875,68 +54887,82 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group ml-0" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.practica.FechaInicio,
-                        expression: "practica.FechaInicio"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      placeholder: "Ingresa la fecha inicial",
-                      required: ""
-                    },
-                    domProps: { value: _vm.practica.FechaInicio },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group ml-0 form-group col-md-6" },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.practica.FechaInicio,
+                            expression: "practica.FechaInicio"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "date",
+                          placeholder: "Ingresa la fecha inicial",
+                          required: ""
+                        },
+                        domProps: { value: _vm.practica.FechaInicio },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.practica,
+                              "FechaInicio",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.practica,
-                          "FechaInicio",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group ml-0" }, [
-                  _vm._m(3),
+                      })
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.practica.FechaFin,
-                        expression: "practica.FechaFin"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      placeholder: "Ingresa el nombre de la dependencia",
-                      required: ""
-                    },
-                    domProps: { value: _vm.practica.FechaFin },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "div",
+                    { staticClass: "form-group ml-0 form-group col-md-6" },
+                    [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.practica.FechaFin,
+                            expression: "practica.FechaFin"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "date",
+                          placeholder: "Ingresa el nombre de la dependencia",
+                          required: ""
+                        },
+                        domProps: { value: _vm.practica.FechaFin },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.practica,
+                              "FechaFin",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(_vm.practica, "FechaFin", $event.target.value)
-                      }
-                    }
-                  })
+                      })
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _vm._m(4)
@@ -56149,7 +56175,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary btn-sm mr-2 mt-2 float-right",
+                  staticClass: "btn btn-primary btn-sm mr-2 mt-1 float-right",
                   attrs: {
                     type: "button",
                     "data-toggle": "modal",

@@ -18,7 +18,7 @@
       	  <form @submit.prevent="saveBeca">
 	          <div class="form-group">
 			        <label>Nombre</label>
-			        <select  required v-model="becaSeleccionada">
+			        <select class="custom-select" required v-model="becaSeleccionada">
                 <option  v-for="(beca, key) in becas" :key="key" :value="beca.IdBeca">{{beca.Nombre}} - {{beca.Tipo}}</option>
               </select>
 		  	    </div>

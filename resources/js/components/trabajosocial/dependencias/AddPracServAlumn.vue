@@ -17,21 +17,23 @@
         <div class="modal-body">
       	  <form @submit.prevent="savePractica">
           
-            <div class="form-group ml-0">
+            <div style="width: 220px;">
               <p class="mLabel"><b>Dependencia</b></p>
-              <select required v-model="practica.IdDependencias">
+              <select class="custom-select ml-0 form-control" required v-model="practica.IdDependencias">
                   <option  v-for="(dependencia, key) in dependencias" :key="key" :value="dependencia.IdDependencia">{{dependencia.Nombre}}</option>
               </select>
             </div>
           
-            <div class="form-group ml-0">
-                <label class="mLabel"><b>Fecha inicio</b></label>
-                <input type="date" class="form-control" placeholder="Ingresa la fecha inicial" required v-model="practica.FechaInicio">
-            </div>
-            
-            <div class="form-group ml-0">
-                <label class="mLabel"><b>Fecha final</b></label>
-                <input type="date" class="form-control" placeholder="Ingresa el nombre de la dependencia" required v-model="practica.FechaFin">
+            <div class="row">
+              <div class="form-group ml-0 form-group col-md-6">
+                  <label class="mLabel"><b>Fecha inicio</b></label>
+                  <input type="date" class="form-control" placeholder="Ingresa la fecha inicial" required v-model="practica.FechaInicio">
+              </div>
+              
+              <div class="form-group ml-0 form-group col-md-6">
+                  <label class="mLabel"><b>Fecha final</b></label>
+                  <input type="date" class="form-control" placeholder="Ingresa el nombre de la dependencia" required v-model="practica.FechaFin">
+              </div>
             </div>
             
             <button type="submit" class="btn miBtn float-right p-0 pl-1 pr-1"><i class="far fa-save"></i> Guardar</button>

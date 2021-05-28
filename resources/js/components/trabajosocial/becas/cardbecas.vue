@@ -2,7 +2,7 @@
 <div>
     <div class="contenedorCard">
         <div v-if="alumno.IdAlumno" class="float-right">
-            <button type="button" class="btn btn-sm bg-primary p-0 pl-2 pr-2" data-toggle="modal" data-target="#DetalleBeca"
+            <button style="margin-top: 40px;" type="button" class="btn btn-primary btn-sm mr-2 float-right" data-toggle="modal" data-target="#DetalleBeca"
                 @click="$emit('agregarBecaAlumno', alumno)">
                 <i class="fas fa-plus-circle"></i>
             </button>
@@ -12,7 +12,7 @@
         
         <p class="subtitulos">Becas</p>
         <div class="micardB colorText p-1">
-            <div v-for="(beca, key) in becas" :key="key" class="micardBeca mt-1" @click="$emit('actualizarBeca', beca)">
+            <div style="width:320px;" v-for="(beca, key) in becas" :key="key" class="micardBeca mt-1" @click="$emit('actualizarBeca', beca)">
                 <label><b>{{beca.Tipo}}</b> {{beca.Nombre}}</label>
                 <button class="btn btn-danger btn-sm float-right p-0 pr-xl-1 pl-xl-1" @click="eliminarBecaAlumno(beca, key)"><i class="far fa-trash-alt"></i></button>
             </div>
