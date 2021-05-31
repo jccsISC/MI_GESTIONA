@@ -13112,7 +13112,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.historialTalleres{\n    width: 100%;\n    height: 550px;\n    margin-bottom: 2rem;\n    background-color: white;\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.scrollTalleres tbody,\n.scrollTalleres thead { \n    display: block;\n}\n.scrollTalleres thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollTalleres tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollTalleres tbody {\n    max-height: 250px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollTalleres tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollTalleres tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
+exports.push([module.i, "\n.historialTalleres{\n    width: 100%;\n    height: 550px;\n    margin-bottom: 2rem;\n    background-color: white;\n    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.4);\n    border-radius: 8px;\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    border: 1px solid rgb(211, 211, 211);\n}\n.scrollTalleres tbody,\n.scrollTalleres thead { \n    display: block;\n}\n.scrollTalleres thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollTalleres tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollTalleres tbody {\n    max-height: 490px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollTalleres tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollTalleres tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n", ""]);
 
 // exports
 
@@ -51922,7 +51922,7 @@ var render = function() {
               "table",
               {
                 staticClass:
-                  "table table-striped table-hover contentTable table  scrollTalleres table-bordered p-0"
+                  "table table-striped table-hover scrollTalleres table-bordered p-0"
               },
               [
                 _vm._m(0),
@@ -59036,7 +59036,7 @@ var render = function() {
                       staticStyle: {
                         position: "absolute",
                         right: "16px",
-                        top: "48px"
+                        top: "70px"
                       },
                       attrs: {
                         "data-toggle": "modal",

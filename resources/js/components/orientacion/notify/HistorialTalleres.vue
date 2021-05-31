@@ -3,7 +3,7 @@
         <p class="subtitulos">Historial de talleres tomados</p>
         <div class="historialTalleres colorText">
             <spinner v-show="loading"></spinner>
-            <table v-if="!loading" class="table table-striped table-hover contentTable table  scrollTalleres table-bordered p-0">
+            <table v-if="!loading" class="table table-striped table-hover scrollTalleres table-bordered p-0">
                 <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;" class="p-0">
                     <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;" class="p-0">
                         <th>Grupos</th>
@@ -86,7 +86,7 @@
     }
 
     .scrollTalleres tbody {
-        max-height: 250px;
+        max-height: 490px;
         overflow-y: auto;
         overflow-x: hidden;
     }
