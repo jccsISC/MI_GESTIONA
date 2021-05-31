@@ -2276,11 +2276,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 _ref = _context.sent;
                 data = _ref.data;
-                this.faltas = data; // axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
+                this.faltas = data;
+                console.log("Faltas del alumno: ", this.faltas); // axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
                 //     this.faltas = res.data;
                 // });
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -12884,7 +12885,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentDetSalud{\n    height: 220px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 320px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n    height: 80%;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n.scrollCalificaciones tbody,\n.scrollCalificaciones thead { \n    display: block;\n}\n.widthTable tbody, .widthTable thead {\n    display: block;   \n    width: 550px;\n}\n.scrollCalificaciones thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollCalificaciones tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollCalificaciones tbody {\n    max-height: 190px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n\n", ""]);
+exports.push([module.i, "\n.contentGeneral{\n    width: 100%; \n    height: 620px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 2px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 10px;\n    margin-bottom: 15px;\n    margin-top: 80px;\n    overflow: scroll;\n    overflow: auto;\n}\n.contentGeneral::-webkit-scrollbar{\n    width: 3px;\n}\n.contentGeneral::-webkit-scrollbar-thumb{\n    width: 3px;\n    background: #800000;\n}\n.contentGeneral p{\n    font-size: 14px;\n}\n.contentDetSalud{\n    height: 220px;\n    /* background: #eeeeee; */\n    overflow: scroll;\n    overflow: auto;\n    margin-right: 5px;\n}\n.contentDetSalud::-webkit-scrollbar{\n    width: 1px;\n}\n.contentDetSalud::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollH{\n    width: 525px;\n    background: rgba(247, 247, 247, 0.418);\n    /* border: 2px solid rgb(202, 201, 201); */\n    border-radius: 3px;\n    overflow-x: auto;\n    /* overflow-x: scroll; */\n    white-space: nowrap;\n}\n.scrollH::-webkit-scrollbar{\n    width: 1px;\n    height: 1px;\n}\n.scrollH::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.scrollJ{\n    width: 260px;\n    height: 100px;\n    background: rgba(247, 247, 247, 0.418);\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 3px;\n    padding: 5px;\n    overflow: scroll;\n    overflow:auto;\n}\n.scrollJ::-webkit-scrollbar{\n    width: 1px;\n}\n.scrollJ::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.contentInf{\n    width: 100%;\n    height: 320px;\n    background: white;\n    border: 1px solid rgb(165, 164, 164);\n    border-radius: 3px;\n    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4); */\n    padding: 10px;\n    margin: 0;\n    margin-bottom: 15px;\n}\n.borderTitle{\n    width: 100%;\n    height: 30px;\n    background: #d1d1d1;\n    border: 1px solid rgb(141, 141, 141);\n    border-radius: 3px;\n    text-align: center;\n    font-size: 14px;\n    margin-bottom: 3px;\n    color: #800000;\n}\n.inforP{\n    display: grid;\n    grid-template-columns: 1fr 4fr 4fr;\n    grid-template-rows: 135px;\n}\n.inforP2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.subGrid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-template-rows: 135px;\n}\n.mifoto{\n    width: 100px;\n    height: 100px;\n    border-radius: 8px;\n    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);\n    float: left;\n}\nimg{\n    width: 100%;\n}\n.linea{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 100px;\n    float: left;\n    margin-top: 20px;\n    margin-right: 10px;\n}\n.linea2{\n    border-left: 1px solid rgb(136, 136, 136);\n    height: 220px;\n    float: left;\n    margin-top: 30px;\n    margin-right: 15px;\n}\n.labelS{\n    font-size: 14px;\n}\n.gridM2{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n}\n.contentCalif{\n    height: 280px;\n    /* border: 1px solid rgb(202, 201, 201); */\n}\n.tableCalf{\n    border: 1px solid rgb(202, 201, 201);\n    border-radius: 4px;\n    height: 80%;\n}\n.gridTS{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr 1fr;\n    grid-template-rows: 280px;\n}\n.scrollCalificaciones tbody,\n.scrollCalificaciones thead { \n    display: block;\n}\n.widthTable tbody, .widthTable thead {\n    display: block;   \n    width: 550px;\n}\n.scrollCalificaciones thead tr th { \n    width: 5%;\n    height: 20px;\n    line-height: 20px;\n    /* background: #800000; */\n    /* color: white; */\n}\n.scrollCalificaciones tbody tr td { \n    width: 10%;\n    height: 20px;\n    line-height: 20px;\n}\n.scrollCalificaciones tbody {\n    max-height: 190px;\n    overflow-y: auto;\n    overflow-x: hidden;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar {\n    width: 1px;\n}\n.scrollCalificaciones tbody::-webkit-scrollbar-thumb{\n    width: 1px;\n    background: #800000;\n}\n.table-padding td, .table-padding th{\n    padding: 5px;\n}\n", ""]);
 
 // exports
 
@@ -13207,7 +13208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.divPrin {\n        width: 80%; \n        height: 620px;\n        border: 2px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 15px;\n        margin-top: 80px;\n        overflow: auto;\n}\n.divPrin::-webkit-scrollbar {\n        width: 3px;\n}\n.divPrin::-webkit-scrollbar-thumb {\n        width: 3px;\n        background: #800000;\n}\n.btnSelectAlumn{\n        width: 100%;\n        background: #ececec;\n        outline: none;\n        border: 1px solid #cecece;\n        padding: 5px;\n        margin: 0;\n        /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.btnSelectAlumn:hover{\n        background: #d4d4d4;\n        border: 1px solid #cecece;\n        /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\ntable.scrollIncidencias {\n        border-spacing: 0;\n}\n.scrollIncidencias tbody,\n    .scrollIncidencias thead { display: block;\n}\n.scrollIncidencias thead tr th { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n        background: #800000;\n        color: white;\n}\n.scrollIncidencias tbody tr td { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n}\n.scrollIncidencias tbody {\n        max-height: 250px;\n        overflow-y: auto;\n        overflow-x: hidden;\n}\n.scrollIncidencias tbody::-webkit-scrollbar {\n        width: 1px;\n}\n.scrollIncidencias tbody::-webkit-scrollbar-thumb{\n        width: 1px;\n        background: #800000;\n}\n.midiv{\n        width: 50%;\n        margin-right: auto;\n        margin-left: auto;\n        border: 1px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 10px;\n}\n.midiv p{\n        font-size: 15px;\n}\n.pbtn{\n        float:right;\n}\n\n    /* .posibuscador{\n        margin-left: 28%;\n    } */\n\n/*         \n    .buscadorR{\n        border-radius: 4px;\n        border: 1px solid rgb(146, 140, 140);\n        text-align: center;\n        padding: 1px;\n        font-size: 12px;\n        outline: none;/eliminar el resplandor al foco del input\n    } */\n\n    /* .buscadorR:focus{\n        border-color: dodgerblue;\n        box-shadow: 0 0 8px 0 dodgerblue;\n    } */\n.concluido{\n        border-radius: 3px;\n        background: rgb(27, 192, 27);\n        padding: 4px;\n} \n", ""]);
+exports.push([module.i, "\n.divPrin {\n        width: 80%; \n        height: 620px;\n        border: 2px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 15px;\n        margin-top: 80px;\n        overflow: auto;\n}\n.divPrin::-webkit-scrollbar {\n        width: 3px;\n}\n.divPrin::-webkit-scrollbar-thumb {\n        width: 3px;\n        background: #800000;\n}\n.btnSelectAlumn{\n        width: 100%;\n        background: #ececec;\n        outline: none;\n        border: 1px solid #cecece;\n        padding: 5px;\n        margin: 0;\n        /* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4); */\n}\n.btnSelectAlumn:hover{\n        background: #d4d4d4;\n        border: 1px solid #cecece;\n        /* box-shadow: 0 2px 4px 0 rgb(167, 11, 11); */\n}\ntable.scrollIncidencias {\n        border-spacing: 0;\n}\n.scrollIncidencias tbody,\n    .scrollIncidencias thead { display: block;\n}\n.scrollIncidencias thead tr th { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n        background: #800000;\n        color: white;\n}\n.scrollIncidencias tbody tr td { \n        width: 5%;\n        height: 20px;\n        line-height: 20px;\n}\n.scrollIncidencias tbody {\n        max-height: 250px;\n        overflow-y: auto;\n        overflow-x: hidden;\n}\n.scrollIncidencias tbody::-webkit-scrollbar {\n        width: 1px;\n}\n.scrollIncidencias tbody::-webkit-scrollbar-thumb{\n        width: 1px;\n        background: #800000;\n}\n.midiv{\n        width: 50%;\n        margin-right: auto;\n        margin-left: auto;\n        border: 1px solid rgb(223, 223, 223);\n        border-radius: 3px;\n        padding: 10px;\n        margin-bottom: 10px;\n}\n.midiv p{\n        font-size: 15px;\n}\n.pbtn{\n        float:right;\n}\n\n    /* .posibuscador{\n        margin-left: 28%;\n    } */\n\n/*         \n    .buscadorR{\n        border-radius: 4px;\n        border: 1px solid rgb(146, 140, 140);\n        text-align: center;\n        padding: 1px;\n        font-size: 12px;\n        outline: none;/eliminar el resplandor al foco del input\n    } */\n\n    /* .buscadorR:focus{\n        border-color: dodgerblue;\n        box-shadow: 0 0 8px 0 dodgerblue;\n    } */\n.concluido{\n        border-radius: 3px;\n        background: rgb(27, 192, 27);\n        padding: 4px;\n}\n.table-juan th{\n        background:#800000;\n        color: white;\n}\n.table-juan th, .table-juan td{\n        padding: 0.4rem;\n}\n", ""]);
 
 // exports
 
@@ -46856,7 +46857,7 @@ var render = function() {
                         "table",
                         {
                           staticClass:
-                            "table table-striped table-hover contentTable table scrollCalificaciones widthTable table-sm"
+                            "table table-striped table-hover table-padding"
                         },
                         [
                           _vm._m(11),
@@ -46876,32 +46877,36 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _vm._l(5, function(i) {
-                                    return _c("td", { key: i }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.unidad(calificacion.detalles, i)
+                                    return _c(
+                                      "td",
+                                      { key: i, staticClass: "text-center" },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.unidad(calificacion.detalles, i)
+                                          )
                                         )
-                                      )
-                                    ])
+                                      ]
+                                    )
                                   }),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { colspan: "2" } }, [
+                                  _c("td", { staticClass: "text-center" }, [
                                     _vm._v(
                                       _vm._s(calificacion.Calificacionfinal)
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", [
+                                  _c("td", { staticClass: "text-center" }, [
                                     _vm._v(
                                       _vm._s(
-                                        calificacion.Extra
-                                          ? calificacion.Extra
+                                        calificacion.Ordinario
+                                          ? calificacion.Ordinario
                                           : "NC"
                                       )
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", [
+                                  _c("td", { staticClass: "text-center" }, [
                                     _vm._v(
                                       _vm._s(
                                         calificacion.Inter
@@ -46911,11 +46916,11 @@ var render = function() {
                                     )
                                   ]),
                                   _vm._v(" "),
-                                  _c("td", [
+                                  _c("td", { staticClass: "text-center" }, [
                                     _vm._v(
                                       _vm._s(
-                                        calificacion.Ordinario
-                                          ? calificacion.Ordinario
+                                        calificacion.Extra
+                                          ? calificacion.Extra
                                           : "NC"
                                       )
                                     )
@@ -47658,7 +47663,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Asignaturas")]),
+        _c("th", { attrs: { colspan: "2" } }, [_vm._v("Asignaturas")]),
         _vm._v(" "),
         _c("th", [_vm._v("P1")]),
         _vm._v(" "),
@@ -47670,7 +47675,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("P5")]),
         _vm._v(" "),
-        _c("th", [_vm._v("P. Final")]),
+        _c("th", [_vm._v("P.Final")]),
         _vm._v(" "),
         _c("th", [_vm._v("Ordinario")]),
         _vm._v(" "),
@@ -53971,7 +53976,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias"
+                        "table table-striped table-hover contentTable table-bordered table-juan"
                     },
                     [
                       _vm._m(0, true),
@@ -54015,17 +54020,15 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", { attrs: { colspan: "3" } }, [
-                                _c("label", [
-                                  _vm._v(
-                                    _vm._s(
-                                      incidencia.Status
-                                        ? "Concluido"
-                                        : incidencia.Status === 0
-                                        ? "Pendiente"
-                                        : ""
-                                    )
+                                _vm._v(
+                                  _vm._s(
+                                    incidencia.Status
+                                      ? "Concluido"
+                                      : incidencia.Status === 0
+                                      ? "Pendiente"
+                                      : ""
                                   )
-                                ])
+                                )
                               ])
                             ]
                           )
@@ -54039,7 +54042,7 @@ var render = function() {
                     "table",
                     {
                       staticClass:
-                        "table table-striped table-hover contentTable table-bordered table-sm scrollIncidencias"
+                        "table table-striped table-hover contentTable table-bordered table-sm table-juan"
                     },
                     [
                       _vm._m(1, true),
@@ -54077,13 +54080,11 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("td", { attrs: { colspan: "3" } }, [
-                                _c("label", [
-                                  _vm._v(
-                                    _vm._s(
-                                      reporte.Status ? "Concluido" : "Pendiente"
-                                    )
+                                _vm._v(
+                                  _vm._s(
+                                    reporte.Status ? "Concluido" : "Pendiente"
                                   )
-                                ])
+                                )
                               ]),
                               _vm._v(" "),
                               _c("td", { attrs: { colspan: "4" } }, [

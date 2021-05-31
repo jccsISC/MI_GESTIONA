@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\tblalumno;
 use App\tblhorariomaestros;
 use App\tblinasistencias;
+use App\tblincidencias;
 use App\User;
 
 class FaltasController extends Controller
@@ -19,7 +20,7 @@ class FaltasController extends Controller
         })->with(['detalles' => function($query) use ($tblalumno) {
             $query->where('IdAlumno', $tblalumno->IdAlumno);
         }, 'horarioMaestro'])->get()->toArray();
-
+        //SELECT nombre, Count(faltas) GROUP BY nombre
         foreach ($data as $key => $falta) {
             foreach ($falta['detalles'] as $detalle) {
                 $data[$key]['parciales'][$detalle['parcial']][] = $detalle;

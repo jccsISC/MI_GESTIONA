@@ -172,12 +172,12 @@ header ul ul li {
 /*FIN TODO DEL NAVBAR--------------------------------------------------------------------------------------------------------*/
 
 /*TODO DEL BUSCADOR----------------------------------------------------------------------------------------------------------*/
-.divbuscador{
-    margin-left: 10%;
+.divbuscador input{
+    padding: 3px;
 }
 
 .mibuscador{
-    border-radius: 4px;
+    border-radius: 25px;
     border: 1px solid rgb(231, 231, 231);
     text-align: center;
     padding: 1px;
