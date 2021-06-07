@@ -44,7 +44,6 @@ Vue.component('crear-dependencia', require('./components/trabajosocial/dependenc
 Vue.component('add-practservi-alumn', require('./components/trabajosocial/dependencias/AddPracServAlumn.vue').default);
 
 
-
 //TUTORIAS------------------------------------------------------------------------------------------------------------------
 //Calificaciones
 Vue.component('card-calificaciones', require('./components/tutorias/CardCalificaciones.vue').default);
@@ -56,7 +55,6 @@ Vue.component('ver-yonoAbandono', require('./components/tutorias/VerReporteTuto.
 //Notify
 Vue.component('card-notify-inacistencias', require('./components/tutorias/notify/NotifyInacistencias.vue').default);
 Vue.component('card-notify-reprobados', require('./components/tutorias/notify/NotifyReprobados.vue').default);
-
 
 
 //ORIENTACION----------------------------------------------------------------------------------------------------
@@ -77,12 +75,9 @@ Vue.component('generar-report-oe', require('./components/orientacion/ModalReport
 Vue.component('detalle-taller', require('./components/orientacion/talleres/DetalleTaller.vue').default);
 //Inasistencias
 Vue.component('inasistencias', require('./components/maestros/AgregarInasistencias.vue').default);
+
 //Reportes
 Vue.component('reportes', require('./components/reportes/ReportesALL.vue').default);
-
-
-
-
 
 
 //---------------------------------------------------------------------------------------------------------------------

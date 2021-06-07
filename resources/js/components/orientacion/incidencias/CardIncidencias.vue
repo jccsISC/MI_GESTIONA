@@ -24,20 +24,10 @@
                                 v-for="(incidencia, key) in malaConductaComputed" :key="key"
                                 class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
                                 data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
-                            
                                 {{key + 1}}
-
                             </button>
                         </div>
                     </div>
-
-                    <!-- <div class="mcontenidoL pt-1 dos"> -->
-                        <!-- <p><b>Detalles</b></p>
-                        <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                        <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p> -->
-                         <!-- <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p> -->
-                        
-                    <!-- </div> -->
                 </div>
             </div>
         </div>

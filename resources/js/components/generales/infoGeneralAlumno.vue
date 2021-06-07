@@ -84,70 +84,66 @@
                         <!-- Informacion academica -->
                         <p class="subtitulos text-center">Información académica</p>
                         <hr class="barrasubtitulos">
-                        <div id="div-info" class="contenedorVentana2 colorText sizeGeneral" style="overflow-x:auto">
-                            <!-- <cal-general></cal-general> -->
-                            <div style="float: left; width: 100%">
-                                <div id="info-academica"> 
+                        <div id="div-info" class="contenedorVentanaModal colorText sizeGeneral" style="overflow-x:auto">
+                            <div class="row" style="float: left; width: 100%; margin-left: -10px;">
+                                <div class="col pr-0">
                                     <div v-if="alumno.IdAlumno" class="header">
                                         <p class="m-0 p-0"><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
                                         <p class="m-0 p-0"><b>Promedio general: </b> {{promedioGeneral}}</p>
                                     </div>
-                                    <table v-for="(calificacion, key) in calificaciones" :key="key" class="table table-striped table-hover contentTable table-responsive text-center scrollHTS" style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="10" class="texte-left">{{calificacion.Materia}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th>P1</th>
-                                                <th>P2</th>
-                                                <th>P3</th>
-                                                <th>P4</th>
-                                                <th>P5</th>
-                                                <th colspan="2">P/Final</th>
-                                                <th>Ordinario</th>
-                                                <th>Inter</th>
-                                                <th>Extra</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                                <td colspan="2">{{calificacion.Calificacionfinal}}</td>
-                                                <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
-                                                <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
-                                                <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
-                                            </tr>                            
-                                                </tr>                            
-                                            </tr>                            
-                                        </tbody>
-                                    </table>
+                                    <table class="table table-striped table-hover table table-sm scrollT">
+                                    <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                                        <tr style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                                            <th>Asignaturas</th>
+                                            <th>P1</th>
+                                            <th>P2</th>
+                                            <th>P3</th>
+                                            <th>P4</th>
+                                            <th>P5</th>
+                                            <th>P.Final</th>
+                                            <th>Ordinario</th>
+                                            <th>Inter</th>
+                                            <th>Extra</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="border: 1px solid #800000;">
+                                        <tr v-for="(calificacion, key) in calificaciones" :key="key">
+                                            <td colspan="2">{{calificacion.Materia}}</td>
+                                            <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
+                                            <td colspan="2">{{calificacion.Calificacionfinal}}</td>
+                                            <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
+                                            <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
+                                            <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                        </tr>                            
+                                    </tbody>
+                                </table>
                                 </div>
-                                <div id="info-faltas"> 
+                                <div class="col pr-0" >
                                     <div class="header">
-                                        <p class="m-0 p-0"><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
-                                        <p class="m-0 p-0"><b>POR MATERIA</b></p>
-                                    </div>
-                                    <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table table-sm scrollT">
-                                        <thead>
-                                            <tr>
-                                                <th>Asignaturas</th>
-                                                <th>P1</th>
-                                                <th>P2</th>
-                                                <th>P3</th>
-                                                <th>P4</th>
-                                                <th>P5</th>
-                                            </tr>
-                                        </thead>
-                                
-                                        <tbody >
-                                            <tr  v-for="(falta, key) in faltas" :key="key">
-                                                <td>{{falta.horario_maestro.Materia}}</td>
-                                                <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
-                                            </tr>                             
+                                            <p class="m-0 p-0"><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
+                                            <p class="m-0 p-0"><b>POR MATERIA</b></p>
+                                        </div>
+                                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover table table-sm scrollT">
+                                            <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                                                <tr style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                                                    <th>Asignaturas</th>
+                                                    <th>P1</th>
+                                                    <th>P2</th>
+                                                    <th>P3</th>
+                                                    <th>P4</th>
+                                                    <th>P5</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody style="border: 1px solid #800000;">
+                                                <tr  v-for="(falta, key) in faltas" :key="key">
+                                                    <td>{{falta.horario_maestro.Materia}}</td>
+                                                    <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
                                                 </tr>                             
-                                            </tr>                             
-                                        </tbody>
-                                    </table>
+                                                    </tr>                             
+                                                </tr>                             
+                                            </tbody>
+                                        </table>
                                 </div>
                             </div>
                         </div>
@@ -190,25 +186,47 @@
                             <div id="divIncidencia" v-if="alumno.IdAlumno">
                                 <div class="header">
                                     <p class="text-center p-0 m-0"><b>INCIDENCIAS</b></p>
-                                    <p class="p-0 m-0"><b>Cantidad de incidencias</b></p>
                                 </div>
                                 <div class="left">
-                                    <button 
-                                        v-for="(incidencia, key) in incidencias" :key="key"  
-                                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                    <p class="p-0 m-0"><b>Incidencias</b></p>
+                                    <div class="borde pt-1">
+                                        <button 
+                                            v-for="(incidencia, key) in incidencias" :key="key"  
+                                            class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                        
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
                                     
-                                        {{key + 1}}
-                                    </button>
-                                    <p><b>Detalles</b></p> 
-                                    <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                                    <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                                    <b>Mala conducta</b>
+                                    <div class="borde pt-1">
+                                        <button 
+                                            v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                            class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
                                 </div>
+                                <div class="right pl-1">
+                                    <b>Yo no abandono</b>
+                                    <div class="borde">
+                                        <button 
+                                            v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                            class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <div class="right text-center">
-                                    <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
-                                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                                    <!-- <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p> -->
                                 </div>
                             </div>
+                            <a class="float-right" :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+
                         </div>
                         <p class="subtitulos text-center">Trabajo social</p>
                         <hr class="barrasubtitulos">
@@ -484,6 +502,15 @@
        text-align: center;
     }
 
+     .contenedorVentanaModal{
+        height: 300px;
+        border-radius: 4px;
+        border: 2px solid rgb(223, 219, 219);
+        margin-left: 1%;
+        margin-right: 1%;
+        padding: 10px;
+    }
+
     .sizeGeneral {
         font-size: 12px;
     }
@@ -565,7 +592,7 @@
     }
 
     .scrollT tbody {
-        max-height: 120px;
+        max-height: 165px;
         overflow-y: auto;
         overflow-x: hidden;
     }

@@ -10,7 +10,9 @@ class IncidenciasController extends Controller
 {
 
     public function incidencias(tblalumno $tblalumno){
-        return $tblalumno->incidencias()->with('familiar')->get();
+        return $tblalumno->incidencias()
+            ->where('FechaFin', '>=', date('Y-m-d', strtotime('first day of this month')))
+            ->with('familiar')->get();
     }
 
     /**

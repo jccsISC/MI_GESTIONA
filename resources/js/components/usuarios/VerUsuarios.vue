@@ -16,7 +16,7 @@
                     
                     <div class="mt-3">
                         <input v-model="buscador" type="text" style="width:180px;" placeholder="Buscar" class="form-control  mb-1 ml-3">
-                        <button class="btn btn-primary" style="position:absolute; right:16px; top:48px;" data-toggle="modal" data-target="#addUsuario"
+                        <button class="btn btn-primary" style="position:absolute; right:16px; top:70px;" data-toggle="modal" data-target="#addUsuario"
                             @click="$emit('actualizarUsuario', {})">
                             <i class="fas fa-plus-circle"> Agregar</i>
                         </button>

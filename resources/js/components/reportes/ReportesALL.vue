@@ -10,7 +10,7 @@
             </div>
             
             <div :id="'collapse'+ key" :class="['collapse', alumno.IdAlumno == idalumno ? 'show' : '' ] " :aria-labelledby="'heading'+ key" data-parent="#accordion">
-                <table class="table table-striped table-hover contentTable table table-sm scrollIncidencias">
+                <table class="table table-striped table-hover contentTable table-bordered table-juan">
                     <thead>
                         <tr>
                             <th colspan="3">Tipo</th>
@@ -25,12 +25,12 @@
                                 {{incidencia.TipoReporte}}
                             </td>
                             <td colspan="4">{{incidencia.ResponsableSeguimiento}}</td>
-                            <td colspan="3"><label>{{incidencia.Status ? 'Concluido' : incidencia.Status === 0 ? 'Pendiente' : ''}}</label></td>
+                            <td colspan="3">{{incidencia.Status ? 'Concluido' : incidencia.Status === 0 ? 'Pendiente' : ''}}</td>
                         </tr>
                     </tbody>
                  </table>
 
-                 <table class="table table-striped table-hover contentTable table table-sm scrollIncidencias">
+                 <table class="table table-striped table-hover contentTable table-bordered table-sm table-juan">
                     <thead>
                         <tr >
                             <th colspan="3">Tipo</th>
@@ -46,7 +46,7 @@
                                 Yo no abandono
                             </td>
                             <td colspan="4">{{reporte.Motivo}}</td>
-                            <td colspan="3"><label>{{reporte.Status ? 'Concluido' : 'Pendiente'}}</label></td>
+                            <td colspan="3">{{reporte.Status ? 'Concluido' : 'Pendiente'}}</td>
                             <td colspan="4">{{reporte.Seguimiento}}</td>
                         </tr>
                     </tbody>
@@ -225,4 +225,11 @@
         background: rgb(27, 192, 27);
         padding: 4px;
     } 
+    .table-juan th{
+        background:#800000;
+        color: white;
+    }
+    .table-juan th, .table-juan td{
+        padding: 0.4rem;
+    }
 </style>

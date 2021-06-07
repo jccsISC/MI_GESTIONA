@@ -3,7 +3,7 @@
         <p class="subtitulos">Justificantes y pases de salida</p>
         <div class="micardsm colorText">
             <div v-if="alumno.IdAlumno" class="contenedorPracticasServicio">
-                <button type="button" class="btn btn-primary btn-sm mr-2 mt-2 float-right" data-toggle="modal" data-target="#addJustificantes" @click="agregarJustificante(alumno)">
+                <button type="button" class="btn btn-primary btn-sm mr-2 mt-1 float-right" data-toggle="modal" data-target="#addJustificantes" @click="agregarJustificante(alumno)">
                     <i class="fas fa-plus-circle"></i>
                 </button>
                

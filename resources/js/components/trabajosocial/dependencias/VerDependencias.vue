@@ -52,7 +52,10 @@
         </div>
     </div>
 
-    <crear-dependencia @dependenciaActualizada="actualizarDependencia($event)"></crear-dependencia>
+    <crear-dependencia 
+        @dependenciaEliminada="eliminarDependencia($event)"
+        @dependenciaActualizada="actualizarDependencia($event)">
+    </crear-dependencia>
 </div>
 
 </template>
@@ -86,17 +89,12 @@
                 }
                 
             },
-            eliminarDependencia(dependencia, key) {
-                const confirmacion = confirm(`¿Está seguro que desea eliminar la dependencia ${dependencia.Nombre}?`);
-                // Lo elimina en la base de datos.
-                if(confirmacion){
-                axios.delete(`/dependencias/${dependencia.IdDependencia}`)
-                .then(res => {
-                    // Lo elimina de manera visual.
-                    this.dependencias.splice(key,1);
-                })
+            eliminarDependencia(dependencia) {
+                const index = this.dependencias.findIndex(julio => julio.IdDependencia == dependencia.IdDependencia);
+                if (index >=0 ) {
+                    this.dependencias.splice(index, 1);
+                }
             }
-        }
         }
     }
 </script>

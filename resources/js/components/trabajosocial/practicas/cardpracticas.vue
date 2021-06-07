@@ -21,9 +21,7 @@
                     <p class="mt-1"><b>Fecha fin: </b> {{practica.FechaFin}} </p>
                 </div>
             </div>
-        </div>    
-
-       <crear-dependencia></crear-dependencia>
+        </div>
     </div>
 </template>
 

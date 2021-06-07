@@ -18,7 +18,7 @@
       	  <form @submit.prevent="saveBeca">
 	          <div class="form-group">
 			        <label>Nombre</label>
-			        <select  required v-model="becaSeleccionada">
+			        <select class="custom-select" required v-model="becaSeleccionada">
                 <option  v-for="(beca, key) in becas" :key="key" :value="beca.IdBeca">{{beca.Nombre}} - {{beca.Tipo}}</option>
               </select>
 		  	    </div>
@@ -61,6 +61,7 @@
            $('#DetalleBeca').modal('hide');
         })
         .catch(error => {
+          alert('No puede tener dos becas del mismo tipo');
           console.log('no es valido');
           console.log(error);
         });

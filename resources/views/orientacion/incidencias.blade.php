@@ -19,11 +19,11 @@
     <p class="text-right mt-2 miFontSize"><b>Fecha: </b>{{$incidencias->FechaInicio}}</p>
     
     <div class="contenedorRT mt-4 miFontSize">
-        <label class="m-0"><b>Alumno: </b>{{$alumno->Nombre}} {{$alumno->ApePaterno}}  {{$alumno->ApeMaterno}}</label>
-        <label class="ml-4 m-0"><b>Carrera: </b>{{$alumno->Carrera}}</label>
-        <label class="m-0 ml-4"><b>Semestre: </b>{{$alumno->Grado}}</label>
-        <label class="m-0 ml-4"><b>Grupo: </b>{{$alumno->Grupo}}</label>
-        <label class="m-0 ml-4"><b>Telefono: </b>{{$alumno->Telefono}}</label> <br>
+        <label class="m-0"><b>Alumno: </b>{{$alumno->Nombre}} {{$alumno->ApePaterno}}  {{$alumno->ApeMaterno}}</label> <br>
+        <label class="m-0"><b>Carrera: </b>{{$alumno->Carrera}}</label> <br>
+        <label class="m-0"><b>Semestre: </b>{{$alumno->Grado}}</label>
+        <label class="m-0 ml-5"><b>Grupo: </b>{{$alumno->Grupo}}</label>
+        <label class="m-0 ml-5"><b>Telefono: </b>{{$alumno->Telefono}}</label> <br>
         
         <!-- <label class="m-0"><b>Nombre de quien deriva: </b>{{$incidencias->ResponsableSeguimiento}}</label> <br> -->
         <label class="m-0"><b>Responsable de seguimiento: </b>{{$incidencias->ResponsableSeguimiento}}</label> <br>
@@ -74,7 +74,7 @@
     <style>
 
         .miFontSize {
-            font-size: 13px;
+            font-size: 12px;
         }
         
         .imgLogo{

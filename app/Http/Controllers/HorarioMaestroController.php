@@ -2,46 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MateriaImport;
 use Illuminate\Http\Request;
-use App\tblalumno;
+use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use App\tblhorariomaestros;
-use App\tblinasistencias;
-use App\tblincidencias;
-use App\User;
+use App\tblmateria;
 
-class FaltasController extends Controller
+class HorarioMaestroController extends Controller
 {
-
-    public function faltas(tblalumno $tblalumno) {
-        $data = tblinasistencias::whereHas('detalles',function($q) use ($tblalumno)
-        {
-            $q->where('IdAlumno', $tblalumno->IdAlumno);
-        
-        })->with(['detalles' => function($query) use ($tblalumno) {
-            $query->where('IdAlumno', $tblalumno->IdAlumno);
-        }, 'horarioMaestro'])->get()->toArray();
-        //SELECT nombre, Count(faltas) GROUP BY nombre
-        foreach ($data as $key => $falta) {
-            foreach ($falta['detalles'] as $detalle) {
-                $data[$key]['parciales'][$detalle['parcial']][] = $detalle;
-            }
-        }
-        return $data;
-    }
-
-
-    public function registrarFaltas() {
-        return auth()->user()->horarioMaestro;
-    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request) {
+
+        if ($request->ajax()) {
+            return tblhorariomaestros::all();
+        } else {
+            return view('home');
+        }
     }
 
     /**
@@ -62,21 +44,7 @@ class FaltasController extends Controller
      */
     public function store(Request $request)
     {
-        $atributos = $this->validate($request, [
-            'Materia' => 'required',
-            'Carrera' => 'required',
-            'Grado' => 'required',
-            'Grupo' => 'required'
-        ]);
-
-        return tblhorariomaestros::create([
-            'Nombre' => $atributos['Nombre'], 
-            'Tipo' => $atributos['Tipo'], 'Existe' => 1 
-        ]);
-    }
-
-    public function grupos () {
-        return auth()->user()->horarioMaestro;
+        //
     }
 
     /**

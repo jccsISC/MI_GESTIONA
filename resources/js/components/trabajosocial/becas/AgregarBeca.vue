@@ -30,7 +30,7 @@
                 </select>
 		  	      </div>
                 
-              <button type="button" class="btn btn-danger" @click="eliminarBeca(beca)"><i class="far fa-trash-alt"> Eliminar</i></button>
+              <button v-if="beca.IdBeca" type="button" class="btn btn-danger" @click="eliminarBeca(beca)"><i class="far fa-trash-alt"> Eliminar</i></button>
                                   
 		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{beca.IdBeca ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
@@ -59,6 +59,7 @@
     },  
     methods: {
        eliminarBeca(beca) {
+         console.log('el julio se la come', beca);
         this.onDelete(beca);
         $('#addBeca').modal('hide');
       },

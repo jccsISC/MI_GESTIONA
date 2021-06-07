@@ -55,10 +55,51 @@
         </header>
      
         @yield('content')
-
           
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
             <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
+
+            <div class="row mb-5 mt-3">
+               <div class="col-md-6">
+                    <form action="{{ route('alumnos.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+                        @csrf
+                        @if(Session::has('message'))
+                        <p>{{ Session::get('message') }}</p>
+                        @endif
+                        <input type="file" name="file">
+                        <button class="btn btn-secondary p-1">Importar Alumnos</button>  
+                    </form>
+
+                    <form class="mt-2" action="{{ route('horario.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+                        @csrf
+                        @if(Session::has('message'))
+                        <p>{{ Session::get('message') }}</p>
+                        @endif
+                        <input type="file"  name="file">
+                        <button class="btn btn-secondary p-1 mt-2">Importar Horario</button>  
+                    </form>
+               </div>
+
+               <div  class="col-md-6">
+                    <form action="{{ route('faltas.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+                        @csrf
+                        @if(Session::has('message'))
+                        <p>{{ Session::get('message') }}</p>
+                        @endif
+                        <input type="file"  name="file">
+                        <button class="btn btn-secondary p-1">Importar Inasistencias</button>  
+                    </form>
+
+                    <form class="mt-2" action="{{ route('calificaciones.import.excel') }}" method="post" enctype="multipart/form-data" id="bottom-options">
+                        @csrf
+                        @if(Session::has('message'))
+                        <p>{{ Session::get('message') }}</p>
+                        @endif
+                        <input type="file"  name="file">
+                        <button class="btn btn-secondary p-1 mt-2">Importar calificaciones</button>  
+                    </form>
+               </div>
+            </div>
         </footer>
 
     </div>

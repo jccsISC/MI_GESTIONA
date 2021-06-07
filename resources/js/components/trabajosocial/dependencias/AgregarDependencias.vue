@@ -46,7 +46,7 @@
 			          <input type="text" class="form-control" placeholder="Ingresa el tipo de vinculación de la dependencia" required v-model="dependencia.TipoVinculacion">
 		  	      </div>
         
-              <button type="button" class="btn btn-danger" @click="eliminarDependencia(dependencia, keydependencia)"><i class="far fa-trash-alt"></i> Eliminar</button>
+              <button v-if="dependencia.IdDependencia" type="button" class="btn btn-danger" @click="eliminarDependencia(dependencia)"><i class="far fa-trash-alt"></i> Eliminar</button>
 		  	      <button type="submit" class="btn btn-primary float-right"><i class="far fa-save"></i> {{dependencia.IdDependencia ? 'Actualizar' : 'Guardar'}}</button>
 	  	    </form>
         </div>
@@ -107,14 +107,14 @@
             this.onSuccess(res);
           });
       },
-        eliminarDependencia(dependencia, key) {
+        eliminarDependencia(dependencia) {
             const confirmacion = confirm(`¿Está seguro que desea eliminar la dependencia ${dependencia.Nombre}?`);
             // Lo elimina en la base de datos.
             if(confirmacion){
             axios.delete(`/dependencias/${dependencia.IdDependencia}`)
             .then(res => {
-                // Lo elimina de manera visual.
-                this.dependencias.splice(key,1);
+              this.$emit('dependenciaEliminada', dependencia);
+              $('#addDepencencia').modal('hide');
             })
         }
       }

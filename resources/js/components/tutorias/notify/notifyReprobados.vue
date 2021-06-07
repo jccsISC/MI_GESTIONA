@@ -12,19 +12,13 @@
                     </div>
                     <div class="col-md-4 text-center mt-2">
                         <P class="sizeName m-0"><b>Materias reprobadas <label class="textShadow">{{calificacion.Materias.length}}</label></b></P>
-                        <div class="scrollFM pb-3">
+                        <div class="scrollFM pb-3 text-left ml-5">
                             <p class="m-0 pl-2" v-for="(materia, keypases2) in calificacion.Materias" :key="keypases2"><img class="micircle" src="images/circleRojo.png" alt=""> {{materia}}</p>
                         </div>
                     </div>
                     <div class="col-md-4 text-center mt-2">
                         <P class="sizeName m-0"><b>Unidad reprobada <label class="textShadow">{{calificacion.Unidad}}</label></b></P>
                     </div>
-                </div>
-
-                <div class="mcontent">
-                    <!--  <p class="m-0 p-0">Motivo:</p>
-                    <p class="m-0 pl-2">Faltas<img class="micircle mLeft " src="images/circleRojo.png" alt=""></p>
-                    <p class="m-0 pl-2">Calificación<img class="micircle ml-1" src="images/circulo.png" alt=""></p> -->
                 </div>
             </div>
         </div>

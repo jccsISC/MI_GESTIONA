@@ -21,7 +21,10 @@
                     <p class="sizeName m-0"><b>Faltas por asignatura  <label class="textShadow">{{totalInasistencias(alumno.inasistenciasMateria)}}</label></b></p>
                     <p class="sizeName m-0"><b>Unidad  <label class="textShadow">{{unidad(alumno.inasistencias)}}</label></b></p>
                     <div class="scrollFM">
-                        <p class="pl-2 m-0" v-for="(inasistencia, keyinasistencia2) in alumno.inasistenciasMateria" :key="keyinasistencia2"><img class="micircle" src="images/circleRojo.png" alt=""> {{inasistencia.materia}} - {{inasistencia.data.length}}</p>
+                        <p class="pl-2 m-0" v-for="(inasistencia, keyinasistencia2) in alumno.inasistenciasMateria" :key="keyinasistencia2">
+                            <img class="micircle" src="images/circleRojo.png" alt=""> 
+                            {{inasistencia.materia}} - {{inasistencia.data.length}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -52,6 +55,14 @@
             });
         },
         methods: {
+            julioselacome(alumno) {
+                const riendo = {};
+                alumno.inasistenciasMateria.forEach(k => {
+                    // if (!) {
+
+                    // }
+                });
+             },
             unidad(inasistencias) {
                 if (inasistencias && inasistencias.length) {
                     return inasistencias[0].parcial;

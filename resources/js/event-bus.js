@@ -1,4 +1,4 @@
-//generando nuestro evenbus para crear el evento al crear un nuevo pokemon
+//generando nuestro eventbus para crear el evento al crear un nuevo 
 //incorporamos a vue y le especificamos que haremos un require de vue
 window.Vue = require('vue');
 

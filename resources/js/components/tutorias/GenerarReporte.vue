@@ -26,6 +26,7 @@
                         </div>
                     </div>
                     <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
+<<<<<<< HEAD
                     <div class="row">
                         <div class="col-md-6">
                             <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
@@ -38,6 +39,14 @@
                                     <li v-for="(error, key) in errors" :key="key">{{error}}</li>
                                 </ul>
                             </p>
+=======
+                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
+                    <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
+                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
+                    
+                    <div class="miGrid2 mt-1">
+                        <div>
+>>>>>>> 370de50265b48e5f6bf36598ed3ffb44e4d4e5be
                             <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>
@@ -123,6 +132,7 @@
                 this.alumno = alumno;   
                 this.auth = JSON.parse(this.userlogeado);
                 this.reporte.Nombrequienderiva = this.auth.name;
+                this.reporte.user_id = this.users.id
                 this.reporte.IdAlumno = alumno.IdAlumno; 
                 this.jalarFamiliar();   
                 this.jalarUsers();   
@@ -142,8 +152,8 @@
             async jalarFamiliar() {
 
                 const {data} = await axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar');
-                this.familiar = data
-                this.reporte.IdFamiliar = this.familiar.IdFamiliar
+                this.familiar = data;
+                this.reporte.IdFamiliar = this.familiar.IdFamiliar;
 
                 // axios.get('alumnos/'+this.alumno.IdAlumno+'/familiar').then(res=>{
                 //     this.familiar = res.data;
@@ -151,11 +161,10 @@
                 // });
             },
             guardarReporte() {
-
                 console.log('guardando reporte 1', this.reporte)
                 
-               if (this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
-                    || this.reporte.Observaciones == undefined ) {
+               if (this.reporte.Motivo == undefined || this.reporte.Derivacion == undefined || this.reporte.DescripcionDer == undefined
+                    || this.reporte.Observaciones == undefined || this.reporte.Seguimiento == undefined ) {
 
                     this.alertMessage = "Llene todos los campos";
                     this.showError = true;
@@ -178,11 +187,12 @@
                     // });
 
                     this.reporte.ResponsableSeguimiento = this.reporte.Nombrequienderiva;
+                    this.reporte.user_id = 2
                     console.log("Nombre de quien deriva: ", this.reporte.ResponsableSeguimiento);
                     if (this.tipo == 'crear') {
 
                         this.reporte.Unidad = this.alumno.Unidad;
-                        axios.post('/yonoAbandono' + this.reporte).then(res => {
+                        axios.post('/yonoAbandono', this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             // bus.$emit('incidenciaAgregada', res.data);
@@ -193,7 +203,7 @@
                         });
                     } else {
 
-                        axios.put('/yonoAbandono/' + this.reporte.IdYonoabandono, this.reporte).then(res => {
+                        axios.put('/yonoAbandono/', this.reporte.IdYonoabandono, this.reporte).then(res => {
                             this.reporte = res.data;
                             $('#reporteTuto').modal('hide');
                             bus.$emit('reporteTuto', res.data);

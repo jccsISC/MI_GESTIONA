@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\HorarioMaestroController;
+use App\tblhorariomaestros;
+
 Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes(['register' => false]);
@@ -51,6 +54,9 @@ Route::get('usuarios','UsersController@index');
 Route::post('usuarios','UsersController@store');
 Route::put('usuarios/{tblusuarios}','UsersController@update');
 Route::delete('usuarios/{tblusuarios}','UsersController@destroy');
+
+//INASISTENCIAS MAESTROS
+Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
 
 //DEPENDENCIAS CRUD
 Route::get('dependencias','DependenciasController@index');
@@ -113,19 +119,6 @@ Route::name('imprimirIncidencias')->get('imprimirInci/{tblincidencias}','Inciden
 Route::name('imprimirMalaConducta')->get('imprimirConducta/{tblincidencias}','IncidenciasController@imprimirMalaConducta');
 
 
-//INASISTENCIAS MAESTROS
-Route::get('M', function(Illuminate\Http\Request $request) {
-    $request->user()->authorizeRoles(['maestro']);
-    return view('/inasistencias');
-});
-//INASISTENCIAS MAESTROS
-Route::get('faltas/{tblalumno}', 'FaltasController@faltas');
-Route::get('registrarFaltas', 'FaltasController@registrarFaltas');
-
-//REPORTES GENERALES
-Route::get('R', function(){
-    return view('/reportes');
-});
 //-----------------------------------------DEPARTAMENTO DE SALVADOR--------------------------------------------------
 Route::get('T', function(Illuminate\Http\Request $request) {
     $request->user()->authorizeRoles(['tutor']);
@@ -149,3 +142,24 @@ Route::get('A', function(Illuminate\Http\Request $request) {
     return view('/admin');
 });
 Route::post('importdocente', 'UserController@importExcelDocente')->name('docente.import.excel');
+
+
+//MAESTROS-----------------------------------------------------------------------------------------------------------
+//INASISTENCIAS MAESTROS
+Route::get('M', function(Illuminate\Http\Request $request) {
+    $request->user()->authorizeRoles(['maestro']);
+    return view('/inasistencias');
+});
+
+Route::get('/horario', 'HorarioMaestroController@index'); 
+Route::get('/alumno', 'AlumnoController@index'); 
+Route::get('registrarFaltas', 'FaltasController@registrarFaltas');
+Route::get('horario/{tblalumno}', 'HorarioMaestroController@alumnos');
+Route::post('importcalificacion', 'TutoriasController@importExcelCalificacion')->name('calificaciones.import.excel');
+Route::post('importHorario', 'TutoriasController@importExcelHorarioM')->name('horario.import.excel');
+Route::post('importFaltas', 'TutoriasController@importExcelFaltas')->name('faltas.import.excel');
+
+//REPORTES GENERALES
+Route::get('R', function(){
+    return view('/reportes');
+});

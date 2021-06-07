@@ -14,12 +14,75 @@
 
         <hr class="mt-1">
 
+<<<<<<< HEAD
         <div class="modal-body-s colorText">
             <div class="row">
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col p-2 ml-2"><input type="number" class="form-control" step="0.0" min="0" placeholder="Estatura" v-model="salud.Estatura"></div>
                         <div class="col p-2"><input type="number" step="0.0" min="0" class="form-control" placeholder="Peso" v-model="salud.Peso"></div>
+=======
+        <div class="modal-body-s colorText animate__animated animate__bounce">
+            <form @submit.prevent="guardarSalud">
+                <div class="mcontenidoSalud">
+                    <div>
+                        <label>Esatatura </label>
+                        <input type="number" step="0.0" min="0" class="widthInput" placeholder="0.0" v-model="salud.Estatura">
+
+                        <label class="ml-3">Peso </label>
+                        <input type="number" step="0.0" min="0" class="widthInput" placeholder="0.0" v-model="salud.Peso">
+
+                        <label class="ml-1">Anteojos </label>
+                        <label class="radioContent">Si
+                            <input type="radio" name="anteojos" value="1" v-model="salud.Anteojos">
+                            <span class="circle"></span>
+                        </label>
+
+                        <label class="radioContent">No
+                            <input type="radio" name="anteojos" value="0" v-model="salud.Anteojos">
+                            <span class="circle"></span>
+                        </label> 
+                        <br>
+                        <label class="ml-1">Trastornos: </label>
+                        <textarea type="text" class="form-control ml-2 p-0 pl-1" style="width:95%;" placeholder="Transtornos..." v-model="salud.Transtornos"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="ml-1">Salud bucal </label>
+                        <label class="radioContent">Si
+                            <input type="radio" name="saludbucal" value="1" v-model="salud.ProbBucal">
+                            <span class="circle"></span>
+                        </label>
+
+                        <label class="radioContent">No
+                            <input type="radio" name="saludbucal" value="0" v-model="salud.ProbBucal">
+                            <span class="circle"></span>
+                        </label> 
+                        <br>
+
+                        <label class="ml-2 mr-3">Pie plano </label>
+                        <label class="radioContent">Si
+                            <input type="radio" name="pieplano" value="1" v-model="salud.PiePlano">
+                            <span class="circle"></span>
+                        </label>
+
+                        <label class="radioContent">No
+                            <input type="radio" name="pieplano" value="0" v-model="salud.PiePlano">
+                            <span class="circle"></span>
+                        </label> 
+                        <br>
+
+                        <label class="ml-2 mr-1">Pediculosis </label>
+                        <label class="radioContent">Si
+                            <input type="radio" name="pediculosis" value="1" v-model="salud.Pediculosis">
+                            <span class="circle"></span>
+                        </label>
+
+                        <label class="radioContent">No
+                            <input type="radio" name="pediculosis" value="0" v-model="salud.Pediculosis">
+                            <span class="circle"></span>
+                        </label> 
+>>>>>>> 370de50265b48e5f6bf36598ed3ffb44e4d4e5be
                     </div>
 
                     <label class="ml-1">Anteojos </label>

@@ -172,12 +172,12 @@ header ul ul li {
 /*FIN TODO DEL NAVBAR--------------------------------------------------------------------------------------------------------*/
 
 /*TODO DEL BUSCADOR----------------------------------------------------------------------------------------------------------*/
-.divbuscador{
-    margin-left: 10%;
+.divbuscador input{
+    padding: 3px;
 }
 
 .mibuscador{
-    border-radius: 4px;
+    border-radius: 25px;
     border: 1px solid rgb(231, 231, 231);
     text-align: center;
     padding: 1px;
@@ -199,7 +199,7 @@ header ul ul li {
 
 footer{
     width: 100%;
-    height: 135px;
+    height: 210px;
     background-color: #800000;
     padding: 1rem 0 ;
     padding-left: 20px;
@@ -417,7 +417,7 @@ footer{
     /*TODO VENTANAS NOTIFICACIONES--------------------------------------------------------------------------------*/    
         .micardNotificaciones{
             width: 96%;
-            height: 100px;
+            height: 110px;
             background-color: white;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
             border-radius: 8px;
@@ -431,13 +431,9 @@ footer{
         }
         #info-academica{
             float:left; 
-            width:48%;
-            margin: 10px 1%;
         }
         #info-faltas{
             float: right;
-            width:48%;
-            margin: 10px 1%;
         }
 
         .micardNotificaciones:hover{

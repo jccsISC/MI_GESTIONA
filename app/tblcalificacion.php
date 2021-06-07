@@ -8,7 +8,7 @@ class tblcalificacion extends Model
 {
     protected $table = 'tblcalificaciones';
     protected $primaryKey = 'IdCalificacion';
-    protected $fillable = ['IdAlumno','Materia','CalificacionFinal','Inasistencias','PorcentajeAsist'
+    protected $fillable = ['IdAlumno','Materia','Calificacionfinal','Inasistencias','PorcentajeAsist'
     ,'Extra','Inter','Ordinario','Existe'];
     public $timestamps = false;
     

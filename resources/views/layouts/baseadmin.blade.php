@@ -49,11 +49,23 @@
             </div>
         </header>
         <ver-usuarios></ver-usuarios>
-        <!-- <edit-contra></edit-contra> -->
+        
         @yield('content')
 
         <footer class="footer align-items-center container-fluid text-center" style="background-color: #800000; padding: 5rem 0;">
             <span style="color: white; font-weight: 400;">Copyright © CECYTEJ 07 2020 Todos los derechos reservados</span>
+
+            <div class="mt-3">
+                <form class="container" action="{{ route('docente.import.excel') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @if(Session::has('message'))
+                    <p>{{ Session::get('message') }}</p>
+                    @endif
+
+                    <input type="file" name="filedocente">
+                    <button class="btn btn-secondary ml-5">Importar Docentes</button>  
+                </form>
+            </div>
         </footer>
       
     </div>
@@ -68,8 +80,6 @@
     .cerrar a{
         color: white;
     }
-
-    
 
 </style>
 

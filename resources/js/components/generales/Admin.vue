@@ -7,7 +7,7 @@
             <div v-if="alumno.IdAlumno" class="inforP">
                 <div class="mifoto">
                     <img src="images/student.png" alt="Foto del Alumno">
-                    <p class="text-center" style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p>
+                    <!-- <p class="text-center" style="text-shadow: 1px 1px 5px #2c2b2b86;">Regular</p> -->
                 </div>
 
                 <div class="subGrid">
@@ -56,8 +56,8 @@
             </div>
 
             <div class="labelS">
-                <div v-if="alumno.IdAlumno" class="float">
-                    <b><p class="m-0 p-0">LUGRAR DE NACIMIENTO</p></b>
+                <div v-if="alumno.IdAlumno">
+                    <label class="mt-2"><b>LUGRAR DE NACIMIENTO</b></label>
                 </div>
                 
                 <div v-if="alumno.IdAlumno" class="inforP2">
@@ -98,16 +98,16 @@
                     </div>
 
                     <div class="tableCalf">
-                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table scrollCalificaciones widthTable table-sm">
+                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover table-padding">
                             <thead>
                                 <tr>
-                                    <th>Asignaturas</th>
+                                    <th colspan="2">Asignaturas</th>
                                     <th>P1</th>
                                     <th>P2</th>
                                     <th>P3</th>
                                     <th>P4</th>
                                     <th>P5</th>
-                                    <th>P. Final</th>
+                                    <th>P.Final</th>
                                     <th>Ordinario</th>
                                     <th>Inter</th>
                                     <th>Extra</th>
@@ -117,11 +117,11 @@
                             <tbody>
                                  <tr v-for="(calificacion, key) in calificaciones" :key="key">
                                     <td colspan="2">{{calificacion.Materia}}</td>
-                                    <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                    <td colspan="2">{{calificacion.Calificacionfinal}}</td>
-                                    <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
-                                    <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
-                                    <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                    <td class="text-center" v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
+                                    <td class="text-center">{{calificacion.Calificacionfinal}}</td>
+                                    <td class="text-center">{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                    <td class="text-center">{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
+                                    <td class="text-center">{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
                                 </tr>                            
                             </tbody>
                         </table>
@@ -148,7 +148,7 @@
                             </thead>
             
                             <tbody>
-                               <tr  v-for="(falta, key) in faltas" :key="key">
+                               <tr v-for="(falta, key) in faltas" :key="key">
                                     <td>{{falta.horario_maestro.Materia}}</td>
                                     <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
                                 </tr>                            
@@ -396,6 +396,7 @@
 
                 const {data} = await axios.get('faltas/'+this.alumno.IdAlumno);
                 this.faltas = data;
+                console.log("Faltas del alumno: ", this.faltas);
 
                 // axios.get('faltas/'+this.alumno.IdAlumno).then(res => {
                 //     this.faltas = res.data;
@@ -589,7 +590,7 @@
 
     .contentInf{
         width: 100%;
-        height: 300px;
+        height: 320px;
         background: white;
         border: 1px solid rgb(165, 164, 164);
         border-radius: 3px;
@@ -673,6 +674,7 @@
     .tableCalf{
         border: 1px solid rgb(202, 201, 201);
         border-radius: 4px;
+        height: 80%;
     }
 
     .gridTS{
@@ -719,5 +721,7 @@
         width: 1px;
         background: #800000;
     }
-    
+    .table-padding td, .table-padding th{
+        padding: 5px;
+    }
 </style>

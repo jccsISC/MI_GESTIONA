@@ -2,13 +2,13 @@
     <div class="contenedorCard">
         <p class="subtitulos">Talleres</p>
         <div class="micardTalleres p-3 colorText">        
-            <div v-for="(taller, key) in talleres" :key="key" class="cardTaller izeTaller text-center ml-4 mb-3" data-toggle="modal" data-target="#detalleTaller" @click="$emit('editarTaller', taller, key)">
+            <div v-for="(taller, key) in talleres" :key="key" class="cardTaller izeTaller text-center mr-4 mb-3" data-toggle="modal" data-target="#detalleTaller" @click="$emit('editarTaller', taller, key)">
                 <spinner v-show="loading"></spinner>
                 <p class="pt-2 m-0"><b>{{taller.Nombre}}</b></p>
                 <p class="m-0">{{taller.Fecha}}</p>
             </div>
 
-            <button class="btnaddTaller ml-4" data-toggle="modal" data-target="#detalleTaller" @click="$emit('agregarTaller')">+</button>
+            <button class="btnaddTaller mr-4git" data-toggle="modal" data-target="#detalleTaller" @click="$emit('agregarTaller')">+</button>
         </div>
 
         <detalle-taller 
