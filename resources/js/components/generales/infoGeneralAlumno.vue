@@ -91,10 +91,10 @@
                                         <p class="m-0 p-0"><b>INFORMACIÓN ACADÉMICA DEL PLANTEL CECyTEJ 7</b></p>    
                                         <p class="m-0 p-0"><b>Promedio general: </b> {{promedioGeneral}}</p>
                                     </div>
-                                    <table class="table table-striped table-hover table table-sm scrollT">
-                                    <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
-                                        <tr style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
-                                            <th>Asignaturas</th>
+                                    <table class="table table-striped table-hover table-sm text-center">
+                                    <thead class="table-header-color">
+                                        <tr class="table-header-color">
+                                            <th style="width: 200px">Asignaturas</th>
                                             <th>P1</th>
                                             <th>P2</th>
                                             <th>P3</th>
@@ -108,12 +108,12 @@
                                     </thead>
                                     <tbody style="border: 1px solid #800000;">
                                         <tr v-for="(calificacion, key) in calificaciones" :key="key">
-                                            <td colspan="2">{{calificacion.Materia}}</td>
+                                            <td style="width: 200px">{{calificacion.Materia}}</td>
                                             <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i)}}</td>
-                                            <td colspan="2">{{calificacion.Calificacionfinal}}</td>
-                                            <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
-                                            <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
+                                            <td>{{calificacion.Calificacionfinal}}</td>
                                             <td>{{calificacion.Ordinario ? calificacion.Ordinario : 'NC'}}</td>
+                                            <td>{{calificacion.Inter ? calificacion.Inter : 'NC'}}</td>
+                                            <td>{{calificacion.Extra ? calificacion.Extra : 'NC'}}</td>
                                         </tr>                            
                                     </tbody>
                                 </table>
@@ -123,9 +123,9 @@
                                             <p class="m-0 p-0"><b>INFORMACIÓN SOBRE LAS FALTAS POR PARCIAL</b></p>
                                             <p class="m-0 p-0"><b>POR MATERIA</b></p>
                                         </div>
-                                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover table table-sm scrollT">
-                                            <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
-                                                <tr style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
+                                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover table table-sm table-padding">
+                                            <thead class="table-header-color">
+                                                <tr class="table-header-color">
                                                     <th>Asignaturas</th>
                                                     <th>P1</th>
                                                     <th>P2</th>
@@ -139,9 +139,7 @@
                                                 <tr  v-for="(falta, key) in faltas" :key="key">
                                                     <td>{{falta.horario_maestro.Materia}}</td>
                                                     <td v-for="i in 5" :key="i">{{faltasPorUnidad(falta.parciales, i)}}</td>
-                                                </tr>                             
-                                                    </tr>                             
-                                                </tr>                             
+                                                </tr>                                                         
                                             </tbody>
                                         </table>
                                 </div>

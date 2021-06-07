@@ -15,7 +15,6 @@
         <hr class="mt-1">
 
         <div class="modal-body-xl colorText">
-<<<<<<< HEAD
           <div class="form-row m-2">
             <div class="form-group col-md-6">
               <label>Fecha:</label>
@@ -33,14 +32,6 @@
               <label>Institución:</label>
               <input type="text" class="form-control" placeholder="Ingresa el nombre de la Institución" v-model="taller.Institucion">
             </div>
-=======
-          <label><b>Fecha: </b><input id="fecha" type="date" class="p-0 " v-model="taller.Fecha"></label>
-          <label class="ml-5"><b>Hora del curso: </b><input type="time" class="p-0" v-model="taller.Hora"></label>
-          
-          <div>
-            <label><b>Nombre del taller:</b></label>
-            <input type="text" class="p-0 pl-1" style="width:69%;" placeholder="Ingresa el nombre del taller" v-model="taller.Nombre">
->>>>>>> 370de50265b48e5f6bf36598ed3ffb44e4d4e5be
           </div>
           
           <table class="table table-striped table-hover table-sm">

@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="tableCalf">
-                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover contentTable table scrollCalificaciones table-sm">
+                        <table v-if="alumno.IdAlumno" class="table table-striped table-hover table-padding">
                             <thead>
                                 <tr>
                                     <th>Asignaturas</th>
@@ -163,78 +163,90 @@
             <h5>SALUD - INCIDENCIAS</h5>
         </div>
          <div class="contentInf">
-            <div class="gridM2">
-                <div v-if="alumno.IdAlumno">
-                    <div>
-                        <p class="text-center"><b>SALUD</b></p>
-                    </div>
-
-                    <div>
-                        <label class="mr-5"><b>Estatura: </b>{{salud.Estatura}}</label>
-                        <label class="mr-5 ml-3"><b>Peso: </b>{{salud.Peso}}</label>
-                        <label class="mr-5"><b>IMC: </b>{{salud.IMC}}</label><br>
-                    </div>
-
-                    <div class="gridM2">
-                       <div class="contentDetSalud">
-                            <p class="mb-1"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Pie plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
-                              <p class="mb-1"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Problemas auditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
-                            <p class="mb-1"><b>Transtornos: </b>{{salud.Transtornos ? salud.Transtornos : 'No padece de transtornos...'}}</p>
-                       </div>
-
-                       <div class="contentDetSalud">
-                            <p class="m-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
-                            <p class="m-0"><b>Descripción: </b>{{salud.DetAlergias ? salud.DetAlergias : 'No tiene alergias...'}}</p>
-                            <p class="m-0"><b>Gravidez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
-                            <p class="m-0"><b>Descripción: </b>{{salud.Gravidez ? salud.DetGravidez : 'No tiene gravidez...'}}</p>
-                            <p class="m-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
-                            <p class="m-0"><b>Descripción: </b>{{salud.DetProbPosturales ? salud.DetProbPosturales : 'No tiene problemas posturales...'}}</p>
-                            <p class="m-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
-                            <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>   
-                       </div>
-                    </div>
-                </div>
-               
-                <div v-if="alumno.IdAlumno">
-                    <div class="linea2"></div>
-                    <div>
-                        <p class="text-center"><b>INCIDENCIAS</b></p>
-                    </div>
-
-                    <div>
-                        <div v-if="alumno.IdAlumno">
-                            <div class="pt-1 interlineado">
-                                <p><b>Cantidad de incidencias</b></p>
-                                <div class="scrollH">
-                                    <button 
-                                        v-for="(incidencia, key) in incidencias" :key="key"  
-                                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
-                                    
-                                        {{key + 1}}
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="mcontenidoL pt-1 interlineado">
-                                <p><b>Detalles</b></p> 
-                                <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                                <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
-                            </div>
-
-                            <div class="pt-1">
-                                <p class="p-0 m-0 fecha"><b>Fecha</b>{{inconveniente.FechaInicio}}</p>
-                                <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
-                            </div>
+            <div id="salud-incidencia">
+                <div id="divSalud" v-if="alumno.IdAlumno">
+                    <div class="header">
+                        <div>
+                            <p class="text-center p-0 m-0"><b>SALUD</b></p>
+                        </div>
+                        <div>
+                            <label class="mr-5 m-0"><b>Estatura: </b>{{salud.Estatura}}</label>
+                            <label class="mr-4 m-0"><b>Peso: </b>{{salud.Peso}}</label>
+                            <label class="m-0"><b>IMC: </b>{{salud.IMC}}</label><br>
                         </div>
                     </div>
-                    <ver-mala-conducta :role="role"></ver-mala-conducta>
-                    <ver-incidencias :role="role"></ver-incidencias>
+                    <div class="left">
+                        <p class="mb-1"><b>Anteojos: </b>{{salud.Anteojos == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Pie Plano: </b>{{salud.PiePlano == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Salud bucal: </b>{{salud.ProbBucal == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Pediculosis: </b>{{salud.Pediculosis == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Problemas auditivo: </b>{{salud.ProbAuditivo == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Problemas lenguaje: </b>{{salud.ProbLenguaje == 1 ? 'Si' : 'No'}}</p>
+                        <p class="mb-1"><b>Transtornos: </b>{{salud.Transtornos ? salud.Transtornos : 'No padece de transtornos...'}}</p>
+                    </div>
+                    <div class="right">
+                        <p class="m-0"><b>Alergias: </b>{{salud.Alergias == 1 ? 'Si' : 'No'}}</p>
+                        <p class="m-0"><b>Descripción: </b>{{salud.DetAlergias ? salud.DetAlergias : 'No tiene alergias...'}}</p>
+                        <p class="m-0"><b>Gravidez: </b>{{salud.Gravidez == 1 ? 'Si' : 'No'}}</p>
+                        <p class="m-0"><b>Descripción: </b>{{salud.Gravidez ? salud.DetGravidez : 'No tiene gravidez...'}}</p>
+                        <p class="m-0"><b>Problemas posturales: </b>{{salud.ProbPosturales == 1 ? 'Si' : 'No' }}</p>
+                        <p class="m-0"><b>Descripción: </b>{{salud.DetProbPosturales ? salud.DetProbPosturales : 'No tiene problemas posturales...'}}</p>
+                        <p class="m-0"><b>Otros: </b>{{salud.Otros == 1 ? 'Si' : 'No'}}</p>
+                        <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>  
+                            <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>   
+                        <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>  
+                            <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>   
+                        <p class="m-0"><b>Descripción: </b>{{salud.DetOtros ? salud.DetOtros : 'No tiene otros...'}}</p>  
+                    </div>
                 </div>
+                <div id="divIncidencia" v-if="alumno.IdAlumno">
+                    <div class="header">
+                        <p class="text-center p-0 m-0"><b>INCIDENCIAS</b></p>
+                    </div>
+                    <div class="left">
+                        <p class="p-0 m-0"><b>Incidencias</b></p>
+                        <div class="borde pt-1">
+                            <button 
+                                v-for="(incidencia, key) in incidencias" :key="key"  
+                                        v-for="(incidencia, key) in incidencias" :key="key"  
+                                v-for="(incidencia, key) in incidencias" :key="key"  
+                                        v-for="(incidencia, key) in incidencias" :key="key"  
+                                v-for="(incidencia, key) in incidencias" :key="key"  
+                                class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
+                                data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                            
+                                {{key + 1}}
+                            </button>
+                        </div>
+                        
+                        <b>Mala conducta</b>
+                        <div class="borde pt-1">
+                            <button 
+                                v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                {{key + 1}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="right pl-1">
+                        <b>Yo no abandono</b>
+                        <div class="borde">
+                            <button 
+                                v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                {{key + 1}}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="right text-center">
+                        <!-- <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p> -->
+                    </div>
+                </div>
+                <a class="float-right" :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+
             </div>
         </div>
 
@@ -723,5 +735,12 @@
     }
     .table-padding td, .table-padding th{
         padding: 5px;
+    }
+    #salud-incidencia{
+        width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding: 10px;
+        float: left;
     }
 </style>

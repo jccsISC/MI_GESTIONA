@@ -649,3 +649,9 @@ footer{
 #tabla-materias{
     margin: -1px 15px 0px 15px !important; 
 }
+.table-header-color{
+    background-color: #800000; 
+    border: 1px solid #800000; 
+    color: white; 
+    border-radius: 8px 8px 0px 0px;
+}

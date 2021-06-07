@@ -2,9 +2,9 @@
     <div class="contenedorCard">
         <p class="subtitulos">Faltas por asignatura</p>
         <div class="micard scrollTCalif colorText">
-            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm">
-                <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
-                    <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;">
+            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover table-sm">
+                <thead class="table-header-color">
+                    <tr class="table-header-color">
                         <th>Asignaturas</th>
                         <th colspan="3">Días</th>
                     </tr>

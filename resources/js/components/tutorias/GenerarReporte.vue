@@ -26,7 +26,6 @@
                         </div>
                     </div>
                     <p class="text-right"><b>Fecha: </b> {{new Date().getDate()}}-{{new Date().getMonth()+1}}-{{new Date().getFullYear()}}</p>
-<<<<<<< HEAD
                     <div class="row">
                         <div class="col-md-6">
                             <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
@@ -39,14 +38,6 @@
                                     <li v-for="(error, key) in errors" :key="key">{{error}}</li>
                                 </ul>
                             </p>
-=======
-                    <label class="m-0"><b>Alumno: </b>{{alumno.Nombre}} {{alumno.ApePaterno}}  {{alumno.ApeMaterno}}</label>
-                    <label class="m-0 ml-2"><b>Grupo: </b>{{alumno.Grupo}}</label>
-                    <p class="m-0"><b>Nombre de quien lo deriva: </b>{{reporte.Nombrequienderiva}}</p>
-                    
-                    <div class="miGrid2 mt-1">
-                        <div>
->>>>>>> 370de50265b48e5f6bf36598ed3ffb44e4d4e5be
                             <div>
                                 <p class="m-0"><b>Padre</b></p>
                                 <p class="m-0"><b>Nombre: </b>{{familiar.NombrePadre}} {{familiar.ApePaternoPadre}}  {{familiar.ApeMaternoPadre}}</p>

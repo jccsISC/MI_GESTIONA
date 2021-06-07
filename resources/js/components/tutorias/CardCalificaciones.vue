@@ -2,20 +2,20 @@
     <div class="contenedorCard">
         <p class="subtitulos">Calificaciones</p>
         <div class="micard colorText">
-            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover contentTable scrollCalificaciones table table-sm m-0">
-                <thead style="background-color: #800000; border: solid #800000; color: white; border-radius: 8px 8px 0px 0px;">
-                    <tr style="border: solid #800000; border-radius: 8px 8px 0px 0px;">
+            <table v-if="alumno.IdAlumno" class="table-bordered table table-striped table-hover table-sm m-0">
+                <thead class="table-header-color">
+                    <tr class="table-header-color">
                         <th colspan="2">Asignaturas</th>
                         <th>P1</th>
                         <th>P2</th>
                         <th>P3</th>
                         <th>P4</th>
                         <th>P5</th>
-                        <th colspan="2">P.Final</th>
+                        <th>P.Final</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody style="border: 1px solid #800000;">
                     <tr v-for="(calificacion, key) in calificaciones" :key="key">
                         <td colspan="2">{{calificacion.Materia}}</td>
                         <td v-for="i in 5" :key="i">{{unidad(calificacion.detalles, i) ? unidad(calificacion.detalles, i) : 'NC' }}</td>
