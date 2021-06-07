@@ -16,6 +16,7 @@
                     <div class="row">
                         <div class="col-md-2 text-center">
                             <img src="images/logo.jpg" style="max-width: 200px;">
+                            
                         </div>
                         <div class="col-md-10 text-center">
                             <p class="m-0">COLEGIO DE ESTUDIOS CIENTIFICOS Y TECNOLOGICOS DEL ESTADO DE JALISCO</p>
