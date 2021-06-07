@@ -3305,6 +3305,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['tipo', 'role'],
@@ -3784,16 +3806,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5224,6 +5236,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48952,10 +48973,12 @@ var render = function() {
                       ? _c("div", { attrs: { id: "divIncidencia" } }, [
                           _vm._m(14),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "left" },
-                            [
+                          _c("div", { staticClass: "left" }, [
+                            _vm._m(15),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "borde pt-1" },
                               _vm._l(_vm.incidencias, function(
                                 incidencia,
                                 key
@@ -48984,60 +49007,119 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                \n                                    " +
+                                      "\n                                    \n                                        " +
                                         _vm._s(key + 1) +
-                                        "\n                                "
+                                        "\n                                    "
                                     )
                                   ]
                                 )
                               }),
-                              _vm._v(" "),
-                              _vm._m(15),
-                              _vm._v(" "),
-                              _c("p", [
-                                _c("b", [_vm._v("Observaciones: ")]),
-                                _vm._v(_vm._s(_vm.inconveniente.Observaciones))
-                              ]),
-                              _vm._v(" "),
-                              _c("p", [
-                                _c("b", [_vm._v("Descripción del reporte: ")]),
-                                _vm._v(
-                                  _vm._s(_vm.inconveniente.DescripcionReporte)
-                                )
-                              ])
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "right text-center" }, [
-                            _c("p", { staticClass: "p-0 m-0 fecha" }, [
-                              _c("b", [_vm._v("Fecha: ")]),
-                              _vm._v(_vm._s(_vm.inconveniente.FechaInicio))
-                            ]),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _c("b", [_vm._v("Mala conducta")]),
                             _vm._v(" "),
                             _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href: "/R?show=" + _vm.alumno.IdAlumno
-                                }
-                              },
-                              [
-                                _c("img", {
-                                  staticStyle: {
-                                    width: "20px",
-                                    height: "20px"
+                              "div",
+                              { staticClass: "borde pt-1" },
+                              _vm._l(_vm.malaConductaComputed, function(
+                                incidencia,
+                                key
+                              ) {
+                                return _c(
+                                  "button",
+                                  {
+                                    key: key,
+                                    staticClass:
+                                      "btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target": "#verMalaConducta"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.mostrarIncidencia(
+                                          incidencia,
+                                          _vm.alumno
+                                        )
+                                      }
+                                    }
                                   },
-                                  attrs: {
-                                    src: "images/historial.png",
-                                    alt: "ver el historial"
-                                  }
-                                })
-                              ]
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(key + 1) +
+                                        "\n                                    "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
                             )
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "right pl-1" }, [
+                            _c("b", [_vm._v("Yo no abandono")]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "borde" },
+                              _vm._l(_vm.malaConductaComputed, function(
+                                incidencia,
+                                key
+                              ) {
+                                return _c(
+                                  "button",
+                                  {
+                                    key: key,
+                                    staticClass:
+                                      "btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target": "#verMalaConducta"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.mostrarIncidencia(
+                                          incidencia,
+                                          _vm.alumno
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(key + 1) +
+                                        "\n                                    "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "right text-center" })
                         ])
-                      : _vm._e()
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "float-right",
+                        attrs: { href: "/R?show=" + _vm.alumno.IdAlumno }
+                      },
+                      [
+                        _c("img", {
+                          staticStyle: { width: "20px", height: "20px" },
+                          attrs: {
+                            src: "images/historial.png",
+                            alt: "ver el historial"
+                          }
+                        })
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "subtitulos text-center" }, [
@@ -49630,10 +49712,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "header" }, [
       _c("p", { staticClass: "text-center p-0 m-0" }, [
         _c("b", [_vm._v("INCIDENCIAS")])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "p-0 m-0" }, [
-        _c("b", [_vm._v("Cantidad de incidencias")])
       ])
     ])
   },
@@ -49641,7 +49719,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("b", [_vm._v("Detalles")])])
+    return _c("p", { staticClass: "p-0 m-0" }, [
+      _c("b", [_vm._v("Incidencias")])
+    ])
   },
   function() {
     var _vm = this
@@ -50092,9 +50172,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        \n                            " +
+                          "\n                            " +
                             _vm._s(key + 1) +
-                            "\n\n                        "
+                            "\n                        "
                         )
                       ]
                     )
@@ -53400,7 +53480,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "p-0 ",
-                  attrs: { type: "date" },
+                  attrs: { id: "fecha", type: "date" },
                   domProps: { value: _vm.taller.Fecha },
                   on: {
                     input: function($event) {

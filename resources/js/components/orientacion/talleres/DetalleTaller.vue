@@ -15,7 +15,7 @@
         <hr class="mt-1">
 
         <div class="modal-body-xl colorText">
-          <label><b>Fecha: </b><input type="date" class="p-0 " v-model="taller.Fecha"></label>
+          <label><b>Fecha: </b><input id="fecha" type="date" class="p-0 " v-model="taller.Fecha"></label>
           <label class="ml-5"><b>Hora del curso: </b><input type="time" class="p-0" v-model="taller.Hora"></label>
           
           <div>
@@ -99,6 +99,15 @@
     </div>
   </div>      
 </template>
+<script>
+  $("#fecha").datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: 'mm/dd/yyyy',
+    startDate: new Date(),
+    endDate: new Date(new Date().setDate(new Date().getDate() + 5))
+})
+</script>
 
 <script>
     export default {

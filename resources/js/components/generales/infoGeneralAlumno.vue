@@ -186,25 +186,47 @@
                             <div id="divIncidencia" v-if="alumno.IdAlumno">
                                 <div class="header">
                                     <p class="text-center p-0 m-0"><b>INCIDENCIAS</b></p>
-                                    <p class="p-0 m-0"><b>Cantidad de incidencias</b></p>
                                 </div>
                                 <div class="left">
-                                    <button 
-                                        v-for="(incidencia, key) in incidencias" :key="key"  
-                                        class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
-                                        data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                    <p class="p-0 m-0"><b>Incidencias</b></p>
+                                    <div class="borde pt-1">
+                                        <button 
+                                            v-for="(incidencia, key) in incidencias" :key="key"  
+                                            class="btn btn-danger btn-sm ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="incidencia.TipoReporte == 'Incidencia' ? '#verIncidencias' : '#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                        
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
                                     
-                                        {{key + 1}}
-                                    </button>
-                                    <p><b>Detalles</b></p> 
-                                    <p><b>Observaciones: </b>{{inconveniente.Observaciones}}</p>
-                                    <p><b>Descripción del reporte: </b>{{inconveniente.DescripcionReporte}}</p>
+                                    <b>Mala conducta</b>
+                                    <div class="borde pt-1">
+                                        <button 
+                                            v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                            class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
                                 </div>
+                                <div class="right pl-1">
+                                    <b>Yo no abandono</b>
+                                    <div class="borde">
+                                        <button 
+                                            v-for="(incidencia, key) in malaConductaComputed" :key="key"
+                                            class="btn btn-danger btn-sm m-0 mt-1 ml-1 p-0 pr-2 pl-2"
+                                            data-toggle="modal" :data-target="'#verMalaConducta'" @click="mostrarIncidencia(incidencia, alumno)">
+                                            {{key + 1}}
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <div class="right text-center">
-                                    <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p>
-                                    <a :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+                                    <!-- <p class="p-0 m-0 fecha"><b>Fecha: </b>{{inconveniente.FechaInicio}}</p> -->
                                 </div>
                             </div>
+                            <a class="float-right" :href="'/R?show='+alumno.IdAlumno"><img src="images/historial.png" alt="ver el historial" style="width: 20px; height: 20px;"></a>
+
                         </div>
                         <p class="subtitulos text-center">Trabajo social</p>
                         <hr class="barrasubtitulos">
